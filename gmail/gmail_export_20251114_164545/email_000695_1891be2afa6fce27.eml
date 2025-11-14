@@ -1,0 +1,1325 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4094:b0:4c5:a633:e965 with SMTP id r20csp11934638pxb;
+        Mon, 3 Jul 2023 06:13:08 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4Il6vq6IqYvBrZidBDLcOfmP5mKJcTHlUjlAznvcG7TA51/32sAE0189u7UaFVnyYMvZxv
+X-Received: by 2002:a05:600c:2114:b0:3fa:8874:fe69 with SMTP id u20-20020a05600c211400b003fa8874fe69mr8038806wml.29.1688389988360;
+        Mon, 03 Jul 2023 06:13:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688389988; cv=none;
+        d=google.com; s=arc-20160816;
+        b=egYs2/arbIYQ3ldFXZUbrv6s8xtPiXXzSDzuJH6up+G2ng3g9ZuFtWNFEZtWjpd2/D
+         rghPcoCJPQQP9TZ1KB4LEPpkc+wc04Cl1TbHH33uSiZXemsOx46g+pZ0uEPdipdPHuY2
+         lvXaVDUFsd9dwdpWBov/CbgurCGq00Ac9n8RFckVHl7N4/HorBO/envrKYsb9ctlkYtm
+         3PFyREHXVcELNuGMJQfX0reqBsxjefn6okPWzkzah/mVGxYdwRXnTOlgTPrm5YCdbgJO
+         ACZc02utSdn820Hlo6VYza8uDDZMgqjgFg3RGZXohEQpjrMHKKDcKCr4WMBX6mmw2KJs
+         Vj+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=from:mime-version:date:to:message-id:subject:dkim-signature;
+        bh=HeYQ5IlietNt96IPgmC8V3FX9lrdSByLvUrH6vv7t2w=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=GSTmwSHS0waGYaAuiSRt03LxMc0WpAyMFYJFKroI7Oi5a6DUnP1lPN+C1dVcRuxaGn
+         kad1NYMORqclXiiUIAK89SEy7ubdGDUWPQF0W7L+o/cAo816ljhQ7A5itniZJfroicBX
+         zX/qKfdJYF7OkNO+SBDT+TdzxyrWPOC553KP14J/KQo517OEcDYwK16McTbQzlNqUNkR
+         pllTvh/MbSkGV6yqEus0hHh3mmjow3szQhoR+BA3yH0HLt/OJ5QeF8HC6S4JBe0rb+HK
+         VrSeFjNEFZ2YS7TF8Vs2C8yALmHc1ii3AagvIQzYnAPmCYuFONR50+bx4lCmTk5ru87t
+         PgHw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@news-mail.elementor.com header.s=scph0621 header.b=csAGLOLV;
+       spf=none (google.com: news-mail.elementor.com does not designate permitted sender hosts) smtp.mailfrom="msprvs1=195487IRyLppC=bounces-1898-330@news-mail.elementor.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=news-mail.elementor.com
+Return-Path: <msprvs1=195487IRyLppC=bounces-1898-330@news-mail.elementor.com>
+Received: from qbvw.news-mail.elementor.com (qbvw.news-mail.elementor.com. [223.165.112.171])
+        by mx.google.com with ESMTPS id cs11-20020a056000088b00b00312793ce8d0si13008143wrb.206.2023.07.03.06.13.07
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 03 Jul 2023 06:13:08 -0700 (PDT)
+Received-SPF: none (google.com: news-mail.elementor.com does not designate permitted sender hosts) client-ip=223.165.112.171;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@news-mail.elementor.com header.s=scph0621 header.b=csAGLOLV;
+       spf=none (google.com: news-mail.elementor.com does not designate permitted sender hosts) smtp.mailfrom="msprvs1=195487IRyLppC=bounces-1898-330@news-mail.elementor.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=news-mail.elementor.com
+X-MSFBL: 5emLqYGH5A/Uv2pc9/ufyhTZRLI9cXmmDC0KhCyeYGY=|eyJtZXNzYWdlX2lkIjo
+	iNjQ4YjY4YzhhMjY0MjQ1OWFjNGQiLCJ0ZW5hbnRfaWQiOiJzcGNldSIsInN1YmF
+	jY291bnRfaWQiOiIzMzAiLCJyIjoiZWx5LnVidW50dTBAZ21haWwuY29tIiwiY3V
+	zdG9tZXJfaWQiOiIxODk4In0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=news-mail.elementor.com; s=scph0621; t=1688389736;
+	i=@news-mail.elementor.com;
+	bh=HeYQ5IlietNt96IPgmC8V3FX9lrdSByLvUrH6vv7t2w=;
+	h=Subject:Message-ID:To:Date:Content-Type:From:From:To:Cc:Subject;
+	b=csAGLOLVgUQe7H+VoPOiDFVHRvYA/lgGEveMGuZLzvCaPYYzJAqo9xg6pFlmbDqwN
+	 ixgaKODPGwTejvXVIci59FDZRWsveVHhcGwb0yQcEe/2MAUkCCw4/Y9tk/7oIB9BAn
+	 OM5WdET3GFmvrKQA/Q5gmbvwkUuoqc3tXh2lYOQI=
+Subject:   [Release] New Carousel Widget and Other Goodies
+Message-ID: <CA.D4.05701.868C2A46@ga.mta3vrest.cc.prd.sparkpost>
+To: ely.ubuntu0@gmail.com
+Date: Mon, 03 Jul 2023 13:08:56 +0000
+Content-Type: multipart/alternative; boundary="_----wPYrL4r1Cd+memyO7IQ2EQ===_57/D4-05701-868C2A46"
+MIME-Version: 1.0
+From: "Elementor" <team@news-mail.elementor.com>
+
+--_----wPYrL4r1Cd+memyO7IQ2EQ===_57/D4-05701-868C2A46
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+Elementor 3.14 is now available  =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C=0A=E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C=0A=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C=0A=E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C=0A=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C=0A=E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C                           Eleme=
+ntor   Release  -->=0AIntroducing Elementor 3.14              New Carousel =
+Widget, Loop=0AGrid Ads, Global Styles Preview                  Elementor 3=
+.14=0ACore =0A( https://clicks-mail.elementor.com/f/a/J_R2C5PBQfQx1LEzHA-x=
+IQ~~/AAAHagA~/RgRmhU1oP0RRaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWNpb=
+mctMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlVwVzcGNldUIKZIto=
+yKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0A                   Ele=
+mentor charges ahead with the latest 3.14=0Arelease, packed with improvemen=
+ts and new functionalities to=0Aenhance your website-building experience. G=
+ET=0AELEMENTOR PRO ( https://clicks-mail.elementor.com/f/a/vkuV64wpxqO_NDdj=
+R07EJQ~~/AAAHagA~/RgRmhU1oP0QaaHR0cHM6Ly9lbGVtZW50b3IuY29tL3Byby9XBXNwY2V1Q=
+gpki2jIomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~ )=0ANESTED CAROUSE =
+( https://clicks-mail.elementor.com/f/a/vkuV64wpxqO_NDdjR07EJQ~~/AAAHagA~/R=
+gRmhU1oP0QaaHR0cHM6Ly9lbGVtZW50b3IuY29tL3Byby9XBXNwY2V1Qgpki2jIomQkWaxNUhVl=
+bHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~ )        NESTED=0ACAROUSEL       Desig=
+n Carousels with Incredible Freedom=0AEnjoy more creative options with the =
+new Carousel widget where=0Aeach slide becomes a =E2=80=98nestable=E2=80=99=
+ container that can hold any=0Aelement and design. Populate carousel slides=
+ with any widget,=0Aimage, or text, and get the full range of styling optio=
+ns.=0AGET ELEMENTOR PRO =E2=86=92 ( https://clicks-mail.elementor.com/f/a/v=
+kuV64wpxqO_NDdjR07EJQ~~/AAAHagA~/RgRmhU1oP0QaaHR0cHM6Ly9lbGVtZW50b3IuY29tL3=
+Byby9XBXNwY2V1Qgpki2jIomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~ )=0A=
+LOOP GRID ( https://clicks-mail.elementor.com/f/a/vkuV64wpxqO_NDdjR07EJQ~~/=
+AAAHagA~/RgRmhU1oP0QaaHR0cHM6Ly9lbGVtZW50b3IuY29tL3Byby9XBXNwY2V1Qgpki2jIom=
+QkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~ )        LOOP GRID -=0AALTER=
+NATE TEMPLATE      Position Ads Anywhere in Your Loop Grid=0AThis handy fea=
+ture lets you highlight specific content, like an=0Aevent, product, adverti=
+sement or any other piece of content,=0Aright within your regular content l=
+oop. Using the Loop Alternate=0ATemplate, you can choose the template to sh=
+ow and its position=0Awithin the Loop Grid.            GET ELEMENTOR PRO =
+=E2=86=92 =0A( https://clicks-mail.elementor.com/f/a/vkuV64wpxqO_NDdjR07EJQ=
+~~/AAAHagA~/RgRmhU1oP0QaaHR0cHM6Ly9lbGVtZW50b3IuY29tL3Byby9XBXNwY2V1Qgpki2j=
+IomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~ )                  Global=
+ Settings =0A( https://clicks-mail.elementor.com/f/a/J_R2C5PBQfQx1LEzHA-xIQ=
+~~/AAAHagA~/RgRmhU1oP0RRaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWNpbmc=
+tMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlVwVzcGNldUIKZItoyK=
+JkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0A        GLOBAL STYLES PR=
+EVIEW       View Your Global Settings=0AEasily            Global Styles Pre=
+view is a welcome addition=0Athat visually showcases your global colors and=
+ fonts in a full=0Acanvas style sheet. It is active by default for Elemento=
+r Hosted=0Awebsites and can be manually enabled for Plugin websites.=0ALEAR=
+N MORE =E2=86=92 =0A( https://clicks-mail.elementor.com/f/a/J_R2C5PBQfQx1LE=
+zHA-xIQ~~/AAAHagA~/RgRmhU1oP0RRaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9k=
+dWNpbmctMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlVwVzcGNldUI=
+KZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0A                 =
+ Elementor AI =0A( https://clicks-mail.elementor.com/f/a/J_R2C5PBQfQx1LEzHA=
+-xIQ~~/AAAHagA~/RgRmhU1oP0RRaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWN=
+pbmctMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlVwVzcGNldUIKZI=
+toyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0A        Elementor AI=
+       AI Images - Available From Version=0A3.14            Elementor AI is=
+ available as a free trial with=0Aall Elementor websites with options to up=
+grade to paid plans that=0Astart at $2.99/month. With AI, you can instantly=
+ compose,=0Aenhance, or translate text, create custom code, CSS or HTML=0As=
+nippets, and now starting from version 3.14, generate images!=0ALEARN MORE =
+=E2=86=92 =0A( https://clicks-mail.elementor.com/f/a/J_R2C5PBQfQx1LEzHA-xIQ=
+~~/AAAHagA~/RgRmhU1oP0RRaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWNpbmc=
+tMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlVwVzcGNldUIKZItoyK=
+JkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0A                   Thank=
+ you,  The Elementor Team        -->=0Atw ( https://clicks-mail.elementor.c=
+om/f/a/fGUC2rPsp7kKzpBo9jvZlA~~/AAAHagA~/RgRmhU1oP0QdaHR0cHM6Ly90d2l0dGVyLm=
+NvbS9lbGVtbnRvci9XBXNwY2V1Qgpki2jIomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YB=
+AAAAUo~ )   fb =0A( https://clicks-mail.elementor.com/f/a/_K3RNls1GulBiBO4i=
+EBtKw~~/AAAHagA~/RgRmhU1oP0QiaHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL2VsZW1udG9yL1=
+cFc3BjZXVCCmSLaMiiZCRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~ )   in =
+=0A( https://clicks-mail.elementor.com/f/a/4d1E9AGTCNJmo4rmuJXLnQ~~/AAAHagA=
+~/RgRmhU1oP0QfaHR0cDovL2luc3RhZ3JhbS5jb20vZWxlbWVudG9yL1cFc3BjZXVCCmSLaMiiZ=
+CRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~ )   yt =0A( https://clicks-=
+mail.elementor.com/f/a/5r_QtRqR1CeAQn6BQdzFjw~~/AAAHagA~/RgRmhU1oP0QkaHR0cH=
+M6Ly93d3cueW91dHViZS5jb20vYy9lbGVtZW50b3IvVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5L=
+nVidW50dTBAZ21haWwuY29tWAQAAAFK )        =C2=A9=0A2023 Tuval Street 40, Ram=
+at Gan=0A5252247, Israel=0A=0AHelp Center ( https://clicks-mail.elementor.c=
+om/f/a/cLtwuhnJbBJga73sgQ18Ew~~/AAAHagA~/RgRmhU1oP0QbaHR0cHM6Ly9lbGVtZW50b3=
+IuY29tL2hlbHAvVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAA=
+AFK ) | Terms &=0AConditions ( https://clicks-mail.elementor.com/f/a/SCLmtH=
+ocyzpBMWOTq3tqsA~~/AAAHagA~/RgRmhU1oP0QcaHR0cHM6Ly9lbGVtZW50b3IuY29tL3Rlcm1=
+zL1cFc3BjZXVCCmSLaMiiZCRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~ ) | U=
+pdate Email=0APreferences ( https://clicks-mail.elementor.com/f/a/GOolKFMvq=
+tnXm8V_nGfomg~~/AAAHagA~/RgRmhU1oP4QVAmh0dHBzOi8vMDEuZW1haWxpbmJvdW5kcHJvY2=
+Vzc2luZy5ldS9lbWFpbC9tYW5hZ2Vfc3Vic2NyaXB0aW9ucy8lMjQxJTI0SEtsJTJCYTVPcTk2R=
+XliZzRtJTJCcm11ZUElM0QlM0QlMjQ4akkyWWd3cFVha280aE1sNFMxZ3l4SGJmdFp6UzRzeEJj=
+Z3c0ckFZOTNBJTNEP2Q9JTI0MSUyNFMyVHpQbktkRWtGdFZYMWtnMzN6ZWclM0QlM0QlMjRrS3R=
+uVGNzVnpkU0M3UVd6T2xaRXdoTiUyRnVQQWpVZWJYemVDS3paRGprY29reDg5UVhDZVJ0aCUyQk=
+NPZkNxJTBBJTJCcm5RYkRrbUs4RGZpbEZOalc5ZmZEYVJVRkRQaU1WVlJEUlpoTzBnRiUyRlVPd=
+WdNZjN1MFElMkZ2RiUyQnR0QWolMEFmaDNsakxCWkpKNFl6UmJRJTJGZ3RTYlBnTklSJTJGJTJG=
+VjhGZldxcWl2T1dSZXNMekFzUkR4bE5KUTk0SEFiWEElMEFlQVNoJTJGQkN1QjJYamdNJTJCeXl=
+kbVhhUWNiQnV4UFZqcUViWFhTZG1XNHB4TWFpZnlJcTMxVW1GM3ZhbmVZJTBBT1gwZ0tiNHJKSz=
+F4UUN2MUdrMzRTSFJQNnM2OVdvdkE2OWk0elZlVjVqaG1lT1dkaXoyNVlUNVRQbFElM0QmMT0xV=
+wVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK ) | Unsubsc=
+ribe=0A( https://clicks-mail.elementor.com/f/a/_OMHn4rQGKayc4svUvAyzA~~/AAA=
+HagA~/RgRmhU1oP4S2AWh0dHBzOi8vMDEuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5ldS9lbmNfd=
+XNlci91bnN1YnNjcmliZT9kPSUyNDElMjRTMlR6UG5LZEVrRnRWWDFrZzMzemVnJTNEJTNEJTI0=
+a0t0blRjc1Z6ZFNDN1FXek9sWkV3aE4lMkZ1UEFqVWViWHplQ0t6WkRqa2Nva3g4OVFYQ2VSdGg=
+lMkJDT2ZDcSUwQSUyQnJuUWJEa21LOERmaWxGTmpXOWZmRGFSVUZEUGlNVlZSRFJaaE8wZ0YlMk=
+ZVT3VnTWYzdTBRJTJGdkYlMkJ0dEFqJTBBZmgzbGpMQlpKSjRZelJiUSUyRmd0U2JQZ05JUiUyR=
+iUyRlY4RmZXcXFpdk9XUmVzTHpBc1JEeGxOSlE5NEhBYlhBJTBBZUFTaCUyRkJDdUIyWGpnTSUy=
+Qnl5ZG1YYVFjYkJ1eFBWanFFYlhYU2RtVzRweE1haWZ5SXEzMVVtRjN2YW5lWSUwQU9YMGdLYjR=
+ySksxeFFDdjFHazM0U0hSUDZzNjlXb3ZBNjlpNHpWZVY1amhtZU9XZGl6MjVZVDVUUGxRJTNEJj=
+E9MVcFc3BjZXVCCmSLaMiiZCRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~ )=0A=
+=0AThis email is intended for ely.ubuntu0@gmail.com.=0ATo ensure delivery o=
+f this email and future mailings, please add=0Aus to your contacts book or =
+safe senders list.
+--_----wPYrL4r1Cd+memyO7IQ2EQ===_57/D4-05701-868C2A46
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">=0A<html lang=3D"en" xmlns=3D=
+"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xm=
+lns:o=3D"urn:schemas-microsoft-com:office:office">=0A=0A=0A=0A<head>=0A <ti=
+tle></title>=0A  <meta http-equiv=3D"content-type" content=3D"text/html; ch=
+arset=3Dutf-8">=0A  <meta http-equiv=3D"x-ua-compatible" content=3D"IE=3Ded=
+ge">=0A  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-s=
+cale=3D1.0">=0A  <meta name=3D"format-detection" content=3D"telephone=3Dno"=
+>=0A=0A  <meta name=3D"color-scheme" content=3D"light dark">=0A  <meta name=
+=3D"supported-color-schemes" content=3D"light dark">=0A=0A=0A  <!--[if !mso=
+]><!-->=0A  <link href=3D"https://fonts.googleapis.com/css2=3Ffamily=3DDM+S=
+ans:wght@400;500;700&amp;display=3Dswap" rel=3D"stylesheet">=0A  <link href=
+=3D"https://fonts.googleapis.com/css2=3Ffamily=3DSource+Serif+Pro:wght@600;=
+700&amp;display=3Dswap" rel=3D"stylesheet">=0A  <!--<![endif]-->=0A=0A=0A  =
+<meta name=3D"generator" content=3D"Braze">=0A=0A  <meta name=3D"x-apple-di=
+sable-message-reformatting">=0A  <meta name=3D"robots" content=3D"noindex,f=
+ollow">=0A=0A  <style>=0A    * {=0A      -webkit-text-size-adjust: none;=0A=
+    }=0A  </style>=0A=0A  <style type=3D"text/css">=0A    :root {=0A=0A    =
+  Color-scheme: light dark;=0A=0A      supported-color-schemes: light dark;=
+=0A    }=0A=0A    * {=0A      -webkit-text-size-adjust: none;=0A    }=0A=0A=
+    body {=0A      margin: 0;=0A      padding: 0;=0A      -webkit-text-size=
+-adjust: 100% !important;=0A      -ms-text-size-adjust: 100% !important;=0A=
+      -webkit-font-smoothing: antialiased !important;=0A    }=0A=0A    #Mes=
+sageViewBody a {=0A      color: inherit;=0A      text-decoration: none;=0A =
+     font-size: inherit;=0A      font-family: inherit;=0A      font-weight:=
+ inherit;=0A      line-height: inherit;=0A    }=0A=0A    a[x-apple-data-det=
+ectors] {=0A      color: inherit !important;=0A      text-decoration: none =
+!important;=0A      font-size: inherit !important;=0A      font-family: inh=
+erit !important;=0A      font-weight: inherit !important;=0A      line-heig=
+ht: inherit !important;=0A    }=0A=0A    u~div .gmail-hide {=0A      displa=
+y: none !important;=0A    }=0A=0A    u~div .gmail-show {=0A      display: t=
+able !important;=0A    }=0A=0A=0A    img {=0A      border: 0 !important;=0A=
+      outline: none !important;=0A    }=0A=0A    p {=0A      margin: 0 !imp=
+ortant;=0A      padding: 0 !important;=0A    }=0A=0A    table {=0A      bor=
+der-collapse: collapse;=0A      mso-table-lspace: 0;=0A      mso-table-rspa=
+ce: 0;=0A    }=0A=0A    td,=0A    a,=0A    span {=0A      border-collapse: =
+collapse;=0A      =0A    }=0A=0A    .ExternalClass * {=0A      line-height:=
+ 100%;=0A    }=0A=0A    .el_defaultlink a {=0A      color: inherit !importa=
+nt;=0A      text-decoration: none !important;=0A    }=0A=0A    .el_g_img+di=
+v {=0A      display: none;=0A    }=0A=0A    .el_white_u a {=0A      color: =
+#ffffff;=0A      text-decoration: underline;=0A    }=0A=0A    .el_hover:hov=
+er {=0A      background-color: #ffffff;=0A      color: #ffffff !important;=
+=0A    }=0A=0A    .el_hover a:hover {=0A      color: #ffffff !important;=0A=
+    }=0A=0A    .el_hover2:hover {=0A      background-color: #ffffff;=0A    =
+}=0A=0A    .el_hover2 {=0A      transition: .3s;=0A    }=0A=0A    .el_hover=
+ {=0A      transition: .3s;=0A    }=0A=0A    .el_hover a {=0A      backgrou=
+nd-color: #ffffff;=0A      text-decoration: none;=0A    }=0A=0A    @media (=
+prefers-color-scheme: dark) {=0A=0A      /* Shows Dark Mode-Only Content, L=
+ike Images */=0A      /* .dark-img {=0A  display: block !important;=0A  wid=
+th: auto !important;=0A  overflow: visible !important;=0A  float: none !imp=
+ortant;=0A  max-height: inherit !important;=0A  max-width: inherit !importa=
+nt;=0A  line-height: auto !important;=0A  margin-top: 0px !important;=0A  v=
+isibility: inherit !important;=0A} */=0A=0A      /* Hides Light Mode-Only C=
+ontent, Like Images */=0A      /* .light-img {=0A  display: none;=0A  displ=
+ay: none !important;=0A} */=0A=0A      /* Custom Dark Mode Background Color=
+ */=0A      .darkmode {=0A        background-color: #272623 !important;=0A =
+     }=0A=0A      /* Custom Dark Mode Background Color */=0A      .darkmode=
+text {=0A        color: #212121 !important;=0A      }=0A=0A      /* Custom =
+Dark Mode Background Color */=0A      .cta_dark {=0A        background-colo=
+r: #000000 !important;=0A      }=0A=0A      /* Custom Dark Mode Font Colors=
+ */=0A      h1,=0A      h2,=0A      p,=0A      span,=0A      a,=0A      str=
+ong,=0A      td {=0A        color: #ffffff !important;=0A      }=0A=0A     =
+ /* Custom Dark Mode Text Link Color */=0A      .link3 {=0A        color: #=
+FF6524 !important;=0A      }=0A=09  =0A=09   .link {=0A        background-c=
+olor: #FF6524 !important;=0A      }=0A=0A      /* Custom Dark Mode Text Lin=
+k Color */=0A      .link2 {=0A        color: #ffffff !important;=0A      }=
+=0A    }=0A=0A    @media only screen and (min-width:481px) and (max-width:5=
+99px) {=0A      img[class=3Dlogo] {=0A        width: 188px !important;=0A  =
+      max-width: 188px !important;=0A      }=0A=0A      .logo {=0A        w=
+idth: 188px !important;=0A        max-width: 188px !important;=0A      }=0A=
+=0A      .el_main_table {=0A        width: 100% !important;=0A      }=0A=0A=
+      .el_hide {=0A        mso-hide: all !important;=0A        max-height: =
+0px !important;=0A        overflow: hidden !important;=0A        display: n=
+one !important;=0A      }=0A=0A      .el_full_img {=0A        width: 100% !=
+important;=0A        height: auto !important;=0A      }=0A=0A      .el_full=
+_img img {=0A        width: 100% !important;=0A        height: auto !import=
+ant;=0A      }=0A=0A      .el_side10 {=0A        width: 10px !important;=0A=
+      }=0A=0A      .el_aside10 {=0A        padding: 0 10px !important;=0A  =
+    }=0A=0A      .el_aside20 {=0A        padding: 0 20px !important;=0A    =
+  }=0A=0A      .el_aside30 {=0A        padding: 0 30px !important;=0A      =
+}=0A=0A      .el_aside40 {=0A        padding: 0 40px !important;=0A      }=
+=0A=0A      .el_side15 {=0A        width: 15px !important;=0A      }=0A=0A =
+     .el_ptop {=0A        padding-top: 30px !important;=0A      }=0A=0A    =
+  .el_pbottom {=0A        padding-bottom: 40px !important;=0A      }=0A=0A =
+     /* Padding Left Right Bottom */=0A      .el_h10 {=0A        height: 10=
+px !important;=0A        font-size: 1px !important;=0A        line-height: =
+1px !important;=0A      }=0A=0A      .el_h20 {=0A        height: 20px !impo=
+rtant;=0A        font-size: 1px !important;=0A        line-height: 1px !imp=
+ortant;=0A      }=0A=0A      .el_h30 {=0A        height: 30px !important;=
+=0A        font-size: 1px !important;=0A        line-height: 1px !important=
+;=0A      }=0A=0A      .el_h40 {=0A        height: 40px !important;=0A     =
+   font-size: 1px !important;=0A        line-height: 1px !important;=0A    =
+  }=0A=0A      .el_h50 {=0A        height: 50px !important;=0A        font-=
+size: 1px !important;=0A        line-height: 1px !important;=0A      }=0A=
+=0A      .el_padh {=0A        padding: 10px !important;=0A      }=0A=0A    =
+  .el_padall {=0A        padding: 20px 15px !important;=0A      }=0A=0A    =
+  .el_padnon {=0A        padding: 0 !important;=0A      }=0A=0A      .el_wr=
+apper {=0A        width: 100% !important;=0A      }=0A=0A      .centered_im=
+age {=0A        max-width: 300px !important;=0A        text-align: center;=
+=0A      }=0A=0A      .el_show {=0A        display: inline !important;=0A  =
+    }=0A=0A      u~div .el_show {=0A        display: none !important;=0A   =
+   }=0A=0A      .el_noborder {=0A        border: 0 !important;=0A      }=0A=
+=0A      .mobile_pad {=0A        padding-bottom: 30px !important;=0A      }=
+=0A=0A      .el_font20 {=0A        font-size: 20px !important;=0A      }=0A=
+=0A      .threeColCenter {=0A        width: 100% !important;=0A        max-=
+width: 100% !important;=0A        display: block !important;=0A        /* p=
+adding: 3px !important; */=0A        margin: 0 auto !important;=0A        p=
+adding-top: 0 !important;=0A        text-align: center !important;=0A      =
+}=0A=0A      .threeCol,=0A      .threeCol img {=0A        width: 100% !impo=
+rtant;=0A        max-width: 100% !important;=0A        display: block !impo=
+rtant;=0A        /* padding: 3px !important; */=0A        margin: 0 auto !i=
+mportant;=0A        padding-top: 0 !important;=0A        text-align: left !=
+important;=0A      }=0A=0A      u+.el_body .el_full_wrap {=0A        width:=
+ 100% !important;=0A        width: 100vw !important;=0A      }=0A=0A      .=
+centered_button {=0A        text-align: center !important;=0A        margin=
+: 0 auto !important;=0A        float: none;=0A      }=0A=0A      .es-m-txt-=
+c {=0A        font-size: 12px !important;=0A        text-align: center !imp=
+ortant;=0A      }=0A=0A      .mob_dis {=0A        display: none !important;=
+=0A      }=0A=0A    }=0A=0A    @media only screen and (max-width:480px) {=
+=0A      img[class=3Dlogo] {=0A        width: 188px !important;=0A        m=
+ax-width: 188px !important;=0A      }=0A=0A      .logo {=0A        width: 1=
+88px !important;=0A        max-width: 188px !important;=0A      }=0A=0A    =
+  .el_main_table {=0A        width: 100% !important;=0A      }=0A=0A      .=
+el_hide {=0A        mso-hide: all !important;=0A        max-height: 0px !im=
+portant;=0A        overflow: hidden !important;=0A        display: none !im=
+portant;=0A      }=0A=0A      .el_full_img {=0A        width: 100% !importa=
+nt;=0A        height: auto !important;=0A      }=0A=0A      .el_full_img im=
+g {=0A        width: 100% !important;=0A        height: auto !important;=0A=
+      }=0A=0A      .el_side10 {=0A        width: 10px !important;=0A      }=
+=0A=0A      .el_aside10 {=0A        padding: 0 10px !important;=0A      }=
+=0A=0A      .el_aside20 {=0A        padding: 0 20px !important;=0A      }=
+=0A=0A      .el_aside30 {=0A        padding: 0 30px !important;=0A      }=
+=0A=0A      .el_aside40 {=0A        padding: 0 40px !important;=0A      }=
+=0A=0A=0A      .el_side15 {=0A        width: 15px !important;=0A      }=0A=
+=0A      .el_ptop {=0A        padding-top: 30px !important;=0A      }=0A=0A=
+      .el_pbottom {=0A        padding-bottom: 40px !important;=0A      }=0A=
+=0A      /* Padding Left Right Bottom */=0A      .el_h10 {=0A        height=
+: 10px !important;=0A        font-size: 1px !important;=0A        line-heig=
+ht: 1px !important;=0A      }=0A=0A      .el_h20 {=0A        height: 20px !=
+important;=0A        font-size: 1px !important;=0A        line-height: 1px =
+!important;=0A      }=0A=0A      .el_h30 {=0A        height: 30px !importan=
+t;=0A        font-size: 1px !important;=0A        line-height: 1px !importa=
+nt;=0A      }=0A=0A      .el_h40 {=0A        height: 40px !important;=0A   =
+     font-size: 1px !important;=0A        line-height: 1px !important;=0A  =
+    }=0A=0A      .el_h50 {=0A        height: 50px !important;=0A        fon=
+t-size: 1px !important;=0A        line-height: 1px !important;=0A      }=0A=
+=0A      .el_padh {=0A        padding: 10px !important;=0A      }=0A=0A    =
+  .el_padall {=0A        padding: 30px 15px !important;=0A      }=0A=0A    =
+  .el_padnon {=0A        padding: 0 !important;=0A      }=0A=0A      .el_fo=
+nt10 {=0A        font-size: 10px !important;=0A      }=0A=0A      u+.el_bod=
+y .el_full_wrap {=0A        width: 100% !important;=0A        width: 100vw =
+!important;=0A      }=0A=0A      .centered_image {=0A        max-width: 250=
+px !important;=0A        text-align: center;=0A      }=0A=0A      .el_show =
+{=0A        display: inline !important;=0A      }=0A=0A      .el_wrapper {=
+=0A        width: 100% !important;=0A      }=0A=0A      .el_noborder {=0A  =
+      border: 0 !important;=0A      }=0A=0A      .mobile_pad {=0A        pa=
+dding-bottom: 30px !important;=0A      }=0A=0A      h1 {=0A        font-siz=
+e: 30px !important;=0A        line-height: 120% !important;=0A        margi=
+n-bottom: 15px;=0A      }=0A=0A      h2 {=0A        font-size: 26px !import=
+ant;=0A        line-height: 120% !important;=0A        margin-bottom: 12px;=
+=0A      }=0A=0A      h3 {=0A        font-size: 24px !important;=0A        =
+line-height: 120% !important;=0A        margin-bottom: 12px;=0A      }=0A=
+=0A      .title_mob {=0A        font-size: 22px !important;=0A        line-=
+height: 120% !important;=0A        margin-bottom: 15px;=0A      }=0A=0A=0A =
+     .el_centerText {=0A        text-align: center !important;=0A      }=0A=
+=0A      .es-m-txt-c {=0A        font-size: 12px !important;=0A        text=
+-align: center !important;=0A      }=0A=0A    }=0A=0A    @media only screen=
+ and (max-width:480px) {=0A      .mj-hero-content {=0A        width: 100% !=
+important;=0A      }=0A=0A      .hero_header_resize {=0A        font-size: =
+23px !important;=0A        line-height: 30px !important;=0A      }=0A=0A   =
+   .hero_header_resize2 {=0A        font-size: 30px !important;=0A        l=
+ine-height: 35px !important;=0A      }=0A=0A      .hero_title_resize {=0A  =
+      font-size: 20px !important;=0A        line-height: 28px !important;=
+=0A        padding: 5px 15px !important;=0A        /* padding-bottom: 15px =
+!important; */=0A      }=0A=0A      .hero_title_resize2 {=0A        font-si=
+ze: 18px !important;=0A        line-height: 25px !important;=0A        padd=
+ing: 5px 15px !important;=0A        padding-bottom: 15px !important;=0A    =
+  }=0A=0A      .header_rating_resize {=0A        font-size: 10px !important=
+;=0A        line-height: 11px !important;=0A      }=0A=0A      .hero_rating=
+_td {=0A        padding-bottom: 30px !important;=0A      }=0A=0A      .hero=
+_subheader {=0A        font-size: 23px !important;=0A      }=0A=0A      .he=
+ader-padding {=0A        padding-top: 30px !important;=0A      }=0A=0A     =
+ .header-padding {=0A        padding-top: 30px !important;=0A      }=0A=0A =
+     .el_font20 {=0A        font-size: 20px !important;=0A      }=0A=0A    =
+  .threeColCenter {=0A        width: 100% !important;=0A        max-width: =
+100% !important;=0A        display: block !important;=0A        /* padding:=
+ 3px !important; */=0A        margin: 0 auto !important;=0A        padding-=
+top: 0 !important;=0A        text-align: center !important;=0A      }=0A=0A=
+      .threeCol,=0A      .threeCol img {=0A        width: 100% !important;=
+=0A        max-width: 100% !important;=0A        display: block !important;=
+=0A        /* padding: 3px !important; */=0A        margin: 0 auto !importa=
+nt;=0A        padding-top: 0 !important;=0A        text-align: left !import=
+ant;=0A=0A      }=0A=0A      .centered_button {=0A        text-align: cente=
+r !important;=0A        margin: 0 auto !important;=0A        float: none;=
+=0A      }=0A=0A      .mob_dis {=0A        display: none !important;=0A    =
+  }=0A=0A      .title_mob {=0A        font-size: 22px !important;=0A       =
+ line-height: 120% !important;=0A        margin-bottom: 15px;=0A      }=0A=
+=0A=0A    }=0A  </style>=0A=0A  <!--[if gte mso 9]>=0A    <xml>=0A      <o:=
+OfficeDocumentSettings>=0A        <o:AllowPNG />=0A        <o:PixelsPerInch=
+>96</o:PixelsPerInch>=0A      </o:OfficeDocumentSettings>=0A    </xml>=0A  =
+  <![endif]-->=0A=0A  <!--[if (gte mso 9)|(IE)]>=0A            <style type=
+=3D"text/css">=0A            /* Force outlook to fallback on Arial instead =
+of Times Roman and removes extra spaces */=0A            table {=0A        =
+        border-collapse:collapse !important;=0A                mso-table-ls=
+pace:0pt!important;=0A                mso-table-rspace:0pt!important;=0A   =
+             margin:0 auto;=0A            }=0A            h1,h2,h3,h4,h5,h6=
+,p,a,span,td,th,strong,div,img {=0A                font-family: Arial,Helve=
+tica,Arial,sans-serif !important;=0A            }=0A            </style>=0A=
+        <![endif]-->=0A=0A</head>=0A<body class=3D"el_body" style=3D"margin=
+: 0px auto;padding: 0px;background-color: #E5E5E5;-webkit-text-size-adjust:=
+ 100% !important;-ms-text-size-adjust: 100% !important;-webkit-font-smoothi=
+ng: antialiased !important;" bgcolor=3D"#E5E5E5" dir=3D"ltr">=0A<div style=
+=3D"display:none !important;visibility:hidden;mso-hide:all;font-size:1px;co=
+lor:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow=
+:hidden;">Elementor 3.14 is now available</div>=0A    <div id=3D"preview_te=
+xt" style=3D"display: none;font-size: 1px;color: #E5E5E5;line-height: 1px;m=
+ax-height: 0px;max-width: 0px;opacity: 0;overflow: hidden;-webkit-text-size=
+-adjust: none;">=0A      =0A      =C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=0A    </div>=0A    <!-- =3D=3D H=
+eader Section =3D=3D -->=0A    <table role=3D"presentation" width=3D"100%" =
+border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"el_full_wrap" bgc=
+olor=3D"#E5E5E5" style=3D"-webkit-text-size-adjust: none;border-collapse: c=
+ollapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A      <tbody style=3D"=
+-webkit-text-size-adjust: none;">=0A        <tr style=3D"-webkit-text-size-=
+adjust: none;">=0A          <td align=3D"center" valign=3D"top" style=3D"-w=
+ebkit-text-size-adjust: none;border-collapse: collapse;">=0A            <!-=
+- Buffer -->=0A            <table role=3D"presentation" align=3D"center" wi=
+dth=3D"800" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"el_ma=
+in_table" style=3D"width: 800px;table-layout: fixed;-webkit-text-size-adjus=
+t: none;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;"=
+ bgcolor=3D"#E5E5E5">=0A              <tbody style=3D"-webkit-text-size-adj=
+ust: none;">=0A                <tr style=3D"-webkit-text-size-adjust: none;=
+">=0A                  <td valign=3D"top" align=3D"center" style=3D"padding=
+: 25px 0px 25px 0px;-webkit-text-size-adjust: none;border-collapse: collaps=
+e;" class=3D"el_hide">=0A                  </td>=0A                </tr>=0A=
+              </tbody>=0A            </table>=0A            <table role=3D"=
+presentation" align=3D"center" width=3D"800" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0" class=3D"el_main_table" style=3D"width: 800px;table-layo=
+ut: fixed;-webkit-text-size-adjust: none;border-collapse: collapse;mso-tabl=
+e-lspace: 0;mso-table-rspace: 0;" bgcolor=3D"#E5E5E5">=0A              <tbo=
+dy class=3D"darkmode" style=3D"-webkit-text-size-adjust: none;">=0A        =
+       =0A                <!-- Logo -->=0A                <tr style=3D"-web=
+kit-text-size-adjust: none;">=0A                  <td style=3D"-webkit-text=
+-size-adjust: none;border-collapse: collapse;">=0A                    <tabl=
+e cellpadding=3D"0" cellspacing=3D"0" class=3D"es-left" align=3D"left" styl=
+e=3D"mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse;=
+border-spacing: 0px;float: left;-webkit-text-size-adjust: none;">=0A       =
+               <tr style=3D"border-collapse: collapse;-webkit-text-size-adj=
+ust: none;" bgcolor=3D"#ffffff" class=3D"darkmode">=0A                     =
+   <td align=3D"left" class=3D"el_aside20 el_ptop darkmode" style=3D"paddin=
+g: 23px 45px 23px 45px;margin: 0;width: 800px;-webkit-text-size-adjust: non=
+e;border-collapse: collapse;" bgcolor=3D"#ffffff">=0A                      =
+    <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"prese=
+ntation" style=3D"mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collap=
+se: collapse;border-spacing: 0px;-webkit-text-size-adjust: none;">=0A      =
+                      <tr style=3D"border-collapse: collapse;-webkit-text-s=
+ize-adjust: none;">=0A                              <td align=3D"left" clas=
+s=3D"es-m-txt-c" style=3D"padding: 0;margin: 0;font-size: 0px;-webkit-text-=
+size-adjust: none;border-collapse: collapse;">=0A<img src=3D"https://cdn.br=
+aze.eu/appboy/communication/assets/image_assets/images/62a855570eada67ecf6b=
+4102/original.png=3F1655199063" width=3D"160" alt=3D"Elementor" border=3D"0=
+" style=3D"margin: 0;padding: 0;max-width: 160px;font-family: 'Dm Sans',  A=
+rial, Sans-serif;font-size: 15px;line-height: 18px;color: #EB4426;font-weig=
+ht: 400;image-rendering: -webkit-optimize-contrast;-webkit-text-size-adjust=
+: none;border: 0 !important;outline: none !important;">=0A                 =
+           </td>=0A                            <td align=3D"right" class=3D=
+"mob_dis" mchideable=3D"hideable_1" style=3D"-webkit-text-size-adjust: none=
+;border-collapse: collapse;">=0A<strong class=3D"es-m-txt-c link2" style=3D=
+"color: #000;font-family: 'Dm Sans',  Arial, Sans-serif;font-size: 16px;let=
+ter-spacing: 6px;line-height: 55px;margin: 0;padding: 0;text-transform: upp=
+ercase;-webkit-text-size-adjust: none;">Release</strong> <!-- </a> -->=0A</=
+td>=0A                            </tr>=0A                          </table=
+>=0A                        </td>=0A                      </tr>=0A         =
+           </table>=0A                  </td>=0A                </tr>=0A   =
+           </tbody>=0A            </table>=0A          </td>=0A        </tr=
+>=0A      </tbody>=0A    </table>=0A    <!-- =3D=3D //Header Section =3D=3D=
+ -->=0A    <!-- =3D=3D Body Section =3D=3D -->=0A    <table role=3D"present=
+ation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" clas=
+s=3D"el_full_wrap" bgcolor=3D"#E5E5E5" style=3D"-webkit-text-size-adjust: n=
+one;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A=
+      <tbody style=3D"-webkit-text-size-adjust: none;">=0A        <tr style=
+=3D"-webkit-text-size-adjust: none;">=0A          <td align=3D"center" vali=
+gn=3D"top" style=3D"-webkit-text-size-adjust: none;border-collapse: collaps=
+e;">=0A            <table role=3D"presentation" align=3D"center" width=3D"8=
+00" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"el_main_table=
+" style=3D"width: 800px;table-layout: fixed;-webkit-text-size-adjust: none;=
+border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;" bgcolor=
+=3D"#ffffff">=0A              <tbody style=3D"-webkit-text-size-adjust: non=
+e;">=0A                <tr bgcolor=3D"#ffffff" class=3D"darkmode" style=3D"=
+-webkit-text-size-adjust: none;">=0A                  <td valign=3D"top" al=
+ign=3D"center" bgcolor=3D"#ffffff" class=3D"darkmode" style=3D"-webkit-text=
+-size-adjust: none;border-collapse: collapse;">=0A                    <tabl=
+e role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" align=3D"center" bgcolor=3D"#ffffff" class=3D"darkmode" style=
+=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-table-lspa=
+ce: 0;mso-table-rspace: 0;">=0A                      <tbody style=3D"-webki=
+t-text-size-adjust: none;">=0A                        <!-- Spacer -->=0A   =
+                     <tr bgcolor=3D"#ffffff" class=3D"darkmode" mchideable=
+=3D"hideable_2" style=3D"-webkit-text-size-adjust: none;">=0A              =
+            <td height=3D"30" class=3D"darkmode el_h20" style=3D"height: 30=
+px;-webkit-text-size-adjust: none;border-collapse: collapse;" bgcolor=3D"#f=
+fffff">=C2=A0</td>=0A                        </tr>=0A                      =
+  <!-- Text -->=0A                        <tr style=3D"-webkit-text-size-ad=
+just: none;">=0A                          <td class=3D"el_aside30 darkmode"=
+ valign=3D"middle" align=3D"left" style=3D"color: #000000;font-family: 'Dm =
+Sans', Arial, 'Sans-serif';font-size: 14px;line-height: 25px;padding-right:=
+ 80px;padding-left: 80px;font-weight: 400;text-align: center;text-transform=
+: uppercase;-webkit-text-size-adjust: none;border-collapse: collapse;"><str=
+ong style=3D"-webkit-text-size-adjust: none;">Introducing Elementor 3.14=0A=
+</strong></td>=0A                        </tr>=0A                        <!=
+-- Spacer -->=0A                        <tr bgcolor=3D"#ffffff" class=3D"da=
+rkmode" mchideable=3D"hideable_4" style=3D"-webkit-text-size-adjust: none;"=
+>=0A                          <td height=3D"18" class=3D"darkmode el_h10" s=
+tyle=3D"height: 18px;-webkit-text-size-adjust: none;border-collapse: collap=
+se;" bgcolor=3D"#ffffff">=C2=A0</td>=0A                        </tr>=0A    =
+                    <!-- Title Desktop -->=0A                        <tr bg=
+color=3D"#ffffff" class=3D"darkmode" mchideable=3D"hideable_5" style=3D"-we=
+bkit-text-size-adjust: none;">=0A                          <td class=3D"el_=
+aside10 darkmode" bgcolor=3D"#ffffff" style=3D"padding: 0px 20px 0 20px;-we=
+bkit-text-size-adjust: none;border-collapse: collapse;">=0A                =
+            <table role=3D"presentation" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0" align=3D"center" class=3D"darkmode" bgcolor=
+=3D"#ffffff" style=3D"-webkit-text-size-adjust: none;border-collapse: colla=
+pse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                          =
+    <tbody class=3D"darkmode" style=3D"-webkit-text-size-adjust: none;">=0A=
+                                <tr bgcolor=3D"#ffffff" class=3D"darkmode" =
+style=3D"-webkit-text-size-adjust: none;">=0A                              =
+    <td class=3D"title_mob darkmode" valign=3D"top" align=3D"left" bgcolor=
+=3D"#ffffff" style=3D"color: #000000;font-family: 'Dm Sans', Arial, 'Sans-s=
+erif';font-size: 18px;line-height: 44px;padding-right: 15px;padding-left: 1=
+5px;font-weight: 400;text-align: center;-webkit-text-size-adjust: none;bord=
+er-collapse: collapse;"><strong class=3D"title_mob" style=3D"color: #212121=
+;font-family: source serif pro,georgia,serif;font-size: 32px;line-height: 4=
+4px;-webkit-text-size-adjust: none;">New Carousel Widget, Loop Grid Ads,<br=
+ class=3D"mob_dis"> Global Styles Preview</strong></td>=0A                 =
+               </tr>=0A                              </tbody>=0A           =
+                 </table>=0A                          </td>=0A             =
+           </tr>=0A=09=09=09=09=09=09=0A=09=09=09=09=09=09     =0A=09=09=09=
+=09=09=09=0A                        <!-- Spacer -->=0A                     =
+   <tr bgcolor=3D"#ffffff" class=3D"darkmode" mchideable=3D"hideable_6" sty=
+le=3D"-webkit-text-size-adjust: none;">=0A                          <td hei=
+ght=3D"20" style=3D"height: 20px;-webkit-text-size-adjust: none;border-coll=
+apse: collapse;" bgcolor=3D"#ffffff" class=3D"darkmode el_h20">=C2=A0</td>=
+=0A                        </tr>=0A                         <!-- Banner Des=
+ktop -->=0A                        <tr bgcolor=3D"#ffffff" class=3D"darkmod=
+e" mchideable=3D"hideable_7" style=3D"-webkit-text-size-adjust: none;">=0A =
+                         <td valign=3D"bottom" align=3D"center" bgcolor=3D"=
+#ffffff" class=3D"darkmode" style=3D"-webkit-text-size-adjust: none;border-=
+collapse: collapse;">=0A                            <table role=3D"presenta=
+tion" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgcol=
+or=3D"#ffffff" class=3D"darkmode el_full_img" style=3D"-webkit-text-size-ad=
+just: none;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: =
+0;">=0A                              <tbody style=3D"-webkit-text-size-adju=
+st: none;">=0A                                <tr bgcolor=3D"#ffffff" class=
+=3D"darkmode" style=3D"-webkit-text-size-adjust: none;">=0A                =
+                  <td valign=3D"bottom" align=3D"center" style=3D"padding: =
+0px;max-width: 800px;text-align: center;-webkit-text-size-adjust: none;bord=
+er-collapse: collapse;" bgcolor=3D"#ffffff" class=3D"darkmode">=0A         =
+                           <a href=3D"https://clicks-mail.elementor.com/f/a=
+/uG6HMB1iCHfLcUsYhRkNzA~~/AAAHagA~/RgRmhU1oP0SiaHR0cHM6Ly9lbGVtZW50b3IuY29t=
+L2Jsb2cvaW50cm9kdWNpbmctMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1=
+tb3JlP3V0bV9zb3VyY2U9YnJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249My4xNC=
+BDb3JlIFJlbGVhc2UgRnJlZSZ1dG1fdGVybT1BVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVid=
+W50dTBAZ21haWwuY29tWAQAAAFK" target=3D"_blank" style=3D"-webkit-text-size-a=
+djust: none;border-collapse: collapse;"><img src=3D"https://cdn.braze.eu/ap=
+pboy/communication/assets/image_assets/images/64a28f599eb8529dbf5f7725/orig=
+inal.png=3F1688375129" alt=3D"Elementor 3.14 Core" border=3D"0" style=3D"ma=
+rgin: 0;padding: 0;max-width: 800px;font-family: 'Dm Sans', Arial, Sans-ser=
+if;font-size: 35px;line-height: 48px;color: #FF3700;font-weight: 400;displa=
+y: block;image-rendering: -webkit-optimize-contrast;-webkit-text-size-adjus=
+t: none;border: 0 !important;outline: none !important;" width=3D"800" class=
+=3D"el_full_img bgmobile"></a>=0A                                  </td>=0A=
+                                </tr>=0A                              </tbo=
+dy>=0A                            </table>=0A                          </td=
+>=0A                        </tr>=0A=09=09=09=0A                        <!-=
+- Body Content -->=0A                        <tr style=3D"-webkit-text-size=
+-adjust: none;">=0A                          <td class=3D"el_aside20 darkmo=
+de" bgcolor=3D"#ffffff" style=3D"padding: 0px 24px 0 24px;-webkit-text-size=
+-adjust: none;border-collapse: collapse;">=0A                            <t=
+able role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0" align=3D"center" style=3D"-webkit-text-size-adjust: none;bo=
+rder-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A      =
+                        <tbody style=3D"-webkit-text-size-adjust: none;">=
+=0A                                <!-- Spacer -->=0A                      =
+          <tr style=3D"-webkit-text-size-adjust: none;">=0A                =
+                  <td height=3D"60" class=3D"darkmode el_h50" style=3D"heig=
+ht: 60px;-webkit-text-size-adjust: none;border-collapse: collapse;" bgcolor=
+=3D"#ffffff">=C2=A0</td>=0A                                </tr>=0A        =
+                        <!-- Text -->=0A                                <tr=
+ style=3D"-webkit-text-size-adjust: none;">=0A                             =
+     <td class=3D"el_aside10 darkmode" valign=3D"middle" align=3D"left" sty=
+le=3D"color: #212121;font-family: 'Dm Sans', Arial, 'Sans-serif';font-size:=
+ 16px;line-height: 25px;padding-right: 53px;padding-left: 53px;font-weight:=
+ 500;text-align: center;-webkit-text-size-adjust: none;border-collapse: col=
+lapse;">Elementor charges ahead with the latest 3.14 release, packed with i=
+mprovements and new functionalities to enhance your website-building experi=
+ence.=0A</td>=0A                                </tr>=0A                   =
+             <!-- Spacer -->=0A                                <tr style=3D=
+"-webkit-text-size-adjust: none;">=0A                                  <td =
+height=3D"16" class=3D"el_h20 darkmode" style=3D"height: 16px;-webkit-text-=
+size-adjust: none;border-collapse: collapse;" bgcolor=3D"#ffffff"></td>=0A =
+                               </tr>=0A                                <!--=
+ CTA -->=0A                                <tr style=3D"-webkit-text-size-a=
+djust: none;">=0A                                  <td valign=3D"top" align=
+=3D"center" bgcolor=3D"#ffffff" class=3D"darkmode" style=3D"-webkit-text-si=
+ze-adjust: none;border-collapse: collapse;">=0A                            =
+        <table role=3D"presentation" width=3D"250" style=3D"width: 250px;-w=
+ebkit-text-size-adjust: none;border-collapse: collapse;mso-table-lspace: 0;=
+mso-table-rspace: 0;color: #ffffff;background-color: #ff3700 !important;" b=
+order=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"center" class=3D"m=
+cTempCta link">=0A                                      <tbody style=3D"-we=
+bkit-text-size-adjust: none;">=0A                                        <t=
+r style=3D"-webkit-text-size-adjust: none;">=0A                            =
+              <td class=3D"link link2 mcTempCta" height=3D"50" valign=3D"mi=
+ddle" align=3D"center" style=3D"font-family: 'Dm Sans', Arial, 'Sans-serif'=
+;font-size: 18px;font-weight: 500;-webkit-text-size-adjust: none;border-col=
+lapse: collapse;color: #ffffff;background-color: #ff3700 !important;width: =
+250px !important;"><a class=3D"link2 mcTempCta" href=3D"https://clicks-mail=
+.elementor.com/f/a/B5uP8CM3etPAiMqcvDX1LA~~/AAAHagA~/RgRmhU1oP0RraHR0cHM6L=
+y9lbGVtZW50b3IuY29tL3Byby8_dXRtX3NvdXJjZT1icmF6ZSZ1dG1fbWVkaXVtPWVtYWlsJnV0=
+bV9jYW1wYWlnbj0zLjE0IENvcmUgUmVsZWFzZSBGcmVlJnV0bV90ZXJtPUFXBXNwY2V1Qgpki2j=
+IomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~" style=3D"text-decoration=
+: none;display: block;line-height: 50px;-webkit-text-size-adjust: none;bord=
+er-collapse: collapse;color: #ffffff!important;background-color: #ff3700 !i=
+mportant;width: 250px !important;" target=3D"_blank">&nbsp;&nbsp;GET ELEMEN=
+TOR PRO&nbsp;&nbsp;</a></td>=0A                                          </=
+tr>=0A                                        </tbody>=0A                  =
+                    </table>=0A                                    </td>=0A=
+                                  </tr>=0A                                 =
+ <!-- CTA -->=0A                                  =0A                      =
+              <!-- Spacer -->=0A                                    <tr sty=
+le=3D"-webkit-text-size-adjust: none;">=0A                                 =
+       <td height=3D"50" class=3D"el_h50 darkmode" style=3D"height: 50px;-w=
+ebkit-text-size-adjust: none;border-collapse: collapse;" bgcolor=3D"#ffffff=
+">=C2=A0</td>=0A                                    </tr>=0A               =
+                     <!-- Flows -->=0A                                    <=
+tr style=3D"-webkit-text-size-adjust: none;">=0A                           =
+           <td class=3D"el_padnon darkmode" valign=3D"top" align=3D"left" b=
+gcolor=3D"#ffffff" style=3D"color: #000000;font-family: 'Dm Sans', Arial, '=
+Sans-serif';font-size: 16px;line-height: 24px;font-weight: 400;text-align: =
+center;-webkit-text-size-adjust: none;border-collapse: collapse;">=0A      =
+                                  <!-- Flow chart - 1 -->=0A               =
+                         <table role=3D"presentation" width=3D"100%" style=
+=3D"max-width: 800px;-webkit-text-size-adjust: none;border-collapse: collap=
+se;mso-table-lspace: 0;mso-table-rspace: 0;" bgcolor=3D"#ffffff" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" class=3D"darkmode" =
+mc:repeatindex=3D"0">=0A                                          <tr style=
+=3D"-webkit-text-size-adjust: none;">=0A                                   =
+         <td align=3D"center" valign=3D"middle" style=3D"display: block;pad=
+ding-bottom: 50px;-webkit-text-size-adjust: none;border-collapse: collapse;=
+">=0A                                              <table role=3D"presentat=
+ion" width=3D"100%" align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" style=3D"-webkit-text-size-adjust: none;border-collapse: collaps=
+e;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                            =
+                    <tbody style=3D"-webkit-text-size-adjust: none;">=0A   =
+                                               <tr style=3D"-webkit-text-si=
+ze-adjust: none;">=0A                                                    <!=
+-- Image -->=0A                                                    <td clas=
+s=3D"threeCol" width=3D"48%" align=3D"center" valign=3D"middle" style=3D"-w=
+ebkit-text-size-adjust: none;border-collapse: collapse;">=0A               =
+                                       <a href=3D"https://clicks-mail.eleme=
+ntor.com/f/a/B5uP8CM3etPAiMqcvDX1LA~~/AAAHagA~/RgRmhU1oP0RraHR0cHM6Ly9lbGVt=
+ZW50b3IuY29tL3Byby8_dXRtX3NvdXJjZT1icmF6ZSZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1=
+wYWlnbj0zLjE0IENvcmUgUmVsZWFzZSBGcmVlJnV0bV90ZXJtPUFXBXNwY2V1Qgpki2jIomQkWa=
+xNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~" target=3D"_blank" style=3D"-web=
+kit-text-size-adjust: none;border-collapse: collapse;"><img src=3D"https://=
+cdn.braze.eu/appboy/communication/assets/image_assets/images/64994093e9ac44=
+3e66a2b5b8/original.png=3F1687765139" alt=3D"NESTED CAROUSE" border=3D"0" s=
+tyle=3D"width: 100%;margin: 0;padding: 0;max-width: 352px;border: none;outl=
+ine: none;text-decoration: none;image-rendering: -webkit-optimize-contrast;=
+-webkit-text-size-adjust: none;" width=3D"352"></a>=0A                     =
+                               </td>=0A                                    =
+                <td class=3D"threeCol" width=3D"35" style=3D"-webkit-text-s=
+ize-adjust: none;border-collapse: collapse;">=C2=A0</td>=0A                =
+                                    <td class=3D"threeCol" width=3D"auto" a=
+lign=3D"right" valign=3D"middle" style=3D"font-size: 16px;font-family: 'Dm =
+Sans', Arial, 'Sans-serif';text-align: left;line-height: 23px;font-weight: =
+400;-webkit-text-size-adjust: none;border-collapse: collapse;">=0A         =
+                                             <!-- Sub Header Title -->=0A  =
+                                                    <table width=3D"100%" s=
+tyle=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-table-=
+lspace: 0;mso-table-rspace: 0;">=0A                                        =
+                <tr style=3D"-webkit-text-size-adjust: none;">=0A          =
+                                                <td class=3D"threeCol" styl=
+e=3D"font-family: 'Dm Sans', Arial, 'Sans-serif';font-size: 14px;line-heigh=
+t: 25px;color: #727272;text-transform: uppercase;-webkit-text-size-adjust: =
+none;border-collapse: collapse;"><strong style=3D"text-transform: uppercase=
+;-webkit-text-size-adjust: none;">NESTED CAROUSEL=0A</strong></td>=0A      =
+                                                    </tr>=0A               =
+                                         </table>=0A                       =
+                                 <!-- Header Title -->=0A                  =
+                                      <table width=3D"100%" style=3D"-webki=
+t-text-size-adjust: none;border-collapse: collapse;mso-table-lspace: 0;mso-=
+table-rspace: 0;">=0A                                                      =
+    <tr style=3D"-webkit-text-size-adjust: none;">=0A                      =
+                                      <td class=3D"threeCol" style=3D"font-=
+family: 'Source Serif Pro', Georgia, serif;font-size: 18px;line-height: 25p=
+x;color: #212121;font-weight: bold;-webkit-text-size-adjust: none;border-co=
+llapse: collapse;">Design Carousels with Incredible Freedom</td>=0A        =
+                                                  </tr>=0A                 =
+                                       </table>=0A                         =
+                               <!-- Spacer -->=0A                          =
+                              <table width=3D"100%" style=3D"-webkit-text-s=
+ize-adjust: none;border-collapse: collapse;mso-table-lspace: 0;mso-table-rs=
+pace: 0;">=0A                                                          <tr =
+style=3D"-webkit-text-size-adjust: none;">=0A                              =
+                              <td height=3D"5" style=3D"height: 5px;display=
+: block;-webkit-text-size-adjust: none;border-collapse: collapse;"></td>=0A=
+                                                          </tr>=0A         =
+                                               </table>=0A                 =
+                                       <!-- Text -->=0A                    =
+                                    <table width=3D"100%" style=3D"-webkit-=
+text-size-adjust: none;border-collapse: collapse;mso-table-lspace: 0;mso-ta=
+ble-rspace: 0;">=0A                                                        =
+  <tr style=3D"-webkit-text-size-adjust: none;">=0A                        =
+                                    <td class=3D"threeCol" style=3D"color: =
+#727272;-webkit-text-size-adjust: none;border-collapse: collapse;">Enjoy mo=
+re creative options with the new Carousel widget where each slide becomes a=
+ =E2=80=98nestable=E2=80=99 container that can hold any element and design.=
+ Populate carousel slides with any widget, image, or text, and get the full=
+ range of styling options.=0A</td>=0A                                      =
+                    </tr>=0A                                               =
+         </table>=0A                                                       =
+ <!-- Spacer -->=0A                                                        =
+<table style=3D"-webkit-text-size-adjust: none;border-collapse: collapse;ms=
+o-table-lspace: 0;mso-table-rspace: 0;">=0A                                =
+                          <tr style=3D"-webkit-text-size-adjust: none;">=0A=
+                                                            <td height=3D"1=
+5" style=3D"height: 15px;-webkit-text-size-adjust: none;border-collapse: co=
+llapse;"></td>=0A                                                          =
+</tr>=0A                                                        </table>=0A=
+                                                        <!-- CTA -->=0A    =
+                                                    <table class=3D"" style=
+=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-table-lspa=
+ce: 0;mso-table-rspace: 0;">=0A                                            =
+              <tr style=3D"-webkit-text-size-adjust: none;">=0A            =
+                                                <td class=3D"" style=3D"-we=
+bkit-text-size-adjust: none;border-collapse: collapse;"><a class=3D"link3" =
+href=3D"https://clicks-mail.elementor.com/f/a/B5uP8CM3etPAiMqcvDX1LA~~/AAAH=
+agA~/RgRmhU1oP0RraHR0cHM6Ly9lbGVtZW50b3IuY29tL3Byby8_dXRtX3NvdXJjZT1icmF6ZS=
+Z1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj0zLjE0IENvcmUgUmVsZWFzZSBGcmVlJnV0b=
+V90ZXJtPUFXBXNwY2V1Qgpki2jIomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~=
+" style=3D"-webkit-text-size-adjust: none;-ms-text-size-adjust: none;font-s=
+ize: 18px;font-weight: 500;line-height: 32px;text-decoration: none;color: #=
+FF3700;border-collapse: collapse;" target=3D"_blank">GET ELEMENTOR PRO&nbsp=
+;&nbsp;<span class=3D"link3" style=3D"color: #FF3700;font-size: 20px;-webki=
+t-text-size-adjust: none;border-collapse: collapse;">=E2=86=92</span></a></=
+td>=0A                                                            </tr>=0A =
+                                                         </table>=0A       =
+                                                 </td>=0A                  =
+                                    </tr>=0A                               =
+                     </tbody>=0A                                           =
+       </table>=0A                                                </td>=0A =
+                                             </tr>=0A                      =
+                      </table>=0A<table role=3D"presentation" width=3D"100%=
+" style=3D"max-width: 800px;-webkit-text-size-adjust: none;border-collapse:=
+ collapse;mso-table-lspace: 0;mso-table-rspace: 0;" bgcolor=3D"#ffffff" cel=
+lpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" class=3D"dar=
+kmode" mc:repeatindex=3D"1">=0A                                          <t=
+r style=3D"-webkit-text-size-adjust: none;">=0A                            =
+                <td align=3D"center" valign=3D"middle" style=3D"display: bl=
+ock;padding-bottom: 50px;-webkit-text-size-adjust: none;border-collapse: co=
+llapse;">=0A                                              <table role=3D"pr=
+esentation" width=3D"100%" align=3D"center" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"-webkit-text-size-adjust: none;border-collapse: =
+collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                     =
+                           <tbody style=3D"-webkit-text-size-adjust: none;"=
+>=0A                                                  <tr style=3D"-webkit-=
+text-size-adjust: none;">=0A                                               =
+     <!-- Image -->=0A                                                    <=
+td class=3D"threeCol" width=3D"48%" align=3D"center" valign=3D"middle" styl=
+e=3D"-webkit-text-size-adjust: none;border-collapse: collapse;">=0A        =
+                                              <a href=3D"https://clicks-mai=
+l.elementor.com/f/a/B5uP8CM3etPAiMqcvDX1LA~~/AAAHagA~/RgRmhU1oP0RraHR0cHM6L=
+y9lbGVtZW50b3IuY29tL3Byby8_dXRtX3NvdXJjZT1icmF6ZSZ1dG1fbWVkaXVtPWVtYWlsJnV0=
+bV9jYW1wYWlnbj0zLjE0IENvcmUgUmVsZWFzZSBGcmVlJnV0bV90ZXJtPUFXBXNwY2V1Qgpki2j=
+IomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~" target=3D"_blank" style=
+=3D"-webkit-text-size-adjust: none;border-collapse: collapse;"><img src=3D"=
+https://cdn.braze.eu/appboy/communication/assets/image_assets/images/649940=
+93e9ac444b8fa2b22d/original.png=3F1687765139" alt=3D"LOOP GRID" border=3D"0=
+" style=3D"width: 100%;margin: 0;padding: 0;max-width: 352px;border: none;o=
+utline: none;text-decoration: none;image-rendering: -webkit-optimize-contra=
+st;-webkit-text-size-adjust: none;" width=3D"352"></a>=0A                  =
+                                  </td>=0A                                 =
+                   <td class=3D"threeCol" width=3D"35" style=3D"-webkit-tex=
+t-size-adjust: none;border-collapse: collapse;">=C2=A0</td>=0A             =
+                                       <td class=3D"threeCol" width=3D"auto=
+" align=3D"right" valign=3D"middle" style=3D"font-size: 16px;font-family: '=
+Dm Sans', Arial, 'Sans-serif';text-align: left;line-height: 23px;font-weigh=
+t: 400;-webkit-text-size-adjust: none;border-collapse: collapse;">=0A      =
+                                                <!-- Sub Header Title -->=
+=0A                                                      <table width=3D"10=
+0%" style=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-t=
+able-lspace: 0;mso-table-rspace: 0;">=0A                                   =
+                     <tr style=3D"-webkit-text-size-adjust: none;">=0A     =
+                                                     <td class=3D"threeCol"=
+ style=3D"font-family: 'Dm Sans', Arial, 'Sans-serif';font-size: 14px;line-=
+height: 25px;color: #727272;text-transform: uppercase;-webkit-text-size-adj=
+ust: none;border-collapse: collapse;"><strong style=3D"text-transform: uppe=
+rcase;-webkit-text-size-adjust: none;">LOOP GRID - ALTERNATE TEMPLATE</stro=
+ng></td>=0A                                                          </tr>=
+=0A                                                        </table>=0A     =
+                                                   <!-- Header Title -->=0A=
+                                                        <table width=3D"100=
+%" style=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-ta=
+ble-lspace: 0;mso-table-rspace: 0;">=0A                                    =
+                      <tr style=3D"-webkit-text-size-adjust: none;">=0A    =
+                                                        <td class=3D"threeC=
+ol" style=3D"font-family: 'Source Serif Pro', Georgia, serif;font-size: 18p=
+x;line-height: 25px;color: #212121;font-weight: bold;-webkit-text-size-adju=
+st: none;border-collapse: collapse;">Position Ads Anywhere in Your Loop Gri=
+d</td>=0A                                                          </tr>=0A=
+                                                        </table>=0A        =
+                                                <!-- Spacer -->=0A         =
+                                               <table width=3D"100%" style=
+=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-table-lspa=
+ce: 0;mso-table-rspace: 0;">=0A                                            =
+              <tr style=3D"-webkit-text-size-adjust: none;">=0A            =
+                                                <td height=3D"5" style=3D"h=
+eight: 5px;display: block;-webkit-text-size-adjust: none;border-collapse: c=
+ollapse;"></td>=0A                                                         =
+ </tr>=0A                                                        </table>=
+=0A                                                        <!-- Text -->=0A=
+                                                        <table width=3D"100=
+%" style=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-ta=
+ble-lspace: 0;mso-table-rspace: 0;">=0A                                    =
+                      <tr style=3D"-webkit-text-size-adjust: none;">=0A    =
+                                                        <td class=3D"threeC=
+ol" style=3D"color: #727272;-webkit-text-size-adjust: none;border-collapse:=
+ collapse;">This handy feature lets you highlight specific content, like an=
+ event, product, advertisement or any other piece of content, right within =
+your regular content loop. Using the Loop Alternate Template, you can choos=
+e the template to show and its position within the Loop Grid.</td>=0A      =
+                                                    </tr>=0A               =
+                                         </table>=0A                       =
+                                 <!-- Spacer -->=0A                        =
+                                <table style=3D"-webkit-text-size-adjust: n=
+one;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A=
+                                                          <tr style=3D"-web=
+kit-text-size-adjust: none;">=0A                                           =
+                 <td height=3D"15" style=3D"height: 15px;-webkit-text-size-=
+adjust: none;border-collapse: collapse;"></td>=0A                          =
+                                </tr>=0A                                   =
+                     </table>=0A                                           =
+             <!-- CTA -->=0A                                               =
+         <table class=3D"" style=3D"-webkit-text-size-adjust: none;border-c=
+ollapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A            =
+                                              <tr style=3D"-webkit-text-siz=
+e-adjust: none;">=0A                                                       =
+     <td class=3D"" style=3D"-webkit-text-size-adjust: none;border-collapse=
+: collapse;"><a class=3D"link3" href=3D"https://clicks-mail.elementor.com/f=
+/a/B5uP8CM3etPAiMqcvDX1LA~~/AAAHagA~/RgRmhU1oP0RraHR0cHM6Ly9lbGVtZW50b3IuY2=
+9tL3Byby8_dXRtX3NvdXJjZT1icmF6ZSZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj0zL=
+jE0IENvcmUgUmVsZWFzZSBGcmVlJnV0bV90ZXJtPUFXBXNwY2V1Qgpki2jIomQkWaxNUhVlbHku=
+dWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~" style=3D"-webkit-text-size-adjust: none;-=
+ms-text-size-adjust: none;font-size: 18px;font-weight: 500;line-height: 32p=
+x;text-decoration: none;color: #FF3700;border-collapse: collapse;" target=
+=3D"_blank">GET ELEMENTOR PRO&nbsp;&nbsp;<span class=3D"link3" style=3D"col=
+or: #FF3700;font-size: 20px;-webkit-text-size-adjust: none;border-collapse:=
+ collapse;">=E2=86=92</span></a></td>=0A                                   =
+                         </tr>=0A                                          =
+                </table>=0A                                                =
+        </td>=0A                                                      </tr>=
+=0A                                                    </tbody>=0A         =
+                                         </table>=0A                       =
+                         </td>=0A                                          =
+    </tr>=0A                                            </table>=0A<table r=
+ole=3D"presentation" width=3D"100%" style=3D"max-width: 800px;-webkit-text-=
+size-adjust: none;border-collapse: collapse;mso-table-lspace: 0;mso-table-r=
+space: 0;" bgcolor=3D"#ffffff" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" align=3D"center" class=3D"darkmode" mc:repeatindex=3D"2">=0A        =
+                                  <tr style=3D"-webkit-text-size-adjust: no=
+ne;">=0A                                            <td align=3D"center" va=
+lign=3D"middle" style=3D"display: block;padding-bottom: 50px;-webkit-text-s=
+ize-adjust: none;border-collapse: collapse;">=0A                           =
+                   <table role=3D"presentation" width=3D"100%" align=3D"cen=
+ter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-webkit-text=
+-size-adjust: none;border-collapse: collapse;mso-table-lspace: 0;mso-table-=
+rspace: 0;">=0A                                                <tbody style=
+=3D"-webkit-text-size-adjust: none;">=0A                                   =
+               <tr style=3D"-webkit-text-size-adjust: none;">=0A           =
+                                         <!-- Image -->=0A                 =
+                                   <td class=3D"threeCol" width=3D"48%" ali=
+gn=3D"center" valign=3D"middle" style=3D"-webkit-text-size-adjust: none;bor=
+der-collapse: collapse;">=0A                                               =
+       <a href=3D"https://clicks-mail.elementor.com/f/a/uG6HMB1iCHfLcUsYhRk=
+NzA~~/AAAHagA~/RgRmhU1oP0SiaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWNp=
+bmctMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlP3V0bV9zb3VyY2U=
+9YnJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249My4xNCBDb3JlIFJlbGVhc2UgRn=
+JlZSZ1dG1fdGVybT1BVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tW=
+AQAAAFK" target=3D"_blank" style=3D"-webkit-text-size-adjust: none;border-c=
+ollapse: collapse;"><img src=3D"https://cdn.braze.eu/appboy/communication/a=
+ssets/image_assets/images/649940934e7f7207a380d6ec/original.png=3F168776513=
+8" alt=3D"Global Settings" border=3D"0" style=3D"width: 100%;margin: 0;padd=
+ing: 0;max-width: 352px;border: none;outline: none;text-decoration: none;im=
+age-rendering: -webkit-optimize-contrast;-webkit-text-size-adjust: none;" w=
+idth=3D"352"></a>=0A                                                    </t=
+d>=0A                                                    <td class=3D"three=
+Col" width=3D"35" style=3D"-webkit-text-size-adjust: none;border-collapse: =
+collapse;">=C2=A0</td>=0A                                                  =
+  <td class=3D"threeCol" width=3D"auto" align=3D"right" valign=3D"middle" s=
+tyle=3D"font-size: 16px;font-family: 'Dm Sans', Arial, 'Sans-serif';text-al=
+ign: left;line-height: 23px;font-weight: 400;-webkit-text-size-adjust: none=
+;border-collapse: collapse;">=0A                                           =
+           <!-- Sub Header Title -->=0A                                    =
+                  <table width=3D"100%" style=3D"-webkit-text-size-adjust: =
+none;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=
+=0A                                                        <tr style=3D"-we=
+bkit-text-size-adjust: none;">=0A                                          =
+                <td class=3D"threeCol" style=3D"font-family: 'Dm Sans', Ari=
+al, 'Sans-serif';font-size: 14px;line-height: 25px;color: #727272;text-tran=
+sform: uppercase;-webkit-text-size-adjust: none;border-collapse: collapse;"=
+><strong style=3D"text-transform: uppercase;-webkit-text-size-adjust: none;=
+">GLOBAL STYLES PREVIEW=0A</strong></td>=0A                                =
+                          </tr>=0A                                         =
+               </table>=0A                                                 =
+       <!-- Header Title -->=0A                                            =
+            <table width=3D"100%" style=3D"-webkit-text-size-adjust: none;b=
+order-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A     =
+                                                     <tr style=3D"-webkit-t=
+ext-size-adjust: none;">=0A                                                =
+            <td class=3D"threeCol" style=3D"font-family: 'Source Serif Pro'=
+, Georgia, serif;font-size: 18px;line-height: 25px;color: #212121;font-weig=
+ht: bold;-webkit-text-size-adjust: none;border-collapse: collapse;">View Yo=
+ur Global Settings Easily</td>=0A                                          =
+                </tr>=0A                                                   =
+     </table>=0A                                                        <!-=
+- Spacer -->=0A                                                        <tab=
+le width=3D"100%" style=3D"-webkit-text-size-adjust: none;border-collapse: =
+collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                     =
+                                     <tr style=3D"-webkit-text-size-adjust:=
+ none;">=0A                                                            <td =
+height=3D"5" style=3D"height: 5px;display: block;-webkit-text-size-adjust: =
+none;border-collapse: collapse;"></td>=0A                                  =
+                        </tr>=0A                                           =
+             </table>=0A                                                   =
+     <!-- Text -->=0A                                                      =
+  <table width=3D"100%" style=3D"-webkit-text-size-adjust: none;border-coll=
+apse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A               =
+                                           <tr style=3D"-webkit-text-size-a=
+djust: none;">=0A                                                          =
+  <td class=3D"threeCol" style=3D"color: #727272;-webkit-text-size-adjust: =
+none;border-collapse: collapse;">Global Styles Preview is a welcome additio=
+n that visually showcases your global colors and fonts in a full canvas sty=
+le sheet. It is active by default for Elementor Hosted websites and can be =
+manually enabled for Plugin websites.</td>=0A                              =
+                            </tr>=0A                                       =
+                 </table>=0A                                               =
+         <!-- Spacer -->=0A                                                =
+        <table style=3D"-webkit-text-size-adjust: none;border-collapse: col=
+lapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                        =
+                                  <tr style=3D"-webkit-text-size-adjust: no=
+ne;">=0A                                                            <td hei=
+ght=3D"15" style=3D"height: 15px;-webkit-text-size-adjust: none;border-coll=
+apse: collapse;"></td>=0A                                                  =
+        </tr>=0A                                                        </t=
+able>=0A                                                        <!-- CTA --=
+>=0A                                                        <table class=3D=
+"" style=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-ta=
+ble-lspace: 0;mso-table-rspace: 0;">=0A                                    =
+                      <tr style=3D"-webkit-text-size-adjust: none;">=0A    =
+                                                        <td class=3D"" styl=
+e=3D"-webkit-text-size-adjust: none;border-collapse: collapse;"><a class=3D=
+"link3" href=3D"https://clicks-mail.elementor.com/f/a/uG6HMB1iCHfLcUsYhRkNz=
+A~~/AAAHagA~/RgRmhU1oP0SiaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWNpbm=
+ctMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlP3V0bV9zb3VyY2U9Y=
+nJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249My4xNCBDb3JlIFJlbGVhc2UgRnJl=
+ZSZ1dG1fdGVybT1BVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQ=
+AAAFK" style=3D"-webkit-text-size-adjust: none;-ms-text-size-adjust: none;f=
+ont-size: 18px;font-weight: 500;line-height: 32px;text-decoration: none;col=
+or: #FF3700;border-collapse: collapse;" target=3D"_blank">LEARN MORE&nbsp;&=
+nbsp;<span class=3D"link3" style=3D"color: #FF3700;font-size: 20px;-webkit-=
+text-size-adjust: none;border-collapse: collapse;">=E2=86=92</span></a></td=
+>=0A                                                            </tr>=0A   =
+                                                       </table>=0A         =
+                                               </td>=0A                    =
+                                  </tr>=0A                                 =
+                   </tbody>=0A                                             =
+     </table>=0A                                                </td>=0A   =
+                                           </tr>=0A                        =
+                    </table>=0A=09=09=09=09=09=09=09=09=09=09=09<table role=
+=3D"presentation" width=3D"100%" style=3D"max-width: 800px;-webkit-text-siz=
+e-adjust: none;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspa=
+ce: 0;" bgcolor=3D"#ffffff" cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" align=3D"center" class=3D"darkmode" mc:repeatindex=3D"2">=0A             =
+                             <tr style=3D"-webkit-text-size-adjust: none;">=
+=0A                                            <td align=3D"center" valign=
+=3D"middle" style=3D"display: block;padding-bottom: 50px;-webkit-text-size-=
+adjust: none;border-collapse: collapse;">=0A                               =
+               <table role=3D"presentation" width=3D"100%" align=3D"center"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-webkit-text-siz=
+e-adjust: none;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspa=
+ce: 0;">=0A                                                <tbody style=3D"=
+-webkit-text-size-adjust: none;">=0A                                       =
+           <tr style=3D"-webkit-text-size-adjust: none;">=0A               =
+                                     <!-- Image -->=0A                     =
+                               <td class=3D"threeCol" width=3D"48%" align=
+=3D"center" valign=3D"middle" style=3D"-webkit-text-size-adjust: none;borde=
+r-collapse: collapse;">=0A                                                 =
+     <a href=3D"https://clicks-mail.elementor.com/f/a/uG6HMB1iCHfLcUsYhRkNz=
+A~~/AAAHagA~/RgRmhU1oP0SiaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWNpbm=
+ctMzE0LW5lc3RlZC1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlP3V0bV9zb3VyY2U9Y=
+nJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249My4xNCBDb3JlIFJlbGVhc2UgRnJl=
+ZSZ1dG1fdGVybT1BVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQ=
+AAAFK" target=3D"_blank" style=3D"-webkit-text-size-adjust: none;border-col=
+lapse: collapse;"><img src=3D"https://cdn.braze.eu/appboy/communication/ass=
+ets/image_assets/images/64994093b4a0ec78e834ed68/original.png=3F1687765139"=
+ alt=3D"Elementor AI" border=3D"0" style=3D"width: 100%;margin: 0;padding: =
+0;max-width: 352px;border: none;outline: none;text-decoration: none;image-r=
+endering: -webkit-optimize-contrast;-webkit-text-size-adjust: none;" width=
+=3D"352"></a>=0A                                                    </td>=
+=0A                                                    <td class=3D"threeCo=
+l" width=3D"35" style=3D"-webkit-text-size-adjust: none;border-collapse: co=
+llapse;">=C2=A0</td>=0A                                                    =
+<td class=3D"threeCol" width=3D"auto" align=3D"right" valign=3D"middle" sty=
+le=3D"font-size: 16px;font-family: 'Dm Sans', Arial, 'Sans-serif';text-alig=
+n: left;line-height: 23px;font-weight: 400;-webkit-text-size-adjust: none;b=
+order-collapse: collapse;">=0A                                             =
+         <!-- Sub Header Title -->=0A                                      =
+                <table width=3D"100%" style=3D"-webkit-text-size-adjust: no=
+ne;border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A =
+                                                       <tr style=3D"-webkit=
+-text-size-adjust: none;">=0A                                              =
+            <td class=3D"threeCol" style=3D"font-family: 'Dm Sans', Arial, =
+'Sans-serif';font-size: 14px;line-height: 25px;color: #727272;text-transfor=
+m: uppercase;-webkit-text-size-adjust: none;border-collapse: collapse;"><st=
+rong style=3D"text-transform: uppercase;-webkit-text-size-adjust: none;">El=
+ementor AI=0A</strong></td>=0A                                             =
+             </tr>=0A                                                      =
+  </table>=0A                                                        <!-- H=
+eader Title -->=0A                                                        <=
+table width=3D"100%" style=3D"-webkit-text-size-adjust: none;border-collaps=
+e: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                  =
+                                        <tr style=3D"-webkit-text-size-adju=
+st: none;">=0A                                                            <=
+td class=3D"threeCol" style=3D"font-family: 'Source Serif Pro', Georgia, se=
+rif;font-size: 18px;line-height: 25px;color: #212121;font-weight: bold;-web=
+kit-text-size-adjust: none;border-collapse: collapse;">AI Images - Availabl=
+e From Version 3.14</td>=0A                                                =
+          </tr>=0A                                                        <=
+/table>=0A                                                        <!-- Spac=
+er -->=0A                                                        <table wid=
+th=3D"100%" style=3D"-webkit-text-size-adjust: none;border-collapse: collap=
+se;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                           =
+                               <tr style=3D"-webkit-text-size-adjust: none;=
+">=0A                                                            <td height=
+=3D"5" style=3D"height: 5px;display: block;-webkit-text-size-adjust: none;b=
+order-collapse: collapse;"></td>=0A                                        =
+                  </tr>=0A                                                 =
+       </table>=0A                                                        <=
+!-- Text -->=0A                                                        <tab=
+le width=3D"100%" style=3D"-webkit-text-size-adjust: none;border-collapse: =
+collapse;mso-table-lspace: 0;mso-table-rspace: 0;">=0A                     =
+                                     <tr style=3D"-webkit-text-size-adjust:=
+ none;">=0A                                                            <td =
+class=3D"threeCol" style=3D"color: #727272;-webkit-text-size-adjust: none;b=
+order-collapse: collapse;">Elementor AI is available as a free trial with a=
+ll Elementor websites with options to upgrade to paid plans that start at $=
+2.99/month. With AI, you can instantly compose, enhance, or translate text,=
+ create custom code, CSS or HTML snippets, and now starting from version 3.=
+14, generate images! </td>=0A                                              =
+            </tr>=0A                                                       =
+ </table>=0A                                                        <!-- Sp=
+acer -->=0A                                                        <table s=
+tyle=3D"-webkit-text-size-adjust: none;border-collapse: collapse;mso-table-=
+lspace: 0;mso-table-rspace: 0;">=0A                                        =
+                  <tr style=3D"-webkit-text-size-adjust: none;">=0A        =
+                                                    <td height=3D"15" style=
+=3D"height: 15px;-webkit-text-size-adjust: none;border-collapse: collapse;"=
+></td>=0A                                                          </tr>=0A=
+                                                        </table>=0A        =
+                                                <!-- CTA -->=0A            =
+                                            <table class=3D"" style=3D"-web=
+kit-text-size-adjust: none;border-collapse: collapse;mso-table-lspace: 0;ms=
+o-table-rspace: 0;">=0A                                                    =
+      <tr style=3D"-webkit-text-size-adjust: none;">=0A                    =
+                                        <td class=3D"" style=3D"-webkit-tex=
+t-size-adjust: none;border-collapse: collapse;"><a class=3D"link3" href=3D"=
+https://clicks-mail.elementor.com/f/a/uG6HMB1iCHfLcUsYhRkNzA~~/AAAHagA~/RgR=
+mhU1oP0SiaHR0cHM6Ly9lbGVtZW50b3IuY29tL2Jsb2cvaW50cm9kdWNpbmctMzE0LW5lc3RlZC=
+1jYXJvdXNlbC1sb29wLWdyaWQtYWRzLWFuZC1tb3JlP3V0bV9zb3VyY2U9YnJhemUmdXRtX21lZ=
+Gl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249My4xNCBDb3JlIFJlbGVhc2UgRnJlZSZ1dG1fdGVybT1B=
+VwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK" style=3D"=
+-webkit-text-size-adjust: none;-ms-text-size-adjust: none;font-size: 18px;f=
+ont-weight: 500;line-height: 32px;text-decoration: none;color: #FF3700;bord=
+er-collapse: collapse;" target=3D"_blank">LEARN MORE&nbsp;&nbsp;<span class=
+=3D"link3" style=3D"color: #FF3700;font-size: 20px;-webkit-text-size-adjust=
+: none;border-collapse: collapse;">=E2=86=92</span></a></td>=0A            =
+                                                </tr>=0A                   =
+                                       </table>=0A                         =
+                               </td>=0A                                    =
+                  </tr>=0A                                                 =
+   </tbody>=0A                                                  </table>=0A=
+                                                </td>=0A                   =
+                           </tr>=0A                                        =
+    </table>=0A=09=09=09=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=
+=09=09=09=0A                                          </td>=0A             =
+                           </tr>=0A                                       =
+=0A                                           =0A=09=09=09=09=09=09=09=09=
+=09=09=09  <!-- Spacer -->=0A                                            <t=
+r style=3D"-webkit-text-size-adjust: none;">=0A                            =
+                  <td height=3D"32" class=3D"el_h20 darkmode" style=3D"heig=
+ht: 32px;-webkit-text-size-adjust: none;border-collapse: collapse;" bgcolor=
+=3D"#ffffff">=C2=A0</td>=0A                                            </tr=
+>=0A=09=09=09=09=09=09=09=09=09=09=09=0A                                   =
+         <!-- Signature -->=0A                                            <=
+tr style=3D"-webkit-text-size-adjust: none;">=0A                           =
+                   <td bgcolor=3D"#ffffff" class=3D"el_aside10 darkmode" va=
+lign=3D"top" align=3D"left" style=3D"color: #000000;font-family: 'Dm Sans',=
+ Arial, 'Sans-serif';font-size: 16px;line-height: 30px;padding-right: 90px;=
+padding-left: 90px;font-weight: 400;text-align: center;-webkit-text-size-ad=
+just: none;border-collapse: collapse;">Thank you, <br style=3D"-webkit-text=
+-size-adjust: none;">=0A<strong style=3D"font-size: 20px;-webkit-text-size-=
+adjust: none;">The Elementor Team </strong>=0A</td>=0A                     =
+                     </tr>=0A                                          <!--=
+ <tr>=0A                                          <td height=3D"70" class=
+=3D"el_h50" style=3D"height:70px;" bgcolor=3D"#ffffff">=C2=A0</td>=0A      =
+                                  </tr> -->=0A                             =
+           </tbody>=0A                                      </table>=0A    =
+                                </td>=0A                                  <=
+/tr>=0A                                </tbody>=0A                         =
+     </table>=0A                            </td>=0A                       =
+   </tr>=0A                        </tbody>=0A                      </table=
+>=0A        =0A          <!-- =3D=3D //Body Section =3D=3D -->=0A          =
+<!-- =3D=3D Footer Section =3D=3D -->=0A              <table role=3D"presen=
+tation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" cla=
+ss=3D"el_full_wrap">=0A            <tbody>=0A              <tr>=0A         =
+       <td align=3D"center" valign=3D"top" bgcolor=3D"#E5E5E5">=0A         =
+         <table role=3D"presentation" align=3D"center" width=3D"800" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#ffffff" class=3D"el_=
+main_table darkmode" style=3D"width:800px;table-layout:fixed;">=0A         =
+           <tbody bgcolor=3D"#ffffff" class=3D"darkmode">=0A               =
+       <tr bgcolor=3D"#ffffff" class=3D"darkmode">=0A                      =
+  <td valign=3D"top" align=3D"center" style=3D"padding:35px 46px;" class=3D=
+"el_padall darkmode" bgcolor=3D"#ffffff">=0A                          <tabl=
+e role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" bgcolor=3D"#ffffff" align=3D"center" class=3D"darkmode">=0A   =
+                         <tbody>=0A                              <tr>=0A   =
+                             <td valign=3D"top" align=3D"center">=0A       =
+                           <table role=3D"presentation" width=3D"508" borde=
+r=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"center" style=3D"width=
+:508px;" class=3D"el_wrapper">=0A                                    <tbody=
+>=0A                                      <tr>=0A                          =
+              <td valign=3D"top" align=3D"center">=0A                      =
+                    <table role=3D"presentation" width=3D"100%" border=3D"0=
+" cellspacing=3D"0" cellpadding=3D"0" align=3D"left" class=3D"el_wrapper">=
+=0A                                            <tbody>=0A                  =
+                            <tr>=0A                                        =
+        <td height=3D"24" class=3D"el_h20 darkmode" style=3D"height:24px;" =
+bgcolor=3D"#ffffff">=0A                                                </td=
+>=0A                                              </tr>=0A                 =
+                             <!-- Social -->=0A                            =
+                  <tr>=0A                                                <t=
+d width=3D"100%" align=3D"center" style=3D"padding-bottom: 40px;" bgcolor=
+=3D"#ffffff" class=3D"darkmode">=0A=0A                                     =
+             <table role=3D"presentation" border=3D"0" cellpadding=3D"0%" c=
+ellspacing=3D"0%" width=3D"50%" style=3D"max-width:100%;font-weight:normal!=
+important; font-size: 9px;text-align: center;">=0A=0A                      =
+                              <tr>=0A                                      =
+                <td align=3D"center" style=3D"font-weight:normal!important;=
+ padding:2px; width: 20%;" class=3D"socialicon">=0A                        =
+                                <a name=3D"twitter" href=3D"https://clicks-=
+mail.elementor.com/f/a/mk6Ryl59IYlI-bO3Eif65w~~/AAAHagA~/RgRmhU1oP0RuaHR0cH=
+M6Ly90d2l0dGVyLmNvbS9lbGVtbnRvci8_dXRtX3NvdXJjZT1icmF6ZSZ1dG1fbWVkaXVtPWVtY=
+WlsJnV0bV9jYW1wYWlnbj0zLjE0IENvcmUgUmVsZWFzZSBGcmVlJnV0bV90ZXJtPUFXBXNwY2V1=
+Qgpki2jIomQkWaxNUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~" target=3D"_blank"=
+>=0A                                                          <img src=3D"h=
+ttps://mcusercontent.com/08d77a35a5440eecde6540d14/images/152dc995-a1af-a7a=
+9-6b97-1e4587d20818.png" width=3D"32" alt=3D"tw" style=3D"border-width:0;he=
+ight:auto;line-height:100%;-ms-interpolation-mode:bicubic;display:block;out=
+line-style:none;text-decoration:none; color: #000000; font-family: 'Dm Sans=
+',  Arial, Sans-serif; font-size: 15px;"></a>=0A                           =
+                           </td>=0A=0A                                     =
+                 <td align=3D"center" style=3D"font-weight:normal!important=
+; padding:2px; width: 20%;" class=3D"socialicon">=0A                       =
+                                 <a name=3D"facebook" href=3D"https://click=
+s-mail.elementor.com/f/a/bajzgrjV4V4apcUj3p0Cgg~~/AAAHagA~/RgRmhU1oP0RzaHR0=
+cHM6Ly93d3cuZmFjZWJvb2suY29tL2VsZW1udG9yLz91dG1fc291cmNlPWJyYXplJnV0bV9tZWR=
+pdW09ZW1haWwmdXRtX2NhbXBhaWduPTMuMTQgQ29yZSBSZWxlYXNlIEZyZWUmdXRtX3Rlcm09QV=
+cFc3BjZXVCCmSLaMiiZCRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~" target=
+=3D"_blank">=0A                                                          <i=
+mg src=3D"https://mcusercontent.com/08d77a35a5440eecde6540d14/images/cff4a9=
+8a-d1e1-176d-01ce-1d0e0e753e19.png" width=3D"32" alt=3D"fb" style=3D"border=
+-width:0;height:auto;line-height:100%;-ms-interpolation-mode:bicubic;displa=
+y:block;outline-style:none;text-decoration:none; color: #000000; font-famil=
+y: 'Dm Sans',  Arial, Sans-serif; font-size: 15px;"></a>=0A                =
+                                      </td>=0A=0A                          =
+                            <td align=3D"center" style=3D"font-weight:norma=
+l!important; padding:2px; width: 20%;" class=3D"socialicon">=0A            =
+                                            <a name=3D"instagram" href=3D"h=
+ttps://clicks-mail.elementor.com/f/a/IfEqfUf_cabRs_PtlHJqfw~~/AAAHagA~/RgRm=
+hU1oP0RwaHR0cDovL2luc3RhZ3JhbS5jb20vZWxlbWVudG9yLz91dG1fc291cmNlPWJyYXplJnV=
+0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPTMuMTQgQ29yZSBSZWxlYXNlIEZyZWUmdXRtX3=
+Rlcm09QVcFc3BjZXVCCmSLaMiiZCRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~"=
+ target=3D"_blank"><img src=3D"https://mcusercontent.com/08d77a35a5440eecde=
+6540d14/images/f8cf8334-163e-57e4-6802-576669f8f994.png" width=3D"32" alt=
+=3D"in" style=3D"border-width:0;height:auto;line-height:100%;-ms-interpolat=
+ion-mode:bicubic;display:block;outline-style:none;text-decoration:none; col=
+or: #000000; font-family: 'Dm Sans',  Arial, Sans-serif; font-size: 15px;">=
+</a>=0A                                                      </td>=0A=0A   =
+                                                   <td align=3D"center" sty=
+le=3D"font-weight:normal!important; padding:2px; width: 20%;" class=3D"soci=
+alicon">=0A                                                        <a name=
+=3D"youtube" href=3D"https://clicks-mail.elementor.com/f/a/cvXhQLcbRB-GSnk4=
+Em_K1A~~/AAAHagA~/RgRmhU1oP0R1aHR0cHM6Ly93d3cueW91dHViZS5jb20vYy9lbGVtZW50b=
+3IvP3V0bV9zb3VyY2U9YnJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249My4xNCBD=
+b3JlIFJlbGVhc2UgRnJlZSZ1dG1fdGVybT1BVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW5=
+0dTBAZ21haWwuY29tWAQAAAFK" target=3D"_blank">=0A                           =
+                               <img src=3D"https://mcusercontent.com/08d77a=
+35a5440eecde6540d14/images/0c6b3bd9-01a6-c163-27c5-4594f3b61a8d.png" width=
+=3D"32" alt=3D"yt" style=3D"border-width:0;height:auto;line-height:100%;-ms=
+-interpolation-mode:bicubic;display:block;outline-style:none;text-decoratio=
+n:none; color: #000000; font-family: 'Dm Sans',  Arial, Sans-serif; font-si=
+ze: 15px;"></a>=0A                                                      </t=
+d>=0A=0A                                                    </tr>=0A       =
+                                           </table>=0A                     =
+                           </td>=0A                                        =
+      </tr>=0A=0A                                              <tr>=0A     =
+                                           <td style=3D"color:#000000; back=
+ground-color:#ffffff; font-family: 'Dm Sans',  Arial, Sans-serif; font-size=
+:13px; line-height:15px; font-weight:normal; text-align:center;" bgcolor=3D=
+"#ffffff" class=3D"el_main_table darkmode">=0A=0A                          =
+                        =C2=A9 2023 Tuval Street 40, Ramat Gan 5252247, Isr=
+ael<br><br>=0A=0A                                                  <a name=
+=3D"contact-us" style=3D"color:#000000; text-decoration: underline;" href=
+=3D"https://clicks-mail.elementor.com/f/a/ODfhN5yc1TKmeuMK3w2S8g~~/AAAHagA~=
+/RgRmhU1oP0RsaHR0cHM6Ly9lbGVtZW50b3IuY29tL2hlbHAvP3V0bV9zb3VyY2U9YnJhemUmdX=
+RtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249My4xNCBDb3JlIFJlbGVhc2UgRnJlZSZ1dG1fd=
+GVybT1BVwVzcGNldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK" ta=
+rget=3D"_blank" class=3D"footer">Help=0A                                   =
+                 Center</a>=0A                                             =
+       &nbsp;|&nbsp;=0A                                                  <a=
+ name=3D"contact-us" style=3D"color:#000000; text-decoration: underline;" h=
+ref=3D"https://clicks-mail.elementor.com/f/a/3MqLTm_tbunnbCGOn_yQpg~~/AAAHa=
+gA~/RgRmhU1oP0RtaHR0cHM6Ly9lbGVtZW50b3IuY29tL3Rlcm1zLz91dG1fc291cmNlPWJyYXp=
+lJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPTMuMTQgQ29yZSBSZWxlYXNlIEZyZWUmdX=
+RtX3Rlcm09QVcFc3BjZXVCCmSLaMiiZCRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABS=
+g~~" target=3D"_blank" class=3D"footer">Terms=0A                           =
+                         &amp; Conditions</a>=0A                           =
+                       &nbsp;|&nbsp;=0A                                    =
+              <a name=3D"contact-us" style=3D"color:#000000; text-decoratio=
+n: underline;" href=3D"https://clicks-mail.elementor.com/f/a/GOolKFMvqtnXm8=
+V_nGfomg~~/AAAHagA~/RgRmhU1oP4QVAmh0dHBzOi8vMDEuZW1haWxpbmJvdW5kcHJvY2Vzc2l=
+uZy5ldS9lbWFpbC9tYW5hZ2Vfc3Vic2NyaXB0aW9ucy8lMjQxJTI0SEtsJTJCYTVPcTk2RXliZz=
+RtJTJCcm11ZUElM0QlM0QlMjQ4akkyWWd3cFVha280aE1sNFMxZ3l4SGJmdFp6UzRzeEJjZ3c0c=
+kFZOTNBJTNEP2Q9JTI0MSUyNFMyVHpQbktkRWtGdFZYMWtnMzN6ZWclM0QlM0QlMjRrS3RuVGNz=
+VnpkU0M3UVd6T2xaRXdoTiUyRnVQQWpVZWJYemVDS3paRGprY29reDg5UVhDZVJ0aCUyQkNPZkN=
+xJTBBJTJCcm5RYkRrbUs4RGZpbEZOalc5ZmZEYVJVRkRQaU1WVlJEUlpoTzBnRiUyRlVPdWdNZj=
+N1MFElMkZ2RiUyQnR0QWolMEFmaDNsakxCWkpKNFl6UmJRJTJGZ3RTYlBnTklSJTJGJTJGVjhGZ=
+ldxcWl2T1dSZXNMekFzUkR4bE5KUTk0SEFiWEElMEFlQVNoJTJGQkN1QjJYamdNJTJCeXlkbVhh=
+UWNiQnV4UFZqcUViWFhTZG1XNHB4TWFpZnlJcTMxVW1GM3ZhbmVZJTBBT1gwZ0tiNHJKSzF4UUN=
+2MUdrMzRTSFJQNnM2OVdvdkE2OWk0elZlVjVqaG1lT1dkaXoyNVlUNVRQbFElM0QmMT0xVwVzcG=
+NldUIKZItoyKJkJFmsTVIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK" target=3D"_blan=
+k" class=3D"footer">Update Email Preferences</a>=0A                        =
+                          &nbsp;|&nbsp;=0A                                 =
+                 <a href=3D"https://clicks-mail.elementor.com/f/a/nWZ0xH3c1=
+enIF1BGCnahtg~~/AAAHagA~/RgRmhU1oP4QHAmh0dHBzOi8vMDEuZW1haWxpbmJvdW5kcHJvY2=
+Vzc2luZy5ldS9lbmNfdXNlci91bnN1YnNjcmliZT9kPSUyNDElMjRTMlR6UG5LZEVrRnRWWDFrZ=
+zMzemVnJTNEJTNEJTI0a0t0blRjc1Z6ZFNDN1FXek9sWkV3aE4lMkZ1UEFqVWViWHplQ0t6WkRq=
+a2Nva3g4OVFYQ2VSdGglMkJDT2ZDcSUwQSUyQnJuUWJEa21LOERmaWxGTmpXOWZmRGFSVUZEUGl=
+NVlZSRFJaaE8wZ0YlMkZVT3VnTWYzdTBRJTJGdkYlMkJ0dEFqJTBBZmgzbGpMQlpKSjRZelJiUS=
+UyRmd0U2JQZ05JUiUyRiUyRlY4RmZXcXFpdk9XUmVzTHpBc1JEeGxOSlE5NEhBYlhBJTBBZUFTa=
+CUyRkJDdUIyWGpnTSUyQnl5ZG1YYVFjYkJ1eFBWanFFYlhYU2RtVzRweE1haWZ5SXEzMVVtRjN2=
+YW5lWSUwQU9YMGdLYjRySksxeFFDdjFHazM0U0hSUDZzNjlXb3ZBNjlpNHpWZVY1amhtZU9XZGl=
+6MjVZVDVUUGxRJTNEJjE9MT91dG1fc291cmNlPWJyYXplJnV0bV9tZWRpdW09ZW1haWwmdXRtX2=
+NhbXBhaWduPTMuMTQgQ29yZSBSZWxlYXNlIEZyZWUmdXRtX3Rlcm09QVcFc3BjZXVCCmSLaMiiZ=
+CRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~" style=3D"mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;colo=
+r: #000000;font-weight: normal;text-decoration: underline;">Unsubscribe</a>=
+=0A=0A                                                  <br><br>=0A=0A=0A=
+=0A                                                  This email is intended=
+ for <a href=3D"mailto:ely.ubuntu0@gmail.com" style=3D"mso-line-height-rule=
+: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: =
+#000000;font-weight: normal;text-decoration: none;">ely.ubuntu0@gmail.com</=
+a>.=0A                                                  <br>To ensure deliv=
+ery of this email and future mailings,=0A                                  =
+                please add us=0A                                           =
+       to your contacts book or safe senders list.=0A                      =
+                          </td>=0A                                         =
+     </tr>=0A=0A                                              <tr>=0A      =
+                                          <td height=3D"40" class=3D"el_h30=
+ darkmode" style=3D"height:40px;" bgcolor=3D"#ffffff">=C2=A0=0A            =
+                                    </td>=0A                               =
+               </tr>=0A=0A                                            </tbo=
+dy>=0A                                          </table>=0A                =
+                        </td>=0A                                      </tr>=
+=0A                                    </tbody>=0A                         =
+         </table>=0A                                </td>=0A               =
+               </tr>=0A                            </tbody>=0A             =
+             </table>=0A                        </td>=0A                   =
+   </tr>=0A                    </tbody>=0A                  </table>=0A=0A =
+                 <!-- Buffer -->=0A                  <table role=3D"present=
+ation" align=3D"center" width=3D"800" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0" class=3D"el_main_table" style=3D"width:800px;table-layout:fixed=
+;" bgcolor=3D"#E5E5E5">=0A                    <tbody>=0A                   =
+   <tr>=0A                        <td valign=3D"top" align=3D"center" style=
+=3D"padding:25px 0px 25px 0px;" class=3D"el_hide">=0A                      =
+  </td>=0A                      </tr>=0A                    </tbody>=0A    =
+              </table>=0A=0A                </td>=0A              </tr>=0A =
+           </tbody>=0A          </table>=0A        </td>=0A      </tr>=0A  =
+  </tbody>=0A  </table>=0A=0D=0A<img border=3D"0" width=3D"1" height=3D"1" =
+alt=3D"" src=3D"https://clicks-mail.elementor.com/q/mlmPjl8rfnrot4mBvaMPfA~=
+~/AAAHagA~/RgRmhU1oPlcFc3BjZXVCCmSLaMiiZCRZrE1SFWVseS51YnVudHUwQGdtYWlsLmNv=
+bVgEAAABSg~~">=0D=0A</body>=0A=0A</html>
+--_----wPYrL4r1Cd+memyO7IQ2EQ===_57/D4-05701-868C2A46--
+

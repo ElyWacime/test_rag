@@ -1,0 +1,272 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:ce05:b0:43e:7973:eb23 with SMTP id ip5csp480501pxb;
+        Sat, 18 Mar 2023 10:21:14 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/ggm9hcpXFuWHNf1lD86Cwk9AW9W/JZGRHhX5T3LiqzAZ8Nc9EaNstiLS0DHl+kskJZbsb
+X-Received: by 2002:a25:844:0:b0:b4c:fcea:2e4a with SMTP id 65-20020a250844000000b00b4cfcea2e4amr2407808ybi.43.1679160074438;
+        Sat, 18 Mar 2023 10:21:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679160074; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sPu2Uy/k1tPWgyD8AlQJS76J1ZZqrZ/QaBkROXPY4aIkApin45V9LpCOECrNDOeqAi
+         2x7kyGyElL+1EL7k2cyDZH8QAIuaIYkvqIe3P33zZ/nmZrfWQnMbL6HbgcG02Wr9geGJ
+         /klOtmbKyfZWy7EDp4vi/USj/zNrc2QVzh4BK2PcNSRdf4Db2OZdn20hwCO+bSWtayKz
+         qtlg0/1j0qz+/IsFcI1hEbZoGNMYPAci7gfHs+7pktp96l52XmqivD4Da6TyWgP/3fOf
+         59wJYoN9LtKlfZlroYWUMN+DakgrzL/ss4Y8FLfNsIUOD+dEASxCkT2iJtpI2PC87mlC
+         7v/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=n9qPKDHWoktkIDm1PtO3KqyuASP/zyV6XySgECJTNBA=;
+        b=mnAZJgDXvXmVMqR6/G4hBkPQBstwZ9JdxxDpu1q2tt0uT5258gIRM3RSObRqDrVwhw
+         wmdbJSH+hZRgVSepadl2eR5fA/beIeNL0kjL5o+ioxqmsa0rkJQ4mFG454u3Kk7oJux+
+         pRcplWUlhZdttZdzaZe2O+0158ZAsV9ySCwoer/EAvTjpWepK3BkF6WTtR/vhMsMBUbm
+         HF6gwX1VNRwK+EH9sGpnUJhV5cIwBIQlX6b5Pecfde5npvULtnzLaCqn1y4aPj85avug
+         nSiaw5oTT5DszfBV7MFxQc/F6WrRaSVmMCymp2dVYa5SCDKU3UWscvkV5BTEjxuK/R3N
+         H5/A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=XkaQdMKF;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=WyYjziOm;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o20.ck.n.convertkit.com (o20.ck.n.convertkit.com. [168.245.5.113])
+        by mx.google.com with ESMTPS id i2-20020a255402000000b00b5014d79117si5058068ybb.493.2023.03.18.10.21.13
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 18 Mar 2023 10:21:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) client-ip=168.245.5.113;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=XkaQdMKF;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=WyYjziOm;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=n9qPKDHWoktkIDm1PtO3KqyuASP/zyV6XySgECJTNBA=;
+	b=XkaQdMKF0/y66CKe/XFmFNakTUb+M5GLSHIlBKI1CZSwa3Mv16OdUhbNL13XO9Vl7yQO
+	3pqKw6IIeU6FB9XtAI1ldsYSWnyisqQPYTW5lA3YaNeBLpeg3NT4rwhUNK5H62xScjRNoh
+	yLFLOf7wfucYGjLUT+LvPEPrA4PdMYmyM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=n9qPKDHWoktkIDm1PtO3KqyuASP/zyV6XySgECJTNBA=;
+	b=WyYjziOmv00oJ99fsNseSSlaFhqDGi5wCzrshOtV5OGT8L5nen1av2a43npP10/QopSq
+	BWGECHGpSubLdfKjHjb1T7kQ5bG4yvsdzHdMNuNkd2SWgqoIM1j6LRRMbtQ1uM2VF+6uVr
+	kcaWZmdkEIyQyseWj5bc/ZYLSqj7WS/QM=
+Received: by filterdrecv-fb8cdcbd4-gk6mw with SMTP id filterdrecv-fb8cdcbd4-gk6mw-1-6415F309-37
+        2023-03-18 17:21:13.543700919 +0000 UTC m=+2137642.324703987
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-38 (SG) with HTTP
+	id rlZIyQGgQi-RlMeEkc-3dw
+	Sat, 18 Mar 2023 17:21:13.481 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=999d781783ab02705af0cd82bdde7e1cbc5d640b1dba756275f79cba4eac
+Date: Sat, 18 Mar 2023 17:21:13 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <zlundwo7wrbwfe50n9bp@convertkit-mail2.com>
+Subject: Get Your Ultimate Solidity Cheat Sheet Now
+Feedback-ID: 3172944:775726:forms::container:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/zlundwo7wrbwfe50n9bp>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: 
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfXSggL+YyNq4EjCAa?=
+ =?us-ascii?Q?UVMYfdCfM=2FKdV9XUU53WpbQu28GeyG3WQOo66+e?=
+ =?us-ascii?Q?9PHhXAcslJ8ThuMWLMXnYUi6+O+TVlqu1BScpEF?=
+ =?us-ascii?Q?6QCPGvI652bcLZU2Vw2N9hsuAtdA6Pzyo8jE+tH?=
+ =?us-ascii?Q?1AgRKRW9gnBiuSTCRcwrl2Xje9pUF=2F4qxGDSMq?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb4+ironpd4JJkXKzyuIKcPJ25zfIg9QHIPN++Xo7tT?=
+ =?us-ascii?Q?ZwZHpbGux+8M6KH5nTt+9Tmde9pvM4dNwh7ErYn?=
+ =?us-ascii?Q?tU41HQFLTa6qBpEi89PbHk4h54SPK107piIg6Xh?=
+ =?us-ascii?Q?Zzn0XChaWqec=2FPrjQPvLILo9li7La+CsmAmic53?=
+ =?us-ascii?Q?G3p6Vq2Gyc=2FzSKjI3CZA1rLVfPlTme+NL7Ybacz?=
+ =?us-ascii?Q?b8qH8TOuFwMPKMlCeIs5M3h+fjBNdgyK6j6VhJe?=
+ =?us-ascii?Q?ljUp2E2REq7ZcW0a8wrObVKIPM+h6WykOOIXh+G?=
+ =?us-ascii?Q?5jXsxgBuOgmfbbkLehOxIAwrcaQ7HNeykScD8wv?=
+ =?us-ascii?Q?YDCxJfTzDnwOYX8R4axdUIAF9NuDRtaJIqcP43O?=
+ =?us-ascii?Q?6zB6fTmu1M8+eRhpQVnF1KoPrD5frKMA=3D=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--999d781783ab02705af0cd82bdde7e1cbc5d640b1dba756275f79cba4eac
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Hi whyoucare,
+
+You've requested the Ultimate Solidity Cheat Sheet, right? =F0=9F=98=83
+
+As promised, here it is:
+
+-->Get the CheatSheet (
+https://click.convertkit-mail2.com/zlundwo7wrbwfe50n9bp/8ghqh3ulexlwq8al/aH=
+R0cHM6Ly9hcHAuY29udmVydGtpdC5jb20vZm9ybXMvY29uZmlybT9rZXk9MDdiMjQxNzY3MThkM=
+DY2Y2Q0NjMyYjcxYzdmZjgwZWYxMGJmM2UxMCZzaWQ9NTc5MDQxNzAwOA=3D=3D
+)
+Get the CheatSheet (
+https://app.convertkit.com/forms/confirm?key=3D07b24176718d066cd4632b71c7ff=
+80ef10bf3e10&sid=3D5790417008
+)Alongside getting the resource, I also want to welcome you to
+our exclusive JSM Newsletter. Tomorrow, I'll send you a welcome
+e-mail containing more information.
+
+Until then, please reply to this e-mail by telling me what other
+resources would you like me to create. I would love to hear from
+you. I am monitoring each and every reply - your voice will be
+heard. =F0=9F=99=82
+
+P. S. Gmail sometimes sorts these e-mails under the "Promotions"
+tab. And no-one really likes promotions, right? If that's the
+case, please do the following two steps to continue receiving new
+resources from JSM =F0=9F=99=82
+
+* Drag this email to the "Primary" category tab
+* On the bottom left pop-up notification, click Yes.
+
+That would be it for today, have a wonderful day! =E2=98=80=EF=B8=8F
+
+Adrian from JSM
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/zlundwo7wrbwfe50n9bp ) |
+Update your profile (
+https://preferences.convertkit-mail2.com/zlundwo7wrbwfe50n9bp )
+| 113 Cherry St, Seattle, WA 92768
+--999d781783ab02705af0cd82bdde7e1cbc5d640b1dba756275f79cba4eac
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#9fcdf9"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#9fcdf9;wid=
+th:100%" bgcolor=3D"#9fcdf9"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container normal" styl=
+e=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-=
+width:100%;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:100%">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#f1f7fe"><tr><td><![endif]--><div=
+ style=3D"background-color:#f1f7fe;border-radius:11px;overflow:hidden;max-w=
+idth:600;margin:0px auto"><table bgcolor=3D"#f1f7fe" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"100%" style=3D"border-collapse:separate;mso-table-ls=
+pace:0pt;mso-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"v=
+ertical-align:top;padding:20px"><div class=3D"email-body" style=3D"backgrou=
+nd-color:#f1f7fe">
+<div class=3D"email-content">
+<!--[if mso]><style>.button-table { padding: 12px 0 }</style><![endif]-->
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Hi whyoucare,</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">You've requested the Ultimate Solidity Cheat Sheet, right? =F0=9F=98=
+=83</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">As promised, here it is:</p>
+<!--[if !mso]>--><table width=3D"100%" style=3D"border-collapse:separate;ms=
+o-table-lspace:0pt;mso-table-rspace:0pt"><tbody><tr><td align=3D"left" styl=
+e=3D"vertical-align:top"><a class=3D"email-button" href=3D"https://click.co=
+nvertkit-mail2.com/zlundwo7wrbwfe50n9bp/8ghqh3ulexlwq8al/aHR0cHM6Ly9hcHAuY2=
+9udmVydGtpdC5jb20vZm9ybXMvY29uZmlybT9rZXk9MDdiMjQxNzY3MThkMDY2Y2Q0NjMyYjcxY=
+zdmZjgwZWYxMGJmM2UxMCZzaWQ9NTc5MDQxNzAwOA=3D=3D" target=3D"_blank" rel=3D"n=
+oopener noreferrer" style=3D"color:#0f82f0;margin-bottom:0.5em;border:0 non=
+e;font-size:16px;line-height:1.7;background-color:#0f81f0;color:#ffffff;bor=
+der-radius:5px;border-width:1px;border-color:#1677be;background-color:#1677=
+be;box-sizing:border-box;border-radius:4px;border-style:solid;color:#ffffff=
+;display:inline-block;text-align:left;text-decoration:none;padding:12px 20p=
+x;margin:6px 0;font-size:16px" url-id=3D"1530601030">Get the CheatSheet</a>=
+</td></tr></tbody></table>
+<!--<![endif]--><!--[if mso]><table class=3D"button-table" width=3D"100%" b=
+order=3D"0" cellSpacing=3D"0" cellPadding=3D"0" style=3D"margin:6px 0"><tr>=
+<td align=3D"left"><table border=3D"0" cellSpacing=3D"0" cellPadding=3D"0">=
+<tr><td align=3D"center" bgcolor=3D"#1677be" style=3D"background-color:#167=
+7be;border-radius:4px;overflow:hidden"><a class=3D"email-button" href=3D"ht=
+tps://app.convertkit.com/forms/confirm?key=3D07b24176718d066cd4632b71c7ff80=
+ef10bf3e10&sid=3D5790417008" target=3D"_blank" rel=3D"noopener noreferrer" =
+style=3D"background-color:inherit;display:inline-block;text-decoration:none=
+;border-width:1px;border-style:solid;margin:0;color:#ffffff;border-color:#1=
+677be;padding:12px 20px;font-size:16px">Get the CheatSheet</a></td></tr></t=
+able></td></tr></table><![endif]--><p style=3D"margin:1em 0;font-size:18px;=
+line-height:1.5em;font-family:Arial,-apple-system,BlinkMacSystemFont,'Segoe=
+ UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:=
+#363d43;font-size:16px;line-height:1.7">Alongside getting the resource, I a=
+lso want to welcome you to our <strong>exclusive JSM Newsletter</strong>. T=
+omorrow, I'll send you a welcome e-mail containing more information.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Until then, please reply to this e-mail by telling me what other resou=
+rces would you like me to create. <strong>I would love to hear from you</st=
+rong>. I am monitoring each and every reply - <strong>your voice will be he=
+ard</strong>. =F0=9F=99=82</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7"><strong>P. S.</strong> Gmail sometimes sorts these e-mails under the "=
+Promotions" tab. And no-one really likes promotions, right? If that's the c=
+ase, please do the following two steps to continue receiving new resources =
+from JSM =F0=9F=99=82</p>
+<ol class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.7;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Drag this email to the "Primary" category tab</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>On the bottom left pop-up notification, click <strong>Yes</strong>.=
+</span></li>
+</ol>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">That would be it for today, have a wonderful day! =E2=98=80=EF=B8=8F</=
+p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Adrian from JSM</p>
+</div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><p=
+ style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial,-=
+apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantar=
+ell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:1.=
+7;text-align:center"><span style=3D"font-size:14px">=E2=80=8B</span><a href=
+=3D"https://unsubscribe.convertkit-mail2.com/zlundwo7wrbwfe50n9bp" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=
+=3D"font-size:14px">Unsubscribe</span></a><span style=3D"font-size:14px"> |=
+ </span><a href=3D"https://preferences.convertkit-mail2.com/zlundwo7wrbwfe5=
+0n9bp" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0=
+"><span style=3D"font-size:14px">Update your profile</span></a><span style=
+=3D"font-size:14px">  | 113 Cherry St, Seattle, WA 92768</span></p></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/zlundwo7wrbwfe50n9bp" alt=3D"=
+" style=3D"border:0 none;display:block;height:auto;line-height:100%;outline=
+:none;-webkit-text-decoration:none;text-decoration:none;max-width:100%">
+</body>
+</html>
+
+--999d781783ab02705af0cd82bdde7e1cbc5d640b1dba756275f79cba4eac--

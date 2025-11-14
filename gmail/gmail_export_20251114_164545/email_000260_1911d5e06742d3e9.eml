@@ -1,0 +1,570 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:9c87:0:b0:2ef:3119:280a with SMTP id x7csp585806lji;
+        Sun, 4 Aug 2024 05:29:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG+rA2KiWPZS0J6GWtmlhr2cUSRLPyEN576Figm+McIvCiJ+Aba6mZ3IPD2UDby1eu9W9j3
+X-Received: by 2002:a05:6358:430c:b0:1aa:c8b7:4224 with SMTP id e5c5f4694b2df-1af3ba59439mr622412755d.17.1722774587051;
+        Sun, 04 Aug 2024 05:29:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722774587; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gh3uN3xyRxEAnTRzUTEG5yUNdL5v7119yi7Va14wGgmoUFOfsxQXea12k1yg/F0R2n
+         8BJQxSl00G+AVj6Hud11bNs7VONbTkai9TYfMe3pk7gIZkrLqWxCJ8KUKdFEmeXwBXe4
+         UQfKpFCD6GrRz//QDYNtVfiM6Tmeev/Zu9OlbHyoc9ZIvgH+Df/wbGWQK/Sh4A9pff83
+         tz7Cniwm4fg5Qj+sCm1VTy57rLnHGR2QyyThKmJueIOBND5OmRxNNkuR14vovXLAJVmN
+         SeQGTjvzgFOxGXKgu35LGtcej188zHftXhO2Qgsq07AbZbbrBLuz/K7w3rEKncPvPG1Y
+         WAiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:feedback-id:list-unsubscribe-post:precedence:list-unsubscribe
+         :subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=HNKZBdFKC8g0RT8bi/2jKpC55YC/mmU1MhYnSqG+loc=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=LtiX/1g49rsMsOuncASoFc494FIaN8fjpazygjIFwpXETAapY9YUU2LsMIy2H3gNvO
+         mp6koD3xhpP7mAfexr9k8v6o6bnYYTRgU8dYqQPEDWk0AUlM6CH4DypGD8axPS2tjsvU
+         8esPwQQpcnpzhQNtFsW9c+wLa4TgGmuueTQc4LQulZh+b7EAPEDcJ4hrYfOm1gHf7BFa
+         t4mOvkx5hsS5odk4r3TZouL0NpgpGrCPRnHCkn+EhEDaBiIZ81Akq01KvbXLeJJs3WhT
+         eazbFzHICaPtVwaP13Z5S7dtgBkcc17vew9MFzc/YuZojAxWwDK5ISDZUcviZRSU14xW
+         W1nw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=AWJFIurn;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=VeicPBjA;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o51.ck.n.convertkit.com (o51.ck.n.convertkit.com. [159.183.200.47])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb9c77560csi67371476d6.114.2024.08.04.05.29.46
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 04 Aug 2024 05:29:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) client-ip=159.183.200.47;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=AWJFIurn;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=VeicPBjA;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:
+	list-unsubscribe-post:x-feedback-id:to:cc:content-type:from:subject:to;
+	s=cka; bh=HNKZBdFKC8g0RT8bi/2jKpC55YC/mmU1MhYnSqG+loc=;
+	b=AWJFIurnLdRMQc676WkabKwj/mxJLIbPPuRnWBQj4RxXNVRgMafPkDQnE8TZ3kw8fQoA
+	LoXDU722Nqnqb/gftgocgllatY2htQd+UURXM0kf1QADbR1FjMMIY5Gls1jjdw8rFWjs2W
+	VdtQXj6LTZqlDnsqeJk1iSh3eO9lSZ4Rk=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:
+	list-unsubscribe-post:x-feedback-id:to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=HNKZBdFKC8g0RT8bi/2jKpC55YC/mmU1MhYnSqG+loc=;
+	b=VeicPBjA/db14eGRNz7hlAAAxdjO0AcrRwCfRanyxbXWi2vY5TcERJvl5rFzQ8Sa3mSp
+	r1KGRS8fF0DvFk9RkGjP6/XRKJYPP3EgkTG+kcL1IPiu7u5hGMzG7426lDjRXavybU68MF
+	FrmZBuRSrKwlBdYfR5uFJKxc2rk0Tfjb8=
+Received: by recvd-6c4d9d748d-vtv4g with SMTP id recvd-6c4d9d748d-vtv4g-1-66AF7439-3E
+	2024-08-04 12:29:45.909907158 +0000 UTC m=+486657.801216286
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-7 (SG) with HTTP
+	id 3FvZEaqQTe6UzhwcOx161g
+	Sun, 04 Aug 2024 12:29:45.876 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=4943073a6a5dc26353e98282cb1d40a15c3e7c238892e2273233f2603917
+Date: Sun, 04 Aug 2024 12:29:46 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <mvu534eo4qc5hg4g39pbmhrqxwqqqf3@convertkit-mail2.com>
+Subject: =?UTF-8?B?8J+SgMKgSXM=?= React Context Dead?
+List-Unsubscribe: 
+ <mailto:unsub+mvu534eo4qc5hg4g39pbmhrqxwqqqf3@convertkit-mail.com>,
+ <https://unsubscribe.convertkit.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: 14617241:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2E9iKReg6MmXOnRZvsQzWQJ3lPH0tO4yiaHftVEEnLM4wy5BnLoLlAcpdQp?=
+ =?us-ascii?Q?uAcltvhbsvR1HoWuE3BRvA2KUJnthYOpAGwUopx?=
+ =?us-ascii?Q?OcKBywMkFFOftw39ymK2jzwNHRaDtSwS7S6TNg7?=
+ =?us-ascii?Q?M+o0hqfLm4MZV4RiXFA2paiToeKx6uhT2E=2FEx2C?=
+ =?us-ascii?Q?Mb21seRjGzjOFQ4H3KirJteOPpmNbshsIJ1oK7q?=
+ =?us-ascii?Q?Ncwj9mT13Sayy4+dJi3jYZcy1Ru4UV5M44U1bTv?= =?us-ascii?Q?bGXN?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprBTLquV1ImzFIrgT?=
+ =?us-ascii?Q?SaJ3+RZmtGOORYK5GMu0e3e5HAA6pBnTRREzmW3?=
+ =?us-ascii?Q?G63IcHx9oQD=2F0ChJF+hjoMtnfYXk7fnIkVm5MLY?=
+ =?us-ascii?Q?oZCfOJO0nU4S5BvqYAjdR53yA+BzAuzlqC4wLY0?=
+ =?us-ascii?Q?xf+rcb89Uo+G5vUioPmex0gBJV7VsWwX3+h3d96?=
+ =?us-ascii?Q?1yvEX11vj2EjlUY+iMcjzVKtm2UxHNY42V0r6DJ?=
+ =?us-ascii?Q?48VOesO76g5dboJzAeZZw4NxY0ejW0NusqnCF4P?=
+ =?us-ascii?Q?JG7SGjNyvcp6oAYS7=2FSP60pnEUyHwl5+hnyV2dh?=
+ =?us-ascii?Q?eX63Z35A1XDsSD+CSIuNqMQV1dh0KdLP91z3Cqy?=
+ =?us-ascii?Q?OFPU=2Fzv3D5vY7Tl?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: u001.U5uR4hiqEeo/H3zk+7BOfQ==
+
+--4943073a6a5dc26353e98282cb1d40a15c3e7c238892e2273233f2603917
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Hello =F0=9F=91=8B
+
+=E2=80=8B
+
+It=E2=80=99s Olympic season all around the world! Are you watching the
+games too? Which sport and athlete are you cheering for? Reply to
+this email and let me know =F0=9F=98=81
+
+What=E2=80=99s new
+----------
+
+=F0=9F=92=95 Parallel Requests Aren=E2=80=99t What You Think
+
+You might think you understand how Parallel Requests work, but
+you could be creating race conditions. The theory of PR is a
+great deception. Read this article (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/l2heh6u3=
+7k29dptg/aHR0cHM6Ly9zZWJhc3RpZW5sb3JiZXIuY29tL2hhbmRsaW5nLWFwaS1yZXF1ZXN0LX=
+JhY2UtY29uZGl0aW9ucy1pbi1yZWFjdA=3D=3D
+) to learn about it and how to use them carefully.
+
+=E2=80=8B
+
+=E2=9A=B0=EF=B8=8F Is React Context dead?
+
+Are developers or companies still using React Context? Is it
+worth learning in 2024? Is it even a valuable feature? So many
+questions=E2=80=A6 to which this blog post (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/m2h7h6u8=
+zn5plrhl/aHR0cHM6Ly93d3cuc21hbGxyZWNpcGVzZm9yZGlzYXN0ZXIuY29tL3Bvc3RzL29uLW=
+NvbnRleHQ=3D
+) is an answer. Find it yourself
+
+=E2=80=8B
+
+=F0=9F=AA=A8 The Relative Absolute Stack trap of CSS
+
+Be honest, how many of you still struggle with absolute and
+relative positioning? Or stacking in CSS? We=E2=80=99ve all fallen into
+this stacking trap at some point, but luckily, there=E2=80=99s a reactive
+solution to avoid it. Learn how to escape the CSS trap by
+creating React portals like a PRO. (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/dphehmu0=
+n76gxzfl/aHR0cHM6Ly93d3cuZGV2ZWxvcGVyd2F5LmNvbS9wb3N0cy9wb3NpdGlvbmluZy1hbm=
+QtcG9ydGFscy1pbi1yZWFjdA=3D=3D
+)=E2=80=8B
+
+=E2=80=8B
+
+=F0=9F=8C=B3 How Deep Is Your DOM
+
+Did you know that an optimal DOM should have around 1500 nodes in
+total and a maximum depth of 32 nodes? A larger DOM size can
+increase memory usage and affect user experience, especially on
+lower-end devices. If you want to avoid this, know How Deep your
+DOM (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/e0hph0u0=
+onvgzpt7/aHR0cHM6Ly9mcm9udGVuZGF0c2NhbGUuY29tL2Jsb2cvaG93LWRlZXAtaXMteW91ci=
+1kb20v
+) is.
+
+A sneak peek into JSM
+---------------------
+
+=E2=9D=A4=EF=B8=8F=E2=80=8D=F0=9F=94=A5 Your Blueprint for Becoming a Full =
+Stack Developer
+
+If you=E2=80=99re searching for portfolio projects to help you become a
+modern full-stack developer, this video is for JUST you (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/7qh7h2uo=
+54l7e6i9/aHR0cHM6Ly95b3V0dS5iZS9Ed2J3dVlZaUJUaw=3D=3D
+). It teaches you how to create real-world, problem-solving
+applications from start to finish in ONLY 12 hours.
+
+=E2=80=8B
+
+=F0=9F=AB=B6 You are Our Priority
+
+Almost every question on our private Discord channel has been
+answered properly and on time, and we take pride in sharing this
+with you. We have always got your back. Be part of our community
+(
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/owhkhwur=
+d89venhq/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby8=3D
+) and find your answers.
+
+=E2=80=8B
+If You Know You Know =F0=9F=98=86
+
+=E2=80=8B
+Until next time,
+Adrian from jsmastery.pro (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/owhkhwur=
+d89venhq/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby8=3D
+)=E2=80=8B
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/z2hgh7u3=
+xd6vzruz/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5
+) =E2=80=8B (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/p8hehquz=
+o760elbr/aHR0cHM6Ly90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/x0hph3uw=
+0726m7cg/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bWFzdGVyeS8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/6qhehou7=
+e2rg4pf9/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcn=
+kv
+) =E2=80=8B (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/kkhmh2ul=
+v9wqplbk/aHR0cHM6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D
+)
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3
+)=E2=80=8B
+--4943073a6a5dc26353e98282cb1d40a15c3e7c238892e2273233f2603917
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen { .email * { word-break: break-word; } }
+@media screen and (max-width: 384px) { .mail-message-content { width: 414px=
+ !important; } }
+@media only screen and (max-width:600px) {
+        .ck-padding-left-none {
+          padding-left: 0px !important;
+        }
+        .ck-padding-right-none {
+          padding-right: 0px !important;
+        }
+        .ck-padding-left-mobile-friendly {
+          padding-left: 18px !important;
+        }
+        .ck-padding-right-mobile-friendly {
+          padding-right: 18px !important;
+        }
+    }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><table c=
+ellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#ffffff" style=3D"border-coll=
+apse:separate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;wid=
+th:100%;margin:0 auto;background-color:#ffffff"><tbody><tr><td style=3D"mso=
+-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 5px 0px 5px"><div class=3D"ck-inner-section ck=
+-padding-left-mobile-friendly ck-padding-right-mobile-friendly" style=3D"pa=
+dding:0px 5px 0px 5px"><div style=3D"margin-left:auto;margin-right:auto;max=
+-width:640px">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:800px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/gWJmN92FyV97FAL7ZGBCRf/email" width=3D"800" he=
+ight=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;lin=
+e-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:non=
+e;-ms-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4=
+px;width:800px;height:auto;object-fit:contain"></div></figure></td></tr></t=
+body></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Hello =F0=9F=91=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">It=E2=80=99s Olympic season all around the world! Are you watching th=
+e games too? Which sport and athlete are you cheering for? Reply to this em=
+ail and let me know =F0=9F=98=81</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:28px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D""><strong>What=E2=80=99s new</str=
+ong></h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=92=95 <strong>Parallel Requests Aren=E2=80=99t What You Think<=
+/strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">You might think you understand how Parallel Requests work, but you co=
+uld be creating race conditions. The theory of PR is a great deception. <a =
+href=3D"https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/=
+l2heh6u37k29dptg/aHR0cHM6Ly9zZWJhc3RpZW5sb3JiZXIuY29tL2hhbmRsaW5nLWFwaS1yZX=
+F1ZXN0LXJhY2UtY29uZGl0aW9ucy1pbi1yZWFjdA=3D=3D" target=3D"_blank" rel=3D"no=
+opener noreferrer" style=3D"color:#0F82F0" url-id=3D"1658434126">Read this =
+article</a> to learn about it and how to use them carefully.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=9A=B0=EF=B8=8F <strong>Is React Context dead?</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Are developers or companies still using React Context? Is it worth le=
+arning in 2024? Is it even a valuable feature? So many questions=E2=80=A6 t=
+o which <a href=3D"https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbm=
+hrqxwqqqf3/m2h7h6u8zn5plrhl/aHR0cHM6Ly93d3cuc21hbGxyZWNpcGVzZm9yZGlzYXN0ZXI=
+uY29tL3Bvc3RzL29uLWNvbnRleHQ=3D" target=3D"_blank" rel=3D"noopener noreferr=
+er" style=3D"color:#0F82F0" url-id=3D"1658434127">this blog post</a> is an =
+answer. Find it yourself</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=AA=A8 <strong>The Relative Absolute Stack trap of CSS</strong>=
+</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Be honest, how many of you still struggle with absolute and relative =
+positioning? Or stacking in CSS? We=E2=80=99ve all fallen into this stackin=
+g trap at some point, but luckily, there=E2=80=99s a reactive solution to a=
+void it. <a href=3D"https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pb=
+mhrqxwqqqf3/dphehmu0n76gxzfl/aHR0cHM6Ly93d3cuZGV2ZWxvcGVyd2F5LmNvbS9wb3N0cy=
+9wb3NpdGlvbmluZy1hbmQtcG9ydGFscy1pbi1yZWFjdA=3D=3D" target=3D"_blank" rel=
+=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1658434128">Lear=
+n how to escape the CSS trap by creating React portals like a PRO.</a>=E2=
+=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=8C=B3 How Deep Is Your DOM</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Did you know that an optimal DOM should have around 1500 nodes in tot=
+al and a maximum depth of 32 nodes? A larger DOM size can increase memory u=
+sage and affect user experience, especially on lower-end devices. If you wa=
+nt to avoid this, know <a href=3D"https://click.convertkit-mail2.com/mvu534=
+eo4qc5hg4g39pbmhrqxwqqqf3/e0hph0u0onvgzpt7/aHR0cHM6Ly9mcm9udGVuZGF0c2NhbGUu=
+Y29tL2Jsb2cvaG93LWRlZXAtaXMteW91ci1kb20v" target=3D"_blank" rel=3D"noopener=
+ noreferrer" style=3D"color:#0F82F0" url-id=3D"1658434129">How Deep your DO=
+M</a> is.</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:28px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D""><strong>A sneak peek into JSM</=
+strong></h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=9D=A4=EF=B8=8F=E2=80=8D=F0=9F=94=A5 Your Blueprint for Be=
+coming a Full Stack Developer</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">If you=E2=80=99re searching for portfolio projects to help you become=
+ a modern full-stack developer, <a href=3D"https://click.convertkit-mail2.c=
+om/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/7qh7h2uo54l7e6i9/aHR0cHM6Ly95b3V0dS5iZS9=
+Ed2J3dVlZaUJUaw=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#0F82F0" url-id=3D"1658434130">this video is for <strong>JUST</st=
+rong> you</a>. It teaches you how to create real-world, problem-solving app=
+lications from start to finish in <strong>ONLY 12</strong> hours.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=AB=B6 <strong>You are Our Priority</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Almost every question on our private Discord channel has been answere=
+d properly and on time, and we take pride in sharing this with you. We have=
+ always got your back. <a href=3D"https://click.convertkit-mail2.com/mvu534=
+eo4qc5hg4g39pbmhrqxwqqqf3/owhkhwurd89venhq/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnBy=
+by8=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F=
+0" url-id=3D"1658434131">Be part of our community</a> and find your answers=
+.</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:800px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/im8AtsbQsLU38cUWqkWA1C" width=3D"800" height=
+=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;line-he=
+ight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-m=
+s-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4px;w=
+idth:800px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">If You Know You Know =F0=9F=98=86</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:800px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/8k4qmWGFHxNRdLzxWmXfft" width=3D"800" height=
+=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;line-he=
+ight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-m=
+s-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4px;w=
+idth:800px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Until next time,<br>Adrian from <a href=3D"https://click.convertkit-m=
+ail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/owhkhwurd89venhq/aHR0cHM6Ly93d3cua=
+nNtYXN0ZXJ5LnByby8=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#0F82F0" url-id=3D"1658434131">jsmastery.pro</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 0px 0px 0px"><div class=3D"ck-inner-section ck=
+-padding-left-none ck-padding-right-none" style=3D"padding:0px 0px 0px 0px"=
+><div style=3D"margin-left:auto;margin-right:auto;max-width:640px">
+<div style=3D"text-align:left;margin-top:16px;margin-bottom:16px">
+<a href=3D"https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqq=
+f3/z2hgh7u3xd6vzruz/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ=
+5" style=3D"display:inline-block;padding-right:8px;border:none;text-decorat=
+ion:none" url-id=3D"1658434132"><img src=3D"https://functions-js.convertkit=
+.com/icons?icon=3Dyoutube&amp;foreground=3Dffffff&amp;background=3Dcc0000&a=
+mp;shape=3Dcircle&amp;v=3D3" alt=3D"youtube" width=3D"32" height=3D"32" sty=
+le=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-web=
+kit-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubi=
+c;max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"=
+><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.conve=
+rtkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/p8hehquzo760elbr/aHR0cHM6Ly=
+90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D" style=3D"display:inline-block;padding=
+-right:8px;border:none;text-decoration:none" url-id=3D"1658434133"><img src=
+=3D"https://functions-js.convertkit.com/icons?icon=3Dx-twitter&amp;foregrou=
+nd=3Dffffff&amp;background=3D000000&amp;shape=3Dcircle&amp;v=3D3" alt=3D"x-=
+twitter" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:=
+auto;line-height:100%;outline:none;-webkit-text-decoration:none;text-decora=
+tion:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width=
+:32px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=
+=80=8B</a><a href=3D"https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39p=
+bmhrqxwqqqf3/x0hph3uw0726m7cg/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2Nya=
+XB0bWFzdGVyeS8=3D" style=3D"display:inline-block;padding-right:8px;border:n=
+one;text-decoration:none" url-id=3D"1658434134"><img src=3D"https://functio=
+ns-js.convertkit.com/icons?icon=3Dinstagram&amp;foreground=3Dffffff&amp;bac=
+kground=3De1306c&amp;shape=3Dcircle&amp;v=3D3" alt=3D"instagram" width=3D"3=
+2" height=3D"32" style=3D"display:block;border:0;height:auto;line-height:10=
+0%;outline:none;-webkit-text-decoration:none;text-decoration:none;-ms-inter=
+polation-mode:bicubic;max-width:100%;border:0 none;width:32px;height:32px;d=
+isplay:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D=
+"https://click.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/6qhehou=
+7e2rg4pf9/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlc=
+nkv" style=3D"display:inline-block;padding-right:8px;border:none;text-decor=
+ation:none" url-id=3D"1658434135"><img src=3D"https://functions-js.convertk=
+it.com/icons?icon=3Dlinkedin&amp;foreground=3Dffffff&amp;background=3D0077b=
+5&amp;shape=3Dcircle&amp;v=3D3" alt=3D"linkedin" width=3D"32" height=3D"32"=
+ style=3D"display:block;border:0;height:auto;line-height:100%;outline:none;=
+-webkit-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bi=
+cubic;max-width:100%;border:0 none;width:32px;height:32px;display:inline-bl=
+ock"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.c=
+onvertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3/kkhmh2ulv9wqplbk/aHR0cH=
+M6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D" style=3D"display:inline-blo=
+ck;padding-right:8px;border:none;text-decoration:none" url-id=3D"1658434136=
+"><img src=3D"https://functions-js.convertkit.com/icons?icon=3Ddiscord&amp;=
+foreground=3Dffffff&amp;background=3D7289da&amp;shape=3Dcircle&amp;v=3D3" a=
+lt=3D"discord" width=3D"32" height=3D"32" style=3D"display:block;border:0;h=
+eight:auto;line-height:100%;outline:none;-webkit-text-decoration:none;text-=
+decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none=
+;width:32px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-=
+->=E2=80=8B</a>
+</div>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none" class=3D"">=E2=80=8B<a href=3D"https=
+://unsubscribe.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqqf3" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#656565">Unsubscribe=
+</a> =C2=B7 <a href=3D"https://preferences.convertkit-mail2.com/mvu534eo4qc=
+5hg4g39pbmhrqxwqqqf3" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#656565">Preferences</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</td></tr></tbody></table></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/mvu534eo4qc5hg4g39pbmhrqxwqqq=
+f3" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line=
+-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:none=
+;-ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--4943073a6a5dc26353e98282cb1d40a15c3e7c238892e2273233f2603917--

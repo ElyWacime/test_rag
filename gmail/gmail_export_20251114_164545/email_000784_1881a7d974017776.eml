@@ -1,0 +1,752 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp5921048pxw;
+        Sun, 14 May 2023 06:40:18 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7DfT5HAyW+sLcfJmTqHlL1pdKbVf6couytlpkPQMByQA6v+7Nk03YAlYR5NpvYtILQwP1Q
+X-Received: by 2002:adf:f08b:0:b0:307:aec0:4296 with SMTP id n11-20020adff08b000000b00307aec04296mr11706095wro.12.1684071618429;
+        Sun, 14 May 2023 06:40:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684071618; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PY8XTwlO/136bknh6EoHXUAdl/J1DUM7l46PuJP7eUmUBeU7Au5sWydQGSkl57WFlv
+         B3bhozt9iTI5UUseQBYM2SPi3Za87mZF02X1/wFrhulOidGivfnx5Fe62d6MPTd6BzhW
+         19p57scFJtQf2OCErl8wiMBscBE2ve9rEZogZhiwpqVHbD0C0cFQti3TttCZZTCHcnxM
+         ldqsRwMTYiDa7xPQ+PrZ0M9CpDUVNH1AGwCdB+1kMeuI9g/gdQbRaVH9GarcXhB3XiKn
+         sBQJwJEcqkxKArsrLReXh3dhOGocFuTKqo3MVL8SsrMlP3dUSUJ2VS2MAdSFCtrsORrx
+         M/jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:list-unsubscribe:to:from:subject:mime-version:date
+         :dkim-signature:dkim-signature;
+        bh=Qe1x43RyP0PmbTSjY7fU76siiQfXw0ww2+FT+2eKFF8=;
+        b=CvCfElnBsfhL2lmRJGiuTV9V056DXBEBypnQMYROR8X1fW6KNrqVZWICVUa9TeinCA
+         CYmIkN9vgQKljtKNRT2P+kXsxlN6e5Yv5GGa9+R0DoqiIADSZ/WLBcB17/Wbemc+2uSx
+         6guyp30jzVwRIwVpWR5tYHpWJB958NW4RdmX4XyNbfDCV+nuzlTA6+cullxc5DWbqinT
+         1G0zuwqjCU4tT1b0Dc5MMmNfz2dvn0AN8yScOHhIKGUnkB8rottjkFqXowpI+In4S+NB
+         MWoMd4DlE1EEHPJ5T1ctGBWN85gbs3dxdL2NnLx4wuY2Hf7bcH3ARAnXQWiwlAp/Gi29
+         2fSg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cioeu67035.moralis.io header.s=email header.b=SM8r9OaK;
+       dkim=pass header.i=@eu.mailgun.org header.s=krs2 header.b=SKDuo3eX;
+       spf=pass (google.com: domain of postmaster@cioeu67035.moralis.io designates 185.250.239.1 as permitted sender) smtp.mailfrom=postmaster@cioeu67035.moralis.io;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=moralis.io
+Return-Path: <postmaster@cioeu67035.moralis.io>
+Received: from m239-1.eu.mailgun.net (m239-1.eu.mailgun.net. [185.250.239.1])
+        by mx.google.com with UTF8SMTPS id j5-20020adfea45000000b003062f97c595si12507530wrn.407.2023.05.14.06.40.18
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 14 May 2023 06:40:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of postmaster@cioeu67035.moralis.io designates 185.250.239.1 as permitted sender) client-ip=185.250.239.1;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cioeu67035.moralis.io header.s=email header.b=SM8r9OaK;
+       dkim=pass header.i=@eu.mailgun.org header.s=krs2 header.b=SKDuo3eX;
+       spf=pass (google.com: domain of postmaster@cioeu67035.moralis.io designates 185.250.239.1 as permitted sender) smtp.mailfrom=postmaster@cioeu67035.moralis.io;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=moralis.io
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=cioeu67035.moralis.io;
+ q=dns/txt; s=email; t=1684071618; x=1684078818; h=Message-Id:
+ List-Unsubscribe: To: To: From: From: Subject: Subject: Content-Type:
+ Mime-Version: Date: X-Feedback-Id: Sender;
+ bh=Qe1x43RyP0PmbTSjY7fU76siiQfXw0ww2+FT+2eKFF8=;
+ b=SM8r9OaKrstak0APuj9/GkgF6bPIBt3qU0H0VLED6mQL93NPnzcJ75RwijGoNHrk4+wkQUzIQUqUAyK2c1GcmkMM/9zv/qa4wOsbogqdhpXep+4Fkf2OLIchGmMdKf5KzOKSE2fIJid8MIACcqS9xMZZd4EiDM3Se+qs9RNXC9Q=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=eu.mailgun.org;
+ q=dns/txt; s=krs2; t=1684071618; x=1684078818; h=Message-Id:
+ List-Unsubscribe: To: To: From: From: Subject: Subject: Content-Type:
+ Mime-Version: Date: X-Feedback-Id: Sender;
+ bh=Qe1x43RyP0PmbTSjY7fU76siiQfXw0ww2+FT+2eKFF8=;
+ b=SKDuo3eXlaJ4Hq5Ex2L4w29GeqhKCCoEBqc6Ng51m+M2b1gpFdrSUxR4ufR8aYS+vYRWqwzhWcLDTAMu0tbTRR14koRuOmAIdGdciXZfkOnllRiKrU4vhaQ2eXXQsL2CNkbn4TSLNRwpWsIGT3eM2jwtZlbnDrHvK36GVTxZiTU=
+X-Feedback-Id: postmaster@cioeu67035.moralis.io::60ddb405c9afd2d94f50ad2b:mailgun
+X-Mailgun-Sending-Ip: 185.250.239.1
+X-Mailgun-Sid: WyJlZmQwNiIsImVseS51YnVudHUwQGdtYWlsLmNvbSIsImE2MDAwIl0=
+Received: from <unknown> (<unknown> []) by c04862b85f1c with HTTP id
+ 6460e4c2ed24c453b357e713; Sun, 14 May 2023 13:40:18 GMT
+Date: Sun, 14 May 2023 13:40:18 +0000
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="5e4c4c7e12c9b43dcbc593cab337d54a8fc4224eab4b9f533a5037fd1b02"
+Subject: =?UTF-8?q?=F0=9F=92=9A_Welcome_to_Moralis!?=
+From: Moralis.io <hello@moralis.io>
+To: ely.ubuntu0@gmail.com
+X-Mailgun-Track-Opens: false
+X-Mailgun-Dkim: true
+X-Mailgun-Native-Send: true
+X-Mailgun-Track-Clicks: false
+List-Unsubscribe: <mailto:32.MRTVGWDZM5MUCQKMIQYF62KDOY4VANDHIFMWOYLGLJGXIR2WL5NDIR2XOVXXCZBUGZIT2PI=@unsubscribe-eu.customer.io>,
+ <http://customeremail.moralis.io/unsubscribe/dgSXygYAALD0_iCv9P4gAYgafZMtGV_Z4GWuoqd46Q==>
+X-Mailer: Customer.io (dgSXygYAALD0_iCv9P4gAYgafZMtGV_Z4GWuoqd46Q==;
+ +https://whatis.customeriomail.com)
+X-Report-Abuse-To: badactor@customer.io
+X-Mailgun-Variables: {"email_id": "dgSXygYAALD0_iCv9P4gAYgafZMtGV_Z4GWuoqd46Q=="}
+Message-Id: <20230514134018.4b003ea4b3572bf4@cioeu67035.moralis.io>
+
+--5e4c4c7e12c9b43dcbc593cab337d54a8fc4224eab4b9f533a5037fd1b02
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+View in
+browser ( http://track.customer.io/deliveries/dgSXygYAALD0_iCv9P4gAYgafZMtG=
+V_Z4GWuoqd46Q=3D=3D )=C2=A0
+( https://moralis.io/?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaig=
+n&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm_source=
+=3Dcustomer.io )
+
+*******************
+Welcome to Moralis!
+*******************
+
+Let=E2=80=99s Get Started
+
+=C2=A0
+
+Log in to your Moralis Admin Panel and start building your first dapp!=C2=
+=A0
+
+Log In ( https://admin.moralis.io/login?utm_campaign=3DEmail+2.0+Starter+Pl=
+an+Welcome+Campaign&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_=
+action&utm_source=3Dcustomer.io )
+For extra guidance, check out our API references ( https://docs.moralis.io/=
+reference/getting-the-api-key?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome=
++Campaign&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm=
+_source=3Dcustomer.io ) and tutorials ( https://docs.moralis.io/docs?utm_ca=
+mpaign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&utm_content=3DWelcome+to+M=
+oralis%21&utm_medium=3Demail_action&utm_source=3Dcustomer.io ).=C2=A0
+
+=C2=A0
+
+**************************
+Connect with the Community
+**************************
+
+For weekly updates on what we're building, who is building with us, and whe=
+re you can find us at events near you (and more) - join Moralis Magazine ( =
+http://moralis.io/joindiscord?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome=
++Campaign&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm=
+_source=3Dcustomer.io )!
+
+=C2=A0
+
+Make sure to follow us on=C2=A0Twitter ( http://customeremail.moralis.io/e/=
+c/eyJlbWFpbF9pZCI6IlJKZktCZ0FBQVlQR1pSZXdON21PVS1BYUcybk00dz09IiwiaHJlZiI6I=
+mh0dHBzOi8vdHdpdHRlci5jb20vTW9yYWxpc1dlYjMifQ/b6e9f3dce5bb2bd06c7a599ed99c9=
+8a4beb0dd61fd61e7999a2147b55a56f552?utm_campaign=3DEmail+2.0+Starter+Plan+W=
+elcome+Campaign&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_acti=
+on&utm_source=3Dcustomer.io )=C2=A0and=C2=A0LinkedIn ( http://customeremail=
+=2Emoralis.io/e/c/eyJlbWFpbF9pZCI6IlJKZ=
+ktCZ0FBQVlQR1pSZXdON21PVS1BYUcybk00dz0=
+9IiwiaHJlZiI6Imh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9jb21wYW55L21vcmFsaXN3ZWIzLy=
+J9/8e75a2389b42db6565b35f05f53b9d5b88cd628832bc91ad7cb5073d578f5296?utm_cam=
+paign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&utm_content=3DWelcome+to+Mo=
+ralis%21&utm_medium=3Demail_action&utm_source=3Dcustomer.io ) for all the l=
+atest news and announcements too!
+
+Join the Moralis Community ( moralis.io/joindiscord?utm_campaign=3DEmail+2.=
+0+Starter+Plan+Welcome+Campaign&utm_content=3DWelcome+to+Moralis%21&utm_med=
+ium=3Demail_action&utm_source=3Dcustomer.io )
+
+********************
+24/7 Project Support
+********************
+
+Get the help and resources you need to make your project a success from the=
+ very start.
+
+=C2=A0
+
+Read our=C2=A0in-depth documentation ( http://customeremail.moralis.io/e/c/=
+eyJlbWFpbF9pZCI6IlJKZktCZ0FBQVlQR2dzTzVTWkZaSlpmcVFDNlJGUT09IiwiaHJlZiI6Imh=
+0dHBzOi8vZG9jcy5tb3JhbGlzLmlvLyJ9/7a6d95bdfdb1ad2c99c097811d09c937edc22cd61=
+ec266cfaf3b56c70e41c761?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campa=
+ign&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm_sourc=
+e=3Dcustomer.io )=C2=A0containing everything you need to get building, such=
+ as API references and how-to tutorials.
+
+Subscribe to the Moralis Web3 changelog ( https://github.com/MoralisWeb3/ch=
+angelog?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&utm_content=
+=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm_source=3Dcustomer.io=
+ ) for updates on important or breaking changes
+
+=C2=A0
+
+Head to the=C2=A0Moralis forum ( http://customeremail.moralis.io/e/c/eyJlbW=
+FpbF9pZCI6IlJKZktCZ0FBQVlQR1pSZXdON21PVS1BYUcybk00dz09IiwiaHJlZiI6Imh0dHBzO=
+i8vZm9ydW0ubW9yYWxpcy5pby8ifQ/36bbbc5aaf2353ff2e279d859b2760523d6b02274f94d=
+657d8c627e8aef3e616?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&=
+utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm_source=3D=
+customer.io )=C2=A0and=C2=A0Moralis Discord ( http://moralis.io/joindiscord=
+?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&utm_content=3DWelco=
+me+to+Moralis%21&utm_medium=3Demail_action&utm_source=3Dcustomer.io )=C2=A0=
+for technical discussions and help from
+fellow developers and our community engineers.
+
+Contact our 24/7 global support team at=C2=A0hello@moralis.io ( hello@moral=
+is.io?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&utm_content=3D=
+Welcome+to+Moralis%21&utm_medium=3Demail_action&utm_source=3Dcustomer.io )=
+=C2=A0for any additional help and support you need to launch your project.
+
+=F0=9F=92=9ATeam Moralis
+
+( https://moralis.io/?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaig=
+n&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm_source=
+=3Dcustomer.io )Twitter ( https://twitter.com/MoralisWeb3?utm_campaign=3DEm=
+ail+2.0+Starter+Plan+Welcome+Campaign&utm_content=3DWelcome+to+Moralis%21&u=
+tm_medium=3Demail_action&utm_source=3Dcustomer.io )
+Discord ( https://moralis.io/joindiscord?utm_campaign=3DEmail+2.0+Starter+P=
+lan+Welcome+Campaign&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail=
+_action&utm_source=3Dcustomer.io )YouTube ( https://www.youtube.com/channel=
+/UCgWS9Q3P5AxCWyQLT2kQhBw?utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Cam=
+paign&utm_content=3DWelcome+to+Moralis%21&utm_medium=3Demail_action&utm_sou=
+rce=3Dcustomer.io )LinkedIn ( https://www.linkedin.com/company/moralisweb3?=
+utm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&utm_content=3DWelcom=
+e+to+Moralis%21&utm_medium=3Demail_action&utm_source=3Dcustomer.io )
+Unsubscribe ( http://track.customer.io/unsubscribe/dgSXygYAALD0_iCv9P4gAYga=
+fZMtGV_Z4GWuoqd46Q=3D=3D )
+--5e4c4c7e12c9b43dcbc593cab337d54a8fc4224eab4b9f533a5037fd1b02
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html><html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"u=
+rn:schemas-microsoft-com:office:office" lang=3D"en"><head><title></title><m=
+eta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"/><me=
+ta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1"/><!=
+--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerI=
+nch><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endif]--><style>
+*{box-sizing:border-box}body{margin:0;padding:0}a[x-apple-data-detectors]{c=
+olor:inherit!important;text-decoration:inherit!important}#MessageViewBody a=
+{color:inherit;text-decoration:none}p{line-height:inherit}.desktop_hide,.de=
+sktop_hide table{mso-hide:all;display:none;max-height:0;overflow:hidden}@me=
+dia (max-width:600px){.social_block.desktop_hide .social-table{display:inli=
+ne-block!important}.image_block img.big,.row-content{width:100%!important}.=
+mobile_hide{display:none}.stack .column{width:100%;display:block}.mobile_hi=
+de{min-height:0;max-height:0;max-width:0;overflow:hidden;font-size:0}.deskt=
+op_hide,.desktop_hide table{display:table!important;max-height:none!importa=
+nt}.reverse{display:table;width:100%}.reverse .column.first{display:table-f=
+ooter-group!important}.reverse .column.last{display:table-header-group!impo=
+rtant}.row-8 td.column.first>table,.row-8 td.column.last>table{padding-left=
+:30px;padding-right:30px}.row-8 td.column.first .border,.row-8 td.column.la=
+st
+=2Eborder{border-top:0;border-right:0;b=
+order-bottom:0;border-left:0}.row-4 .c=
+olumn-2 .block-2.image_block td.pad{padding:0 30px 15px 0!important}.row-10=
+ .column-1 .block-1.text_block td.pad,.row-9 .column-2 .block-2.text_block =
+td.pad{padding:0!important}.row-9 .column-1{padding:5px 30px!important}}
+</style></head><body style=3D"background-color:#f2f6ff;margin:0;padding:0;-=
+webkit-text-size-adjust:none;text-size-adjust:none"><div style=3D"display: =
+none; max-height: 0px; overflow: hidden; mso-hide:all;">Here=E2=80=99s how =
+to get started</div><div style=3D"display: none; max-height: 0px; overflow:=
+ hidden; mso-hide:all;">=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+</div><table class=3D"nl-container" width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;=
+mso-table-rspace:0;background-color:#f2f6ff"><tbody><tr><td><table class=3D=
+"row row-1" align=3D"center" width=3D"100%" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-tab=
+le-rspace:0"><tbody><tr><td><table class=3D"row-content stack" align=3D"cen=
+ter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"mso-table-lspace:0;mso-table-rspace:0;color:#000;width:580px" wid=
+th=3D"580"><tbody><tr><td class=3D"column column-1" width=3D"100%" style=3D=
+"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;vert=
+ical-align:top;padding-top:5px;padding-bottom:5px;border-top:0;border-right=
+:0;border-bottom:0;border-left:0"><table class=3D"text_block block-1" width=
+=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"present=
+ation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word=
+"><tbody><tr><td class=3D"pad"><div style=3D"font-family:sans-serif"><div c=
+lass=3D"" style=3D"font-size:14px;text-align:center;mso-line-height-alt:16.=
+8px;color:#041836;line-height:1.2;font-family:Arial,Helvetica Neue,Helvetic=
+a,sans-serif"><a href=3D"http://customeremail.moralis.io/deliveries/dgSXygY=
+AALD0_iCv9P4gAYgafZMtGV_Z4GWuoqd46Q=3D=3D" target=3D"_blank" rel=3D"noopene=
+r" style=3D"color: #2e7daf;"></a><a href=3D"http://customeremail.moralis.io=
+/deliveries/dgSXygYAALD0_iCv9P4gAYgafZMtGV_Z4GWuoqd46Q=3D=3D" target=3D"_bl=
+ank" rel=3D"noopener" style=3D"color: #2e7daf;"></a><a href=3D"http://custo=
+meremail.moralis.io/deliveries/dgSXygYAALD0_iCv9P4gAYgafZMtGV_Z4GWuoqd46Q=
+=3D=3D" target=3D"_blank" rel=3D"noopener" style=3D"color: #2e7daf;">View i=
+n
+browser</a>=C2=A0</div></div></td></tr></tbody></table></td></tr></tbody></=
+table></td></tr>
+</tbody></table><table class=3D"row row-2" align=3D"center" width=3D"100%" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" styl=
+e=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"=
+row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspac=
+e:0;background-color:#fff;color:#000;width:580px" width=3D"580"><tbody><tr>=
+<td class=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;ms=
+o-table-rspace:0;font-weight:400;text-align:left;vertical-align:top;padding=
+-top:15px;padding-bottom:0;border-top:0;border-right:0;border-bottom:0;bord=
+er-left:0"><table class=3D"image_block block-1" width=3D"100%" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-tab=
+le-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"paddi=
+ng-bottom:15px;padding-top:15px;width:100%;padding-right:0;padding-left:0">=
+<div class=3D"alignment" align=3D"center" style=3D"line-height:10px"><a hre=
+f=3D"http://customeremail.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF=
+9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHBzOi8vbW9yYWxpc=
+y5pby8_dXRtX2NhbXBhaWduPUVtYWlsKzIuMCtTdGFydGVyK1BsYW4rV2VsY29tZStDYW1wYWln=
+blx1MDAyNnV0bV9jb250ZW50PVdlbGNvbWUrdG8rTW9yYWxpcyUyMVx1MDAyNnV0bV9tZWRpdW0=
+9ZW1haWxfYWN0aW9uXHUwMDI2dXRtX3NvdXJjZT1jdXN0b21lci5pbyIsImludGVybmFsIjoiOT=
+djYTA2ODIxMmNmM2ZiMGY0ZmUyMCIsImxpbmtfaWQiOjI3fQ/005a6e38ea0714c963d1fd5533=
+edfef72edd221ba2cc787b2d3a033531b4bf70" target=3D"_blank" style=3D"outline:=
+none" tabindex=3D"-1"><img src=3D"https://userimg-bee-eu.customeriomail.com=
+/images/client-env-107799/moralis-logo--01GE26BZ3NKBM91H4ZH4ANC1JH.png" sty=
+le=3D"display:block;height:auto;border:0;width:232px;max-width:100%" width=
+=3D"232"/></a></div></td></tr></tbody></table></td></tr></tbody></table></t=
+d></tr></tbody></table><table class=3D"row row-3" align=3D"center" width=3D=
+"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table cl=
+ass=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-tabl=
+e-rspace:0;background-color:#fff;border-radius:0;color:#000;width:580px" wi=
+dth=3D"580"><tbody><tr><td class=3D"column column-1" width=3D"100%" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;v=
+ertical-align:top;padding-top:5px;padding-bottom:15px;border-top:0;border-r=
+ight:0;border-bottom:0;border-left:0"><table class=3D"heading_block block-1=
+" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td=
+ class=3D"pad" style=3D"padding-bottom:5px;padding-left:30px;padding-right:=
+40px;padding-top:15px;text-align:center;width:100%"><h1 style=3D"margin:0;c=
+olor:#041836;direction:ltr;font-family:Arial,Helvetica Neue,Helvetica,sans-=
+serif;font-size:26px;font-weight:400;letter-spacing:normal;line-height:120%=
+;text-align:center;margin-top:0;margin-bottom:0"><strong>Welcome to Moralis=
+!</strong></h1></td></tr></tbody></table></td></tr></tbody></table></td></t=
+r></tbody></table><table class=3D"row row-4" align=3D"center" width=3D"100%=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr>
+<td><table class=3D"row-content stack" align=3D"center" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspa=
+ce:0;mso-table-rspace:0;background-color:#fff;border-radius:0;color:#000;wi=
+dth:580px" width=3D"580"><tbody><tr><td class=3D"column column-1" width=3D"=
+50%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-al=
+ign:left;padding-left:30px;vertical-align:top;border-top:0;border-right:0;b=
+order-bottom:0;border-left:0"><table class=3D"text_block block-2" width=3D"=
+100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tb=
+ody><tr><td class=3D"pad" style=3D"padding-top:15px"><div style=3D"font-fam=
+ily:sans-serif"><div class=3D"" style=3D"font-size:12px;mso-line-height-alt=
+:14.399999999999999px;color:#041836;line-height:1.2;font-family:Arial,Helve=
+tica Neue,Helvetica,sans-serif"><p style=3D"margin:0;font-size:14px;mso-lin=
+e-height-alt:16.8px">
+<span style=3D"font-size:16px;"><strong>Let=E2=80=99s Get Started</strong><=
+/span></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:14.399999=
+999999999px">=C2=A0</p><p style=3D"margin:0;font-size:14px;mso-line-height-=
+alt:16.8px"><span style=3D"font-size:14px;">Log in to your Moralis Admin Pa=
+nel and start building your first dapp!=C2=A0</span></p></div></div></td></=
+tr></tbody></table><table class=3D"button_block block-3" width=3D"100%" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" sty=
+le=3D"padding-bottom:15px;padding-top:15px;text-align:left"><div class=3D"a=
+lignment" align=3D"left">
+<!--[if mso]><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"http://customeremail.mor=
+alis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEd=
+XdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHBzOi8vYWRtaW4ubW9yYWxpcy5pby9sb2dpbj91dG1fY2=
+FtcGFpZ249RW1haWwrMi4wK1N0YXJ0ZXIrUGxhbitXZWxjb21lK0NhbXBhaWduXHUwMDI2dXRtX=
+2NvbnRlbnQ9V2VsY29tZSt0bytNb3JhbGlzJTIxXHUwMDI2dXRtX21lZGl1bT1lbWFpbF9hY3Rp=
+b25cdTAwMjZ1dG1fc291cmNlPWN1c3RvbWVyLmlvIiwiaW50ZXJuYWwiOiI5N2NhMDY4MjEyY2Y=
+zZmIwZjRmZTIwIiwibGlua19pZCI6NDMxMH0/476b3207efdbbadc58be5c73b1645818bbc29e=
+66501ba1ddf420d37668ba94c5" style=3D"height:32px;width:260px;v-text-anchor:=
+middle;" arcsize=3D"63%" stroke=3D"false" fillcolor=3D"#21bf96"><w:anchorlo=
+ck/><v:textbox inset=3D"0px,0px,0px,0px"><center style=3D"color:#ffffff; fo=
+nt-family:Arial, sans-serif; font-size:14px"><![endif]-->
+<a href=3D"http://customeremail.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lB=
+QUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHBzOi8vYWR=
+taW4ubW9yYWxpcy5pby9sb2dpbj91dG1fY2FtcGFpZ249RW1haWwrMi4wK1N0YXJ0ZXIrUGxhbi=
+tXZWxjb21lK0NhbXBhaWduXHUwMDI2dXRtX2NvbnRlbnQ9V2VsY29tZSt0bytNb3JhbGlzJTIxX=
+HUwMDI2dXRtX21lZGl1bT1lbWFpbF9hY3Rpb25cdTAwMjZ1dG1fc291cmNlPWN1c3RvbWVyLmlv=
+IiwiaW50ZXJuYWwiOiI5N2NhMDY4MjEyY2YzZmIwZjRmZTIwIiwibGlua19pZCI6NDMxMH0/476=
+b3207efdbbadc58be5c73b1645818bbc29e66501ba1ddf420d37668ba94c5" target=3D"_b=
+lank" style=3D"text-decoration:none;display:block;color:#ffffff;background-=
+color:#21bf96;border-radius:20px;width:100%;border-top:0px solid transparen=
+t;font-weight:400;border-right:0px solid transparent;border-bottom:0px soli=
+d transparent;border-left:0px solid transparent;padding-top:2px;padding-bot=
+tom:2px;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;text-align=
+:center;mso-border-alt:none;word-break:keep-all;"><span style=3D"padding-le=
+ft:20px;padding-right:20px;font-size:14px;display:inline-block;letter-spaci=
+ng:normal;"><span dir=3D"ltr" style=3D"word-break: break-word; line-height:=
+ 28px;">Log In</span></span></a>
+<!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div></td></tr=
+></tbody></table><table class=3D"text_block block-4" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td =
+class=3D"pad" style=3D"padding-bottom:15px"><div style=3D"font-family:sans-=
+serif"><div class=3D"" style=3D"font-size:14px;mso-line-height-alt:16.8px;c=
+olor:#041836;line-height:1.2;font-family:Arial,Helvetica Neue,Helvetica,san=
+s-serif"><p style=3D"margin:0;font-size:14px;mso-line-height-alt:16.8px"><s=
+pan style=3D"font-size:14px;">For extra guidance, check out our <a href=3D"=
+http://customeremail.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y=
+5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHBzOi8vZG9jcy5tb3JhbG=
+lzLmlvL3JlZmVyZW5jZS9nZXR0aW5nLXRoZS1hcGkta2V5P3V0bV9jYW1wYWlnbj1FbWFpbCsyL=
+jArU3RhcnRlcitQbGFuK1dlbGNvbWUrQ2FtcGFpZ25cdTAwMjZ1dG1fY29udGVudD1XZWxjb21l=
+K3RvK01vcmFsaXMlMjFcdTAwMjZ1dG1fbWVkaXVtPWVtYWlsX2FjdGlvblx1MDAyNnV0bV9zb3V=
+yY2U9Y3VzdG9tZXIuaW8iLCJpbnRlcm5hbCI6Ijk3Y2EwNjgyMTJjZjNmYjBmNGZlMjAiLCJsaW=
+5rX2lkIjozMTMxfQ/dde9a72abe42a589f098511c252e564de9e8b5f2b84c42e56021472a40=
+230099" style=3D"text-decoration: underline; color: #21bf96;">API reference=
+s</a> and <a href=3D"http://customeremail.moralis.io/e/c/eyJlbWFpbF9pZCI6Im=
+RnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0d=
+HBzOi8vZG9jcy5tb3JhbGlzLmlvL2RvY3M_dXRtX2NhbXBhaWduPUVtYWlsKzIuMCtTdGFydGVy=
+K1BsYW4rV2VsY29tZStDYW1wYWlnblx1MDAyNnV0bV9jb250ZW50PVdlbGNvbWUrdG8rTW9yYWx=
+pcyUyMVx1MDAyNnV0bV9tZWRpdW09ZW1haWxfYWN0aW9uXHUwMDI2dXRtX3NvdXJjZT1jdXN0b2=
+1lci5pbyIsImludGVybmFsIjoiOTdjYTA2ODIxMmNmM2ZiMGY0ZmUyMCIsImxpbmtfaWQiOjQzM=
+TF9/f8217656c6235c273896a39d04ec18ffd3f2c9f34109bd9ea3db468ca79334f8" style=
+=3D"text-decoration: underline; color: #21bf96;">tutorials</a>.=C2=A0</span=
+></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:16.8px">=C2=A0=
+</p></div></div></td>
+</tr></tbody></table></td><td class=3D"column column-2" width=3D"50%" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;v=
+ertical-align:top;border-top:0;border-right:0;border-bottom:0;border-left:0=
+"><table class=3D"image_block block-2" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace=
+:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"padding-right:=
+30px;padding-top:20px;width:100%;padding-left:0;padding-bottom:5px"><div cl=
+ass=3D"alignment" align=3D"center" style=3D"line-height:10px"><img src=3D"h=
+ttps://userimg-bee-eu.customeriomail.com/images/client-env-107799/nft-dapp-=
+2.png" style=3D"display:block;height:auto;border:0;width:189px;max-width:10=
+0%" width=3D"189"/></div></td></tr></tbody></table></td></tr></tbody></tabl=
+e></td></tr></tbody></table><table class=3D"row row-5" align=3D"center" wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><tab=
+le class=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso=
+-table-rspace:0;background-color:#fff;color:#000;width:580px" width=3D"580"=
+><tbody><tr><td class=3D"column column-1" width=3D"100%" style=3D"mso-table=
+-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;padding-left:3=
+0px;padding-right:30px;vertical-align:top;padding-top:0;padding-bottom:0;bo=
+rder-top:0;border-right:0;border-bottom:0;border-left:0"><table class=3D"he=
+ading_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspac=
+e:0"><tbody><tr><td class=3D"pad" style=3D"padding-bottom:5px;padding-left:=
+30px;padding-right:40px;padding-top:15px;text-align:center;width:100%"><h1 =
+style=3D"margin:0;color:#041836;direction:ltr;font-family:Arial,Helvetica N=
+eue,Helvetica,sans-serif;font-size:26px;font-weight:400;letter-spacing:norm=
+al;line-height:120%;text-align:center;margin-top:0;margin-bottom:0"><strong=
+>Connect with the Community </strong><strong><br/></strong></h1></td></tr><=
+/tbody></table><table class=3D"text_block block-2" width=3D"100%" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-=
+table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td cla=
+ss=3D"pad" style=3D"padding-bottom:15px;padding-top:10px"><div style=3D"fon=
+t-family:sans-serif"><div class=3D"" style=3D"font-size:12px;mso-line-heigh=
+t-alt:14.399999999999999px;color:#041836;line-height:1.2;font-family:Arial,=
+Helvetica Neue,Helvetica,sans-serif"><p style=3D"margin:0;font-size:14px;ms=
+o-line-height-alt:16.8px" aria-level=3D"1">
+<span style=3D"font-size:14px;">For weekly updates on what we&#39;re buildi=
+ng, who is building with us, and where you can find us at events near you (=
+and more) - join <a href=3D"http://customeremail.moralis.io/e/c/eyJlbWFpbF9=
+pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZi=
+I6Imh0dHA6Ly9tb3JhbGlzLmlvL2pvaW5kaXNjb3JkP3V0bV9jYW1wYWlnbj1FbWFpbCsyLjArU=
+3RhcnRlcitQbGFuK1dlbGNvbWUrQ2FtcGFpZ25cdTAwMjZ1dG1fY29udGVudD1XZWxjb21lK3Rv=
+K01vcmFsaXMlMjFcdTAwMjZ1dG1fbWVkaXVtPWVtYWlsX2FjdGlvblx1MDAyNnV0bV9zb3VyY2U=
+9Y3VzdG9tZXIuaW8iLCJpbnRlcm5hbCI6Ijk3Y2EwNjgyMTJjZjNmYjBmNGZlMjAiLCJsaW5rX2=
+lkIjoyNjg5fQ/a7f63f07ddc7d76629a3c32a173a62417a33aec7eb05be64cad8a15df3f64c=
+fe" style=3D"text-decoration: underline; color: #21bf96;">Moralis Magazine<=
+/a>! </span></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:14.=
+399999999999999px" aria-level=3D"1">=C2=A0</p><p style=3D"margin:0;font-siz=
+e:14px;mso-line-height-alt:16.8px" aria-level=3D"1">
+<span style=3D"font-size:14px;">Make sure to follow us on=C2=A0<a target=3D=
+"_blank" delay=3D"150" href=3D"http://customeremail.moralis.io/e/c/eyJlbWFp=
+bF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJ=
+lZiI6Imh0dHA6Ly9jdXN0b21lcmVtYWlsLm1vcmFsaXMuaW8vZS9jL2V5SmxiV0ZwYkY5cFpDST=
+ZJbEpLWmt0Q1owRkJRVmxRUjFwU1pYZE9OMjFQVlMxQllVY3liazAwZHowOUlpd2lhSEpsWmlJN=
+kltaDBkSEJ6T2k4dmRIZHBkSFJsY2k1amIyMHZUVzl5WVd4cGMxZGxZak1pZlEvYjZlOWYzZGNl=
+NWJiMmJkMDZjN2E1OTllZDk5Yzk4YTRiZWIwZGQ2MWZkNjFlNzk5OWEyMTQ3YjU1YTU2ZjU1Mj9=
+1dG1fY2FtcGFpZ249RW1haWwrMi4wK1N0YXJ0ZXIrUGxhbitXZWxjb21lK0NhbXBhaWduXHUwMD=
+I2dXRtX2NvbnRlbnQ9V2VsY29tZSt0bytNb3JhbGlzJTIxXHUwMDI2dXRtX21lZGl1bT1lbWFpb=
+F9hY3Rpb25cdTAwMjZ1dG1fc291cmNlPWN1c3RvbWVyLmlvIiwiaW50ZXJuYWwiOiI5N2NhMDY4=
+MjEyY2YzZmIwZjRmZTIwIiwibGlua19pZCI6NDMxMn0/0c6edb0bc3fea7f7fedd1cbebfa90ac=
+defbcb1f3e19ae17b09dd72a639fd43e0" rel=3D"noopener noreferrer" style=3D"tex=
+t-decoration: underline; color: #21bf96;" tabindex=3D"-1">Twitter</a>=C2=A0=
+and=C2=A0<a target=3D"_blank" delay=3D"150" href=3D"http://customeremail.mo=
+ralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNE=
+dXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHA6Ly9jdXN0b21lcmVtYWlsLm1vcmFsaXMuaW8vZS9jL=
+2V5SmxiV0ZwYkY5cFpDSTZJbEpLWmt0Q1owRkJRVmxRUjFwU1pYZE9OMjFQVlMxQllVY3liazAw=
+ZHowOUlpd2lhSEpsWmlJNkltaDBkSEJ6T2k4dmQzZDNMbXhwYm10bFpHbHVMbU52YlM5amIyMXd=
+ZVzU1TDIxdmNtRnNhWE4zWldJekx5SjkvOGU3NWEyMzg5YjQyZGI2NTY1YjM1ZjA1ZjUzYjlkNW=
+I4OGNkNjI4ODMyYmM5MWFkN2NiNTA3M2Q1NzhmNTI5Nj91dG1fY2FtcGFpZ249RW1haWwrMi4wK=
+1N0YXJ0ZXIrUGxhbitXZWxjb21lK0NhbXBhaWduXHUwMDI2dXRtX2NvbnRlbnQ9V2VsY29tZSt0=
+bytNb3JhbGlzJTIxXHUwMDI2dXRtX21lZGl1bT1lbWFpbF9hY3Rpb25cdTAwMjZ1dG1fc291cmN=
+lPWN1c3RvbWVyLmlvIiwiaW50ZXJuYWwiOiI5N2NhMDY4MjEyY2YzZmIwZjRmZTIwIiwibGlua1=
+9pZCI6NDMxM30/25a2bcb3d6d219c26d914acdfd46e4736ce9ef4b728b2435f54e24caef79d=
+8f8" rel=3D"noopener noreferrer" style=3D"text-decoration: underline; color=
+: #21bf96;" tabindex=3D"-1">LinkedIn</a> for all the latest news and announ=
+cements too!</span>
+</p></div></div></td></tr></tbody></table><table class=3D"image_block block=
+-3" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><=
+td class=3D"pad" style=3D"padding-bottom:15px;width:100%;padding-right:0;pa=
+dding-left:0"><div class=3D"alignment" align=3D"center" style=3D"line-heigh=
+t:10px"><img class=3D"big" src=3D"https://userimg-bee-eu.customeriomail.com=
+/images/client-env-107799/magazine.jpg" style=3D"display:block;height:auto;=
+border:0;width:520px;max-width:100%" width=3D"520"/></div></td></tr></tbody=
+></table></td></tr></tbody></table></td></tr></tbody></table><table class=
+=3D"row row-6" align=3D"center" width=3D"100%" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-=
+table-rspace:0"><tbody><tr><td><table class=3D"row-content stack" align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-color:#fff;bo=
+rder-radius:0;color:#000;width:580px" width=3D"580"><tbody><tr><td class=3D=
+"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspa=
+ce:0;font-weight:400;text-align:left;padding-left:30px;padding-right:30px;v=
+ertical-align:top;padding-top:0;padding-bottom:30px;border-top:0;border-rig=
+ht:0;border-bottom:0;border-left:0"><table class=3D"button_block block-1" w=
+idth=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td c=
+lass=3D"pad"><div class=3D"alignment" align=3D"center">
+<!--[if mso]><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"moralis.io/joindiscord?u=
+tm_campaign=3DEmail+2.0+Starter+Plan+Welcome+Campaign&amp;utm_content=3DWel=
+come+to+Moralis%21&amp;utm_medium=3Demail_action&amp;utm_source=3Dcustomer.=
+io" style=3D"height:42px;width:500px;v-text-anchor:middle;" arcsize=3D"48%"=
+ stroke=3D"false" fillcolor=3D"#21bf96"><w:anchorlock/><v:textbox inset=3D"=
+0px,0px,0px,0px"><center style=3D"color:#ffffff; font-family:Arial, sans-se=
+rif; font-size:14px"><![endif]-->
+<a href=3D"moralis.io/joindiscord?utm_campaign=3DEmail+2.0+Starter+Plan+Wel=
+come+Campaign&amp;utm_content=3DWelcome+to+Moralis%21&amp;utm_medium=3Demai=
+l_action&amp;utm_source=3Dcustomer.io" target=3D"_blank" style=3D"text-deco=
+ration:none;display:block;color:#ffffff;background-color:#21bf96;border-rad=
+ius:20px;width:100%;border-top:0px solid transparent;font-weight:400;border=
+-right:0px solid transparent;border-bottom:0px solid transparent;border-lef=
+t:0px solid transparent;padding-top:7px;padding-bottom:7px;font-family:Aria=
+l, Helvetica Neue, Helvetica, sans-serif;text-align:center;mso-border-alt:n=
+one;word-break:keep-all;"><span style=3D"padding-left:20px;padding-right:20=
+px;font-size:14px;display:inline-block;letter-spacing:normal;"><span dir=3D=
+"ltr" style=3D"word-break: break-word; line-height: 28px;">Join the Moralis=
+ Community</span></span></a>
+<!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div></td></tr=
+></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table=
+ class=3D"row row-7" align=3D"center" width=3D"100%" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:=
+0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content stack" ali=
+gn=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-color:#=
+fff;border-radius:0;color:#000;width:580px" width=3D"580"><tbody><tr><td cl=
+ass=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;mso-tabl=
+e-rspace:0;font-weight:400;text-align:left;vertical-align:top;padding-top:5=
+px;padding-bottom:5px;border-top:0;border-right:0;border-bottom:0;border-le=
+ft:0"><table class=3D"heading_block block-1" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-=
+lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"padding-=
+bottom:5px;padding-left:30px;padding-right:40px;padding-top:15px;text-align=
+:center;width:100%"><h1 style=3D"margin:0;color:#041836;direction:ltr;font-=
+family:Arial,Helvetica Neue,Helvetica,sans-serif;font-size:26px;font-weight=
+:400;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;=
+margin-bottom:0"><strong>24/7 Project Support</strong></h1></td></tr></tbod=
+y></table></td></tr></tbody></table></td></tr></tbody>
+</table><table class=3D"row row-8" align=3D"center" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-co=
+ntent stack" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;ba=
+ckground-color:#fff;color:#000;width:580px" width=3D"580"><tbody><tr class=
+=3D"reverse"><td class=3D"column column-1 last" width=3D"100%" style=3D"mso=
+-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;padding-=
+left:30px;padding-right:30px;vertical-align:top;padding-top:5px;padding-bot=
+tom:30px;border-top:0;border-right:0;border-bottom:0;border-left:0"><div cl=
+ass=3D"border"><table class=3D"text_block block-1" width=3D"100%" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-=
+table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td cla=
+ss=3D"pad"><div style=3D"font-family:sans-serif"><div class=3D"" style=3D"f=
+ont-size:14px;mso-line-height-alt:16.8px;color:#041836;line-height:1.2;font=
+-family:Arial,Helvetica Neue,Helvetica,sans-serif"><p style=3D"margin:0;mso=
+-line-height-alt:16.8px">Get the help and resources you need to make your p=
+roject a success from the very start.</p><p style=3D"margin:0;mso-line-heig=
+ht-alt:16.8px">=C2=A0</p><p style=3D"margin:0;mso-line-height-alt:16.8px">
+Read our=C2=A0<a target=3D"_blank" delay=3D"150" href=3D"http://customerema=
+il.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHV=
+l9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHA6Ly9jdXN0b21lcmVtYWlsLm1vcmFsaXMuaW8v=
+ZS9jL2V5SmxiV0ZwYkY5cFpDSTZJbEpLWmt0Q1owRkJRVmxRUjJkelR6VlRXa1phU2xwbWNWRkR=
+ObEpHVVQwOUlpd2lhSEpsWmlJNkltaDBkSEJ6T2k4dlpHOWpjeTV0YjNKaGJHbHpMbWx2THlKOS=
+83YTZkOTViZGZkYjFhZDJjOTljMDk3ODExZDA5YzkzN2VkYzIyY2Q2MWVjMjY2Y2ZhZjNiNTZjN=
+zBlNDFjNzYxP3V0bV9jYW1wYWlnbj1FbWFpbCsyLjArU3RhcnRlcitQbGFuK1dlbGNvbWUrQ2Ft=
+cGFpZ25cdTAwMjZ1dG1fY29udGVudD1XZWxjb21lK3RvK01vcmFsaXMlMjFcdTAwMjZ1dG1fbWV=
+kaXVtPWVtYWlsX2FjdGlvblx1MDAyNnV0bV9zb3VyY2U9Y3VzdG9tZXIuaW8iLCJpbnRlcm5hbC=
+I6Ijk3Y2EwNjgyMTJjZjNmYjBmNGZlMjAiLCJsaW5rX2lkIjo0MzE0fQ/97dd555d1077dfd1f1=
+2f7405f0f91846a94352fd39dd0222f90eda98a6c8ced6" rel=3D"noopener noreferrer"=
+ style=3D"text-decoration: underline; color: #1ca27f;" tabindex=3D"-1">in-d=
+epth documentation</a>=C2=A0containing everything you need to get building,=
+ such as API references and how-to tutorials.<br/><br/>
+Subscribe to the <a href=3D"http://customeremail.moralis.io/e/c/eyJlbWFpbF9=
+pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZi=
+I6Imh0dHBzOi8vZ2l0aHViLmNvbS9Nb3JhbGlzV2ViMy9jaGFuZ2Vsb2c_dXRtX2NhbXBhaWduP=
+UVtYWlsKzIuMCtTdGFydGVyK1BsYW4rV2VsY29tZStDYW1wYWlnblx1MDAyNnV0bV9jb250ZW50=
+PVdlbGNvbWUrdG8rTW9yYWxpcyUyMVx1MDAyNnV0bV9tZWRpdW09ZW1haWxfYWN0aW9uXHUwMDI=
+2dXRtX3NvdXJjZT1jdXN0b21lci5pbyIsImludGVybmFsIjoiOTdjYTA2ODIxMmNmM2ZiMGY0Zm=
+UyMCIsImxpbmtfaWQiOjI0MzN9/2ba021b76a72ea6920716cca253f86486966ff65e3911749=
+3dc241de9b4b94a2" target=3D"_blank" style=3D"text-decoration: underline; co=
+lor: #1ca27f;" rel=3D"noopener">Moralis Web3 changelog</a> for updates on i=
+mportant or breaking changes</p><p style=3D"margin:0;mso-line-height-alt:16=
+=2E8px">=C2=A0</p><p style=3D"margin:0;mso-line-height-alt:16.8px">
+Head to the=C2=A0<a target=3D"_blank" delay=3D"150" href=3D"http://customer=
+email.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTX=
+RHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHA6Ly9jdXN0b21lcmVtYWlsLm1vcmFsaXMua=
+W8vZS9jL2V5SmxiV0ZwYkY5cFpDSTZJbEpLWmt0Q1owRkJRVmxRUjFwU1pYZE9OMjFQVlMxQllV=
+Y3liazAwZHowOUlpd2lhSEpsWmlJNkltaDBkSEJ6T2k4dlptOXlkVzB1Ylc5eVlXeHBjeTVwYnk=
+4aWZRLzM2YmJiYzVhYWYyMzUzZmYyZTI3OWQ4NTliMjc2MDUyM2Q2YjAyMjc0Zjk0ZDY1N2Q4Yz=
+YyN2U4YWVmM2U2MTY_dXRtX2NhbXBhaWduPUVtYWlsKzIuMCtTdGFydGVyK1BsYW4rV2VsY29tZ=
+StDYW1wYWlnblx1MDAyNnV0bV9jb250ZW50PVdlbGNvbWUrdG8rTW9yYWxpcyUyMVx1MDAyNnV0=
+bV9tZWRpdW09ZW1haWxfYWN0aW9uXHUwMDI2dXRtX3NvdXJjZT1jdXN0b21lci5pbyIsImludGV=
+ybmFsIjoiOTdjYTA2ODIxMmNmM2ZiMGY0ZmUyMCIsImxpbmtfaWQiOjQzMTV9/e9afacd8df63d=
+090ba49a5fe35c07b44efe06de8bc5f90fa817e62d966fece4f" rel=3D"noopener norefe=
+rrer" style=3D"text-decoration: underline; color: #1ca27f;" tabindex=3D"-1"=
+>Moralis forum</a>=C2=A0and=C2=A0<a target=3D"_blank" delay=3D"150" href=3D=
+"http://customeremail.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3=
+Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHA6Ly9tb3JhbGlzLmlvL=
+2pvaW5kaXNjb3JkP3V0bV9jYW1wYWlnbj1FbWFpbCsyLjArU3RhcnRlcitQbGFuK1dlbGNvbWUr=
+Q2FtcGFpZ25cdTAwMjZ1dG1fY29udGVudD1XZWxjb21lK3RvK01vcmFsaXMlMjFcdTAwMjZ1dG1=
+fbWVkaXVtPWVtYWlsX2FjdGlvblx1MDAyNnV0bV9zb3VyY2U9Y3VzdG9tZXIuaW8iLCJpbnRlcm=
+5hbCI6Ijk3Y2EwNjgyMTJjZjNmYjBmNGZlMjAiLCJsaW5rX2lkIjoyNjg5fQ/a7f63f07ddc7d7=
+6629a3c32a173a62417a33aec7eb05be64cad8a15df3f64cfe" rel=3D"noopener norefer=
+rer" style=3D"text-decoration: underline; color: #1ca27f;" tabindex=3D"-1">=
+Moralis Discord</a>=C2=A0for technical discussions and help from
+fellow developers and our community engineers.
+</p></div></div></td></tr></tbody></table></div></td></tr></tbody></table><=
+/td></tr></tbody></table><table class=3D"row row-9" align=3D"center" width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table=
+ class=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-t=
+able-rspace:0;background-color:#fff;border-radius:0;color:#000;width:580px"=
+ width=3D"580">
+<tbody><tr><td class=3D"column column-1" width=3D"33.333333333333336%" styl=
+e=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;=
+padding-left:30px;padding-right:30px;vertical-align:top;border-top:0;border=
+-right:0;border-bottom:0;border-left:0"><table class=3D"image_block block-2=
+" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td=
+ class=3D"pad" style=3D"width:100%;padding-right:0;padding-left:0;padding-t=
+op:5px;padding-bottom:5px"><div class=3D"alignment" align=3D"center" style=
+=3D"line-height:10px"><img src=3D"https://userimg-bee-eu.customeriomail.com=
+/images/client-env-107799/discordIcon.png" style=3D"display:block;height:au=
+to;border:0;width:133px;max-width:100%" width=3D"133"/></div></td></tr></tb=
+ody></table></td><td class=3D"column column-2" width=3D"66.66666666666667%"=
+ style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:=
+left;vertical-align:top;border-top:0;border-right:0;border-bottom:0;border-=
+left:0"><table class=3D"text_block block-2" width=3D"100%" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-l=
+space:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td class=3D"p=
+ad" style=3D"padding-bottom:15px;padding-left:10px;padding-right:10px;paddi=
+ng-top:15px"><div style=3D"font-family:sans-serif"><div class=3D"" style=3D=
+"font-size:12px;mso-line-height-alt:14.399999999999999px;color:#041836;line=
+-height:1.2;font-family:Arial,Helvetica Neue,Helvetica,sans-serif"><p style=
+=3D"margin:0;font-size:12px;mso-line-height-alt:14.399999999999999px">
+<span style=3D"font-size:14px;">Contact our 24/7 global support team at=C2=
+=A0<a target=3D"_blank" delay=3D"150" aria-haspopup=3D"menu" aria-expanded=
+=3D"false" href=3D"mailto:hello@moralis.io?utm_campaign=3DEmail+2.0+Starter=
++Plan+Welcome+Campaign&amp;utm_content=3DWelcome+to+Moralis%21&amp;utm_medi=
+um=3Demail_action&amp;utm_source=3Dcustomer.io" rel=3D"noopener noreferrer"=
+ style=3D"text-decoration: underline; color: #21bf96;" tabindex=3D"-1">hell=
+o@moralis.io</a>=C2=A0for any additional help and support you need to launc=
+h your project.</span></p></div></div></td></tr></tbody></table></td></tr><=
+/tbody></table></td></tr></tbody></table><table class=3D"row row-10" align=
+=3D"center" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbo=
+dy><tr><td><table class=3D"row-content stack" align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-tab=
+le-lspace:0;mso-table-rspace:0;background-color:#fff;border-radius:0;color:=
+#000;width:580px" width=3D"580"><tbody><tr><td class=3D"column column-1" wi=
+dth=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400=
+;text-align:left;padding-left:30px;padding-right:30px;vertical-align:top;pa=
+dding-top:15px;padding-bottom:30px;border-top:0;border-right:0;border-botto=
+m:0;border-left:0"><table class=3D"text_block block-1" width=3D"100%" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"=
+mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td=
+ class=3D"pad"><div style=3D"font-family:sans-serif"><div class=3D"" style=
+=3D"font-size:14px;mso-line-height-alt:16.8px;color:#041836;line-height:1.2=
+;font-family:Arial,Helvetica Neue,Helvetica,sans-serif"><p style=3D"margin:=
+0;font-size:14px;text-align:center;mso-line-height-alt:16.8px"><span style=
+=3D"font-size:18px;"><strong><span style=3D"">=F0=9F=92=9ATeam Moralis</spa=
+n></strong></span></p></div></div></td></tr></tbody></table></td></tr></tbo=
+dy></table></td></tr></tbody></table><table class=3D"row row-11" align=3D"c=
+enter" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><t=
+r><td><table class=3D"row-content stack" align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-ls=
+pace:0;mso-table-rspace:0;color:#000;width:580px" width=3D"580"><tbody><tr>=
+<td class=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;ms=
+o-table-rspace:0;font-weight:400;text-align:left;vertical-align:top;padding=
+-top:15px;padding-bottom:5px;border-top:0;border-right:0;border-bottom:0;bo=
+rder-left:0"><table class=3D"image_block block-1" width=3D"100%" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-t=
+able-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"pad=
+ding-top:5px;width:100%;padding-right:0;padding-left:0"><div class=3D"align=
+ment" align=3D"center" style=3D"line-height:10px">
+<a href=3D"http://customeremail.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lB=
+QUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHBzOi8vbW9=
+yYWxpcy5pby8_dXRtX2NhbXBhaWduPUVtYWlsKzIuMCtTdGFydGVyK1BsYW4rV2VsY29tZStDYW=
+1wYWlnblx1MDAyNnV0bV9jb250ZW50PVdlbGNvbWUrdG8rTW9yYWxpcyUyMVx1MDAyNnV0bV9tZ=
+WRpdW09ZW1haWxfYWN0aW9uXHUwMDI2dXRtX3NvdXJjZT1jdXN0b21lci5pbyIsImludGVybmFs=
+IjoiOTdjYTA2ODIxMmNmM2ZiMGY0ZmUyMCIsImxpbmtfaWQiOjI3fQ/005a6e38ea0714c963d1=
+fd5533edfef72edd221ba2cc787b2d3a033531b4bf70" target=3D"_blank" style=3D"ou=
+tline:none" tabindex=3D"-1"><img src=3D"https://userimg-bee-eu.customerioma=
+il.com/images/client-env-107799/moralis-logo--01GE26BZ3NKBM91H4ZH4ANC1JH.pn=
+g" style=3D"display:block;height:auto;border:0;width:203px;max-width:100%" =
+width=3D"203"/></a></div></td></tr></tbody></table></td></tr></tbody></tabl=
+e></td></tr></tbody></table><table class=3D"row row-12" align=3D"center" wi=
+dth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><ta=
+ble class=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;=
+mso-table-rspace:0;color:#000;width:580px" width=3D"580"><tbody><tr><td cla=
+ss=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;mso-table=
+-rspace:0;font-weight:400;text-align:left;vertical-align:top;padding-top:5p=
+x;padding-bottom:5px;border-top:0;border-right:0;border-bottom:0;border-lef=
+t:0"><table class=3D"social_block block-1" width=3D"100%" border=3D"0" cell=
+padding=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-l=
+space:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad"><div class=3D"alig=
+nment" style=3D"text-align:center"><table class=3D"social-table" width=3D"1=
+68px" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" style=3D"mso-table-lspace:0;mso-table-rspace:0;display:inline-block"><tbo=
+dy><tr><td style=3D"padding:0 5px 0 5px"><a href=3D"http://customeremail.mo=
+ralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNE=
+dXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHBzOi8vdHdpdHRlci5jb20vTW9yYWxpc1dlYjM_dXRtX=
+2NhbXBhaWduPUVtYWlsKzIuMCtTdGFydGVyK1BsYW4rV2VsY29tZStDYW1wYWlnblx1MDAyNnV0=
+bV9jb250ZW50PVdlbGNvbWUrdG8rTW9yYWxpcyUyMVx1MDAyNnV0bV9tZWRpdW09ZW1haWxfYWN=
+0aW9uXHUwMDI2dXRtX3NvdXJjZT1jdXN0b21lci5pbyIsImludGVybmFsIjoiOTdjYTA2ODIxMm=
+NmM2ZiMGY0ZmUyMCIsImxpbmtfaWQiOjE3ODh9/86a80d8344e9e01af559e5d14fe6fc1c3991=
+41251ed4d4239d34a3750be27a8a" target=3D"_blank"><img src=3D"https://app-rsr=
+c.getbee.io/public/resources/social-networks-icon-sets/circle-color/twitter=
+@2x.png" width=3D"32" height=3D"32" alt=3D"Twitter" title=3D"Twitter" style=
+=3D"display:block;height:auto;border:0"/></a></td><td style=3D"padding:0 5p=
+x 0 5px">
+<a href=3D"http://customeremail.moralis.io/e/c/eyJlbWFpbF9pZCI6ImRnU1h5Z1lB=
+QUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09IiwiaHJlZiI6Imh0dHBzOi8vbW9=
+yYWxpcy5pby9qb2luZGlzY29yZD91dG1fY2FtcGFpZ249RW1haWwrMi4wK1N0YXJ0ZXIrUGxhbi=
+tXZWxjb21lK0NhbXBhaWduXHUwMDI2dXRtX2NvbnRlbnQ9V2VsY29tZSt0bytNb3JhbGlzJTIxX=
+HUwMDI2dXRtX21lZGl1bT1lbWFpbF9hY3Rpb25cdTAwMjZ1dG1fc291cmNlPWN1c3RvbWVyLmlv=
+IiwiaW50ZXJuYWwiOiI5N2NhMDY4MjEyY2YzZmIwZjRmZTIwIiwibGlua19pZCI6MjcxN30/821=
+727a883413dc3c924385ed3c84c5bceda094b45f0ff5f86a2498d8d11f07e" target=3D"_b=
+lank"><img src=3D"https://userimg-bee-eu.customeriomail.com/images/client-e=
+nv-107799/Discord.png" width=3D"32" height=3D"32" alt=3D"Discord" title=3D"=
+Discord" style=3D"display:block;height:auto;border:0"/></a></td><td style=
+=3D"padding:0 5px 0 5px"><a href=3D"http://customeremail.moralis.io/e/c/eyJ=
+lbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09Ii=
+wiaHJlZiI6Imh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL2NoYW5uZWwvVUNnV1M5UTNQNUF4Q1d5U=
+UxUMmtRaEJ3P3V0bV9jYW1wYWlnbj1FbWFpbCsyLjArU3RhcnRlcitQbGFuK1dlbGNvbWUrQ2Ft=
+cGFpZ25cdTAwMjZ1dG1fY29udGVudD1XZWxjb21lK3RvK01vcmFsaXMlMjFcdTAwMjZ1dG1fbWV=
+kaXVtPWVtYWlsX2FjdGlvblx1MDAyNnV0bV9zb3VyY2U9Y3VzdG9tZXIuaW8iLCJpbnRlcm5hbC=
+I6Ijk3Y2EwNjgyMTJjZjNmYjBmNGZlMjAiLCJsaW5rX2lkIjozfQ/2d904a5101f3eaca89ce52=
+0dc886b7a978b23786fbd1e752e31abda9dcdd40d9" target=3D"_blank"><img src=3D"h=
+ttps://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle=
+-color/youtube@2x.png" width=3D"32" height=3D"32" alt=3D"YouTube" title=3D"=
+YouTube" style=3D"display:block;height:auto;border:0"/></a></td><td style=
+=3D"padding:0 5px 0 5px"><a href=3D"http://customeremail.moralis.io/e/c/eyJ=
+lbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEdXdW9xZDQ2UT09Ii=
+wiaHJlZiI6Imh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9jb21wYW55L21vcmFsaXN3ZWIzP3V0b=
+V9jYW1wYWlnbj1FbWFpbCsyLjArU3RhcnRlcitQbGFuK1dlbGNvbWUrQ2FtcGFpZ25cdTAwMjZ1=
+dG1fY29udGVudD1XZWxjb21lK3RvK01vcmFsaXMlMjFcdTAwMjZ1dG1fbWVkaXVtPWVtYWlsX2F=
+jdGlvblx1MDAyNnV0bV9zb3VyY2U9Y3VzdG9tZXIuaW8iLCJpbnRlcm5hbCI6Ijk3Y2EwNjgyMT=
+JjZjNmYjBmNGZlMjAiLCJsaW5rX2lkIjozMn0/a91a17bb84a921c8d969d141224709e3dc159=
+10ffcecafcb1c3a67321ad66f05" target=3D"_blank"><img src=3D"https://app-rsrc=
+=2Egetbee.io/public/resources/social-ne=
+tworks-icon-sets/circle-color/linkedin=
+@2x.png" width=3D"32" height=3D"32" alt=3D"LinkedIn" title=3D"LinkedIn" sty=
+le=3D"display:block;height:auto;border:0"/></a></td></tr></tbody></table></=
+div></td></tr></tbody></table><table class=3D"text_block block-2" width=3D"=
+100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><t=
+body><tr><td class=3D"pad"><div style=3D"font-family:sans-serif"><div class=
+=3D"" style=3D"font-size:12px;mso-line-height-alt:14.399999999999999px;colo=
+r:#b0b5bf;line-height:1.2;font-family:Arial,Helvetica Neue,Helvetica,sans-s=
+erif"><div style=3D"font-size:14px;text-align:center"><p style=3D"margin:0;=
+mso-line-height-alt:16.8px">
+<a href=3D"http://customeremail.moralis.io/unsubscribe/dgSXygYAALD0_iCv9P4g=
+AYgafZMtGV_Z4GWuoqd46Q=3D=3D" target=3D"_blank" rel=3D"noopener" style=3D"c=
+olor: #2e7daf;"></a><a href=3D"http://customeremail.moralis.io/unsubscribe/=
+dgSXygYAALD0_iCv9P4gAYgafZMtGV_Z4GWuoqd46Q=3D=3D" target=3D"_blank" rel=3D"=
+noopener" style=3D"color: #2e7daf;">Unsubscribe</a></p></div></div></div></=
+td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table=
+></td></tr></tbody></table><!-- End --><img src=3D"http://customeremail.mor=
+alis.io/e/o/eyJlbWFpbF9pZCI6ImRnU1h5Z1lBQUxEMF9pQ3Y5UDRnQVlnYWZaTXRHVl9aNEd=
+XdW9xZDQ2UT09In0=3D" style=3D"height: 1px !important; max-height: 1px !impo=
+rtant; max-width: 1px !important; width: 1px !important; display: none !imp=
+ortant;"/></body></html>
+--5e4c4c7e12c9b43dcbc593cab337d54a8fc4224eab4b9f533a5037fd1b02--

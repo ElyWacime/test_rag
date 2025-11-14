@@ -1,0 +1,526 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:a16e:b0:4fd:292a:fcfe with SMTP id r14csp1208019pxe;
+        Wed, 22 Nov 2023 05:55:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEOMHw6tj2FB3IjuBfHHqgt506sMSjezke2omh6tGF+Y3LLoLYWLG7X11Gcwt/KQ0V+a1G0
+X-Received: by 2002:a05:6a20:748e:b0:189:2e8f:d378 with SMTP id p14-20020a056a20748e00b001892e8fd378mr2146692pzd.61.1700661350148;
+        Wed, 22 Nov 2023 05:55:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700661350; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bnUBxmwLNpX0nprXLxyjFl0EzbURHXPrOXBZTMm3qgL9y4T5b00eZFaT8BeVRdWfq1
+         A1YRFDySfwTib4USX0slN66ifNweBRzxPqc2PmPH+5QEbe4dwR1HnHLCmBGMY6Dax33h
+         6Ww+yKwQq63FPiDWCvyWuwc+XiCDkxIX7yNBP/TxDnB6G1iwD3sruY25dNF9qENL9mQ3
+         0CLLH2ZQIKCHM6cVRA12RnPElvJNJm9padAtyUsORNmyyBjq7yQjwP05R+/uChqfggUD
+         i4nKLwNTDESVQ/eAf+XeCGh8qPAEPNrBSj4jWvyuQ14uyJR6EmJ22lofz4iRJSn/xbwe
+         UFMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:feedback-id:precedence:list-unsubscribe:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=0vxfNoHWUJcVetqZA5svX2MzZL9UJ2pKyRo8HZbo3ns=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=VOfIFefHsMbyBhwz/jOVS68nqnyAbKhqIV80KgDRFHJYKk2cdvSo0nZ9EBWo5Nc2VP
+         DzJKgZRE9Kpfo0paYyhX42TgiaMrCJM6UaYwbGn4sohAVCvB93zS3gdOWsL21QArTifL
+         Nz2IpB1K5n5qNdMLl/gWG0w0mkFFhcWwvWNYfOqMyPdzQVzPUOhgSVHOKXWnERjJmNFW
+         Jk1soAc2toxShlLuHMg19ESvlNue2pGDx3m9bLS6elDGLMds2gdxbamoETSdXhWAmBLo
+         +U9Bg24Kt0xMrIW2slY+U8/106CJNmSveuLsRbH1ykRX4P9jqf4T4XBcrfwGa+PmQ5OC
+         XZrw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=MqpXmqQX;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Vvv4hvOR;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o48.ck.n.convertkit.com (o48.ck.n.convertkit.com. [149.72.193.89])
+        by mx.google.com with ESMTPS id q24-20020a63e958000000b005898699b2afsi13016115pgj.176.2023.11.22.05.55.49
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Nov 2023 05:55:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) client-ip=149.72.193.89;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=MqpXmqQX;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Vvv4hvOR;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=0vxfNoHWUJcVetqZA5svX2MzZL9UJ2pKyRo8HZbo3ns=;
+	b=MqpXmqQXxDWn1CorF9vN3DzABsC3nTEcHX4s32aBY0dqXCUdpwORSugkOu8uq2zpJgkT
+	u+3xQcEaQHrIvA/pTlN/Auk8IPqz7n/4LsvWxY00sGor+wgWolwrsqfbl/UOoStEoXH2j6
+	6Xur70EmuJg7HI56Twe+7c3mOnro300iE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=0vxfNoHWUJcVetqZA5svX2MzZL9UJ2pKyRo8HZbo3ns=;
+	b=Vvv4hvOR8BtdtJO//Wj9SOJqcQQQo2LXIwhQs4o/9ImlnFUM+5Pk5O1Ui7WvFYHPxgVJ
+	aE0KwZD0NM5P3rmUoTFCleD3ksntpRnuy/fn0LeENOFLaBFMSiKVIV5OdvlVIUoGHQI2+K
+	xMBONfyeaH1EBtrz7PbkYEzg4/YDgA4mc=
+Received: by filterdrecv-bdbcf4858-gl7qz with SMTP id filterdrecv-bdbcf4858-gl7qz-1-655E0864-3F
+        2023-11-22 13:55:48.811223157 +0000 UTC m=+3093264.842239249
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-17 (SG) with HTTP
+	id w6-2fxFgTJKRyRKi5s5twA
+	Wed, 22 Nov 2023 13:55:48.604 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=ac30f933655fdb0b709362965ebd3ce21a51bf3bbba7da9eaeedc47b2fd6
+Date: Wed, 22 Nov 2023 13:55:49 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <92udrgxog3tnhq43rv2i9h0g0q933@convertkit-mail2.com>
+Subject: About Next =?UTF-8?B?djE04oCm?=
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/92udrgxog3tnhq43rv2i9h0g0q933>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 12340662:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfaeiiYcErPiyrhY8=2F?=
+ =?us-ascii?Q?80oW4WlEjicV9PFZHHm4oipnEw1dMDTZ4DZtq1g?=
+ =?us-ascii?Q?CVEHOfbo19SvJH3hZqtDcRWbgq3tNK26Voj=2FMwb?=
+ =?us-ascii?Q?sf8ZR6h=2FKBoZWoFKF=2F1xpxNHVI4PBD8ZfkBIFVZ?=
+ =?us-ascii?Q?NQLUgPOjnk1zSTgniqB3QXlwqSxGX1GiZtn3N6?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADWpbIckNEqjPN1XsmNGDPkuA8aP3cKj712GFLE?=
+ =?us-ascii?Q?zCrP6wfH8kFFSdtQsqswDzrliszrogtmCHIhBE4?=
+ =?us-ascii?Q?Rk=2FSfndT0LMwHuS5RSWbFYu8p7tiZktNrfikNiA?=
+ =?us-ascii?Q?8DtVrhptF4h519=2FMU7ZrUxdUbiyqWOrqLIIp9yr?=
+ =?us-ascii?Q?Xg4XUbXz97Y1RMlhIjL9txixWcWpGXo7fBj77XA?=
+ =?us-ascii?Q?oMahMXuPJQReU7NoGb=2FzeRiN4Jzcu3GhC1Sl3Ai?=
+ =?us-ascii?Q?ccOFDUhTr36h3E8+LRWWZpFIn8GqWCSxRLCe4Ec?=
+ =?us-ascii?Q?g8rXasqSP=2FZoNZGddTJKKavCxeuA=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--ac30f933655fdb0b709362965ebd3ce21a51bf3bbba7da9eaeedc47b2fd6
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+You probably know Next 14 came out almost a month ago.
+
+And it caused a lot of mixed reactions.
+
+=E2=80=8B
+
+=E2=80=9CI just learned 13, and now I have to learn 14 =F0=9F=98=AD=E2=80=
+=9D
+
+=E2=80=9CUnsafe!=E2=80=9D
+
+=E2=80=9CPHP!!!!=E2=80=9D
+
+=E2=80=8B
+
+I=E2=80=99m only writing this now since=E2=80=A6 all of those were just
+overreactions.
+
+Because basically nothing changed.
+
+The biggest change is the number (13 =E2=86=92 14).
+
+=E2=80=8B
+
+Yup.
+
+Don=E2=80=99t believe me?
+
+Look:
+
+=E2=80=8B
+=E2=80=8B
+
+* They made things faster.
+=E2=80=8B
+* Server Actions are now stable.
+
+=E2=80=8B
+
+=E2=80=9COh no, what the heck are Server Actions??=E2=80=9D
+
+Simply put, Server Actions are functions that run on the server,
+but that we can call from the client, just like a normal
+function.
+
+That way, you don=E2=80=99t need to build out full API routes for some
+use cases.
+
+=E2=80=8B
+
+=E2=80=9CBut wait, does this mean your Next.js course is outdated?=E2=80=9D
+
+=E2=80=8B
+
+Nope.
+
+We already used server actions in our course when it was created
+with Next 13.5.
+
+A team member joked a few months back: =E2=80=9CWe=E2=80=99re among the onl=
+y 50
+people in the world who know how to use Server Actions =F0=9F=98=85=E2=80=
+=9D
+
+=E2=80=8B
+
+Knowing something deeply pays off, even if it takes a whole lot
+of time.
+
+When you truly understand something, you don=E2=80=99t have to panic like
+half the Twitter/X did. And you can stay at the cutting-edge of
+tech.
+
+=E2=80=8B
+
+But wait, what about SQL injections?
+
+If you know what you=E2=80=99re doing, it=E2=80=99s not a problem. Some dev=
+s who
+don=E2=80=99t know their stuff made a fuss, but there isn=E2=80=99t a secur=
+ity
+issue if you do things right.
+
+=E2=80=8B
+
+What about Remix and other frameworks?
+
+I like Next and have nothing against Remix, Astro, and other
+frameworks.
+
+At the end of the day, all of these frameworks are great options.
+What matters isn=E2=80=99t the syntax or the name, but true understanding
+of how the web works. Deep understanding of basics rather than
+memorization of concepts.
+
+=E2=80=8B
+
+That being said, hundreds of giants like ChatGPT, TikTok,
+Starbucks, DoorDash use Next.
+
+That=E2=80=99s one advantage Next has over other frameworks. If you=E2=80=
+=99re
+going to go deep in one framework, there=E2=80=99s a strong case to use
+the most popular one. Or even better, the one that=E2=80=99s most aligned
+with your goals, use cases, and places you want to work at.
+
+=E2=80=8B
+
+Before I go:
+
+As you probably know, Black Friday is in two days.
+
+We=E2=80=99ll have a sale, and two new special additions to the course =F0=
+=9F=91=80
+
+If you=E2=80=99re looking to really dive deep and understand Next and the
+web, keep and eye out for an email on Friday.
+
+=E2=80=8B
+
+See you then!
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/92udrgxog3tnhq43rv2i9h0g0q933
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/92udrgxog3tnhq43rv2i9h0g0q933
+)
+--ac30f933655fdb0b709362965ebd3ce21a51bf3bbba7da9eaeedc47b2fd6
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You probably know Next 14 came out almost a month ago.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And it caused a lot of mixed reactions.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><em>=E2=80=9CI just learned 13, and now I have to learn 14 =
+=F0=9F=98=AD=E2=80=9D</em></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><em>=E2=80=9CUnsafe!=E2=80=9D</em></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><em>=E2=80=9CPHP!!!!=E2=80=9D</em></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><em>=E2=80=8B</em></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I=E2=80=99m only writing this now since=E2=80=A6 all of tho=
+se were just overreactions.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>Because basically nothing changed.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The biggest change is the number (13 =E2=86=92 14).</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Yup.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Don=E2=80=99t believe me?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Look:</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/6QbJKKM5=
+YytH16SSa92GPA/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<ol class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>They made things faster.<br>=E2=80=8B</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Server Actions are now stable.</span></li>
+</ol>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><em>=E2=80=9COh no, what the heck are Server Actions??=E2=
+=80=9D</em></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Simply put, Server Actions are <strong>functions that run o=
+n the server</strong>, but that we can call from the client, just like a no=
+rmal function.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">That way, you don=E2=80=99t need to build out full API rout=
+es for some use cases.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong><em>=E2=80=9CBut wait, does this mean your Next.js =
+course is outdated?=E2=80=9D</em></strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Nope.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">We already used server actions in our course when it was cr=
+eated with Next 13.5.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">A team member joked a few months back: =E2=80=9CWe=E2=80=99=
+re among the only 50 people in the world who know how to use Server Actions=
+ =F0=9F=98=85=E2=80=9D</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Knowing something deeply pays off, even if it takes a whole=
+ lot of time.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">When you truly understand something, you don=E2=80=99t have=
+ to panic like half the Twitter/X did. And you can stay at the cutting-edge=
+ of tech.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>But wait, what about SQL injections?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you know what you=E2=80=99re doing, it=E2=80=99s not a p=
+roblem. Some devs who don=E2=80=99t know their stuff made a fuss, but there=
+ isn=E2=80=99t a security issue if you do things right.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>What about Remix and other frameworks?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I like Next and have nothing against Remix, Astro, and othe=
+r frameworks.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">At the end of the day, all of these frameworks are great op=
+tions. What matters isn=E2=80=99t the syntax or the name, but true understa=
+nding of how the web works. Deep understanding of basics rather than memori=
+zation of concepts.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">That being said, hundreds of giants like ChatGPT, TikTok, S=
+tarbucks, DoorDash use Next.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">That=E2=80=99s one advantage Next has over other frameworks=
+. If you=E2=80=99re going to go deep in one framework, there=E2=80=99s a st=
+rong case to use the most popular one. Or even better, the one that=E2=80=
+=99s most aligned with your goals, use cases, and places you want to work a=
+t.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Before I go:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">As you probably know, <strong>Black Friday</strong> is in t=
+wo days.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">We=E2=80=99ll have a sale, and two new special additions to=
+ the course =F0=9F=91=80</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you=E2=80=99re looking to really dive deep and understan=
+d Next and the web, keep and eye out for an email on Friday.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">See you then! <br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/92udrgxog3tnhq43rv2i9h0g0q933" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/92udrgxog3tnhq43rv2i9h0g0q933" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/92udrgxog3tnhq43rv2i9h0g0q933=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--ac30f933655fdb0b709362965ebd3ce21a51bf3bbba7da9eaeedc47b2fd6--

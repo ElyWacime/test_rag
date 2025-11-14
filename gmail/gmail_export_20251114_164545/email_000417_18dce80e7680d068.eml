@@ -1,0 +1,777 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:8058:0:b0:2d0:7014:6346 with SMTP id p24csp2053612ljg;
+        Wed, 21 Feb 2024 17:49:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFf44zrx9Q/C8G7IkS1/adFB947/DLNT7ttNURW8b4294wp9ROd5FV5wO8G1dOurUZ8eMyA
+X-Received: by 2002:a05:6102:2f0:b0:470:5b6f:5eec with SMTP id j16-20020a05610202f000b004705b6f5eecmr8839944vsj.11.1708566570873;
+        Wed, 21 Feb 2024 17:49:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708566570; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gMCacWe8SL0HjYrKh+CXsglG03SMGFJ3ZXl2yqRPU7+ymZdlQdiL85zymm0Rz9CQs4
+         M6hmhxzWOPTZzL4z/HlRM7c9oi+MS5sXpfSoeDQSH60cx4+FAau6FrlluyUKPJksgoXl
+         OYoCkmSa1Bx2B4psjzygXUPclmCd/PymKT+OYkU/aXCImO9qXST7JyHzFm2vPS6iX7oK
+         LJTKbxZMfEgkwkyK04uMEvMXl6Kavno4yzn5kPnAh/oK8e+C09pPcUl2kx5dngRGuLYL
+         n1xtn45pir8qJn+4PdqUMwIw6f5yRqFqLP1w9WzEdu7SNXlUNRFs1gJ5vhIA+1l02kFX
+         vsKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe-post
+         :list-unsubscribe:subject:to:from:dkim-signature:dkim-signature;
+        bh=roNM0UV3jEnrkGeg8We6HWw1TBpYZ57x0KIOODaC6iQ=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=XT8C+vKNgPcvg/j2FWQ47WdHaJcJd7JY/HHo+ix/UngwKqFSLppfxMUxMEHOpBF6wj
+         yRdzch7HHeID+H//A1I7nPPUmYwozMwX/6oAUitvNIxVpj95+24yBZ/nF/Aph5oRTRr3
+         WkELaGm54hF0OXqrQRjb8d1Tvw9nCj4mdbz0Bqo2jeupgmL4cHgIhl5UrvL+vKQRB630
+         Yp8Jb0xvb2a8CAyewbsU0vzgyXsyKZ5HJULhdy/8khRghnrU5WsHPt2TAdoeHqGjUlfN
+         WfPE0pskPiX9QyKn7hsqa7FOiM9DwEsSyJg0/ke4NFtApPXBwB8tG6q/Aencwkbvztoa
+         qpYw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=FzauyPdX;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=RQ8t2wDi;
+       spf=pass (google.com: domain of 0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id h2-20020ac87142000000b0042deb612e75si11580084qtp.420.2024.02.21.17.49.30
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Feb 2024 17:49:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of 0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=FzauyPdX;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=RQ8t2wDi;
+       spf=pass (google.com: domain of 0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1708546749;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type;
+	bh=roNM0UV3jEnrkGeg8We6HWw1TBpYZ57x0KIOODaC6iQ=;
+	b=FzauyPdXnpcwWmB1XzwgTjP6blpy/UINm8OuKU3EwbVZwu/rxjIm+ET/pv3JhgYK
+	bU0oD4nSJh3h8BImlVuVaQVczfrxfgs/K5mVKI768loLSkfKGbE5bOgQOUvmYMCggni
+	5y3ekxaw/M0cXc5SW17SllcEeB1/JxdpdJrzQrdw=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1708546749;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=roNM0UV3jEnrkGeg8We6HWw1TBpYZ57x0KIOODaC6iQ=;
+	b=RQ8t2wDiKvO0OTq8VizhTbHsiY95S75ykk+o0qc7aJq+MC9dJLIzMzRmH0h1pLQL
+	jy7ts+6kUINwLjqscKIrehyIDC6krz1lKVlsaZXr9ZAVHIm7UPOV47K5jejUBr6jhFr
+	c0ftfkSFcebd/PLsxA3lmJ+dI8Jw4vEkCNCu6MmI=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: External Authentication, Python GA, and More
+X-Entity-Ref-Id: aad1cd99-9a16-4879-86f1-146ab3b4edba
+X-EmailOctopus-Parent-Id: fb4a67da-c099-11ee-ace1-ffd5a1a53f95
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2024-02-21T18:44:24+00:00
+X-EmailOctopus-Sent-At: 2024-02-21T20:19:08+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=fb4a67da-c099-11ee-ace1-ffd5a1a53f95&pt=campaign&pv=4&spa=1708541064&t=1708546748&s=d50824a2757b381e62cc9b6ac1a4bf035204aace829c7e7e779c73bcadaef1e8>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Wed, 21 Feb 2024 20:19:08 +0000
+Message-ID: <0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=quaPyeJW
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2024.02.22-54.240.123.37
+
+--quaPyeJW
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Use External Authentication to build customer facing workflows=C2=A0
+
+ =
+[Pipedream] [1]=20
+[Valentines Robot] [2]
+
+EXTERNAL AUTHENTICATION
+=
+
+We kicked off February with a company Hackathon week and now we have a=
+
+bunch of exciting updates to share!=20
+
+The first is one the entire te=
+am at Pipedream is super excited
+about,=C2=A0_EXTERNAL AUTHENTICATION_.=
+
+
+Customers love using Pipedream for building serverless workflows and=
+
+automations between internal systems. Sometimes, these needs expand
+in=
+to customer-facing systems which raises a question around how to use
+cust=
+omer authentication within your Pipedream workflow.
+
+WITH EXTERNAL AUTH=
+ENTICATION, YOU CAN NOW USE THE FLEXIBILITY AND
+SPEED OF DEVELOPING PIPED=
+REAM WORKFLOWS TO BUILD ROBUST SCALABLE
+INTEGRATIONS FOR YOUR OWN USER BA=
+SE.
+
+This unlocks a variety of new ways for teams to use Pipedream, and=
+ it
+is just the beginning of what is to come in this area!=20
+
+=09=09Le=
+arn More [3]
+
+-------------------------
+ WHAT ELSE IS NEW=20
+
+=09=
+=09DATA RETENTION CONTROLS=20
+
+=09=09With _Data Retention Controls_, you =
+can now disable=C2=A0ALL=C2=A0logging on
+any workflow, adding an extra la=
+yer of security for any workflow
+passing sensitive information or credent=
+ials.=20
+
+Workflows with this enabled will no longer have their logs visi=
+ble in
+the inspector or event history UI.=20
+
+=09=09Learn More [4]=20
+=
+
+=09=09CREATE WORKFLOW API=20
+
+=09=09 The _Create Workflow API__=C2=
+=A0_allows teams to create new workflows
+through the Pipedream API, savin=
+g time when deploying multiple copies
+of a workflow.=20
+
+This includes =
+the ability pass authentication, steps, and trigger
+props as workflow con=
+figurations.=20
+
+=09=09Learn More [5]=20
+
+=09=09PYTHON GA=20
+
+=09=09 =
+The Python runtime [6]=C2=A0is officialy out of beta, and we've shipped
+s=
+upport for Python 3.12. You can run any Pthon code within a workflow,
+imp=
+ort any PyPI package, use connected accounts [7]=C2=A0, access data
+store=
+s [8] and more.=20
+
+You can use Python alongside any other code and pre-b=
+uilt action in
+your workflow.=20
+
+=09=09Learn More [6]=20
+
+=09=09PI I=
+N THE UI=20
+
+=09=09Our chatbot, Pi, has been a helpful presence in our Sl=
+ack community
+for the past 6 months. It's helped answer thousands of ques=
+tions
+ranging from error troubleshooting to helping write code.=20
+
+Pi =
+is now ready to help directly within your Pipedream account. From
+within =
+the workflow builder, simply click the blue chat bubble.=20
+
+=09=09Learn =
+More [9]=20
+
+-------------------------
+
+CUSTOMER SPOTLIGHT
+
+=09=
+=09SLEEP DOCTOR=20
+
+=09=09 The Data Engineering team at Sleep Doctor need=
+ed a tool to
+facilitate data transfers between production applications (Z=
+oho,
+Shopify, and more).=20
+
+=09=09Read their story [10]=20
+
+--------=
+-----------------
+
+Please let us know [11] if you see any bugs, want to=
+ suggest a
+feature, or have questions about our pricing plans.
+
+Warm =
+regards,=20
+The Pipedream Team
+
+-------------------------
+ [1]44 Mont=
+gomery Street
+San Francisco
+CALIFORNIA
+94104
+United States of Ameri=
+ca=20
+
+Unsubscribe here [12]=20
+
+
+
+Links:
+------
+[1] https://pi=
+pedream.com
+[2] https://pipedream.com/
+[3] http://pipedream.com/blog/co=
+nnecting-your-user-accounts-to-pipedream/
+[4] https://pipedream.com/docs/=
+workflows/settings/#data-retention-controls
+[5] https://pipedream.com/doc=
+s/rest-api/workflows
+[6] https://pipedream.com/docs/code/python/
+[7] ht=
+tps://pipedream.com/docs/code/python/auth/
+[8] https://pipedream.com/docs=
+/code/python/using-data-stores/
+[9] https://pipedream.com/blog/build-your=
+-own-chat-bot-with-openai-and-pipedream/
+[10] https://pipedream.com/blog/=
+pipedream-potent-serverless-capabilities/
+[11] https://pipedream.com/supp=
+ort
+[12] https://alatus.eocampaign.com/unsubscribe?ep=3D1&l=3D358ac956-f0=
+1d-11ed-bcd1-db2977b1fcef&lc=3D860f934a-f025-11ed-b8ff-059d97be6197&p=3Dfb4=
+a67da-c099-11ee-ace1-ffd5a1a53f95&pt=3Dcampaign&pv=3D4&spa=3D1708541064&t=
+=3D1708546748&s=3Dd50824a2757b381e62cc9b6ac1a4bf035204aace829c7e7e779c73bca=
+daef1e8
+--quaPyeJW
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><style>
+=09=09=09@media screen and (max-width:560px) {
+=09=09=09=09.top {
+=09=09=09=09=09display: table-header-group !important; width: 100% !importa=
+nt;
+=09=09=09=09}
+=09=09=09=09.bottom {
+=09=09=09=09=09display: table-footer-group !important; width: 100% !importa=
+nt;
+=09=09=09=09}
+=09=09=09}
+
+=09=09</style><title></title></head><body class=3D"fr-no-selection"><div st=
+yle=3D"display:none; font-size:0px; line-height:0px; max-height:0px; max-wi=
+dth:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Use =
+External Authentication to build customer facing workflows&nbsp;</div><p>
+<br>
+</p><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSyste=
+mFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvet=
+ica Neue&quot;,sans-serif;" width=3D"100%"><tbody><tr><td>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"max-width:560px;margin:40px auto;background-color:#ffffff;padding:40=
+px 30px 40px;border-radius:15px;" width=3D"100%"><tbody><tr style=3D"width:=
+100%;"><td>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/1/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/SBDbZl=
+c8rDwx71lzVwaEpjaR6TU=3D362" rel=3D"noopener noreferrer" target=3D"_blank">=
+<img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image/=
+upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=3D=
+"display: block; outline: none; border: none; text-decoration: none; width:=
+ 2.2rem; height: 2.2rem;"></a>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2F/1/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/28Q=
+yO6aI4D7dE6jDjQ2STDZ9Ccs=3D362" rel=3D"noopener noreferrer" target=3D"_blan=
+k"><img alt=3D"Valentines Robot" src=3D"https://gallery.eocampaign.com/ce95=
+1396-a346-11ed-a0ed-4f354f26462b%2F1708540687791-February%20Update.jpg" sty=
+le=3D"display: block; outline: none; border: none; text-decoration: none; w=
+idth: 100%; height: auto; margin: 0px 0px 15px;"></a>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+
+<br></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);"><strong><span style=3D"font-si=
+ze: 30px;">External Authentication</span></strong></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+We kicked off February with a company Hackathon week and now we have a bunc=
+h of exciting updates to share!
+<br>
+<br>The first is one the entire team at Pipedream is super excited about,&n=
+bsp;<strong><em>External Authentication</em></strong>.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Customers love using Pipedream for building serverless workflows and =
+automations between internal systems. Sometimes, these needs expand into cu=
+stomer-facing systems which raises a question around how to use customer au=
+thentication within your Pipedream workflow.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);"><strong>With External Authentication, you can now use the flexibility=
+ and speed of developing Pipedream workflows to build robust scalable integ=
+rations for your own user base.</strong></p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+This unlocks a variety of new ways for teams to use Pipedream, and it is ju=
+st the beginning of what is to come in this area!
+<br>
+
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td><a href=3D"http=
+://sc1sc285.r.us-east-1.awstrack.me/L0/http:%2F%2Fpipedream.com%2Fblog%2Fco=
+nnecting-your-user-accounts-to-pipedream%2F/1/0100018dcd5271fe-7f7e26cd-ba2=
+0-41ec-8910-afcc205357b0-000000/-sU0mbNjPcItMEHwHBWS-WxB2_Y=3D362" rel=3D"n=
+oopener noreferrer" style=3D"display:inline-block;border-radius:0.75rem;bac=
+kground-color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-heigh=
+t:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;text-deco=
+ration:none;max-width:100%;padding:11px 23px;" target=3D"_blank"><span styl=
+e=3D"display:inline-block;border-radius:0.75rem;background-color:rgb(52, 11=
+7, 210);text-align:center;font-size:1rem;line-height:120%;font-weight:600;c=
+olor:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;text-decoration:no=
+ne;text-transform:none;mso-padding-alt:0px;mso-text-raise:8.25px;">Learn Mo=
+re</span></a></td></tr></tbody></table>
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<!--=20
+
+
+
+Below is for the "What Else is New" section. This section uses class=3D"bot=
+tom" and class=3D"top" to organize responsive display=20
+
+If you are adding to this table, you will want to use the class=3D"top" for=
+ the <td> tag of the column where the image is captured and the class=3D"bo=
+ttom" for the <td> tag where the text is captured. This will ensure when th=
+is consolidates into a single column on Mobile it places the image above th=
+e text.
+
+
+
+-->
+
+<span style=3D"font-size: 30px;"><strong>What else is new</strong></span>
+<br>
+<br>
+
+<table class=3D"fr-table" style=3D"width: 100%; border-spacing: 10px;"><tbo=
+dy><tr><td class=3D"top" style=3D"width: 50%; vertical-align: top;">
+
+<table class=3D"fr-table" style=3D"width: 100%;"><tbody><tr><td style=3D"wi=
+dth: 100.0000%;">
+<img src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26=
+462b%2F1708540829472-Data%20Retention%20Controls.jpg" style=3D"width: 300px=
+; display: block; vertical-align: top; margin: 5px auto; text-align: center=
+;" height=3D"125" width=3D"275">
+</td></tr>
+<tr><td style=3D"width: 100%; text-align: left;"><strong style=3D"font-weig=
+ht: 700; color: rgb(0, 0, 0); font-family: -apple-system, BlinkMacSystemFon=
+t, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helv=
+etica Neue&quot;, sans-serif; font-size: medium; font-style: normal; font-v=
+ariant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal=
+; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; wi=
+dows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: no=
+rmal; background-color: rgb(255, 255, 255); text-decoration-thickness: init=
+ial; text-decoration-style: initial; text-decoration-color: initial;"><span=
+ style=3D"font-size: 24px;">Data Retention Controls</span></strong>
+<br>
+</td></tr>
+<tr><td style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30,=
+ 41, 59); width: 100.0000%;">With <em>Data Retention Controls</em>, you can=
+ now disable&nbsp;<strong>all&nbsp;</strong>logging on any workflow, adding=
+ an extra layer of security for any workflow passing sensitive information =
+or credentials.
+<br>
+<br> Workflows with this enabled will no longer have their logs visible in =
+the inspector or event history UI.
+<br>
+<br>
+</td></tr>
+<tr><td style=3D"width: 100.0000%;"><a href=3D"https://sc1sc285.r.us-east-1=
+.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fworkflows%2Fsettings%2F%=
+23data-retention-controls/1/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc20=
+5357b0-000000/NvYLHIJya9qzClwTYJh9lidQ68g=3D362" rel=3D"noopener noreferrer=
+" style=3D"user-select: auto; font-size: 16px; font-style: normal; font-var=
+iant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; wido=
+ws: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: norm=
+al; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;=
+, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-=
+serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-deco=
+ration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">L=
+earn More</a>
+<br>
+</td></tr></tbody></table>
+<br>
+</td>
+<td class=3D"bottom" style=3D"width: 50%; vertical-align: top;">
+
+<table class=3D"fr-table" style=3D"width: 100%;"><tbody><tr><td style=3D"wi=
+dth: 100.0000%;">
+<img src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26=
+462b%2F1708540462983-Create%20Workflow%20API.jpg" style=3D"width: 300px; di=
+splay: block; vertical-align: top; margin: 5px auto; text-align: center;" h=
+eight=3D"125" width=3D"275">
+</td></tr>
+<tr><td style=3D"width: 100.0000%;"><strong style=3D"font-weight: 700; colo=
+r: rgb(0, 0, 0); font-family: -apple-system, BlinkMacSystemFont, &quot;Sego=
+e UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&qu=
+ot;, sans-serif; font-size: medium; font-style: normal; font-variant-ligatu=
+res: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2;=
+ text-align: start; text-indent: 0px; text-transform: none; widows: 2; word=
+-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgro=
+und-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-dec=
+oration-style: initial; text-decoration-color: initial;"><span style=3D"fon=
+t-size: 24px;">Create Workflow API</span></strong>
+<br>
+</td></tr>
+<tr><td style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30,=
+ 41, 59); width: 100.0000%;">
+The <em>Create Workflow API</em><em>&nbsp;</em>allows teams to create new w=
+orkflows through the Pipedream API, saving time when deploying multiple cop=
+ies of a workflow.
+<br>
+<br>This includes the ability pass authentication, steps, and trigger props=
+ as workflow configurations.
+<br>
+<br>
+</td></tr>
+<tr><td style=3D"width: 100.0000%;"><a href=3D"https://sc1sc285.r.us-east-1=
+.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Frest-api%2Fworkflows/1/0=
+100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/5FOi31DThpFdKKe=
+xUMX7HaifmVE=3D362" rel=3D"noopener noreferrer" style=3D"user-select: auto;=
+ font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-=
+variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start=
+; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -we=
+bkit-text-stroke-width: 0px; white-space: normal; font-family: -apple-syste=
+m, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu=
+, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; background-color: rgb(=
+255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210=
+, 139); font-weight: 600;" target=3D"_blank">Learn More</a>
+<br>
+</td></tr></tbody></table>
+<br>
+</td></tr>
+<tr><td class=3D"top" style=3D"width: 50%; vertical-align: top;">
+
+<table class=3D"fr-table" style=3D"width: 100%;"><tbody><tr><td style=3D"wi=
+dth: 100.0000%;"><img src=3D"https://gallery.eocampaign.com/ce951396-a346-1=
+1ed-a0ed-4f354f26462b%2F1708124503911-Python%20Header.jpg" style=3D"width: =
+300px; display: block; vertical-align: top; margin: 5px auto; text-align: c=
+enter;" height=3D"125" width=3D"275"></td></tr>
+<tr><td style=3D"width: 100.0000%;"><strong style=3D"font-weight: 700; colo=
+r: rgb(0, 0, 0); font-family: -apple-system, BlinkMacSystemFont, &quot;Sego=
+e UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&qu=
+ot;, sans-serif; font-size: 24px; font-style: normal; font-variant-ligature=
+s: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; widows: 2; word-s=
+pacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgroun=
+d-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decor=
+ation-style: initial; text-decoration-color: initial;">Python GA</strong>
+<br>
+</td></tr>
+<tr><td style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30,=
+ 41, 59); width: 100.0000%;">
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fcode%2Fpython%2F/1/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-=
+afcc205357b0-000000/wiZ7VQ-p-notRXZB2Uw7IOR_H7s=3D362" rel=3D"noopener nore=
+ferrer" style=3D"user-select: auto; font-size: 16px; font-style: normal; fo=
+nt-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: no=
+rmal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none=
+; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space=
+: normal; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI=
+&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;,=
+ sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); tex=
+t-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_bl=
+ank">The Python runtime</a>&nbsp;is officialy out of beta, and we've shippe=
+d support for Python 3.12. You can run any Pthon code within a workflow, im=
+port any PyPI package, <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/=
+L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fpython%2Fauth%2F/1/0100018dcd5=
+271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/dcGHXXjxNYOP3Y5laPa-s1l12=
+Xs=3D362" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-size=
+: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-ca=
+ps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-ind=
+ent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-=
+stroke-width: 0px; white-space: normal; font-family: -apple-system, &quot;s=
+ystem-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarel=
+l, &quot;Helvetica Neue&quot;, sans-serif; background-color: rgb(255, 255, =
+255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); fo=
+nt-weight: 600;" target=3D"_blank">use connected accounts</a>&nbsp;, <a hre=
+f=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%=
+2Fdocs%2Fcode%2Fpython%2Fusing-data-stores%2F/1/0100018dcd5271fe-7f7e26cd-b=
+a20-41ec-8910-afcc205357b0-000000/Uh5K5Ad8lcYAJp7gv0WJiORwafg=3D362" rel=3D=
+"noopener noreferrer" style=3D"user-select: auto; font-size: 16px; font-sty=
+le: normal; font-variant-ligatures: normal; font-variant-caps: normal; lett=
+er-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-t=
+ransform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0p=
+x; white-space: normal; font-family: -apple-system, &quot;system-ui&quot;, =
+&quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helveti=
+ca Neue&quot;, sans-serif; background-color: rgb(255, 255, 255); color: rgb=
+(0, 0, 0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;"=
+ target=3D"_blank">access data stores</a> and more.
+<br>
+<br>You can use Python alongside any other code and pre-built action in you=
+r workflow.
+<br>
+<br>
+</td></tr>
+<tr><td style=3D"width: 100.0000%;"><a href=3D"https://sc1sc285.r.us-east-1=
+.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fpython%2F/2/01000=
+18dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/plGsj6LPohTXMoMUIJL=
+bOU1oa24=3D362" rel=3D"noopener noreferrer" style=3D"user-select: auto; fon=
+t-size: 16px; font-style: normal; font-variant-ligatures: normal; font-vari=
+ant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; te=
+xt-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit=
+-text-stroke-width: 0px; white-space: normal; font-family: -apple-system, &=
+quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Ca=
+ntarell, &quot;Helvetica Neue&quot;, sans-serif; background-color: rgb(255,=
+ 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 13=
+9); font-weight: 600;" target=3D"_blank">Learn More</a>
+<br>
+</td></tr></tbody></table>
+<br>
+</td>
+<td class=3D"bottom" style=3D"width: 50%; vertical-align: top;">
+
+<table class=3D"fr-table" style=3D"width: 100%;"><tbody><tr><td style=3D"wi=
+dth: 100.0000%;"><img src=3D"https://gallery.eocampaign.com/ce951396-a346-1=
+1ed-a0ed-4f354f26462b%2F1708540965371-Pi%20in%20the%20UI.jpg" style=3D"widt=
+h: 300px; display: block; vertical-align: top; margin: 5px auto; text-align=
+: center;" height=3D"125" width=3D"275"></td></tr>
+<tr><td style=3D"width: 100.0000%;"><strong style=3D"font-weight: 700; colo=
+r: rgb(0, 0, 0); font-family: -apple-system, BlinkMacSystemFont, &quot;Sego=
+e UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&qu=
+ot;, sans-serif; font-size: 24px; font-style: normal; font-variant-ligature=
+s: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; widows: 2; word-s=
+pacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgroun=
+d-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decor=
+ation-style: initial; text-decoration-color: initial;">Pi in the UI</strong=
+>
+<br>
+</td></tr>
+<tr><td style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30,=
+ 41, 59); width: 100.0000%;">Our chatbot, Pi, has been a helpful presence i=
+n our Slack community for the past 6 months. It's helped answer thousands o=
+f questions ranging from error troubleshooting to helping write code.
+<br>
+<br>Pi is now ready to help directly within your Pipedream account. From wi=
+thin the workflow builder, simply click the blue chat bubble.
+<br>
+<br>
+</td></tr>
+<tr><td style=3D"width: 100.0000%;"><a href=3D"https://sc1sc285.r.us-east-1=
+.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fblog%2Fbuild-your-own-chat-bot-=
+with-openai-and-pipedream%2F/1/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afc=
+c205357b0-000000/MW6d4AZ1rwajK4PLMx3TV0_XTOo=3D362" rel=3D"noopener norefer=
+rer" style=3D"user-select: auto; font-size: 16px; font-style: normal; font-=
+variant-ligatures: normal; font-variant-caps: normal; letter-spacing: norma=
+l; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; w=
+idows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: n=
+ormal; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&qu=
+ot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sa=
+ns-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-d=
+ecoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank=
+">Learn More</a>
+<br>
+</td></tr></tbody></table>
+<br>
+</td></tr>
+<tr><td style=3D"width: 50.0000%;">
+<br>
+</td>
+<td style=3D"width: 50.0000%;">
+<br>
+</td></tr>
+<tr><td style=3D"width: 50.0000%;">
+<br>
+</td>
+<td style=3D"width: 50.0000%;">
+<br>
+</td></tr></tbody></table>
+
+
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);"><span style=3D"font-size: 30px=
+;"><strong>Customer Spotlight</strong></span></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<table class=3D"fr-table" style=3D"width: 100%;"><tbody><tr><td class=3D"to=
+p" style=3D"width: 50.0000%;"><img data-fr-image-pasted=3D"true" src=3D"htt=
+ps://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F17074397=
+43252-SD_Logo.jpg" style=3D"max-width: 100%; position: relative; cursor: po=
+inter; padding: 0px 1px; color: rgb(0, 0, 0); font-family: -apple-system, B=
+linkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Canta=
+rell, &quot;Helvetica Neue&quot;, sans-serif; font-size: medium; font-style=
+: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-w=
+eight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-tran=
+sform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+white-space: normal; background-color: rgb(255, 255, 255); text-decoration-=
+thickness: initial; text-decoration-style: initial; text-decoration-color: =
+initial; width: 280px; display: block; vertical-align: top; margin: 5px aut=
+o; text-align: center; height: auto;">
+<br>
+</td>
+<td class=3D"bottom" style=3D"width: 50.0000%;">
+
+<table class=3D"fr-table" style=3D"width: 100%; border-spacing: 10px;"><tbo=
+dy><tr><td style=3D"width: 100.0000%;"><strong style=3D"font-weight: 700; c=
+olor: rgb(0, 0, 0); font-family: -apple-system, BlinkMacSystemFont, &quot;S=
+egoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue=
+&quot;, sans-serif; font-size: 24px; font-style: normal; font-variant-ligat=
+ures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2=
+; text-align: start; text-indent: 0px; text-transform: none; widows: 2; wor=
+d-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgr=
+ound-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-de=
+coration-style: initial; text-decoration-color: initial;">Sleep Doctor</str=
+ong>
+<br>
+<br>
+</td></tr>
+<tr><td style=3D"width: 100.0000%; font-size:1rem;line-height:1.5rem;margin=
+:0px;color:rgb(30, 41, 59);">
+The Data Engineering team at Sleep Doctor needed a tool to facilitate data =
+transfers between production applications (Zoho, Shopify, and more).
+<br>
+<br>
+</td></tr>
+<tr><td style=3D"width: 100.0000%;"><a href=3D"https://sc1sc285.r.us-east-1=
+.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fblog%2Fpipedream-potent-serverl=
+ess-capabilities%2F/1/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0=
+-000000/Z1ebq4M0rSVmE7_pj3nQYBXqKx8=3D362" rel=3D"noopener noreferrer" styl=
+e=3D"user-select: auto; font-size: 16px; font-style: normal; font-variant-l=
+igatures: normal; font-variant-caps: normal; letter-spacing: normal; orphan=
+s: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2;=
+ word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; fo=
+nt-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Robo=
+to, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;=
+ background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration=
+: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Read th=
+eir story</a>
+<br>
+</td></tr></tbody></table>
+<br>
+</td></tr></tbody></table>
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Please <a href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fsupport/1/01000=
+18dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/8L7WwwlJ8Hsnw0F-sb9=
+_rOH-V3s=3D362" rel=3D"noopener noreferrer" style=3D"user-select: auto; fon=
+t-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Robot=
+o, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; =
+font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-v=
+ariant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start;=
+ text-indent: 0px; text-transform: none; white-space: normal; widows: 2; wo=
+rd-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255,=
+ 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 13=
+9); font-weight: 600;" target=3D"_blank">let us know</a> if you see any bug=
+s, want to suggest a feature, or have questions about our pricing plans.</p=
+>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>Warm regards,
+<br>The Pipedream Team
+</p>
+
+<p>
+<br>
+</p>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/2/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/vrfyi1=
+JeayAgP9S6JUOXf9UXfJw=3D362" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank"></a><a href=3D"https://sc1sc285.r.us-east-=
+1.awstrack.me/L0/https:%2F%2Fpipedream.com/3/0100018dcd5271fe-7f7e26cd-ba20=
+-41ec-8910-afcc205357b0-000000/RIqGTqC6fvxPIqh8sNn2I3QOO70=3D362" style=3D"=
+color:#b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">44 Mo=
+ntgomery Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United States of=
+ America</a>
+<br>
+<br><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Falat=
+us.eocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D358ac956-f01d-11ed-bcd1-db29=
+77b1fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6197%26p=3Dfb4a67da-c099-11=
+ee-ace1-ffd5a1a53f95%26pt=3Dcampaign%26pv=3D4%26spa=3D1708541064%26t=3D1708=
+546748%26s=3Dd50824a2757b381e62cc9b6ac1a4bf035204aace829c7e7e779c73bcadaef1=
+e8/1/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/ZF7Lf2_O1=
+et1sUdl-gNByiqtTAo=3D362" style=3D"font-size:14px;color:#b4becc;">Unsubscri=
+be here</a>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/4/0100018dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/8Yzg7H=
+XwBzBHU9MUyMv-bwjLwV4=3D362" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank">
+<br>
+<br>
+</a></td></tr></tbody></table>
+</td></tr></tbody></table><p>
+
+<br>
+</p><img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/010001=
+8dcd5271fe-7f7e26cd-ba20-41ec-8910-afcc205357b0-000000/Fz1lhxF93UKJzQXb7hQ9=
+p97w28Y=3D362" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--quaPyeJW--

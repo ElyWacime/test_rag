@@ -1,0 +1,651 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp5915332pxw;
+        Sun, 14 May 2023 06:27:54 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ48SwuSwZykAYiUK0/vd1w+8I/Z/fq7TvnsG5M5bolCAcZJZ6hsFwFZZoUIiL6y7QtLorNp
+X-Received: by 2002:a05:6a00:1256:b0:64a:f69e:9091 with SMTP id u22-20020a056a00125600b0064af69e9091mr7991553pfi.20.1684070874127;
+        Sun, 14 May 2023 06:27:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684070874; cv=none;
+        d=google.com; s=arc-20160816;
+        b=JtZKtP+aPacWpftnzGbLWZBvUAQSeL+Z/Emk/hmJniWJXyWBeC4zOq4oRFcxQeizt2
+         wSu5uKYZDdgSkfMYfh2UzrlpF7EJ9Wl1uCTKk+6pyL/CJL44c+bp3fHbDpHpVSCsOTe0
+         v6YR5PbXyIBM0J1TbiE9q3J4eirzcc3RaOA0u2sFXydpc7Dirbivilwxp3iO/RFF4LCP
+         J32VSPZvSddsCuddEsf4WL+z3tNPH6tuWOr0DjnUhQ5SOXQgt2pQcx9v26nEqyirPKtO
+         narG/HNrXfio6TYTKX2hI49rXkPJl8r3IovOnsivNLxyP6JNm9flpgV56rEkeOhESMqr
+         SzDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:subject:message-id:mime-version:from:date
+         :dkim-signature:dkim-signature;
+        bh=hV6chU63dtHl8aruYgD+xYN2iXwxy0paUZE4UYE0aH0=;
+        b=citjxYqtCxWxm5saQMTCfw3by/wcqQljkJosjQDg8sLLu7k+V6w4ZZA6d2BeUJLlox
+         e3uxjQuBPp7URYZ2faoWMnK0x+bYpuDWgqsucTQUr6m8kiXWue1n9VXPZtdn6WeIWgvj
+         O1t2Heov87Fn9Kg4BeyC92ArfXi/SBRmho6KpjMhIVKHYdp5gYWWlh50GGZhVsbhmCOu
+         w5pdhXtmMkZhcZKYUOOxjWZ8QhzF4Eg1/6UGWNkoxunikltGxqqDskZDwedPh7S8Icve
+         Jo4zVO8nA0PdJ6ugAsxi8u/Vc1B3KeEvkrhLjN9abJ1D4A7PsOrX39GocCCh68y9KEUu
+         I4QQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@trymagic.com header.s=s1 header.b=j3lGpR10;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=J0pqUrGi;
+       spf=pass (google.com: domain of bounces+14865336-ee66-ely.ubuntu0=gmail.com@em8478.trymagic.com designates 149.72.223.51 as permitted sender) smtp.mailfrom="bounces+14865336-ee66-ely.ubuntu0=gmail.com@em8478.trymagic.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=trymagic.com
+Return-Path: <bounces+14865336-ee66-ely.ubuntu0=gmail.com@em8478.trymagic.com>
+Received: from o6.ptr5947.trymagic.com (o6.ptr5947.trymagic.com. [149.72.223.51])
+        by mx.google.com with ESMTPS id b19-20020aa79513000000b00625559a78a2si14460353pfp.107.2023.05.14.06.27.53
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 14 May 2023 06:27:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+14865336-ee66-ely.ubuntu0=gmail.com@em8478.trymagic.com designates 149.72.223.51 as permitted sender) client-ip=149.72.223.51;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@trymagic.com header.s=s1 header.b=j3lGpR10;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=J0pqUrGi;
+       spf=pass (google.com: domain of bounces+14865336-ee66-ely.ubuntu0=gmail.com@em8478.trymagic.com designates 149.72.223.51 as permitted sender) smtp.mailfrom="bounces+14865336-ee66-ely.ubuntu0=gmail.com@em8478.trymagic.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=trymagic.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=trymagic.com;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=s1; bh=hV6chU63dtHl8aruYgD+xYN2iXwxy0paUZE4UYE0aH0=;
+	b=j3lGpR1060rOfJRJaisH980jSTNCBkcJNjxe8MxJfke6CDbtfv+BotWE8AvGjTx3qnMe
+	RmivIN2JaYGNHZqMIZ/eR8ygI7dPkBVsXyqUFS5MPUIl3TRPQylvFdn/2zkWITSTdrC8uK
+	f71GQjqb0t5pRTWBa/JZwzifg9tPQlcVrZUzAnVQyUjz2BrBiiObsj/xxoFa5vKubloy7u
+	dlo3UJDV/gPAGnluONcUcN+Vw2h6qx+rOcSlRnk2FO/rzYTXZs7+0GQ9/qT2OOuJHVGl/Y
+	+/Rex/nhAEH+BOmuGgbwp2FwDvWFfSFwtr/+Q1ORpDCj9SNCkiVdorHDNcVw9Fug==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=hV6chU63dtHl8aruYgD+xYN2iXwxy0paUZE4UYE0aH0=;
+	b=J0pqUrGiC7HmQfspe/F6o4pshnM4O6TwUQwdUAmYBlH4hnsMquoXkIMSZoGmnrePZlb4
+	iCEbPyA+LskQOTmTr7Umv6DptgyvUl6oNNrjl466x5pMPlhsZkO0VL71zn+z7tM/LzvFnr
+	nIv6WrtvBcKLG5KB2Vd6l6P8YOHXDTdyA=
+Received: by filterdrecv-8684c58db7-9wj6q with SMTP id filterdrecv-8684c58db7-9wj6q-1-6460E1D9-11
+        2023-05-14 13:27:53.500023176 +0000 UTC m=+308967.920373383
+Received: from MTQ4NjUzMzY (unknown)
+	by geopod-ismtpd-2 (SG) with HTTP
+	id dWWKTCQwRgm1sLSKZjfUyg
+	Sun, 14 May 2023 13:27:53.492 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=2b9e1ca8ac952139bf6b918484ce0afba8b6cc96f34937d3418a755cd337
+Date: Sun, 14 May 2023 13:27:53 +0000 (UTC)
+From: Login <noreply@trymagic.com>
+Mime-Version: 1.0
+Message-ID: <dWWKTCQwRgm1sLSKZjfUyg@geopod-ismtpd-2>
+Subject: Log in to web3.storage
+X-Entity-Ref-ID: gKMoJxXA
+List-Unsubscribe: <mailto:unsubscribe@trymagic.com>
+X-Feedback-ID: 14865336:SG
+X-SG-EID: 
+ =?us-ascii?Q?in09STbxyslPOL6kRoOtOCp=2Fuo4iCPLC5oyUZGYIVMWW4Q35CjDsm6EguOup+e?=
+ =?us-ascii?Q?s3GYMK=2FNShG0TkEGhvspzIBKW978=2F=2FfA++863EH?=
+ =?us-ascii?Q?b=2Ff+KFBOwhP1gMTUAOsja70fPsCZVTN7nVLHoAA?=
+ =?us-ascii?Q?3a7dKI04k4CnhrT9SU67I8oNq3aRpmv714RZ2DW?=
+ =?us-ascii?Q?ppsmflQ2gZeuNRLaXjGPw3nB71HGhWCqDeaXMCO?=
+ =?us-ascii?Q?kShkWEmpLBrbECwhq5Whi=2F+XOCiMn8XtB41iNK?=
+To: ely.ubuntu0@gmail.com
+X-Entity-ID: 4+AgHQ/d2iFgtcX6c6vZoA==
+
+--2b9e1ca8ac952139bf6b918484ce0afba8b6cc96f34937d3418a755cd337
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Mime-Version: 1.0
+
+Welcome to web3.storage
+This link will expire in 20 minutes.
+Log in to web3.storage (https://auth.magic.link/confirm?tlt=3DeyJ0eXAiOiJKV=
+1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImVseS51YnVudHUwQGdtYWlsLmNvbSIsInRlbXB=
+vcmFyeV9hdXRoX3Rva2VuIjoidVpLZ3BGRzItTnFobk5DQ3lNZjdHaWhiLXRiYVVWcHNiUUktVG=
+NCZDRINHRrMkt5TFNxVGpUWlEzZzhlYUdWeDAyX1IxWGczR1N0X1ZwZGhfZjA5bkEiLCJjbGllb=
+nRfaWQiOiJtVFJfTUNyU041NzRVbEZiM1BXcmM2MmJZRzRYMnMwMXpmRnB0SUpJMGtjPSIsInVz=
+ZXJfdHlwZSI6MiwiZXhwIjoxNjg0MDcyMDczfQ.GTlhPoSYoyW6AKuBXTlRU34EN1LOxFcs8uTe=
+M6rM1aU&e=3Dmainnet&ct=3DeyJhcHBfbmFtZSI6ICJ3ZWIzLnN0b3JhZ2UiLCAiYXNzZXRfdX=
+JpIjogImh0dHBzOi8vYXNzZXRzLmZvcnRtYXRpYy5jb20vTWFnaWNMb2dvcy8yMDI2NzUxNjFkN=
+DI2NzA5MzM3OGIwYzNiYzY5N2Y0Yi84YWIxZTM1ODIwZWJlNGRkOTI1NmRiZTkxNDg3MjUyMS5w=
+bmciLCAiYnV0dG9uX2NvbG9yIjogIiM3RTgxRkYiLCAiY3VzdG9tX2JyYW5kaW5nX3R5cGUiOiA=
+xLCAidGhlbWVfY29sb3IiOiAiZGFyayJ9&uid=3DJZ6vhhlYXkT8pdCVaqr-WZ7ecn0HSuNVLKY=
+XzflVmUo=3D&locale=3Den_US&ak=3Dpk_live_BB95C8769C9B1295&redirect_url=3Dhtt=
+ps://web3.storage/callback/%3Fredirect_uri%3D%252Faccount&location=3DTW9yb2=
+NjbywgTCdPcmllbnRhbCwgT3VqZGE=3D&flow_context=3DeyJ0eXAiOiJKV1QiLCJhbGciOiJ=
+IUzI1NiJ9.eyJmIjoiUWpaZHIxUURQMXZjLUNYUGhyYVoxVXFFNWZXN0loYVByaU9JWUppYUVhb=
+z0iLCJ0IjoiRzRkSVJ3YjVjV2dwZEREc0pYamppOGczNlFqblNHMDQySTBtNFI2cjVBc0ZlN2FB=
+MzNIeXptdi1IM2l2S1U1Qm1nUEYtX2hDYXN1NzM5Z3ltWk0tb2ciLCJleHAiOjE2ODQwNzIzNzN=
+9.cRfPs8SEgMdP8GY0wTE1Xxkj7h-I6eFehsWFJ45i2TQ&next_factor=3D&security_otp_c=
+hallenge=3Dfalse).
+Confirming this request will securely log you in using ely.ubuntu0@gmail.co=
+m.
+This login was requested using Chrome, Linux at 06:27:53 PDT on May 14, 202=
+3.
+- web3.storage Team
+--2b9e1ca8ac952139bf6b918484ce0afba8b6cc96f34937d3418a755cd337
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:Pixel=
+sPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+"/>
+    <meta content=3D"width=3Ddevice-width" name=3D"viewport"/>
+    <!--[if !mso]><!-->
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"/>
+    <!--<![endif]-->
+    <title>Login</title>
+    <!--[if !mso]><!-->
+    <!--<![endif]-->
+
+    <style type=3D"text/css">
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      table,
+      td,
+      tr {
+        vertical-align: top;
+        border-collapse: collapse;
+      }
+
+      * {
+        line-height: inherit;
+      }
+
+      a.email-address,
+      a[x-apple-data-detectors=3Dtrue] {
+        color: #7E81FF !important;
+        text-decoration: none !important;
+      }
+      .untracked { display: none; }
+
+      /*
+          ###########
+          Light theme
+          ###########
+      */
+      .light-theme {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+      .light-theme .login-button { color: #ffffff !important; }
+      /* Overrides Gmail's duplicate coloring */
+      .light-theme span { color: #000000 !important; }
+      .light-theme .login-button span { color: #ffffff !important; }
+
+      /*
+          ###########
+          Dark theme
+          ###########
+      */
+      .dark-theme {
+          background-color: #000000 !important;
+          color: #ffffff !important;
+      }
+      .dark-theme .login-button { color: #000000 !important; }
+      /* Overrides Gmail's duplicate coloring */
+      .dark-theme span { color: #ffffff !important; }
+      .dark-theme .login-button span { color: #000000 !important; }
+
+      .bg { background-color: #7E81FF; }
+      .bg-null { background-color: #6851FF; }
+    </style>
+
+    <style type=3D"text/css">
+      @media (max-width: 520px) {
+
+        .block-grid,
+        .col {
+          min-width: 320px !important;
+          max-width: 100% !important;
+          display: block !important;
+        }
+
+        .block-grid {
+          width: 100% !important;
+        }
+
+        .col {
+          width: 100% !important;
+        }
+
+        .col>div {
+          margin: 0 auto;
+        }
+
+        img.fullwidth,
+        img.fullwidthOnMobile {
+          max-width: 100% !important;
+        }
+
+        .no-stack .col {
+          min-width: 0 !important;
+          display: table-cell !important;
+        }
+
+        .no-stack.two-up .col {
+          width: 50% !important;
+        }
+
+        .no-stack .col.num4 {
+          width: 33% !important;
+        }
+
+        .no-stack .col.num8 {
+          width: 66% !important;
+        }
+
+        .no-stack .col.num4 {
+          width: 33% !important;
+        }
+
+        .no-stack .col.num3 {
+          width: 25% !important;
+        }
+
+        .no-stack .col.num6 {
+          width: 50% !important;
+        }
+
+        .no-stack .col.num9 {
+          width: 75% !important;
+        }
+
+        .video-block {
+          max-width: none !important;
+        }
+
+        .mobile_hide {
+          min-height: 0px;
+          max-height: 0px;
+          max-width: 0px;
+          display: none;
+          overflow: hidden;
+          font-size: 0px;
+        }
+
+        .desktop_hide {
+          display: block !important;
+          max-height: none !important;
+        }
+
+        .bg { background-color: #7E81FF; }
+
+        .bg-null { background-color: #6851FF; }
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if IE]><div class=3D"ie-browser"><![endif]-->
+   =20
+   =20
+  <table bgcolor=3D"#000000" class=3D"dark-theme" cellpadding=3D"0" cellspa=
+cing=3D"0" width=3D"100%" height=3D"100%" style=3D"table-layout: fixed; ver=
+tical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; bord=
+er-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; ; widt=
+h: 100%;" class=3D"nl-container">
+   =20
+    <tbody>
+      <tr valign=3D"top" style=3D"vertical-align: top;">
+        <td valign=3D"top" style=3D"word-break: break-word; vertical-align:=
+ top;">
+          <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cells=
+pacing=3D"0" border=3D"0"><tr><td align=3D"center"><![endif]-->
+          <div>
+            <div style=3D"Margin: 0 auto; min-width: 320px; max-width: 500p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+;" class=3D"block-grid ">
+              <div style=3D"border-collapse: collapse;display: table;width:=
+ 100%;">
+                <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0"><tr><td align=3D"center"><table cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" style=3D"width:500px"><tr class=3D"la=
+yout-full-width"><![endif]-->
+                <!--[if (mso)|(IE)]><td align=3D"center" width=3D"500" widt=
+h:500px; border-top: 0px solid transparent; border-left: 0px solid transpar=
+ent; border-bottom: none; border-right: 0px solid transparent;" valign=3D"t=
+op"><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=
+<tr><td style=3D"padding-right: 0px; padding-left: 0px; padding-top:0px; pa=
+dding-bottom:0px;"><![endif]-->
+                <div style=3D"min-width: 320px; max-width: 500px; display: =
+table-cell; vertical-align: top; width: 500px;" class=3D"col num12">
+                  <div style=3D"width:100% !important;">
+                    <!--[if (!mso)&(!IE)]><!-->
+                    <div style=3D"border-top:0px solid transparent; border-=
+left:0px solid transparent; border-bottom:20px solid transparent; border-ri=
+ght:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-rig=
+ht: 0px; padding-left: 0px;">
+                      <!--<![endif]-->
+                      <div></div>
+                      <!--[if (!mso)&(!IE)]><!-->
+                    </div>
+                    <!--<![endif]-->
+                  </div>
+                </div>
+                <!--[if (mso)|(IE)]></td></tr><tr><td colspan=3D'1' style=
+=3D'font-size:7px;line-height:20px'>=A0</td></tr></table><![endif]-->
+                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![=
+endif]-->
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style=3D"Margin: 0 auto; min-width: 320px; max-width: 500p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; ;" class=3D"block-grid ">
+              <div style=3D"border-collapse: collapse;display: table;width:=
+ 100%;">
+                <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" ><tr><td align=3D"center"><table cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" style=3D"width:500px"><tr class=3D"l=
+ayout-full-width"><![endif]-->
+                <!--[if (mso)|(IE)]><td align=3D"center" width=3D"500" ;wid=
+th:500px; border-top: 0px solid transparent; border-left: 0px solid transpa=
+rent; border-bottom: 0px solid transparent; border-right: 0px solid transpa=
+rent;" valign=3D"top"><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 50px; padding-left: 50p=
+x; padding-top:0px; padding-bottom:15px;"><![endif]-->
+                <div style=3D"min-width: 320px; max-width: 500px; display: =
+table-cell; vertical-align: top; width: 500px;" class=3D"col num12">
+                  <div style=3D"width:100% !important;">
+                    <!--[if (!mso)&(!IE)]><!-->
+                    <div style=3D"border-top:0px solid transparent; border-=
+left:0px solid transparent; border-bottom:0px solid transparent; border-rig=
+ht:0px solid transparent; padding-top:0px; padding-bottom:15px; padding-rig=
+ht: 50px; padding-left: 50px;">
+                      <!--<![endif]-->
+                      <div align=3D"left" style=3D"padding-right: 0px;paddi=
+ng-left: 0px;" class=3D"img-container left fixedwidth">
+                        <!--[if mso]><table width=3D"100%" cellpadding=3D"0=
+" cellspacing=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D=
+"padding-right: 0px;padding-left: 0px;" align=3D"left"><![endif]-->
+
+                        =20
+                          <img width=3D"100" alt=3D"Logo" src=3D"https://as=
+sets.fortmatic.com/MagicLogos/202675161d4267093378b0c3bc697f4b/8ab1e35820eb=
+e4dd9256dbe914872521.png" border=3D"0" style=3D"text-decoration: none; -ms-=
+interpolation-mode: bicubic; border: 0; height: 69px; width: 69px; display:=
+ block; border-radius: 6px; object-fit: cover;" class=3D"left fixedwidth">
+                        =20
+                        <div style=3D"font-size:1px;line-height:10px">&nbsp=
+;</div>
+                        <!--[if mso]></td></tr></table><![endif]-->
+                      </div>
+                      <!--[if mso]><table width=3D"100%" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px; padding=
+-left: 0px; padding-top: 15px; padding-bottom: 0px; font-family: Arial, san=
+s-serif"><![endif]-->
+                      <div style=3D"font-family:'Helvetica Neue', Helvetica=
+, Arial, sans-serif;line-height:1.8;padding-top:5px;padding-right:0px;paddi=
+ng-bottom:0px;padding-left:0px;">
+                        <div style=3D"line-height: 1.8; font-family: 'Helve=
+tica Neue', Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-=
+alt: 22px;">
+                          <p style=3D"line-height: 1.8; font-size: 12px; ms=
+o-line-height-alt: 22px; margin: 0;">
+                            <span style=3D"font-size: 34px;">
+                              <strong>
+                               =20
+                               =20
+                                  <!--[if !mso]><!-->
+                                    <a href=3D"#" style=3D"color: #ffffff !=
+important; text-decoration: none !important;">web3.storage</a>
+                                  <!--<![endif]-->
+                                  <!--[if mso]>
+                                    <a style=3D"color: #ffffff !important; =
+text-decoration: none !important;">web3.storage</a>
+                                  <![endif]-->
+                               =20
+                              </strong>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                      <!--[if mso]><table width=3D"100%" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px; padding=
+-left: 0px; padding-top: 15px; padding-bottom: 15px; font-family: Arial, sa=
+ns-serif"><![endif]-->
+                      <div style=3D"font-family:'Helvetica Neue', Helvetica=
+, Arial, sans-serif;line-height:1.8;padding-top:15px;padding-right:0px;padd=
+ing-bottom:15px;padding-left:0px;">
+                        <div style=3D"font-size: 12px; line-height: 1.8; fo=
+nt-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; mso-line-height-=
+alt: 22px;">
+                          <p style=3D"font-size: 14px; line-height: 1.8; ms=
+o-line-height-alt: 25px; margin: 0;">
+                            <span style=3D"font-size: 14px;">
+                             =20
+                             =20
+                                <!--[if !mso]><!-->
+                                  <a href=3D"#" style=3D"color: #ffffff !im=
+portant; text-decoration: none !important;">Click the button below to log i=
+n to <strong>web3.storage</strong>.</a>
+                                <!--<![endif]-->
+                                <!--[if mso]>
+                                  <a style=3D"color: #ffffff !important; te=
+xt-decoration: none !important;">Click the button below to log in to <stron=
+g>web3.storage</strong>.</a>
+                                <![endif]-->
+                             =20
+                            </span>
+                          </p>
+                          <p style=3D"font-size: 14px; line-height: 1.8; ms=
+o-line-height-alt: 25px; margin: 0;">
+                            <span style=3D"font-size: 14px;">
+                              This button will expire in 20 minutes.
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <!--[if mso]></td></tr></table><![endif]-->
+                      <div align=3D"left" style=3D"padding-top:10px;padding=
+-right:10px;padding-bottom:10px;padding-left:0px;" class=3D"button-containe=
+r">
+                        <!--[if mso]><table width=3D"100%" cellpadding=3D"0=
+" cellspacing=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collaps=
+e: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"=
+padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left:=
+ 0px" align=3D"left"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml"=
+ xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https://auth.mag=
+ic.link/confirm?tlt=3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImVs=
+eS51YnVudHUwQGdtYWlsLmNvbSIsInRlbXBvcmFyeV9hdXRoX3Rva2VuIjoidVpLZ3BGRzItTnF=
+obk5DQ3lNZjdHaWhiLXRiYVVWcHNiUUktVGNCZDRINHRrMkt5TFNxVGpUWlEzZzhlYUdWeDAyX1=
+IxWGczR1N0X1ZwZGhfZjA5bkEiLCJjbGllbnRfaWQiOiJtVFJfTUNyU041NzRVbEZiM1BXcmM2M=
+mJZRzRYMnMwMXpmRnB0SUpJMGtjPSIsInVzZXJfdHlwZSI6MiwiZXhwIjoxNjg0MDcyMDczfQ.G=
+TlhPoSYoyW6AKuBXTlRU34EN1LOxFcs8uTeM6rM1aU&e=3Dmainnet&ct=3DeyJhcHBfbmFtZSI=
+6ICJ3ZWIzLnN0b3JhZ2UiLCAiYXNzZXRfdXJpIjogImh0dHBzOi8vYXNzZXRzLmZvcnRtYXRpYy=
+5jb20vTWFnaWNMb2dvcy8yMDI2NzUxNjFkNDI2NzA5MzM3OGIwYzNiYzY5N2Y0Yi84YWIxZTM1O=
+DIwZWJlNGRkOTI1NmRiZTkxNDg3MjUyMS5wbmciLCAiYnV0dG9uX2NvbG9yIjogIiM3RTgxRkYi=
+LCAiY3VzdG9tX2JyYW5kaW5nX3R5cGUiOiAxLCAidGhlbWVfY29sb3IiOiAiZGFyayJ9&uid=3D=
+JZ6vhhlYXkT8pdCVaqr-WZ7ecn0HSuNVLKYXzflVmUo=3D&locale=3Den_US&ak=3Dpk_live_=
+BB95C8769C9B1295&redirect_url=3Dhttps://web3.storage/callback/%3Fredirect_u=
+ri%3D%252Faccount&location=3DTW9yb2NjbywgTCdPcmllbnRhbCwgT3VqZGE=3D&flow_co=
+ntext=3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmIjoiUWpaZHIxUURQMXZjLUNYUG=
+hyYVoxVXFFNWZXN0loYVByaU9JWUppYUVhbz0iLCJ0IjoiRzRkSVJ3YjVjV2dwZEREc0pYamppO=
+GczNlFqblNHMDQySTBtNFI2cjVBc0ZlN2FBMzNIeXptdi1IM2l2S1U1Qm1nUEYtX2hDYXN1NzM5=
+Z3ltWk0tb2ciLCJleHAiOjE2ODQwNzIzNzN9.cRfPs8SEgMdP8GY0wTE1Xxkj7h-I6eFehsWFJ4=
+5i2TQ&next_factor=3D&security_otp_challenge=3Dfalse" style=3D"height:42.75p=
+t; width:240.75pt; v-text-anchor:middle;" arcsize=3D"13%" stroke=3D"false">=
+<w:anchorlock/><v:textbox inset=3D"0,0,0,0"><center font-family:Arial, sans=
+-serif; font-size:18px"><![endif]-->
+
+                        =20
+                         <a class=3D"login-button bg" target=3D"_blank" hre=
+f=3D"https://auth.magic.link/confirm?tlt=3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1=
+NiJ9.eyJlbWFpbCI6ImVseS51YnVudHUwQGdtYWlsLmNvbSIsInRlbXBvcmFyeV9hdXRoX3Rva2=
+VuIjoidVpLZ3BGRzItTnFobk5DQ3lNZjdHaWhiLXRiYVVWcHNiUUktVGNCZDRINHRrMkt5TFNxV=
+GpUWlEzZzhlYUdWeDAyX1IxWGczR1N0X1ZwZGhfZjA5bkEiLCJjbGllbnRfaWQiOiJtVFJfTUNy=
+U041NzRVbEZiM1BXcmM2MmJZRzRYMnMwMXpmRnB0SUpJMGtjPSIsInVzZXJfdHlwZSI6MiwiZXh=
+wIjoxNjg0MDcyMDczfQ.GTlhPoSYoyW6AKuBXTlRU34EN1LOxFcs8uTeM6rM1aU&e=3Dmainnet=
+&ct=3DeyJhcHBfbmFtZSI6ICJ3ZWIzLnN0b3JhZ2UiLCAiYXNzZXRfdXJpIjogImh0dHBzOi8vY=
+XNzZXRzLmZvcnRtYXRpYy5jb20vTWFnaWNMb2dvcy8yMDI2NzUxNjFkNDI2NzA5MzM3OGIwYzNi=
+YzY5N2Y0Yi84YWIxZTM1ODIwZWJlNGRkOTI1NmRiZTkxNDg3MjUyMS5wbmciLCAiYnV0dG9uX2N=
+vbG9yIjogIiM3RTgxRkYiLCAiY3VzdG9tX2JyYW5kaW5nX3R5cGUiOiAxLCAidGhlbWVfY29sb3=
+IiOiAiZGFyayJ9&uid=3DJZ6vhhlYXkT8pdCVaqr-WZ7ecn0HSuNVLKYXzflVmUo=3D&locale=
+=3Den_US&ak=3Dpk_live_BB95C8769C9B1295&redirect_url=3Dhttps://web3.storage/=
+callback/%3Fredirect_uri%3D%252Faccount&location=3DTW9yb2NjbywgTCdPcmllbnRh=
+bCwgT3VqZGE=3D&flow_context=3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmIjoi=
+UWpaZHIxUURQMXZjLUNYUGhyYVoxVXFFNWZXN0loYVByaU9JWUppYUVhbz0iLCJ0IjoiRzRkSVJ=
+3YjVjV2dwZEREc0pYamppOGczNlFqblNHMDQySTBtNFI2cjVBc0ZlN2FBMzNIeXptdi1IM2l2S1=
+U1Qm1nUEYtX2hDYXN1NzM5Z3ltWk0tb2ciLCJleHAiOjE2ODQwNzIzNzN9.cRfPs8SEgMdP8GY0=
+wTE1Xxkj7h-I6eFehsWFJ45i2TQ&next_factor=3D&security_otp_challenge=3Dfalse" =
+style=3D"-webkit-text-size-adjust: none; text-decoration: none; display: in=
+line-block; -webkit-background: #7E81FF; -webkit-background-color: #7E81FF;=
+ background: #7E81FF; background-color: #7E81FF; border-radius: 7px; -webki=
+t-border-radius: 7px; -moz-border-radius: 7px; width: auto; width: auto; bo=
+rder-top: 1px solid #7E81FF; border-right: 1px solid #7E81FF; border-bottom=
+: 1px solid #7E81FF; border-left: 1px solid #7E81FF; padding-top: 15px; pad=
+ding-bottom: 15px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-se=
+rif; text-align: center; mso-border-alt: none; word-break: keep-all; font-s=
+ize: 18px; line-height: 1.5; padding-left:30px;padding-right:30px;font-size=
+:18px; mso-line-height-alt: 32px;">
+                        =20
+			 <strong>Log in to web3.storage</strong></a>
+                        <!--[if mso]></center></v:textbox></v:roundrect></t=
+d></tr></table><![endif]-->
+                      </div>
+                      <!--[if mso]><table width=3D"100%" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px; padding=
+-left: 0px; padding-top: 20px; padding-bottom: 10px; font-family: Arial, sa=
+ns-serif"><![endif]-->
+                      <div style=3D"font-family:'Helvetica Neue', Helvetica=
+, Arial, sans-serif;line-height:1.8;padding-top:20px;padding-right:0px;padd=
+ing-bottom:10px;padding-left:0px;">
+                        <div style=3D"font-size: 12px; line-height: 1.8; fo=
+nt-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;  mso-line-height=
+-alt: 22px;">
+                          <p style=3D"font-size: 14px; line-height: 1.8; ms=
+o-line-height-alt: 25px; margin: 0;">
+			  Button not showing?<strong>
+                         =20
+                          <a style=3D"color: #7E81FF; text-decoration: none=
+;" target=3D"_blank" href=3D"https://auth.magic.link/confirm?tlt=3DeyJ0eXAi=
+OiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImVseS51YnVudHUwQGdtYWlsLmNvbSIsIn=
+RlbXBvcmFyeV9hdXRoX3Rva2VuIjoidVpLZ3BGRzItTnFobk5DQ3lNZjdHaWhiLXRiYVVWcHNiU=
+UktVGNCZDRINHRrMkt5TFNxVGpUWlEzZzhlYUdWeDAyX1IxWGczR1N0X1ZwZGhfZjA5bkEiLCJj=
+bGllbnRfaWQiOiJtVFJfTUNyU041NzRVbEZiM1BXcmM2MmJZRzRYMnMwMXpmRnB0SUpJMGtjPSI=
+sInVzZXJfdHlwZSI6MiwiZXhwIjoxNjg0MDcyMDczfQ.GTlhPoSYoyW6AKuBXTlRU34EN1LOxFc=
+s8uTeM6rM1aU&e=3Dmainnet&ct=3DeyJhcHBfbmFtZSI6ICJ3ZWIzLnN0b3JhZ2UiLCAiYXNzZ=
+XRfdXJpIjogImh0dHBzOi8vYXNzZXRzLmZvcnRtYXRpYy5jb20vTWFnaWNMb2dvcy8yMDI2NzUx=
+NjFkNDI2NzA5MzM3OGIwYzNiYzY5N2Y0Yi84YWIxZTM1ODIwZWJlNGRkOTI1NmRiZTkxNDg3MjU=
+yMS5wbmciLCAiYnV0dG9uX2NvbG9yIjogIiM3RTgxRkYiLCAiY3VzdG9tX2JyYW5kaW5nX3R5cG=
+UiOiAxLCAidGhlbWVfY29sb3IiOiAiZGFyayJ9&uid=3DJZ6vhhlYXkT8pdCVaqr-WZ7ecn0HSu=
+NVLKYXzflVmUo=3D&locale=3Den_US&ak=3Dpk_live_BB95C8769C9B1295&redirect_url=
+=3Dhttps://web3.storage/callback/%3Fredirect_uri%3D%252Faccount&location=3D=
+TW9yb2NjbywgTCdPcmllbnRhbCwgT3VqZGE=3D&flow_context=3DeyJ0eXAiOiJKV1QiLCJhb=
+GciOiJIUzI1NiJ9.eyJmIjoiUWpaZHIxUURQMXZjLUNYUGhyYVoxVXFFNWZXN0loYVByaU9JWUp=
+pYUVhbz0iLCJ0IjoiRzRkSVJ3YjVjV2dwZEREc0pYamppOGczNlFqblNHMDQySTBtNFI2cjVBc0=
+ZlN2FBMzNIeXptdi1IM2l2S1U1Qm1nUEYtX2hDYXN1NzM5Z3ltWk0tb2ciLCJleHAiOjE2ODQwN=
+zIzNzN9.cRfPs8SEgMdP8GY0wTE1Xxkj7h-I6eFehsWFJ45i2TQ&next_factor=3D&security=
+_otp_challenge=3Dfalse">
+                         =20
+			  Click here</a></strong></p><br />
+	  <p style=3D"font-size: 14px; line-height: 1.8; mso-line-height-alt: 25px=
+; margin: 0;"><span style=3D"font-size: 14px;">Confirming this request will=
+ securely log you in using <strong><a class=3D"email-address">ely.ubuntu0@g=
+mail.com</a></strong>.</span></p>
+                          <p style=3D"font-size: 14px; line-height: 1.8; ms=
+o-line-height-alt: 25px; margin: 0;">&nbsp;</p>
+                         =20
+			  <p style=3D"font-size: 14px; line-height: 1.8; mso-line-height-alt: 25=
+px; margin: 0;"><span style=3D"font-size: 14px;">This login was requested u=
+sing <strong>Chrome, Linux</strong> at <strong>06:27:53 PDT on May 14, 2023=
+</strong>.</span></p>
+			 =20
+                        </div>
+                      </div>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                      <!--[if (!mso)&(!IE)]><!-->
+                    </div>
+                    <!--<![endif]-->
+                  </div>
+                </div>
+                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![=
+endif]-->
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style=3D"Margin: 0 auto; min-width: 320px; max-width: 500p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; ;" class=3D"block-grid ">
+              <div style=3D"border-collapse: collapse;display: table;width:=
+ 100%;">
+                <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" ><tr><td align=3D"center"><table cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" style=3D"width:500px"><tr class=3D"l=
+ayout-full-width"><![endif]-->
+                <!--[if (mso)|(IE)]><td align=3D"center" width=3D"500" widt=
+h:500px; border-top: 0px solid transparent; border-left: 0px solid transpar=
+ent; border-bottom: 0px solid transparent; border-right: 0px solid transpar=
+ent;" valign=3D"top"><table width=3D"100%" cellpadding=3D"0" cellspacing=3D=
+"0" border=3D"0"><tr><td style=3D"padding-right: 50px; padding-left: 50px; =
+padding-top:10px; padding-bottom:40px;"><![endif]-->
+                <div style=3D"min-width: 320px; max-width: 500px; display: =
+table-cell; vertical-align: top; width: 500px;" class=3D"col num12">
+                  <div style=3D"width:100% !important;">
+                    <!--[if (!mso)&(!IE)]><!-->
+                    <div style=3D"border-top:0px solid transparent; border-=
+left:0px solid transparent; border-bottom:0px solid transparent; border-rig=
+ht:0px solid transparent; padding-top:10px; padding-bottom:40px; padding-ri=
+ght: 50px; padding-left: 50px;">
+                      <!--<![endif]-->
+                      <!--[if mso]><table width=3D"100%" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px; padding=
+-left: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial, sans=
+-serif"><![endif]-->
+                      <div style=3D"font-family:'Helvetica Neue', Helvetica=
+, Arial, sans-serif;line-height:1.8;padding-top:0px;padding-right:0px;paddi=
+ng-bottom:0px;padding-left:0px;">
+                        <div style=3D"font-size: 12px; line-height: 1.8; fo=
+nt-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; mso-line-height-=
+alt: 22px;">
+                          <p style=3D"font-size: 14px; line-height: 1.8; ms=
+o-line-height-alt: 25px; margin: 0;">
+                            <span style=3D"font-size: 14px;">
+                              <strong>
+                               =20
+                               =20
+                                  <!--[if !mso]><!-->
+                                    <a href=3D"#" style=3D"color: #ffffff !=
+important; text-decoration: none !important;">- web3.storage Team</a>
+                                  <!--<![endif]-->
+                                  <!--[if mso]>
+                                    <a style=3D"color: #ffffff !important; =
+text-decoration: none !important;">- web3.storage Team</a>
+                                  <![endif]-->
+                               =20
+                              </strong>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                      <!--[if (!mso)&(!IE)]><!-->
+                    </div>
+                    <!--<![endif]-->
+                  </div>
+                </div>
+                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![=
+endif]-->
+              </div>
+            </div>
+          </div>
+          <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--[if (IE)]></div><![endif]-->
+  <img src=3D"http://url198.trymagic.com/wf/open?upn=3Dh8N8diOjzhqivQitawNQ=
+hv9CMmmWkZ8kGCVKWZT1LH4j5obkjEljwQdubZLNB8ENpqsoWC1Jjw6bpA1Eq1CsGsWl9L4d-2B=
+tZ0I-2FO78iRpya3UsGaRhcOCc9fHE4FsvQJKeP27GF5sRiSxPKiada2X8tFfWRhFZxCeOHuDif=
+Bs0ak-2B3xY2hJNTTiIfA-2FmEeqPgWJAvebtLEv7k6xe25-2BT5Gvg5j71ZF9V4YUGxGELSWrI=
+-3D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !im=
+portant;width:1px !important;border-width:0 !important;margin-top:0 !import=
+ant;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !imp=
+ortant;padding-top:0 !important;padding-bottom:0 !important;padding-right:0=
+ !important;padding-left:0 !important;"/></body>
+</html>
+--2b9e1ca8ac952139bf6b918484ce0afba8b6cc96f34937d3418a755cd337--

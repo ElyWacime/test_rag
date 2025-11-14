@@ -1,0 +1,198 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:ce05:b0:43e:7973:eb23 with SMTP id ip5csp2181175pxb;
+        Tue, 14 Mar 2023 05:15:42 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8Px3ypGHgNAJRfnE1ZKH2mys/p4zUXYzpebpf9p1s94cM3HUZ2rmwFkOATFB4ALd0bPBgf
+X-Received: by 2002:a92:cc03:0:b0:315:4b70:8370 with SMTP id s3-20020a92cc03000000b003154b708370mr2159779ilp.9.1678796142445;
+        Tue, 14 Mar 2023 05:15:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678796142; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VG2C5gZdukhyznAXA0DHuO22v3OdfPMUn+m0pqA6r3kBBAVNaM4+ZNl2ipBBzGDnI9
+         JXDBxK0nqFm8hAKssdeg+t78XZdXxic+x6AWOnTgdb624psgWRx43OnvhQTBHJKLfFcz
+         jW7eDjII1VNH6ea05p1/WAncKmx+jl2exzJ1zmc+qfU43iAQa02sQy9piNRqFePsywaM
+         GF9Sqlbl802KERes1nkG1xh5COqPHq+5yLk4+cMCKNZBn1pazMG3jF8ve2+wokyaObNn
+         CfAi5nLA+i6SdroIOMg4/ROGgkcbxSLOprgjoQeT5rJu4LmoFqPunoYXRG5MryJexTO6
+         ThkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:to:reply-to:mime-version:date
+         :content-transfer-encoding:message-id:subject:from:dkim-signature
+         :dkim-signature;
+        bh=6MNIEgwX5bYAUGMvnpQrPv6HDjSaVMmRocGufTYu72Y=;
+        b=zdNwNG/07cseJo4NPImm8lmXIlcAwtZj8JgsU9vv7ZplNDAi+ODfU/a+15kn5Hdnd+
+         XC9Fb7G9qkZDaIHjDmhBtgmmqdinp/dhEdRBuVOlo4Q+2ea7fV2q6GpUrVEwOkPVgsbe
+         oiHTKXJA9QdfOTuZAAib7bVDkGAuM5+6Z3JJ/jwXUZM6DC/Xen6MlypiJQGysmLd3XGA
+         WPY+aBP7QCl5lwZdNP4d5hiS1RtgyOgswfx56YZX3+MVI27dZ9sx3WpCHyr5eqC9KTlG
+         VM94q1M85R0TdXQRlhkcoXRX2c9P3BFOM5piw8Ans9+HGmAOR+By0tRPGPymnayOfASs
+         TgyQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=s1 header.b=qwWmDiAE;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=O5Uo41tU;
+       spf=pass (google.com: domain of bounces+6344284-526e-ely.ubuntu0=gmail.com@em4345.pipedream.com designates 159.183.185.25 as permitted sender) smtp.mailfrom="bounces+6344284-526e-ely.ubuntu0=gmail.com@em4345.pipedream.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <bounces+6344284-526e-ely.ubuntu0=gmail.com@em4345.pipedream.com>
+Received: from o3.ptr126.pipedream.com (o3.ptr126.pipedream.com. [159.183.185.25])
+        by mx.google.com with ESMTPS id w7-20020a02cf87000000b003e99ed9bc46si2132871jar.155.2023.03.14.05.15.41
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Mar 2023 05:15:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+6344284-526e-ely.ubuntu0=gmail.com@em4345.pipedream.com designates 159.183.185.25 as permitted sender) client-ip=159.183.185.25;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=s1 header.b=qwWmDiAE;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=O5Uo41tU;
+       spf=pass (google.com: domain of bounces+6344284-526e-ely.ubuntu0=gmail.com@em4345.pipedream.com designates 159.183.185.25 as permitted sender) smtp.mailfrom="bounces+6344284-526e-ely.ubuntu0=gmail.com@em4345.pipedream.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pipedream.com;
+	h=content-type:from:subject:content-transfer-encoding:mime-version:
+	reply-to:x-feedback-id:to:list-unsubscribe:cc:content-type:from:subject:to;
+	s=s1; bh=6MNIEgwX5bYAUGMvnpQrPv6HDjSaVMmRocGufTYu72Y=;
+	b=qwWmDiAEJuiJzXtWUFrEf3PnGeWM9VnSpLEBUzJwk83r5Y8StJH6eHRe6l3hFBhTe0FV
+	UqI3VDxzIWZv6NFnDRJFi4/MHi7elDRjj1AGyveQVXe8W/RqrbcZla4HuVLe9ORuXVAHA2
+	bEN/qlyq9hcpKSuIhaxXNeXFIalPST/zZHy7gzWAuRhKRaCyaZ9O4EAwRFgjgn/g2DnR2C
+	4QQJ7Wy7+Wqul+kxsXbQK3sUMvifHRtWVD6ejvS2I11Vbal0mjp2/h10FeMaGzxGvsmwrz
+	TF2VuCRBy/WigxEgWLi/CijfTkiiZpVWexHMx9hClv7LNjn1K5+lR6gN3ZNEjfLg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:subject:content-transfer-encoding:mime-version:
+	reply-to:x-feedback-id:to:list-unsubscribe:cc:content-type:from:subject:to;
+	s=smtpapi; bh=6MNIEgwX5bYAUGMvnpQrPv6HDjSaVMmRocGufTYu72Y=;
+	b=O5Uo41tUWY+tErGFRifG7uduPAmD6y6/w8+tPUVmNsGMks5wsBnAwpanQpzsPaWt3xJg
+	T7VhhuodjMntC0kGvHpp9jDuy8ePnpQizqzeOGTPkTzKiaWyoQAcYxKU6KnM2WT7HQjevz
+	fV0eBQOEYuaPwxx/2wjpaLSMtp2X3+XJo=
+Received: by filterdrecv-5784594f58-2942q with SMTP id filterdrecv-5784594f58-2942q-1-6410656C-E6
+        2023-03-14 12:15:40.726163063 +0000 UTC m=+1773743.264606187
+Received: from [169.254.205.89] (unknown)
+	by geopod-ismtpd-22 (SG)
+	with ESMTP id r0smr4Z1T7aY0zpNm9ZX1w
+	for <ely.ubuntu0@gmail.com>;
+	Tue, 14 Mar 2023 12:15:40.646 +0000 (UTC)
+Content-Type: text/html; charset=us-ascii
+From: Tod Sacerdoti <tod@pipedream.com>
+Subject: Using triggers and actions (2/3)
+Message-ID: <80949552-af47-dba7-95a9-f7181e0e1ad7@pipedream.com>
+Content-Transfer-Encoding: quoted-printable
+Date: Tue, 14 Mar 2023 12:15:40 +0000 (UTC)
+MIME-Version: 1.0
+Reply-To: feedback@pipedream.com
+X-Feedback-ID: 6344284:SG
+X-SG-EID: 
+ =?us-ascii?Q?JQiTsMs+WSpOH71SdGul5h=2Faie=2F6+jk5ERdVBVWvcQRhyrk6OWEuc=2FLGIPkodl?=
+ =?us-ascii?Q?iZIeua901XvPMRbfuZuEBnowntNuuy2nXk0WjvT?=
+ =?us-ascii?Q?x26=2FyeViVdozm6n7TI3rQeRz9FSx+k2r8QtvPBU?=
+ =?us-ascii?Q?7SQa9apZ6GfCqnWSVAFSpoeA5a9Cu5J6ZUEBMjZ?=
+ =?us-ascii?Q?VBp7=2FcqFHXnrUhvGczWhLxdkmQ7BFiEfg5ApC5n?=
+ =?us-ascii?Q?qELCxT01OXfmSWPWzFCWWAl3J4lIIJ8zk3MO6i?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb0cWxpO3hqEYIH8b=2FEr4Wlsu1O4829XWXxtN7LcCWV?=
+ =?us-ascii?Q?5BiMtb7z9tW92OHnqk7Ojyz2WWzHv9+zZJIh4Sv?=
+ =?us-ascii?Q?ksSyQalyMdeptxGhSNuR61tMEBNoEDPFU0mVKRK?=
+ =?us-ascii?Q?OGcEgREInjgBSxswOFg=2F7hRq7Sg89O0=3D?=
+To: ely.ubuntu0@gmail.com
+X-Entity-ID: +/vpM/Xc1Xx54bwc0V/ugw==
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40em4345=2Epipedream=2Ecom=3Fsubject=3D6344284=2ER5tD2?=
+ =?us-ascii?Q?1VCTQ6huDfajgrScT8tlfrHCun895Xp2T9bj9Ro?=
+ =?us-ascii?Q?MDAwdTAwMA-PYvlTS2o-2JqYXYP2o5SngU-yffG?=
+ =?us-ascii?Q?7ibhSbjmhR9uob9mlx091KzXNcCenJCqi3jNG7i?=
+ =?us-ascii?Q?fZmsklu9lpfY6c2VipD9J90R0eu3jxBazlDTgGr?=
+ =?us-ascii?Q?hVqVZEI2exWQ0Q6IMLw6g=3D=3D=2EYrkwDKJ5=5FhgO5KN?=
+ =?us-ascii?Q?LQ=5F0EDKXemZzCtYPv94vY7sksOHFoMDAwdTAwMK?=
+ =?us-ascii?Q?RA9rL1r9C9oviyamxuMt4hn1yCvjyACSOkMwIT0?=
+ =?us-ascii?Q?NWKcxc=5FLoeG6u2bMPlSGe43eNwQYaPRuOy0XSji?=
+ =?us-ascii?Q?kw3R0Y2PxbtV06C0b6vIMeC9M=5FNCDTw5QYwzAQG?=
+ =?us-ascii?Q?cQ2ctbpTYwwjMb6y8onz9LWzgGGgAHzMir8J4eq?=
+ =?us-ascii?Q?-6QlZLkA-rTR61KIFmj7=5FpQCJUc8xqfV5DjUkuM?=
+ =?us-ascii?Q?2Nw0CNWGyx09dvf2gkJ=5FmVI6sze7XBH1PFCXBjb?=
+ =?us-ascii?Q?3U0CaQWxPCobQgj20VyzfDvFf46QeUi9GtbatUb?=
+ =?us-ascii?Q?2mYofvy2mQI=5FEhDd-FO3=5Fb6vhLS3IDWzIxV8ZTv?=
+ =?us-ascii?Q?HeMTTVcRuXKEk5Cp7aJLVD=5Ft=5F-SMc=3D=3E?=
+
+<html>
+<body>
+Pre-built triggers and actions enable you to connect APIs remarkably fast.<=
+br /><br />
+<a href=3D"https://u6344284.ct.sendgrid.net/ls/click?upn=3D-2Biyx3uaBT9nrTM=
+gVBA1USPoK24WkU4eh-2B1zD5sSy-2Fsw05MEY7-2FicgxTcWYsupi7hUNolQqBvUvjFfMn6F92=
+3fg-3D-3DTper_-2F7NlvmT-2FkwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2FjGK6hEmGAnN=
+F0YcWTVjPw-2BHcAwD0zdF5c-2F9uzwpWk784v-2BRTPagUDzFLqGSU03-2FNro-2BO5fZKHlrK=
+r1tJBiPUbMenbtSEeN2pmFTUBId-2B5I9vwUkAAMpR-2FxhrR0ScKGgzNUCdzvPfrtP6AWIYPWl=
+VzWqfFkRoweckmpRHd7ODS64m532mRY-2BaW7nEW9Hbd26HeKmGqeedJfAFP4vU-2ByFGuIoAPT=
+ygbh1aKOEvTd6D0LL83u0kJ41BYAL6frjfRzuWKne93uIxl53S9u8ftAJJcGXnFdDwRsL6NP-2B=
+YMxMu1QhAAITrcyo6sUvT2-2BDcijwdfACPIlYHtWGxfliRYb-2BFEHArsdf-2FNq-2Fh0RBSZ7=
+0gqrrA-3D-3D">Triggers</a> define the type of event that runs your workflow=
+, which could be a webhook or an event from an app like Airtable, GitHub, T=
+witter or Slack.<br /><br />
+<a href=3D"https://u6344284.ct.sendgrid.net/ls/click?upn=3D-2Biyx3uaBT9nrTM=
+gVBA1USPoK24WkU4eh-2B1zD5sSy-2Fsw05MEY7-2FicgxTcWYsupi7hpo1BfoFnSpz7K5zrvzH=
+SWA-3D-3DZ1Za_-2F7NlvmT-2FkwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2FjGK6hEmGAnN=
+F0YcWTVjPw-2BHcAwD0zdF5c-2F9uzwpWk784v-2BRTPagUDzFLqGSU03-2FNro-2BO5fZKHlrK=
+r1tJBiPUbMenbtSEeN2pmFTUBId-2B5I9vwUkAAMpR-2FxhrR0ScKGgzNUCdzvPfrtP6AWIYPWl=
+VzWwXU00DshxEenGtdSpL-2Bfn-2BnJRTU27jGX-2Fq38lVnxkfGDCJhGUfuyAP8AzAMGfPfV3r=
+t4aCzmrdM5lpJPdAwlT-2FTdxcHROoL5gmhE-2Bgs8k2YvA0O7dDgIqaCuzQ0tg418BIbdNqFLs=
+KphXU-2BAoHPYZ8l-2F7MKVhMjAwGjh4FN8SvOIDDm4Shnc7E1mhOoycfD4GhUqyTFi2G8Xt-2F=
+HZXQDheg-3D-3D">Actions</a> are reusable code steps that you can use to per=
+form common operations, such as sending HTTP requests to an external servic=
+e or adding new data to an app like Google Sheets.<br /><br />
+Pipedream provides thousands of triggers and actions for 700+ apps in the P=
+ipedream <a href=3D"https://u6344284.ct.sendgrid.net/ls/click?upn=3D-2Biyx3=
+uaBT9nrTMgVBA1USOSpYZOKEihCozTvDgC-2BwDODzycritwLn2kdDRBKuGg-2F3JFM_-2F7Nlv=
+mT-2FkwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2FjGK6hEmGAnNF0YcWTVjPw-2BHcAwD0zd=
+F5c-2F9uzwpWk784v-2BRTPagUDzFLqGSU03-2FNro-2BO5fZKHlrKr1tJBiPUbMenbtSEeN2pm=
+FTUBId-2B5I9vwUkAAMpR-2FxhrR0ScKGgzNUCdzvPfrtP6AWIYPWlVzWDzJxwziyBfTAIeOQeD=
+MiilKmInoSv0-2BJU1uFJ6H77sngheG7OJi9dvTo97eotAtJ4wpziA4Ju0X7RZBRi5Ev8YuMlFy=
+NxRUbORQXsTDfteZpuXuCA0XdE-2FyOQanx5BmujqEfrXFArh-2F7kbI6PIbW-2FFJa-2BOGGBH=
+nTkWZ9OqhMPxvgRF0jNXdFgwaS03DiIEbspBYz6lx5nWqoAiDm0ZVuRg-3D-3D">marketplace=
+</a>:<br /><br />
+- All triggers and actions are <a href=3D"https://u6344284.ct.sendgrid.net/=
+ls/click?upn=3D-2Biyx3uaBT9nrTMgVBA1USOKxHPZ9qd21vNcV9F1K4uaD1vaGrZMScEDtwP=
+5LGGZrFeQg5FpM1dED7QAivg8uISPqgnID1w2UDu8-2FZYx1mC0-3DMx5t_-2F7NlvmT-2FkwkW=
+eBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2FjGK6hEmGAnNF0YcWTVjPw-2BHcAwD0zdF5c-2F9uz=
+wpWk784v-2BRTPagUDzFLqGSU03-2FNro-2BO5fZKHlrKr1tJBiPUbMenbtSEeN2pmFTUBId-2B=
+5I9vwUkAAMpR-2FxhrR0ScKGgzNUCdzvPfrtP6AWIYPWlVzWp4BGfotoTQNIRJ4sn4AYXKrxek8=
+I6ZRpigjgrYSHQlPy-2FZApEOZHUBcq7rhQc5ZCxk711y3-2FLWbD6hAoOF3dnHv-2F7e-2BHf8=
+i4UNEIrOnNRLXT8ng7616en2Vy4qD9w36Btz040nmWWrwz9QYQZHp5f5roNjCTlbpH4-2Blnp7C=
+QpzFHzaM0pHdVNm20tYNFjtcYfiDGuJayTJhLBnn7AoOP7A-3D-3D">open source</a><br /=
+>
+- You can <a href=3D"https://u6344284.ct.sendgrid.net/ls/click?upn=3D-2Biyx=
+3uaBT9nrTMgVBA1USPoK24WkU4eh-2B1zD5sSy-2FszA8vT1d1nSpwgseOXhI6MsYrfl7LnmwNL=
+bQi9PWEKSvB6-2FP7j42kmvmZNunDoZN-2BU-3DPq5o_-2F7NlvmT-2FkwkWeBOI1Ju-2BZGb66=
+MBOat7i5T4VIW8LA-2FjGK6hEmGAnNF0YcWTVjPw-2BHcAwD0zdF5c-2F9uzwpWk784v-2BRTPa=
+gUDzFLqGSU03-2FNro-2BO5fZKHlrKr1tJBiPUbMenbtSEeN2pmFTUBId-2B5I9vwUkAAMpR-2F=
+xhrR0ScKGgzNUCdzvPfrtP6AWIYPWlVzWnfEIlWuRrF1zncq1dJ5HeKmIxmqp0Z-2FsSNDnuGsx=
+SVwKdNWbm0P3oKfeSavCSrGEsCwCIHlVymEt16RVWEgKR4HvNSVPL05MR1HQKesK9Z3xVRaHeGX=
+HxD0EzPV-2BmqH9J7-2FxMh9O5NkWN9cfzj1OkQcO-2F4xdMdRdtz88j7trQ0HOP59uEy8mHP8-=
+2FMYt6OyXZzEtQyinDY245Pghf5xMGpw-3D-3D">contribute your own</a> or improve =
+existing ones<br />
+- Create a <a href=3D"https://u6344284.ct.sendgrid.net/ls/click?upn=3D-2Biy=
+x3uaBT9nrTMgVBA1USNPqpgHryKvV9OCtGc92uMY-2BCRhUYbrUxn0XFcJbPP0GDw8H_-2F7Nlv=
+mT-2FkwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2FjGK6hEmGAnNF0YcWTVjPw-2BHcAwD0zd=
+F5c-2F9uzwpWk784v-2BRTPagUDzFLqGSU03-2FNro-2BO5fZKHlrKr1tJBiPUbMenbtSEeN2pm=
+FTUBId-2B5I9vwUkAAMpR-2FxhrR0ScKGgzNUCdzvPfrtP6AWIYPWlVzWbSIs5Iq-2BWLsDvXqD=
+ZqUj-2BxEZDx0FlyZYiFPRnQwPtmB3-2FG-2FoYQe7vOnHA8Nt-2Bv6X2MFHujVHqrSlYkpEmCz=
+traGmxmFnTU-2FD6paJYmWNyOz1-2BZCZvwjPURUSr8hmqN8YO7TNtpKqF1-2FLs4iaieGCJJZk=
+I-2BRE7aTqFhOPlQTmkGSqjlis5LxXqsTr44T7cniSIg90cMi-2FxSgqsfOMrBU0GA-3D-3D">n=
+ew workflow</a> and try them out today<br /><br />
+Please reach out if you have any feedback or questions.<br /><br />
+cheers,<br />
+Tod
+ <br /><br /><br /><br /><br /><br />
+Pipedream, Inc.<br />
+WeWork c/o Pipedream<br />
+44 Montgomery St, 3rd floor, San Francisco, CA 94104<br />
+<a href=3D'https://u6344284.ct.sendgrid.net/asm/unsubscribe/?user_id=3D6344=
+284&amp;data=3Dnkd86zyvUyT38ZgxFfRKB-RID2WyQr8Im83IN1lbt7FoMDAwdTAwMO6qwmE_=
+hkt1m3QFxlXP8OwxqyfRomSFNTRJj9y7ntj3LYXeuHpMjPxMY-AW-gt1i-2rpGXlE32c4fQRqWU=
+s7tTIsavhTU6kK4Awrxe2GXJne7wuZaYDML1nf0shv53JN4nzTPvUY5rwLU-hp3EWprnh2l91hO=
+zSp80_DiuMeGicH2uylWLxk04SX5XyIND78RSE27MvTiCGHvh3r41JptpS2vIYMnDdm4OcmsINg=
+Fj63ghS0KMwKXXHz9wV-rzrIrbBihM1RoSniPE980hO9fGG8vkEEciOxfzwTsXRR8LRj_MLy6Mf=
+rbTzdbN5xVWRDNh_wsLm54WHo_ayKPJV6n5fwD85eSq2iZdCoMTJLh8vRf-4G8es27sMhT_EsVq=
+jYlNRezfxkT3USf85LLRzXiVL3ZEuFZOh84lDFLZSYNQ1sZNSjIHErfVlhEcppVeQvJ2OfIwWiq=
+7X-z8bI_59v_4snOXwNnLx-iFm95bjgJicM2hgEJRPufXa6eC0ElznJQ=3D=3D'>Unsubscribe=
+ From This List</a> | <a href=3D'https://u6344284.ct.sendgrid.net/asm/?user=
+_id=3D6344284&amp;data=3DJWO84XhNHUfaDW6aqSE-rVF4_JDsRj3Subx2P6vf2g1oMDAwdT=
+AwMIJL-baL9Qp0cQQyk6fffZwuNRnL9wkuxm4zxE4MY82iM90-Man39ymfntiO1DoQBFnsuf52-=
+OmRB3tPeC0Mo673p9XjsMo7yAqPBKsEyXfZijM_D8u4EkrJgyfCBbJsKhM7-Oi-rZbzwuxA8FWF=
+nCi11tske5CPH8ztzc5JSgM4Q8LD6GgdxbAPbmC3lqqNLy2RIW2VFZhxheh8L__xtdCBmE_PNBS=
+3JvN1Vf4gIti2rQg0GaCznUDlTGhlP5WrzRmKtzeSt3UaL9E2zsXIZ059sz-iUSWAyMI0U-wz2v=
+8KVMc0mamaANTZT962GEfWedu_n7UVeQscm0wRcX5PIKVIsmcv76NY40YA9ZGxQJiDvmiLyIHQI=
+CtpiP5gCfOvkAYRUovzU3R70spMqcnzdC1of3KeB--LgAcQSNBjPV6Za-XxCw59UQNBbgGCwlqv=
+c_y0Z4Id1QcA2B8sncixsd5-iGPkVWQ2-PGMnVgRGbiG'>Manage Email Preferences</a><=
+/body>
+</html>

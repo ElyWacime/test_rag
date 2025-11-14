@@ -1,0 +1,577 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6124:587:b0:382:28f0:b1e6 with SMTP id l7csp1732418vlo;
+        Tue, 26 Sep 2023 03:22:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF9FvZDbnmFxmJt+T/qE3wJRLXAM/1DHqOj1AzeMKSJLRr4SQzo/VJDD7Y5Ot4+EDZeFG7Z
+X-Received: by 2002:a05:6a21:3294:b0:153:39d9:56f8 with SMTP id yt20-20020a056a21329400b0015339d956f8mr3252204pzb.15.1695723761975;
+        Tue, 26 Sep 2023 03:22:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695723761; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ee/SmPsl4vpmSE6CPkppsJs4A5IktGYeHdgHRpKvYs3C6BqWH+e/XkHlvpl5zwi9zt
+         sTV8DQR/+J77mCJLcu8xmY7LXEdbrWHtpdMOnW9OH/hoSoLBewJlNfKY0MFKjWztbnzj
+         JkZy9iiJrdSmvRZMadnTfySBUJIOQMK7VWQIdaoiN+y8pDaZLBvt2NKD5WZ1DN9Y9yJn
+         3EdVsxT9267nLkDy+5G8/dSjCwF579e5QY0oFPG6R73QBFABIp2eluwmkDQ2bztiSBE6
+         Z+4W2kuVbBG06V3XDOEmQHn7Shyuz1u/TBrE9083Ic/pC1nQy9Q/0hOz2k+QYx14wU4N
+         aSQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=xI0t1zxdLyYik4kZb6PmjhEtgKPI09UIejr+Ul2RCVc=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=CvNmfuXCoLg2DQo4C/97FfZtPWrMqyQC9GOP5a5Rt+YLfY1DejdIkojXT6bbzz3NhI
+         RnIejHWcriWYciQyqlzqm0YPJLB6uoW22jEVBFH/FEmtditHZE5EAZAMxK+SsWoGRcYX
+         4NB3q7pU46bE8k41E4yvhpguGexzZjFLYQv7c+FYRj7xxfWeNmF/FbPG9LPuGsNYWBmN
+         AOQdwADUbOlG5F9QZhKiLD+pm9hBOwA9XhmPtrXWUEKrmAoLl2Ild4aYGuvfyLT9t8Qr
+         VaPv854W2J6SR2FgX3omU6l+/Wiz2NnsFpKmGfAShgnjKttmKyQENDLkoCmIQ9kqL/FV
+         mpcg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=lUh3BJC0;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=cQdOqpdr;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o48.ck.n.convertkit.com (o48.ck.n.convertkit.com. [149.72.193.89])
+        by mx.google.com with ESMTPS id l9-20020a655609000000b00578faac74a4si12616901pgs.577.2023.09.26.03.22.41
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Sep 2023 03:22:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) client-ip=149.72.193.89;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=lUh3BJC0;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=cQdOqpdr;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=xI0t1zxdLyYik4kZb6PmjhEtgKPI09UIejr+Ul2RCVc=;
+	b=lUh3BJC0zStYtbpMYF2rRk6UhBP1QIk5yysdaGzaF9nv4v1UnQdexBunDUMfFeDMparN
+	FSMrAlFLOzkVB64XlSQc6TENURUX0K6qNsnCr4Y2KaIZ9SsJusD1/pscaOgVhVw5zxDXAv
+	i/DXWzt4f16TZuvqUAy471O9dFdUxgE00=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=xI0t1zxdLyYik4kZb6PmjhEtgKPI09UIejr+Ul2RCVc=;
+	b=cQdOqpdrystRCfzlsrTEookOKZaLQZcXu4icu8Sgdl+AcNcX7VTMopyz0xKQ3FqpVSu1
+	V9faPULrYvKRPdroNTsjwfcOTOuqN60HzRr4KekY2B52ZeBgpdZIoFMgBhIU/dyO3L+Kdd
+	5x04sHRKVlmokFVmAOivzpBYd/wDXaFJg=
+Received: by filterdrecv-75d888b744-zqmsk with SMTP id filterdrecv-75d888b744-zqmsk-1-6512B0F0-35
+        2023-09-26 10:22:40.67488961 +0000 UTC m=+11961849.476981611
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-7 (SG) with HTTP
+	id OrrESuAzRJmaYKAA28hjZg
+	Tue, 26 Sep 2023 10:22:40.498 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=7fe505574c5964c722ac6d5c4815490aafb64e2e449d8a57a3af6002ebee
+Date: Tue, 26 Sep 2023 10:22:41 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <d0uolzk3zpb0h456n9wimhm0gk244@convertkit-mail2.com>
+Subject: Let's talk about the price.
+Feedback-ID: 11829172:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZffRGIERvUhjLXgcIX?=
+ =?us-ascii?Q?5C8QhW5fqGFDOxWgZDD3iuvJQvQpOcOjw=2FCN6cG?=
+ =?us-ascii?Q?1glKC6ydKYCb99rSajhLanhSrxFgz=2FPFAmXL02B?=
+ =?us-ascii?Q?e0R=2FuNGRBGYJ64LskIERDI9yfaKtFdE+0=2Fj8l8J?=
+ =?us-ascii?Q?6QJ0Qt0svZ3UIKzEdwwyhNdd=2FnYh1Ys1cTh0A9?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?AD2NF6Zi1daNo7xWX4YdtSNBhW10RBc4D41bAGV?=
+ =?us-ascii?Q?M7x64OEaCnDmruwgYdc6ou5Q1Kb7n92DZr2hc5e?=
+ =?us-ascii?Q?CNyF03Cv17ho9FvPB+NaLZxZLTX6OaU4DMRorEk?=
+ =?us-ascii?Q?v42LjBvX0PbTCvWxdRO42HeR37osACBdwHeNSut?=
+ =?us-ascii?Q?8wSHxXApwFqu5RiUhOUEd5wIFxayi8JIVWn2XfE?=
+ =?us-ascii?Q?01+OmJnmhuuAxNTcRnnqQGijr+h65L7Ehl9xiYI?=
+ =?us-ascii?Q?9qnTzNkHZwbC2HivMqLuU1I9FuZMmJHdqBPvfFJ?=
+ =?us-ascii?Q?N0vr9L+fYCX1fSFC4uT=2FKEtcJ=2FUGOgdEo06y9Z+?=
+ =?us-ascii?Q?nCvfHbQKON?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--7fe505574c5964c722ac6d5c4815490aafb64e2e449d8a57a3af6002ebee
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Over the last few days, I got A LOT of pushback because the
+course isn=E2=80=99t free or Udemy level cheap=E2=80=A6
+
+=E2=80=8B
+
+Let me explain my perspective because I don=E2=80=99t think most people
+understand it. I should have explained it earlier, but here we
+go.
+
+=E2=80=8B
+
+The course isn=E2=80=99t cheap because the quality is not that of a basic
+Udemy course. And from the other courses that aren=E2=80=99t on Udemy
+that I=E2=80=99ve seen=E2=80=A6
+
+Well. The quality isn=E2=80=99t even close.
+
+=E2=80=8B
+
+And I don=E2=80=99t mean it in a bragging way. It makes sense.
+
+I=E2=80=99ve been doing this for years.
+
+For this whole year, I=E2=80=99ve been using Next13 every day.
+
+* Just getting a little better every day at it.
+=E2=80=8B
+* Digging deep. Iterating.
+=E2=80=8B
+* Fixing errors. Finding best practices.
+=E2=80=8B
+* Using it to build our massive client projects on the agency
+side and mentoring Masterclass students on how to use it.
+
+=E2=80=8B
+
+It=E2=80=99s not one of the 50 courses I have. It=E2=80=99s the one course =
+I
+have.
+
+Which meant I could focus and make this one thing amazing instead
+of just covering the basics everyone else does. Barely scratching
+the surface. At that point - just read the docs or watch our
+crash course on YT=E2=80=A6
+
+=E2=80=8B
+
+Anyway=E2=80=A6
+
+That=E2=80=99s why I think it=E2=80=99s worth the price.
+
+And if you don=E2=80=99t think so or can=E2=80=99t afford it right now - yo=
+u
+don=E2=80=99t have to buy it. That=E2=80=99s okay. It doesn't have to be fo=
+r
+everyone. And I=E2=80=99ll always create our usual YouTube videos.
+
+=E2=80=8B
+
+But running a business, having an amazing team, doing all these
+free videos (100+) and resources?
+
+It costs =E2=80=94 a lot.
+
+=E2=80=8B
+
+And even if it didn=E2=80=99t, what=E2=80=99s wrong with something being pa=
+id?
+
+I mean, would you go to work if it didn=E2=80=99t pay you? Or to school
+if it didn=E2=80=99t lead anywhere? Would you show up every day?
+
+=E2=80=8B
+
+And if you think: well, why not just make it cheaper=E2=80=A6
+
+It will never be affordable enough for every single person unless
+it=E2=80=99s free.
+
+=E2=80=8B
+
+I priced it way below what I thought it was worth.
+
+It=E2=80=99s $599 (or $399 with the launch discount).
+
+And if you=E2=80=99re in a country where the average income is lower,
+like India, Pakistan, Nigeria, etc., it=E2=80=99s even cheaper. That=E2=80=
+=99s
+because people there earn a lot less compared to places like the
+USA, Canada, or Europe.
+
+Plus, if you=E2=80=99re a student, you get a whopping 50% off. And that=E2=
+=80=99s
+on top of the already awesome 33% launch discount and the power
+parity adjustment!
+
+=E2=80=8B
+
+If you can=E2=80=99t afford it right now - that=E2=80=99s fine.
+
+Use the free YouTube videos. They are always there, and more will
+come.
+
+=E2=80=8B
+
+But if you can join?
+
+I recommend it.
+
+Because saving months upon months of daily trial and error is
+worth it.
+
+It=E2=80=99s the classic - you trade time for money until you can trade
+money for time. In my experience, it=E2=80=99s always been worth it.
+
+=E2=80=8B
+
+So look. If you=E2=80=99re not into the course:
+
+You can watch the 100+ videos I put out for free on YT already.
+Here=E2=80=99s the link to the YT channel (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244/6qhehou7d8=
+979pf9/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5
+). And more will come.
+
+=E2=80=8B
+
+But if you want more, you can afford it and want to commit?
+
+Here: jsmastery.pro/ultimate-next13-course (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244/kkhmh2ul30=
+xlxlck/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby91bHRpbWF0ZS1uZXh0MTMtY291cnNl
+)=E2=80=8B
+
+=E2=80=8B
+
+P.S. There=E2=80=99s a 30 money-back guarantee, so if you don=E2=80=99t lik=
+e it,
+you don=E2=80=99t lose anything.
+
+P.P.S. I=E2=80=99ll send a few more emails before the launch ends (in
+less than 6 hours!), so you can opt out of those by clicking here
+(
+https://click.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244/08hpqzkqsg=
+udk6ldl2ap/aHR0cHM6Ly9tZWRpYS50ZW5vci5jb20vRTNGek9sX3pJZVlBQUFBQy9mdW5lZS1t=
+b25rZWUuZ2lm
+).
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244
+)
+--7fe505574c5964c722ac6d5c4815490aafb64e2e449d8a57a3af6002ebee
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Over the last few days, I got A LOT of pushback because the=
+ course isn=E2=80=99t free or Udemy level cheap=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Let me explain my perspective because I don=E2=80=99t think=
+ most people understand it. I should have explained it earlier, but here we=
+ go.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The course isn=E2=80=99t cheap because the quality is not t=
+hat of a basic Udemy course. And from the other courses that aren=E2=80=99t=
+ on Udemy that I=E2=80=99ve seen=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Well. The quality isn=E2=80=99t even close.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And I don=E2=80=99t mean it in a bragging way. It makes sen=
+se.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I=E2=80=99ve been doing this for years.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>For this whole year, I=E2=80=99ve been using Next13=
+ every day.</strong></p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Just getting a little better every day at it.<br>=E2=80=8B</span></=
+li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Digging deep. Iterating.<br>=E2=80=8B</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Fixing errors. Finding best practices.<br>=E2=80=8B</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Using it to build our massive client projects on the agency side an=
+d mentoring Masterclass students on how to use it.</span></li>
+</ul>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>It=E2=80=99s not </strong><strong><em>one of the</e=
+m></strong><strong> 50 courses I have. It=E2=80=99s </strong><strong><em>th=
+e one</em></strong><strong> course I have</strong>.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Which meant I could focus and make this one thing amazing i=
+nstead of just covering the basics everyone else does. Barely scratching th=
+e surface. At that point - just read the docs or watch our crash course on =
+YT=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Anyway=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>That=E2=80=99s why I think it=E2=80=99s worth the p=
+rice.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And if you don=E2=80=99t think so or can=E2=80=99t afford i=
+t right now - you don=E2=80=99t have to buy it. <strong>That=E2=80=99s okay=
+. </strong>It doesn't have to be for everyone. And I=E2=80=99ll always crea=
+te our usual YouTube videos.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But running a business, having an amazing team, doing all t=
+hese free videos (100+) and resources?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>It costs =E2=80=94 a lot.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And even if it didn=E2=80=99t, what=E2=80=99s wrong with so=
+mething being paid?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>I mean, would you go to work if it didn=E2=80=99t p=
+ay you?</strong> Or to school if it didn=E2=80=99t lead anywhere? Would you=
+ show up every day?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And if you think: well, why not just make it cheaper=E2=80=
+=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It will never be affordable enough for every single person =
+unless it=E2=80=99s free.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I priced it way below what I thought it was worth.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It=E2=80=99s $599 (or $399 with the launch discount).</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And if you=E2=80=99re in a country where the average income=
+ is lower, like India, Pakistan, Nigeria, etc., it=E2=80=99s even cheaper. =
+That=E2=80=99s because people there earn a lot less compared to places like=
+ the USA, Canada, or Europe.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Plus, if you=E2=80=99re a student, you get a whopping 50% o=
+ff. And that=E2=80=99s on top of the already awesome 33% launch discount an=
+d the power parity adjustment!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you can=E2=80=99t afford it right now - that=E2=80=99s f=
+ine.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Use the free YouTube videos. They are always there, and mor=
+e will come.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But if you can join?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I recommend it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Because saving months upon months of daily trial and error =
+is worth it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It=E2=80=99s the classic - you trade time for money until y=
+ou can trade money for time. In my experience, it=E2=80=99s always been wor=
+th it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So look. If you=E2=80=99re not into the course:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You can watch the 100+ videos I put out for free on YT alre=
+ady. Here=E2=80=99s the link to the <a href=3D"https://click.convertkit-mai=
+l2.com/d0uolzk3zpb0h456n9wimhm0gk244/6qhehou7d8979pf9/aHR0cHM6Ly93d3cueW91d=
+HViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0" url-id=3D"1574890471">YT channel</a>. And m=
+ore will come.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But if you want more, you can afford it and want to commit?=
+</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Here: <a href=3D"https://click.convertkit-mail2.com/d0uolzk=
+3zpb0h456n9wimhm0gk244/kkhmh2ul30xlxlck/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9=
+1bHRpbWF0ZS1uZXh0MTMtY291cnNl" target=3D"_blank" rel=3D"noopener noreferrer=
+" style=3D"color:#0f82f0" url-id=3D"1574890472">jsmastery.pro/ultimate-next=
+13-course</a>=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">P.S. There=E2=80=99s a 30 money-back guarantee, so if you d=
+on=E2=80=99t like it, you don=E2=80=99t lose anything.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">P.P.S. I=E2=80=99ll send a few more emails before the launc=
+h ends (in less than 6 hours!), so <a href=3D"https://click.convertkit-mail=
+2.com/d0uolzk3zpb0h456n9wimhm0gk244/08hpqzkqsgudk6ldl2ap/aHR0cHM6Ly9tZWRpYS=
+50ZW5vci5jb20vRTNGek9sX3pJZVlBQUFBQy9mdW5lZS1tb25rZWUuZ2lm" trigger-id=3D"4=
+055309" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f=
+0" url-id=3D"1574890473">you can opt out of those by clicking here</a>.</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/d0uolzk3zpb0h456n9wimhm0gk244" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/d0uolzk3zpb0h456n9wimhm0gk244=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--7fe505574c5964c722ac6d5c4815490aafb64e2e449d8a57a3af6002ebee--

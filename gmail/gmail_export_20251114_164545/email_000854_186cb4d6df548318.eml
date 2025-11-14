@@ -1,0 +1,76 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:ce05:b0:43e:7973:eb23 with SMTP id ip5csp1122790pxb;
+        Fri, 10 Mar 2023 03:34:54 -0800 (PST)
+X-Google-Smtp-Source: AK7set8QGtyOf7MyVy+CYahqHA+eSe6OU8B3ClsUeVmPKgTZDJhh0mk4C+SblkW+wsfs5CXeDgw6
+X-Received: by 2002:a05:622a:488:b0:3b8:6bab:1e4d with SMTP id p8-20020a05622a048800b003b86bab1e4dmr10646636qtx.51.1678448094471;
+        Fri, 10 Mar 2023 03:34:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678448094; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ng8/w59ofgk2da9M0HndKrPBPULU5H9/xjAxiI2S34+j7ZJm97z3ISQ74jA8Itzsex
+         MOhTBPZTCKpNWSAB08cps3pEaIZXQfr0iBFCn6jLyqsR0zw+3NjMLjNVwg1nF52VIRcH
+         0idva+fB20ZTlB49l/akBQvjhl4iQsNyOS6gyucRwu1fH72mHTeesLH7yN7g0R2Z1SGm
+         E2dVsCWdnIfN4b/WEjCwH1u4hkgJ0Zz8mRbo1eeevF42VeVLqCkaMzMsY7KIZusBxzD9
+         1Ax0M6j+/i0JCiHScGhKg41uOtvN7EL5fktdXYkGtJ9PvBIfbLCopczENWXgy+914BsN
+         ijsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:content-transfer-encoding:mime-version:subject
+         :message-id:to:from:date:dkim-signature:dkim-signature;
+        bh=8pLOE+Hr/+bRdjMeZisLZOgYKktJ+t4MprgHXPuwyQo=;
+        b=EC/KUmmNf/I+iBzzFN9vTg1qwe04iciZ/za09zVx0UPs6gqfAX4Qirn2eLMYQAYkMm
+         1xI4UP3kKYfe269gghzvqAV/RxW9ZJOTURwTcxAFP5L93BiyZvr7bzs0HpfH1xTJAYBY
+         1M5z6UPuOPenW7jupRRTMXLDoElytOqESQX6lW9OCFRYCGlsh3x/f5zdjusiKZP3VPAT
+         FAqSNaVxHb73RZfh77idq7DKSLb1HIe9q8cR17TTIRDjcRe7zLNZpEDsTG5Qrj+5NssS
+         pbQAILgGhbuByfYiSI2oJGmZlNktRyVdksJZMECAoCGA1Y5vGp6m8REGjlp21uZZ0+p2
+         dwmg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=aocrfwooimxgblufgcm77hxfw4y6cevd header.b=imxj78ot;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=VCtHvMHg;
+       spf=pass (google.com: domain of 01000186cb4d6b00-82e22636-f09d-4388-8ca1-30a675c8fd5b-000000@em1234.pipedream.com designates 54.240.48.44 as permitted sender) smtp.mailfrom=01000186cb4d6b00-82e22636-f09d-4388-8ca1-30a675c8fd5b-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <01000186cb4d6b00-82e22636-f09d-4388-8ca1-30a675c8fd5b-000000@em1234.pipedream.com>
+Received: from a48-44.smtp-out.amazonses.com (a48-44.smtp-out.amazonses.com. [54.240.48.44])
+        by mx.google.com with ESMTPS id w6-20020a05622a190600b003bfe1187e48si1337048qtc.416.2023.03.10.03.34.54
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 10 Mar 2023 03:34:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of 01000186cb4d6b00-82e22636-f09d-4388-8ca1-30a675c8fd5b-000000@em1234.pipedream.com designates 54.240.48.44 as permitted sender) client-ip=54.240.48.44;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=aocrfwooimxgblufgcm77hxfw4y6cevd header.b=imxj78ot;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=VCtHvMHg;
+       spf=pass (google.com: domain of 01000186cb4d6b00-82e22636-f09d-4388-8ca1-30a675c8fd5b-000000@em1234.pipedream.com designates 54.240.48.44 as permitted sender) smtp.mailfrom=01000186cb4d6b00-82e22636-f09d-4388-8ca1-30a675c8fd5b-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=aocrfwooimxgblufgcm77hxfw4y6cevd; d=pipedream.com; t=1678448094;
+	h=Date:From:To:Message-ID:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding;
+	bh=8pLOE+Hr/+bRdjMeZisLZOgYKktJ+t4MprgHXPuwyQo=;
+	b=imxj78otaM6b4sjWeTPkW+xwYvEkWJLzanDsyo0oStEreJK08OGqbLo/LzHObvjF
+	e6eWVBa3aU6ep1JLwH1ZHMVqOZ5SZDiiXBJYcDMYiFPtnGnbyTwq56S6O7yyy7Ffbhn
+	lUxPgK9qJ9vodyJ2Hfl3H0YyEnwnkwFfrsOMT/rM=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1678448094;
+	h=Date:From:To:Message-ID:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=8pLOE+Hr/+bRdjMeZisLZOgYKktJ+t4MprgHXPuwyQo=;
+	b=VCtHvMHgDNQcph0gXbBVZac7CUkaO3DPQNWGnebXxC3G7KqvZSpKypSSpN/i7Dm2
+	WnOU3tu50DlpRwpc8z48JsLYjk9kiIizn55CctTnV+HEtH/TOBfbBl6p8h/v1SD5A1U
+	adCtW9h9oYdKwaz2OeqoOaW5+C6+0ZyNvoYTr+0g=
+Date: Fri, 10 Mar 2023 11:34:54 +0000
+From: Pipedream <notifications@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Message-ID: <01000186cb4d6b00-82e22636-f09d-4388-8ca1-30a675c8fd5b-000000@email.amazonses.com>
+Subject: Confirm your email address
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.03.10-54.240.48.44
+
+Thanks for signing up to Pipedream!
+
+Please verify your email by clicking this link: https://api.pipedream.com/verify-email?token=BAh7BzoHaWRJIg51X05kaEJrN0wGOgZFVDoKZW1haWxJIhplbHkudWJ1bnR1MEBnbWFpbC5jb20GOwZU--294ad420010e38ff633ec0f5f2a677e23240d8b8
+
+
+---
+If you don't want to receive emails from Pipedream in the future, click here to unsubscribe: https://api.pipedream.com/email/unsubscribe?token=e8a6391f884027276cbdf0f9cf5b9f47
+Pipedream, Inc.
+44 Montgomery St., 3rd Floor, San Francisco CA, 94104

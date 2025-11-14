@@ -1,0 +1,897 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:2403:0:b0:2f3:f124:3d70 with SMTP id k3csp1263668ljk;
+        Mon, 9 Sep 2024 09:10:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHlMEJ5U/IHD07puH16mgMJMgcbC7yJn0McC63qrW+T00xYMVaZORH1GLxEh0bZixmX+qSY
+X-Received: by 2002:ac8:5fcc:0:b0:453:5ce5:9972 with SMTP id d75a77b69052e-4581f475aedmr79392971cf.16.1725898249742;
+        Mon, 09 Sep 2024 09:10:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725898249; cv=none;
+        d=google.com; s=arc-20240605;
+        b=kmC+oFze6vIHK9aG8ZS20GSdIjocVBPV4f9d6bPUvStyufAGcpPjfuRCToPFaif4eU
+         iQb7tfR8ot8qh+Sl0aTDhBcl+6XqhbMEx5J030vX6/heHhFZPXEJYv52yp4G0jmovBOz
+         byPMhs+cK72TtG0HaHkfmspUZ/+51fRiOKV/6S3qPckyw9YKwXt7V04uoCdW8Vgx4Tvf
+         cE4dkLlQ4OooQCi6kJW0fPZ4+bQ4+e9pNaA3YWhwkznVyHGHzbfamLDMPRP2QEfH0QVG
+         wSMN/zK/kJOcOknhtDZsWQVZolVBzLLfx/oUuq/5xUcCIMs8CybqY/rBEZYdU0Mx7R51
+         JTUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:list-unsubscribe-post:precedence:mime-version:subject
+         :message-id:to:reply-to:from:date:list-unsubscribe:dkim-signature
+         :dkim-signature;
+        bh=WAYzCm9S6dq7SW1CpFXJaj29vNpNUFXbWp7i6W8UJn8=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=LlroMTjfl/48dcs9nnrdopwgb6Cs8USue039Wd+HTWeob92Y1hrt/IAu6IE3/mpugO
+         JyElagDVxX3hM8UIUmxQFJnVpF4v30/x3+r6Rew0wjTAqynFFt8a2zfGnqabwt+fumWs
+         UZPPQ3NSUrSsJ6TlocC6huGFGwJvudqAGD5ylU0XXt0UOdbAM9GkcpIaNfEG5QlsAQ88
+         13L9hYhVx1HvSKWcHsmpKgIAicWECXZ4v7lNo28brFrQPK6c8MwlUQx7aCV4Rb7msKHr
+         0PlK7lrYIGFOpmBMfqcnN0aKwPEFIHCf+39bHUeXhupma8cgfte6tYjVU5c/WnEouiBt
+         egWQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bf57x.hubspotemail.net header.s=hs2 header.b=eepccU+C;
+       dkim=pass header.i=@infura.io header.s=hs2-4795067 header.b=S1Z16hAs;
+       spf=pass (google.com: domain of 1axb8ki8mi436xqcmhjmbv7fu9t1ooj1nmca3d-ely+2eubuntu0=gmail.com@bf57x.hubspotemail.net designates 143.244.88.151 as permitted sender) smtp.mailfrom="1axb8ki8mi436xqcmhjmbv7fu9t1ooj1nmca3d-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=infura.io
+Return-Path: <1axb8ki8mi436xqcmhjmbv7fu9t1ooj1nmca3d-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net>
+Received: from bd77f2x.bf57x.hubspotemail.net (bd77f2x.bf57x.hubspotemail.net. [143.244.88.151])
+        by mx.google.com with ESMTPS id d75a77b69052e-45822e60969si56268181cf.35.2024.09.09.09.10.49
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 09 Sep 2024 09:10:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 1axb8ki8mi436xqcmhjmbv7fu9t1ooj1nmca3d-ely+2eubuntu0=gmail.com@bf57x.hubspotemail.net designates 143.244.88.151 as permitted sender) client-ip=143.244.88.151;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bf57x.hubspotemail.net header.s=hs2 header.b=eepccU+C;
+       dkim=pass header.i=@infura.io header.s=hs2-4795067 header.b=S1Z16hAs;
+       spf=pass (google.com: domain of 1axb8ki8mi436xqcmhjmbv7fu9t1ooj1nmca3d-ely+2eubuntu0=gmail.com@bf57x.hubspotemail.net designates 143.244.88.151 as permitted sender) smtp.mailfrom="1axb8ki8mi436xqcmhjmbv7fu9t1ooj1nmca3d-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=infura.io
+Received: by 172.16.165.25 with SMTP id a0b2377bl4ybydqc3gvlthx4qafv4tn18c9yw2j34hx;
+        Mon, 9 Sep 2024 16:10:34 GMT
+DKIM-Signature: v=1; s=hs2; d=bf57x.hubspotemail.net; 
+        i=@bf57x.hubspotemail.net; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id:list-unsubscribe-post; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=WAYzCm9S6dq7SW1CpFXJaj29vNpNUFXbWp7i6W8UJn8=; 
+        b=eepccU+CQUMT5cwfEh6DSQ6xrorR55HXBoZbLyicLLvN2x9lfELFL0hFlbOk2N
+         nbZkWOnzRDU+P5O9a0obY7f82tKTWIU/8G+//ihjhZZuUCdepTAMCJL9BeVJ2ba
+         MAq9A+RPUKHgDowAxw6788DiUrhh0MLpfKjgX4+Zfbr+soKIXMDPnV1K9MUzHuu
+         P5bQOoKYg4YYuV1G0YoyuFeIta6s+wot7DSHPZs2fINeKNRC+WEWwLWOxtRAGzb
+         Btdh4UpLdi2vc7IXIJIn8o03mGY612R37FfTp/tC56PTV2r5+H8uB9tUWyxvNNt
+         c7ux15qyMRRqFplpmZ1viFW3r9/A==; q=dns/txt; t=1725898234; 
+        x=1726161034;
+DKIM-Signature: v=1; s=hs2-4795067; d=infura.io; i=@infura.io; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id:list-unsubscribe-post; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=WAYzCm9S6dq7SW1CpFXJaj29vNpNUFXbWp7i6W8UJn8=; 
+        b=S1Z16hAses25K4jv/TxECN8J07S7O4HK0YPmEKyg0Yi7p4Wf08QFjqob5rNSdE
+         O3jjlfY85iM8cE0Y+bTyBXhx1XVXp2PzLJ6Cx3VNTuVcpYlqj1UsLLOcKy19xB2
+         clv2HzA8PHUjhpk/TXfmOa/W23HMPZyT2J6/LhRfT6UH7AS/SqvkBWPhnCtO+V0
+         xF+GsE9+9XTJssIbz3Ey6EaIUZxv/cWBmsLRKSaJn/q9S7F1o7WJxprgsW2C0U9
+         +C++gXH1h/Y5UknwcsiVxIE/NcPQ3ILkx1/Yc5mJ1GwV0WJ29KAC7tsYAMBQ5gr
+         GHfjrCjxX8UbAGKo5BkP65d0sbjQ==; q=dns/txt; t=1725898234; 
+        x=1726161034;
+Return-Path: <1axb8ki8mi436xqcmhjmbv7fu9t1ooj1nmca3d-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net>
+X-HS-Cid: 1axf0jraox92sv41lmqs8qfdlz8ixy0ruxe2uh
+List-Unsubscribe: <mailto:1axc90wcju781bqs6trip356yx3eyy85grnbjd-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net?subject=unsubscribe>, <https://newsletter.consensys.io/hs/subscription-preferences/v2/unsubscribe-all?data=W2nXS-N30h-StW1VnRZD2FZjS1W2vKtf34kD3GRW3LXD6J3F8mVyW3NDHjz38l7L2W21kspT2MvBdCW1BN_MB49KRjrW4fr3fj1Q5SsPW2zZPq24mkTW5W1X1RY14mcGZ9W2PVGHQ47zhqpW3zbmlS2Rwn6tW2HSHDj30HqhBW1Xn7nF49Qq3CW2r5J-r2w15J4W1Nl2ZR1Vdx0cW2TJ8KK3QBkDvW34xv5y2xXVDbW2YcQBW2sSJ6lW3Fcdtg4pGBQ9W1Z0sGn30CBKgW326_Tq1LhLwyW2zz5HZ2t5qm0W43JmBs23r7nRW4fKqfQ4fz64nW2125RX3jrXT-W2vLKGm1V9w3dW1VzMkm3Fd4RjW43FylW3Ch_07W3ddGdS1SlXLQW4mHxRj2vPD0hW2FG43g4mHym3W21nP1B2TCdWbW3F8N2321k5rfW3F7VxQ1S3-7DW34qKyb25fh-mW3VzXFF1W-zGjW47VPXW4kr53wW2Pw8LR24Q8-hW2PnB-q3JZWhfW3F9Fm93QD3ntW2WzLpj4rBBzFW34xWGj2PPCG6W2WH63v2qV8HkW1N7hfl2sQc3Wf386qp304>
+Date: Mon, 9 Sep 2024 12:10:34 -0400
+From: Team Infura <hello@infura.io>
+Reply-To: hello@infura.io
+To: ely.ubuntu0@gmail.com
+Message-ID: <1725897675321.ebd3843f-7f98-4178-b8d3-61316abdbe57@bf57x.hubspotemail.net>
+Subject: [Starting Today] Infura Core (Free) Plans Switch to Credit-based
+ Pricing
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_6752429_1098032303.1725898234246"
+Precedence: bulk
+X-Report-Abuse-To: abuse@hubspot.com (see
+ https://policy.hubspot.com/abuse-complaints)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: aec416l:aifmzi18:aidf:HubSpot
+
+------=_Part_6752429_1098032303.1725898234246
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Infura, Pricing, Credits, Subscription Plans
+
+New Credit-Based Pricing for Core (Free) Plan Starts Today
+
+Last month, we communicated via email that we are moving to a new pricing s=
+tructure where each request has a credit value and credits are consumed as =
+part of your subscription plan. This change will take effect starting Septe=
+mber 9, 2024 for all Core (Free) plan customers.
+
+What is changing?
+
+If you have a Core (Free) plan, the plan remains free and the usage bar on =
+your dashboard homepage will switch to credits. You will be able to see cre=
+dit usage per key, and a new Usage tab under Manage Plan will become availa=
+ble.
+
+Why are we making this change?
+
+We are improving our transparency by allocating the resource usage of the r=
+equests that you submit to Infura against the limits of your Infura Core (f=
+ree) plan. This means some frequent requests like eth_chainId will consume =
+less of your plan than they did in the past, some requests will consume the=
+ same, and some requests will utilize more. In the simplest terms, your pla=
+n is consumed based on the resources used to serve the requests you invoke.=
+ You can see the Credits each request consumes here (https://newsletter.con=
+sensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24t=
+zwd3gP0xW7lCdLW6lZ3nqW1kHqg-2V3NryW6p3H26885lLrW4X1n9Y74GtdjW1L-JZj3Lc0nQN3=
+0h7XBKPDdTVPbN0k4fZDblW2WN6Sz16V0rQW21CYPF6ClfmNW40G8bd7wHhHWW35K8B5445Dl5W=
+1bcRQM74BpvgW83KZ8V4q7R_ZW2rDjSB1mTjbsW8yS_Fj8wZJMjW3Xrrg-3Vnbj3W51NFzj58r8=
+vDW8FrL3y7bLnLPVpF61g6dkynsW5DFxkr14LmBxW8vYCV33lsQ9WW3T_dTM70z5G_W2C3pJW5y=
+4Dk3W79kTQY7jjrxxW6hkmc24_dXDwdnfqfY04 ) .
+
+What do I need to do?
+
+There is no action needed from you at this time. The above changes will tak=
+e place automatically throughout the week.
+
+How can I learn more?
+
+We are committed to making this transition seamless for you. In the meantim=
+e, please refer to our Billing & Pricing support articles (https://newslett=
+er.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMX=
+HKN24tzwd3gP0xW7lCdLW6lZ3nXW8RWDrX5tKbzHW4qHRdh5QTrHsMxwltCHMTGDW1QXmQY7vjK=
+H-W72Gfh_8ZszQPW540qDS5XbVNzW1jFl9-1fjMQLV75Lxg6x2LsDW3pBJQq3L5yW0W5ldPXR51=
+N8pPW8Zyy-F368cNGW4t_VPY6v1jtrW379h1H5t_FlXW7lLt-H28zLl6W3w1Zbt4F9mDlW4LRMR=
+g7zzhD4W7dvkgW8fn8rZVmSPCT8Kkm1TW6v2HQw4qY5D8W6_zrbP63dH96W1Bt9fF1vRs9SW7yz=
+fFk9kW0qtMSx7ZMq19RyW7j_vrk3QQJRvf2DLzfl04 ) and Pricing documentation (htt=
+ps://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxmrW4qbvj91Qwb=
+FlW39GxQ75kMXHKN24tzvY3gP0xW6N1vHY6lZ3mbW6rK36r3pfcbMW77q-QJ7DkyKgW6_vyVT38=
+sP1PW4X0Zg_6h8BVLW1wTDJ_7X7Ty0N7Cht9bNv_ctN9gtMW-DZcj2W1JX3vq5HVwwWVnSWQ16h=
+6HhbV6zZ3z2wDpB6W3rV1_r2lp3GrW6FMQ4X6Zv5ljVR45Xh1C0KWfW3_8rd836wKkHW7n9jNg6=
+pmvl3W15SJ_m1dlxTpN3nC1LtRPNT1W73Y_495F2stpW2WLD8m47g6RGW2SBSX74Sn0n0W2Kjtb=
+85_Q_zJW5D2QYR74Jpxsf8GvXQP04 ) . If you have additional questions, please =
+email support@infura.io (mailto:support@infura.io) .
+
+Thank you very much for being an Infura customer. We truly appreciate your =
+business and your patience through this transition.
+
+website (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxm=
+rW4qbvj91QwbFlW39GxQ75kMXHKN24tzvl3l5QzW5BW0B06lZ3m2W76pjsx37vN9DW38bW5L9d2=
+FfGW2gC8Vz2dX0M4W7D0_RK3jHMJzN67dXm5G7sBlW7X3FJ24_MWgPW7NFBnl4jPZRKN7PmzxgR=
+vfDCW696RgC4fr8GGW1W4N3K8Vzf3cW2gxwDg5_shnMW3DxqyM8dL1l0W7WDqjX4dLxWZN3spzL=
+SLrsdWW9gQLgr1jXCB_VGF4Yq8Q49yJW5mC5kD7wKgZFVqTqhg5dBr_rf95gpfg04 )
+
+blog (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxmrW4=
+qbvj91QwbFlW39GxQ75kMXHKN24tzvF3l5QzW69sMD-6lZ3mMW7l-rSP3TBTdnW6FrYB-8YJzy9=
+N8xc922x5WbVW2YcTbr7RklHnW1SgZYK4pbnJMW4Cpsg53RB70wW8qb2lT4zk_kqW6DDFDz7Ppy=
+NqN6yY_9KCz3j7W7rClZx8kMQt8W94MsCH4614XGW24Yd5X7X-4cfW1054_G9f16-2W6zVK6J14=
+4s69W87zkyY3HYSF_W1Knr_714hSjHTZm3_8d1q3KW8QFdns2zn-r7W3gvw3V8prQkZW1F5HC54=
+nJlj7f4ZvL3204 )
+
+community_3 (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82=
+khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3l5QzW69sMD-6lZ3p_W6Wmc9x5h9t1TW97WCX=
+34-zsFfW6BFRbD2dgfJsW35kKFb6zK6LpW51mF7W4tLfbRW2snVlM63jKmWW5tY1d_3y3vNYM8-=
+qhhMRzwkW8V5y9s1R5gTvW7CjhvN4kXSPdVGxHNF1YBPp9W2lmvvZ7n1mlnW9bVtyB5fpQQ3W68=
+qN-G6bklcjW5FymtV9bLVg3W7rTT5Z1NYYxVW3F_1C413FcYqW8zVrqq1jzBPvVM278J74_6GJW=
+97BxRB26Qm_xf8blLGl04 )
+
+twitter (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxm=
+rW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3l5QzW69sMD-6lZ3q4W7yqW_h6r204QW6cj93F3nT=
+qqfW6VQKV53SgkRcW4xCx7H618g3xN1-JFY83hmWMW5m3w-Q8Rjlg5W7wS7Bm2zRBcKW66L6RM2=
+c0d7pW17QFcW5C6071W2DJY_N3pCv0WW8V4W1T61kzxVW1ydjN-7SPjH-W9gC0NQ8pNvRMW3_2y=
+Sw8gQ7CZN150HzypHcn3W6D_Ybp1X_cjqV1WG2J3ygtR4VpFYwT2VQLG4M80_028QlkBW713Tfg=
+52D8P5f5gdh6004 )
+
+github (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxmr=
+W4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3l5QzW69sMD-6lZ3kWW6ZbQwj6VK42TW2Qzhs_58xk=
+WBW6b2ZC82X-VtZW92pCYM484PdQW47H1H45lwss3W3Pc0Z-23QT6zW2x1MRT37f-TRW5pQ5r81=
+-krv2W6hqrH758CzRRW7VDGs86PFtjSW9b2XSy3N5150V_n_K497R28mVYbtlB4b3hZpW7dcw9P=
+3W23ttW2lsdRB4sfg4rW1RzWgG7JX_SVW6b1dXB4KFnHNW6h4sdQ2_gskpW4zb8KF3PZ1ySW5Pv=
+TTn64VTzwf4Y1Y8j04 )
+
+linkedin (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khx=
+mrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvY3l5QzW6N1vHY6lZ3mvW42ysL81s6GmDW4rPsml6F=
+4DpgW5tkR-N6p96NZN44yVHHhVJNLW9dlfBt2vwcvHW5JRfxh4cQWWkW8DVVQ_3CdwPzVLYJhx8=
+1hy4VW8d4JLg1dHV5GN6zPnx9kvzdqW1ZVp6G2lJt71N81qdqFDYBBJW7j1sxc3jfgs4W17L64Y=
+6gqvVgW3_r3-54bm3rLW4zH7cb6DpjpJW9l7NZ962V96bW3ThQjS1YLjmLV6jmvy4cbr0zW1Fwf=
+sP6sKSn0W2MsRL81LDzRpW70kc2j5H_9nTf92TPC804 )
+
+_____________________________________________________
+
+Copyright =C2=A9 2024 Infura
+
+A Consensys (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82=
+khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3l5QzW69sMD-6lZ3mgW5ZNGXN5VXCS8W8XGgb=
+K2GvKRRW6N38mB50hyGbW6vQ2Mg4pnp2rW9gmRjP217z2-F3H0lr9kFj9W7C0xZL7HtV1cW84Lg=
+Zn3gZ7TZN1jMcRNqLj60W1S0Z_N8342GrW31GjFV9kTH2sW3FNhNh7-gkXDW92pnh_9gnsljW5j=
+l9nj6F5TXlW3R4zBK53fmjmW7RWfmw2F7qpVN9d_Dgv32wtLW2VcPK273PCmdW66cs4f2HGSM9W=
+18sXqS2SPmGnf4vQj2R04 ) Formation
+
+Want to change how you receive these emails?
+
+You can update your preferences (https://newsletter.consensys.io/hs/prefere=
+nces-center/en/page?data=3DW2nXS-N30h-MQW4mCtfz3_YjNSW1XgQ3234GXBjW3C9NWY3_=
+KgNKW2KpLP-3y-LWTW257Ygj4ctRvwW1-ZLky23kLdMW21nnCs3SwnKRW3z9B111BKgs6W4kBnV=
+j3dcPVqW2TBRSn2xL4pcW2-Fz6T1_lvwZW49n93W2s-kY6W2RtNj725jDwNW45ml3r3GRgyVW3Z=
+Y5283f_8bzW2Fskvm2FplnNW1BwSC63_TbkbW1WYv5Y3yRSYqW2C_fBx4pjPGzW3SYkh03d7jGR=
+W2r13rn1N3XfvW3LMY2G3yZvdbW2PD3C63VJDTrW3Fg_9S2WGMTkW4phxKJ3F8j5xW256jk43M0=
+j1SW2KpnSb45ylHdW4cMkk72r6vctW3bCr2k2KrwMJW4px2D53SyYJ_W2t6jgT30nyKsW1Lff-D=
+3XwrpBW20WxDg3VBj-ZW3LV8_138skkVW2TJfLn32DJ2dW45Rjb525mwwxW4kmPjL3gq05fW1Zd=
+R_-3D_BKPW45qg0x2zygF-W2MW9Qq1Xj0cmW4rzlzQ3Cf7_7W3bCtqd2vLDtYW1BGLjV1BtlvpW=
+2sN-4p2WxhlPW43pG4T3g1c8N0&_hsenc=3Dp2ANqtz-9Kwy9izAodkGrfwQls491CX7R0YSjsG=
+xtBXLazgkajBe1-8bj8pxXZwzyMFWdGF2ioGi0VdXUMIZeiE5qY_nlt-tqu3A&_hsmi=3D32366=
+4046 ) or unsubscribe here (https://newsletter.consensys.io/hs/preferences-=
+center/en/direct?data=3DW2nXS-N30h-MQW4mCtfz3_YjNSW1XgQ3234GXBjW3C9NWY3_KgN=
+KW2KpLP-3y-LWTW257Ygj4ctRvwW1-ZLky23kLdMW21nnCs3SwnKRW3z9B111BKgs6W4kBnVj3d=
+cPVqW2TBRSn2xL4pcW2-Fz6T1_lvwZW49n93W2s-kY6W2RtNj725jDwNW45ml3r3GRgyVW3ZY52=
+83f_8bzW2Fskvm2FplnNW1BwSC63_TbkbW1WYv5Y3yRSYqW2C_fBx4pjPGzW3SYkh03d7jGRW2r=
+13rn1N3XfvW3LMY2G3yZvdbW2PD3C63VJDTrW3Fg_9S2WGMTkW4phxKJ3F8j5xW256jk43M0j1S=
+W2KpnSb45ylHdW4cMkk72r6vctW3bCr2k2KrwMJW4px2D53SyYJ_W2t6jgT30nyKsW1Lff-D3Xw=
+rpBW20WxDg3VBj-ZW3LV8_138skkVW2TJfLn32DJ2dW45Rjb525mwwxW4kmPjL3gq05fW1ZdR_-=
+3D_BKPW45qg0x2zygF-W2MW9Qq1Xj0cmW4rzlzQ3Cf7_7W3bCtqd2vLDtYW1BGLjV1BtlvpW2sN=
+-4p2WxhlPW43pG4T3g1c8N0&_hsenc=3Dp2ANqtz-9Kwy9izAodkGrfwQls491CX7R0YSjsGxtB=
+XLazgkajBe1-8bj8pxXZwzyMFWdGF2ioGi0VdXUMIZeiE5qY_nlt-tqu3A&_hsmi=3D32366404=
+6 ) .
+
+Consensys Software Inc   5049 Edwards Ranch Rd    Fort Worth  TX   76109   =
+United States
+------=_Part_6752429_1098032303.1725898234246
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3=
+.org/1999/xhtml" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:=
+v=3D"urn:schemas-microsoft-com:vml" lang=3D"en"><head><!--[if !mso]><!-- --=
+><link rel=3D"stylesheet" type=3D"text/css" hs-webfonts=3D"true" href=3D"ht=
+tps://fonts.googleapis.com/css?family=3DLato|Lato:i,b,bi"><!--<![endif]-->
+    <title>[Starting Today] Infura Core (Free) Plans Switch to Credit-based=
+ Pricing</title>
+    <meta property=3D"og:title" content=3D"[Starting Today] Infura Core (Fr=
+ee) Plans Switch to Credit-based Pricing">
+    <meta name=3D"twitter:title" content=3D"[Starting Today] Infura Core (F=
+ree) Plans Switch to Credit-based Pricing">
+   =20
+   =20
+   =20
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+    <!--[if gte mso 9]>
+  <xml>
+      <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+  </xml>
+ =20
+  <style>
+    ul > li {
+      text-indent: -1em;
+    }
+  </style>
+<![endif]-->
+<!--[if mso]>
+<style type=3D"text/css">
+ body, td {font-family: Arial, Helvetica, sans-serif;}
+ .hse-body-wrapper-table {background-color: #f2f2f2;}
+</style>
+<![endif]-->
+   =20
+     =20
+ =20
+   =20
+  <meta name=3D"generator" content=3D"HubSpot"><meta property=3D"og:url" co=
+ntent=3D"https://newsletter.consensys.io/-temporary-slug-8b4181a9-5436-41fd=
+-92fd-1abff1011f39"><meta name=3D"robots" content=3D"noindex,follow"><!--[i=
+f !((mso)|(IE))]><!-- --><style type=3D"text/css">@media only screen and (m=
+ax-width:639px){img.stretch-on-mobile,.hs_rss_email_entries_table img,.hs-s=
+tretch-cta .hs-cta-img{height:auto !important;width:100% !important}
+.display_block_on_small_screens{display:block}.hs_padded{padding-left:20px =
+!important;padding-right:20px !important}
+.hs-hm,table.hs-hm{display:none}.hs-hd{display:block !important}table.hs-hd=
+{display:table !important}
+}.moz-text-html .hse-column-container{max-width:600px !important;width:600p=
+x !important}
+.moz-text-html .hse-column{display:table-cell;vertical-align:top}.moz-text-=
+html .hse-section .hse-size-12{max-width:600px !important;width:600px !impo=
+rtant}
+@media only screen and (min-width:640px){.hse-column-container{max-width:60=
+0px !important;width:600px !important}
+.hse-column{display:table-cell;vertical-align:top}.hse-section .hse-size-12=
+{max-width:600px !important;width:600px !important}
+}@media only screen and (max-width:639px){ul,blockquote{margin:0;padding:1e=
+m 40px}
+}@media screen and (max-width:639px){.social-network-cell{display:inline-bl=
+ock} }</style><!--<![endif]--><style type=3D"text/css">#hs_body #hs_cos_wra=
+pper_main a[x-apple-data-detectors]{color:inherit !important;text-decoratio=
+n:none !important;font-size:inherit !important;font-family:inherit !importa=
+nt;font-weight:inherit !important;line-height:inherit !important}
+a{text-decoration:underline}p{margin:0}body{-ms-text-size-adjust:100%;-webk=
+it-text-size-adjust:100%;-webkit-font-smoothing:antialiased;moz-osx-font-sm=
+oothing:grayscale}</style></head>
+  <body id=3D"hs_body" bgcolor=3D"#f2f2f2" style=3D"margin:0 !important; pa=
+dding:0 !important; font-family:Lato, Tahoma, sans-serif; font-size:18px; c=
+olor:#000000; word-break:break-word">
+    <div id=3D"preview_text" style=3D"display:none;font-size:1px;color:#f2f=
+2f2;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;=
+" lang=3D"en">Infura, Pricing, Credits, Subscription Plans</div>
+   =20
+<!--[if gte mso 9]>
+<v:background xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"t">
+    <v:fill type=3D"tile" size=3D"100%,100%" color=3D"#ffffff"/>
+</v:background>
+<![endif]-->
+    <div class=3D"hse-body-background" lang=3D"en" style=3D"background-colo=
+r:#f2f2f2" bgcolor=3D"#f2f2f2">
+      <table role=3D"presentation" class=3D"hse-body-wrapper-table" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !important; border-c=
+ollapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; margin:0; pad=
+ding:0; width:100% !important; min-width:320px !important; height:100% !imp=
+ortant" width=3D"100%" height=3D"100%">
+        <tbody><tr>
+          <td class=3D"hse-body-wrapper-td" valign=3D"top" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding-t=
+op:20px; padding-bottom:20px">
+            <div id=3D"hs_cos_wrapper_main" class=3D"hs_cos_wrapper hs_cos_=
+wrapper_widget hs_cos_wrapper_type_dnd_area" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"dnd_area">  <div id=3D"section-0" class=3D"hse-section h=
+se-section-first" style=3D"padding-left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; Margin-left:auto; Margin-right:auto; border-collapse:collapse; bo=
+rder-spacing:0; background-color:#121212" bgcolor=3D"#121212">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#121212">
+      <tr style=3D"background-color:#121212;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column-0-0" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_module-0-0-0" class=3D"hs_cos_wrapper hs_cos_wr=
+apper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-size=
+: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" data-=
+hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"presentat=
+ion" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-spa=
+cing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-tabl=
+e-rspace:0pt">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"border-collapse:collapse=
+; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; color=
+:#000000; word-break:break-word; text-align:center; padding:0px; font-size:=
+0px">
+        <img alt=3D"Infura " src=3D"https://newsletter.consensys.io/hs-fs/h=
+ubfs/Infura%20Banner.png?width=3D1200&amp;upscale=3Dtrue&amp;name=3DInfura%=
+20Banner.png" style=3D"outline:none; text-decoration:none; -ms-interpolatio=
+n-mode:bicubic; max-width:100%; font-size:16px" width=3D"600" align=3D"midd=
+le" class=3D"stretch-on-mobile" srcset=3D"https://newsletter.consensys.io/h=
+s-fs/hubfs/Infura%20Banner.png?upscale=3Dtrue&amp;width=3D1200&amp;upscale=
+=3Dtrue&amp;name=3DInfura%20Banner.png 600w, https://newsletter.consensys.i=
+o/hs-fs/hubfs/Infura%20Banner.png?upscale=3Dtrue&amp;width=3D2400&amp;upsca=
+le=3Dtrue&amp;name=3DInfura%20Banner.png 1200w" sizes=3D"(max-width: 600px)=
+ 100vw, 600px">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  <div id=3D"section_1649341538166" class=3D"hse-section" style=3D"padding-=
+left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; Margin-left:auto; Margin-right:auto; border-collapse:collapse; bo=
+rder-spacing:0; background-color:#ffffff" bgcolor=3D"#ffffff">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#ffffff">
+      <tr style=3D"background-color:#ffffff;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column_1649341538167_0" class=3D"hse-column hse-size-12">
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-=
+table-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" =
+style=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-famil=
+y:Lato, Tahoma, sans-serif; font-size:18px; color:#000000; word-break:break=
+-word; padding:20px 40px"><div id=3D"hs_cos_wrapper_module_16491719943731" =
+class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" s=
+tyle=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-=
+cos-general-type=3D"widget" data-hs-cos-type=3D"module"><div id=3D"hs_cos_w=
+rapper_module_16491719943731_" class=3D"hs_cos_wrapper hs_cos_wrapper_widge=
+t hs_cos_wrapper_type_rich_text" style=3D"color: inherit; font-size: inheri=
+t; line-height: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-t=
+ype=3D"rich_text"><p style=3D"mso-line-height-rule:exactly; font-weight:bol=
+d; line-height:100%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-weight:bold; line-height:100=
+%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-weight:bold; line-height:175=
+%"><span style=3D"font-family: Lato, Tahoma, sans-serif;">New Credit-Based =
+Pricing for Core (Free) Plan Starts Today</span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:14px; line-height:125%;=
+ font-weight:bold"><span style=3D"font-family: Lato, Tahoma, sans-serif;">&=
+nbsp;</span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+><span style=3D"font-family: Lato, Tahoma, sans-serif;">Last month, we comm=
+unicated via email that we are moving to a new pricing structure where each=
+ request has a credit value and credits are consumed as part of your subscr=
+iption plan. <span style=3D"font-weight: bold;">This change will take effec=
+t starting September 9, 2024</span> for all Core (Free) plan customers.</sp=
+an></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+><span style=3D"font-family: Lato, Tahoma, sans-serif;">&nbsp;</span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+><span style=3D"font-family: Lato, Tahoma, sans-serif;">&nbsp;</span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%;=
+ font-weight:bold"><span style=3D"font-family: Lato, Tahoma, sans-serif; fo=
+nt-size: 18px;">What is changing?</span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:125%;=
+ font-weight:bold">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%;=
+ font-weight:normal"><span style=3D"font-size: 16px; font-family: Lato, Tah=
+oma, sans-serif;">If you have a Core (Free) plan, <span style=3D"font-weigh=
+t: bold;">the plan remains free</span> and the usage bar on your dashboard =
+homepage will switch to credits. You will be able to see credit usage per k=
+ey, and a new Usage tab under Manage Plan will become available.</span></p>
+<ul style=3D"mso-line-height-rule:exactly; line-height:175%"></ul></div></d=
+iv></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_module_17256556212271" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pr=
+esentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D"bor=
+der-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; m=
+so-table-rspace:0pt">
+  <tbody>
+    <tr>
+      <td class=3D"hs_padded" align=3D"center" valign=3D"top" style=3D"bord=
+er-collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahom=
+a, sans-serif; color:#000000; word-break:break-word; text-align:center; pad=
+ding:20px 40px; font-size:0px">
+        <img alt=3D"Infura Dashboard" src=3D"https://newsletter.consensys.i=
+o/hs-fs/hubfs/Screenshot%202024-09-06%20at%2022.46.55.png?width=3D1040&amp;=
+upscale=3Dtrue&amp;name=3DScreenshot%202024-09-06%20at%2022.46.55.png" styl=
+e=3D"outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; ma=
+x-width:100%; font-size:16px" width=3D"520" align=3D"middle" srcset=3D"http=
+s://newsletter.consensys.io/hs-fs/hubfs/Screenshot%202024-09-06%20at%2022.4=
+6.55.png?upscale=3Dtrue&amp;width=3D1040&amp;upscale=3Dtrue&amp;name=3DScre=
+enshot%202024-09-06%20at%2022.46.55.png 520w, https://newsletter.consensys.=
+io/hs-fs/hubfs/Screenshot%202024-09-06%20at%2022.46.55.png?upscale=3Dtrue&a=
+mp;width=3D2080&amp;upscale=3Dtrue&amp;name=3DScreenshot%202024-09-06%20at%=
+2022.46.55.png 1040w" sizes=3D"(max-width: 520px) 100vw, 520px">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Lato, Tahoma, sans-serif; font-size:18px; color:#000000; word-break:break-w=
+ord; padding:20px 40px"><div id=3D"hs_cos_wrapper_module_17248804617702" cl=
+ass=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" sty=
+le=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-co=
+s-general-type=3D"widget" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wra=
+pper_module_17248804617702_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget =
+hs_cos_wrapper_type_rich_text" style=3D"color: inherit; font-size: inherit;=
+ line-height: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-typ=
+e=3D"rich_text"><p style=3D"mso-line-height-rule:exactly; font-size:18px; l=
+ine-height:175%; font-weight:bold">Why are we making this change?&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:18px; line-height:125%;=
+ font-weight:bold"><span style=3D"font-size: 16px;">&nbsp;</span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+>We are improving our transparency by allocating the resource usage of the =
+requests that you submit to Infura against the limits of your Infura Core (=
+free) plan. This means some frequent requests like eth_chainId will consume=
+ less of your plan than they did in the past, some requests will consume th=
+e same, and some requests will utilize more. In the simplest terms, your pl=
+an is consumed based on the resources used to serve the requests you invoke=
+. You can see the Credits each request consumes <a href=3D"https://newslett=
+er.consensys.io/e3t/Ctc/T8+113/czspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMX=
+HKN24tzwd3hCZPW7lCdLW6lZ3pnW5SjyLb5h7-bHW9hWVdw500phmW6PnDtN5PbX_1W5hq_Dw2f=
+pB8yW9k0npy55JLhCVDtqdF3lw2_sW6d860l3mnJ-jW96DfMD70yQvJN8jzq1Gcp9qKW3DgfJy1=
+vV_16W2BmlsP8RKpWXW4XQCq22fJg02W6lM_c26NQ2XrW5wPHzn1bkg0CW1PGht63PXKFGN8_Qf=
+Bf31zMNW89z6G38q2bnbW29DnJs1z2Y4DW2R9Y9r8Z-LHJW2VW1Tt83jYtKW1XLlzb8-SHR2W4L=
+YX6v8DQ0h6VC6Wyk8qj_plW5yf-ck9lY8Vhf5GqqyP04" rel=3D"noopener" style=3D"mso=
+-line-height-rule:exactly; color:#2c56dd" data-hs-link-id=3D"0" target=3D"_=
+blank">here</a>.</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+>&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%;=
+ font-weight:bold"><span style=3D"font-size: 18px;">What do I need to do?</=
+span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:125%"=
+>&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+>There is no action needed from you at this time. The above changes will ta=
+ke place automatically throughout the week.&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+>&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:18px; line-height:175%"=
+><span style=3D"font-family: Lato, Tahoma, sans-serif;"><strong>How can I l=
+earn more?</strong></span></p>
+<p style=3D"mso-line-height-rule:exactly; line-height:125%; font-size:16px"=
+>&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; font-size:16px"=
+>We are committed to making this transition seamless for you. In the meanti=
+me, please refer to our <a href=3D"https://newsletter.consensys.io/e3t/Ctc/=
+T8+113/czspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzwd3hCZPW7lCdLW6lZ=
+3q0W4cbLw877wJQ3MtWggqbk2BsW50pp3L7zznF9W5V-8n62qx360Vl8QKQ6VKcrHW91Q8kY5vC=
+RZPW2yL63m5GyjJJW4_4D8g6Zr9BrW14jt1-4DpPNlW5rqLDn7Jjxh8W3wpbkh43jpyyW7tvn2T=
+7fFN_4W2c60rl1Yxv83W4HvLNR5PBqB7Vnp0Pf95B7syW1q2NDF3XRHwxW6NsXtR1VhTbDW1tKb=
+Lp270kymW5TWS2Z59t73QW8NV-ww98QpksW4tJcKW1vlw6xW3NR0SG4syb-hW1y3qzW55XTNyW6=
+LyFtc7Ddqv-f8qn9yz04" rel=3D"noopener" style=3D"mso-line-height-rule:exactl=
+y; color:#2c56dd" data-hs-link-id=3D"0" target=3D"_blank">Billing &amp; Pri=
+cing support articles</a> and <a href=3D"https://newsletter.consensys.io/e3=
+t/Ctc/T8+113/czspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvY3hCZPW6N1=
+vHY6lZ3lLW91SPyf2X5d2tN7MB2m1Yff7XW4Q2Wt_4fTT4NW2b6hJN49k7gtW6c8Wk78JjRsQW5=
+Mnbmx1FZhP3W92WhfW3WhqzTW60Dyvn7tvB4MW3gHyTz43-SjMW6VrxvY1SjTFSW78stnT2mTbr=
+WW6gffFP9l5yrXN6jGLVWSDnb0W1hHpG957XnXwVlQS5r3SlV_xW2XG0ZY8xzHgHW9fL7f0268D=
+HZW7vg-vL1p9clmW6YX-Mm7NXJckW6jpydz6RYqgcW43f_xm4_F-YXW8cGS8z6r-Wq_f4-pmlj0=
+4" rel=3D"noopener" style=3D"mso-line-height-rule:exactly; color:#2c56dd" d=
+ata-hs-link-id=3D"0" target=3D"_blank">Pricing documentation</a>. If you ha=
+ve additional questions, please email <a href=3D"mailto:support@infura.io" =
+rel=3D"noopener" style=3D"mso-line-height-rule:exactly; color:#2c56dd" data=
+-hs-link-id=3D"0" target=3D"_blank">support@infura.io</a>. &nbsp;<br>&nbsp;=
+<br>Thank you very much for being an Infura customer. We truly appreciate y=
+our business and your patience through this transition.</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p></div=
+></div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  <div id=3D"section-2" class=3D"hse-section hse-section-last" style=3D"pad=
+ding-left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; Margin-left:auto; Margin-right:auto; border-collapse:collapse; bo=
+rder-spacing:0; background-color:#121212; padding-bottom:10px; padding-top:=
+10px" bgcolor=3D"#121212">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#121212">
+      <tr style=3D"background-color:#121212;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;padding-bottom:10px; padding-top:=
+10px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column-2-0" class=3D"hse-column hse-size-12">
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-=
+table-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" =
+style=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-famil=
+y:Lato, Tahoma, sans-serif; font-size:18px; color:#000000; word-break:break=
+-word; padding:12px 20px 0px"><div id=3D"hs_cos_wrapper_module-2-0-0" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"presenta=
+tion" align=3D"center" style=3D"border-spacing:0 !important; border-collaps=
+e:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-al=
+ign:center" class=3D"hs_cos_wrapper_type_social_module" width=3D"auto">
+  <tbody>
+    <tr align=3D"center">
+      <td class=3D"social-network-cell" style=3D"border-collapse:collapse; =
+mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; font-si=
+ze:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a  href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/=
+czspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvl3lYMRW5BW0B06lZ3lLW934=
+P0D2B85scV6zn9c95xzDYW40B4Wv6h5DQNVfw1l23z22BTW2HCcnV6tNrtpW5wnSv33YMZrSN2b=
+fv83l78RHN4xGNkW6DlP7W59ftLJ2MGBJZN30w0wkyqj2WW8gqgxz1NWwXJW1JH7rm87tdTgW6P=
+2gL78kYZKlW2NPDRN1H40rxW4r-Jn_6Cv6kqW8jCTBg5-wjHGW3Gxjyw2y1Z16N7xcN7_ZGMJ4f=
+3bhMyv04" style=3D"color:#00a4bd; mso-line-height-rule:exactly; text-decora=
+tion:none !important" data-hs-link-id=3D"0" target=3D"_blank"><img src=3D"h=
+ttps://newsletter.consensys.io/hs-fs/hubfs/Infura%20Email%20Template/websit=
+e.png?height=3D50&amp;upscale=3Dtrue&amp;name=3Dwebsite.png" alt=3D"website=
+" height=3D"25" style=3D"outline:none; text-decoration:none; -ms-interpolat=
+ion-mode:bicubic; border:none; width:auto!important; height:25px!important;=
+ vertical-align:middle" valign=3D"middle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3lYMRW69sMD-6lZ3n3W3j_x=
+ks6sJrFyW7P-3fW6pbBD7W4lnBmY8rR0WkN1fH08tDGwS5VXz7sY2zLgWBW5lDQ4S7hmT_DN6h-=
+YSV_HFytVzJWb57gYc84W4Q1hBJ49MngKVmwrcX3vPcnfN6KDHqjBGNLxW4PkbtQ6SPcj-W5KHW=
+f75r8_CxW9jX9vY77fvXpW1kTGgb4rd6B5N1xWyxN5G1b1W2YY3t73_dsGXW8WG9xW5DMxG2N7-=
+kGtZh6tz6N3Pn5R8bVzgtf91GkvM04" style=3D"color:#00a4bd; mso-line-height-rul=
+e:exactly; text-decoration:none !important" data-hs-link-id=3D"0" target=3D=
+"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/Infura%20E=
+mail%20Template/blog.png?height=3D50&amp;upscale=3Dtrue&amp;name=3Dblog.png=
+" alt=3D"blog" height=3D"25" style=3D"outline:none; text-decoration:none; -=
+ms-interpolation-mode:bicubic; border:none; width:auto!important; height:25=
+px!important; vertical-align:middle" valign=3D"middle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3lYMRW69sMD-6lZ3mzVcmVQ=
+v4_q5SnW5yKfcC23s4y_W2YX9Lh5wl5GZW35hpKT1RxzxfW8mzcLQ7S8z0MN5y4f0yNvB7PW2px=
+NK06x_Ts2W9g8GJc7387tGW2V7d6S1qNsvvW7cbwny2dPNcCW4SxyHM8MMF7sW2tTT9K4WnGS9W=
+2bx3dh2kVPpgW3tqSMb3wNDJqN3S6BNTdDdKzW8-gsjv5y8S18W7hXqDW4JWkg8W1mK_hy3JXLb=
+wVV7XpH2JtvBrW4_1rz920nst9dsLQ9K04" style=3D"color:#00a4bd; mso-line-height=
+-rule:exactly; text-decoration:none !important" data-hs-link-id=3D"0" targe=
+t=3D"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/Infura=
+%20Email%20Template/community_3.png?height=3D50&amp;upscale=3Dtrue&amp;name=
+=3Dcommunity_3.png" alt=3D"community_3" height=3D"25" style=3D"outline:none=
+; text-decoration:none; -ms-interpolation-mode:bicubic; border:none; width:=
+auto!important; height:25px!important; vertical-align:middle" valign=3D"mid=
+dle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3lYMRW69sMD-6lZ3lZW6fx7=
+8X4Q2LgsVDtwpr6SXSl5W4VlJ5R1Bv_X1W6F8bRR4kFn1-W67Gl124zxQ1tW4QQ-vk4mV_dhW4V=
+DZMt3qjsgGW3XXPZS4TCYJLV8n8GJ3ycb6vW4c5K121mVYHLW2b8ntj25DpXKW4sVYZS4c5LRdW=
+8crw0T1GF8yZW5dNYhq492SplW98CWXq4K6YyQW54WnH08351bkN1rynZmwmWpyW1tdhPZ7-Tvn=
+bVJdx2s7q8ytTW29HYvp3mfsDJf5P8kgM04" style=3D"color:#00a4bd; mso-line-heigh=
+t-rule:exactly; text-decoration:none !important" data-hs-link-id=3D"0" targ=
+et=3D"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/Infur=
+a%20Email%20Template/twitter.png?height=3D50&amp;upscale=3Dtrue&amp;name=3D=
+twitter.png" alt=3D"twitter" height=3D"25" style=3D"outline:none; text-deco=
+ration:none; -ms-interpolation-mode:bicubic; border:none; width:auto!import=
+ant; height:25px!important; vertical-align:middle" valign=3D"middle" width=
+=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3lYMRW69sMD-6lZ3njW4t4K=
+Q46tKcMgW543SLB61hfbFW7wQQSt66fKYxW2glRzw4Jzqf8W3WYfmZ78y55WW5fBdVT2CJgFlVM=
+DVLf4ZpKPQVp1Zp71wJP13VxDwhD8_CZtpVKX5j44BMG_FW2Trmh-5C0lymVC2V2F3_P-SCW7nt=
+wSC50wZhXW7bB5ny3KjwBwN3YJnNdhqRVKN6BxQ95xDY61W6Vkg4d73bglpW3TFqVQ74rdDlW4B=
+Ty035qbzK9N4ggXFNtgR8Mf2CmmVF04" style=3D"color:#00a4bd; mso-line-height-ru=
+le:exactly; text-decoration:none !important" data-hs-link-id=3D"0" target=
+=3D"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/Infura%=
+20Email%20Template/github.png?height=3D50&amp;upscale=3Dtrue&amp;name=3Dgit=
+hub.png" alt=3D"github" height=3D"25" style=3D"outline:none; text-decoratio=
+n:none; -ms-interpolation-mode:bicubic; border:none; width:auto!important; =
+height:25px!important; vertical-align:middle" valign=3D"middle" width=3D"au=
+to">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvY3lYMRW6N1vHY6lZ3p2W7wmQ=
+gc8hVJkzW7byZwd7CBhHFW4ysH1-7cbcgTW96R9yY5zJg7SW4JWDQP32dh7rW3VMq134L5bpkW4=
+GXmV-334y9LW5wCy2X1Vnx0BW2Cy43g2x9DHQW8XWvks74rxxvW7H-m604YFJTmW1yykYw4hTGQ=
+xW5kCCgj5W8lz_W8JsLxM5rMy5LW2Xlsw29bm9HHW391Vwp2yCVvKW7X75w32P3cz1W7_bP9c4X=
+Kps2W8h4LqJ1920s0W4bZhqR2HSp4XVv9hYr4L5qVFW9lDS2G3ZTYNBf6mbRGg04" style=3D"=
+color:#00a4bd; mso-line-height-rule:exactly; text-decoration:none !importan=
+t" data-hs-link-id=3D"0" target=3D"_blank"><img src=3D"https://newsletter.c=
+onsensys.io/hs-fs/hubfs/Infura%20Email%20Template/linkedin.png?height=3D50&=
+amp;upscale=3Dtrue&amp;name=3Dlinkedin.png" alt=3D"linkedin" height=3D"25" =
+style=3D"outline:none; text-decoration:none; -ms-interpolation-mode:bicubic=
+; border:none; width:auto!important; height:25px!important; vertical-align:=
+middle" valign=3D"middle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div></td></tr></tbody></table>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Lato, Tahoma, sans-serif; font-size:18px; color:#000000; word-break:break-w=
+ord; padding:0px 20px 10px"><div id=3D"hs_cos_wrapper_module-2-0-1" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapp=
+er_module-2-0-1_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrap=
+per_type_rich_text" style=3D"color: inherit; font-size: inherit; line-heigh=
+t: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_t=
+ext"><p style=3D"mso-line-height-rule:exactly; line-height:175%; text-align=
+:center" align=3D"center"><span style=3D"color: #ffffff;">_________________=
+____________________________________</span></p>
+<p style=3D"mso-line-height-rule:exactly; text-align:center; font-size:8px;=
+ line-height:175%" align=3D"center">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; text-align:cent=
+er" align=3D"center"><span style=3D"color: #ffffff;"><span style=3D"font-fa=
+mily: Arial, Helvetica, sans-serif; font-size: 12px;">Copyright =C2=A9 2024=
+ Infura</span><br><span style=3D"font-family: Arial, Helvetica, sans-serif;=
+ font-size: 12px;">A <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+=
+113/czspy04/VX9gb82khxmrW4qbvj91QwbFlW39GxQ75kMXHKN24tzvF3lYMRW69sMD-6lZ3q1=
+W3F83RF4gcy93W7kQK9c2B4ltNW4zKNyn8rh1STW87K6df5rqXxdW47H07f5L9RtPW3hKJzZ6wb=
+YzjW7WLgP08VQ8LWW1Ycc-g1mZg2_VwYyRf5b0DN6W60tMhF661TlWW6Ps63B8X77tnW635plm6=
+M0M6JVL-92w4t5_R9W4_rZRx1t6bhkN2Xjmyr_vYm3W5_N4VX6HV8QJW3xYVLG6LMmWDVPp_nS5=
+xjM-QW4GXNzC3PN3-TN7zdkkRlnMXtf4M4_ZP04" target=3D"_blank" style=3D"mso-lin=
+e-height-rule:exactly; color:#ffffff" rel=3D"noopener" data-hs-link-id=3D"0=
+">Consensys</a> Formation</span><br><span style=3D"font-family: Arial, Helv=
+etica, sans-serif; font-size: 12px;">Want to change how you receive these e=
+mails?</span><br><span style=3D"font-family: Arial, Helvetica, sans-serif; =
+font-size: 12px;">You can <a href=3D"https://newsletter.consensys.io/hs/pre=
+ferences-center/en/page?data=3DW2nXS-N30h-MQW4mCtfz3_YjNSW1XgQ3234GXBjW3C9N=
+WY3_KgNKW2KpLP-3y-LWTW257Ygj4ctRvwW1-ZLky23kLdMW21nnCs3SwnKRW3z9B111BKgs6W4=
+kBnVj3dcPVqW2TBRSn2xL4pcW2-Fz6T1_lvwZW49n93W2s-kY6W2RtNj725jDwNW45ml3r3GRgy=
+VW3ZY5283f_8bzW2Fskvm2FplnNW1BwSC63_TbkbW1WYv5Y3yRSYqW2C_fBx4pjPGzW3SYkh03d=
+7jGRW2r13rn1N3XfvW3LMY2G3yZvdbW2PD3C63VJDTrW3Fg_9S2WGMTkW4phxKJ3F8j5xW256jk=
+43M0j1SW2KpnSb45ylHdW4cMkk72r6vctW3bCr2k2KrwMJW4px2D53SyYJ_W2t6jgT30nyKsW1L=
+ff-D3XwrpBW20WxDg3VBj-ZW3LV8_138skkVW2TJfLn32DJ2dW45Rjb525mwwxW4kmPjL3gq05f=
+W1ZdR_-3D_BKPW45qg0x2zygF-W2MW9Qq1Xj0cmW4rzlzQ3Cf7_7W3bCtqd2vLDtYW1BGLjV1Bt=
+lvpW2sN-4p2WxhlPW43pG4T3g1c8N0&amp;utm_source=3Dhs_email&amp;utm_medium=3De=
+mail&amp;utm_content=3D323664046&amp;_hsenc=3Dp2ANqtz--TMdlwHq1EP8ioUONoS2k=
+MNERTF_wSY3E7LASUyqYRyh8kBAIq8XQwmPVkaT1zi8awcdYABlPObIY6p9t57wxVCzkKjA&amp=
+;_hsmi=3D323664046" style=3D"mso-line-height-rule:exactly; color:#ffffff" d=
+ata-hs-link-id=3D"0" target=3D"_blank">update your preferences</a> or <a hr=
+ef=3D"https://newsletter.consensys.io/hs/preferences-center/en/direct?data=
+=3DW2nXS-N30h-MQW4mCtfz3_YjNSW1XgQ3234GXBjW3C9NWY3_KgNKW2KpLP-3y-LWTW257Ygj=
+4ctRvwW1-ZLky23kLdMW21nnCs3SwnKRW3z9B111BKgs6W4kBnVj3dcPVqW2TBRSn2xL4pcW2-F=
+z6T1_lvwZW49n93W2s-kY6W2RtNj725jDwNW45ml3r3GRgyVW3ZY5283f_8bzW2Fskvm2FplnNW=
+1BwSC63_TbkbW1WYv5Y3yRSYqW2C_fBx4pjPGzW3SYkh03d7jGRW2r13rn1N3XfvW3LMY2G3yZv=
+dbW2PD3C63VJDTrW3Fg_9S2WGMTkW4phxKJ3F8j5xW256jk43M0j1SW2KpnSb45ylHdW4cMkk72=
+r6vctW3bCr2k2KrwMJW4px2D53SyYJ_W2t6jgT30nyKsW1Lff-D3XwrpBW20WxDg3VBj-ZW3LV8=
+_138skkVW2TJfLn32DJ2dW45Rjb525mwwxW4kmPjL3gq05fW1ZdR_-3D_BKPW45qg0x2zygF-W2=
+MW9Qq1Xj0cmW4rzlzQ3Cf7_7W3bCtqd2vLDtYW1BGLjV1BtlvpW2sN-4p2WxhlPW43pG4T3g1c8=
+N0&amp;utm_source=3Dhs_email&amp;utm_medium=3Demail&amp;utm_content=3D32366=
+4046&amp;_hsenc=3Dp2ANqtz--TMdlwHq1EP8ioUONoS2kMNERTF_wSY3E7LASUyqYRyh8kBAI=
+q8XQwmPVkaT1zi8awcdYABlPObIY6p9t57wxVCzkKjA&amp;_hsmi=3D323664046" style=3D=
+"mso-line-height-rule:exactly; color:#ffffff" data-hs-link-id=3D"0" target=
+=3D"_blank">unsubscribe here</a>.</span><br><span style=3D"font-size: 12px;=
+">&nbsp;</span><br><span style=3D"font-size: 12px;">Consensys Software Inc =
+&nbsp;&nbsp;5049 Edwards Ranch Rd &nbsp; &nbsp;Fort Worth &nbsp;TX &nbsp;&n=
+bsp;76109 &nbsp;&nbsp;United States</span></span></p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; text-align:cent=
+er" align=3D"center">&nbsp;</p></div></div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div></div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+ =20
+<img src=3D"https://newsletter.consensys.io/e3t/Cto/T8+113/czspy04/VX9gb82k=
+hxmrW4qbvj91QwbFlW39GxQ75kMXHKW24tzg13CQKSK122" alt=3D"" width=3D"1" height=
+=3D"1" border=3D"0" style=3D"display:none!important;min-height:1px!importan=
+t;width:1px!important;border-width:0!important;margin-top:0!important;margi=
+n-bottom:0!important;margin-right:0!important;margin-left:0!important;paddi=
+ng-top:0!important;padding-bottom:0!important;padding-right:0!important;pad=
+ding-left:0!important"></body></html>
+------=_Part_6752429_1098032303.1725898234246--
+

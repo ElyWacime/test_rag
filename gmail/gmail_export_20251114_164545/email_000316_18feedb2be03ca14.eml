@@ -1,0 +1,472 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:3a06:0:b0:2ea:ac55:6377 with SMTP id h6csp410773lja;
+        Thu, 6 Jun 2024 11:41:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFREdrSnyLOBpdkqRfUZjOX3ARfYite3/K2VxsDMS4Jl9g9WDZS1ZZLb/3zCKoLcrvnRGv1
+X-Received: by 2002:a05:6214:33c6:b0:6b0:4530:7162 with SMTP id 6a1803df08f44-6b0595da3e9mr7306226d6.25.1717699291900;
+        Thu, 06 Jun 2024 11:41:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717699291; cv=none;
+        d=google.com; s=arc-20160816;
+        b=doxSQUjTfmixf+fl3UWVJlCxXL7+J2pULLwsfpJ7vvgbNYsnWD60zbcTNVxdNxT3i5
+         KyHzPbxp2tLZcO2vuDS6gDhhcOSgl6iZU9W/lKns5gMYRDFb3CSdNDH9cygFSCsBNpsT
+         ka8FhO+ScgGwdobVcssW4dZIDyWzgyF50Uyhf7qW/DXDJugaCvEsBKQh5C0FJM13oJVo
+         XZNj02giFrR0eXECQqagjTFP5tHCpeaa05WSzCmhNkVVqOVpxiUnbDka4v4Rv/+Amggg
+         WQpeEf9o6zEBlnyaSlHpkOAAeh+6DZzZGI9tQDiFht1vwenbrZGzWaSzZVGOmm2PMvTa
+         Qegg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe-post
+         :list-unsubscribe:subject:to:from:dkim-signature:dkim-signature;
+        bh=7tFapGtvfjX91xbRhdmQRKjo/pgHHi+XfL5DYRSfl0w=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=rj7Q4UrcyEPEm6LpUSrg7ddIS1lOWVKI9NB/fD2YJuJI8i5dYyrjnUGbUx1JhK7zoo
+         8vXJsc2R/8AlVSUwme3ytcgyaEF5Uz4GAadxwCQEQodL9cbP4kb2Fr912B534A3wKfn6
+         y7s5m6oR9GTnJdz0sqXeFvyJ55ifLVnPboeqCQr7tKW3qJKqw5kkYxtSMRY1oUYpD9fR
+         0rmyEY/+sTgu/AxUQu/ddHaKl0AQY4PgrEWxnQ40rcbd7uVJsAuGGLCFuj49DSmXYnaj
+         BpQG33UsopbV4SzZ+u6AiVEmJNmnuONBpZj2zx+Va3MXWfnwOvR+3iSpmH5kAP1+QeQm
+         lc+Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=KiHwVdA8;
+       dkim=pass header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug header.b=CPl0QK7U;
+       spf=pass (google.com: domain of 0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) smtp.mailfrom=0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000@em1234.pipedream.com>
+Received: from a123-36.smtp-out.amazonses.com (a123-36.smtp-out.amazonses.com. [54.240.123.36])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b04fa3b8acsi15551986d6.534.2024.06.06.11.41.31
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Jun 2024 11:41:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) client-ip=54.240.123.36;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=KiHwVdA8;
+       dkim=pass header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug header.b=CPl0QK7U;
+       spf=pass (google.com: domain of 0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) smtp.mailfrom=0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1717699291;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type;
+	bh=7tFapGtvfjX91xbRhdmQRKjo/pgHHi+XfL5DYRSfl0w=;
+	b=KiHwVdA8w9qG/57nLlOLZNJ1DVPXhkxeQUJUpPcbGHAnXz5dR5F0Xyz/OX190pFP
+	6cPZqjo9aveZPSW0/zDWj2O6M4oZ9M9MVk6kzzHpfXV9vad+RAC47wwWzzhrFVt7ifw
+	s3CGNpkTPObOItXB/7gKf5q88xmTq6V/6YaYSgfw=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1717699291;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=7tFapGtvfjX91xbRhdmQRKjo/pgHHi+XfL5DYRSfl0w=;
+	b=CPl0QK7Uvbw53FxQ+shl2EhtCfEAPW1oEQPsLTC+R7tEkNqtj39bew/svUmBX0eV
+	VnyKL3Xe4eM09hOivFiJf0MiHBqlGPtCwWfjPIZsDlnl/uvUSP2wJNWoDqOQu8FTLL1
+	R1HVG13fR2TgpetuloRnwWivI0FDA3NzymcwKba8=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Bring your own OAuth clients
+X-Entity-Ref-Id: 0b7ba37d-f9d3-40dc-a1f9-f77ffff21444
+X-EmailOctopus-Parent-Id: d44dea56-23a1-11ef-997a-d96a177c1432
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 722d1388-f78c-11ee-9155-61c3796c8eef
+X-EmailOctopus-List-Contact-Id: dc9fa572-f828-11ee-8757-49979cf9c3cf
+X-EmailOctopus-Started-Preparing-At: 2024-06-06T16:19:10+00:00
+X-EmailOctopus-Sent-At: 2024-06-06T18:41:31+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://email-actions.pipedream.com/unsubscribe?ep=1&l=722d1388-f78c-11ee-9155-61c3796c8eef&lc=dc9fa572-f828-11ee-8757-49979cf9c3cf&p=d44dea56-23a1-11ef-997a-d96a177c1432&pt=campaign&pv=4&spa=1717690750&t=1717699291&s=a0b9359549a33fb0cb4bd3a2ae4cc9d6199e1c55fd36a10b840bc445b6235671>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-2461f7dbd03eac52c8b90e19bc9c921d
+MIME-Version: 1.0
+Date: Thu, 6 Jun 2024 18:41:31 +0000
+Message-ID: <0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=wqBQmCGt
+Feedback-ID: ::1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2024.06.06-54.240.123.36
+
+--wqBQmCGt
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+We are excited to announce support for custom OAuth clients in
+Pipedream!=
+=C2=A0
+
+[Pipedream] [1]=20
+[Robot exploring a forest of integrations] [=
+2]=20
+
+BRING YOUR OWN OAUTH CLIENTS
+
+We are excited to announce suppo=
+rt for custom OAuth clients in
+Pipedream [3]!
+
+By default, OAuth apps=
+ use our official OAuth client. When you connect
+your account, you grant =
+Pipedream the requested permissions (scopes),
+regardless of the needs or =
+security requirements of your specific use
+case.=C2=A0
+
+Now, you can =
+provide your own OAuth client and define your own scopes,
+giving you comp=
+lete control over the authorization process.
+
+Key features:
+
+ =09* =
+Define the exact scopes you need for your use case
+ =09* Control the OAut=
+h client requesting access to your account
+ =09* Comply with internal sec=
+urity requirements
+ =09* Visit documentation [4] for details
+
+=09=09C=
+reate New OAuth client [5]
+
+-------------------------
+
+CONFIGURING =
+& CONNECTING OAUTH CLIENTS
+
+You can add custom OAuth clients in minutes=
+:
+
+ =09* Create an OAuth client for an app (such as GitHub)
+ =09* Vis=
+it the OAuth clients page [6] in Pipedream
+ =09* Click NEW OAUTH CLIENT a=
+nd select the app
+ =09* Enter the required fields
+ =09* Click SAVE
+=
+
+Once you've created the OAuth client, anyone in your workspace can
+con=
+nect their account and use the account in workflow:
+
+[Robot exploring a=
+ forest of integrations] [7]
+
+Let us know any feedback or questions! We=
+'d love to see what you
+build.=20
+
+Warm regards,=20
+The Pipedream Team=
+
+
+-------------------------
+ [8]=20
+44 Montgomery Street
+San Franci=
+sco
+CALIFORNIA
+94104
+United States of America=20
+
+Unsubscribe [9] =
+
+
+=20
+
+Links:
+------
+[1] https://pipedream.com?utm_medium=3Demail=
+&utm_id=3Dtemplates_gallery_email&utm_source=3Dlogo
+[2] https://pipedream=
+.com/docs/connected-accounts/oauth-clients?utm_medium=3Demail&utm_id=3Dtemp=
+lates_gallery_email&utm_source=3Dhero_image
+[3] https://pipedream.com/?ut=
+m_medium=3Demail&utm_id=3Dtemplates_gallery_email&utm_source=3DPD
+[4] htt=
+ps://pipedream.com/docs/connected-accounts/oauth-clients?utm_medium=3Demail=
+&utm_id=3Dtemplates_gallery_email&utm_source=3Doauth_clients_docs
+[5] htt=
+ps://pipedream.com/@/accounts/oauth-clients?utm_medium=3Demail&utm_id=3Dtem=
+plates_gallery_email&utm_source=3Dtemplate_gallery
+[6] https://pipedream.=
+com/@/accounts/oauth-clients?utm_medium=3Demail&utm_id=3Dtemplates_gallery_=
+email&utm_source=3Doauth_clients_page
+[7] https://pipedream.com/docs/conn=
+ected-accounts/oauth-clients?utm_medium=3Demail&utm_id=3Dtemplates_gallery_=
+email&utm_source=3Dscreenshot
+[8] https://pipedream.com
+[9] https://ema=
+il-actions.pipedream.com/unsubscribe?ep=3D1&l=3D722d1388-f78c-11ee-9155-61c=
+3796c8eef&lc=3Ddc9fa572-f828-11ee-8757-49979cf9c3cf&p=3Dd44dea56-23a1-11ef-=
+997a-d96a177c1432&pt=3Dcampaign&pv=3D4&spa=3D1717690750&t=3D1717699291&s=3D=
+a0b9359549a33fb0cb4bd3a2ae4cc9d6199e1c55fd36a10b840bc445b6235671
+--wqBQmCGt
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html charset=3DUTF-8"></head><body class=3D"">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">We are excited to announce support for custom OAuth clients in Pipedream=
+!&nbsp;</div>
+
+<p>
+<meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DUTF-8">
+</p>
+
+<table style=3D"background-color:#f8fafc;" width=3D"100%"><tbody><tr><td>
+
+<table style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica Neue&quot;,sans-=
+serif;max-width:650px;width:100%;margin:0 auto;background-color:#ffffff;box=
+-shadow:0 4px 8px rgba(0,0,0,0.1);border-radius:15px;border:1px solid #d1dc=
+e5;padding:20px 25px;"><tbody><tr><td>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%3Futm_med=
+ium=3Demail%26utm_id=3Dtemplates_gallery_email%26utm_source=3Dlogo/1/010001=
+8feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000/h175MUXuVYWx29yC7Q31=
+OYGi9B_4Lwf71_dSFG7ozE8=3D356" rel=3D"noopener noreferrer" target=3D"_blank=
+"><img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/imag=
+e/upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=
+=3D"display:block;outline:none;border:none;text-decoration:none;width:2.2re=
+m;height:2.2rem;"></a>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2F=
+connected-accounts%2Foauth-clients%3Futm_medium=3Demail%26utm_id=3Dtemplate=
+s_gallery_email%26utm_source=3Dhero_image/1/0100018feedb2867-fabe3e8e-febd-=
+4de2-be42-63a71ec75839-000000/6GtXSSxRmV1utlT1zwabZfm_us4GLzXdcRPzGtAu3C8=
+=3D356" rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"Robot exp=
+loring a forest of integrations" src=3D"https://gallery.eocampaign.com/ce95=
+1396-a346-11ed-a0ed-4f354f26462b%2F1717619547598-1717619544928.png" style=
+=3D"display: block; outline: none; border: none; text-decoration: none; mar=
+gin-top: 0px; margin-bottom: 1rem; height: auto; width: 100%;"></a>
+
+
+
+<h1 class=3D"text-black dark:text-white text-2xl tracking-tight mt-6" style=
+=3D"margin-top:1.5rem;font-size:1.5rem;line-height:2rem;letter-spacing:-0.0=
+25em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Bring your own =
+OAuth clients</h1>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">We are excited to announce support for custom OAuth clients in
+<meta charset=3D"utf-8"><a href=3D"https://et.pipedream.com/CL0/https:%2F%2=
+Fpipedream.com%2F%3Futm_medium=3Demail%26utm_id=3Dtemplates_gallery_email%2=
+6utm_source=3DPD/1/0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-00=
+0000/E1fTmfklwJZA9t1bdVRWU-WW8mmRBj1fmzK4lLVKZhM=3D356" rel=3D"noopener nor=
+eferrer" style=3D"user-select: auto; font-family: -apple-system, &quot;syst=
+em-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, =
+&quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal=
+; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing=
+: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-s=
+pace: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); te=
+xt-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_b=
+lank">Pipedream</a>!</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">By default, OAuth apps use our official OAuth client. When you connec=
+t your account, you grant Pipedream the requested permissions (scopes), reg=
+ardless of the needs or security requirements of your specific use case.&nb=
+sp;</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Now, you can provide your own OAuth client and define your own scopes=
+, giving you complete control over the authorization process.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Key features:</p>
+
+<ul style=3D"padding-left: 1rem;">
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Define the exact s=
+copes you need for your use case</li>
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Control the OAuth =
+client requesting access to your account</li>
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Comply with intern=
+al security requirements</li>
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">
+<meta charset=3D"utf-8"><span style=3D"color: rgb(30, 41, 59); font-family:=
+ -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen=
+-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size=
+: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-ca=
+ps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-alig=
+n: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0=
+px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: =
+rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-sty=
+le: initial; text-decoration-color: initial; display: inline !important; fl=
+oat: none;"><meta charset=3D"utf-8">Visit <a href=3D"https://et.pipedream.c=
+om/CL0/https:%2F%2Fpipedream.com%2Fdocs%2Fconnected-accounts%2Foauth-client=
+s%3Futm_medium=3Demail%26utm_id=3Dtemplates_gallery_email%26utm_source=3Doa=
+uth_clients_docs/1/0100018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-00=
+0000/yc_tTXO4-jf92pPXadCXYtq-f3Qb5UrxPdmml5EJDmc=3D356" rel=3D"noopener nor=
+eferrer" style=3D"user-select: auto; font-family: -apple-system, &quot;syst=
+em-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, =
+&quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal=
+; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing=
+: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-s=
+pace: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); te=
+xt-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_b=
+lank">documentation</a> for details</span></li>
+</ul>
+<br>
+
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" clas=
+s=3D"mb-6" style=3D"margin-bottom:1.5rem;"><tbody><tr><td><a class=3D"py-2 =
+px-4 bg-button rounded-xl font-semibold text-white text-base text-center bl=
+ock" href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2F@%2Fa=
+ccounts%2Foauth-clients%3Futm_medium=3Demail%26utm_id=3Dtemplates_gallery_e=
+mail%26utm_source=3Dtemplate_gallery/1/0100018feedb2867-fabe3e8e-febd-4de2-=
+be42-63a71ec75839-000000/MbHjteR4CG1lMddOBgLz3uobFVY1fupcNycwWtLRJhQ=3D356"=
+ rel=3D"noopener noreferrer" style=3D"line-height:1.5rem;text-decoration:no=
+ne;display:block;max-width:100%;border-radius:0.75rem;background-color:rgb(=
+52, 117, 210);padding-top:0.5rem;padding-bottom:0.5rem;padding-left:1rem;pa=
+dding-right:1rem;text-align:center;font-size:1rem;font-weight:600;color:rgb=
+(255, 255, 255);padding:8px 16px 8px 16px;" target=3D"_blank"><span style=
+=3D"max-width:100%;display:inline-block;line-height:120%;mso-padding-alt:0p=
+x;mso-text-raise:6px;">Create New OAuth client</span></a></td></tr></tbody>=
+</table>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;" class=3D=
+"border-gray-200 my-7 mx-0">
+
+<h1 style=3D"margin-top:1.5rem;font-size:1.5rem;line-height:2rem;letter-spa=
+cing:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Config=
+uring &amp; connecting OAuth clients</h1>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">You can add custom OAuth clients in minutes:</p>
+
+<ul style=3D"padding-left: 1rem;">
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Create an OAuth cl=
+ient for an app (such as GitHub)</li>
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Visit the
+<meta charset=3D"utf-8"><a href=3D"https://et.pipedream.com/CL0/https:%2F%2=
+Fpipedream.com%2F@%2Faccounts%2Foauth-clients%3Futm_medium=3Demail%26utm_id=
+=3Dtemplates_gallery_email%26utm_source=3Doauth_clients_page/1/0100018feedb=
+2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000/siA5QYGFVlesNJJNCn9meYH7uA=
+cI0KbZcHKnQuzcVo0=3D356" rel=3D"noopener noreferrer" style=3D"user-select: =
+auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quo=
+t;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, san=
+s-serif; font-size: 16px; font-style: normal; font-variant-ligatures: norma=
+l; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-alig=
+n: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: =
+0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color:=
+ rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52=
+, 210, 139); font-weight: 600;" target=3D"_blank">OAuth clients page</a> in=
+ Pipedream</li>
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Click <strong>New =
+OAuth Client</strong> and select the app</li>
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Enter the required=
+ fields</li>
+<li style=3D"font-size: 1rem; line-height: 1.5rem; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; color: rgb(30, 41, 59);">Click <strong>Save=
+</strong></li>
+</ul>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Once you've created the OAuth client, anyone in your workspace can co=
+nnect their account and use the account in workflow:</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2F=
+connected-accounts%2Foauth-clients%3Futm_medium=3Demail%26utm_id=3Dtemplate=
+s_gallery_email%26utm_source=3Dscreenshot/1/0100018feedb2867-fabe3e8e-febd-=
+4de2-be42-63a71ec75839-000000/gszTqkyEU-C1yZl4UqPd9LIRBjcHEXKVnI5hs40eRCU=
+=3D356" rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"Robot exp=
+loring a forest of integrations" src=3D"https://gallery.eocampaign.com/ce95=
+1396-a346-11ed-a0ed-4f354f26462b%2F1717627265956-1717627264936.png" style=
+=3D"display: block; outline: none; border: none; text-decoration: none; mar=
+gin-top: 0px; margin-bottom: 1rem; height: auto; width: 100%;"></a>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Let us know any feedback or questions! We'd love to see what you buil=
+d.
+<br>
+<br>Warm regards,
+<br>The Pipedream Team</p>
+<br>
+<br>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;" class=3D=
+"border-gray-200 my-7 mx-0">
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com/1/0100018=
+feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000/1-kOOfavhZhqUZG9yVb1x=
+1PhsafGqT3E-3BX03xgnDw=3D356" style=3D"color:#b4becc;text-decoration:none;f=
+ont-size:14px;" target=3D"_blank"></a>
+<br><a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com/2/010=
+0018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000/ggSaUOF8N7VBx9NyW=
+q0BmTWZRcUC4vHmbOaTqZUBN8M=3D356" style=3D"color:#b4becc;text-decoration:no=
+ne;font-size:14px;" target=3D"_blank">44 Montgomery Street<br>San Francisco=
+<br>CALIFORNIA<br>94104<br>United States of America</a>
+<br>
+<br>
+<br><a href=3D"https://et.pipedream.com/CL0/https:%2F%2Femail-actions.piped=
+ream.com%2Funsubscribe%3Fep=3D1%26l=3D722d1388-f78c-11ee-9155-61c3796c8eef%=
+26lc=3Ddc9fa572-f828-11ee-8757-49979cf9c3cf%26p=3Dd44dea56-23a1-11ef-997a-d=
+96a177c1432%26pt=3Dcampaign%26pv=3D4%26spa=3D1717690750%26t=3D1717699291%26=
+s=3Da0b9359549a33fb0cb4bd3a2ae4cc9d6199e1c55fd36a10b840bc445b6235671/1/0100=
+018feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000/7LVis8gD0l0tlmxSOy=
+vQQnLdivHOR9podEvi0-7743Q=3D356" style=3D"font-size:14px;color:#b4becc;">Un=
+subscribe</a>
+<br>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com/3/0100018=
+feedb2867-fabe3e8e-febd-4de2-be42-63a71ec75839-000000/0AKjkDHT0euAYAvXIixUc=
+lzEOdW6kZFAfh-4-OfNMbY=3D356" style=3D"color:#b4becc;text-decoration:none;f=
+ont-size:14px;" target=3D"_blank">
+<br>
+<br>
+</a></td></tr></tbody></table>
+</td></tr></tbody></table>
+<img alt=3D"" src=3D"http://et.pipedream.com/CI0/0100018feedb2867-fabe3e8e-=
+febd-4de2-be42-63a71ec75839-000000/W3NUDVkWNSV41DvmdrKvu1DSULKtxIpYSSW7_ygb=
+6V8=3D356" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--wqBQmCGt--

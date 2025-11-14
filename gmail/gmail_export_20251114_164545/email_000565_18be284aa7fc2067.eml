@@ -1,0 +1,452 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:f17:b0:4fd:292a:fcfe with SMTP id vd23csp1132781pxb;
+        Sat, 18 Nov 2023 05:00:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH0zGrz3gnbcnma9cgdXNQ7eS5BncKyZMNAzkMN1cRpw/LhAk4Dyy6rtaE72vE2VHHGPY6U
+X-Received: by 2002:a67:ce04:0:b0:45d:989b:da4a with SMTP id s4-20020a67ce04000000b0045d989bda4amr1641029vsl.22.1700312427317;
+        Sat, 18 Nov 2023 05:00:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700312427; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tj14LZkbVTqnx4l/NIJUUVq2FTOHxR6UkNdIKHm/zAtCMoSdJtfo8xCiXAYgQx0CFk
+         Z1t5cnP4M12E0Rcic6OOdO3Uu3D3qdCM0QZlN7dsoq0iC5izbjDYpALcEcWsjDk+xz+s
+         GDmh6Ft2e2jbBrf2FoW+rjRw5J+suSf2h0fvjoWbaGMxVtLwPLqrL2yMSiiR4p6WhEDO
+         9BlrQS6ir/pEXY3JrjEWOj+wmBl8nrj/19jJvrvNTQSVpMvbBqalGmDQIamctZxdOxwG
+         XBh0//KAxdPkwRdj4O9Mav1z8BSalygZhnIVgu+dcBWNBBRxD4v3py4ec1YF4yDVecKg
+         oYHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=l0UMdEb9kaFNmlsQS1epVIAoTcCj5PREwB1f0b8ELTo=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=svFL1ADZsW/oeHkxD3j85+Iejz0Ve1OqgpjyQ22MUmhdmg2Gkg9SP6B0uSMu95gMSR
+         PB7VZfCld+qwZgHOeimr53FQ0DWiPOzQmHJzbos/uEeLoaLO8DZW8Y2hXPVKD9wvVg3C
+         76zkTRQ8aE8h6xYHl1Su+7jG6on3sl2SU195Q5C9BHJhgwtjbIysW8hAItBcxF6KImAV
+         BhL+z00qGgO9uFzkHhc93Ic0pJnBYyI/aMYUb4Ny4VrliugUsp098ebk99lTq751/y/q
+         kL3gNWu3sP6GfB7lQaA45G/qf6wYGyBhDs7VVU1OoB1HVh2/CqX+yAsC9wRSgtjqqM1t
+         lRhg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@dripemail2.com header.s=s1 header.b=waKp0Evr;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=tJkoI6l7;
+       spf=pass (google.com: domain of bounces+2693180-938f-ely.ubuntu0=gmail.com@m.dripemail2.com designates 168.245.65.178 as permitted sender) smtp.mailfrom="bounces+2693180-938f-ely.ubuntu0=gmail.com@m.dripemail2.com"
+Return-Path: <bounces+2693180-938f-ely.ubuntu0=gmail.com@m.dripemail2.com>
+Received: from o18.sg.m.dripemail2.com (o18.sg.m.dripemail2.com. [168.245.65.178])
+        by mx.google.com with ESMTPS id ji15-20020a056102188f00b0044ed5f26c6dsi825471vsb.555.2023.11.18.05.00.26
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 18 Nov 2023 05:00:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+2693180-938f-ely.ubuntu0=gmail.com@m.dripemail2.com designates 168.245.65.178 as permitted sender) client-ip=168.245.65.178;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@dripemail2.com header.s=s1 header.b=waKp0Evr;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=tJkoI6l7;
+       spf=pass (google.com: domain of bounces+2693180-938f-ely.ubuntu0=gmail.com@m.dripemail2.com designates 168.245.65.178 as permitted sender) smtp.mailfrom="bounces+2693180-938f-ely.ubuntu0=gmail.com@m.dripemail2.com"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dripemail2.com;
+	h=content-type:from:mime-version:subject:x-feedback-id:to:cc:
+	content-type:from:subject:to;
+	s=s1; bh=l0UMdEb9kaFNmlsQS1epVIAoTcCj5PREwB1f0b8ELTo=;
+	b=waKp0Evr4meQPJYLpZ1halb2aD7/XDYae/2+9DTtY3lQNLUvDofFfRvtpjYemCV8Atme
+	ht7iyDBtS2zZ/ODx5myZtw/cd/v9253nPEI1dimBXuYeZWxmP25FshyX27QzU2RiXcP3x+
+	n7eFCi/O04b8eTAEyFkVSbJlZkMJ+7Eyojqyc7rAhRxcf8uovpgnbjMMVLk/6hKAbTg8fO
+	XcQ76qnB3oUIdi2Hext+v0qi1ziWGZI/DZnCFHxfVNWfUYM+OIzB035Jxgvx8/KkVRN7rp
+	Zwx8oFyfU6CuBDkMoCHON2gCVkYf7/8FnJM2Jlwcasw5QGUQoXGXI/F7b1codK/w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:x-feedback-id:to:cc:
+	content-type:from:subject:to;
+	s=smtpapi; bh=l0UMdEb9kaFNmlsQS1epVIAoTcCj5PREwB1f0b8ELTo=;
+	b=tJkoI6l7dNokipNbwNn3KgvOsMO5luEvTfgCFrNJegD5nrHLRRoPohBWknXvzE5OUHbE
+	pPu+Rld5eNe1vEonfdFW6kQHjU7TK+IzdicUfYlZlUN/vM87UETJ7VNszFwCuyx++9CFF7
+	LHIwueNmUXEqbXqhgkphazvxSl4HgXDMQ=
+Received: by filterdrecv-5f9f645469-pfdk4 with SMTP id filterdrecv-5f9f645469-pfdk4-1-6558B568-5B
+        2023-11-18 13:00:24.673619941 +0000 UTC m=+2744304.084320369
+Received: from MjY5MzE4MA (unknown)
+	by geopod-ismtpd-26 (SG) with HTTP
+	id ZI-OY5mMR9WZp5Oc_WmIUw
+	Sat, 18 Nov 2023 13:00:24.506 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=24cb09ec7ce12cc7e28ec5cd32582aac587a9d5cafe58d056cfe0caf7e9e
+Date: Sat, 18 Nov 2023 13:00:21 +0000 (UTC)
+From: Mia of Insync <support@insynchq.com>
+Mime-Version: 1.0
+Message-ID: <ZI-OY5mMR9WZp5Oc_WmIUw@geopod-ismtpd-26>
+Subject: Welcome to Insync  =?UTF-8?B?8J+OiQ==?=
+X-Drip-SendingAccount: 6280835
+X-Feedback-ID: 2693180:SG
+X-SG-EID: 
+ =?us-ascii?Q?kuvxeevZiR41zqaL8+luDerliBl=2FvLnoEDkfV0xsClOd96AONENYrWRDLrLmF=2F?=
+ =?us-ascii?Q?PcshVfAsIyD+yFiSSEH2epUh+4R9FQIEFLhcry8?=
+ =?us-ascii?Q?imAFNt8kCSBATEUmsfcKRNrUdmBD30Uhg2XgjNT?=
+ =?us-ascii?Q?I9FNQusHZv++UegyrVcrD2L2r8p3ZXDYBJtFOjj?=
+ =?us-ascii?Q?IeDMv=2F32j9graywzH=2F2nXfZUu1Tk1XZt9DsJV3X?=
+ =?us-ascii?Q?0W8Tvoi5sM1=2F3WxTh8jg8p=2FZzvDiVzhuITSXIK?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FIueY507NIPg7Bbtt+Qog?=
+ =?us-ascii?Q?yZttaf=2FfIw6s91LN21jivCQOfic=2FEuDSyR+aeyq?=
+ =?us-ascii?Q?LVu=2FYNIx1uxX0l1dOkVTLWivMApXrdfEiAGtJ1Q?=
+ =?us-ascii?Q?co6fvCLux5AEw01UZe+trFnX+LeZvy+PFf4jdTA?=
+ =?us-ascii?Q?aLNpZm5+chgc2KGEN2LhR6s1P+09B6+1nnYVRWw?=
+ =?us-ascii?Q?CE6dBO3g0oewA+TFbX6k85QecB+XVn7LeOLbo1z?=
+ =?us-ascii?Q?TuPfP13aVZ7rKiCMMCm2X2Kp+TQmqxzPjYpbVU4?=
+ =?us-ascii?Q?lxVcD6lWbQKfPUXA4sxCygkk26S5W=2F6YcxFkq0d?=
+ =?us-ascii?Q?V5CkgrYrwOPWenuIAgNKeIBFB53=2FMmCqslj6lTX?=
+ =?us-ascii?Q?VaTROzulPGjBWgPDdrQJF5KH4wC+LshdjxdAqr=2F?=
+ =?us-ascii?Q?ZRzkDeqXTsA3xPWuJXPkg3obmCrmk24gN3grqUx?=
+ =?us-ascii?Q?cFNRqSqqZcyOCK16sFDnD2aVD8+wJx+uALi1Hqs?=
+ =?us-ascii?Q?g7pxErL3FQy5zSe8lmYpk70ajdd4GcmiYq+6ryN?=
+ =?us-ascii?Q?JgD3Ahy48Ejm1GJxVEY+PIqslD=2FO8dHZRo4DKTN?=
+ =?us-ascii?Q?UXrXNQdkSdVkFSQZOb3yLv5TNfrRjQW59=2FdCQfu?=
+ =?us-ascii?Q?bzkoF9W=2FXpFHBzm=2FA8S1fG8iSUioXNpM6zXdgtN?=
+ =?us-ascii?Q?fZmszj4bdmn7Tsg=3D=3D?=
+To: ely.ubuntu0@gmail.com
+X-Entity-ID: f5H9u06WnaDRNBpMF7Ndxw==
+
+--24cb09ec7ce12cc7e28ec5cd32582aac587a9d5cafe58d056cfe0caf7e9e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Image
+
+Welcome to Insync =F0=9F=8E=89
+
+Insync is a syncing super app that lets you do everything you
+need from Google Drive, OneDrive, or Dropbox on your desktop! All
+in one app!
+
+With Insync, you can selectively sync (2-way or 1-way) from your
+cloud to anywhere on your system or from your desktop to anywhere
+on your cloud. You can even merge a folder from your desktop and
+another from your cloud (or vice versa) and have them synced.
+
+For more information on Insync=E2=80=99s syncing superpowers, click here
+( https://t.dripemail2.com/c/eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZXRvdXIiLCJpc=
+3MiOiJtb25vbGl0aCIsInN1YiI6ImRldG91cl9saW5rIiwiaWF0IjoxNzAwMzEyNDI0LCJuYmYi=
+OjE3MDAzMTI0MjQsImFjY291bnRfaWQiOiI2MjgwODM1IiwiZGVsaXZlcnlfaWQiOiJncGN3Z3h=
+pM25laWNyZDF3ZHF0ayIsInVybCI6Imh0dHBzOi8vd3d3Lmluc3luY2hxLmNvbS9pL2ZlYXR1cm=
+VzL3N5bmNpbmctc3VwZXJwb3dlcnM_X19zPXByNHVzeTllajU5amJjeTgwbTd4In0.760q0xxfd=
+toa-OvBjjuLbrFgyfFzdM89G25UpHv-WXE ).
+
+PS Need to collaborate with your colleagues? Solve file conflicts
+in-app as they pop-up! Never lose file versions due to file
+conflicts!
+
+-----
+
+We take data privacy seriously so we only collect your name,
+Google/Microsoft/Dropbox email & ID. Learn more about our privacy
+policy here=20
+( https://t.dripemail2.com/c/eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZXRvdXIiLCJpc=
+3MiOiJtb25vbGl0aCIsInN1YiI6ImRldG91cl9saW5rIiwiaWF0IjoxNzAwMzEyNDI0LCJuYmYi=
+OjE3MDAzMTI0MjQsImFjY291bnRfaWQiOiI2MjgwODM1IiwiZGVsaXZlcnlfaWQiOiJncGN3Z3h=
+pM25laWNyZDF3ZHF0ayIsInVybCI6Imh0dHBzOi8vd3d3Lmluc3luY2hxLmNvbS9hZ3JlZW1lbn=
+Q_dXRtX3NvdXJjZT1kcmlwJnV0bV9tZWRpdW09dHJpYWxfZW1haWwmdXRtX2NhbXBhaWduPTEuN=
+V9yZWxlYXNlJnV0bV9jb250ZW50PWRheV8wJl9fcz1wcjR1c3k5ZWo1OWpiY3k4MG03eCJ9.PWS=
+PhO9YEQjZ1EcYORUo71O59Ce5dOxwe4GdrjltKmw )
+ =F0=9F=94=8F
+
+---------------------
+Want out of the loop? https://t.dripemail2.com/c/eyJhbGciOiJIUzI1NiJ9.eyJhd=
+WQiOiJkZXRvdXIiLCJpc3MiOiJtb25vbGl0aCIsInN1YiI6ImRldG91cl9saW5rIiwiaWF0Ijox=
+NzAwMzEyNDI0LCJuYmYiOjE3MDAzMTI0MjQsImFjY291bnRfaWQiOiI2MjgwODM1IiwiZGVsaXZ=
+lcnlfaWQiOiJncGN3Z3hpM25laWNyZDF3ZHF0ayIsInVybCI6Imh0dHBzOi8vd3d3LmdldGRyaX=
+AuY29tL3N1YnNjcmliZXJzL3ByNHVzeTllajU5amJjeTgwbTd4L3N1YnNjcmlwdGlvbnM_ZD1nc=
+GN3Z3hpM25laWNyZDF3ZHF0ayZleGNsdWRlX2NsaWNrPTEmaW50ZW50PXVuc3Vic2NyaWJlJl9f=
+cz1wcjR1c3k5ZWo1OWpiY3k4MG03eCJ9.C3f0l6sMEiJW-8MSTdKE4Y1JyFXJZPtd2sz25MFrjd=
+Y.
+
+Insynchq. Lte. Ptd., 71 Ayer Rajah Crescent, #06-11/12, 139951 Singapore
+
+--24cb09ec7ce12cc7e28ec5cd32582aac587a9d5cafe58d056cfe0caf7e9e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D'font-family: "Helveti=
+ca Neue", "Helvetica", Helvetica, Arial, sans-serif; box-sizing: border-box=
+; font-size: 14px; line-height: 1.5;'>
+<head>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+
+<style>img {
+max-width: 100%; margin-bottom: 14px;
+}
+body {
+background-color: #ffffff; -ms-text-size-adjust: 100%; -webkit-text-size-ad=
+just: none; width: 100% !important; height: 100%; line-height: 1.6;
+}
+.ExternalClass {
+width: 100%;
+}
+.ExternalClass {
+line-height: 100%;
+}
+img {
+-ms-interpolation-mode: bicubic;
+}
+a:visited {
+color: purple !important;
+}
+a:hover {
+color: #e2911a !important;
+}
+a:active {
+color: #0d3d62 !important;
+}
+.cta-button:hover {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+[owa] .cta-button:hover {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+[class=3D"cta-button"]:hover {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+.cta-button:visited {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+[owa] .cta-button:visited {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+[class=3D"cta-button"]:visited {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+.cta-button:active {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+[owa] .cta-button:active {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+[class=3D"cta-button"]:active {
+color: #ffffff; background-color: #B67A0D; text-decoration: none; border-co=
+lor: #B67A0D; border: 12px solid #B67A0D;
+}
+</style></head>
+<body style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial=
+, sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.6; ba=
+ckground-color: #ffffff; -ms-text-size-adjust: 100%; -webkit-text-size-adju=
+st: none; width: 100% !important; height: 100%;' bgcolor=3D"#ffffff">
+<!--[if mso 16]>
+    <style type=3D"text/css">
+        a{
+            text-decoration:none !important;
+        }
+    </style>
+<![endif]-->
+
+<table class=3D"body-wrap" style=3D'font-family: "Helvetica Neue", "Helveti=
+ca", Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px;=
+ line-height: 1.5; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background=
+-color: #ffffff; width: 100%;' bgcolor=3D"#ffffff">
+  <tr style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial=
+, sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+    <td class=3D"container" style=3D'font-family: "Helvetica Neue", "Helvet=
+ica", Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px=
+; line-height: 1.5; vertical-align: top; display: block !important; max-wid=
+th: 600px !important; overflow: visible; clear: both !important; margin: 0;=
+' valign=3D"top">
+      <div class=3D"content" style=3D'font-family: "Helvetica Neue", "Helve=
+tica", Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14p=
+x; line-height: 1.5; max-width: 600px; overflow: visible; display: block; m=
+argin: 0;'>
+        <table class=3D"main" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Aria=
+l, sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5; m=
+so-table-lspace: 0pt; mso-table-rspace: 0pt;'>
+          <tr style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetic=
+a, Arial, sans-serif; box-sizing: border-box; font-size: 14px; line-height:=
+ 1.5;'>
+            <td class=3D"main-content" style=3D"font-family: 'Helvetica Neu=
+e', 'Helvetica', 'Arial', sans-serif; box-sizing: border-box; font-size: 14=
+px; line-height: 1.5; vertical-align: top; color: #222222; padding: 25px;" =
+valign=3D"top">
+              <center style=3D'font-family: "Helvetica Neue", "Helvetica", =
+Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; line=
+-height: 1.5;'><img alt=3D"Image" src=3D"https://getdrip.s3.amazonaws.com/u=
+ploads/image_upload/image/66564/embeddable_6f0b7d51-b765-463d-93fc-0c79fe39=
+f25f.png" style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, A=
+rial, sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5=
+; max-width: 100%; margin-bottom: 14px; -ms-interpolation-mode: bicubic; ma=
+rgin-top: 14px;'></center>
+
+<p dir=3D"ltr" id=3D"docs-internal-guid-4f7824be-02fb-87e1-78a5-5694c6a2cc0=
+d" style=3D'background-color: transparent; color: rgb(0, 0, 0); letter-spac=
+ing: normal; margin-bottom: 0px; margin-top: 0px; orphans: 2; text-align: l=
+eft; text-decoration: none; text-indent: 0px; text-transform: none; -webkit=
+-text-stroke-width: 0px; white-space: normal; word-spacing: 0px; box-sizing=
+: border-box; font: 400 14px/16px "Arial";' align=3D"left"><br style=3D'fon=
+t-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; box-=
+sizing: border-box; font-size: 14px; line-height: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+=C2=A0</p>
+
+<p dir=3D"ltr" id=3D"docs-internal-guid-4f7824be-02fb-87e1-78a5-5694c6a2cc0=
+d" style=3D'background-color: transparent; color: rgb(0, 0, 0); letter-spac=
+ing: normal; margin-bottom: 0px; margin-top: 0px; orphans: 2; text-align: c=
+enter; text-decoration: none; text-indent: 0px; text-transform: none; -webk=
+it-text-stroke-width: 0px; white-space: normal; word-spacing: 0px; box-sizi=
+ng: border-box; font: 400 20px/16px "Arial";' align=3D"center">Welcome to I=
+nsync=C2=A0<b id=3D"docs-internal-guid-ac82df3c-7fff-2747-bdbe-3c8d1a3153b3=
+" style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sa=
+ns-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5; font-w=
+eight: bold;'>=F0=9F=8E=89</b><br style=3D'font-family: "Helvetica Neue", "=
+Helvetica", Helvetica, Arial, sans-serif; box-sizing: border-box; font-size=
+: 14px; line-height: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+=C2=A0</p>
+
+<p dir=3D"ltr" id=3D"docs-internal-guid-4f7824be-02fb-87e1-78a5-5694c6a2cc0=
+d" style=3D'background-color: transparent; color: rgb(0, 0, 0); letter-spac=
+ing: normal; margin-bottom: 0px; margin-top: 0px; orphans: 2; text-align: l=
+eft; text-decoration: none; text-indent: 0px; text-transform: none; -webkit=
+-text-stroke-width: 0px; white-space: normal; word-spacing: 0px; box-sizing=
+: border-box; font: 400 14px/16px "Arial";' align=3D"left">Insync is a sync=
+ing super app that lets you do everything you need from Google Drive, OneDr=
+ive, or Dropbox on your desktop! All in one app!<br style=3D'font-family: "=
+Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; box-sizing: bor=
+der-box; font-size: 14px; line-height: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+With Insync, you can selectively sync (2-way or 1-way) from your cloud to a=
+nywhere on your system or from your desktop to anywhere on your cloud. You =
+can even merge a folder from your desktop and another from your cloud (or v=
+ice versa) and have them synced.=C2=A0<br style=3D'font-family: "Helvetica =
+Neue", "Helvetica", Helvetica, Arial, sans-serif; box-sizing: border-box; f=
+ont-size: 14px; line-height: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+For more information on Insync=E2=80=99s syncing superpowers, click <a href=
+=3D"https://t.dripemail2.com/c/eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZXRvdXIiLCJ=
+pc3MiOiJtb25vbGl0aCIsInN1YiI6ImRldG91cl9saW5rIiwiaWF0IjoxNzAwMzEyNDI0LCJuYm=
+YiOjE3MDAzMTI0MjQsImFjY291bnRfaWQiOiI2MjgwODM1IiwiZGVsaXZlcnlfaWQiOiJncGN3Z=
+3hpM25laWNyZDF3ZHF0ayIsInVybCI6Imh0dHBzOi8vd3d3Lmluc3luY2hxLmNvbS9pL2ZlYXR1=
+cmVzL3N5bmNpbmctc3VwZXJwb3dlcnM_X19zPXByNHVzeTllajU5amJjeTgwbTd4In0.760q0xx=
+fdtoa-OvBjjuLbrFgyfFzdM89G25UpHv-WXE" style=3D'font-family: "Helvetica Neue=
+", "Helvetica", Helvetica, Arial, sans-serif; box-sizing: border-box; font-=
+size: 14px; line-height: 1.5; color: #4477bd; text-decoration: underline;'>=
+<span style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial=
+, sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>h=
+ere</span></a>.<br style=3D'font-family: "Helvetica Neue", "Helvetica", Hel=
+vetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; line-he=
+ight: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+<!--StartFragment--><meta charset=3D"utf-8" style=3D'font-family: "Helvetic=
+a Neue", "Helvetica", Helvetica, Arial, sans-serif; box-sizing: border-box;=
+ font-size: 14px; line-height: 1.5;'><span id=3D"docs-internal-guid-99ae60d=
+3-7fff-8ec2-d839-a7947d741d7a" style=3D"color: #000000; background-color: t=
+ransparent; text-decoration: none; vertical-align: baseline; white-space: p=
+re-wrap; box-sizing: border-box; font: 400 11pt/1.5 Arial;">PS Need to coll=
+aborate with your colleagues? Solve file conflicts in-app as they pop-up! N=
+ever lose file versions due to file conflicts!</span><!--EndFragment--><br =
+style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans=
+-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+=C2=A0</p>
+
+<p dir=3D"ltr" id=3D"docs-internal-guid-4f7824be-02fb-87e1-78a5-5694c6a2cc0=
+d" style=3D'background-color: transparent; color: rgb(0, 0, 0); letter-spac=
+ing: normal; margin-bottom: 0px; margin-top: 0px; orphans: 2; text-align: l=
+eft; text-decoration: none; text-indent: 0px; text-transform: none; -webkit=
+-text-stroke-width: 0px; white-space: normal; word-spacing: 0px; box-sizing=
+: border-box; font: 400 11px/14px "Arial";' align=3D"left"><em style=3D'fon=
+t-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; box-=
+sizing: border-box; font-size: 14px; line-height: 1.5;'>-----<br style=3D'f=
+ont-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; bo=
+x-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+<br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, =
+sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+We take data privacy seriously so we only collect your name, Google/Microso=
+ft/Dropbox email &amp; ID. Learn more about our privacy policy=C2=A0<a href=
+=3D"https://t.dripemail2.com/c/eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZXRvdXIiLCJ=
+pc3MiOiJtb25vbGl0aCIsInN1YiI6ImRldG91cl9saW5rIiwiaWF0IjoxNzAwMzEyNDI0LCJuYm=
+YiOjE3MDAzMTI0MjQsImFjY291bnRfaWQiOiI2MjgwODM1IiwiZGVsaXZlcnlfaWQiOiJncGN3Z=
+3hpM25laWNyZDF3ZHF0ayIsInVybCI6Imh0dHBzOi8vd3d3Lmluc3luY2hxLmNvbS9hZ3JlZW1l=
+bnQ_dXRtX3NvdXJjZT1kcmlwJnV0bV9tZWRpdW09dHJpYWxfZW1haWwmdXRtX2NhbXBhaWduPTE=
+uNV9yZWxlYXNlJnV0bV9jb250ZW50PWRheV8wJl9fcz1wcjR1c3k5ZWo1OWpiY3k4MG03eCJ9.P=
+WSPhO9YEQjZ1EcYORUo71O59Ce5dOxwe4GdrjltKmw" rel=3D"nofollow" style=3D'font-=
+family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; box-si=
+zing: border-box; font-size: 14px; line-height: 1.5; color: #4477bd; text-d=
+ecoration: underline;'>here</a>=C2=A0<b id=3D"docs-internal-guid-d2a0ddd1-7=
+fff-72dc-d9ad-799a73c51098" style=3D'font-family: "Helvetica Neue", "Helvet=
+ica", Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px=
+; line-height: 1.5; font-weight: bold;'>=F0=9F=94=8F</b></em></p>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+     =20
+      <div class=3D"content" style=3D'font-family: "Helvetica Neue", "Helve=
+tica", Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14p=
+x; line-height: 1.5; max-width: 600px; overflow: visible; display: block; m=
+argin: 0;'>
+        <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D'=
+font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; b=
+ox-sizing: border-box; font-size: 14px; line-height: 1.5; mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt;'>
+          <tr style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetic=
+a, Arial, sans-serif; box-sizing: border-box; font-size: 14px; line-height:=
+ 1.5;'>
+            <td class=3D"footer-content" style=3D"font-family: 'Helvetica N=
+eue', 'Helvetica', 'Arial', sans-serif; box-sizing: border-box; font-size: =
+14px; line-height: 1.5; vertical-align: top; width: 100%; clear: both; colo=
+r: #777; border-top-width: 1px; border-top-color: #d0d0d0; border-top-style=
+: solid; padding: 25px;" valign=3D"top">
+              Want out of the loop? <a href=3D"https://t.dripemail2.com/c/e=
+yJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZXRvdXIiLCJpc3MiOiJtb25vbGl0aCIsInN1YiI6ImR=
+ldG91cl9saW5rIiwiaWF0IjoxNzAwMzEyNDI0LCJuYmYiOjE3MDAzMTI0MjQsImFjY291bnRfaW=
+QiOiI2MjgwODM1IiwiZGVsaXZlcnlfaWQiOiJncGN3Z3hpM25laWNyZDF3ZHF0ayIsInVybCI6I=
+mh0dHBzOi8vd3d3LmdldGRyaXAuY29tL3N1YnNjcmliZXJzL3ByNHVzeTllajU5amJjeTgwbTd4=
+L3N1YnNjcmlwdGlvbnM_ZD1ncGN3Z3hpM25laWNyZDF3ZHF0ayZleGNsdWRlX2NsaWNrPTEmaW5=
+0ZW50PXVuc3Vic2NyaWJlJl9fcz1wcjR1c3k5ZWo1OWpiY3k4MG03eCJ9.C3f0l6sMEiJW-8MST=
+dKE4Y1JyFXJZPtd2sz25MFrjdY" style=3D'font-family: "Helvetica Neue", "Helvet=
+ica", Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px=
+; line-height: 1.5; color: #4477bd; text-decoration: underline;'>Unsubscrib=
+e</a>.
+<address style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Ar=
+ial, sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;=
+'><br style=3D'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial=
+, sans-serif; box-sizing: border-box; font-size: 14px; line-height: 1.5;'>
+Insynchq. Lte. Ptd., 71 Ayer Rajah Crescent, #06-11/12, 139951 Singapore</a=
+ddress>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+     =20
+    </td>
+  </tr>
+</table>
+<img src=3D"http://o.dripemail2.com/wf/open?upn=3Dh8N8diOjzhqivQitawNQhv9CM=
+mmWkZ8kGCVKWZT1LH6ntnlQM6rl4Oc1EvwIZY5NIb6nI0z2UpGn2vY8BFmqHzV6BcfyK47MxBPd=
+rOqV8-2Fnye9e8OZIOlyoQETuT-2Fh9S8Ky-2BjU7k0S0NozWgI7jBDYS3ly9gLvjhWa3kqoSup=
+CP2vNnlZ6ocRXuC1EL7ul0v3XLul0iSD90it6dJosAPIqpl4lUToPjMrX3yquMTmyaXPd6EvgLC=
+x9foTqQ0ZfoG-2BZFwFSqRR88nbmvpZ-2BAY1xWNGHyAgQLVstJQvRrPSbw6tITCLO5ItXkAgAG=
+yasx2TsVT4UK9XelBSWNPovlE3iSKbyRpGcnv5ouEVqymJY0qBJAybJmWAhyP3pHcj6UIwGPBGq=
+rm1-2FvikD4nwKrjdrYqoMDecB3T5c-2FA7KPp0-2FkHOoL9Pv3yMRaw6SCVJ-2BnMKo2OJMTpy=
+fA74JYecmhB2BcxEpKkUoqzxIsrwzxXZ67PG6-2F8YGODj9g-2F4gCOkXtxqrOGapVZUf5F645x=
+looq2tPytGQRavCbspG1CRlG9SHmSOA44l3gSY3qaGCLJYAC-2BUzTqlOnHfkF7ocxEDkLwGkKe=
+kzJe7VASop9vfCBMo-2FJZAoiJc6J1EqTzeXn34gl975-2BHXpU0DU624w9RxlAJbBPCMSQXyVH=
+-2FjowKNrXoJC79fcuHRiHiOV9gYs6QUYU3n8kxTRfCqP3x-2Fid4VoWjpWr692HS5GGQNYq-2B=
+nW9tJ6tLYHNPl54n3bQw8-2FMmp1J1ZZ44dLC44rILTkXU853fSnsqaSDZcppnATGFJyWRlIfDn=
+Y7RaqgcbCt7S8m-2FEhj" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=
+=3D"height:1px !important;width:1px !important;border-width:0 !important;ma=
+rgin-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;=
+margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !importa=
+nt;padding-right:0 !important;padding-left:0 !important;"/></body>
+</html>
+
+--24cb09ec7ce12cc7e28ec5cd32582aac587a9d5cafe58d056cfe0caf7e9e--

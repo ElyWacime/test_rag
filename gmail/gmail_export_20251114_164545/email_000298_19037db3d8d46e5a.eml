@@ -1,0 +1,578 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:9788:0:b0:2ec:ec2:cd0e with SMTP id y8csp88085lji;
+        Thu, 20 Jun 2024 15:53:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG/zbSVjqjTG2rkxz3QM+HoKiMUY0DWJie+pZU3keEJbMRhmIKzdwNyFWyZwFjWfqGiaHdY
+X-Received: by 2002:a05:620a:370d:b0:795:5856:5b9d with SMTP id af79cd13be357-79bb3e5d79bmr692285985a.43.1718924033180;
+        Thu, 20 Jun 2024 15:53:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718924033; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GdTvQd9fylWRUbsYqqU9ZnuC5DmcvrzcU6UWCvBZgOtYQ+K9Iczg4kuWXPaoHxe5hu
+         CAUJc+17ecYP/V/SLVLqP35xLMsqCXp805YeSz+r9QfninYMlyPF9tPzSoblKM0Vpcxu
+         1wa+Se+IOIWwNqrE08ZvNeMicdqsYN0KZxhKhn8jEFcmCDRUiZ637ARwYdqtoFgboa4d
+         0SfUxgpBdbyT0hgxTYgd1YfN8edU0q1ieB6wSM7IhK3MnDzuTGK9CmyQQN+SG6qRbbGl
+         pjFhH5zXRaMtTPR7gSh+a0L8W7JsN/iZBpi+6tTkeDgZOImkfQxuCUWV97CUM5/KNmtB
+         JJvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe-post
+         :list-unsubscribe:subject:to:from:dkim-signature:dkim-signature;
+        bh=JrJRNlG9kzw/ZBksE161RTQNCPViI8G2BPFLx6L42fs=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=hx7c3ccwGB4B3R81Cee9CXBk/A1kKWJ1TjLgQ6U32/XVAunrTWvL8gWvOBr1QYs17D
+         yXiq7hrbo7xQToZOJ/FVVkmGNzVZDMOUtXq4Uonr7NPMEggNuxB88w41+f6tXHylRg4/
+         WTTFw08XWHwj4TPswtWAXUQHa7gk8Z5v7jWlXLmO0lA+JiL2FbV/pd0gBEw6mGez7xSK
+         fK6mZECbfk7cuNT9xEiwjT12wgONqCJgmh4WtJC+01dYkl9UAdX8ZSdwAyS94l+6I/am
+         JD/t7JXGNtabMAqdABhPIOhcL6hi4nVVR3MorO90VqTTxRThQea0nec5sTRgEyf23wI6
+         XJgQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=DUV7XyF4;
+       dkim=pass header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug header.b=UnVubxFI;
+       spf=pass (google.com: domain of 0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id af79cd13be357-79bce92b04csi45293685a.392.2024.06.20.15.53.52
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 20 Jun 2024 15:53:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=DUV7XyF4;
+       dkim=pass header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug header.b=UnVubxFI;
+       spf=pass (google.com: domain of 0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1718924032;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type;
+	bh=JrJRNlG9kzw/ZBksE161RTQNCPViI8G2BPFLx6L42fs=;
+	b=DUV7XyF4ECAgRzrWF3Fk6oImR8TRgz7Zu1VljRmaeqIsFd72Qz0a3gm6iA2B8c+C
+	sJNsokKgakmZ+v2dqr9fJ4lcaK20WAYdjvMwuaJ/l6vCMGaP8GYqhI/2e3/U8K1vzpm
+	gk6oz54ZySTXX9aFJiZbYyzMHdKSzJmYN5WhM73s=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1718924032;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=JrJRNlG9kzw/ZBksE161RTQNCPViI8G2BPFLx6L42fs=;
+	b=UnVubxFIOiR1SCAJjTHCsqmD1TYevDf9MDcm7GEYX0WQvfKinfrsdvsA/INDIjfV
+	T3VQTo3DFtJGM7ij7EQnkjMejh/ziwRZGHF7tW9kOWHqc5aIr/Qty79I0BcFIR3d8fP
+	EYQ5/6Rz2V3hxjE0sZLXNWA5Z5AdzZ/Xuj/tF4uM=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Connecting to production databases
+X-Entity-Ref-Id: d05ced87-4030-4fea-9d6e-baf64451e0d7
+X-EmailOctopus-Parent-Id: ffa59606-2cdc-11ef-afbd-432458d71454
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 722d1388-f78c-11ee-9155-61c3796c8eef
+X-EmailOctopus-List-Contact-Id: dc9fa572-f828-11ee-8757-49979cf9c3cf
+X-EmailOctopus-Started-Preparing-At: 2024-06-20T20:34:06+00:00
+X-EmailOctopus-Sent-At: 2024-06-20T22:53:52+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://email-actions.pipedream.com/unsubscribe?ep=1&l=722d1388-f78c-11ee-9155-61c3796c8eef&lc=dc9fa572-f828-11ee-8757-49979cf9c3cf&p=ffa59606-2cdc-11ef-afbd-432458d71454&pt=campaign&pv=4&spa=1718915646&t=1718924032&s=db9ca8f5cde79524d3780b5f347d20d2252efdba7a818e991045b1928df58b15>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-2461f7dbd03eac52c8b90e19bc9c921d
+MIME-Version: 1.0
+Date: Thu, 20 Jun 2024 22:53:52 +0000
+Message-ID: <0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=kvgo_cjP
+Feedback-ID: ::1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2024.06.20-54.240.123.37
+
+--kvgo_cjP
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Connecting to a database is essential for developing production
+workflows=
+.=C2=A0=20
+
+ [Pipedream] [1]=20
+[Robot connecting databases] [2]
+We=
+=E2=80=99re excited to share a new and improved developer experience for
+=
+connecting and interfacing with production databases on Pipedream [3].
+=
+
+
+Most mission-critical workflows require accessing production
+databa=
+ses. Whether you're storing application data, querying user
+information, =
+or analyzing event logs, most workflows and serverless
+functions require =
+querying data at some point.=20
+
+We=E2=80=99ve significantly improved how=
+ customers interact with databases
+and all of these features are live in =
+production:=20
+
+- BUILT-IN SQL EDITOR=20
+- BUILT-IN SCHEMA EXPLORER=20
+- =
+Support for PREPARED STATEMENTS=20
+- Access to SHARED OR DEDICATED STATIC I=
+PS=20
+
+=09=09Check out the docs [4]
+
+-------------------------
+
+B=
+UILT-IN SQL EDITOR
+
+Pipedream makes it easy to interact with SQL databa=
+ses within your
+workflows. You can securely connect to your database and =
+use either
+pre-built no-code triggers and actions to interact with your d=
+atabase,
+or execute custom SQL queries.
+
+[List Slack channels] [5] =
+
+
+-------------------------
+
+BUILT-IN SCHEMA EXPLORER
+
+When que=
+rying a database, you need to understand the schema of the
+tables you're =
+working with. The schema explorer provides a visual
+interface to explore =
+the tables in your database, view their columns,
+and understand the relat=
+ionships between them.
+
+[List Slack channels] [6]=20
+
+---------------=
+----------
+
+SUPPORT FOR PREPARED STATEMENTS
+
+Prepared statements le=
+t you safely execute SQL queries with dynamic
+inputs that are automatical=
+ly defined as parameters, in order to help
+prevent SQL injection attacks.=
+=20
+
+To reference dynamic data in a SQL query, simply use the standard
+=
+expression [7] just like any other code step in Pipedream.
+
+[Run workfl=
+ows for any user] [8]=20
+
+-------------------------
+
+STATIC IPS
+
+=
+Unless your database is publicly accessible, you typically need to add
+sp=
+ecific IPs to its allow-list. To do this, you can configure your
+database=
+ connection to use either a shared or dedicated static IP
+address from Pi=
+pedream:=20
+
+- SHARED IP: Route network requests through a static IP bloc=
+k for any
+app that's supported by Pipedream's SQL Proxy [9] or=20
+- DEDIC=
+ATED IP: Create a Virtual Private Cloud (VPC) [10] for a
+dedicated egress=
+ IP that's unique to your workspace
+
+=09=09Check out the docs [4]
+
+=
+Let us know any questions or feedback!=20
+
+Warm regards,=20
+The Pipedream=
+ Team
+
+-------------------------
+44 Montgomery Street
+San Francisco=
+
+CALIFORNIA
+94104
+United States of America=20
+
+Unsubscribe [11]=20
+=
+
+=20
+
+Links:
+------
+[1] https://pipedream.com?utm_medium=3Demail&ut=
+m_id=3DDatabases&utm_source=3DlogoImage
+[2] https://pipedream.com/docs/da=
+tabases?utm_medium=3Demail&utm_id=3DDatabases&utm_source=3DheroImage
+[3] =
+https://pipedream.com?utm_medium=3Demail&utm_id=3DDatabases
+[4] https://p=
+ipedream.com/docs/databases?utm_medium=3Demail&utm_id=3DDatabases&utm_sourc=
+e=3DjoinTheWaitlistButton
+[5] https://pipedream.com/docs/databases?utm_me=
+dium=3Demail&utm_id=3DDatabases&utm_source=3DfirstImage
+[6] https://piped=
+ream.com/docs/databases?utm_medium=3Demail&utm_id=3DDatabases&utm_source=3D=
+secondImage
+[7] https://pipedream.com/docs/workflows/using-props#entering=
+-expressions?utm_medium=3Demail&utm_id=3DstandardExpression
+[8] https://p=
+ipedream.com/docs/databases?utm_medium=3Demail&utm_id=3DDatabases&utm_sourc=
+e=3DthirdImage
+[9] https://pipedream.com/docs/databases#supported-databas=
+es?utm_medium=3Demail&utm_id=3DsqlProxy
+[10] https://pipedream.com/docs/w=
+orkflows/vpc?utm_medium=3Demail&utm_id=3DVPC
+[11] https://email-actions.p=
+ipedream.com/unsubscribe?ep=3D1&l=3D722d1388-f78c-11ee-9155-61c3796c8eef&lc=
+=3Ddc9fa572-f828-11ee-8757-49979cf9c3cf&p=3Dffa59606-2cdc-11ef-afbd-432458d=
+71454&pt=3Dcampaign&pv=3D4&spa=3D1718915646&t=3D1718924032&s=3Ddb9ca8f5cde7=
+9524d3780b5f347d20d2252efdba7a818e991045b1928df58b15
+--kvgo_cjP
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html charset=3DUTF-8"></head><body class=3D"">
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">Connecting to a database is essential for developing production workflow=
+s.&nbsp;</div>
+
+
+
+
+
+
+
+
+
+<table style=3D"background-color:#f8fafc;" width=3D"100%"><tbody><tr><td st=
+yle=3D"padding:10px;">
+
+<table style=3D"font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI=
+&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica Neue&quot;,sans-=
+serif;max-width:560px;width:100%;margin:0 auto;background-color:#ffffff;box=
+-shadow:0 4px 8px rgba(0,0,0,0.1);border-radius:15px;border:1px solid #d1dc=
+e5;padding:20px 25px;"><tbody><tr><td>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%3Futm_med=
+ium=3Demail%26utm_id=3DDatabases%26utm_source=3DlogoImage/1/0100019037db39f=
+9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/Oz9jv3wvguJYpNtpYhKQ3UhC2kdvJ=
+fK3JvIlf7mYdFY=3D358" rel=3D"noopener noreferrer" target=3D"_blank"><img al=
+t=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image/upload/=
+t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=3D"displa=
+y:block;outline:none;border:none;text-decoration:none;width:2.2rem;height:2=
+.2rem;"></a>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2F=
+databases%3Futm_medium=3Demail%26utm_id=3DDatabases%26utm_source=3DheroImag=
+e/1/0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/Eblp6cCZR6=
+GkmEXqb37i7xzqDPoSqgyZNZP9sxrl-FQ=3D358" style=3D"color:#067df7;text-decora=
+tion:none;" target=3D"_blank"><img alt=3D"Robot connecting databases" src=
+=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1=
+718905870804-1718905868360.png" style=3D"display:block;outline:none;border:=
+none;text-decoration:none;margin-top:0px;margin-bottom:1rem;height:auto;wid=
+th:100%;" class=3D"w-full h-auto my-0 mb-4"></a>
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+We=E2=80=99re excited to share a new and improved developer experience for =
+connecting and interfacing with production databases on <a class=3D"underli=
+ne underline-offset-4 font-medium decoration-brand/50 hover:decoration-bran=
+d text-black" href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.co=
+m%3Futm_medium=3Demail%26utm_id=3DDatabases/1/0100019037db39f9-462f4d33-364=
+c-4a14-8d5c-55b4f447ded8-000000/LkORKa1ZjagVqtAiAxppBjRU7pO9zlATZIekxhq3Onw=
+=3D358" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:500;te=
+xt-decoration-line:underline;text-decoration-color:rgb(52, 210, 139, 0.5);t=
+ext-underline-offset:4px;decoration-brand:hover{text-decoration-color;" tar=
+get=3D"_blank">Pipedream</a>.
+<br>
+<br> Most mission-critical workflows require accessing production databases=
+. Whether you're storing application data, querying user information, or an=
+alyzing event logs, most workflows and serverless functions require queryin=
+g data at some point.
+<br>
+<br> We=E2=80=99ve significantly improved how customers interact with datab=
+ases and all of these features are live in production:
+<br>
+<br>- <strong>Built-in SQL editor</strong>
+<br>- <strong>Built-in schema explorer</strong>
+<br>- Support for <strong>prepared statements</strong>
+<br>- Access to <strong>shared or dedicated static IPs</strong>
+<br>
+<br>
+</p>
+
+
+
+
+
+
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" clas=
+s=3D"mb-6" style=3D"margin-bottom:1.5rem;"><tbody><tr><td><a class=3D"py-2 =
+px-4 bg-button rounded-xl font-semibold text-white text-base text-center bl=
+ock" href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%=
+2Fdatabases%3Futm_medium=3Demail%26utm_id=3DDatabases%26utm_source=3DjoinTh=
+eWaitlistButton/1/0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000=
+000/xusYv9aP1-oQ1XRyUI4on4EwS_GB2D45PvgN9tjj2qs=3D358" style=3D"line-height=
+:1.5rem;text-decoration:none;display:block;max-width:100%;border-radius:0.7=
+5rem;background-color:rgb(52, 117, 210);padding-top:0.5rem;padding-bottom:0=
+.5rem;padding-left:1rem;padding-right:1rem;text-align:center;font-size:1rem=
+;font-weight:600;color:rgb(255, 255, 255);padding:8px 16px 8px 16px;" targe=
+t=3D"_blank"><span style=3D"max-width:100%;display:inline-block;line-height=
+:120%;mso-padding-alt:0px;mso-text-raise:6px;">Check out the docs</span></a=
+></td></tr></tbody></table>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;" class=3D=
+"border-gray-200 my-7 mx-0">
+
+<h1 class=3D"text-black dark:text-white text-xl tracking-tight mt-6" style=
+=3D"margin-top:1.5rem;font-size:1.25rem;line-height:1.75rem;letter-spacing:=
+-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Built-in SQ=
+L editor</h1>
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Pipedream makes it easy to int=
+eract with SQL databases within your workflows. You can securely connect to=
+ your database and use either pre-built no-code triggers and actions to int=
+eract with your database, or execute custom SQL queries.
+</p>
+
+<br>
+
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2F=
+databases%3Futm_medium=3Demail%26utm_id=3DDatabases%26utm_source=3DfirstIma=
+ge/1/0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/jtZcKFkUm=
+36rPqiImxFrrOUoJUvfo5WwNkQEiOJgi6A=3D358"><img alt=3D"List Slack channels" =
+src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%=
+2F1718913766684-1718913764253.png" style=3D"display:block;outline:none;bord=
+er:none;text-decoration:none;margin-left:auto;margin-right:auto;height:auto=
+;width:100%;" class=3D"w-full mx-auto h-auto"></a>
+
+<br>
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;" class=3D=
+"border-gray-200 my-7 mx-0">
+
+<h1 class=3D"text-black dark:text-white text-xl tracking-tight mt-6" style=
+=3D"margin-top:1.5rem;font-size:1.25rem;line-height:1.75rem;letter-spacing:=
+-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Built-in sc=
+hema explorer</h1>
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">When querying a database, you =
+need to understand the schema of the tables you're working with. The schema=
+ explorer provides a visual interface to explore the tables in your databas=
+e, view their columns, and understand the relationships between them.
+</p>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2F=
+databases%3Futm_medium=3Demail%26utm_id=3DDatabases%26utm_source=3DsecondIm=
+age/1/0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/maGPY0ri=
+46Ks8sn-gaGKKyGy46sx8eJR_4EDejbD8oI=3D358"><img alt=3D"List Slack channels"=
+ src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b=
+%2F1718913410272-1718913408428.png" style=3D"display:block;outline:none;bor=
+der:none;text-decoration:none;margin-left:auto;margin-right:auto;height:aut=
+o;width:100%;" class=3D"w-full mx-auto h-auto"></a>
+
+<br>
+
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;" class=3D=
+"border-gray-200 my-7 mx-0">
+
+<h1 class=3D"text-black dark:text-white text-xl tracking-tight mt-6" style=
+=3D"margin-top:1.5rem;font-size:1.25rem;line-height:1.75rem;letter-spacing:=
+-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Support for=
+ prepared statements</h1>
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Prepared statements let you sa=
+fely execute SQL queries with dynamic inputs that are automatically defined=
+ as parameters, in order to help prevent SQL injection attacks.
+<br>
+<br> To reference dynamic data in a SQL query, simply use the <a class=3D"u=
+nderline underline-offset-4 font-medium decoration-brand/50 hover:decoratio=
+n-brand text-black" href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedr=
+eam.com%2Fdocs%2Fworkflows%2Fusing-props%23entering-expressions%3Futm_mediu=
+m=3Demail%26utm_id=3DstandardExpression/1/0100019037db39f9-462f4d33-364c-4a=
+14-8d5c-55b4f447ded8-000000/0zI6C2hEwI9RyWipLlzE4VLKfdvDenFDlL6hQNJ6IHg=3D3=
+58" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:500;text-d=
+ecoration-line:underline;text-decoration-color:rgb(52, 210, 139, 0.5);text-=
+underline-offset:4px;decoration-brand:hover{text-decoration-color;" target=
+=3D"_blank">standard expression</a> just like any other code step in Pipedr=
+eam.
+</p>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2F=
+databases%3Futm_medium=3Demail%26utm_id=3DDatabases%26utm_source=3DthirdIma=
+ge/1/0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/aRFLjr69h=
+2Kwqgqt_cBhO4iTySbnCwnLM3Eg_HhmW-w=3D358"><img alt=3D"Run workflows for any=
+ user" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f=
+26462b%2F1718913474891-1718913474006.png" style=3D"display:block;outline:no=
+ne;border:none;text-decoration:none;margin-left:auto;margin-right:auto;heig=
+ht:auto;width:100%;" class=3D"w-full mx-auto h-auto"></a>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;" class=3D=
+"border-gray-200 my-7 mx-0">
+
+<h1 class=3D"text-black dark:text-white text-xl tracking-tight mt-6" style=
+=3D"margin-top:1.5rem;font-size:1.25rem;line-height:1.75rem;letter-spacing:=
+-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Static IPs<=
+/h1>
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Unless your database is public=
+ly accessible, you typically need to add specific IPs to its allow-list. To=
+ do this, you can configure your database connection to use either a shared=
+ or dedicated static IP address from Pipedream:
+<br>
+<br>- <strong>Shared IP: </strong>Route network requests through a static I=
+P block for <a class=3D"underline underline-offset-4 font-medium decoration=
+-brand/50 hover:decoration-brand text-black" href=3D"https://et.pipedream.c=
+om/CL0/https:%2F%2Fpipedream.com%2Fdocs%2Fdatabases%23supported-databases%3=
+Futm_medium=3Demail%26utm_id=3DsqlProxy/1/0100019037db39f9-462f4d33-364c-4a=
+14-8d5c-55b4f447ded8-000000/bLz5C_mNmICYaXJMty03n7IvymPu8wt5KTbfRjtno1U=3D3=
+58" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:500;text-d=
+ecoration-line:underline;text-decoration-color:rgb(52, 210, 139, 0.5);text-=
+underline-offset:4px;decoration-brand:hover{text-decoration-color;" target=
+=3D"_blank">any app that's supported by Pipedream's SQL Proxy</a> or
+<br>- <strong>Dedicated IP:</strong> Create a <a class=3D"underline underli=
+ne-offset-4 font-medium decoration-brand/50 hover:decoration-brand text-bla=
+ck" href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2=
+Fworkflows%2Fvpc%3Futm_medium=3Demail%26utm_id=3DVPC/1/0100019037db39f9-462=
+f4d33-364c-4a14-8d5c-55b4f447ded8-000000/9-ZRJfLyq7A6n1lM7APpVZG0VrrsIKqmHU=
+vQXswFPqo=3D358" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-weig=
+ht:500;text-decoration-line:underline;text-decoration-color:rgb(52, 210, 13=
+9, 0.5);text-underline-offset:4px;decoration-brand:hover{text-decoration-co=
+lor;" target=3D"_blank">Virtual Private Cloud (VPC)</a> for a dedicated egr=
+ess IP that's unique to your workspace
+
+
+</p>
+
+<br>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" styl=
+e=3D"margin-bottom:1.5rem;"><tbody><tr><td><a href=3D"https://et.pipedream.=
+com/CL0/https:%2F%2Fpipedream.com%2Fdocs%2Fdatabases%3Futm_medium=3Demail%2=
+6utm_id=3DDatabases%26utm_source=3DjoinTheWaitlistButton/2/0100019037db39f9=
+-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/fWZXzdQWnCMRxYypOIi-UV4kq1mKTP=
+qsU6yxp3PAfzo=3D358" style=3D"line-height:1.5rem;text-decoration:none;displ=
+ay:block;max-width:100%;border-radius:0.75rem;background-color:rgb(52, 117,=
+ 210);padding-top:0.5rem;padding-bottom:0.5rem;padding-left:1rem;padding-ri=
+ght:1rem;text-align:center;font-size:1rem;font-weight:600;color:rgb(255, 25=
+5, 255);padding:8px 16px 8px 16px;" target=3D"_blank"><span style=3D"max-wi=
+dth:100%;display:inline-block;line-height:120%;mso-padding-alt:0px;mso-text=
+-raise:6px;">Check out the docs</span></a></td></tr></tbody></table>
+<br>
+<br>
+
+
+
+
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"text-base m-0 text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Let us know any questions or f=
+eedback!
+<br>
+<br>Warm regards,
+<br>The Pipedream Team</p>
+<br>
+<br>
+<br>
+<br>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;" class=3D=
+"border-gray-200 my-7 mx-0"><a href=3D"https://et.pipedream.com/CL0/https:%=
+2F%2Fpipedream.com/1/0100019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-=
+000000/nwEnZQFDYifV6NoSzCUoM1vh3B7uQ9IpDGi5LxEsS70=3D358" style=3D"color:#b=
+4becc;text-decoration:none;font-size:14px;" target=3D"_blank">44 Montgomery=
+ Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United States of America=
+</a>
+<br>
+<br><a href=3D"https://et.pipedream.com/CL0/https:%2F%2Femail-actions.piped=
+ream.com%2Funsubscribe%3Fep=3D1%26l=3D722d1388-f78c-11ee-9155-61c3796c8eef%=
+26lc=3Ddc9fa572-f828-11ee-8757-49979cf9c3cf%26p=3Dffa59606-2cdc-11ef-afbd-4=
+32458d71454%26pt=3Dcampaign%26pv=3D4%26spa=3D1718915646%26t=3D1718924032%26=
+s=3Ddb9ca8f5cde79524d3780b5f347d20d2252efdba7a818e991045b1928df58b15/1/0100=
+019037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/PzXD-5f2veKR7u5itM=
+4ng2itsix0qxwtFkfWw8zahJ4=3D358" style=3D"font-size:14px;color:#b4becc;" ta=
+rget=3D"_blank">Unsubscribe</a>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com/2/0100019=
+037db39f9-462f4d33-364c-4a14-8d5c-55b4f447ded8-000000/9uThg8OP698yHk03QRxUl=
+K_cuPUQJmBHXDhlUUtRbNw=3D358" style=3D"color:#666;text-decoration:none;font=
+-size:14px;display:block;padding-top:20px;" target=3D"_blank">
+<br>
+<br>
+</a>
+</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+</td></tr></tbody></table>
+
+
+
+
+<img alt=3D"" src=3D"http://et.pipedream.com/CI0/0100019037db39f9-462f4d33-=
+364c-4a14-8d5c-55b4f447ded8-000000/DAI8gnnKsg2dpUKQsP52XSydRgI_ogGEQSwC3XXB=
+Q7c=3D358" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--kvgo_cjP--

@@ -1,0 +1,408 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a11:f40b:b0:4ed:3ce7:19fb with SMTP id ho11csp1551084pxc;
+        Mon, 11 Sep 2023 16:14:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG8jzcauCxmI43lbF5RnXoht6XjQK5bME0PjYvX2eu5ucLvHvL9XcInThWQr2oJJKzj7/In
+X-Received: by 2002:a05:690c:4682:b0:59b:5d9a:3139 with SMTP id gx2-20020a05690c468200b0059b5d9a3139mr7825353ywb.33.1694474075977;
+        Mon, 11 Sep 2023 16:14:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694474075; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rVGezwntFhIk0GfVtVdqIs71kpS2o3xIbt3yG09Js0bjTEv33dx9Q3N28JHvJWzYqj
+         y7o42Ugvj4I/brdvaKC6hPUECSlaK5JERp3J8HyIysU/09/BJGAuOfoyeo64aelV3VAv
+         NwdkIrLs/ZHD6Xl0Wd0qCJ4Ap+KhHQshJD3xGCE65Bp8H+YQEW/6p+LTDMg0sAcCnYjC
+         9y3EHxiXg9FWUE71hUQtacwKqspri/DRHyN7Igw7iso1I8iRP6UL6CANcdPDc0TwPQ3k
+         VYzD7S/bZ1St5x5loxffc7i7y5NXGCPiwCSiVKJH4AcOFen2/aJCicQfFcjZe44IN6s4
+         vzYg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=FU20iknwANdG+NzJij1QFvsjZSkeiwar6AG6xc4+6WQ=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=Su0RJyJM4nyBkQho9iIRRB0Y2BGRBBo1jMJugVmOjSg75D2ibPjSGf2yXV3F4EhE41
+         u9RzZZm6BDKE8u2FWV/TWacAL6HhpQa0Y2BcFXn6/O0I9zwpcB8sWlFsm1tOiOPkg6Qd
+         oeQ981ROENNZ67qvcrmZ/2H340esCih80UFnrMYGECjeL+NHQ7CxXlJqCwrWAC7MZYug
+         if414C6UTimAXGXW4yd9147GtxTe0Bky+iu/nMB5kZL8WpoF0qtT4uKYlBPylSpbPCnk
+         LG+JYA7R+65900x+SAHMkplyXxZ57d2xaXTRQdXo4vi72e0Gr2/VDU1qwPEQsbPWx5kw
+         LipA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=UIEDMukS;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Ex27Fg2f;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.50.52 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o21.ck.n.convertkit.com (o21.ck.n.convertkit.com. [168.245.50.52])
+        by mx.google.com with ESMTPS id h30-20020a81b65e000000b005920925b1e0si7447518ywk.184.2023.09.11.16.14.35
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 11 Sep 2023 16:14:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.50.52 as permitted sender) client-ip=168.245.50.52;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=UIEDMukS;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Ex27Fg2f;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.50.52 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=FU20iknwANdG+NzJij1QFvsjZSkeiwar6AG6xc4+6WQ=;
+	b=UIEDMukSGJ8ajeCR1qYNwmbIfbbljQJ8E67oBpg53ZlU7l4WDTEfoT+7w1Yv0INi8isZ
+	Pq25nEz0RHQkkWpav8Du7P+DX8WCoEGBcO+TjKlVOua1upuoaqTvuFDJIVU9G+ELRAmr1a
+	o5X9uWOzarYbRbR0HQek3DA8hzVTiUX+c=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=FU20iknwANdG+NzJij1QFvsjZSkeiwar6AG6xc4+6WQ=;
+	b=Ex27Fg2fFpV8RvkdHF2YiqsFQ9VEnm+G+SvsEqAUrZwRjSUyuaCikLyXA5cuHB8VThNV
+	haKFFdNHl5HfKCOwkzSVfhiubs28kT+bnN0f5x3LQlmJCRQO+VXPtmgTupblyoOet0zrJl
+	HlkcZ+hdrYrDyaoZNzUfhvrPFZNhmOHIE=
+Received: by filterdrecv-7dfc896d4-ljv4n with SMTP id filterdrecv-7dfc896d4-ljv4n-1-64FF9F5A-32
+        2023-09-11 23:14:34.431749823 +0000 UTC m=+10712304.270885572
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-2 (SG) with HTTP
+	id KCcboY4MTNSS1zVK0AeVRA
+	Mon, 11 Sep 2023 23:14:34.413 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=675655f35b43e354d3fcc718078b4d45f28c85a67e098ec63f5cb3d0dde6
+Date: Mon, 11 Sep 2023 23:14:35 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <wvu9opkrp0bgh5gop0rf7hewlmzxx@convertkit-mail2.com>
+Subject: And the Ultimate Next13 course launches =?UTF-8?B?b27igKY=?=
+Feedback-ID: 11705383:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/wvu9opkrp0bgh5gop0rf7hewlmzxx>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfayJ44DlSAxd3eHWa?=
+ =?us-ascii?Q?86e6vE+CbUjkFkx5TTn2VFAgT9IRjHrQNgS=2F1C5?=
+ =?us-ascii?Q?R+PtZmf9yEkhG7uAWTS3TWQxpAM=2FY=2F1ZH7B2=2FeB?=
+ =?us-ascii?Q?GMpnYD19YT2BbSLoNynZBep7y7LwckRhfUb2yR3?=
+ =?us-ascii?Q?jo7RqNHVA=2FDAaKFND7KgVysJObdz3nM79k5vR=2F?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADOp4gBk+RzDIcFuIxw8i4=2FkO+vYf4=2F107YQ5Zx?=
+ =?us-ascii?Q?ER4U5SBHqKnVuIlmcdGJDBuIxHDzbOh3S5trmPf?=
+ =?us-ascii?Q?xnG0eIoBeC2q2UbGwj8fctz++m8Q2MyxKVtPKFm?=
+ =?us-ascii?Q?qzwpIDlNZRLQtBXQhGZ7dJ1KSCiY+QCrUDW6I5y?=
+ =?us-ascii?Q?Qw=2FFEKSBzlBhSQ7p1Q86yGVm0bO2uD2CB0JSg5F?=
+ =?us-ascii?Q?4Bdx33NW14d5yhdqnFI7+AgFXbF9DhXFjfek7sN?=
+ =?us-ascii?Q?Z3GU2MMsOiw0oOUkgx5R7k2E8T4F=2FD2QYPo2Szl?=
+ =?us-ascii?Q?Cdpjibm9cfSirsuijAXtGouTQ8pZ7Iqkh6M44v+?=
+ =?us-ascii?Q?rfnhL=2FySX1TpfWrLaPCYXA1RqXSMA6Sg=3D=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--675655f35b43e354d3fcc718078b4d45f28c85a67e098ec63f5cb3d0dde6
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+The Ultimate Next.js 13 course will be ready for purchase on
+September 22nd AKA next Friday!!! =F0=9F=9A=80=F0=9F=8E=87=F0=9F=8E=89
+
+=E2=80=8B
+
+It=E2=80=99s both interactive & project-based, and on a whole another
+level than my YouTube videos. I know you=E2=80=99ll LOVE it.
+
+=E2=80=8B
+
+Right now you probably know just a little bit about Next.js.
+
+You're just scratching the surface.
+
+=E2=80=8B
+
+With this course?
+
+=E2=80=8B
+
+You=E2=80=99ll go dinosaur bones-level deep, and become a Top 1% Next.js
+Developer.
+
+=E2=80=8B
+
+In tomorrow=E2=80=99s email I=E2=80=99ll explain more about Next.js and why
+knowing it right now is so important.
+
+=E2=80=8B
+
+Just 11 days left!!!
+
+Can=E2=80=99t get more excited than this!
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/wvu9opkrp0bgh5gop0rf7hewlmzxx
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/wvu9opkrp0bgh5gop0rf7hewlmzxx
+)
+--675655f35b43e354d3fcc718078b4d45f28c85a67e098ec63f5cb3d0dde6
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div id=3D"preview-text">
+          <span style=3D"display: none; max-height: 0; overflow: hidden;">
+            The Ultimate Next.js 13 course will be ready for purchase on...
+          </span>
+
+          <span style=3D"display: none; max-height: 0; overflow: hidden;">
+            =C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C
+          </span>
+        </div>
+<div style=3D"background-color:#efeff3"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#efeff3;wid=
+th:100%" bgcolor=3D"#efeff3"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>The Ultimate Next.js 13 course will be ready for pu=
+rchase on September 22nd AKA next Friday!!! =F0=9F=9A=80=F0=9F=8E=87=F0=9F=
+=8E=89</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>It=E2=80=99s both interactive &amp; project-based, =
+and on a whole another level than my YouTube videos. I know you=E2=80=99ll =
+LOVE it.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Right now you probably know just a little bit about Next.js=
+.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You're just scratching the surface.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">With this course?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>You=E2=80=99ll go dinosaur bones-level deep, and be=
+come a Top 1% Next.js Developer.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">In tomorrow=E2=80=99s email I=E2=80=99ll explain more about=
+ Next.js and why <u>knowing it right now is so important</u>.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Just 11 days left!!!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Can=E2=80=99t get more excited than this! <br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/wvu9opkrp0bgh5gop0rf7hewlmzxx" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/wvu9opkrp0bgh5gop0rf7hewlmzxx" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/wvu9opkrp0bgh5gop0rf7hewlmzxx=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--675655f35b43e354d3fcc718078b4d45f28c85a67e098ec63f5cb3d0dde6--

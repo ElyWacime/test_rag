@@ -1,0 +1,302 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:828a:0:b0:2d0:7014:6346 with SMTP id y10csp721756ljg;
+        Fri, 2 Feb 2024 09:41:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFJsVsK//H4w+lgQRvydbSz2VougwIENeUs4dnoolZoBiFDIfKdLTHfhQiXozuXV3Ik3qjw
+X-Received: by 2002:a05:620a:a86:b0:783:f6b6:6c5a with SMTP id v6-20020a05620a0a8600b00783f6b66c5amr4257439qkg.9.1706895674552;
+        Fri, 02 Feb 2024 09:41:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706895674; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ffOFp1T14UcDtZ+iEfNTUNbrtptmGVWFsD17TmjYAyqdWNsh0n6F0PtN8Ba6do7miU
+         lrZEShNWPeRtAiuT8AIzhWvV4PQOJBWbNMUuQCIgCGwDX7PjqFXQ2cdamwZfDVPZzIcV
+         atfpi+QgZfWwtabtxzEXG4fb6AnmLdu/tjJKv285dhilycnG7ZtVZqef3PdldwBqsr7p
+         CVD4rEnycszVRMv8zoxCaOGtBHby2iUFMI4kqqKn2rE+YK/vbf5JFN7XsNkF0QGBhUBy
+         lVSIADTVXYlBI69O8DEUdmf3UAKm0KApkFwxKdosMjLULITXV0IG0j/42Fi5SaZxBzO/
+         WlTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:feedback-id:precedence:list-unsubscribe:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=ycSofLQyX/7E0hfaoVo+ccScW/LK/SZjwjm+tXGDsPY=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=aJwS1NVjK/8za1B8GIVQkN6QfMsizr/nfojaTo5w2ZIXia5rl34zKhzFYmqEIYTrRk
+         5L38UkmiA6urs0b5CZlxWOoCs0soegcvyV4mn44TzvmUrVy8cuuFf9NHAQaeRJal4MzC
+         MLLBYc2fmkVYexNEcS1lCGptxiTASCtFI9NiyE9EUDUvPjuG7dbW9XvpEfrQI4zXyTMu
+         Xvqlf45F8SpNhymjxzUfm/NNyhCF4+RzCha/p2yjB45OVrs1rZQRTyKlxtgO+avz7Tpb
+         TNM/+rdobpC+UX3DO3pA7FD6PjNwtslqS0EW5epLMpu5ByKQ/0WWkXFdWRNzhkLGZlUE
+         YSiA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=bDlyFsqo;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=K3Oz4jqX;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o48.ck.n.convertkit.com (o48.ck.n.convertkit.com. [149.72.193.89])
+        by mx.google.com with ESMTPS id i10-20020ae9ee0a000000b007837f71c062si2401330qkg.56.2024.02.02.09.41.13
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 02 Feb 2024 09:41:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) client-ip=149.72.193.89;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=bDlyFsqo;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=K3Oz4jqX;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=ycSofLQyX/7E0hfaoVo+ccScW/LK/SZjwjm+tXGDsPY=;
+	b=bDlyFsqoT9nNV/Exq8ciYJqdWNbFT6Kl0NVRgpfGOF+clwt6N4zRc0lRVwY+XG0JmUVI
+	usulv53wT7CP+NRpDRIKgQsRBTQY34WKDI/NrWkP484VTSXOm5zMReX1zbSTqMfAX/vaYy
+	DOOePk2We1jLznpyRKXmvclzvYwnBx2sc=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=ycSofLQyX/7E0hfaoVo+ccScW/LK/SZjwjm+tXGDsPY=;
+	b=K3Oz4jqXwKnvCXzv90PIu58O8yL2rt8vgYBrChJtlsVTTXZJ7msaafZSaG3W9KobRHQ3
+	UfmyrL8HxI2kxO3/fhkE/RTNLXmoPB1b+HUYj71mpcMpjb2pj5SgtvTa+tpt6+HpNKIjK2
+	I5MHlZe4GaAao4O4xYf+oStiW+SoGVjEY=
+Received: by filterdrecv-6dcccbbbfd-78xv5 with SMTP id filterdrecv-6dcccbbbfd-78xv5-1-65BD2938-9D
+        2024-02-02 17:41:12.479079401 +0000 UTC m=+9327608.596644509
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-canary-0 (SG)
+	with HTTP
+	id o6dVtI76RUaUvlPqWZORXw
+	Fri, 02 Feb 2024 17:41:12.426 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=b587700dc0a3d41e09a824026eafa9f9cfa13412f9bc94a7f610f5cdb498
+Date: Fri, 02 Feb 2024 17:41:12 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <mvu534eo4qc5hg5q24qtmhe9e20qq@convertkit-mail2.com>
+Subject: Build. A. Freaking. FIGMA. CLONE. =?UTF-8?B?8J+krw==?=
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/mvu534eo4qc5hg5q24qtmhe9e20qq>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 12974882:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfWybJD+smM55+JrRD?=
+ =?us-ascii?Q?hKX8xs8pyZVpDFUh8WGvrdGSci1S9JVqcTtRoOp?=
+ =?us-ascii?Q?1hT80Hxk=2FQVC8YTVqBRIypUdRdJgPtYijxaUCtk?=
+ =?us-ascii?Q?=2Fn7uunvYr+Hur+OP=2FJIuNmvoCbkT2f20IDT6LlI?=
+ =?us-ascii?Q?5LVPcvSMAPpiXC+z3QfURuY0zCXpUTNG=2FZTF6x?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADTwz1yFcHGYgwiOFdoX8KSajV7oYGpD3bRo2+p?=
+ =?us-ascii?Q?8d8p2BF=2FH4mONdqCbp+x9ldfmiBVWPI4MptcGai?=
+ =?us-ascii?Q?Iu5TnlkObA4XvdlrTBNA=2Fva8fkse28zoa621DQr?=
+ =?us-ascii?Q?GrT5nZTuwskWi+d2eFhUwqQ5qMMjfRaADVGTraM?=
+ =?us-ascii?Q?zKNe85ZfRwCuknKxaKhbXnxZAnTCVHjcZax6Pyg?=
+ =?us-ascii?Q?kto5KG+=2F+YKLGASlqQuM=2FIlgV6+qvcW3loRkWng?=
+ =?us-ascii?Q?m98KfnjjDG5iA2+IgZlYwXbORty2JtyeQm9JtF5?=
+ =?us-ascii?Q?vVzqpOqw=2FPBulE17DSZFIUqv6IsmMUptXkbBTmy?=
+ =?us-ascii?Q?fIauPy3+Tn?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--b587700dc0a3d41e09a824026eafa9f9cfa13412f9bc94a7f610f5cdb498
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+=E2=80=8B
+
+I just released a truly special tutorial: a Figma clone.
+
+=E2=80=8B
+
+With incredible features Figma offers like:
+
+* Creating shapes =F0=9F=94=BA =F0=9F=94=B5 =F0=9F=9F=A6
+* Real time multi cursors, cursor chat, and reactions =F0=9F=96=B1=EF=B8=8F
+* Chat bubbles =F0=9F=92=AC
+* Active users =F0=9F=91=A5
+* freeform drawing =E2=9C=8D=EF=B8=8F
+* undo =E2=86=A9=EF=B8=8F
+* redo =E2=86=AA=EF=B8=8F
+* checking history =F0=9F=93=9C
+* deleting, scaling, moving, clearing, exporting canvas and a
+bunch more! =F0=9F=8E=A8
+
+=E2=80=8B
+
+Watch it here if you ever wondered how to build Figma!
+=E2=80=8B
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg5q24qtmhe9e20qq/reh8h9u0w3=
+dpqzu6/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1vS0lUaElpaHY2MA=3D=3D
+)=E2=80=8B
+
+Yours,
+
+Adrian
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/mvu534eo4qc5hg5q24qtmhe9e20qq
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/mvu534eo4qc5hg5q24qtmhe9e20qq
+)=E2=80=8B
+--b587700dc0a3d41e09a824026eafa9f9cfa13412f9bc94a7f610f5cdb498
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><div>
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box"><div class=3D"ck-inner-section ck-padding-left-mobile-friendly ck=
+-padding-right-mobile-friendly" style=3D"padding:0px 5px 0px 5px"><div styl=
+e=3D"margin-left:auto;margin-right:auto;max-width:640px">
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">I just released a truly special tutorial: <strong>a Fig=
+ma clone.</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">With incredible features Figma offers like:</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;list-style-position:outside !important;font-family:Arial, -apple-system, =
+BlinkMacSystemFont, sans-serif;font-size:16px;color:#363D43;font-weight:400=
+;letter-spacing:0;line-height:1.5;text-align:left;text-transform:none;margi=
+n-top:0;margin-bottom:0;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Creating shapes =F0=9F=94=BA =F0=9F=94=B5 =F0=9F=9F=A6</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Real time multi cursors, cursor chat, and reactions =F0=9F=96=B1=EF=
+=B8=8F</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Chat bubbles =F0=9F=92=AC</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Active users =F0=9F=91=A5</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>freeform drawing =E2=9C=8D=EF=B8=8F</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>undo =E2=86=A9=EF=B8=8F</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>redo =E2=86=AA=EF=B8=8F</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>checking history =F0=9F=93=9C</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>deleting, scaling, moving, clearing, exporting canvas and a bunch m=
+ore! =F0=9F=8E=A8</span></li>
+</ul>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Watch it here if you ever wondered how to build Figma!<br>=E2=80=8B</=
+p>
+<!--[if mso]><table><tr><td width=3D"800"><![endif]--><a href=3D"https://cl=
+ick.convertkit-mail2.com/mvu534eo4qc5hg5q24qtmhe9e20qq/reh8h9u0w3dpqzu6/aHR=
+0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1vS0lUaElpaHY2MA=3D=3D" style=3D"dis=
+play:block;width:100%;max-width:480px;margin:0 auto;border:0;text-decoratio=
+n:none" url-id=3D"1609333816"><img alt=3D"video preview" src=3D"https://fun=
+ctions-js.convertkit.com/playbutton?play=3D%23324C85&amp;accent=3D%23ffffff=
+&amp;thumbnailof=3Dhttps%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DoKIThIihv60&=
+amp;width=3D480&amp;height=3D270&amp;fit=3Dcontain" width=3D"480" height=3D=
+"270" style=3D"display:block;border:0;height:auto;line-height:100%;outline:=
+none;-webkit-text-decoration:none;text-decoration:none;-ms-interpolation-mo=
+de:bicubic;max-width:100%;border:0 none;display:block;border-radius:4px">=
+=E2=80=8B</a><!--[if mso]></td></tr></table><![endif]--><p style=3D"margin:=
+1em 0;font-family:Arial, -apple-system, BlinkMacSystemFont, sans-serif;font=
+-size:16px;color:#363D43;font-weight:400;letter-spacing:0;line-height:1.5;t=
+ext-align:left;text-transform:none;margin-top:0;margin-bottom:0" class=3D""=
+>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">Yours,</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">Adrian</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box"><div class=3D"ck-inner-section ck-padding-left-none ck-padding-ri=
+ght-none" style=3D"padding:0px 0px 0px 0px"><div style=3D"margin-left:auto;=
+margin-right:auto;max-width:640px"><p style=3D"margin:1em 0;font-family:Ari=
+al, -apple-system, BlinkMacSystemFont, sans-serif;font-size:16px;color:#656=
+565;font-weight:400;letter-spacing:0;line-height:1.5;text-transform:none" c=
+lass=3D"">=E2=80=8B<a href=3D"https://unsubscribe.convertkit-mail2.com/mvu5=
+34eo4qc5hg5q24qtmhe9e20qq" target=3D"_blank" rel=3D"noopener noreferrer" st=
+yle=3D"color:#656565">Unsubscribe</a> =C2=B7 <a href=3D"https://preferences=
+.convertkit-mail2.com/mvu534eo4qc5hg5q24qtmhe9e20qq" target=3D"_blank" rel=
+=3D"noopener noreferrer" style=3D"color:#656565">Preferences</a>=E2=80=8B</=
+p></div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</div></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/mvu534eo4qc5hg5q24qtmhe9e20qq=
+" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line-h=
+eight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-=
+ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--b587700dc0a3d41e09a824026eafa9f9cfa13412f9bc94a7f610f5cdb498--

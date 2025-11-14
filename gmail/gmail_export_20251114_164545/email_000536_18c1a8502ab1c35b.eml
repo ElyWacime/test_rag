@@ -1,0 +1,228 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:b68d:b0:523:83ca:23d5 with SMTP id n13csp197479pxv;
+        Wed, 29 Nov 2023 01:59:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGecjSg7SVbShGCdXhCu8t3aKkZAVPCx5stkeaWDmaXgbn0sd3/cIsbfq3+5vndQYOswITk
+X-Received: by 2002:a05:6102:3672:b0:464:46c2:d401 with SMTP id bg18-20020a056102367200b0046446c2d401mr2261852vsb.26.1701251974051;
+        Wed, 29 Nov 2023 01:59:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701251974; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GYGXZNP6gabMBisjLD10YVt/VSQiwSKQgadQ0avFgEYZ950dFYqiFbLvM+6LKdl2O+
+         SRY6UhWdlZ3hsqZKcFrOHCs7KODXewpL25W+Fl6GF7DiGohfzTHHKGXnyOIYF2HHxCM4
+         Pdg9gyrwdUJh+hiiJ21QYbNYLJzteR+osbysr89+4P/vnarO4tWzRcsMvvQd+dgNDUr3
+         aur3ojze4+QEFes7T/KKcW9bPoDKu6n4CXXl9u/aS+SwfHTji7wYR5FgjtdcYileZhHt
+         GAPJIyvBw8OQjLPw5gt8h4MlOUJw8zLi1OxPbaBmUDy5+M7jIGt7Au1KMrSsPXjkY3ST
+         EhoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:message-id:to:from:subject:mime-version
+         :date:sender:dkim-signature:dkim-signature;
+        bh=uF6sg/Xf39jwq2T+cKORZZce6DXNIyS2GfXm0Wx3SYA=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=jrDMCgdJ76JZx29kQ+KSaGEOgUDaWUhmFiwfa/EvjlxCur71ihlY5TxlyzpEFHOaUh
+         dayTophFta08cKyV3M82o0nIOYgSjBeEangUufBGQJb2LzdiRAk1JaXrXUIoLHcl9l65
+         70/Gdg7osIzfpT6ZrbwNX2Ypr/qfTDqfsY0Srd8xo+BYl8ZvT1vFNNk1J6OWtz/MTqBJ
+         LSoHt4+YIdffqpFePCYTudoTV1DGQp8QA1Yxzst6enEsCgh2ALX4F+cj3ofW87pUinur
+         Qtm8JnK4sYdVD5X9eHuvW8iYO3hL47I+8r28Lss4k/KZFaXAdzi7lJjQvXYwTwwyiUjK
+         44kA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@edm.iobit.com header.s=mx header.b=jY4H9J5w;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=EFUfFNWf;
+       spf=pass (google.com: domain of bounce+54ab64.ea32f-ely.ubuntu0=gmail.com@edm.iobit.com designates 69.72.42.6 as permitted sender) smtp.mailfrom="bounce+54ab64.ea32f-ely.ubuntu0=gmail.com@edm.iobit.com"
+Return-Path: <bounce+54ab64.ea32f-ely.ubuntu0=gmail.com@edm.iobit.com>
+Received: from m42-6.mailgun.net (m42-6.mailgun.net. [69.72.42.6])
+        by mx.google.com with UTF8SMTPS id br12-20020a05620a460c00b0076f2bb34fb1si13790955qkb.416.2023.11.29.01.59.33
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 Nov 2023 01:59:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce+54ab64.ea32f-ely.ubuntu0=gmail.com@edm.iobit.com designates 69.72.42.6 as permitted sender) client-ip=69.72.42.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@edm.iobit.com header.s=mx header.b=jY4H9J5w;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=EFUfFNWf;
+       spf=pass (google.com: domain of bounce+54ab64.ea32f-ely.ubuntu0=gmail.com@edm.iobit.com designates 69.72.42.6 as permitted sender) smtp.mailfrom="bounce+54ab64.ea32f-ely.ubuntu0=gmail.com@edm.iobit.com"
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=edm.iobit.com;
+ q=dns/txt; s=mx; t=1701251973; x=1701259173; h=Content-Transfer-Encoding:
+ Content-Type: Message-Id: To: To: From: From: Subject: Subject: Mime-Version:
+ Date: Sender: Sender: X-Feedback-Id;
+ bh=uF6sg/Xf39jwq2T+cKORZZce6DXNIyS2GfXm0Wx3SYA=;
+ b=jY4H9J5wt5K7Nba57M0zQp5X+aBO9Vkbm+bBH6iMyxSK4XtnTvCVSscK5n9Z1KlOJY72rGJiOFfZ2/AD6indSzVRbxUWof+/5FhigbZR/x1YblYQpb+msnyv30PijamkELwePJL7ZF96rg+Nx8VcpGOrdP0QRYtIrM09w9DR1H8=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org;
+ q=dns/txt; s=mg; t=1701251973; x=1701259173; h=Content-Transfer-Encoding:
+ Content-Type: Message-Id: To: To: From: From: Subject: Subject: Mime-Version:
+ Date: Sender: Sender: X-Feedback-Id;
+ bh=uF6sg/Xf39jwq2T+cKORZZce6DXNIyS2GfXm0Wx3SYA=;
+ b=EFUfFNWf0cN+1DuIgoOnYlG+y7QOw0efYy1SNlU7nRo5dKhSsOHwh1b6HAddsd26VA0yU+YfcGR1+MQi2xC7IPH+TB+qPpmYtYZKn70OzbWC8EAc6CGWHVBa5kxzzMhOt+bs7OSEDptiYPJvDdTxeVDGu3DYkhUx0g51iZQg50A=
+X-Feedback-Id: postmaster@edm.iobit.com:thankyouemail-en:59891c0daa3de6fb5dde8c1e:mailgun
+X-Mailgun-Sending-Ip: 69.72.42.6
+X-Mailgun-Sid: WyI2NDU2MyIsImVseS51YnVudHUwQGdtYWlsLmNvbSIsImVhMzJmIl0=
+Received: from <unknown> (<unknown> []) by 44e50f0bef4c with HTTP id
+ 65670b85287b294db660803b; Wed, 29 Nov 2023 09:59:33 GMT
+Sender: newsletter=iobit.com@edm.iobit.com
+Date: Wed, 29 Nov 2023 09:59:33 +0000
+Mime-Version: 1.0
+Subject: Thanks for Choosing IObit
+From: IObit <newsletter@iobit.com>
+To: ely.ubuntu0@gmail.com
+X-Mailgun-Tag: thankyouemail-en
+Message-Id: <20231129095933.53639e1eda4cbd33@edm.iobit.com>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+        <html lang=3D"en">
+        <head>
+          <meta charset=3D"UTF-8">
+          <title>IObit Subscription</title>
+        </head>
+        <body style=3D"font-family: Arial, sans-serif; font-family: Arial, =
+sans-serif !important; font-size: 14px; margin: 0; padding: 0; color: #000;=
+ background:#fff;">
+          <table width=3D"660" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" align=3D"center" style=3D"background: #fff;">
+            <thead>
+              <tr>
+                <th>
+                  <table width=3D"100%" height=3D"40" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" align=3D"center" style=3D"background:#1264fc;">
+                    <th>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle">
+                        <a href=3D"https://www.iobit.com/en/index.php" targ=
+et=3D"_blank">
+                          <img src=3D"https://ld.iobit.com/newsletter/2020/=
+images/logo.png" style=3D"display:block;border:0;" alt=3D"IObit"/>
+                        </a>
+
+                      </td>
+                      <td width=3D"24"></td>
+                    </th>
+                  </table>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0"=
+ border=3D"0" align=3D"center" style=3D"background:#fff;">
+                    <tr><td height=3D"30"></td></tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle" style=3D"font-si=
+ze:12px;line-height:18px;color:#000;">
+                        Dear IObit User,
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr><td height=3D"18"></td></tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle" style=3D"font-si=
+ze:12px;line-height:18px;color:#000;">
+                        We're happy and excited to have you in the IObit co=
+mmunity. Now you're among the first ones to hear about our latest news and =
+updates, and of course, our special subscriber-only offers!
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr><td height=3D"18"></td></tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle" style=3D"font-si=
+ze:12px;line-height:18px;color:#000;">
+                        As promised, we're glad to share premium features o=
+f Advanced SystemCare as a FREE GIFT with you. Please click this link to ge=
+t your gift. <br />
+                        <a href=3D"https://www.iobit.com/downloadcenter.php=
+?product=3Dasctrial" style=3D"display:inline-block;font-size:12px;line-heig=
+ht:12px;color:#1264fc;font-weight:bold;text-decoration:none;border-bottom:1=
+px solid #1264fc;">
+                          https://www.iobit.com/downloadcenter.php?product=
+=3Dasctrial
+                        </a>
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr>
+                      <td width=3D"24" height=3D"34"></td>
+                      <td height=3D"34" style=3D"border-bottom:1px dashed #=
+d2d2d2;"></td>
+                      <td width=3D"24" height=3D"34"></td>
+                    </tr>
+                    <tr><td height=3D"38"></td></tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle" style=3D"font-si=
+ze:12px;line-height:18px;color:#000;font-weight:bold;">
+                        About Advanced SystemCare
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr><td height=3D"18"></td></tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle" style=3D"font-si=
+ze:12px;line-height:18px;color:#000;">
+                        Since its inception in 2005, Advanced SystemCare wa=
+s being the IObit's flagship product and has always been keeping innovation=
+=2E Its new AI-powered scan will give y=
+ou the best way to optimize your syste=
+m comprehensively, for a faster, cleaner, and more secure computer.
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr><td height=3D"36"></td></tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle" style=3D"font-si=
+ze:12px;line-height:18px;color:#000;">
+                        Have a great day!
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"left" valign=3D"middle" style=3D"font-si=
+ze:12px;line-height:18px;color:#000;">
+                        IObit Team
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr>
+                      <td width=3D"24" height=3D"26"></td>
+                      <td height=3D"26" style=3D"border-bottom:1px solid #e=
+ee;"></td>
+                      <td width=3D"24" height=3D"26"></td>
+                    </tr>
+                    <tr><td height=3D"26"></td></tr>
+                    <tr>
+                      <td width=3D"24"></td>
+                      <td align=3D"center" valign=3D"middle" style=3D"font-=
+size:12px;line-height:18px;color:#a1a1a1;">
+                        Don't forget to whitelist <a href=3D"mailto: newsle=
+tter@iobit.com">newsletter@iobit.com</a> in your inbox so you won't miss an=
+ything!<br>
+                        If you no longer wish to receive further updates fr=
+om IObit, you can click here to <a href=3D"https://www.iobit.com/en/unsubsc=
+ribe.php?e=3DZWx5LnVidW50dTBAZ21haWwuY29t" target=3D"_blank">unsubscribe</a=
+>.
+                      </td>
+                      <td width=3D"24"></td>
+                    </tr>
+                    <tr>
+                      <td width=3D"24" height=3D"30"></td>
+                      <td height=3D"30" align=3D"center" valign=3D"middle" =
+style=3D"font-size:12px;line-height:18px;color:#a1a1a1;font-weight:bold;">
+                        =C2=A9 <span id=3D"year" class=3D"year">2022</span>=
+ IObit. All rights reserved.
+                      </td>
+                      <td width=3D"24" height=3D"30"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <img width=3D"1px" height=3D"1px" alt=3D"" src=3D"http://email.edm.=
+iobit.com/o/eJwcyT2OwyAQBtDTmG4RMx8YU3AY8IzXKP6RIih8-yhp35OsBbwZzRQdcaAUYfa=
+8rBRrSBFxq8ocGN4LCy86I3om0zI7BhEnl0ICbMCMpKRS_FoFmLxTOW27a-t2vU_zzno8dtRx9e=
+Em7_7P0o7f9Nz3cr2ee-jX_vT6BAAA__--lywM"></body>
+        </html>

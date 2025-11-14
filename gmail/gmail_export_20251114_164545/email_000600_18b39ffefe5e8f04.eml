@@ -1,0 +1,392 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:b083:b0:4fd:292a:fcfe with SMTP id y3csp3938883pxa;
+        Mon, 16 Oct 2023 12:39:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEBc14lG5mjC+xQX8PfWi4BJX3MVNrxOAHJZj4ZkH3PyMlom33mecMQ15PsQAId70Ik2qsr
+X-Received: by 2002:a05:6a00:2d13:b0:6be:3c44:c18b with SMTP id fa19-20020a056a002d1300b006be3c44c18bmr143668pfb.25.1697485156082;
+        Mon, 16 Oct 2023 12:39:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697485156; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OlEvjvjxDvJxJaUaqLBWJ8VWi5OGfpK/Xce+hLJ/H/6n7FZWKBDaLGTNvtxHMADbUx
+         WSXRu8LkJTas/pZy43rD+bweX646T4AIr7DWiqoPSrULQLktdJT74MyY4a5Cl4GVr19L
+         O5ufZ3z7xdGYdZS6h/cpgaCaWedZMEEG0DhdGFVRH8tdBo4mGmEA6Hr5PUy6e3VnTGI7
+         KKRamyaMTTbz4j6BpDCSK9vM+j/KstIzopg70VW7nZ28LUyL258jQjTEqJSL750rRO3J
+         qB06H+isEGl07jiDhRGGLkjBsg9sqEGSAam2amFdCsv/14PEbVT7x1IDtRljriPnUVlJ
+         W9hQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=brIHVxkq4kHz3PGUZ+yi7MI+Y4O1bFG7KtsWOsUHCwY=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=bQSJC+QgIdZFO37IQ23ll8NVhdcyh0HpbaaHGLTmIkPp61W7cGYIasvE7BW5ptpjdV
+         C2oreZrWQ/0faIVJRirwvva/fnWy5nFS3lwD3MM2hYbSVVwXLYGaPyzC36q+iYKqxqym
+         kTbkkJwmiS0UvtqtRYAyX8NttoDrf8CNc5eZt6QJRz8WRkwQUgkQm4j80CXkdZL5wmUa
+         Sc94CpCEeS/lAhgpYhKK9CUqV29bK1lg/4BkgFA8SN7ppnGUug0P1PGD+P/CJ03nX5gI
+         sbzeaaUvme7G90YM/iPwCBaq51cDgVLnpBiKx/6Ai31jJhe/fqy//0zyUlTLSbHPZiiC
+         /LGw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=UzPDNeoB;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=LD79aGIO;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o48.ck.n.convertkit.com (o48.ck.n.convertkit.com. [149.72.193.89])
+        by mx.google.com with ESMTPS id r20-20020a6560d4000000b005ab46595d5fsi376pgv.781.2023.10.16.12.39.15
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 16 Oct 2023 12:39:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) client-ip=149.72.193.89;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=UzPDNeoB;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=LD79aGIO;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=brIHVxkq4kHz3PGUZ+yi7MI+Y4O1bFG7KtsWOsUHCwY=;
+	b=UzPDNeoB4hGjIy6YaNA6CjAevtXeL4dRraV3JQYPb7qzRXM/AkvtiIdYqk741Rk/es2i
+	6eu9Fp400eVXQ5GLivf4hympnF0J7+WQ7Dpp04HA8RDtwyUuwRCu/yS5MOQSYQClYXYFjW
+	CaNgmgY7ydjfjnk4ZkXhWH6XU9gIefx94=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=brIHVxkq4kHz3PGUZ+yi7MI+Y4O1bFG7KtsWOsUHCwY=;
+	b=LD79aGIOLefoGW61M96fwlZx65+hjLsm27jUmXwhR7gwqsE9whp8Riy6KpBF9cna4Kd2
+	j9nVrrgGb06fhgFHzXGHN/H9JGBWzQX1Hgcbyiufv/ubUsPNQj8ZuFtx8a9wzNhnSs+WSx
+	ergYcNnGFtj9kmWzZXhxmnzGitZhk4h4k=
+Received: by filterdrecv-6d87c49464-9zpnb with SMTP id filterdrecv-6d87c49464-9zpnb-1-652D9161-77
+        2023-10-16 19:39:14.058252384 +0000 UTC m=+515776.240507119
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-30 (SG) with HTTP
+	id 9Fl-5YBVTc6d75v9FyZJtw
+	Mon, 16 Oct 2023 19:39:13.933 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=2d3bb6b3fbf6967b5d5d3556059a0bad90262ff96889bc09fe9fae728984
+Date: Mon, 16 Oct 2023 19:39:14 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <92udrgxog3tnhqn30vzs9h0g3o633@convertkit-mail2.com>
+Subject: What they didn't teach you
+Precedence: bulk
+Feedback-ID: 12007738:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/92udrgxog3tnhqn30vzs9h0g3o633>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfVt5LSOXJT1eybm9N?=
+ =?us-ascii?Q?txFgnqIajFsc7UELqPsLWWR99kYTZlp2td8EMUt?=
+ =?us-ascii?Q?DrlaAeIlcVzVLKL=2Fme5A05h2m2VEXai0R=2FfZqgC?=
+ =?us-ascii?Q?T0ZqNd5Snq9g=2FClWHm9WKNHPzSIwVNsgUdCQAzG?=
+ =?us-ascii?Q?PVDuwVvIEPszVhZHW0HLj9UtCkXoch490HG0DR?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADmhRYA3vZyEMRDz+UYGhZT6I+=2F9JPerWs=2F6lur?=
+ =?us-ascii?Q?cIJleX61bwiDgwlBK5IMWtuPEghY5reB1kdnZRF?=
+ =?us-ascii?Q?KVgWl+2a2p=2F4Ei7jZNNBr94KI1jn72wBpusGEf2?=
+ =?us-ascii?Q?CDjJ64CT77MmqbHuf2kBxyAK1sFdoNb+zdDnEtL?=
+ =?us-ascii?Q?ZyDW2TuxK+BpVncXcyKWsiVofgAbk=2FpvZ+HZH3w?=
+ =?us-ascii?Q?mIaT4Bx=2Fzl5613m3L=2Fg0uprpjrUUewjQKqP6VCL?=
+ =?us-ascii?Q?0vvoKd1N55AWzYKXKBq9DMna7qXKEwMut=2FgQdUk?=
+ =?us-ascii?Q?YY4HGk5OK4iDInSvnnsmKC6LHugs=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--2d3bb6b3fbf6967b5d5d3556059a0bad90262ff96889bc09fe9fae728984
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+I saw this LinkedIn post, and I completely agree.
+
+Btw, it=E2=80=99s not just true for boot camps. It=E2=80=99s the same for
+self-taught devs.
+
+=E2=80=8B
+
+(The comment is by Richard, a student from Cohort #2.)
+=E2=80=8B
+
+A lot of our students, maybe about a third, are bootcamp
+graduates, and their bootcamp experiences are=E2=80=A6 not the best.
+
+Rushed learning, old technology, poor projects a beginner could
+build, lack of mentor support, and being completely forgotten as
+soon as they graduated=E2=80=A6 It=E2=80=99s sad to see that when they paid
+$10,000 - $20,000.
+
+=E2=80=8B
+
+That=E2=80=99s why I was so stoked to see this comment from Richard.
+
+He was a Cohort #2 student, the cohort which started over a year
+ago.
+
+We made so many improvements since then, constantly iterating and
+never being stuck in the old way of doing things many boot camps
+unfortunately are.
+
+Or worse, just becoming an impersonal machine that discards
+students as soon as they=E2=80=99re finished with their payments.
+
+=E2=80=8B
+
+If it=E2=80=99s not already, the Masterclass is rapidly becoming the best
+way to skyrocket dev careers. It=E2=80=99s certainly leagues above some
+well-known and accredited boot camps, according to what the
+students that went there told me.
+
+Even a boot camp instructor said their students could never and
+didn=E2=80=99t ever build anything close to what our students do in the
+Masterclass.
+
+=E2=80=8B
+
+Here=E2=80=99s what our students built (Team Tech Titans=E2=80=99 capstone
+project, Cohort #3):
+
+A stunning social media app with groups & group roles, comments,
+nested comments, global search, advanced filtering, markdown
+posts creation, tags, follows, and unfollows... all with Next13
+Server Side Rendering for blazingly fast performance.
+
+=E2=80=8B
+=E2=80=8B
+
+Look. The admissions for the October cohort close tomorrow. The
+next cohort won=E2=80=99t start for another 3 months, but I don't
+recommend letting your career stay on pause until then. So:
+
+If you truly want to advance your career in the best way
+possible, build mind-boggling apps in a team of devs as part of a
+real community, and become a developer on a whole other level
+from where you are now, here=E2=80=99s the link where you can apply:
+
+=E2=80=8B=C2=BB jsmastery.pro/masterclass =C2=AB (
+https://click.convertkit-mail2.com/92udrgxog3tnhqn30vzs9h0g3o633/7qh7h2uo4w=
+d33gi9/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVu=
+dC1ib290Y2FtcA=3D=3D
+)=E2=80=8B
+
+To your success,
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/92udrgxog3tnhqn30vzs9h0g3o633
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/92udrgxog3tnhqn30vzs9h0g3o633
+)
+--2d3bb6b3fbf6967b5d5d3556059a0bad90262ff96889bc09fe9fae728984
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:left" class=3D"">I saw this LinkedIn post, and I completely =
+agree. </p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:left" class=3D"">Btw, it=E2=80=99s not just true for boot ca=
+mps. It=E2=80=99s the same for self-taught devs.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:left" class=3D"">=E2=80=8B</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/6svqJkmq=
+Gz2yzbT3ZrzrqZ/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:block">(The comment is by Richard, a student from Cohort #2.)</figcapt=
+ion></figure></td></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">A lot of our students, maybe about a third, are bootcamp gr=
+aduates, and their bootcamp experiences are=E2=80=A6 not the best.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Rushed learning, old technology, poor projects a beginner c=
+ould build, lack of mentor support, and being completely forgotten as soon =
+as they graduated=E2=80=A6 It=E2=80=99s sad to see that when they paid $10,=
+000 - $20,000.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">That=E2=80=99s why I was so stoked to see this comment from=
+ Richard.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">He was a Cohort #2 student, the cohort which started over a=
+ year ago.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">We made so many improvements since then, constantly iterati=
+ng and never being stuck in the old way of doing things many boot camps unf=
+ortunately are.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Or worse, just becoming an impersonal machine that discards=
+ students as soon as they=E2=80=99re finished with their payments.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If it=E2=80=99s not already, the Masterclass is rapidly bec=
+oming the best way to skyrocket dev careers. It=E2=80=99s certainly leagues=
+ above some well-known and accredited boot camps, according to what the stu=
+dents that went there told me.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Even a boot camp instructor said their students could never=
+ and didn=E2=80=99t ever build anything close to what our students do in th=
+e Masterclass.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Here=E2=80=99s what our students built (Team Tech Titans=E2=
+=80=99 capstone project, Cohort #3):</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">A stunning social media app with groups &amp; group roles, =
+comments, nested comments, global search, advanced filtering, markdown post=
+s creation, tags, follows, and unfollows... all with Next13 Server Side Ren=
+dering for blazingly fast performance.</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/bAH56b2J=
+XKhTr2aJ3S8XHS/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Look. The admissions for the October cohort close tomorrow.=
+ The next cohort won=E2=80=99t start for another 3 months, but I don't reco=
+mmend letting your career stay on pause until then. So:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you truly want to advance your career in the best way po=
+ssible, build mind-boggling apps in a team of devs as part of a real commun=
+ity, and become a developer on a whole other level from where you are now, =
+here=E2=80=99s the link where you can apply:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B<a href=3D"https://click.convertkit-mail2.com/92ud=
+rgxog3tnhqn30vzs9h0g3o633/7qh7h2uo4wd33gi9/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnBy=
+by9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVudC1ib290Y2FtcA=3D=3D" target=3D"_blank"=
+ rel=3D"noopener noreferrer" style=3D"color:#0f82f0" url-id=3D"1580104247">=
+=C2=BB jsmastery.pro/masterclass =C2=AB</a>=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">To your success,<br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/92udrgxog3tnhqn30vzs9h0g3o633" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/92udrgxog3tnhqn30vzs9h0g3o633" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/92udrgxog3tnhqn30vzs9h0g3o633=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--2d3bb6b3fbf6967b5d5d3556059a0bad90262ff96889bc09fe9fae728984--

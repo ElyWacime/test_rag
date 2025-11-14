@@ -1,0 +1,747 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:b083:b0:4fd:292a:fcfe with SMTP id y3csp5251719pxa;
+        Wed, 18 Oct 2023 13:21:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHT2ySBfOV9qLIbdmERYeeDTj6m9KG8AuytOCHqu92v2lmgrSTigFa4jGGX0dwwwp7g4vp/
+X-Received: by 2002:a05:620a:4256:b0:775:7870:4a8f with SMTP id w22-20020a05620a425600b0077578704a8fmr252343qko.47.1697660495335;
+        Wed, 18 Oct 2023 13:21:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697660495; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wFPIkBnlFqd3fIVVicwMvfN6/ELdAmUpB2Jud5YsxBPK61llcrz5Ebgq9pUJoxg9cZ
+         KJ7iPx/MpNR2tsFyE2spcyO6SWz6NRlou1bUpkr91Y7v7p1ClxTLQSgG6smcQWpJVGDD
+         /YOWfq8DBUNhuxGhJqmzgvOmq3kbbjbuP0tqUAIK8VrcTPBUGfvTEDCZX5xaxdmeI1Oo
+         AUTV3yr3u7LQkmMQfTxT2A8PIe3WZW/ET1WJOYjT1OlrT6xfYLMjT0MedjKEkMc67xFm
+         g/PhaCdvsj8osH2pKSPH2LvVAR+w6uKEQ6JKkQ1mEcTIKI1qfs2nyF3ycbMej5NRKDf4
+         3r3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe:subject
+         :to:from:dkim-signature:dkim-signature;
+        bh=6Xwj8kONDup272Gi0BZMXd1tbj7KOOG3rbMECZn0xuc=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=J1Jje8HAySaNPYF8HQwJF6322cYPQbJbAQmEyAkD7k141c6m+8RNyxyHnF2/fBbFzj
+         XAe7TtO5jVpDy0T/yEQPXRApruDrLDkmJXaao1oQxlIL/yMSswBAtmkpWuzbSuSEWP1z
+         f+84jT5o5PuQh3rlCX1krKDhDNi1jvcGgpcw3Yh8Io00eN5cp90ATvXWzKrEwGmUbKiz
+         G3+GZaEB/22WQGpHbE04+WLLl9IQJWPFtT8Zgg6TEtBKP24/XNnk9643AnpCJ5TRbmkZ
+         GKXNi8izm4mmrhhiyx+IvcR1O/GQBQ6RzwiYR/gp6rRd97MtgoVyJbJxBtA5TuU0OHer
+         BfqA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=QLUVZk2x;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=ayVlDt5y;
+       spf=pass (google.com: domain of 0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id po1-20020a05620a384100b0076eed2a7335si491239qkn.57.2023.10.18.13.21.34
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 18 Oct 2023 13:21:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=QLUVZk2x;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=ayVlDt5y;
+       spf=pass (google.com: domain of 0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1697660494;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type;
+	bh=6Xwj8kONDup272Gi0BZMXd1tbj7KOOG3rbMECZn0xuc=;
+	b=QLUVZk2xVvAIP5fW/ZdmiWV+vvBRVlLPB6FA5Yb6pp2FX86oRDRJn1DShxnCIwmA
+	X6bp3aC3fdiVG/kqHUsXW5imkYzRgKo/+CfOu2853n6IuidqhmsL4mzFFiQc7N5EwmE
+	Zn2DkVx4RGysV1/sTV8Sfc8oMHxkKyEhb44GPmqg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1697660494;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=6Xwj8kONDup272Gi0BZMXd1tbj7KOOG3rbMECZn0xuc=;
+	b=ayVlDt5yy+3uh36/LBubtB/U1yrcyGUiysnakslk8GmN7uqxWgH5kYXMI9uiQODO
+	Cnu4tOD+EKTSlEDPZDPy8Jt1TYDZS15e+CgAGB+5la2hs93tCRO4VkNWPSlNe+khP+X
+	jiV6XssjDjrYZhODma49D+y+jGE21o3SLkfDxuys=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Puppeteer & Playwright arrive on Pipedream
+X-EmailOctopus-Parent-Id: 9fc5dbce-6bd0-11ee-b9d0-b146b1bfa5b0
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-10-18T19:00:39+00:00
+X-EmailOctopus-Sent-At: 2023-10-18T20:21:34+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=9fc5dbce-6bd0-11ee-b9d0-b146b1bfa5b0&pt=campaign&pv=4&spa=1697655639&t=1697660494&s=a5dca1f9c266356787b713d844854651bbd6edfa6b7bc19525a4a73e665a6bef&skipConfirmation=1>
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Wed, 18 Oct 2023 20:21:34 +0000
+Message-ID: <0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=wDDcrzQz
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.10.18-54.240.123.37
+
+--wDDcrzQz
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+You can now leverage headless browser automations with Pipedream for
+scra=
+ping, screenshots, or programmatically interacting with
+websites.=C2=
+=A0
+
+ [Pipedream] [https://pipedream.com]=20
+[A robot in an event histo=
+ry museum]
+[https://pipedream.com/docs/code/nodejs/browser-automation/#br=
+owser-automation-with-node-js]
+
+Browser automation on Pipedream [https:=
+//pipedream.com/] is here!
+
+We are excited to announce the launch of a =
+new, specialized npm
+package - @pipedream/browsers -=C2=A0that provides s=
+upport for the
+Puppeteer [https://pptr.dev/] and Playwright [https://play=
+wright.dev/]
+browser automation libraries.
+
+New capabilities include:=
+
+
+- RUN=C2=A0PUPPETEER AND PLAYWRIGHT=C2=A0in Pipedream workflows
+
+=
+- PROGRAMMATICALLY interact with websites
+
+- TAKE SCREENSHOTS, GENERATE=
+ PDFS, SCRAPE CONTENT, and more
+
+-=C2=A0Available for ALL CUSTOMERS
+=
+
+=09=09Read documentation
+[https://pipedream.com/docs/code/nodejs/brows=
+er-automation/#browser-automation-with-node-js]
+
+----------------------=
+---
+
+ HOW IT WORKS
+
+You have always been able to use npm packages=
+
+[https://pipedream.com/docs/code/nodejs/#using-npm-packages] in
+Pipedr=
+eam's Node.js code steps (and PyPI for Python
+[https://pipedream.com/docs=
+/code/python/#using-third-party-packages]
+code steps). Simply import a pa=
+ckage, and Pipedream handles
+installation and bundling.
+
+No package.j=
+son required, just focus on writing code.
+
+But Puppeteer [https://pptr.=
+dev/] and Playwright
+[https://playwright.dev/] require a browser like Chr=
+omium to run,
+which hasn=E2=80=99t been available in our execution enviro=
+nment until now.
+We've =C2=A0overcome this hurdle with a specialized npm =
+package -
+@pipedream/browsers.
+
+This package contains the exact combi=
+nations of Puppeeter, Playwright
+and Chromium that are compatible with wi=
+th Pipedream's Node.js code
+steps. Simply import the @pipedream/browsers =
+package, and launch a
+Puppeteer or Playwright browser.
+
+Below is an e=
+xample of scraping a webpage's title & HTML content:
+
+[A robot in an ev=
+ent history museum]
+[https://pipedream.com/docs/code/nodejs/browser-autom=
+ation/#browser-automation-with-node-js]
+
+More Puppeteer examples:
+
+=
+- Screenshot a webpage
+[https://pipedream.com/docs/code/nodejs/browser-au=
+tomation/#screenshot-a-webpage]
+
+-=C2=A0Generate a PDF of a webpage
+[=
+https://pipedream.com/docs/code/nodejs/browser-automation/#generate-a-pdf-o=
+f-a-webpage]
+
+- Scrape content from a webpage
+[https://pipedream.com/=
+docs/code/nodejs/browser-automation/#scrape-content-from-a-webpage]
+
+- =
+Submit a form
+[https://pipedream.com/docs/code/nodejs/browser-automation/=
+#submit-a-form]
+
+-------------------------
+
+DEMO
+
+Watch [https:=
+//www.youtube.com/watch?v=3DRXlCDTQc8xI]=C2=A0Dylan Pierce on
+the Pipedre=
+am developer relations team give a quick demo of using
+Puppeteer and Play=
+wright on Pipedream: =C2=A0
+
+[A robot in an event history museum]
+[ht=
+tps://www.youtube.com/watch?v=3DRXlCDTQc8xI]=20
+-------------------------=
+
+
+Please let us know [https://pipedream.com/support] if you see any
+b=
+ugs, want to suggest a feature, or have questions about our pricing
+plans=
+.
+
+=09=09Read documentation
+[https://pipedream.com/docs/code/nodejs/b=
+rowser-automation/#browser-automation-with-node-js]
+
+
+Warm regards, =
+
+The Pipedream Team
+
+-------------------------
+ [https://pipedream.=
+com]44 Montgomery Street
+San Francisco
+CALIFORNIA
+94104
+United Stat=
+es of America=20
+
+Unsubscribe here
+[https://alatus.eocampaign.com/unsub=
+scribe?ep=3D1&l=3D358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=3D860f934a-f025-1=
+1ed-b8ff-059d97be6197&p=3D9fc5dbce-6bd0-11ee-b9d0-b146b1bfa5b0&pt=3Dcampaig=
+n&pv=3D4&spa=3D1697655639&t=3D1697660494&s=3Da5dca1f9c266356787b713d8448546=
+51bbd6edfa6b7bc19525a4a73e665a6bef]
+--wDDcrzQz
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><title></title></head><body class=3D=
+"notranslate">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">You can now leverage headless browser automations with Pipedream for scr=
+aping, screenshots, or programmatically interacting with websites.&nbsp;</d=
+iv>
+
+<p>
+<br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica =
+Neue&quot;,sans-serif;" width=3D"100%"><tbody><tr><td>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"max-width:560px;margin:40px auto;background-color:#ffffff;padding:40=
+px 30px 40px;border-radius:15px;" width=3D"100%"><tbody><tr style=3D"width:=
+100%;"><td>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/HULtJR=
+vMLAjPh8ncMSPPd54a-Wc=3D344" rel=3D"noopener noreferrer" target=3D"_blank">=
+<img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image/=
+upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=3D=
+"display:block;outline:none;border:none;text-decoration:none;width:2.2rem;h=
+eight:2.2rem;"></a>
+<br>
+
+
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fcode%2Fnodejs%2Fbrowser-automation%2F%23browser-automation-w=
+ith-node-js/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/=
+fiQl3fAPGKwI32c2fS4NhlH1idg=3D344" rel=3D"noopener noreferrer" target=3D"_b=
+lank"><img alt=3D"A robot in an event history museum" src=3D"https://galler=
+y.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1697473091552-16974=
+73088090.png" style=3D"display: block; outline: none; border: none; text-de=
+coration: none; width: 100%; height: auto; margin: 0px 0px 15px;"></a>
+
+
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Browser automation on
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2F/1/0100018b44736321-213647d9-012b-4498-862d=
+-5719e7927c76-000000/P_SsKJj7fCH2uH6yI_UDfNQ2CQI=3D344" rel=3D"noopener nor=
+eferrer" style=3D"user-select: auto; font-family: -apple-system, &quot;syst=
+em-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, =
+&quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal=
+; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing=
+: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-s=
+pace: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); te=
+xt-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_b=
+lank">Pipedream</a> is here!</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">We are excited to announce the launch of a new, specialized npm packa=
+ge - <code>@pipedream/browsers -&nbsp;</code>that provides support for the =
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpptr.dev=
+%2F/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/KhlOQktM=
+BqfPXQ1zlsNUgT8gKvg=3D344" rel=3D"noopener noreferrer" style=3D"user-select=
+: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&q=
+uot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, s=
+ans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: nor=
+mal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-al=
+ign: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing=
+: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-colo=
+r: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(=
+52, 210, 139); font-weight: 600;" target=3D"_blank">Puppeteer</a> and <a hr=
+ef=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fplaywright.de=
+v%2F/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/q7-c2i0=
+V-SqD4WLHmB6JgIPW7Fg=3D344" rel=3D"noopener noreferrer" style=3D"user-selec=
+t: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&=
+quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, =
+sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: no=
+rmal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-a=
+lign: start; text-indent: 0px; text-transform: none; widows: 2; word-spacin=
+g: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-col=
+or: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb=
+(52, 210, 139); font-weight: 600;" target=3D"_blank">Playwright</a> browser=
+ automation libraries.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">New capabilities include:</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">- <strong>Run&nbsp;Puppeteer and Playwright</strong>&nbsp;in Pipedrea=
+m workflows</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">- <strong>Programmatically</strong> interact with websites</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">- <strong>Take screenshots, generate PDFs, scrape content</strong>, a=
+nd more</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<meta charset=3D"utf-8"><span style=3D"color: rgb(30, 41, 59); font-family:=
+ -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen=
+-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size=
+: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-ca=
+ps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-alig=
+n: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: =
+0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color:=
+ rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-st=
+yle: initial; text-decoration-color: initial; display: inline !important; f=
+loat: none;">-&nbsp;</span>Available for <strong>all customers</strong></p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td><a href=3D"http=
+s://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2F=
+code%2Fnodejs%2Fbrowser-automation%2F%23browser-automation-with-node-js/2/0=
+100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/t428Sb4IRMrObEP=
+3VysYnhG-F7s=3D344" rel=3D"noopener noreferrer" style=3D"display:inline-blo=
+ck;border-radius:0.75rem;background-color:rgb(52, 117, 210);text-align:cent=
+er;font-size:1rem;line-height:100%;font-weight:600;color:rgb(255, 255, 255)=
+;p-x:23px;p-y:11px;text-decoration:none;max-width:100%;padding:11px 23px;" =
+target=3D"_blank"><span style=3D"display:inline-block;border-radius:0.75rem=
+;background-color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-h=
+eight:120%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-w=
+idth:100%;text-decoration:none;text-transform:none;mso-padding-alt:0px;mso-=
+text-raise:8.25px;">Read documentation</span></a></td></tr></tbody></table>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);"> </p>
+
+<h1 style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">
+How it Works</h1>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">You have always been able to <a href=3D"https://sc1sc285.r.us-east-1.=
+awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fnodejs%2F%23using-=
+npm-packages/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000=
+/pQXZsxv5Gyqy4ZGBrra0PFBOXlw=3D344" rel=3D"noopener noreferrer" style=3D"us=
+er-select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;S=
+egoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue=
+&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligat=
+ures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2=
+; text-align: start; text-indent: 0px; text-transform: none; widows: 2; wor=
+d-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgr=
+ound-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: under=
+line rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">use npm packag=
+es</a> in Pipedream's Node.js code steps (and
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fpython%2F%23using-third-party=
+-packages/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/aW=
+yy_sisCIsDf_6gXU9d-MKnsXQ=3D344" rel=3D"noopener noreferrer" style=3D"user-=
+select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Sego=
+e UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&qu=
+ot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligature=
+s: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; widows: 2; word-s=
+pacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgroun=
+d-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underlin=
+e rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">PyPI for Python</=
+a> code steps). Simply import a package, and Pipedream handles installation=
+ and bundling. </p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">No <code>package.json</code> required, just focus on writing code.
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">But <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%=
+2Fpptr.dev%2F/2/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-00000=
+0/enXj8UNxFafebQAzEMY3n93Gy5s=3D344" rel=3D"noopener noreferrer" style=3D"u=
+ser-select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;=
+Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neu=
+e&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-liga=
+tures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: =
+2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; wo=
+rd-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backg=
+round-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: unde=
+rline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Puppeteer</a>=
+ and <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpla=
+ywright.dev%2F/2/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-0000=
+00/HM0-GjY_PJEBpGSR0ITjog3jFcI=3D344" rel=3D"noopener noreferrer" style=3D"=
+user-select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot=
+;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Ne=
+ue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-lig=
+atures: normal; font-variant-caps: normal; letter-spacing: normal; orphans:=
+ 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; w=
+ord-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; back=
+ground-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: und=
+erline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Playwright</=
+a> require a browser like Chromium to run, which hasn=E2=80=99t been availa=
+ble in our execution environment until now. We've &nbsp;overcome this hurdl=
+e with a specialized npm package - <code>@pipedream/browsers</code>.
+
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">This package contains the exact combinations of Puppeeter, Playwright=
+ and Chromium that are compatible with with Pipedream's Node.js code steps.=
+ Simply import the <code>@pipedre<meta http-equiv=3D"Content-Type" content=
+=3D"text/html;charset=3DUTF-8">am/browsers</code> package, and launch a Pup=
+peteer or Playwright browser.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Below is an example of scraping a webpage's title &amp; HTML content:=
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+
+
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fcode%2Fnodejs%2Fbrowser-automation%2F%23browser-automation-w=
+ith-node-js/3/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/=
+YmEGlZfAQPopEf-RurQkGjeEcHc=3D344" rel=3D"noopener noreferrer" target=3D"_b=
+lank"><img alt=3D"A robot in an event history museum" src=3D"https://galler=
+y.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1697470014321-16974=
+70013307.png" style=3D"display: block; outline: none; border: none; text-de=
+coration: none; width: 100%; height: auto; margin: 0px 0px 15px;"></a>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">More Puppeteer examples:
+
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">-
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fnodejs%2Fbrowser-automation%2=
+F%23screenshot-a-webpage/1/0100018b44736321-213647d9-012b-4498-862d-5719e79=
+27c76-000000/ponpoGCnwIzbhM9NZ0sX7gB0bGk=3D344" rel=3D"noopener noreferrer"=
+ style=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&qu=
+ot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;He=
+lvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-v=
+ariant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal=
+; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; wi=
+dows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: no=
+rmal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decor=
+ation: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Sc=
+reenshot a webpage</a></p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<meta charset=3D"utf-8">-&nbsp;<a href=3D"https://sc1sc285.r.us-east-1.awst=
+rack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fnodejs%2Fbrowser-autom=
+ation%2F%23generate-a-pdf-of-a-webpage/1/0100018b44736321-213647d9-012b-449=
+8-862d-5719e7927c76-000000/90ifhnSspRUtORC1wNT4Q8Dg89g=3D344" rel=3D"noopen=
+er noreferrer" style=3D"user-select: auto; font-family: -apple-system, &quo=
+t;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Canta=
+rell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: =
+normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-s=
+pacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-trans=
+form: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; w=
+hite-space: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, =
+0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=
+=3D"_blank">Generate a PDF of a webpage</a></p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">-
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fnodejs%2Fbrowser-automation%2=
+F%23scrape-content-from-a-webpage/1/0100018b44736321-213647d9-012b-4498-862=
+d-5719e7927c76-000000/KvcRmukVykw_x3kgxW9brL3n6Jk=3D344" rel=3D"noopener no=
+referrer" style=3D"user-select: auto; font-family: -apple-system, &quot;sys=
+tem-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell,=
+ &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: norma=
+l; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacin=
+g: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform:=
+ none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-=
+space: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); t=
+ext-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_=
+blank">Scrape content from a webpage</a></p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">-
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fnodejs%2Fbrowser-automation%2=
+F%23submit-a-form/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-0=
+00000/foNzu6lLAiDLuyDECSNMHgRX-tY=3D344" rel=3D"noopener noreferrer" style=
+=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot;, &=
+quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetic=
+a Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant=
+-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orph=
+ans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: =
+2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; =
+background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration:=
+ underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Submit a=
+ form</a></p>
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 class=3D"text-black dark:text-white text-2xl font-semibold tracking-tig=
+ht" style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Demo</h1=
+>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);"><a href=3D"https://sc1sc285.r.=
+us-east-1.awstrack.me/L0/https:%2F%2Fwww.youtube.com%2Fwatch%3Fv=3DRXlCDTQc=
+8xI/1/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/mpmH5hfx=
+xfvZV-NDvDk6NT8aB-g=3D344" rel=3D"noopener noreferrer" style=3D"user-select=
+: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&q=
+uot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, s=
+ans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: nor=
+mal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-al=
+ign: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing=
+: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-colo=
+r: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(=
+52, 210, 139); font-weight: 600;" target=3D"_blank">Watch</a>&nbsp;Dylan Pi=
+erce on the Pipedream developer relations team give a quick demo of using P=
+uppeteer and Playwright on Pipedream: &nbsp;</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+
+
+
+
+
+
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fwww.yout=
+ube.com%2Fwatch%3Fv=3DRXlCDTQc8xI/2/0100018b44736321-213647d9-012b-4498-862=
+d-5719e7927c76-000000/KMvgU_8tnc1Onj7SanxsZE-hl5o=3D344" rel=3D"noopener no=
+referrer" target=3D"_blank"><img alt=3D"A robot in an event history museum"=
+ src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b=
+%2F1697654421011-1697654405582.png" style=3D"display: block; outline: none;=
+ border: none; text-decoration: none; width: 100%; height: auto; margin: 0p=
+x 0px 15px;"></a>
+
+
+
+
+
+
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Please <a href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fsupport/1/01000=
+18b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/7Shh_SYjHmUnm3BLtr5=
+_OvWMAWQ=3D344" rel=3D"noopener noreferrer" style=3D"user-select: auto; fon=
+t-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Robot=
+o, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; =
+font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-v=
+ariant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start;=
+ text-indent: 0px; text-transform: none; white-space: normal; widows: 2; wo=
+rd-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255,=
+ 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 13=
+9); font-weight: 600;" target=3D"_blank">let us know</a> if you see any bug=
+s, want to suggest a feature, or have questions about our pricing plans.</p=
+>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+<br>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mb-6" style=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td>=
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fcode%2Fnodejs%2Fbrowser-automation%2F%23browser-automation-w=
+ith-node-js/4/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/=
+oDFjwyn1rSuwQwZjSOcRhat1N_Y=3D344" rel=3D"noopener noreferrer" style=3D"dis=
+play:inline-block;border-radius:0.75rem;background-color:rgb(52, 117, 210);=
+text-align:center;font-size:1rem;line-height:100%;font-weight:600;color:rgb=
+(255, 255, 255);p-x:23px;p-y:11px;text-decoration:none;max-width:100%;paddi=
+ng:11px 23px;" target=3D"_blank"><span style=3D"display:inline-block;border=
+-radius:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font-s=
+ize:1rem;line-height:120%;font-weight:600;color:rgb(255, 255, 255);p-x:23px=
+;p-y:11px;max-width:100%;text-decoration:none;text-transform:none;mso-paddi=
+ng-alt:0px;mso-text-raise:8.25px;">Read documentation</span></a>
+<br>
+</td></tr></tbody></table>
+<br>
+
+<br>Warm regards,
+<br>The Pipedream Team
+
+<p>
+<br>
+</p>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/2/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/sfj7el=
+V-H3Ly0MocP52MoKWB-vg=3D344" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank"></a><a href=3D"https://sc1sc285.r.us-east-=
+1.awstrack.me/L0/https:%2F%2Fpipedream.com/3/0100018b44736321-213647d9-012b=
+-4498-862d-5719e7927c76-000000/ulrEPY7Afe_UYblcyOtO2c6CZqQ=3D344" style=3D"=
+color:#b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">44 Mo=
+ntgomery Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United States of=
+ America</a>
+<br>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Falatus.e=
+ocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D358ac956-f01d-11ed-bcd1-db2977b1=
+fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6197%26p=3D9fc5dbce-6bd0-11ee-b=
+9d0-b146b1bfa5b0%26pt=3Dcampaign%26pv=3D4%26spa=3D1697655639%26t=3D16976604=
+94%26s=3Da5dca1f9c266356787b713d844854651bbd6edfa6b7bc19525a4a73e665a6bef/1=
+/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/J9qHvh9kYEE3L=
+QzXDvBZLJU-UQk=3D344" style=3D"font-size:14px;color:#b4becc;">Unsubscribe h=
+ere</a>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/4/0100018b44736321-213647d9-012b-4498-862d-5719e7927c76-000000/1ZfCJE=
+9uTP3zXpTViijCAtIt-2o=3D344" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank">
+<br>
+<br>
+
+
+
+
+</a>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<p>
+
+
+
+
+
+
+
+<br>
+</p>
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/0100018b44=
+736321-213647d9-012b-4498-862d-5719e7927c76-000000/3Jp1FCGFuDxfEWv-vTYPRozR=
+tyQ=3D344" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--wDDcrzQz--

@@ -1,0 +1,198 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:1b06:b0:338:10c1:b0d4 with SMTP id ed6csp3422045ljb;
+        Tue, 14 Oct 2025 11:46:25 -0700 (PDT)
+X-Received: by 2002:a05:690c:6f8f:b0:77e:47b:e847 with SMTP id 00721157ae682-780e172376amr244366777b3.46.1760467585209;
+        Tue, 14 Oct 2025 11:46:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1760467585; cv=none;
+        d=google.com; s=arc-20240605;
+        b=hQNme7MU4ohenrzrk99hDvWkxc+wI+cSebQyiAXVu8BqzY1WopvL3ZhsGnx9FWrrg/
+         JBrNUDLkSQYdmphnyrhVvszyf+wLADY8kmSFWWO1orQ8xFzwUQLaKgbiU1HbLdbM3cHq
+         h5AvY3FB19p+HOU1mtsNOf+k1cqcRzVD7plWp0aRAKzgx5xqvriyfCtgNPVr/jNIkF31
+         gZEwH6EHklx9uaiUYJw9+juNtMft7m+Ue0YgcN2jGbE08Ov+MSrQW/gpGGeyhVCnNiUb
+         yi4PGjypQ2g4SJZDSAWFtpCdyQFXifgbFCGGM+/qGfwIgjNvSucUZl6/Ht0UEN+zOD4Y
+         h4DA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:message-id:reachouttracker:feedback-id:date
+         :mime-version:dkim-signature;
+        bh=F6y7VTHSWPY6+RNU2IiRjnriNUn2Uq45c1/IdpMvzDI=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=Ru6546Z/2ek68NmHsEcN25JUlT9ZEzGAogt9tiQSvYEoGSicGHowCdxGw87gKM+LVW
+         f18BohEtHS5u7PF6YJLnYQsktXCXmgaLcvdfPAZzWXLs6Q4gOfuNPlnH8wLBav8eMsj+
+         f4GOuxVU046eVvLAjaxMSZEXUPzTJkZhB3OAtjLk73f73OPQjPNEpgDmRWH/GUwW1l/v
+         gqoWv5y4Ux/mjV9azk0fwvsZNOmt4kvNpUjI9pyREB2KPbfoiNzdYT2PEHFffGBRU5rO
+         6CXvEqJoAHJ+rhz+pVDpGEkXzCJFWQi6e7eys1RzqfjCjOIXjxWlkJIZ5kEI8uWgjW4j
+         NWAQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20230601 header.b=MxXN3d+l;
+       spf=pass (google.com: domain of 3gjruaagtc70qr-uhso1dffrxqwv.jrrjoh.frpho1.xexqwx3jpdlo.frp@identity-reachout.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3gJruaAgTC70qr-uhso1dffrxqwv.jrrjoh.frpho1.xexqwx3jpdlo.frp@identity-reachout.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3gJruaAgTC70qr-uhso1dffrxqwv.jrrjoh.frpho1.xexqwx3jpdlo.frp@identity-reachout.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id 00721157ae682-7815af7f037sor4200437b3.8.2025.10.14.11.46.25
+        for <ely.ubuntu0@gmail.com>
+        (Google Transport Security);
+        Tue, 14 Oct 2025 11:46:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3gjruaagtc70qr-uhso1dffrxqwv.jrrjoh.frpho1.xexqwx3jpdlo.frp@identity-reachout.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20230601 header.b=MxXN3d+l;
+       spf=pass (google.com: domain of 3gjruaagtc70qr-uhso1dffrxqwv.jrrjoh.frpho1.xexqwx3jpdlo.frp@identity-reachout.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3gJruaAgTC70qr-uhso1dffrxqwv.jrrjoh.frpho1.xexqwx3jpdlo.frp@identity-reachout.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=accounts.google.com; s=20230601; t=1760467585; x=1761072385; dara=google.com;
+        h=to:from:subject:message-id:reachouttracker:feedback-id:date
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=F6y7VTHSWPY6+RNU2IiRjnriNUn2Uq45c1/IdpMvzDI=;
+        b=MxXN3d+lSMFtnlMfKR4WGPVfbi1XB9SBKvpDwMMJ6/dYfYttELWItS+HpLqi60QWWx
+         hvcfFYyaeU4o/Oz6er99LBEqWQkUjyqzNO2JF66QMlrWP+4bmUwLvQEclWyZiRfF1Eux
+         kEee6EQXnnHsKZotc5SCjDDnLRddV8oBcCMcSXtRyUabB6Xyk+rXX5F4zREL+TjXZaFC
+         rAfB0iF6inr3ukeFnklwGV9DePz1pjflv0/3bXSKev0XoM7f/ut7m22ed6upj0/nV2CY
+         RbZNWOYO1IBWf3zpIuKn1zu7roLFyZEpOz9/zIoJQsyBEVEFKNjXjaxCf/26gl4SceOI
+         WIZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760467585; x=1761072385;
+        h=to:from:subject:message-id:reachouttracker:feedback-id:date
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=F6y7VTHSWPY6+RNU2IiRjnriNUn2Uq45c1/IdpMvzDI=;
+        b=Rj3107OVotcFUUpp7K4JkcIHiL9IxSTU82W2V1a/QFagaNiGFfzhGbQFrz6wiNBUWc
+         LeV9nhLp9Sb6DIwnKGVN5iyjucQg/FwCXz84wkD5Mtl5BH/IM/wTe6Bs/BryGkua8Vgs
+         U56+QJ1WyAK29spI68euF8sbLp/LfcVQ5nTuLdNeLDWfbrxZcB7Lq4irdHUpLwXpSxtI
+         77a6xImRo4YrG3BR4W26a8MlOolJRghuGYr0K3BNqmSMXS+L2HIoJEbW7liq5Ru5kO3V
+         ZVsVHT1P/1Rzvp2tuarI8spziqu68Mp+DBLVAVUsWooea4kh07mCtDfbVuX3SJ1sEUP6
+         UHOQ==
+X-Gm-Message-State: AOJu0YymT5I16JKGuAbJkRuyCCDBEZL7IrD7eIx4zLsHBahBl9Lh+oSl
+	7+FJMxHfTmAKBNs8RN+1c2NiCYQSxxNt9N6I+V3QmDTb4qYoyheHt4oYHZvOqzasY7hfH17aURh
+	gou4CvFr5QZ68gfKv/kI5hvEf+7x2mwVB6LWu/Hkvm2wavn629KNaj3wSnm48uVWOHXH3hPy8h8
+	kr6IJZvz0oFP9sP0A=
+X-Google-Smtp-Source: AGHT+IFPXt2w31anMjMMo2EnR2nM9d0qwgErGWHchIBdaXrYCvbU8gCB9Tzonh0pc4EGYMpIdAWtnqZ+eZEXABfs6CthuL/1FgNp4/BwXm7uycY=
+MIME-Version: 1.0
+X-Received: by 2002:a53:d78a:0:b0:63b:47b3:4fef with SMTP id
+ 956f58d0204a3-63ccb891feamr15754391d50.14.1760467584823; Tue, 14 Oct 2025
+ 11:46:24 -0700 (PDT)
+Date: Tue, 14 Oct 2025 18:46:23 GMT
+X-Account-Notification-Type: 325-RECOVERY
+Feedback-ID: 325-RECOVERY:account-notifier
+ReachoutTracker: AcMPBvqmq9x9PUBG5gOWQwYgsTpWDYlPB70jwRn91rZSqvbyFh2hIVqEQ5N/uA+glcdBkHCtMT6cA6cBuRQ+zJnDIaO+xHnfBw==
+X-Notifications: b08be738cafa0000
+X-Notifications-Bounce-Info: AeTnV4HceUnZknMLtRn7BERZ4fcfB7GODnW5HZka2WKxViHG07tSDaaTM7lAnpapG4OGty70S7q3aUNgaC4SAthyDqTlDDnjG4AIwHTMsNo1Tvl6IjzDzrEYv7wJiahBDQZdX8wOItOeH5lYwn3QFYGBQG5sJPNzc7PIdjW8h4TBWvf8xKZr6qvq3Vs72bF0xcI54ZEbgMgCR_6nVBcNjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <Ztrbp6Ges2tKqgSakHeNkw@notifications.google.com>
+Subject: Security alert for yousfi.wacime@gmail.com
+From: Google <no-reply@accounts.google.com>
+To: ely.ubuntu0@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000083b38064122cd9d"
+
+--000000000000083b38064122cd9d
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+VGhpcyBpcyBhIGNvcHkgb2YgYSBzZWN1cml0eSBhbGVydCBzZW50IHRvIHlvdXNmaS53YWNpbWVA
+Z21haWwuY29tLg0KZWx5LnVidW50dTBAZ21haWwuY29tIGlzIHRoZSByZWNvdmVyeSBlbWFpbCBm
+b3IgdGhpcyBhY2NvdW50LiBJZiB5b3UgZG9uJ3QNCnJlY29nbml6ZSB0aGlzIGFjY291bnQsIHJl
+bW92ZQ0KPGh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9BY2NvdW50RGlzYXZvdz9hZHQ9QU9Y
+OGtpcUlZaVpiTjczYVNhRHBsM2FCTldUbWM4Z045dU00dDZJOG5fN1pVQmNLVDlvdHRfdTA0X0hH
+TE5GakRETSZyZm49MzI1Pg0KaXQuDQpbaW1hZ2U6IEdvb2dsZV0NCkEgbmV3IHNpZ24taW4gb24g
+TGludXgNCg0KDQp5b3VzZmkud2FjaW1lQGdtYWlsLmNvbQ0KV2Ugbm90aWNlZCBhIG5ldyBzaWdu
+LWluIHRvIHlvdXIgR29vZ2xlIEFjY291bnQgb24gYSBMaW51eCBkZXZpY2UuIElmIHRoaXMNCndh
+cyB5b3UsIHlvdSBkb27igJl0IG5lZWQgdG8gZG8gYW55dGhpbmcuIElmIG5vdCwgd2XigJlsbCBo
+ZWxwIHlvdSBzZWN1cmUgeW91cg0KYWNjb3VudC4NCkNoZWNrIGFjdGl2aXR5DQo8aHR0cHM6Ly9h
+Y2NvdW50cy5nb29nbGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWlsPXlvdXNmaS53YWNpbWVAZ21h
+aWwuY29tJmNvbnRpbnVlPWh0dHBzOi8vbXlhY2NvdW50Lmdvb2dsZS5jb20vYWxlcnQvbnQvMTc2
+MDQ2NzU4MzAwMD9yZm4lM0QzMjUlMjZyZm5jJTNEMSUyNmVpZCUzRC0zNzQzMzgwMjYxMjY5MjUz
+NDI5JTI2ZXQlM0QxPg0KWW91IGNhbiBhbHNvIHNlZSBzZWN1cml0eSBhY3Rpdml0eSBhdA0KaHR0
+cHM6Ly9teWFjY291bnQuZ29vZ2xlLmNvbS9ub3RpZmljYXRpb25zDQpZb3UgcmVjZWl2ZWQgdGhp
+cyBlbWFpbCB0byBsZXQgeW91IGtub3cgYWJvdXQgaW1wb3J0YW50IGNoYW5nZXMgdG8geW91cg0K
+R29vZ2xlIEFjY291bnQgYW5kIHNlcnZpY2VzLg0KwqkgMjAyNSBHb29nbGUgTExDLCAxNjAwIEFt
+cGhpdGhlYXRyZSBQYXJrd2F5LCBNb3VudGFpbiBWaWV3LCBDQSA5NDA0MywgVVNBDQo=
+--000000000000083b38064122cd9d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><meta name=3D"format-detection" cont=
+ent=3D"email=3Dno"/><meta name=3D"format-detection" content=3D"date=3Dno"/>=
+<style nonce=3D"qTUqZFem5NrWCUEeK8ORLQ">.awl a {color: #FFFFFF; text-decora=
+tion: none;} .abml a {color: #000000; font-family: Roboto-Medium,Helvetica,=
+Arial,sans-serif; font-weight: bold; text-decoration: none;} .adgl a {color=
+: rgba(0, 0, 0, 0.87); text-decoration: none;} .afal a {color: #b0b0b0; tex=
+t-decoration: none;} @media screen and (min-width: 600px) {.v2sp {padding: =
+6px 30px 0px;} .v2rsp {padding: 0px 10px;}} @media screen and (min-width: 6=
+00px) {.mdv2rw {padding: 40px 40px;}} </style><link href=3D"//fonts.googlea=
+pis.com/css?family=3DGoogle+Sans" rel=3D"stylesheet" type=3D"text/css" nonc=
+e=3D"qTUqZFem5NrWCUEeK8ORLQ"/></head><body style=3D"margin: 0; padding: 0;"=
+ bgcolor=3D"#FFFFFF"><table width=3D"100%" height=3D"100%" style=3D"min-wid=
+th: 348px;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" lang=3D"en"><t=
+r height=3D"32" style=3D"height: 32px;"><td></td></tr><tr align=3D"center">=
+<td><div itemscope itemtype=3D"//schema.org/EmailMessage"><div itemprop=3D"=
+action" itemscope itemtype=3D"//schema.org/ViewAction"><link itemprop=3D"ur=
+l" href=3D"https://accounts.google.com/AccountChooser?Email=3Dyousfi.wacime=
+@gmail.com&amp;continue=3Dhttps://myaccount.google.com/alert/nt/17604675830=
+00?rfn%3D325%26rfnc%3D1%26eid%3D-3743380261269253429%26et%3D1"/><meta itemp=
+rop=3D"name" content=3D"Review Activity"/></div></div><table border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0" style=3D"padding-bottom: 20px; max-width=
+: 516px; min-width: 220px;"><tr><td width=3D"8" style=3D"width: 8px;"></td>=
+<td><div style=3D"background-color: #F5F5F5; direction: ltr; padding: 16px;=
+margin-bottom: 6px;"><table width=3D"100%" border=3D"0" cellspacing=3D"0" c=
+ellpadding=3D"0"><tbody><tr><td style=3D"vertical-align: top;"><img height=
+=3D"20" src=3D"https://www.gstatic.com/accountalerts/email/Icon_recovery_x2=
+_20_20.png"></td><td width=3D"13" style=3D"width: 13px;"></td><td style=3D"=
+direction: ltr;"><span style=3D"font-family: Roboto-Regular,Helvetica,Arial=
+,sans-serif; font-size: 13px; color: rgba(0,0,0,0.87); line-height: 1.6; co=
+lor: rgba(0,0,0,0.54);">This is a copy of a security alert sent to <a style=
+=3D"text-decoration: none; color: rgba(0,0,0,0.87);">yousfi.wacime@gmail.co=
+m</a>. <a style=3D"text-decoration: none; color: rgba(0,0,0,0.87);">ely.ubu=
+ntu0@gmail.com</a> is the recovery email for this account.</span> <span><sp=
+an style=3D"font-family: Roboto-Regular,Helvetica,Arial,sans-serif; font-si=
+ze: 13px; color: rgba(0,0,0,0.87); line-height: 1.6; color: rgba(0,0,0,0.54=
+);">If you don't recognize this account, <a href=3D"https://accounts.google=
+.com/AccountDisavow?adt=3DAOX8kiqIYiZbN73aSaDpl3aBNWTmc8gN9uM4t6I8n_7ZUBcKT=
+9ott_u04_HGLNFjDDM&amp;rfn=3D325" data-meta-key=3D"disavow" style=3D"text-d=
+ecoration: none; color: #4285F4;" target=3D"_blank">remove</a> it.</span></=
+span></td></tr></tbody></table></div><div style=3D"border-style: solid; bor=
+der-width: thin; border-color:#dadce0; border-radius: 8px; padding: 40px 20=
+px;" align=3D"center" class=3D"mdv2rw"><img src=3D"https://www.gstatic.com/=
+images/branding/googlelogo/2x/googlelogo_color_74x24dp.png" width=3D"74" he=
+ight=3D"24" aria-hidden=3D"true" style=3D"margin-bottom: 16px;" alt=3D"Goog=
+le"><div style=3D"font-family: &#39;Google Sans&#39;,Roboto,RobotoDraft,Hel=
+vetica,Arial,sans-serif;border-bottom: thin solid #dadce0; color: rgba(0,0,=
+0,0.87); line-height: 32px; padding-bottom: 24px;text-align: center; word-b=
+reak: break-word;"><div style=3D"font-size: 24px;">A new sign-in on Linux <=
+/div><table align=3D"center" style=3D"margin-top:8px;"><tr style=3D"line-he=
+ight: normal;"><td align=3D"right" style=3D"padding-right:8px;"><img width=
+=3D"20" height=3D"20" style=3D"width: 20px; height: 20px; vertical-align: s=
+ub; border-radius: 50%;;" src=3D"https://lh3.googleusercontent.com/a/ACg8oc=
+LpLujJ3SJFeRGXb8cJcmnZ7A3So931aEePdQ2MLdW8am5jZ6MD=3Ds96-c" alt=3D""></td><=
+td><a style=3D"font-family: &#39;Google Sans&#39;,Roboto,RobotoDraft,Helvet=
+ica,Arial,sans-serif;color: rgba(0,0,0,0.87); font-size: 14px; line-height:=
+ 20px;">yousfi.wacime@gmail.com</a></td></tr></table> </div><div style=3D"f=
+ont-family: Roboto-Regular,Helvetica,Arial,sans-serif; font-size: 14px; col=
+or: rgba(0,0,0,0.87); line-height: 20px;padding-top: 20px; text-align: cent=
+er;">We noticed a new sign-in to your Google Account on a Linux device. If =
+this was you, you don=E2=80=99t need to do anything. If not, we=E2=80=99ll =
+help you secure your account.<div style=3D"padding-top: 32px; text-align: c=
+enter;"><a href=3D"https://accounts.google.com/AccountChooser?Email=3Dyousf=
+i.wacime@gmail.com&amp;continue=3Dhttps://myaccount.google.com/alert/nt/176=
+0467583000?rfn%3D325%26rfnc%3D1%26eid%3D-3743380261269253429%26et%3D1" targ=
+et=3D"_blank" link-id=3D"main-button-link" style=3D"font-family: &#39;Googl=
+e Sans Flex&#39;,&#39;Google Sans Text&#39;,&#39;Google Sans&#39;,&#39;Noto=
+ Sans&#39;,Arial,Helvetica,sans-serif; line-height: 16px; color: #ffffff; f=
+ont-weight: 500; text-decoration: none; font-size: 14px;display:inline-bloc=
+k;padding: 12px 24px;background-color: #0b57d0; border-radius: 9999px; min-=
+width: 64px;">Check activity</a></div></div><div style=3D"padding-top: 20px=
+; font-size: 12px; line-height: 16px; color: #5f6368; letter-spacing: 0.3px=
+; text-align: center">You can also see security activity at<br><a href=3D"h=
+ttps://myaccount.google.com/notifications" style=3D"text-decoration: none; =
+color: #4285F4;" target=3D"_blank">https://myaccount.google.com/notificatio=
+ns</a></div></div><div style=3D"text-align: left;"><div style=3D"font-famil=
+y: Roboto-Regular,Helvetica,Arial,sans-serif;color: rgba(0,0,0,0.54); font-=
+size: 11px; line-height: 18px; padding-top: 12px; text-align: center;"><div=
+>You received this email to let you know about important changes to your Go=
+ogle Account and services.</div><div style=3D"direction: ltr;">&copy; 2025 =
+Google LLC, <a class=3D"afal" style=3D"font-family: Roboto-Regular,Helvetic=
+a,Arial,sans-serif;color: rgba(0,0,0,0.54); font-size: 11px; line-height: 1=
+8px; padding-top: 12px; text-align: center;">1600 Amphitheatre Parkway, Mou=
+ntain View, CA 94043, USA</a></div></div></div></td><td width=3D"8" style=
+=3D"width: 8px;"></td></tr></table></td></tr><tr height=3D"32" style=3D"hei=
+ght: 32px;"><td></td></tr></table></body></html>
+--000000000000083b38064122cd9d--

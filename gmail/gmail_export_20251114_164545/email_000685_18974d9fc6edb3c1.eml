@@ -1,0 +1,644 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:abe:ff07:0:b0:379:416a:5373 with SMTP id v7csp1624289vlj;
+        Thu, 20 Jul 2023 12:49:50 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHo+X1TSUibc4ItPZLe6xKg9Op6ZT5JwkII4O8NzguJauv3gQsb7wZ7JnJuO3HpM8yX+7L8
+X-Received: by 2002:a05:622a:450:b0:405:49ac:4c5d with SMTP id o16-20020a05622a045000b0040549ac4c5dmr63692qtx.41.1689882590306;
+        Thu, 20 Jul 2023 12:49:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689882590; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rV9o64wPc/M1+Z9pFZOYH7K1KKuuaw+as7JOlEyvuC0E34E4YJdftPSgDNj+BVEWJN
+         YS1vqq95lubifrtVOaMIebPbZSdMlt90YyBD301Bkk9lyOZOJ0JUeaZ9YFICcJp+uuLc
+         ItqnOXWc+aAAYqHHcVjPso2TfQ6M4NG1WQ/bzskLC3ll74UAmoUz5fVcSs3sqwmbuhHc
+         WBHlgussIpN2IWfNYcr69Rd1T3H2Z+12UT/TT1DbpEy8Mv9DF7i15IYO47n1pw5zpVOi
+         Rx31x9qgbRgMhNWI+JsiHeIVn53JWDUizulT/7zTo9edisvxgbboHHSohLMnFymRZGFx
+         7X1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe:subject
+         :to:from:dkim-signature:dkim-signature;
+        bh=M6l/l1et8eXYxiIIKClahkgdteyVMMLIszcXS8y480s=;
+        fh=OqqxkZup079oYd282Wd2h8OFFbYR9yMd26X8sFVLQ1E=;
+        b=HoPXviiPNqZlJCf4Y5z0ehKmSWv70K8TaweJ6f22sEcuPIIUmDzh0uqm1Q86qsF+5U
+         lqUJM0iU64ZU6ldwq2rOse1UNx6d5t/XNwnmsH+k/j16F22J6kSZRMA19Ak1DUMnx+Ll
+         d6QhHk3yfsclInZZc1NeKx1LdYR00Oiy9TJ2Qu1mlMNxtMBxQ7Fxa7zybaq8nHurwJyF
+         HVm/ArrQry5rIMgTPqv7krNbH1zizhp1iaaFg1KbwPvmEXksSXiDX5JWc80xx8UHOCna
+         GjbhrZ9Psl6nkS/KazEwyeCeHu8Ymsb1DRRvUFkPkBjfIZLCpSaMieb8pdUrIzR2GAaZ
+         cxiQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=Z+pJomMW;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b="VDM/E0Fe";
+       spf=pass (google.com: domain of 0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) smtp.mailfrom=0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000@em1234.pipedream.com>
+Received: from a123-36.smtp-out.amazonses.com (a123-36.smtp-out.amazonses.com. [54.240.123.36])
+        by mx.google.com with ESMTPS id s12-20020a05622a178c00b00403ab0d6550si665053qtk.213.2023.07.20.12.49.48
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 20 Jul 2023 12:49:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) client-ip=54.240.123.36;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=Z+pJomMW;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b="VDM/E0Fe";
+       spf=pass (google.com: domain of 0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) smtp.mailfrom=0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1689882588;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type;
+	bh=M6l/l1et8eXYxiIIKClahkgdteyVMMLIszcXS8y480s=;
+	b=Z+pJomMWmbFejp8YlaZwanXGcJ1XJaX5oyq6vcRLKKZMpR780/CyLoIO++Q7Ofrn
+	Fn47zEZ4R5VPvbk7EOthJgeilLSwKgApofTRdIsZl2CNtfXtIFHWkl3Mp7nUkIA5mWq
+	w+Lt8SZPKHKJHj/CPW9x46ABNaqJ1MXkdBsasg4M=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1689882588;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=M6l/l1et8eXYxiIIKClahkgdteyVMMLIszcXS8y480s=;
+	b=VDM/E0FeF1wgZfnYrJJaA0ekt2dtoBwDtL4BiKejJ8pKbbZm+37gHUTzG3GMv/fg
+	akEr5L+LHrA+eO+HYYywBf0rcu74+fiwK5I7JWj2fgNMjQCU+OvnYvY2awRQkAIeOVo
+	uwY6RZSQ+b3yp+QWOQ4JnTqpcWrvMebolIFhHpSg=
+From: Tod Sacerdoti <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Meet the new Event History
+X-EmailOctopus-Parent-Id: 4a464a68-ffdc-11ed-9f9e-e16c602344af
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-07-20T18:37:34+00:00
+X-EmailOctopus-Sent-At: 2023-07-20T19:49:48+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=4a464a68-ffdc-11ed-9f9e-e16c602344af&pt=campaign&pv=4&spa=1689878254&t=1689882588&s=d3d2ed8d2836c7d145d10ccaffca010ad51a237bf903ebc28a39e590d0fa6073&skipConfirmation=1>
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Thu, 20 Jul 2023 19:49:48 +0000
+Message-ID: <0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=VKFHO3L6
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.07.20-54.240.123.36
+
+--VKFHO3L6
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Pipedream has a new and improved event history that enables you to
+filter=
+ events by workflow, status, and specific time ranges.=C2=A0
+
+ [Pipedre=
+am] [https://pipedream.com]=20
+
+[A robot in an event history museum]
+[h=
+ttps://pipedream.com/docs/event-history/#event-history]=20
+
+MEET THE NEW =
+EVENT HISTORY
+
+Monitor all Pipedream [https://pipedream.com] workflow e=
+vents, across
+all workflows, in the new Event History
+[https://pipedrea=
+m.com/event-history] dashboard.=20
+
+- FILTER EVENTS by workflow, status o=
+r time
+
+- Upgrade [https://pipedream.com/pricing] for 30 days OF EXTEND=
+ED
+EVENT HISTORY
+
+- Read the documentation
+[https://pipedream.com/d=
+ocs/event-history/#event-history]
+
+ =09=09See Event History [https://pi=
+pedream.com/event-history]
+
+-------------------------
+
+FILTERING BY=
+ STATUS
+
+The Status filter [https://pipedream.com/event-history] contro=
+ls which
+events are shown by their status.
+
+[A demo of sharing a work=
+flow] [https://pipedream.com/event-history]=20
+-------------------------
+=
+
+FILTERING BY TIME FRAME
+
+Include workflow events started within the =
+defined range
+[https://pipedream.com/event-history].
+
+[A demo of shar=
+ing a workflow] [https://pipedream.com/event-history]=20
+------------------=
+-------
+
+FILTERING BY WORKFLOW
+
+Filter events [https://pipedream.co=
+m/event-history] by a specific
+workflow. You can search by the workflow's=
+ name in the search bar in
+the top right.
+
+[A demo of sharing a workf=
+low] [https://pipedream.com/event-history]=20
+-------------------------
+=
+
+INSPECTING EVENTS
+
+Clicking on an individual event [https://pipedrea=
+m.com/event-history]
+will open a panel that displays the steps executed, =
+their
+configurations, overall performance and results.
+
+[A demo of sh=
+aring a workflow] [https://pipedream.com/event-history]=20
+
+Please reach =
+out
+[https://join.slack.com/t/pipedream-users/shared_invite/zt-11sazmsg0-=
+oS2VW~mZfhtk3XfEEvb~JA]
+if you'd like to see any other improvements, or h=
+ave other feature
+requests.
+
+ =09=09See Event History [https://pipedr=
+eam.com/event-history]
+
+Warm regards,=20
+The Pipedream Team
+
+------=
+-------------------
+ [https://pipedream.com]44 Montgomery Street
+San Fr=
+ancisco
+CALIFORNIA
+94104
+United States of America=20
+
+Unsubscribe h=
+ere
+[https://alatus.eocampaign.com/unsubscribe?ep=3D1&l=3D358ac956-f01d-1=
+1ed-bcd1-db2977b1fcef&lc=3D860f934a-f025-11ed-b8ff-059d97be6197&p=3D4a464a6=
+8-ffdc-11ed-9f9e-e16c602344af&pt=3Dcampaign&pv=3D4&spa=3D1689878254&t=3D168=
+9882588&s=3Dd3d2ed8d2836c7d145d10ccaffca010ad51a237bf903ebc28a39e590d0fa607=
+3]
+--VKFHO3L6
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head>
+=09=09<title></title>
+=09</head>
+=09<body class=3D"notranslate">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=09=09<div style=3D"display:none; font-size:0px; line-height:0px; max-heigh=
+t:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hi=
+de:all;">Pipedream has a new and improved event history that enables you to=
+ filter events by workflow, status, and specific time ranges.&nbsp;</div>
+
+=09=09<p>
+
+
+=09=09=09<meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DU=
+TF-8">
+=09=09</p>
+
+=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helv=
+etica Neue&quot;,sans-serif;" width=3D"100%">
+=09=09=09<tbody>
+=09=09=09=09<tr>
+=09=09=09=09=09<td>
+
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"max-width:560px;margin:40px auto;background-color:=
+#ffffff;padding:40px 30px 40px;border-radius:15px;" width=3D"100%">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr style=3D"width:100%;">
+=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/1/0100018974d9f567-e3d138cd-2f00-4218-b=
+ebc-a4863d86503e-000000/FcPezAecqwtf7oMwCJ9fZwc9SPk=3D331" rel=3D"noopener =
+noreferrer" target=3D"_blank"><img alt=3D"Pipedream" src=3D"https://res.clo=
+udinary.com/pipedreamin/image/upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_=
+400x400_1_sqhs70.jpg" style=3D"display:block;outline:none;border:none;text-=
+decoration:none;width:2.2rem;height:2.2rem;"></a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fevent-history%2F%23event-histo=
+ry/1/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/6oLoBitMi=
+2lDehI0p5p5wzQk5G0=3D331" rel=3D"noopener noreferrer" target=3D"_blank"><im=
+g alt=3D"A robot in an event history museum" src=3D"https://res.cloudinary.=
+com/pipedreamin/image/upload/v1685559529/eventhistory_dppne2.png" style=3D"=
+display: block; outline: none; border: none; text-decoration: none; width: =
+100%; height: auto; margin: 0px 0px 15px;"></a>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1.4rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);=
+"><strong>Meet the new Event History</strong></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+Monitor all <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2=
+F%2Fpipedream.com/2/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-0=
+00000/sOyJ0O2gjPT4SeUzSMmIxdYqa60=3D331" rel=3D"noopener noreferrer" style=
+=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot;, &=
+quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetic=
+a Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant=
+-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orph=
+ans: 2; text-align: start; text-indent: 0px; text-transform: none; white-sp=
+ace: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration:=
+ underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Pipedrea=
+m</a> workflow events, across all workflows, in the new
+=09=09=09=09=09=09=09=09=09=09=09<meta charset=3D"utf-8"><a href=3D"https:/=
+/sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fevent-hist=
+ory/1/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/8MkyEAB6=
+gf59q_IdtG2cQV2j5Mo=3D331" rel=3D"noopener noreferrer" style=3D"user-select=
+: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&q=
+uot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, s=
+ans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: nor=
+mal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-al=
+ign: start; text-indent: 0px; text-transform: none; white-space: normal; wi=
+dows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-colo=
+r: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(=
+52, 210, 139); font-weight: 600;" target=3D"_blank">Event History</a> dashb=
+oard.
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <strong>Filter events</strong> by workfl=
+ow, status or time</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <a href=3D"https://sc1sc285.r.us-east-1.=
+awstrack.me/L0/https:%2F%2Fpipedream.com%2Fpricing/1/0100018974d9f567-e3d13=
+8cd-2f00-4218-bebc-a4863d86503e-000000/uTbc5rxUU6BOreOYnJAP7yBUnQ0=3D331" r=
+el=3D"noopener noreferrer" style=3D"color:rgb(0, 0, 0);text-decoration:none=
+;font-weight:600;text-decoration-line:underline;text-decoration-color:#34D2=
+8B;" target=3D"_blank">Upgrade</a> for 30 days <strong>of extended event hi=
+story</strong></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <a href=3D"https://sc1sc285.r.us-east-1.=
+awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fevent-history%2F%23event-=
+history/2/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/KAYj=
+Uy34lUItLY2MURRxlEANhdQ=3D331" rel=3D"noopener noreferrer" style=3D"color:r=
+gb(0, 0, 0);text-decoration:none;font-weight:600;text-decoration-line:under=
+line;text-decoration-color:#34D28B;" target=3D"_blank">Read the documentati=
+on</a></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"mb-6" style=3D"margin-bottom:1.5rem;" =
+width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<td><a class=3D"bg-button rounded-xl=
+ font-semibold text-white text-base text-center block" href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fevent-history/2=
+/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/hd1EMkqbELNBN=
+QXlIYgCoe51Xwo=3D331" style=3D"display:inline-block;border-radius:0.75rem;b=
+ackground-color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-hei=
+ght:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;text-de=
+coration:none;max-width:100%;padding:11px 23px;" target=3D"_blank"><span st=
+yle=3D"display:inline-block;border-radius:0.75rem;background-color:rgb(52, =
+117, 210);text-align:center;font-size:1rem;line-height:120%;font-weight:600=
+;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;text-decoration:=
+none;text-transform:none;mso-padding-alt:0px;mso-text-raise:8.25px;">See Ev=
+ent History</span></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<h1 class=3D"text-black dark:text-white text-=
+2xl font-semibold tracking-tight" style=3D"font-size:1.5rem;line-height:2re=
+m;font-weight:600;letter-spacing:-0.025em;color:rgb(0, 0, 0);prefers-color-=
+scheme:dark){.dark\;">Filtering by status</h1>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+The <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipe=
+dream.com%2Fevent-history/3/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d=
+86503e-000000/vjPWaEg3PUgQoIC8mlF_rmiiBAo=3D331" rel=3D"noopener noreferrer=
+" style=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&q=
+uot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;H=
+elvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-=
+variant-ligatures: normal; font-variant-caps: normal; letter-spacing: norma=
+l; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; w=
+hite-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width=
+: 0px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-deco=
+ration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">S=
+tatus filter</a> controls which events are shown by their status. </p>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fevent-history/4/0100018974d9f567-e3d1=
+38cd-2f00-4218-bebc-a4863d86503e-000000/1zD2inViIbgD1l1tzu0KyMm_vjA=3D331" =
+rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of sharing=
+ a workflow" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-=
+4f354f26462b%2F1689874930008-1689874928665.png" style=3D"display: block; ou=
+tline: none; border-width: 1px; text-decoration: none; width: 100%; height:=
+ auto; margin: 0px 0px 15px;" class=3D"fr-bordered"></a>
+
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<h1 class=3D"text-black dark:text-white text-=
+2xl font-semibold tracking-tight" style=3D"font-size:1.5rem;line-height:2re=
+m;font-weight:600;letter-spacing:-0.025em;color:rgb(0, 0, 0);prefers-color-=
+scheme:dark){.dark\;">Filtering by Time Frame</h1>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+Include workflow events started within <a href=3D"https://sc1sc285.r.us-eas=
+t-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fevent-history/5/0100018974d9=
+f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/99nBVGp4tq2mDBgOUO9XAdR-Fv=
+w=3D331" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-famil=
+y: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxyg=
+en-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-si=
+ze: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-=
+caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-i=
+ndent: 0px; text-transform: none; white-space: normal; widows: 2; word-spac=
+ing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 2=
+55); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); fon=
+t-weight: 600;" target=3D"_blank">the defined range</a>.</p>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fevent-history/6/0100018974d9f567-e3d1=
+38cd-2f00-4218-bebc-a4863d86503e-000000/WZEqa7P8Owuf7IGMgpu3G_DVKnA=3D331" =
+rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of sharing=
+ a workflow" src=3D"https://res.cloudinary.com/pipedreamin/image/upload/v16=
+83747452/docs/docs/event%20histories/CleanShot_2023-05-10_at_15.37.01_2x_ox=
+b07m.png" style=3D"display: block; outline: none; border-width: 0px; text-d=
+ecoration: none; width: 100%; height: auto; margin: 0px 0px 15px;" class=3D=
+"fr-bordered"></a>
+
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<h1 class=3D"text-black dark:text-white text-=
+2xl font-semibold tracking-tight" style=3D"font-size:1.5rem;line-height:2re=
+m;font-weight:600;letter-spacing:-0.025em;color:rgb(0, 0, 0);prefers-color-=
+scheme:dark){.dark\;">Filtering by Workflow</h1>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fevent-history/7/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d8650=
+3e-000000/AwHaS5nlOyL-mKjcZbjAhM6RsA0=3D331" rel=3D"noopener noreferrer" st=
+yle=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot;=
+, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helve=
+tica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; o=
+rphans: 2; text-align: start; text-indent: 0px; text-transform: none; white=
+-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0p=
+x; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decorati=
+on: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Filte=
+r events</a> by a specific workflow. You can search by the workflow's name =
+in the search bar in the top right.</p>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fevent-history/8/0100018974d9f567-e3d1=
+38cd-2f00-4218-bebc-a4863d86503e-000000/_Ix-Zgmk-4yQVxavoWDAEq2PMF4=3D331" =
+rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of sharing=
+ a workflow" src=3D"https://res.cloudinary.com/pipedreamin/image/upload/v16=
+83747588/docs/docs/event%20histories/CleanShot_2023-05-10_at_15.39.30_2x_yo=
+a1k6.png" style=3D"display: block; outline: none; border-width: 0px; text-d=
+ecoration: none; width: 100%; height: auto; margin: 0px 0px 15px;" class=3D=
+"fr-bordered"></a>
+
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<h1 class=3D"text-black dark:text-white text-=
+2xl font-semibold tracking-tight" style=3D"font-size:1.5rem;line-height:2re=
+m;font-weight:600;letter-spacing:-0.025em;color:rgb(0, 0, 0);prefers-color-=
+scheme:dark){.dark\;">Inspecting Events</h1>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fevent-history/9/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d8650=
+3e-000000/rzX3AcqUcuzQ4vcxPqcMdU35lwI=3D331" rel=3D"noopener noreferrer" st=
+yle=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot;=
+, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helve=
+tica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; o=
+rphans: 2; text-align: start; text-indent: 0px; text-transform: none; white=
+-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0p=
+x; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decorati=
+on: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Click=
+ing on an individual event</a> will open a panel that displays the steps ex=
+ecuted, their configurations, overall performance and results.</p>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fevent-history/10/0100018974d9f567-e3d=
+138cd-2f00-4218-bebc-a4863d86503e-000000/hO6Og28YKMmFp7Sfy_Mmnc1atZ4=3D331"=
+ rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of sharin=
+g a workflow" src=3D"https://res.cloudinary.com/pipedreamin/image/upload/v1=
+683748495/docs/docs/event%20histories/CleanShot_2023-05-10_at_15.53.44_2x_t=
+30gsb.png" style=3D"display: block; outline: none; border-width: 0px; text-=
+decoration: none; width: 100%; height: auto; margin: 0px 0px 15px;" class=
+=3D"fr-bordered"></a>
+
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+Please <a class=3D"underline decoration-brand font-semibold text-black" hre=
+f=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fjoin.slack.com=
+%2Ft%2Fpipedream-users%2Fshared_invite%2Fzt-11sazmsg0-oS2VW~mZfhtk3XfEEvb~J=
+A/1/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/4gq-TyEzbi=
+MydglKBTgTDm9PTnQ=3D331" style=3D"color:rgb(0, 0, 0);text-decoration:none;f=
+ont-weight:600;text-decoration-line:underline;text-decoration-color:#34D28B=
+;" target=3D"_blank">reach out</a> if you'd like to see any other improveme=
+nts, or have other feature requests.</p>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"mb-6" style=3D"margin-bottom:1.5rem;" =
+width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<td><a class=3D"bg-button rounded-xl=
+ font-semibold text-white text-base text-center block" href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fevent-history/1=
+1/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/VY0rJ2rfpvRe=
+y3pvGx7yjdI63Tk=3D331" style=3D"display:inline-block;border-radius:0.75rem;=
+background-color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-he=
+ight:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;text-d=
+ecoration:none;max-width:100%;padding:11px 23px;" target=3D"_blank"><span s=
+tyle=3D"display:inline-block;border-radius:0.75rem;background-color:rgb(52,=
+ 117, 210);text-align:center;font-size:1rem;line-height:120%;font-weight:60=
+0;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;text-decoration=
+:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:8.25px;">See E=
+vent History</span></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<br>Warm regards,
+=09=09=09=09=09=09=09=09=09=09<br>The Pipedream Team
+
+=09=09=09=09=09=09=09=09=09=09<p>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/3/0100018974d9f567-e3d138cd-2f00-4218-b=
+ebc-a4863d86503e-000000/uh3jte8jMwLknem4iPLjuZp9xd4=3D331" style=3D"color:#=
+b4becc;text-decoration:none;font-size:14px;" target=3D"_blank"></a><a href=
+=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com/4=
+/0100018974d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/jQE7YTdJYdyon=
+wBDnJKV_XCkt3o=3D331" style=3D"color:#b4becc;text-decoration:none;font-size=
+:14px;" target=3D"_blank">44 Montgomery Street<br>San Francisco<br>CALIFORN=
+IA<br>94104<br>United States of America</a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Falatus.eocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D35=
+8ac956-f01d-11ed-bcd1-db2977b1fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6=
+197%26p=3D4a464a68-ffdc-11ed-9f9e-e16c602344af%26pt=3Dcampaign%26pv=3D4%26s=
+pa=3D1689878254%26t=3D1689882588%26s=3Dd3d2ed8d2836c7d145d10ccaffca010ad51a=
+237bf903ebc28a39e590d0fa6073/1/0100018974d9f567-e3d138cd-2f00-4218-bebc-a48=
+63d86503e-000000/oCHfhjJmo-dCetatflSGK_Bgugg=3D331" style=3D"font-size:14px=
+;color:#b4becc;">Unsubscribe here</a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/5/0100018974d9f567-e3d138cd-2f00-4218-b=
+ebc-a4863d86503e-000000/rxq7LsaeUTI3hmfDZzwvqJcMNq0=3D331" style=3D"color:#=
+b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+
+
+
+
+=09=09=09=09=09=09=09=09=09=09</a>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09</td>
+=09=09=09=09</tr>
+=09=09=09</tbody>
+=09=09</table>
+
+=09=09<p>
+
+
+
+
+
+
+
+=09=09=09<br>
+=09=09</p>
+
+
+
+
+
+
+
+
+=09
+
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/0100018974=
+d9f567-e3d138cd-2f00-4218-bebc-a4863d86503e-000000/AGvV5813ivLB5zmFdIFLku56=
+W7E=3D331" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--VKFHO3L6--

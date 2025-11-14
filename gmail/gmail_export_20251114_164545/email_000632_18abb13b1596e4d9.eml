@@ -1,0 +1,480 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6124:587:b0:382:28f0:b1e6 with SMTP id l7csp858799vlo;
+        Thu, 21 Sep 2023 21:09:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF7qdklIBvlpvLtk5II9ZzW9lkJonhsXplHZEaT6GRF9UIE7CzE7+HVHKZ4mduOkgm0Blfa
+X-Received: by 2002:a17:907:7898:b0:9ae:524a:ae8f with SMTP id ku24-20020a170907789800b009ae524aae8fmr4994406ejc.36.1695355744329;
+        Thu, 21 Sep 2023 21:09:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695355744; cv=none;
+        d=google.com; s=arc-20160816;
+        b=e1umq2iJm4Bb1sVdzYEAmmxG7uhiN3fYK+2bekmSKjamqyMrRugwbKDzdtwfXxc2r7
+         f+zjDTjAZ8kS/64oBCx4LL9bbrzk7OE67EIuEuMh9inbGe+7TOmek2uogFxFhbn3CPGj
+         Z6z/JZ+P1/A5cxPDZ/jiLy3pZVIJoUfZoyZQkVoGx8kwlf+kwTMJA4SILVOJVA8B8Q09
+         MZF5OEb+XBgZGT9Scvuq+veMPhs+CHKJ44WLQ0CQa54gBdYIz59HFSc7bRFmek3Haqpb
+         tqIrtCOrj1wyaGonZCoytWCs6VsWtc3fmEai1IF9ngTyBj7MEsAXMK/Jc2gpNe1v+ji0
+         zpcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=jZW9Nxj9zCH/tWOp3YM/1X1m6haMzhU/BfQe2ryuZCw=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=tmshFjTlsXZ7gJHJawmdkRpTu27hDmZJOvhQ/sbp/itsBaKjsFxZiymroEQbPUYfcU
+         lGvsL7NS98i825cJIe+CjGFy2pvjGvHf2SjSNsyICgw2pktXF5C8LFLzUTnC5fvz534w
+         +y6q5bKj3oU9CfEkaD5Z2pkPesxWmFM1d4iqhDgqAUnteLuqjmD3DqoQmMdibhGDmp66
+         s7futYQak2pNMY/K48BivaA6OKBqmHHb0hk70SS/u6zkVD6yE8JHgtR0hbGkoz56nv4t
+         jsEYw90GSee9gqe/5xlMDN/ueWttbHh8XtwijkoYSitOCO16axM9diqJ00hpqbSSPxrY
+         hYdg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b="T9wPX/8D";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=jrGT84Ge;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o51.ck.n.convertkit.com (o51.ck.n.convertkit.com. [159.183.200.47])
+        by mx.google.com with ESMTPS id d10-20020a170906370a00b009a5f1d1563fsi2800204ejc.809.2023.09.21.21.09.03
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 21 Sep 2023 21:09:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) client-ip=159.183.200.47;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b="T9wPX/8D";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=jrGT84Ge;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=jZW9Nxj9zCH/tWOp3YM/1X1m6haMzhU/BfQe2ryuZCw=;
+	b=T9wPX/8DkiiNB+zU4yYZmaeWLxIRDVqnIBcQ1CHhYSMAlJ1VA0rWvIJdEaZ17YibkJhQ
+	PvhWreLnYJfpBQPxlnLK9wmrg4CXg8xdciCPiutSv1y1JhYwK4vx2lJDOv1Bq+WKkuJyZo
+	fHKtjzVHIcB1mkis4tHoxB3DKtp5hEYxI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=jZW9Nxj9zCH/tWOp3YM/1X1m6haMzhU/BfQe2ryuZCw=;
+	b=jrGT84GejqqWF+cPmk2nUaR/rMLR3xIk4gYDFvbeFYJ0VHVJIxDVqAeBO0AdB6Fwex0w
+	8C2tnf/Qh1qYyMlsgOIbNcy/UibowjWjCzlkJpNh5zErORaw6Nn2braW69Iv1oFjQaSHOl
+	yxZgL/WCQ/0MDkUoVAgm51UBb4+yxFqfc=
+Received: by filterdrecv-9c566959b-5nrq7 with SMTP id filterdrecv-9c566959b-5nrq7-1-650D135D-F
+        2023-09-22 04:09:01.735090893 +0000 UTC m=+8059690.308773661
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-37 (SG) with HTTP
+	id z0fcUZv0Syy_pT0KVKMVig
+	Fri, 22 Sep 2023 04:09:01.459 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=010cce85bcb174c91fdd3e74cbbeed1d67ea36ba69f5ef3fbc5677e8055c
+Date: Fri, 22 Sep 2023 04:09:02 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <xmur32lq24b6hr3kwm9a5h0m6vdll@convertkit-mail2.com>
+Subject: The only issue with my videos
+Precedence: bulk
+Feedback-ID: 11797018:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/xmur32lq24b6hr3kwm9a5h0m6vdll>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfQDbfj2qJAp+F5Un9?=
+ =?us-ascii?Q?FZuG0M3+1zXCFZWDWIFffFZeFYRWrT0qAmbMYvj?=
+ =?us-ascii?Q?xDHS5oDUAeKLQMVNCFHPkscGs83ur3Whrjf0ipU?=
+ =?us-ascii?Q?d+Zqm8Bi3oQL9SoE5B0sUE6x0N4fBTpjDZujIPQ?=
+ =?us-ascii?Q?gOlhqDOjie9eZe9IDNzLKZzQV+AHKC36MH6rZP?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADFVqHh0YzILIES=2FiZizLxKeC1i14Up8TiaIjZu?=
+ =?us-ascii?Q?zF9S1QYejpv0DO+45wvTdSdbrUCxefvrXeTNLep?=
+ =?us-ascii?Q?q7cBIFn4ywckaqvOifcqRE0gKNWMrppQRGPsLvP?=
+ =?us-ascii?Q?rNkTHUOLvxEDtGzvV51FhiOFOp1wAbds9RMfsQa?=
+ =?us-ascii?Q?jy70yEj9r=2Fdzl2ChgENXp3+37S21cB2m=2FBcU2sB?=
+ =?us-ascii?Q?xjw9+gJgYIMqaCPkIoLa1Z=2FlK1doxdxTDxhjLNn?=
+ =?us-ascii?Q?szFoLoAjXmOApUNXVDnrYcCn3hzL+C7C8sSEgOj?=
+ =?us-ascii?Q?TzOKcEp9u11dGCCrcjj1xk6FJewv6qssqGjLj2j?=
+ =?us-ascii?Q?OhOJqHGokW?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--010cce85bcb174c91fdd3e74cbbeed1d67ea36ba69f5ef3fbc5677e8055c
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+We just hit 700,000 subscribers on YouTube today! Thank you so
+much!!
+
+This milestone inspired me to write this email.
+
+=E2=80=8B
+
+I want to be 100% honest here.
+
+The only real drawback of my project-based videos on YouTube is
+that sometimes you can just follow along passively. You might
+relate to that.
+
+While you do learn a good amount like that, you need to get your
+hands dirty to learn the most.
+
+=E2=80=8B
+
+Because of that some say that you can just read the docs and
+you=E2=80=99ll be fine.
+
+But that=E2=80=99s worse in the long run. The docs don=E2=80=99t have the
+experience and expertise - they don=E2=80=99t explain the best practices
+and architecture the way a good dev does.
+
+You end up with a messy app which definitely isn=E2=80=99t production
+ready.
+
+=E2=80=8B
+
+Now that doesn=E2=80=99t mean you need to watch 7893 hours of tutorials
+from the crackling and fiery pits of tutorial hell.
+
+=E2=80=8B
+
+In my mind, the most efficient approach would be:
+
+a) We should follow one detailed course and build an app start to
+finish.
+
+* Learn the best practices and understand the big picture.
+* That will give us the knowledge to build all future apps.
+* While we=E2=80=99re building them we can quickly refer to ebooks, docs,
+videos or articles when needed.
+
+b) While following the course we need to be 100% sure to actively
+practice and test ourselves so we don=E2=80=99t just watch along like
+it=E2=80=99s Netflix.
+
+* How do we do that?
+
+=E2=80=8B
+
+Enter Active lessons.
+
+I added these to The Ultimate Next13 course to make sure you walk
+away an independent Next.js dev after taking it.
+
+Essentially, every few lectures is an Active lesson.
+
+In them you get written and video instructions on how to build an
+important part of the app.
+
+This gives you a chance to test your knowledge and give it a shot
+before watching the solution video for the best implementation
+(and some things you might have missed if you solved it). There
+are hints too.
+
+Each of them requires more knowledge and it gets harder
+progressively. Just like leveling up in a game.
+
+=E2=80=8B
+
+I=E2=80=99ll give you an example of the Active lessons, but before I do:
+
+Know that it=E2=80=99s not a beginner example (so don=E2=80=99t worry if yo=
+u
+don=E2=80=99t know it), though not advanced either - and you need context
+for this to make sense.
+
+=E2=80=8B
+
+By the way, the hints are hidden unless you hover :)
+
+Hope that was useful. Even if you don=E2=80=99t join the course, keep the
+need to practice actively in mind. It=E2=80=99ll go a long way to help
+your dev career =F0=9F=92=99
+
+=E2=80=8B
+
+Course comes out tomorrow!
+=E2=80=8BAdrian
+
+=E2=80=8B
+
+P.S. I was glad to hear you liked yesterday's email, which was a
+lot different from the usual ones. I got a few negative reponses
+but 10 times more overwhelmingly positive responses :)
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/xmur32lq24b6hr3kwm9a5h0m6vdll
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/xmur32lq24b6hr3kwm9a5h0m6vdll
+)
+--010cce85bcb174c91fdd3e74cbbeed1d67ea36ba69f5ef3fbc5677e8055c
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">We just hit 700,000 subscribers on YouTube today! Thank you=
+ so much!!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">This milestone inspired me to write this email.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I want to be 100% honest here.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The only real drawback of my project-based videos on YouTub=
+e is that sometimes you can just follow along passively. You might relate t=
+o that.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><em>While you do learn a good amount</em> like that, you ne=
+ed to get your hands dirty to learn the most.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Because of that some say that you can just read the docs an=
+d you=E2=80=99ll be fine.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But that=E2=80=99s worse in the long run. The docs don=E2=
+=80=99t have the experience and expertise - they don=E2=80=99t explain the =
+best practices and architecture the way a good dev does.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You end up with a messy app which definitely isn=E2=80=99t =
+production ready.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Now that doesn=E2=80=99t mean you need to watch 7893 hours =
+of tutorials from the crackling and fiery pits of tutorial hell.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>In my mind, the most efficient approach would be:</=
+strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">a) We should follow one detailed course and build an app st=
+art to finish.</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Learn the best practices and understand the big picture.</span></li=
+>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>That will give us the knowledge to build all future apps.</span></l=
+i>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>While we=E2=80=99re building them we can quickly refer to ebooks, d=
+ocs, videos or articles when needed.</span></li>
+</ul>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">b) While following the course we need to be <strong>100% su=
+re</strong> to actively practice and test ourselves so we don=E2=80=99t jus=
+t watch along like it=E2=80=99s Netflix.</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside"><li class=3D"list_item" sty=
+le=3D"padding:0 0 0 1em;margin:0;margin-left:1em"><span>How do we do that?<=
+/span></li></ul>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Enter <strong>Active lessons.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I added these to The Ultimate Next13 course to make sure yo=
+u walk away an independent Next.js dev after taking it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Essentially, every few lectures is an <em>Active lesson.</e=
+m></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">In them you get written and video instructions on how to bu=
+ild an important part of the app.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">This gives you a chance to test your knowledge and give it =
+a shot before watching the solution video for the best implementation (and =
+some things you might have missed if you solved it). There are hints too.</=
+p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Each of them requires more knowledge and it gets harder pro=
+gressively. Just like leveling up in a game.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I=E2=80=99ll give you an example of the Active lessons, but=
+ before I do:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Know that it=E2=80=99s not a beginner example (so don=E2=80=
+=99t worry if you don=E2=80=99t know it), though not advanced either - and =
+you need context for this to make sense.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/j5VvYvQS=
+j1XU5msgyxSza4/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">By the way, the hints are hidden unless you hover :)</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/h7AnH4AA=
+SPJtCJKd4w8KVe/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Hope that was useful. Even if you don=E2=80=99t join the co=
+urse, keep the need to practice actively in mind. It=E2=80=99ll go a long w=
+ay to help your dev career =F0=9F=92=99</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>Course comes out tomorrow!<br>=E2=80=8B</strong>Adr=
+ian</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">P.S. I was glad to hear you liked yesterday's email, which =
+was a lot different from the usual ones. I got a few negative reponses but =
+10 times more overwhelmingly positive responses :)</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/xmur32lq24b6hr3kwm9a5h0m6vdll" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/xmur32lq24b6hr3kwm9a5h0m6vdll" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/xmur32lq24b6hr3kwm9a5h0m6vdll=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--010cce85bcb174c91fdd3e74cbbeed1d67ea36ba69f5ef3fbc5677e8055c--

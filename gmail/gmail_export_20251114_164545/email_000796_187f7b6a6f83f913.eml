@@ -1,0 +1,162 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp1647171pxw;
+        Sun, 7 May 2023 12:35:55 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5E+uIQXiWIUsDwIhYPxjIigreaUnIQDcunudIj0tKvrWS8hWGJnnxQWbYEb++vOwPbkAOj
+X-Received: by 2002:aa7:dc01:0:b0:506:77e5:d157 with SMTP id b1-20020aa7dc01000000b0050677e5d157mr6587302edu.19.1683488155617;
+        Sun, 07 May 2023 12:35:55 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1683488155; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=ZNcU23gs1WlmNXjoboHwgK7Z9rinykVL89FzhPTIbPewrzKf00ihsveSk4+xNPFcuN
+         knQ+aKF3sMpP2RviA78alJ8LRh0n9hyi4sABO7W0EK1b18FjdfMuv77lZMH8eOsCR+uk
+         hI/pEz1pn87sOz5MRzBB4fXo1S6dDFFlcAD5UjMQqg0dSay6fLvsioJVmEIczSX4Xc/G
+         N3hzY6oFjasCHz9Iw5hckaJnxSy7AVX9BYPfZTpZATEYYRs5nlHbe4+rfhbMuZSEZbax
+         spzc6qvVpOZHm6yhwLnGHlynRp+BY2MSPT1bQxsK2AMdMpVHuY7BEibfrchFNFnhUgYs
+         mAyw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:message-id:to:subject:date:from:dkim-signature;
+        bh=rzzsPKdsOg3yZX5adHTrWV5TQoaY54EUz3kRXiZYdiA=;
+        b=odkg5rF0/beDfLvHr28pSZspbKiFmazztaOaYcJw/CLPxGvt9b5Ys0HgPo9yUNvEsL
+         iWyW0ejYJNehr/k/H00gRjxFt0t4muI6B4Q9iwuaWskNefR+oWhgNXTJ6v7EcBZBjJ2O
+         gB+98fn/QKnQF/xb18BZAnQTz24fAbI/e0SOJhPPalZdPV3ntgLZEajmypsSRHtF6KzN
+         d0EVnaROtUqBqfjgyz4WgX9MCPPfWK3f0x1W8V1wFVrDExRn+PJQoGKnwAc8S04GD4b9
+         pxXaP+78amR6ZcJTMjpRw3O7BNIgASLOJgH0I8ROQ9V7u7ra8esh1irVztIHGL6QvDpg
+         KPig==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@accountprotection.microsoft.com header.s=selector1 header.b=iQXoAodc;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of account-security-noreply@accountprotection.microsoft.com designates 2a01:111:f400:7e8c::628 as permitted sender) smtp.mailfrom=account-security-noreply@accountprotection.microsoft.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accountprotection.microsoft.com
+Return-Path: <account-security-noreply@accountprotection.microsoft.com>
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (mail-mw2nam04on20628.outbound.protection.outlook.com. [2a01:111:f400:7e8c::628])
+        by mx.google.com with ESMTPS id r14-20020a056402034e00b005067c8073casi7549160edw.135.2023.05.07.12.35.55
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 07 May 2023 12:35:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of account-security-noreply@accountprotection.microsoft.com designates 2a01:111:f400:7e8c::628 as permitted sender) client-ip=2a01:111:f400:7e8c::628;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@accountprotection.microsoft.com header.s=selector1 header.b=iQXoAodc;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of account-security-noreply@accountprotection.microsoft.com designates 2a01:111:f400:7e8c::628 as permitted sender) smtp.mailfrom=account-security-noreply@accountprotection.microsoft.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accountprotection.microsoft.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YGzgHWUM3dVz57qil5MRs23rYRx1iblRikVIqc0MLfHP7HnMbUnYBhZx5Yx0dGdvf03+7k14yUZk47ZObotZFlDbzn2QEBB7JyxLI6cFYWbdMPvRHRPmLB/+9FuH8hxnqbYoG8C0mmw2eQRwuZqPvRoPSuqak8tOi8uhQaMqZADemsEPO57Dux94jX0qgCXp5mg4TdJG2c3t9wEUuUpAzmKyWnqpc45dwBaukaJMyf1IBJtCf9v2GTaNmGCjsWkUC8AML+Z+R4e4xuI3AVP7ZPQENZAIw+LYltwfmKtaefz9mJ/T/Odr12uIna67qPVt3qxSj9VJw0yNdlKRkDo/9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rzzsPKdsOg3yZX5adHTrWV5TQoaY54EUz3kRXiZYdiA=;
+ b=Wg2ySxkEZENjhakGkIg5lJFG2dBKcAbOHrYX7CuApwkYlalXuqq5c4XuzlTgEkrbgQXojuLPpIJaAdjXn0DE28oqBH8Ke3+d9Inrcj9pGjHR67w3msznX4Grcrw5UNTZvgRgEm0LNv3WXtE3YD4TkQgZH3BGnf3ks1UCwr080jDzYnC+0TGH6os/pQ0aVf+ajEwo7mXKd1pcaYKviEuZMppYB0l1WSJfojOWiB89a6k8TRZ7sEbOlGsjH8W2JHzaVQiwPm3zB0hk0tL0UfB4ZRVFk5x7KzJUhBRU4xS4dTGkP6Ofm8/VsNI7SpEk3eDXYE3zPUrzfE0qo8HeoBwREA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none
+ action=none header.from=accountprotection.microsoft.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=accountprotection.microsoft.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rzzsPKdsOg3yZX5adHTrWV5TQoaY54EUz3kRXiZYdiA=;
+ b=iQXoAodcA8CJQm+IpK2fFnHyd3faUbGmYGOyOXR/A44DctUwu544Xicza9D0EhV64ZbYaKMIm+W0ZC0qcdBRL6VRvX7qHniSqokp9rIkEjFRnRUlRD3XMBnNb14nOISK6aTcTy+8pRs4FL4p2ou/at6ccFWlE/xfy2wT8llyOhw=
+Received: from DM6PR02CA0155.namprd02.prod.outlook.com (2603:10b6:5:332::22)
+ by SJ0PR16MB4222.namprd16.prod.outlook.com (2603:10b6:a03:325::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.31; Sun, 7 May
+ 2023 19:35:52 +0000
+Received: from DM6NAM11FT061.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:332:cafe::40) by DM6PR02CA0155.outlook.office365.com
+ (2603:10b6:5:332::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.32 via Frontend
+ Transport; Sun, 7 May 2023 19:35:52 +0000
+X-MS-Exchange-Authentication-Results: spf=none (sender IP is 52.188.222.33)
+ smtp.mailfrom=accountprotection.microsoft.com; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none
+ header.from=accountprotection.microsoft.com;
+Received: from accountprotection.microsoft.com (52.188.222.33) by
+ DM6NAM11FT061.mail.protection.outlook.com (10.13.173.138) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6363.32 via Frontend Transport; Sun, 7 May 2023 19:35:52 +0000
+From: Microsoft account team
+	<account-security-noreply@accountprotection.microsoft.com>
+Date: Sun, 07 May 2023 12:35:52 -0700
+Subject: Verify your email address
+To: ely.ubuntu0@gmail.com
+X-Priority: 3
+X-MSAPipeline: MessageDispatcherEOP
+Message-ID: <0BJZF3POVJU4.LFEXFSZUPD692@BL02EPF000016EB>
+X-MSAMetaData:
+ =?us-ascii?q?DQvcczUs1!Zv8pHVdXe8yEI0kUEw0N75a6k*qN2rSBFhrd9e3uQQWyFT!00tT?=
+ =?us-ascii?q?EG3vmpllrFUNVfsQt1638x8kaw3!G5t6BQ5a25m0zWbIJ7xgMHdpxSnYPHUmp?=
+ =?us-ascii?q?hLc5s64A$$?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=-QSgqRd+xorBeCdlW8YrzAQ=="
+Return-Path: account-security-noreply@accountprotection.microsoft.com
+X-MS-TrafficTypeDiagnostic:
+	DM6NAM11FT061:EE_FirstParty-MicrosoftAccount-V3-System|SJ0PR16MB4222:EE_FirstParty-MicrosoftAccount-V3-System
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 2b4d674e-24af-4041-1081-08db4f3244e7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	EsPfxGqlTBv2LibtzKBEFxX+cjCOB/vfFlXNyxjsrt5gNmtKfJaa8wFNHnNDUlgSwva1MF+8AwlIQXnDjkX3dODgDI+BEoEhsqMf7vJSQP6iJOSVPjMv5G5/qnhCdFF07QRr+5XEsQ26LfiSQJktcqFaFKCDFFKNMvFUf8bDud3Fy09nkVq9+2wP6iJkEUMG1hNPI5jTmsDTwYuL5nxmWJxTHP09UJaLbBFHFQ+UNht4Z8sLLX+6Oj/4Mxh9t00UTwplIPn5JeghAC+fwdnmcIXydT365UHS6Jmfq/dwBRvfAB8PUKXe/PbjWZEc18sl7AfsVl7cHCQ/P0PLA5XuvJBE18Q18Kl11ILfiIs007fkDmmaZJGusViGflCtkqh7LwShtTi/vTQFVHrOwOjZ4Yg8XT5dBR3ALF3xDH9sDIcp6GoShihPvEtYmwl4EtHwaWcoMRgPgnEYvyiR0aSWv/lL89wUJgslwI0f8MTzKaJX5U2y0bzCxIjUDcfvnjjJ5e3k7bMj05IiWCMh5PjQX+WwKh02AUfsCR+FTxWr2Ja8vmkW0uud15Qvi9r6xiRMThQ8Yt647Dmu33sidFs2ckpfYUb6B36RuwjxCfZUGaY50RBk2RKqbmPuYUZFs4Y7IG54o0ZYTL+us6TTQ4mIgmUN8FjCvz+Y6JG4HXNraYYQpllv4u5ZBKfx7N+eNXmU
+X-Forefront-Antispam-Report:
+	CIP:52.188.222.33;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:accountprotection.microsoft.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230028)(7916004)(376002)(396003)(136003)(346002)(39860400002)(42606007)(47530400004)(451199021)(2906002)(41300700001)(36736006)(8676002)(8936002)(316002)(15650500001)(66899021)(10290500003)(6916009)(5660300002)(68406010)(478600001)(33964004)(6486002)(121820200001)(118246002)(6512007)(9686003)(26005)(186003)(33716001)(356005)(52230400001)(956004)(336012)(83380400001)(3480700007)(33656002)(9316004)(86362001)(81166007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	ULw+Pq9+7yRqSZV7ucwog3nDwQ40JIqOxIHZI+UqMQiKoJqKDZxDPbyS1flEsoI/a+nt9aFN8S3RM/Mv9loEIGqTcCuTvAjRHWQHIbfteDDNw8c3lYyzzR0kdP1xKY6IBJUJaRYrKm6zr4iHht4Zol1KImprdoMSpvpQXyR2TUul0DBHzSYdFqAICDUkPicvmi3wvX2DeebbD8msQBfltezfgT9mf0pnivD51fgbbw3e2RfIKId5nV04NhqxJlvu31QaMM82hlsytTSTDRb4H9mawqczojajkPcGXA4b8zyN7m84WsHCI4PUamqqzqZ4OgvzyTt8YOSmBzDPLu/EAFYPw1+b+st8nV4YK8bEsqEWtJTisOH4eczYYnqRuk6f3utXos74YopClocMbzUJfIO/tmocMj3L3uYvicz+mVW5nlLB86hg2RpxBLcp7Hlu6xtLrUVzFp5+g54Fq5yNxWD0g5yWa0LHfBfT1EZLiIPc4u2oo77BXjwW9okl9piIYXB/BLv+WJVofv1iNYynlA==
+X-OriginatorOrg: accountprotection.microsoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2023 19:35:52.4760
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2b4d674e-24af-4041-1081-08db4f3244e7
+X-MS-Exchange-CrossTenant-Id: 5ba90553-c2cd-460e-b5fd-ab93ad9155c7
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=5ba90553-c2cd-460e-b5fd-ab93ad9155c7;Ip=[52.188.222.33];Helo=[accountprotection.microsoft.com]
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-DM6NAM11FT061.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR16MB4222
+
+--=-QSgqRd+xorBeCdlW8YrzAQ==
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Microsoft account
+
+Verify your email address
+
+To finish setting up your Microsoft account, we just need to make sure this email address is yours.
+
+To verify your email address use this security code: 5107
+
+If you didn't request this code, you can safely ignore this email. Someone else might have typed your email address by mistake.
+
+Thanks,
+The Microsoft account team 
+--=-QSgqRd+xorBeCdlW8YrzAQ==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr"> 
+<head>
+<style type="text/css">
+ .link:link, .link:active, .link:visited {
+       color:#2672ec !important;
+       text-decoration:none !important;
+ }
+
+ .link:hover {
+       color:#4284ee !important;
+       text-decoration:none !important;
+ }
+</style>
+<title></title>
+</head>
+<body>
+<table dir="ltr">
+      <tr><td id="i1" style="padding:0; font-family:'Segoe UI Semibold', 'Segoe UI Bold', 'Segoe UI', 'Helvetica Neue Medium', Arial, sans-serif; font-size:17px; color:#707070;">Microsoft account</td></tr>
+      <tr><td id="i2" style="padding:0; font-family:'Segoe UI Light', 'Segoe UI', 'Helvetica Neue Medium', Arial, sans-serif; font-size:41px; color:#2672ec;">Verify your email address</td></tr>
+      <tr><td id="i4" style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">To finish setting up your Microsoft account, we just need to make sure this email address is yours.</td></tr>
+      <tr><td style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">To verify your email address use this security code: <span style="font-family:'Segoe UI Bold', 'Segoe UI Semibold', 'Segoe UI', 'Helvetica Neue Medium', Arial, sans-serif; font-size:14px; font-weight:bold; color:#2a2a2a;">5107</span></td></tr>
+      <tr><td id="i6" style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">If you didn't request this code, you can safely ignore this email. Someone else might have typed your email address by mistake.</td></tr>
+      <tr><td style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">Thanks,</td></tr>
+      <tr><td id="i8" style="padding:0; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">The Microsoft account team</td></tr>
+</table>
+</body>
+</html>
+--=-QSgqRd+xorBeCdlW8YrzAQ==--

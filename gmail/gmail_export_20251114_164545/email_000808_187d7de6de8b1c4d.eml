@@ -1,0 +1,916 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp4948pxw;
+        Mon, 1 May 2023 08:11:31 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4WdJ4ESkQi+rsRa/zugrqUKNqkn7IDF3oS+1XV0g3Kd1olbPZETQ9axgeT+jJuUJxANh6h
+X-Received: by 2002:a05:622a:54a:b0:3dc:ac3b:ca6c with SMTP id m10-20020a05622a054a00b003dcac3bca6cmr32183189qtx.6.1682953890860;
+        Mon, 01 May 2023 08:11:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682953890; cv=none;
+        d=google.com; s=arc-20160816;
+        b=C7Y1x/1swT5difCdWpAcQpzi5o50E4xxXibIX6bXP/EavwOfR0TvXEIh86BqU+RrdK
+         BryJFkKcpfGogXhv0gsAroHisrAxlNMfcVy2p9/1+IWXFMqzwcQd1pTtsuU/RrPhwbo8
+         G1GWUdILehPteHT/0olEwY7QhRaKIVS5DpmXQdhv1AAiVxG5Zyb5fLV3QAnsjguzNy7f
+         K6TasLVKcpXTrI7+ky3TOx1EOhIvlt6cguZCwKdnzw07m2Hnn6D4cvG2LWO6V94MHQj3
+         m1KPGojkWcBnSRy+SoegNRrd7ZANnCKxHFMN4T3BJrKwnJRcPCiZH2PEktoYN3POeLkz
+         ROMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:precedence:form-sub:mime-version:subject:message-id:to
+         :reply-to:from:date:list-unsubscribe:dkim-signature:dkim-signature;
+        bh=8mhiCYqMJCLsoUH5ksuAKpLOnCdDFqIqEt/LE76WQzc=;
+        b=m+kNw3YYClPIMbR0YvXLNXjsMUrFEBvbR3695bJs5R+ZbTA4PH9CokCztXISZIU3/N
+         HBpq/UFJpDWGRE31eJpg7CdQ4QzpNKQUyn/+Lj6CluwXfGx+7ipfPHJC+IJbr4bI/CW0
+         H5/+G59aLZF/GRZsAyIcJSm1OXNVOUPGwJbFQpvBiZhuexAKWG8yWeuTVfqj5rn28CGY
+         Q9pmZRSThuEfFw0YsEcu0p6Uh5QdKl6vRu6oRMrGOULBTaM+DeyQpLtegYAPO4E+zE3p
+         U0zcewVtK5KAWAV1QrQk7DR5lH38J0QCv8lSIekd8ZV4Dy2rpF+9JFWE+nc/jIm8h2Ml
+         qySw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bf51x.hubspotemail.net header.s=hs2 header.b=oSC4inIc;
+       dkim=pass header.i=@localwp.com header.s=hs1-478844 header.b=Zjaimmt6;
+       spf=pass (google.com: domain of 1axcfma2f8lfllbm0xi09wqa2o1uze7sdzt9z9-ely+2eubuntu0=gmail.com@bf51x.hubspotemail.net designates 143.244.88.2 as permitted sender) smtp.mailfrom="1axcfma2f8lfllbm0xi09wqa2o1uze7sdzt9z9-ely+2Eubuntu0=gmail.com@bf51x.hubspotemail.net"
+Return-Path: <1axcfma2f8lfllbm0xi09wqa2o1uze7sdzt9z9-ely+2Eubuntu0=gmail.com@bf51x.hubspotemail.net>
+Received: from bd77fys.bf51x.hubspotemail.net (bd77fys.bf51x.hubspotemail.net. [143.244.88.2])
+        by mx.google.com with ESMTPS id q7-20020a05622a04c700b003f2207cedcfsi785642qtx.428.2023.05.01.08.11.30
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 01 May 2023 08:11:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 1axcfma2f8lfllbm0xi09wqa2o1uze7sdzt9z9-ely+2eubuntu0=gmail.com@bf51x.hubspotemail.net designates 143.244.88.2 as permitted sender) client-ip=143.244.88.2;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bf51x.hubspotemail.net header.s=hs2 header.b=oSC4inIc;
+       dkim=pass header.i=@localwp.com header.s=hs1-478844 header.b=Zjaimmt6;
+       spf=pass (google.com: domain of 1axcfma2f8lfllbm0xi09wqa2o1uze7sdzt9z9-ely+2eubuntu0=gmail.com@bf51x.hubspotemail.net designates 143.244.88.2 as permitted sender) smtp.mailfrom="1axcfma2f8lfllbm0xi09wqa2o1uze7sdzt9z9-ely+2Eubuntu0=gmail.com@bf51x.hubspotemail.net"
+Received: by 172.16.139.55 with SMTP id awbamkyhwedctig01rl0t0vaoeyvp3ugcjsm6;
+        Mon, 1 May 2023 15:11:30 GMT
+DKIM-Signature: v=1; s=hs2; d=bf51x.hubspotemail.net; 
+        i=@bf51x.hubspotemail.net; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=8mhiCYqMJCLsoUH5ksuAKpLOnCdDFqIqEt/LE76WQzc=; 
+        b=oSC4inIc7urHK8IQ/p843d8eTW9VsE68EuZZaR+JuXMg/isMsvMD7Va60P8V8W
+         g8d8ciuH3WG0XvjpRy0zsBw21sJW1324Ul1cCSawp9XaNOMYnJGNgfO3CjceRsI
+         D1qzNCujQQ9GuRg6WfI7lZXHbg/3a3J/pqHyXVOQErlHbb+GsTfvyRWFMCdAEm6
+         x4sUfQQnoLb94bg/5hcuYpdVTLWM7n0jer9qkkVzR5hqxJ3nmeFotKLvih5V4dM
+         kerZei2oK1dCHAI/V68pDFp0dImWIY/HDF19AxkyHnloj3Xf0X3LZnm5VXIasfL
+         Ikv6n+kBIoni1JjEK1Vzyze2Nt6w==; q=dns/txt; t=1682953890; 
+        x=1683126690;
+DKIM-Signature: v=1; s=hs1-478844; d=localwp.com; i=@localwp.com; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=8mhiCYqMJCLsoUH5ksuAKpLOnCdDFqIqEt/LE76WQzc=; 
+        b=Zjaimmt6bESv+5ybQvmuFW4TlLPwCJjZyOEL28Ipm+yxHWsiyFCt1KtY8Hoz+X
+         n9cjmONlxAvSG4ON/jIlQTV3XbIQfD7fBahxNl4RITs8JvmnCU6BMGPVAW4rixh
+         57x7PH2W3Oo6xM42GZPIzSkJjEnmk+8+hw/iIAEF0giwD2aT3qq283OeUA2k2Jz
+         NasZHz0XUemZCqsmQ7L4NRggFcjPPrIsV+h5FNW3eZSCXTlxA6E5dpjGRxdhs64
+         nQNuPqa0GMhro5ZX6tB2+hN5rZNYi79Olt5ATQKu6l87Fh6i2i/sXEw7/FWxn0a
+         7Dncxof2PacczT6SWr5XC1MbhaXw==; q=dns/txt; t=1682953890; 
+        x=1683126690;
+Return-Path: <1axcfma2f8lfllbm0xi09wqa2o1uze7sdzt9z9-ely+2Eubuntu0=gmail.com@bf51x.hubspotemail.net>
+X-HS-Cid: 1axfl91s4f8mn0c5i0149bzsu8ag5yt15r35j9
+List-Unsubscribe: <mailto:1axdox5moux76n51mm128rki0ukmy7uqy51icp-ely+2Eubuntu0=gmail.com@bf51x.hubspotemail.net?subject=unsubscribe>
+Date: Mon, 1 May 2023 10:11:30 -0500
+From: Local <hello@localwp.com>
+Reply-To: hello@localwp.com
+To: ely.ubuntu0@gmail.com
+Message-ID: <1682953890061.0647b496-5f69-4b68-bbb9-0ff05ae7f65b@bf51x.hubspotemail.net>
+Subject: Connect your local and live environments with Local Connect
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_6351158_884826525.1682953890273"
+Form-Sub: v=1; ip=none
+Precedence: bulk
+X-Report-Abuse-To: abuse@hubspot.com (see
+ https://policy.hubspot.com/abuse-complaints)
+Feedback-ID: aekjri:aidoy3xb:aib1s:HubSpot
+
+------=_Part_6351158_884826525.1682953890273
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Local users deploy up to 5x faster with Local Connect and MagicSync. Meet y=
+our new and improved development workflow!
+
+Local Connect Email Banner (https://highfive.getflywheel.com/e3t/Ctc/P+113/=
+c32cv04/VVpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlN3gzS3V1-WJV7Cg-P8N8qp6C=
+MTVNHYW88xNRy9ldymPN846Nw6-FNXVN1T7YSB_ryV3W8HVr8y7CF-7PW2GgFbk6RZMlTW3bnPK=
+6754tRHW13M95f7SbjycW1fL7lq5HFF0YV50h6f8KmDT4VFGNHC1sNTLBW2HqYZ26RfyFlW8dFY=
+Ck8ZBL5nW4TGsNL5Mly92W7_kPPk3QTGGxW8BlCl44bqpf_W26nzP29gHMPlW80y5WS4Rq1vGW2=
+714S55jBc82W3lSQs59ftmMrW5fdYbj95mh8jW1XBHyJ3P81Kb36BS1 )
+
+Streamline your development workflow with Local Connect
+
+Take your site live or pull a live site down to Local with just a few click=
+s!
+
+Forget about managing database exports, migration plugins, SFTP logins, cli=
+ent credentials, and the mess of migrations and deployments!
+
+With Local Connect you can easily deploy from Local to Flywheel and WP Engi=
+ne in minutes.
+
+With Local Connect you can:
+
+- Pull a live site down to Local from Flywheel or WP Engine with just a few=
+ clicks
+- Make changes to your site and test or debug issues locally
+- Deploy to staging or production up to 5x faster with MagicSync (our intel=
+ligent, differential deployment technology)!
+
+Talk about a super-streamlined WordPress workflow! It=E2=80=99s so seamless=
+ that Local users deploy twice as often than Flywheel and WP Engine users n=
+ot using Local Connect. Ready to give it a try?
+
+Learn more about Local Connect
+(https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGSNW3RFZmk=
+8PdZWPW3kyKQV4-1CxNMtGxlN3gzS3V1-WJV7Cg-P8N8qp6CMTVNHYW88xNRy9ldymPN846Nw6-=
+FNXVN1T7YSB_ryV3W8HVr8y7CF-7PW2GgFbk6RZMlTW3bnPK6754tRHW13M95f7SbjycW1fL7lq=
+5HFF0YV50h6f8KmDT4VFGNHC1sNTLBW2HqYZ26RfyFlW8dFYCk8ZBL5nW4TGsNL5Mly92W7_kPP=
+k3QTGGxW8BlCl44bqpf_W26nzP29gHMPlW80y5WS4Rq1vGW2714S55jBc82W3lSQs59ftmMrW5f=
+dYbj95mh8jW1XBHyJ3P81Kb36BS1 )
+
+CONNECT TO FLYWHEEL
+(https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGSNW3RFZmk=
+8PdZWPW3kyKQV4-1CxNMtGxm33gzSmV1-WJV7CgYSqW4JXjGf5xLs3yW5nq0tx7S5_ZRW70cVQQ=
+27sWYDW195Nfd3BfbHXW7byzpG23ZpkZW3cmtpn6SZvn-W99n7mC2Y4zsKW330DvB6zqK0kW60G=
+BWR3WRh7yW66jqB71CR9XLW8HrNcT6jnpfGW7SZyvm2pnZc-W4p-lPH2qHxHkW8VmM5v1FGgypW=
+55Cnh757DBXhW7N4Qq683mC6HN3nzLzynzPLlW6VqPFP1g28DXW3sybqz5l8sfBN4xFsGgNFdgr=
+W90SSnH1yM37dV9tH2Z3HF5N1N5cwYGVd7qXBW4pr1KV67STYm39XJ1 )
+
+CONNECT TO WP ENGINE
+(https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGSNW3RFZmk=
+8PdZWPW3kyKQV4-1CxNMtGxm33gzSmV1-WJV7Cg-b_W6-vTJJ6N9x--W8BtDB51p7j2zVDxS9T6=
+VWzKjMDbqDl8xSpCW4JWXLw8q9dP0W5Tf7Rh5pt_LTW6MJ7tc5l_zMfW7-vrNd6tRxFpW1HjC6F=
+6325fgW1gCHf13pqS5NW36zCn_8MgcNYW2qGLy-1sl3_bW7jK8L63yxKmyW32ZKJb6Fc2DzN3kB=
+BtkTRN_nW7K_3v136kKChW3pmgKD9hj-0gW5jm3t-6BcPJRN3kpDDhvVx-JW6M965k1py0Q_VXj=
+7hF58lq8wN63SdFZGWTwPW1GXgSx209MLsW53lr_D2CPJsZ3kv61 )
+
+Local (https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGSNW=
+3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlN3pdr7V1-WJV7CgKqxW5HFCyH71xj_PW2FTL8F5VXY62W=
+8C4y4Z1TJzVrW154hFG4-V152N2cmpcjl__jNW6dYDsJ40jx3jW5JXHN841m7d4W57bDc89kZ-b=
+bW15L__G4gh53zW6NC2zg6LFzD9N3-V6PDw2QLMW2ffnNM4Gwx5sN6m5XJ7ZWHDrW60G7mb6cwl=
+w9W3dv46j4L6GcxW6NtZKZ4z6wxbW8-9qrd1vTQtYW7f0qpR4PVRyNW8F924F9hSqrQW5DH-Pj3=
+KR0WJW173nPr6GrlWnN423tXcngTw73lV81 )
+Twitter (https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGS=
+NW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlN3pdr7V1-WJV7CgD8wW5trHk820g40MW3Lq_RR4CGbT=
+8W4syqH82SgxTCW7BfdG58FrfsZW2KK0mP7J6lsrW8kTH151jSPdsW7KFy6_84fBvwW4CS3MQ7s=
+hdlXW5Q9vrd3TPPf4W84Z9-q5SLz-rW4Ygbfy8rpQbmW3cJ73S80Wgf-VwTS7b2KyyDRVMZX4R3=
+fCLFmN8fQF1Mm5hxKW8NYygB5h3zRHN6mHRtHg8lGKVKqP_33xKZdLVqJMJp1fVq-3W4lyNfV3s=
+8FZGW727ddG3krV0nW5-BTXH4Cgyrz3qbX1 )
+YouTube (https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGS=
+NW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxmm3pdrLV1-WJV7CgG-KW3F6Y1V9fT8PfW34nwWF8JsqP=
+TW43tdsp8RZ5tdW649K7y5zDn64W8Xw2Rm2FHzXHW13V5JJ97MHWWVwkTr-7MT-SLW99kTnz4N0=
+74TN6Cn4WrqZ8yfW1d-j561pBHynW8L_LYQ572svBW3FJ9y44GtFZ3W3c1lDN1ycmnkW6pRv8v5=
+2RT7-W2qmXn48V9yWTN51pXTnC_MD9W26JVZ_1bj77lW6FNwgT6-R6J2W9389bg8w58t7VF7zzm=
+3kvfkZVTzCMX1PkkgJW46k6LR71009bW1nr2QL12jdmgW719z754nSSwFW7M-CFz9jjbd6W2rb7=
+st36_4hJ34Z61 )
+
+Flywheel, 1229 Millwork Ave Suite 301, , Omaha, Nebraska 68012, United Stat=
+es, (402) 235-6105
+
+Manage preferences (https://highfive.getflywheel.com/hs/manage-preferences/=
+unsubscribe?languagePreference=3Den&d=3DVnd6bM5K1kVVW3K6kMb4hCWL4W4fP88W3P3=
+Q7wW3ZsjYm3_fVkgN5JR6tWmWcP3W8FVtby9jHhQfV25BwW63v_lYW8HVlcq59RSBjN9fzdLV1y=
+f0NW30XtbV7V5h6vVPrVQZ6CMsB_n6L82F13g3&v=3D3&_hsenc=3Dp2ANqtz--FZGtTOwx5rfl=
+H8ND0vSS21wQc9xNNdKaVpG_4QeYzXBRvRlKEFR4fCTVGRSJ3QJ6HLEk50uMp4NZ6lObGOYEvNp=
+-0xw&_hsmi=3D206071309 )
+------=_Part_6351158_884826525.1682953890273
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3=
+.org/1999/xhtml" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:=
+v=3D"urn:schemas-microsoft-com:vml" lang=3D"en"><head>
+    <title>Connect your local and live environments with Local Connect</tit=
+le>
+    <meta property=3D"og:title" content=3D"Connect your local and live envi=
+ronments with Local Connect">
+    <meta name=3D"twitter:title" content=3D"Connect your local and live env=
+ironments with Local Connect">
+   =20
+   =20
+   =20
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+    <!--[if gte mso 9]>
+  <xml>
+      <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+  </xml>
+ =20
+  <style>
+    ul > li {
+      text-indent: -1em;
+    }
+  </style>
+<![endif]-->
+<!--[if mso]>
+<style type=3D"text/css">
+ body, td {font-family: Arial, Helvetica, sans-serif;}=20
+ .hse-body-wrapper-table {background-color: #FAFAFA}
+</style>
+<![endif]-->
+   =20
+     =20
+   =20
+  <meta name=3D"generator" content=3D"HubSpot"><meta property=3D"og:url" co=
+ntent=3D"https://highfive.getflywheel.com/-temporary-slug-bbf40198-ddca-400=
+7-a5ea-9224e4240755"><meta name=3D"robots" content=3D"noindex,follow"><!--[=
+if !((mso)|(IE))]><!-- --><style type=3D"text/css">.moz-text-html .hse-colu=
+mn-container{max-width:600px !important;width:600px !important}
+.moz-text-html .hse-column{display:table-cell;vertical-align:top}.moz-text-=
+html .hse-section .hse-size-6{max-width:300px !important;width:300px !impor=
+tant}
+.moz-text-html .hse-section .hse-size-12{max-width:600px !important;width:6=
+00px !important}
+[owa] .hse-column-container{max-width:600px !important;width:600px !importa=
+nt}[owa] .hse-column{display:table-cell;vertical-align:top}
+[owa] .hse-section .hse-size-6{max-width:300px !important;width:300px !impo=
+rtant}
+[owa] .hse-section .hse-size-12{max-width:600px !important;width:600px !imp=
+ortant}
+@media only screen and (min-width:640px){.hse-column-container{max-width:60=
+0px !important;width:600px !important}
+.hse-column{display:table-cell;vertical-align:top}.hse-section .hse-size-6{=
+max-width:300px !important;width:300px !important}
+.hse-section .hse-size-12{max-width:600px !important;width:600px !important=
+}}@media only screen and (max-width:639px){img.stretch-on-mobile,.hs_rss_em=
+ail_entries_table img,.hs-stretch-cta .hs-cta-img{height:auto !important;wi=
+dth:100% !important}
+.display_block_on_small_screens{display:block}.hs_padded{padding-left:20px =
+!important;padding-right:20px !important}
+ul,blockquote{margin:0;padding:1em 40px}}</style><!--<![endif]--><style typ=
+e=3D"text/css">body[data-outlook-cycle] img.stretch-on-mobile,body[data-out=
+look-cycle] .hs_rss_email_entries_table img{height:auto !important;width:10=
+0% !important}
+body[data-outlook-cycle] .hs_padded{padding-left:20px !important;padding-ri=
+ght:20px !important}
+a[x-apple-data-detectors]{color:inherit !important;text-decoration:none !im=
+portant;font-size:inherit !important;font-family:inherit !important;font-we=
+ight:inherit !important;line-height:inherit !important}
+#outlook a{padding:0}.yshortcuts a{border-bottom:none !important}a{text-dec=
+oration:underline}
+.ExternalClass{width:100%}.ExternalClass,.ExternalClass p,.ExternalClass td=
+,.ExternalClass div,.ExternalClass span,.ExternalClass font{line-height:100=
+%}
+p{margin:0}body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-we=
+bkit-font-smoothing:antialiased;moz-osx-font-smoothing:grayscale}</style></=
+head>
+  <body bgcolor=3D"#FAFAFA" style=3D"margin:0 !important; padding:0 !import=
+ant; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-bre=
+ak:break-word">
+   =20
+<div id=3D"preview_text" style=3D"display:none;font-size:1px;color:#FAFAFA;=
+line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Lo=
+cal users deploy up to 5x faster with Local Connect and MagicSync. Meet you=
+r new and improved development workflow!</div>
+   =20
+<!--[if gte mso 9]>
+<v:background xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"t">
+ =20
+    <v:fill type=3D"tile" size=3D"100%,100%"  color=3D"#ffffff"/>
+ =20
+</v:background>
+<![endif]-->
+    <div class=3D"hse-body-background" style=3D"background-color:#fafafa" b=
+gcolor=3D"#fafafa">
+      <table role=3D"presentation" class=3D"hse-body-wrapper-table" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !important; border-c=
+ollapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; margin:0; pad=
+ding:0; width:100% !important; min-width:320px !important; height:100% !imp=
+ortant" width=3D"100%" height=3D"100%">
+        <tbody><tr>
+          <td class=3D"hse-body-wrapper-td" valign=3D"top" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-se=
+rif; font-size:15px; color:#23496d; word-break:break-word">
+            <div id=3D"hs_cos_wrapper_main" class=3D"hs_cos_wrapper hs_cos_=
+wrapper_widget hs_cos_wrapper_type_dnd_area" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"dnd_area">  <div id=3D"section_1592497782727" class=3D"h=
+se-section hse-section-first" style=3D"padding-left:10px; padding-right:10p=
+x; padding-top:20px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:=
+collapse; border-spacing:0">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation">
+      <tr>
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:300px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"300" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:300px">
+<![endif]-->
+<div id=3D"column_1592508849934_0" class=3D"hse-column hse-size-6">
+  <div id=3D"hs_cos_wrapper_module_15922324710791" class=3D"hs_cos_wrapper =
+hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; =
+font-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widg=
+et" data-hs-cos-type=3D"module">
+=09
+<table class=3D"hse-image-wrapper" role=3D"presentation" width=3D"100%" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !important; bord=
+er-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+    <tbody>
+        <tr>
+            <td align=3D"left" valign=3D"top" style=3D"border-collapse:coll=
+apse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:#2=
+3496d; word-break:break-word; text-align:left; padding:20px 20px 20px 0px; =
+font-size:0px">
+               =20
+                    <a href=3D"https://highfive.getflywheel.com/e3t/Ctc/P+1=
+13/c32cv04/VVpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlt3hpP1V1-WJV7CgV1bV46=
+bRL7Qc_rJW5x1xm35Pdv1LW7_npWN3ZH8xxN2JVNnsTtrgQW1FLM-Q2QhPnXW4DSV-m2S45mZN6=
+q8NS-DJpBnN6gHzPvlpCz_W5mWSCD5hM1TpW7C5LX37X4SyjW5YbCyc3J3kPjVS5nqD78qMqZVj=
+WcTb1_xb3yW6b9-_C6tMggMVv2-191Cgl-GW8RV0M32-6FQWW6wDKr47sp9pPW2NQ3Nx3p2hcrN=
+6bj-Q7nHrC8W8jXyvF5rdYnv3ck41" target=3D"_blank" style=3D"color:#00a4bd; ms=
+o-line-height-rule:exactly" data-hs-link-id=3D"0">
+               =20
+                <img alt=3D"Local Logo Image" src=3D"https://highfive.getfl=
+ywheel.com/hs-fs/hubfs/Local-logo-horz-cropped.png?width=3D320&amp;upscale=
+=3Dtrue&amp;name=3DLocal-logo-horz-cropped.png" style=3D"outline:none; text=
+-decoration:none; -ms-interpolation-mode:bicubic; border:none; max-width:10=
+0%; font-size:16px" width=3D"160" align=3D"middle" srcset=3D"https://highfi=
+ve.getflywheel.com/hs-fs/hubfs/Local-logo-horz-cropped.png?upscale=3Dtrue&a=
+mp;width=3D320&amp;upscale=3Dtrue&amp;name=3DLocal-logo-horz-cropped.png 16=
+0w, https://highfive.getflywheel.com/hs-fs/hubfs/Local-logo-horz-cropped.pn=
+g?upscale=3Dtrue&amp;width=3D640&amp;upscale=3Dtrue&amp;name=3DLocal-logo-h=
+orz-cropped.png 320w" sizes=3D"(max-width: 160px) 100vw, 160px">
+               =20
+                    </a>
+               =20
+            </td>
+        </tr>
+    </tbody>
+</table></div>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+<!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:300px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"300" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:300px">
+<![endif]-->
+<div id=3D"column_1592497782727_0" class=3D"hse-column hse-size-6">
+ =20
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  <div id=3D"section_1592232494561" class=3D"hse-section" style=3D"padding-=
+left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:=
+collapse; border-spacing:0; background-color:#ffffff" bgcolor=3D"#ffffff">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#ffffff">
+      <tr style=3D"background-color:#ffffff;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column_1592509294029_0" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_module_15925090392342" class=3D"hs_cos_wrapper =
+hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; =
+font-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widg=
+et" data-hs-cos-type=3D"module">
+=09
+<table class=3D"hse-image-wrapper" role=3D"presentation" width=3D"100%" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !important; bord=
+er-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+    <tbody>
+        <tr>
+            <td align=3D"center" valign=3D"top" style=3D"border-collapse:co=
+llapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:=
+#23496d; word-break:break-word; text-align:center; padding:0px; font-size:0=
+px">
+               =20
+                    <a href=3D"https://highfive.getflywheel.com/e3t/Ctc/P+1=
+13/c32cv04/VVpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlN3hpPkV1-WJV7CgHfZN7L=
+wzLvkV8ptW7q93NM6h4c-kW91KP1j6W2Z-jW6402XD1vgq_CMx4x_NnH6wXW6BhZP24C5_4zW7v=
+MlTK4xbBhwW8p8LPg7MRQ12W5jBJ1k5GmJXJW7M8NST6rBV3VW8w1tYK6tkbsvW6W7Lvj2r4lWY=
+W52mntz8MqkWKW1yxLM95Yr6ShW3WbMkB6wcHQ-W8q9PRg5qfqkTN8xJ4f3NhVBRW3CbqDb742d=
+ZwW9jN0nZ463SDpV-z9JT2jGVr_W6gRNDs1My3dCVwVGTt1r0C7H31h01" target=3D"_blank=
+" style=3D"color:#00a4bd; mso-line-height-rule:exactly" data-hs-link-id=3D"=
+0">
+               =20
+                <img alt=3D"Local Connect Email Banner" src=3D"https://high=
+five.getflywheel.com/hs-fs/hubfs/22Q1%20-%20Local%20Nurture%20Banners/FW-Ba=
+nner-Local-EmailB-Connect-1200x675_v02.png?width=3D1200&amp;upscale=3Dtrue&=
+amp;name=3DFW-Banner-Local-EmailB-Connect-1200x675_v02.png" style=3D"outlin=
+e:none; text-decoration:none; -ms-interpolation-mode:bicubic; border:none; =
+max-width:100%; font-size:16px" width=3D"600" align=3D"middle" srcset=3D"ht=
+tps://highfive.getflywheel.com/hs-fs/hubfs/22Q1%20-%20Local%20Nurture%20Ban=
+ners/FW-Banner-Local-EmailB-Connect-1200x675_v02.png?upscale=3Dtrue&amp;wid=
+th=3D1200&amp;upscale=3Dtrue&amp;name=3DFW-Banner-Local-EmailB-Connect-1200=
+x675_v02.png 600w, https://highfive.getflywheel.com/hs-fs/hubfs/22Q1%20-%20=
+Local%20Nurture%20Banners/FW-Banner-Local-EmailB-Connect-1200x675_v02.png?u=
+pscale=3Dtrue&amp;width=3D2400&amp;upscale=3Dtrue&amp;name=3DFW-Banner-Loca=
+l-EmailB-Connect-1200x675_v02.png 1200w" sizes=3D"(max-width: 600px) 100vw,=
+ 600px">
+               =20
+                    </a>
+               =20
+            </td>
+        </tr>
+    </tbody>
+</table></div>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; pa=
+dding:40px 40px 0px"><div id=3D"hs_cos_wrapper_module_15922325333823" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><div style=3D"font-fami=
+ly:'Museo Sans Rounded', -apple-system, BlinkMacSystemFont,'Helvetica Neue'=
+,sans-serif;font-weight:500;font-size: 40px;line-height: 52px;text-align:ce=
+nter;color:#51bb7b;padding-left:40px;padding-right:40px;padding-top:5px;pad=
+ding-bottom:5px;-webkit-font-smoothing:auto"><div id=3D"hs_cos_wrapper_modu=
+le_15922325333823_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wr=
+apper_type_inline_text" style=3D"color: inherit; font-size: inherit; line-h=
+eight: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"in=
+line_text" data-hs-cos-field=3D"body_text">Streamline your development work=
+flow with Local Connect</div></div></div></td></tr></tbody></table>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; pa=
+dding:10px 40px"><div id=3D"hs_cos_wrapper_module_15922329341491" class=3D"=
+hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"c=
+olor: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-gener=
+al-type=3D"widget" data-hs-cos-type=3D"module"><div style=3D"font-family:'M=
+useo Sans Rounded', -apple-system, BlinkMacSystemFont,'Helvetica Neue',sans=
+-serif;font-weight:500;font-size: 17px;line-height: 28px;text-align:center;=
+color:#262727;padding-left:40px;padding-right:40px;padding-top:0px;padding-=
+bottom:10px;-webkit-font-smoothing:auto"><div id=3D"hs_cos_wrapper_module_1=
+5922329341491_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrappe=
+r_type_inline_text" style=3D"color: inherit; font-size: inherit; line-heigh=
+t: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"inline=
+_text" data-hs-cos-field=3D"body_text"><i>Take your site live or pull a liv=
+e site down to Local with just a few clicks!</i></div></div></div></td></tr=
+></tbody></table>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; pa=
+dding:10px 40px"><div id=3D"hs_cos_wrapper_module_16442729136671" class=3D"=
+hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"c=
+olor: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-gener=
+al-type=3D"widget" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_mo=
+dule_16442729136671_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_=
+wrapper_type_rich_text" style=3D"color: inherit; font-size: inherit; line-h=
+eight: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"ri=
+ch_text"><p style=3D"mso-line-height-rule:exactly; font-size:16px; line-hei=
+ght:175%"><span style=3D"font-family: 'Trebuchet MS', sans-serif; color: #5=
+d5e5e;">Forget about managing database exports, migration plugins, SFTP log=
+ins, client credentials, and the mess of migrations and deployments! </span=
+></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+>&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+><span style=3D"font-family: 'Trebuchet MS', sans-serif; color: #5d5e5e;">W=
+ith <span style=3D"color: #51bb7b;"><a  href=3D"https://highfive.getflywhee=
+l.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlN3hp=
+PkV1-WJV7CgQ59VbWJXW6wfp-9W6V1lr27XGTFvMFJ6-0JhdhwW9cQ0Rv5TksTLW2Bclt98zcPR=
+7MLNc4t1LSrJN6yqZ_zb6qXwW7bFNmw4nGlXMW7v4Xr23sSfgFW4MD72t8R0NdrVNJ5jZ2Rthxs=
+N1MQJRQqqwSFW73xvVB5Mk2rVVSmmrP4kTjBYW8DTkjM4nmQZ4W3nhHCd1DGYvqW1-ZtkS7WsK6=
+tW23xR9x4fp9HTN2wNg42Wm9zjW2WFY3562lrt8W2z-gn85byCHMW5vnyT78hlc-w37D91" sty=
+le=3D"mso-line-height-rule:exactly; color:#51bb7b" rel=3D"noopener" data-hs=
+-link-id=3D"1" target=3D"_blank">Local Connect</a></span> you can easily de=
+ploy from Local to Flywheel and WP Engine in minutes.</span></p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:175%"=
+>&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:125%"=
+><span style=3D"font-family: 'Trebuchet MS', sans-serif; color: #5d5e5e;">W=
+ith Local Connect you can:</span></p>
+<ul style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:125%=
+">
+<li aria-level=3D"1" style=3D"mso-line-height-rule:exactly"><span style=3D"=
+font-family: 'Trebuchet MS', sans-serif; color: #5d5e5e;">Pull a live site =
+down to Local from Flywheel or WP Engine with just a few clicks</span></li>
+<li aria-level=3D"1" style=3D"mso-line-height-rule:exactly"><span style=3D"=
+font-family: 'Trebuchet MS', sans-serif; color: #5d5e5e;">Make changes to y=
+our site and test or debug issues locally</span></li>
+<li aria-level=3D"1" style=3D"mso-line-height-rule:exactly"><span style=3D"=
+font-family: 'Trebuchet MS', sans-serif; color: #5d5e5e;"><strong>Deploy to=
+ staging or production up to 5x faster</strong> with MagicSync (our intelli=
+gent, differential deployment technology)!</span></li>
+</ul>
+<p style=3D"mso-line-height-rule:exactly; font-size:16px; line-height:125%"=
+><span style=3D"font-family: 'Trebuchet MS', sans-serif; color: #5d5e5e;">T=
+alk about a super-streamlined WordPress workflow! It=E2=80=99s so seamless =
+that <strong>Local users deploy twice as often</strong> than Flywheel and W=
+P Engine users not using Local Connect. Ready to give it a try?</span></p><=
+/div></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_module_15928417737152" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><div style=3D"padding-top:20px;padding-bottom=
+:20px;"><a href=3D"https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/V=
+VpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlN3hpPkV1-WJV7CgTWXW66yh8P6kcMRqW2=
+4W91_6zg9FHW3fk1zQ6VxGp5W7Yw6231hDXL8W3Rmg2Y15py6tW6P0yCx27CrZ7W7ZvVYX3LFJd=
+8W5Kw3MQ915DhCW8ZCRN43lYYKNN8YGKYvcf8djW7qL2B36_2C0rV8L6wQ8bQNLSW11f1RW86Qc=
+hyW19Gkqs5QMrNfW4MSX4S6CTXR-W7Ry4cM8Z5zgMW8QCPdt2c4N2lW1SZLs1907dQZW24qKM-4=
+2xvnGW1syFz37Pdx6xW4GL8kB2rnZmRW4HjH5p38ZdCb39hT1" target=3D"_blank" style=
+=3D"mso-line-height-rule:exactly; font-family:'Museo Sans Rounded', -apple-=
+system, BlinkMacSystemFont,'Helvetica Neue',sans-serif; font-weight:500; fo=
+nt-size:14px; text-align:center; color:#FFFFFF; padding:1rem 2em .875rem; b=
+order-radius:2.6em; text-decoration:none; text-transform:uppercase; backgro=
+und-color:#51bb7b; display:block; margin:0 auto; width:max-content; -webkit=
+-font-smoothing:auto" align=3D"center" bgcolor=3D"#51bb7b" width=3D"max-con=
+tent" data-hs-link-id=3D"2"><div id=3D"hs_cos_wrapper_module_15928417737152=
+_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline=
+_text" style=3D"color: inherit; font-size: inherit; line-height: inherit;" =
+data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"inline_text" data-h=
+s-cos-field=3D"body_text">Learn more about Local Connect</div></a></div></d=
+iv>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  <div id=3D"section_1644273150392" class=3D"hse-section" style=3D"padding-=
+left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:=
+collapse; border-spacing:0; background-color:#ffffff" bgcolor=3D"#ffffff">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#ffffff">
+      <tr style=3D"background-color:#ffffff;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:300px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"300" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:300px">
+<![endif]-->
+<div id=3D"column_1644273150392_0" class=3D"hse-column hse-size-6">
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-=
+table-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" =
+style=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-famil=
+y:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; =
+padding:10px 20px 40px"><div id=3D"hs_cos_wrapper_module_16442731015992" cl=
+ass=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" sty=
+le=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-co=
+s-general-type=3D"widget" data-hs-cos-type=3D"module">
+ =20
+  <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"border-spacing:0 !important; mso-table-lspac=
+e:0pt; mso-table-rspace:0pt; border-collapse:separate!important">
+    <tbody><tr>
+        <!--[if mso]>
+      <td align=3D"center" valign=3D"middle" bgcolor=3D"#FFFFFF" role=3D"pr=
+esentation"  valign=3D"middle" style=3D"border-radius:5px;cursor:auto;backg=
+round-color:#FFFFFF;padding:12px 18px;">
+    <![endif]-->
+    <!--[if !mso]><!-- -->
+      <td align=3D"center" valign=3D"middle" bgcolor=3D"#FFFFFF" role=3D"pr=
+esentation" style=3D"border-collapse:collapse; mso-line-height-rule:exactly=
+; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:=
+break-word; border-radius:5px; cursor:auto; background-color:#FFFFFF">
+   <!--<![endif]-->
+        <a href=3D"https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/V=
+VpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxm33hpPDV1-WJV7CgN8lW1XZtFC5pwtwDVw=
+V6jc5D8ny9W8SPMB622681sW36mz8b6vxVSgW7XCCdh7lpZbxW4c-D7395ydFSW8d6sHv4x8SBP=
+W4p8t-J9hd9gjW5xLPQ32q0cXzVbyyNG3gnP83W4gnTZy6hV2fHW5drcJd7bD_VDW8W4Gd374Tq=
+6xW44q-Q35pDb6FW6XyKTw2qbmFkW3gg1R36HhyldW28lyYw54TjVDV1MhfC5mTkd7W70bKgc90=
+J5SJW6dJXFr3pcCdRW3qBZ_V73rzn2W58DRGj8qr1TkW3b0xYk4Zww3NN209fv685F_x3nBH1" =
+target=3D"_blank" style=3D"color:#00a4bd; mso-line-height-rule:exactly; fon=
+t-size:16px; font-family:Arial, sans-serif; Margin:0; text-transform:none; =
+text-decoration:none; padding:12px 18px; display:block" data-hs-link-id=3D"=
+0">
+          <strong style=3D"color:#51bb7b;font-weight:bold;text-decoration:u=
+nderline;font-style:normal;">CONNECT TO FLYWHEEL</strong>
+        </a>
+      </td>
+    </tr>
+  </tbody></table>
+</div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+<!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:300px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"300" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:300px">
+<![endif]-->
+<div id=3D"column_1644273150392_1" class=3D"hse-column hse-size-6">
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-=
+table-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" =
+style=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-famil=
+y:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; =
+padding:10px 20px 20px"><div id=3D"hs_cos_wrapper_module_16442731565781" cl=
+ass=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" sty=
+le=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-co=
+s-general-type=3D"widget" data-hs-cos-type=3D"module">
+ =20
+  <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"border-spacing:0 !important; mso-table-lspac=
+e:0pt; mso-table-rspace:0pt; border-collapse:separate!important">
+    <tbody><tr>
+        <!--[if mso]>
+      <td align=3D"center" valign=3D"middle" bgcolor=3D"#FFFFFF" role=3D"pr=
+esentation"  valign=3D"middle" style=3D"border-radius:5px;cursor:auto;backg=
+round-color:#FFFFFF;padding:12px 18px;">
+    <![endif]-->
+    <!--[if !mso]><!-- -->
+      <td align=3D"center" valign=3D"middle" bgcolor=3D"#FFFFFF" role=3D"pr=
+esentation" style=3D"border-collapse:collapse; mso-line-height-rule:exactly=
+; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:=
+break-word; border-radius:5px; cursor:auto; background-color:#FFFFFF">
+   <!--<![endif]-->
+        <a href=3D"https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv04/V=
+VpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxm33hpPDV1-WJV7CgDBvN9dwnv53sYP3W4G=
+g4kP7VqmtLW2P7H561xVNFHN2xJpYlRDd-ZN26rGRg-PsLTW1x9Gn88lp3RdW9h2r5f16bgt6W7=
+T7QbH788nRGW8Fk37B1NtLTKN3pxHF9LJgs1N5mVWgPZF7zMW6Wc-844zq-9FW3zzJjw4l73nJW=
+3RpPQM7K8NkxW2Jpsn71Fb80yV16MVG6g20r8W4FS27J4hrHhQW4vgSM434D4kFW1NQ4kS2dTSN=
+YW5kQthb6JmykxW1VDQFf46ldhwN79nlLGM26s3N6VB7V4PqXwTW7SbF064t5rzP3mdM1" targ=
+et=3D"_blank" style=3D"color:#00a4bd; mso-line-height-rule:exactly; font-si=
+ze:16px; font-family:Arial, sans-serif; Margin:0; text-transform:none; text=
+-decoration:none; padding:12px 18px; display:block" data-hs-link-id=3D"0">
+          <strong style=3D"color:#51bb7b;font-weight:bold;text-decoration:u=
+nderline;font-style:normal;">CONNECT TO WP ENGINE</strong>
+        </a>
+      </td>
+    </tr>
+  </tbody></table>
+</div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  <div id=3D"section_164631720378021" class=3D"hse-section hse-section-last=
+" style=3D"padding-left:10px; padding-right:10px; padding-bottom:20px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:=
+collapse; border-spacing:0; background-color:#fafafa; padding-bottom:20px; =
+padding-top:20px" bgcolor=3D"#fafafa">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#fafafa">
+      <tr style=3D"background-color:#fafafa;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;padding-bottom:20px; padding-top:=
+20px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column-0-0" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_module_164631720378019" class=3D"hs_cos_wrapper=
+ hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit;=
+ font-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"wid=
+get" data-hs-cos-type=3D"module">
+<table width=3D"100%" style=3D"-ms-text-size-adjust:100%; -webkit-text-size=
+-adjust:100%; border-collapse:collapse !important; border-spacing:0 !import=
+ant; margin:0 auto; mso-line-height-rule:exactly; mso-table-lspace:0pt; mso=
+-table-rspace:0pt; padding:0; background:transparent" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0">
+        <tbody><tr><td height=3D"20" width=3D"5" style=3D"border-collapse:c=
+ollapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-=
+size:15px; color:#23496d; word-break:break-word">&nbsp;</td></tr>
+=09=09=09=09<tr class=3D"footer"><td style=3D"border-collapse:collapse; mso=
+-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; c=
+olor:#23496d; word-break:break-word"><a href=3D"https://highfive.getflywhee=
+l.com/e3t/Ctc/P+113/c32cv04/VVpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxlN3q3=
+npV1-WJV7CgCl9W9fc8tv3S3HY_W1FKYhk2kCs-sW3Vs4846pLNynW504tZF4Kf6LfW6VN3bh8F=
+rt1NW6Kchv93wdgsdW2mFrh_7v6XrYVbzNmm7S7r3lVf0Vdy8bjNSfN1gvj951-v80W461k_094=
+5v7rW8QPtVY1Q7ZXGW5gyqMJ3fdQdNW5Ft4g21hs8_wW7r0tyP367tjhV2LK72663DMjW3gbmz_=
+5lwr0_W99tJQv6mh7lVW5sSTZ04zZjxGW86k5tX2v9JBPW1b1lq377k4WNW1gRRLc1K36jD35gX=
+1" target=3D"_blank" data-hs-link-id=3D"0" style=3D"color:#00a4bd; mso-line=
+-height-rule:exactly"><img alt=3D"Local" src=3D"https://cdn2.hubspot.net/hu=
+b/478844/hubfs/Local-logo-vert.png?upscale=3Dtrue&amp;width=3D280&amp;upsca=
+le=3Dtrue&amp;name=3DLocal-logo-vert.png" style=3D"outline:none; text-decor=
+ation:none; -ms-interpolation-mode:bicubic; border:none; max-width:100%; fo=
+nt-size:16px; display:block; margin:0 auto" width=3D"140" align=3D"middle" =
+srcset=3D"https://cdn2.hubspot.net/hub/478844/hubfs/Local-logo-vert.png?ups=
+cale=3Dtrue&amp;upscale=3Dtrue&amp;width=3D280&amp;upscale=3Dtrue&amp;name=
+=3DLocal-logo-vert.png 140w, https://cdn2.hubspot.net/hub/478844/hubfs/Loca=
+l-logo-vert.png?upscale=3Dtrue&amp;upscale=3Dtrue&amp;width=3D560&amp;upsca=
+le=3Dtrue&amp;name=3DLocal-logo-vert.png 280w" sizes=3D"(max-width: 140px) =
+100vw, 140px"></a></td></tr>
+</tbody></table>
+<table width=3D"100%" style=3D"border-spacing:0 !important; border-collapse=
+:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+  <tbody><tr>
+    <td colspan=3D"3" height=3D"20" width=3D"5" style=3D"border-collapse:co=
+llapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-s=
+ize:15px; color:#23496d; word-break:break-word">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width=3D"auto" style=3D"border-collapse:collapse; mso-line-height-r=
+ule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; =
+word-break:break-word; line-height:0">&nbsp;</td>
+    <td width=3D"50%" valign=3D"middle" style=3D"border-collapse:collapse; =
+mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px=
+; color:#23496d; word-break:break-word; line-height:0; border:transparent; =
+border-bottom:1px solid #EEEEEE; mso-border-bottom-alt:1px solid #EEEEEE; b=
+order-bottom-width:1px">&nbsp;</td>
+    <td width=3D"auto" style=3D"border-collapse:collapse; mso-line-height-r=
+ule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; =
+word-break:break-word; line-height:0">&nbsp;</td>
+  </tr>
+   <tr>
+    <td colspan=3D"3" height=3D"20" width=3D"5" style=3D"border-collapse:co=
+llapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-s=
+ize:15px; color:#23496d; word-break:break-word">&nbsp;</td>
+  </tr>
+</tbody></table>
+<!-- Local Social footer icon start -->
+<table style=3D"border-spacing:0 !important; border-collapse:collapse; mso-=
+table-lspace:0pt; mso-table-rspace:0pt; width:100%" width=3D"100%">
+    <tbody><tr>
+        <td style=3D"border-collapse:collapse; mso-line-height-rule:exactly=
+; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:=
+break-word; text-align:right; padding:0 5px; width:50%" align=3D"right" wid=
+th=3D"50%">
+            <a href=3D"https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv=
+04/VVpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxm33q3nJV1-WJV7CgF8YW88Y3xk6CN9=
+q8W923C4N5kw1PdW7lRNw0197nHvW3SjqzG6hTFYHW7D7Rt33LTMXVW72FDL16MyvCMW8mbl_47=
+Nwcc5W7ywqXS2hx8d_W3Vhy994KF-MCVdS7T91-SGFBW1vpT2y4XQxNyW2Zz75141XQHKN2b1Hp=
+YdN-HYW4VXRcQ44PCbHW7XzX3-7W_0FGN21b4S2q5dFrW3zzdlP865H9SW4RCcvl1KBbB3W8tnS=
+6K7PSyMHW7L7Qph3yT0zXW556c7v8wt0ynW3c1L-g61T0PGW9512T9772KfKW7Qh2_m8nrMnV31=
+J21" target=3D"_blank" style=3D"color:#00a4bd; mso-line-height-rule:exactly=
+" data-hs-link-id=3D"0"><img src=3D"https://478844.fs1.hubspotusercontent-n=
+a1.net/hub/478844/hubfs/twitter-icon@2x.png?width=3D50&amp;height=3D50&amp;=
+upscale=3Dtrue&amp;name=3Dtwitter-icon@2x.png" alt=3D"Twitter" width: 25px;=
+ height: style=3D"outline:none; text-decoration:none; -ms-interpolation-mod=
+e:bicubic; border:none; width:25px; height:25x" width=3D"25" height=3D"25x"=
+></a>
+        </td>
+         <td style=3D"border-collapse:collapse; mso-line-height-rule:exactl=
+y; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break=
+:break-word; text-align:left; padding:0 5px; width:50%" align=3D"left" widt=
+h=3D"50%">
+            <a href=3D"https://highfive.getflywheel.com/e3t/Ctc/P+113/c32cv=
+04/VVpLd85vJGSNW3RFZmk8PdZWPW3kyKQV4-1CxNMtGxmm3q3n_V1-WJV7CgGs0W1wzyJc599l=
+ZPW2lQqwF27c5WgW8LlRbL1btfC4W25Lg-z72C1MFN6DPbx1_9Sn-W5HcD3p6NwYRbW6bTMgz3G=
+g2mSW52VSBx4z5YX9W6S4jWR6H8YCBW4NJGgZ8l0Z3rW6CNJCV3r2_L7VlqYnZ3HfslwW4Mt70G=
+7_v0h_W2c55r67zk21hW7CFyQf3dpVL5Vrjf3L4s6P3CW8KpXXG5G43PxW6RQ4Wl55JflqTQqf3=
+3K4xNcW1Dg-rB33-tFwW76LWcr1kfbhPW9dyQNt7wmvMzW26_KRf4WyK9fW8tKBnY8yVdWfW6FV=
+9FR41YFHRW1QCVvG68y5nK3j_01" target=3D"_blank" style=3D"color:#00a4bd; mso-=
+line-height-rule:exactly" data-hs-link-id=3D"0"><img src=3D"https://478844.=
+fs1.hubspotusercontent-na1.net/hub/478844/hubfs/youtube-icon@2x.png?width=
+=3D50&amp;height=3D50&amp;upscale=3Dtrue&amp;name=3Dyoutube-icon@2x.png" al=
+t=3D"YouTube" width: 25px; height: style=3D"outline:none; text-decoration:n=
+one; -ms-interpolation-mode:bicubic; border:none; width:25px; height:25x" w=
+idth=3D"25" height=3D"25x"></a>
+        </td>
+    </tr>
+     <tr>
+      <td colspan=3D"5" height=3D"20" width=3D"5" style=3D"border-collapse:=
+collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font=
+-size:15px; color:#23496d; word-break:break-word">&nbsp;</td>
+    </tr>
+</tbody></table>
+<!-- FW Local footer icon start END -->
+</div>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; pa=
+dding:10px 20px"><div id=3D"hs_cos_wrapper_module_164631720378020" class=3D=
+"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"=
+color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-gene=
+ral-type=3D"widget" data-hs-cos-type=3D"module">
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+<table role=3D"presentation" class=3D"hse-footer hse-secondary" width=3D"10=
+0%" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !importan=
+t; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; fo=
+nt-family:Arial, sans-serif; font-size:12px; line-height:135%; color:#23496=
+d; margin-bottom:0; padding:0">
+    <tbody>
+        <tr>
+            <td align=3D"center" valign=3D"top" style=3D"border-collapse:co=
+llapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-s=
+ize:15px; color:#23496d; word-break:break-word; text-align:center; margin-b=
+ottom:0; line-height:135%; padding:10px 20px">
+               =20
+                <p style=3D"mso-line-height-rule:exactly; font-family:Arial=
+, sans-serif; font-size:12px; font-weight:normal; text-decoration:none; fon=
+t-style:normal; color:#9f9c9c; direction:lrt" dir=3D"lrt">
+                  Flywheel, 1229 Millwork Ave Suite 301, Omaha, Nebraska 68=
+012, United States, (402) 235-6105
+                </p>
+                <p style=3D"mso-line-height-rule:exactly">
+                 =20
+                  <a data-unsubscribe=3D"true" href=3D"https://highfive.get=
+flywheel.com/hs/manage-preferences/unsubscribe?languagePreference=3Den&amp;=
+d=3DVnd6bM5K1kVVW3K6kMb4hCWL4W4fP88W3P3Q7wW3ZsjYm3_fVkgN5JR6tWmWcP3W8FVtby9=
+jHhQfV25BwW63v_lYW8HVlcq59RSBjN9fzdLV1yf0NW30XtbV7V5h6vVPrVQZ6CMsB_n6L82F13=
+g3&amp;v=3D3&amp;utm_campaign=3D22Q1%7C%20Local%20Lead%20nurture&amp;utm_so=
+urce=3Dhs_automation&amp;utm_medium=3Demail&amp;utm_content=3D206071309&amp=
+;_hsenc=3Dp2ANqtz-8DGjlXa_zZ2X_PnQ6FERmc5MI7UdnesxaapsvqWpKCkol7BxuN99hAerd=
+0udtZFbb21AgypzSEvjB31PKGEAbjJIB33Q&amp;_hsmi=3D206071309" style=3D"mso-lin=
+e-height-rule:exactly; font-family:Helvetica,Arial,sans-serif; font-size:12=
+px; color:#9f9c9c; font-weight:normal; text-decoration:underline; font-styl=
+e:normal" data-hs-link-id=3D"0" target=3D"_blank">Manage preferences</a>
+                 =20
+                </p>
+               =20
+            </td>
+        </tr>
+    </tbody>
+</table></div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+</div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+ =20
+<img src=3D"https://highfive.getflywheel.com/e3t/Cto/P+113/c32cv04/VVpLd85v=
+JGSNW3RFZmk8PdZWPW3kyKQV4-1CxNVtGx5T3DjHFX103" alt=3D"" width=3D"1" height=
+=3D"1" border=3D"0" style=3D"display:none!important;min-height:1px!importan=
+t;width:1px!important;border-width:0!important;margin-top:0!important;margi=
+n-bottom:0!important;margin-right:0!important;margin-left:0!important;paddi=
+ng-top:0!important;padding-bottom:0!important;padding-right:0!important;pad=
+ding-left:0!important"></body></html>
+------=_Part_6351158_884826525.1682953890273--
+

@@ -1,0 +1,606 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:9d54:0:b0:2cd:791a:8899 with SMTP id y20csp2933527ljj;
+        Tue, 16 Jan 2024 15:05:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHwckwclZVWU357CIbgP56sekMQlixo+LF/B6nPjLSC4R4ZhIXdR8jTtT4PNFO+GKEGVJBx
+X-Received: by 2002:a05:6a00:22ca:b0:6d9:bf8d:e31b with SMTP id f10-20020a056a0022ca00b006d9bf8de31bmr10084949pfj.56.1705446301679;
+        Tue, 16 Jan 2024 15:05:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705446301; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LxanhW6FP0dPBfmwsHM8eEHh3I9Du2y1y53BygMSQrRzIxRjc8nfoW+FYZ/qcvlSog
+         CxmhMj41guclmGWUUb57yIZXWM1IkjWsSI7FbhPHkN4Da87RAGzOifBfU7VkiHXc4HMd
+         3CvXGqU4RXgM04ygMFYUSmllMzBXV2nwvNccXlO6gq34yxxpBDtqe0EYs2+x6zk+Kc1a
+         kAiOhN+SbnNNOml2SJ28nqZvjQWfI52MehyPoTnq+wR2fa90f5ZAzBxkq5tiAs+Ph71z
+         ulu15JyO3+dRJE7CkuV9aBHEUF2nOE7eUZ+brltA8ZBw4+UMEsAP/q4dcj8Zj1YuHyAo
+         qxPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=sJDUYLfuOCKZskJT7Js2JtqTDY+BIwFy4rhYvmptkKs=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=SrwLH60zeXrnJJ3ix2z1UJDu8LwTVsE0yKEmhwGSXHTLuxpUrG8dfCt6xz7HVx4/4z
+         TaXEaw5asRt1pkHVSKOurQ6yIjXGaPqGU7lFKgOcmYl+Rwdj9Avg8FN/yGyBhfbBHms2
+         wBlaE8p51aL5AfTSXP0lzPgylYSRUpBUYG5EtLpixC48oI3abIF0ZdofzlfIGyU0yBuV
+         WmUbtAufdUG/vuWz3tPIFoAp1YQNd4RcHUBkHOzEKxdGnREtbM0nQv+2ngFHfhGApe9o
+         ZrmIA8wRznk7Pa+Mfw3p9He8RRALFVloDbwGUQAeLh8AzVtG5BdyqG2n80TS0dKh9McI
+         ggaA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b="TwKx6FF/";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=ftxc53Vb;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o51.ck.n.convertkit.com (o51.ck.n.convertkit.com. [159.183.200.47])
+        by mx.google.com with ESMTPS id h5-20020a656385000000b005ce172ef504si11824940pgv.36.2024.01.16.15.05.00
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Jan 2024 15:05:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) client-ip=159.183.200.47;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b="TwKx6FF/";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=ftxc53Vb;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=sJDUYLfuOCKZskJT7Js2JtqTDY+BIwFy4rhYvmptkKs=;
+	b=TwKx6FF/eBogF5ukGOt1x0ClrfORphMrKAmmNzUMsTjccpYRq6t10OWY5kTFIjKtNgjm
+	izliQ5MD3Qz11AxoZBfBJepFhjKvu6nv2Okz/RebIjH+xdZCTbjZpek7TniauTVVvNyFQF
+	YhsTO5PbxtrQXzg2R8dP/i0ss9QXjqzSI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=sJDUYLfuOCKZskJT7Js2JtqTDY+BIwFy4rhYvmptkKs=;
+	b=ftxc53VbCzhFC2Cmd3uhRwBsGhioZUJHPkWtrYw6ZRZw52OPTqDKVUVXAHsqIZtcWsPA
+	RANfppbx/0PWD21A+26DUqiQZ1QBF2EkPqLuuttvMZJGBF2TOSAvHvV+TwGYNLY2uneQtp
+	8cLS/CGiNR07jpnjZIWE4NXfF1dJOv4MM=
+Received: by filterdrecv-65966cf8bb-zrgdt with SMTP id filterdrecv-65966cf8bb-zrgdt-1-65A70B9A-CD
+        2024-01-16 23:04:58.937972354 +0000 UTC m=+7878234.968823200
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-19 (SG) with HTTP
+	id LKuUD9pcToOcgSLLK0Iezg
+	Tue, 16 Jan 2024 23:04:58.770 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=e31aae39f6174ed4bdde1c1053fbea5b66f888ab43b9af7441867fe1cc57
+Date: Tue, 16 Jan 2024 23:04:59 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <5quord73d0b7hvqqwxma6hrq4kv44@convertkit-mail2.com>
+Subject: JSM Weekly: Next.js changes, Testing, Memory Allocation...
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 12814064:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44>
+X-Report-Spam: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfZs5B9KTlHJH1aFxO?=
+ =?us-ascii?Q?onkPTuHzOSPz41PwAGOiaj2fzJshshIDGO2WNp0?=
+ =?us-ascii?Q?yb=2F40T66+YVHp2RKW5+mLu4nJsWXApnzGfP1hO4?=
+ =?us-ascii?Q?T5HcjIblFIJ187L0eeVYfSaonN0TSaoLtPbWaWF?=
+ =?us-ascii?Q?oL2xfOHU7xv=2Fk4uKTWUGjeUmevRoxNnjPF+Esd?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADLxBqyQ68aw5UPWFusenjp3bDzOdJuXUy6K8V3?=
+ =?us-ascii?Q?7VwedijT=2F2rOik7HFMcnTapx09rGIoIsZXvn7TJ?=
+ =?us-ascii?Q?THbwTd6TZOXpJtxqoUet3D6oQQqRVr1+JuPjiRN?=
+ =?us-ascii?Q?5fzyecWazdE6LlL5fhiq2+ipRLXadkrIVzTo7BN?=
+ =?us-ascii?Q?knP6pIrTrJNEmZnAnmMk8jMQXS8OP6lQAEIQ6Ry?=
+ =?us-ascii?Q?zqb5DKQphS3a5Y091TktDIBI80lzTbWTXo4Qq5J?=
+ =?us-ascii?Q?hzejYT8qevEYC=2FvIl=2FrhZa90WShTI4BIMqHA1uV?=
+ =?us-ascii?Q?JrVpySvWkYb95+Z0A6p+YxIq6uvVyAdudGXMf3m?=
+ =?us-ascii?Q?yMqM12EylqlSfIz=2FNhWqVzjHysPign7A=3D=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--e31aae39f6174ed4bdde1c1053fbea5b66f888ab43b9af7441867fe1cc57
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+=E2=80=8B
+
+Welcome =F0=9F=91=8B
+
+Are you still following your New Year=E2=80=99s Resolutions, or did you
+give up like everyone else? =F0=9F=98=84
+
+=E2=80=8B
+
+Either way, let=E2=80=99s get started!
+
+=E2=80=8B
+
+----------
+What=E2=80=99s new
+----------
+
+=F0=9F=A4=AF The Next Next.js
+
+CEO of Vercel Guillermo Rauch (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/3ohphdu73z=
+8q2rhp/aHR0cHM6Ly90d2l0dGVyLmNvbS9yYXVjaGc=3D
+) teased a new feature of Next.js =E2=80=94 PPR (Partial Prerendering (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/48hvh7urmg=
+30pnbq/aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2FwaS1yZWZlcmVuY2UvbmV4dC1jb25m=
+aWctanMvcGFydGlhbC1wcmVyZW5kZXJpbmc=3D
+)) by implementing it in a website. The performance is insane.
+Check out the complete report and how to use it here (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/wnh2h6uwqg=
+drkobl/aHR0cHM6Ly94LmNvbS9yYXVjaGcvc3RhdHVzLzE3NDQxODMwNTIwMTA2ODQ3NDc_cz0y=
+MA=3D=3D
+).
+
+=E2=80=8B
+
+=F0=9F=A7=AA Your Test is here
+
+Many people had questions on how to do testing in Next.js. Those
+questions have now been answered. Next.js has released a whole
+guide on Testing using Vitest, Jest, Cypress, and even
+Playwright. Check it out here (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/reh8h9u0mx=
+pq3qa6/aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRp=
+b24vdGVzdGluZw=3D=3D
+).
+
+=E2=80=8B
+
+=F0=9F=8D=80 Deep Clone
+
+Deep cloning of objects in JavaScript has been a sort of pain in
+the backend. Recently a new global function has been introduced
+to deeply clone objects. Read more here (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/08hwhgud2z=
+4m9dip/aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL3N0=
+cnVjdHVyZWRDbG9uZQ=3D=3D
+).
+
+=E2=80=8B
+
+=F0=9F=A7=A0 Memory Allocation
+
+If you have ever wanted to understand how memory allocation works
+for variables or anything else we do in programming, this article
+(
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/8ghqh3ulo9=
+8g2osl/aHR0cHM6Ly9zYW13aG8uZGV2L21lbW9yeS1hbGxvY2F0aW9uLw=3D=3D
+) is your answer. Worth a read!
+
+=E2=80=8B
+
+---------------------
+A sneak peek into JSM
+---------------------
+
+=F0=9F=93=88 Realtime Dashboard
+
+We are going to release a new video this Friday that teaches you
+how to build and deploy an admin dashboard that operates in
+real-time
+
+=E2=80=8B
+
+=E2=9A=A1 Phenomenal Showcase
+
+A few days back, in the JSM Masterclass, we had the final project
+showcase of Cohort #5 where they built a featured-packed
+full-stack application. One of the key features, apart from a
+chat feature, groups, live users, interviews was a podcast
+feature.
+
+=E2=80=A6 and Team Algo Alliance excelled at it!!
+
+=E2=80=8B
+=E2=80=8B
+
+=E2=80=8B
+
+So, what are you working on this week? Got any plans or
+resolutions you=E2=80=99re sticking to or gave up on? Reply to this
+email, and I will feature the best submission in the next email.
+
+=E2=80=8B
+
+=E2=80=8B
+
+Before I sign off, here=E2=80=99s this week=E2=80=99s meme =F0=9F=98=86
+
+=E2=80=8B
+Until next time,
+
+Adrian from jsmastery.pro (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/vqh3hmupog=
+6nvecw/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby8=3D
+)=E2=80=8B
+
+=E2=80=8B
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/l2heh6u3lr=
+ponrcg/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5
+) =E2=80=8B (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/m2h7h6u83e=
+xoqwsl/aHR0cHM6Ly90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/dphehmu0e5=
+xqodtl/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bWFzdGVyeS8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/e0hph0u074=
+zkl6c7/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcnkv
+) =E2=80=8B (
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/7qh7h2uo9z=
+e06lh9/aHR0cHM6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D
+)
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44
+)=E2=80=8B
+--e31aae39f6174ed4bdde1c1053fbea5b66f888ab43b9af7441867fe1cc57
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><div>
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box"><div class=3D"ck-inner-section ck-padding-left-mobile-friendly ck=
+-padding-right-mobile-friendly" style=3D"padding:0px 5px 0px 5px"><div styl=
+e=3D"margin-left:auto;margin-right:auto;max-width:640px">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:800px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/gWJmN92FyV97FAL7ZGBCRf/email" width=3D"800" he=
+ight=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;lin=
+e-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:non=
+e;-ms-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4=
+px;width:800px;height:auto;object-fit:contain"></div></figure></td></tr></t=
+body></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>Welcome</strong> =F0=9F=91=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Are you still following your New Year=E2=80=99s Resolutions, or did y=
+ou give up like everyone else? =F0=9F=98=84</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>Either way, let=E2=80=99s get started!</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<h2 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.5em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, san=
+s-serif;font-size:32px;color:#1a1a1a;font-weight:800;letter-spacing:0;line-=
+height:1.5;text-transform:none" class=3D"">What=E2=80=99s new</h2>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=A4=AF The Next Next.js</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">CEO of Vercel <a href=3D"https://click.convertkit-mail2.com/5quord73d=
+0b7hvqqwxma6hrq4kv44/3ohphdu73z8q2rhp/aHR0cHM6Ly90d2l0dGVyLmNvbS9yYXVjaGc=
+=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" =
+url-id=3D"1604445171">Guillermo Rauch</a> teased a new feature of Next.js =
+=E2=80=94 PPR (<a href=3D"https://click.convertkit-mail2.com/5quord73d0b7hv=
+qqwxma6hrq4kv44/48hvh7urmg30pnbq/aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2FwaS=
+1yZWZlcmVuY2UvbmV4dC1jb25maWctanMvcGFydGlhbC1wcmVyZW5kZXJpbmc=3D" target=3D=
+"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1604=
+445173">Partial Prerendering</a>) by implementing it in a website. The perf=
+ormance is insane. Check out the complete report and how to use it <a href=
+=3D"https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/wnh2h6=
+uwqgdrkobl/aHR0cHM6Ly94LmNvbS9yYXVjaGcvc3RhdHVzLzE3NDQxODMwNTIwMTA2ODQ3NDc_=
+cz0yMA=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:=
+#0F82F0" url-id=3D"1604445174">here</a>.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=A7=AA Your Test is here</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Many people had questions on how to do testing in Next.js. Those ques=
+tions have now been answered. Next.js has released a whole guide on Testing=
+ using Vitest, Jest, Cypress, and even Playwright. Check it out <a href=3D"=
+https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/reh8h9u0mx=
+pq3qa6/aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRp=
+b24vdGVzdGluZw=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#0F82F0" url-id=3D"1604445175">here</a>.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=8D=80 Deep Clone</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Deep cloning of objects in JavaScript has been a sort of pain in the =
+backend. Recently a new global function has been introduced to deeply clone=
+ objects. Read more <a href=3D"https://click.convertkit-mail2.com/5quord73d=
+0b7hvqqwxma6hrq4kv44/08hwhgud2z4m9dip/aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vc=
+mcvZW4tVVMvZG9jcy9XZWIvQVBJL3N0cnVjdHVyZWRDbG9uZQ=3D=3D" target=3D"_blank" =
+rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1604445176">h=
+ere</a>.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=A7=A0 Memory Allocation</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">If you have ever wanted to understand how memory allocation works for=
+ variables or anything else we do in programming, <a href=3D"https://click.=
+convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/8ghqh3ulo98g2osl/aHR0cHM=
+6Ly9zYW13aG8uZGV2L21lbW9yeS1hbGxvY2F0aW9uLw=3D=3D" target=3D"_blank" rel=3D=
+"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1604445177">this ar=
+ticle</a> is your answer. Worth a read!</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<h2 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.5em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, san=
+s-serif;font-size:32px;color:#1a1a1a;font-weight:800;letter-spacing:0;line-=
+height:1.5;text-transform:none" class=3D""><strong>A sneak peek into JSM</s=
+trong></h2>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=93=88 <strong>Realtime Dashboard</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">We are going to release a new video this Friday that teaches you how =
+to build and deploy an admin dashboard that operates in real-time</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=9A=A1 <strong>Phenomenal Showcase</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">A few days back, in the JSM Masterclass, we had the final project sho=
+wcase of Cohort #5 where they built a featured-packed full-stack applicatio=
+n. <strong>One of the key features, apart from a chat feature, groups, live=
+ users, interviews was a podcast feature.</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=A6 and Team Algo Alliance excelled at it!!</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:600px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/e2iL1NiuUf2WypHgXzi1wf/email" width=3D"600" he=
+ight=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;lin=
+e-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:non=
+e;-ms-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4=
+px;width:600px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>So, what are you working on this week? Got any plans or resol=
+utions you=E2=80=99re sticking to or gave up on? Reply to this email, and I=
+ will feature the best submission in the next email.</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Before I sign off, here=E2=80=99s this week=E2=80=99s meme =F0=9F=98=
+=86</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:500px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/a1FLACnBUN6b8wwJif9Q1z/email" width=3D"500" he=
+ight=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;lin=
+e-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:non=
+e;-ms-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4=
+px;width:500px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Until next time,</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Adrian from <a href=3D"https://click.convertkit-mail2.com/5quord73d0b=
+7hvqqwxma6hrq4kv44/vqh3hmupog6nvecw/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby8=3D"=
+ target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-=
+id=3D"1604445178">jsmastery.pro</a>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box"><div class=3D"ck-inner-section ck-padding-left-none ck-padding-ri=
+ght-none" style=3D"padding:0px 0px 0px 0px"><div style=3D"margin-left:auto;=
+margin-right:auto;max-width:640px">
+<div style=3D"text-align:left;margin-top:16px;margin-bottom:16px">
+<a href=3D"https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44=
+/l2heh6u3lrponrcg/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5"=
+ style=3D"display:inline-block;padding-right:8px;border:none;text-decoratio=
+n:none" url-id=3D"1604445179"><img src=3D"https://functions-js.convertkit.c=
+om/icons?icon=3Dyoutube&amp;foreground=3Dffffff&amp;background=3Dcc0000&amp=
+;shape=3Dcircle&amp;v=3D3" alt=3D"youtube" width=3D"32" height=3D"32" style=
+=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-webki=
+t-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubic;=
+max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"><=
+!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.convert=
+kit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/m2h7h6u83exoqwsl/aHR0cHM6Ly90d2=
+l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D" style=3D"display:inline-block;padding-rig=
+ht:8px;border:none;text-decoration:none" url-id=3D"1604445180"><img src=3D"=
+https://functions-js.convertkit.com/icons?icon=3Dx-twitter&amp;foreground=
+=3Dffffff&amp;background=3D000000&amp;shape=3Dcircle&amp;v=3D3" alt=3D"x-tw=
+itter" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:au=
+to;line-height:100%;outline:none;-webkit-text-decoration:none;text-decorati=
+on:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width:3=
+2px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=
+=8B</a><a href=3D"https://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6h=
+rq4kv44/dphehmu0e5xqodtl/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bW=
+FzdGVyeS8=3D" style=3D"display:inline-block;padding-right:8px;border:none;t=
+ext-decoration:none" url-id=3D"1604445181"><img src=3D"https://functions-js=
+.convertkit.com/icons?icon=3Dinstagram&amp;foreground=3Dffffff&amp;backgrou=
+nd=3De1306c&amp;shape=3Dcircle&amp;v=3D3" alt=3D"instagram" width=3D"32" he=
+ight=3D"32" style=3D"display:block;border:0;height:auto;line-height:100%;ou=
+tline:none;-webkit-text-decoration:none;text-decoration:none;-ms-interpolat=
+ion-mode:bicubic;max-width:100%;border:0 none;width:32px;height:32px;displa=
+y:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"http=
+s://click.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/e0hph0u074zkl6=
+c7/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcnkv" st=
+yle=3D"display:inline-block;padding-right:8px;border:none;text-decoration:n=
+one" url-id=3D"1604445182"><img src=3D"https://functions-js.convertkit.com/=
+icons?icon=3Dlinkedin&amp;foreground=3Dffffff&amp;background=3D0077b5&amp;s=
+hape=3Dcircle&amp;v=3D3" alt=3D"linkedin" width=3D"32" height=3D"32" style=
+=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-webki=
+t-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubic;=
+max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"><=
+!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.convert=
+kit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44/7qh7h2uo9ze06lh9/aHR0cHM6Ly9kaX=
+Njb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D" style=3D"display:inline-block;paddi=
+ng-right:8px;border:none;text-decoration:none" url-id=3D"1604445183"><img s=
+rc=3D"https://functions-js.convertkit.com/icons?icon=3Ddiscord&amp;foregrou=
+nd=3Dffffff&amp;background=3D7289da&amp;shape=3Dcircle&amp;v=3D3" alt=3D"di=
+scord" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:au=
+to;line-height:100%;outline:none;-webkit-text-decoration:none;text-decorati=
+on:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width:3=
+2px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=
+=8B</a>
+</div>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#656565;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none" class=3D"">=E2=80=8B<a href=3D"https=
+://unsubscribe.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#656565">Unsubscribe=
+</a> =C2=B7 <a href=3D"https://preferences.convertkit-mail2.com/5quord73d0b=
+7hvqqwxma6hrq4kv44" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"=
+color:#656565">Preferences</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</div></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/5quord73d0b7hvqqwxma6hrq4kv44=
+" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line-h=
+eight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-=
+ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--e31aae39f6174ed4bdde1c1053fbea5b66f888ab43b9af7441867fe1cc57--

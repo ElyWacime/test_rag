@@ -1,0 +1,1051 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:a6ce:b0:4c2:1c2:d4f7 with SMTP id q14csp2749977pxv;
+        Mon, 5 Jun 2023 05:08:21 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4pyZjdrnnmmpXPSLHr/0M1BQ8Eh3CZazCkH8cOEejP4e9NqsIer+u1utc5KPAsqoVqbvqj
+X-Received: by 2002:a5d:56c9:0:b0:2fe:e137:dbad with SMTP id m9-20020a5d56c9000000b002fee137dbadmr4770749wrw.51.1685966901337;
+        Mon, 05 Jun 2023 05:08:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685966901; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CKRlig8tIRoTf2gpx3iNzazTTLMHR8ltKFk4oE7TuwNKyVBddjurvD9+TIZ/gl7GtV
+         07TaGdLbfoAPxT+Gh4p7d1C8dnMlsji3crtIz5QnsbqJ4BfHP0emMZILaZGx5OXYuBoU
+         AveWNVFN7l7OqmpdJK5U44Ehk9vPISbYNduxB5GGc9X2NXrT1FOj0ylWajFa3CxbKxDy
+         2BgqhW6wSr+hPz6gYoJXN8lw0p7p8HciH32GUciZ99iMjdR4z4I6GAHmwXMV2BdgAGuI
+         7KbJf48BMlvi44gTVE0bfzTHhRw/12KetGWiuEnoQrmmCvhYCKC6rMhZO3yN1FwKYgxL
+         KRLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=from:mime-version:date:to:message-id:subject:dkim-signature;
+        bh=m1f2uCg4N/RzbAPnXGz3qQx8RYFyviLEWyjSamfat8k=;
+        b=B24KrjW0L9CJXG25uObu2Y1q3P5P8OKj87zNmhBDfnPTW19r3+DbBV5FPCPw16pIna
+         6MPBeyIWbbSCINcDBJFdTpxADHorOAWbcWg1bezDJwuLuEBWGxrgBRoe4N6GbrgoYFm9
+         4LPd0Vj3cAqol7ZTZW17xa5Ya3/nSvBgVybycVULpOj6xeM1u3RS7rYKJol/J7iw2LOO
+         x+OZnyMwpRQIwHxngGcx6DYAxQQWFOeUI9UvpjB/jelI1o85x2D1cu2xaD2oT1ZPyDMP
+         BL4iKJUXFflGGfc2G+CSRE2WKq8MKCVhaK8SiojQN85kfjjDqreCFogn1aGp+KDHFOCC
+         /1mA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@news-mail.elementor.com header.s=scph0621 header.b=fcPfkPrN;
+       spf=none (google.com: news-mail.elementor.com does not designate permitted sender hosts) smtp.mailfrom="msprvs1=19520Ul4HT3-S=bounces-1898-330@news-mail.elementor.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=news-mail.elementor.com
+Return-Path: <msprvs1=19520Ul4HT3-S=bounces-1898-330@news-mail.elementor.com>
+Received: from qgjr.news-mail.elementor.com (qgjr.news-mail.elementor.com. [223.165.114.72])
+        by mx.google.com with ESMTPS id f18-20020adfdb52000000b0030c2b30ec62si4067288wrj.959.2023.06.05.05.08.20
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Jun 2023 05:08:21 -0700 (PDT)
+Received-SPF: none (google.com: news-mail.elementor.com does not designate permitted sender hosts) client-ip=223.165.114.72;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@news-mail.elementor.com header.s=scph0621 header.b=fcPfkPrN;
+       spf=none (google.com: news-mail.elementor.com does not designate permitted sender hosts) smtp.mailfrom="msprvs1=19520Ul4HT3-S=bounces-1898-330@news-mail.elementor.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=news-mail.elementor.com
+X-MSFBL: wlCqj2QGoUdHUdezfIAMKd9grJhbaEE7kdPwvDQ90L8=|eyJzdWJhY2NvdW50X2l
+	kIjoiMzMwIiwiY3VzdG9tZXJfaWQiOiIxODk4IiwibWVzc2FnZV9pZCI6IjY0NzR
+	mMWNmN2Q2NGYzYmE3MDY0IiwidGVuYW50X2lkIjoic3BjZXUiLCJyIjoiZWx5LnV
+	idW50dTBAZ21haWwuY29tIn0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=news-mail.elementor.com; s=scph0621; t=1685966833;
+	i=@news-mail.elementor.com;
+	bh=m1f2uCg4N/RzbAPnXGz3qQx8RYFyviLEWyjSamfat8k=;
+	h=Subject:Message-ID:To:Date:Content-Type:From:From:To:Cc:Subject;
+	b=fcPfkPrNkOF6v7wVe3M+ZJYTUkbsy1m3nWLSz2PPHBwaWQLO6CWEZuHIVKQwmzrjd
+	 Oyt50pY2/8KZlDJ6vvMUKLmesnF3glF/Q2ityBWMcl1vbabtSce/uP/jcUebf40b7+
+	 hJIwVLaJeufnhlhYHJdA8+sYr+xAYhgoy/OVSh1k=
+Subject: Sale is Ending Soon!  
+Message-ID: <07.46.08784.1FFCD746@gr.mta3vrest.cc.prd.sparkpost>
+To: ely.ubuntu0@gmail.com
+Date: Mon, 05 Jun 2023 12:07:13 +0000
+Content-Type: multipart/alternative; boundary="_----OhQeV4l5oQ8I4DK2Ph1kRg===_24/36-08784-1FFCD746"
+MIME-Version: 1.0
+From: "Elementor" <team@news-mail.elementor.com>
+
+--_----OhQeV4l5oQ8I4DK2Ph1kRg===_24/36-08784-1FFCD746
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+Don=E2=80=99t miss out on this deal=0A=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C=0AElementor    Birthday sale=
+=0ASave up to 30% on Elementor Pro Website Builder Plugin=0AGrab this Deal =
+Before it Ends!                 Save up to 30% on=0AElementor Pro=0AGrab th=
+is Deal Before it Ends!                     Elementor Sale=0A( https://clic=
+ks-mail.elementor.com/f/a/AE-wuLiqQOocbfG2rAbvCQ~~/AAAHagA~/RgRmYFTxP0QqaHR=
+0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvVwVzcGNldUIKZHTxz31k87=
+pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0AElementor Sale ( https://cli=
+cks-mail.elementor.com/f/a/AE-wuLiqQOocbfG2rAbvCQ~~/AAAHagA~/RgRmYFTxP0QqaH=
+R0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvVwVzcGNldUIKZHTxz31k8=
+7pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0AIn celebration of our birth=
+day, we want to treat you to a big=0Adiscount on an Elementor Pro subscript=
+ion.=0AThere=E2=80=99s still time to act - but don=E2=80=99t delay. This de=
+al won=E2=80=99t=0Alast much longer! Explore Pro Plans =0A( https://clicks-=
+mail.elementor.com/f/a/AE-wuLiqQOocbfG2rAbvCQ~~/AAAHagA~/RgRmYFTxP0QqaHR0cH=
+M6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvVwVzcGNldUIKZHTxz31k87pwZ=
+FIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )=0AExtended Design Capabilities =
+=0A( https://clicks-mail.elementor.com/f/a/AE-wuLiqQOocbfG2rAbvCQ~~/AAAHagA=
+~/RgRmYFTxP0QqaHR0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvVwVzc=
+GNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )            Ex=
+tended=0ADesign Capabilities            Enjoy all the advanced features of=
+=0AElementor Pro: live editing, 100+ widgets, animations, responsive=0Adesi=
+gn, dynamic content, and more. You=E2=80=99ll love the complete=0Adesign fr=
+eedom you get, especially with no coding required.=0AAdvanced Web Customiza=
+tion =0A( https://clicks-mail.elementor.com/f/a/AE-wuLiqQOocbfG2rAbvCQ~~/AA=
+AHagA~/RgRmYFTxP0QqaHR0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMv=
+VwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )         =
+   Advanced=0AWeb Customization            With Elementor Pro, adapt any=0A=
+pre-designed website kit or template to create a complete website=0Ain just=
+ a few clicks. You have all the tools you need to=0Acustomize just about an=
+ything including themes, forms, popups,=0AWooCommerce, and much more.      =
+           24/7 Premium Support=0A( https://clicks-mail.elementor.com/f/a/A=
+E-wuLiqQOocbfG2rAbvCQ~~/AAAHagA~/RgRmYFTxP0QqaHR0cHM6Ly9lbGVtZW50b3IuY29tL3=
+BhZ2VzL2JpcnRoZGF5LTIwMjMvVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21ha=
+WwuY29tWAQAAAFK )            24/7=0APremium Support            Get around-t=
+he-clock premium support=0Awith Elementor Pro. Whether you need assistance =
+when you=E2=80=99re just=0Agetting started or want to solve a complex issue=
+, we=E2=80=99ve got your=0Aback.                The clock is ticking. Don=
+=E2=80=99t miss out on this=0Aspecial offer! Get Elementor Pro =0A( https:/=
+/clicks-mail.elementor.com/f/a/AE-wuLiqQOocbfG2rAbvCQ~~/AAAHagA~/RgRmYFTxP0=
+QqaHR0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvVwVzcGNldUIKZHTxz=
+31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK )              The=0Aoffer =
+is subject to these Terms & Conditions =0A( https://clicks-mail.elementor.c=
+om/f/a/KWk3gr0u1rZ8-JLLV1Szqg~~/AAAHagA~/RgRmYFTxP0QnaHR0cHM6Ly9lbGVtZW50b3=
+IuY29tL3BhZ2VzL2JkMjMtdGVybXMvVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ=
+21haWwuY29tWAQAAAFK )=0Atw ( https://clicks-mail.elementor.com/f/a/SqQsDgRN=
+JP1JXZeTKIAGFg~~/AAAHagA~/RgRmYFTxP0QdaHR0cHM6Ly90d2l0dGVyLmNvbS9lbGVtbnRvc=
+i9XBXNwY2V1QgpkdPHPfWTzunBkUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~ )   fb =
+=0A( https://clicks-mail.elementor.com/f/a/E0GxgxSAGRnfXv4V2zGkFg~~/AAAHagA=
+~/RgRmYFTxP0QiaHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL2VsZW1udG9yL1cFc3BjZXVCCmR08=
+c99ZPO6cGRSFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~ )   in =0A( https://cli=
+cks-mail.elementor.com/f/a/12xgH8HqhYW7zBwyugFTSA~~/AAAHagA~/RgRmYFTxP0QfaH=
+R0cDovL2luc3RhZ3JhbS5jb20vZWxlbWVudG9yL1cFc3BjZXVCCmR08c99ZPO6cGRSFWVseS51Y=
+nVudHUwQGdtYWlsLmNvbVgEAAABSg~~ )   yt =0A( https://clicks-mail.elementor.c=
+om/f/a/so25OF7kK9XO-dB2saTuQg~~/AAAHagA~/RgRmYFTxP0QkaHR0cHM6Ly93d3cueW91dH=
+ViZS5jb20vYy9lbGVtZW50b3IvVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21ha=
+WwuY29tWAQAAAFK )        =C2=A9=0A2023 Tuval Street 40, Ramat Gan=0A5252247=
+, Israel=0A=0AHelp Center ( https://clicks-mail.elementor.com/f/a/17qZZzTKG=
+ysDrqfmpTr-dA~~/AAAHagA~/RgRmYFTxP0QbaHR0cHM6Ly9lbGVtZW50b3IuY29tL2hlbHAvVw=
+VzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK ) | Terms &=
+=0AConditions ( https://clicks-mail.elementor.com/f/a/S_MmvIKAjq5d4OA9_Sh3w=
+A~~/AAAHagA~/RgRmYFTxP0QcaHR0cHM6Ly9lbGVtZW50b3IuY29tL3Rlcm1zL1cFc3BjZXVCCm=
+R08c99ZPO6cGRSFWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~ ) | Update Email=0AP=
+references ( https://clicks-mail.elementor.com/f/a/xmb1YxUn_MH2WODKE-N74g~~=
+/AAAHagA~/RgRmYFTxP4RxAmh0dHBzOi8vMDEuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5ldS9lb=
+WFpbC9tYW5hZ2Vfc3Vic2NyaXB0aW9ucy8lMjQxJTI0JTJGbWpERUVDeU56WEVYYTBZRnZacTRB=
+JTNEJTNEJTI0enBnSmNsOHlvYVl3OVl4c3pOVHdEME02OWhJa041M3JSUUs2TkhFTiUyQm5nJTN=
+EP2Q9JTI0MSUyNHNBak1WeEFzVTlieWRaSjM3NzIlMkJhUSUzRCUzRCUyNHA4YyUyQkcyTkwlMk=
+ZqaiUyRk0xTHY4UTJXdXVZUDd0QktWUSUyRmRTMmdQcWpYVFFRb0taQ0wlMkJ3SDVNNzAwTiUyR=
+kI2MCUwQThDSHc0Q0F4Q1djSEhXM0tDS2J2ZUY3JTJCSmRlUUJVMDdFN0ZsVG1qJTJGVW0wNjBP=
+c2IlMkY0S0JkcEMlMkJGdUkxJTBBSGUzQWdacHJqeENuJTJCR0hBbm5wenpTZEthSkZmRndtT0x=
+IcWVpQmNuJTJGSDFwYnNBNlFDUzJBRzRaR1prOCUwQU8wN0FSRTM4QXpVZklkZ2poaW15JTJCR2=
+RVY09JJTJGTUJjUzNhSUJGeElOYktVRUFQdWYlMkZqNk1xNXp5ZUdnbSUwQVM2aEVyNUxnNSUyQ=
+nFFZElZQk1mZXlnS2RlaUF0R1B5eEpaUEczaTJGRzNSJTJCYjFPNkZrUXhlU1BhWkp5djUlMEFr=
+eGExRkNOWUp6JTJCbXBxNVZwWGlRTHMxS0d0JTJCTHlrV1ZHa1dGRGd2ODE0YVQlMkJ0JTJGdVJ=
+vVWJFc0pJV2w3OSUwQWVFNCUzRCYxPTFXBXNwY2V1QgpkdPHPfWTzunBkUhVlbHkudWJ1bnR1ME=
+BnbWFpbC5jb21YBAAAAUo~ ) | Unsubscribe=0A( https://clicks-mail.elementor.co=
+m/f/a/o1JoKgtHCgZ4Vy7uPFXsAQ~~/AAAHagA~/RgRmYFTxP4QSAmh0dHBzOi8vMDEuZW1haWx=
+pbmJvdW5kcHJvY2Vzc2luZy5ldS9lbmNfdXNlci91bnN1YnNjcmliZT9kPSUyNDElMjRzQWpNVn=
+hBc1U5YnlkWkozNzcyJTJCYVElM0QlM0QlMjRwOGMlMkJHMk5MJTJGamolMkZNMUx2OFEyV3V1W=
+VA3dEJLVlElMkZkUzJnUHFqWFRRUW9LWkNMJTJCd0g1TTcwME4lMkZCNjAlMEE4Q0h3NENBeENX=
+Y0hIVzNLQ0tidmVGNyUyQkpkZVFCVTA3RTdGbFRtaiUyRlVtMDYwT3NiJTJGNEtCZHBDJTJCRnV=
+JMSUwQUhlM0FnWnByanhDbiUyQkdIQW5ucHp6U2RLYUpGZkZ3bU9MSHFlaUJjbiUyRkgxcGJzQT=
+ZRQ1MyQUc0WkdaazglMEFPMDdBUkUzOEF6VWZJZGdqaGlteSUyQkdkVWNPSSUyRk1CY1MzYUlCR=
+nhJTmJLVUVBUHVmJTJGajZNcTV6eWVHZ20lMEFTNmhFcjVMZzUlMkJxRWRJWUJNZmV5Z0tkZWlB=
+dEdQeXhKWlBHM2kyRkczUiUyQmIxTzZGa1F4ZVNQYVpKeXY1JTBBa3hhMUZDTllKeiUyQm1wcTV=
+WcFhpUUxzMUtHdCUyQkx5a1dWR2tXRkRndjgxNGFUJTJCdCUyRnVSb1ViRXNKSVdsNzklMEFlRT=
+QlM0QmMT0xVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK =
+)=0A=0AThis email is intended for ely.ubuntu0@gmail.com.=0ATo ensure delive=
+ry of this email and future mailings, please add=0Aus to your contacts book=
+ or safe senders list.
+--_----OhQeV4l5oQ8I4DK2Ph1kRg===_24/36-08784-1FFCD746
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">=0A<html lang=3D"en" xmlns=3D=
+"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xm=
+lns:o=3D"urn:schemas-microsoft-com:office:office">=0A=0A=0A=0A<head>=0A  <t=
+itle></title>=0A  <meta http-equiv=3D"content-type" content=3D"text/html; c=
+harset=3Dutf-8">=0A  <meta http-equiv=3D"x-ua-compatible" content=3D"IE=3De=
+dge">=0A  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-=
+scale=3D1.0">=0A  <meta name=3D"format-detection" content=3D"telephone=3Dno=
+">=0A=0A  <meta name=3D"color-scheme" content=3D"light dark">=0A  <meta nam=
+e=3D"supported-color-schemes" content=3D"light dark">=0A=0A=0A  <!--[if !ms=
+o]><!-->=0A  <link href=3D"https://fonts.googleapis.com/css2=3Ffamily=3DDM+=
+Sans:wght@400;500;700&amp;display=3Dswap" rel=3D"stylesheet">=0A  <link hre=
+f=3D"https://fonts.googleapis.com/css2=3Ffamily=3DSource+Serif+Pro:wght@600=
+;700&amp;display=3Dswap" rel=3D"stylesheet">=0A  <!--<![endif]-->=0A=0A=0A =
+ <meta name=3D"generator" content=3D"Braze">=0A=0A  <meta name=3D"x-apple-d=
+isable-message-reformatting">=0A  <meta name=3D"robots" content=3D"noindex,=
+follow">=0A=0A  <style>=0A    * {=0A      -webkit-text-size-adjust: none;=
+=0A    }=0A  </style>=0A=0A  <style type=3D"text/css">=0A    :root {=0A=0A =
+     Color-scheme: light dark;=0A=0A      supported-color-schemes: light da=
+rk;=0A    }=0A=0A    * {=0A      -webkit-text-size-adjust: none;=0A    }=0A=
+=0A    body {=0A      margin: 0;=0A      padding: 0;=0A      -webkit-text-s=
+ize-adjust: 100% !important;=0A      -ms-text-size-adjust: 100% !important;=
+=0A      -webkit-font-smoothing: antialiased !important;=0A    }=0A=0A    #=
+MessageViewBody a {=0A      color: inherit;=0A      text-decoration: none;=
+=0A      font-size: inherit;=0A      font-family: inherit;=0A      font-wei=
+ght: inherit;=0A      line-height: inherit;=0A    }=0A=0A    a[x-apple-data=
+-detectors] {=0A      color: inherit !important;=0A      text-decoration: n=
+one !important;=0A      font-size: inherit !important;=0A      font-family:=
+ inherit !important;=0A      font-weight: inherit !important;=0A      line-=
+height: inherit !important;=0A    }=0A=0A    u~div .gmail-hide {=0A      di=
+splay: none !important;=0A    }=0A=0A    u~div .gmail-show {=0A      displa=
+y: table !important;=0A    }=0A=0A=0A    img {=0A      border: 0 !important=
+;=0A      outline: none !important;=0A    }=0A=0A    p {=0A      margin: 0 =
+!important;=0A      padding: 0 !important;=0A    }=0A=0A    table {=0A     =
+ border-collapse: collapse;=0A      mso-table-lspace: 0;=0A      mso-table-=
+rspace: 0;=0A    }=0A=0A    td,=0A    a,=0A    span {=0A      border-collap=
+se: collapse;=0A      mso-line-height-rule: exactly;=0A    }=0A=0A    .Exte=
+rnalClass * {=0A      line-height: 100%;=0A    }=0A=0A    .el_defaultlink a=
+ {=0A      color: inherit !important;=0A      text-decoration: none !import=
+ant;=0A    }=0A=0A    .el_g_img+div {=0A      display: none;=0A    }=0A=0A =
+   .el_white_u a {=0A      color: #ffffff;=0A      text-decoration: underli=
+ne;=0A    }=0A=0A    .el_hover:hover {=0A      background-color: #ffffff;=
+=0A      color: #ffffff !important;=0A    }=0A=0A    .el_hover a:hover {=0A=
+      color: #ffffff !important;=0A    }=0A=0A    .el_hover2:hover {=0A    =
+  background-color: #ffffff;=0A    }=0A=0A    .el_hover2 {=0A      transiti=
+on: .3s;=0A    }=0A=0A    .el_hover {=0A      transition: .3s;=0A    }=0A=
+=0A    .el_hover a {=0A      background-color: #ffffff;=0A      text-decora=
+tion: none;=0A    }=0A=0A    @media (prefers-color-scheme: dark) {=0A=0A   =
+   /* Shows Dark Mode-Only Content, Like Images */=0A      /* .dark-img {=
+=0A  display: block !important;=0A  width: auto !important;=0A  overflow: v=
+isible !important;=0A  float: none !important;=0A  max-height: inherit !imp=
+ortant;=0A  max-width: inherit !important;=0A  line-height: auto !important=
+;=0A  margin-top: 0px !important;=0A  visibility: inherit !important;=0A} *=
+/=0A=0A      /* Hides Light Mode-Only Content, Like Images */=0A      /* .l=
+ight-img {=0A  display: none;=0A  display: none !important;=0A} */=0A=0A   =
+   /* Custom Dark Mode Background Color */=0A      .darkmode {=0A        ba=
+ckground-color: #272623 !important;=0A      }=0A=0A      /* Custom Dark Mod=
+e Background Color */=0A      .darkmodetext {=0A        color: #212121 !imp=
+ortant;=0A      }=0A=0A      /* Custom Dark Mode Background Color */=0A    =
+  .cta_dark {=0A        background-color: #000000 !important;=0A      }=0A=
+=0A      /* Custom Dark Mode Font Colors */=0A      h1,=0A      h2,=0A     =
+ p,=0A      span,=0A      a,=0A      strong,=0A      td {=0A        color: =
+#ffffff !important;=0A      }=0A=0A      /* Custom Dark Mode Text Link Colo=
+r */=0A      .link {=0A       background-color: #FF6524 !important;=0A     =
+ }=0A=0A      /* Custom Dark Mode Text Link Color */=0A      .link2 {=0A   =
+     color: #ffffff !important;=0A      }=0A=09  =0A=09  /* Custom Dark Mod=
+e Text Link Color */=0A      .link1 {=0A        color: #AF3797 !important;=
+=0A      }=0A    }=0A=0A    @media only screen and (min-width:481px) and (m=
+ax-width:599px) {=0A      img[class=3Dlogo] {=0A        width: 188px !impor=
+tant;=0A        max-width: 188px !important;=0A      }=0A=0A      .logo {=
+=0A        width: 188px !important;=0A        max-width: 188px !important;=
+=0A      }=0A=0A      .el_main_table {=0A        width: 100% !important;=0A=
+      }=0A=0A      .el_hide {=0A        mso-hide: all !important;=0A       =
+ max-height: 0px !important;=0A        overflow: hidden !important;=0A     =
+   display: none !important;=0A      }=0A=0A      .el_full_img {=0A        =
+width: 100% !important;=0A        height: auto !important;=0A      }=0A=0A =
+     .el_full_img img {=0A        width: 100% !important;=0A        height:=
+ auto !important;=0A      }=0A=0A      .el_side10 {=0A        width: 10px !=
+important;=0A      }=0A=0A      .el_aside10 {=0A        padding: 0 10px !im=
+portant;=0A      }=0A=0A      .el_aside20 {=0A        padding: 0 20px !impo=
+rtant;=0A      }=0A=0A      .el_aside30 {=0A        padding: 0 30px !import=
+ant;=0A      }=0A=0A      .el_aside40 {=0A        padding: 0 40px !importan=
+t;=0A      }=0A=0A      .el_side15 {=0A        width: 15px !important;=0A  =
+    }=0A=0A      .el_ptop {=0A        padding-top: 30px !important;=0A     =
+ }=0A=0A      .el_pbottom {=0A        padding-bottom: 40px !important;=0A  =
+    }=0A=0A      /* Padding Left Right Bottom */=0A      .el_h10 {=0A      =
+  height: 10px !important;=0A        font-size: 1px !important;=0A        l=
+ine-height: 1px !important;=0A      }=0A=0A      .el_h20 {=0A        height=
+: 20px !important;=0A        font-size: 1px !important;=0A        line-heig=
+ht: 1px !important;=0A      }=0A=0A      .el_h30 {=0A        height: 30px !=
+important;=0A        font-size: 1px !important;=0A        line-height: 1px =
+!important;=0A      }=0A=0A      .el_h40 {=0A        height: 40px !importan=
+t;=0A        font-size: 1px !important;=0A        line-height: 1px !importa=
+nt;=0A      }=0A=0A      .el_h50 {=0A        height: 50px !important;=0A   =
+     font-size: 1px !important;=0A        line-height: 1px !important;=0A  =
+    }=0A=0A      .el_padh {=0A        padding: 10px !important;=0A      }=
+=0A=0A      .el_padall {=0A        padding: 20px 15px !important;=0A      }=
+=0A=0A      .el_padnon {=0A        padding: 0 !important;=0A      }=0A=0A  =
+    .el_wrapper {=0A        width: 100% !important;=0A      }=0A=0A      .c=
+entered_image {=0A        max-width: 300px !important;=0A        text-align=
+: center;=0A      }=0A=0A      .el_show {=0A        display: inline !import=
+ant;=0A      }=0A=0A      u~div .el_show {=0A        display: none !importa=
+nt;=0A      }=0A=0A      .el_noborder {=0A        border: 0 !important;=0A =
+     }=0A=0A      .mobile_pad {=0A        padding-bottom: 30px !important;=
+=0A      }=0A=0A      .el_font20 {=0A        font-size: 20px !important;=0A=
+      }=0A=0A      .threeCollCenter {=0A        width: 100% !important;=0A =
+       max-width: 100% !important;=0A        display: block !important;=0A =
+       /* padding: 3px !important; */=0A        margin: 0 auto !important;=
+=0A        padding-top: 0 !important;=0A        text-align: center !importa=
+nt;=0A      }=0A=0A     .threeColl {=0A        width: 100% !important;=0A  =
+      max-width: 100% !important;=0A        display: block !important;=0A  =
+      /* padding: 3px !important; */=0A        margin: 0 auto !important;=
+=0A        padding-top: 0 !important;=0A        text-align: left !important=
+;=0A=0A      }=0A=09  =0A=09     .threeCollimg {=0A       width: 100% !impo=
+rtant;=0A        max-width: 100% !important;=0A        display: block !impo=
+rtant;=0A        /* padding: 3px !important; */=0A        margin: 0 auto !i=
+mportant;=0A        padding-top: 0 !important;=0A        text-align: left !=
+important;=0A=0A      }=0A=0A      u+.el_body .el_full_wrap {=0A        wid=
+th: 100% !important;=0A        width: 100vw !important;=0A      }=0A=0A    =
+  .centered_button {=0A        text-align: center !important;=0A        mar=
+gin: 0 auto !important;=0A        float: none;=0A      }=0A=0A      .es-m-t=
+xt-c {=0A        font-size: 12px !important;=0A        text-align: center !=
+important;=0A      }=0A=0A      .mob_dis {=0A        display: none !importa=
+nt;=0A      }=0A=0A    }=0A=0A    @media only screen and (max-width:480px) =
+{=0A      img[class=3Dlogo] {=0A        width: 188px !important;=0A        =
+max-width: 188px !important;=0A      }=0A=0A      .logo {=0A        width: =
+188px !important;=0A        max-width: 188px !important;=0A      }=0A=0A   =
+   .el_main_table {=0A        width: 100% !important;=0A      }=0A=0A      =
+.el_hide {=0A        mso-hide: all !important;=0A        max-height: 0px !=
+important;=0A        overflow: hidden !important;=0A        display: none !=
+important;=0A      }=0A=0A      .el_full_img {=0A        width: 100% !impor=
+tant;=0A        height: auto !important;=0A      }=0A=0A      .el_full_img =
+img {=0A        width: 100% !important;=0A        height: auto !important;=
+=0A      }=0A=0A      .el_side10 {=0A        width: 10px !important;=0A    =
+  }=0A=0A      .el_aside10 {=0A        padding: 0 10px !important;=0A      =
+}=0A=0A      .el_aside20 {=0A        padding: 0 20px !important;=0A      }=
+=0A=0A      .el_aside30 {=0A        padding: 0 30px !important;=0A      }=
+=0A=0A      .el_aside40 {=0A        padding: 0 40px !important;=0A      }=
+=0A=0A=0A      .el_side15 {=0A        width: 15px !important;=0A      }=0A=
+=0A      .el_ptop {=0A        padding-top: 30px !important;=0A      }=0A=0A=
+      .el_pbottom {=0A        padding-bottom: 40px !important;=0A      }=0A=
+=0A      /* Padding Left Right Bottom */=0A      .el_h10 {=0A        height=
+: 10px !important;=0A        font-size: 1px !important;=0A        line-heig=
+ht: 1px !important;=0A      }=0A=0A      .el_h20 {=0A        height: 20px !=
+important;=0A        font-size: 1px !important;=0A        line-height: 1px =
+!important;=0A      }=0A=0A      .el_h30 {=0A        height: 30px !importan=
+t;=0A        font-size: 1px !important;=0A        line-height: 1px !importa=
+nt;=0A      }=0A=0A      .el_h40 {=0A        height: 40px !important;=0A   =
+     font-size: 1px !important;=0A        line-height: 1px !important;=0A  =
+    }=0A=0A      .el_h50 {=0A        height: 50px !important;=0A        fon=
+t-size: 1px !important;=0A        line-height: 1px !important;=0A      }=0A=
+=0A      .el_padh {=0A        padding: 10px !important;=0A      }=0A=0A    =
+  .el_padall {=0A        padding: 30px 15px !important;=0A      }=0A=0A    =
+  .el_padnon {=0A        padding: 0 !important;=0A      }=0A=0A      .el_fo=
+nt10 {=0A        font-size: 10px !important;=0A      }=0A=0A      u+.el_bod=
+y .el_full_wrap {=0A        width: 100% !important;=0A        width: 100vw =
+!important;=0A      }=0A=0A      .centered_image {=0A        max-width: 250=
+px !important;=0A        text-align: center;=0A      }=0A=0A      .el_show =
+{=0A        display: inline !important;=0A      }=0A=0A      .el_wrapper {=
+=0A        width: 100% !important;=0A      }=0A=0A      .el_noborder {=0A  =
+      border: 0 !important;=0A      }=0A=0A      .mobile_pad {=0A        pa=
+dding-bottom: 30px !important;=0A      }=0A=0A      h1 {=0A        font-siz=
+e: 30px !important;=0A        line-height: 120% !important;=0A        margi=
+n-bottom: 15px;=0A      }=0A=0A      h2 {=0A        font-size: 26px !import=
+ant;=0A        line-height: 120% !important;=0A        margin-bottom: 12px;=
+=0A      }=0A=0A      h3 {=0A        font-size: 24px !important;=0A        =
+line-height: 120% !important;=0A        margin-bottom: 12px;=0A      }=0A=
+=0A      .title_mob {=0A        font-size: 24px !important;=0A        line-=
+height: 32px !important;=0A        margin-bottom: 15px;=0A      }=0A=09  =
+=0A=09  .title_mob2 {=0A        font-size: 22px !important;=0A        line-=
+height: 30px !important;=0A        margin-bottom: 15px;=0A      }=0A=09  =
+=0A.title_mob1 {=0A        font-size: 10px !important;=0A         line-heig=
+ht: 30px !important;=0A        margin-bottom: 15px;=0A      }=0A=0A      .e=
+l_centerText {=0A        text-align: center !important;=0A      }=0A=0A    =
+  .es-m-txt-c {=0A        font-size: 12px !important;=0A        text-align:=
+ center !important;=0A      }=0A=0A    }=0A=0A    @media only screen and (m=
+ax-width:480px) {=0A      .mj-hero-content {=0A        width: 100% !importa=
+nt;=0A      }=0A=0A      .hero_header_resize {=0A        font-size: 23px !i=
+mportant;=0A        line-height: 30px !important;=0A      }=0A=0A      .her=
+o_header_resize2 {=0A        font-size: 30px !important;=0A        line-hei=
+ght: 35px !important;=0A      }=0A=0A      .hero_title_resize {=0A        f=
+ont-size: 20px !important;=0A        line-height: 28px !important;=0A      =
+  padding: 5px 15px !important;=0A        /* padding-bottom: 15px !importan=
+t; */=0A      }=0A=0A      .hero_title_resize2 {=0A        font-size: 18px =
+!important;=0A        line-height: 25px !important;=0A        padding: 5px =
+15px !important;=0A        padding-bottom: 15px !important;=0A      }=0A=0A=
+      .header_rating_resize {=0A        font-size: 10px !important;=0A     =
+   line-height: 11px !important;=0A      }=0A=0A      .hero_rating_td {=0A =
+       padding-bottom: 30px !important;=0A      }=0A=0A      .hero_subheade=
+r {=0A        font-size: 23px !important;=0A      }=0A=0A      .header-padd=
+ing {=0A        padding-top: 30px !important;=0A      }=0A=0A      .header-=
+padding {=0A        padding-top: 30px !important;=0A      }=0A=0A      .el_=
+font20 {=0A        font-size: 20px !important;=0A      }=0A=0A      .threeC=
+ollCenter {=0A        width: 100% !important;=0A        max-width: 100% !im=
+portant;=0A        display: block !important;=0A        /* padding: 3px !im=
+portant; */=0A        margin: 0 auto !important;=0A        padding-top: 0 !=
+important;=0A        text-align: center !important;=0A      }=0A=0A      .t=
+hreeColl {=0A        width: 100% !important;=0A        max-width: 100% !imp=
+ortant;=0A        display: block !important;=0A        /* padding: 3px !imp=
+ortant; */=0A        margin: 0 auto !important;=0A        padding-top: 0 !i=
+mportant;=0A        text-align: left !important;=0A=0A      }=0A=09  =0A=09=
+     .threeCollimg {=0A       width: 100% !important;=0A        max-width: =
+100% !important;=0A        display: block !important;=0A        /* padding:=
+ 3px !important; */=0A        margin: 0 auto !important;=0A        padding-=
+top: 0 !important;=0A        text-align: left !important;=0A=0A      }=0A=
+=0A      .centered_button {=0A        text-align: center !important;=0A    =
+    margin: 0 auto !important;=0A        float: none;=0A      }=0A=0A      =
+.mob_dis {=0A        display: none !important;=0A      }=0A=0A      .title=
+_mob {=0A        font-size: 24px !important;=0A        line-height: 32px !i=
+mportant;=0A        margin-bottom: 15px;=0A      }=0A.title_mob1 {=0A      =
+  font-size: 10px !important;=0A         line-height: 30px !important;=0A  =
+      margin-bottom: 15px;=0A      }=0A=09  =0A=09   .title_mob2 {=0A      =
+  font-size: 22px !important;=0A        line-height: 30px !important;=0A   =
+     margin-bottom: 15px;=0A      }=0A=0A    }=0A  </style>=0A=0A  <!--[if =
+gte mso 9]>=0A    <xml>=0A      <o:OfficeDocumentSettings>=0A        <o:All=
+owPNG />=0A        <o:PixelsPerInch>96</o:PixelsPerInch>=0A      </o:Office=
+DocumentSettings>=0A    </xml>=0A    <![endif]-->=0A=0A  <!--[if (gte mso 9=
+)|(IE)]>=0A            <style type=3D"text/css">=0A            /* Force out=
+look to fallback on Arial instead of Times Roman and removes extra spaces *=
+/=0A            table {=0A                border-collapse:collapse !importa=
+nt;=0A                mso-table-lspace:0pt!important;=0A                mso=
+-table-rspace:0pt!important;=0A                margin:0 auto;=0A           =
+ }=0A            h1,h2,h3,h4,h5,h6,p,a,span,td,th,strong,div,img {=0A      =
+          font-family: Arial,Helvetica,Arial,sans-serif !important;=0A     =
+       }=0A            </style>=0A        <![endif]-->=0A=0A</head>=0A=0A<b=
+ody class=3D"el_body" style=3D"margin:0px auto; padding:0px; background-col=
+or:#E5E5E5;" bgcolor=3D"#E5E5E5" dir=3D"ltr">=0A<div style=3D"display:none =
+!important;visibility:hidden;mso-hide:all;font-size:1px;color:#ffffff;line-=
+height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Don=E2=
+=80=99t miss out on this deal</div>=0A  <div id=3D"preview_text" style=3D"d=
+isplay:none;font-size:1px;color:#E5E5E5;line-height:1px;max-height:0px;max-=
+width:0px;opacity:0;overflow:hidden;">=0A        &nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=0A  </div>=0A=0A=
+=0A  <!-- =3D=3D Header Section =3D=3D -->=0A  <table role=3D"presentation"=
+ width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"e=
+l_full_wrap" bgcolor=3D"#E5E5E5">=0A    <tbody>=0A      <tr>=0A        <td =
+align=3D" center" valign=3D"top">=0A=0A          <!-- Buffer -->=0A        =
+  <table role=3D"presentation" align=3D"center" width=3D"800" border=3D"0" =
+cellspacing=3D"0" cellpadding=3D"0" class=3D"el_main_table" style=3D"width:=
+800px;table-layout:fixed;" bgcolor=3D"#E5E5E5">=0A            <tbody>=0A   =
+           <tr>=0A                <td valign=3D"top" align=3D"center" style=
+=3D"padding:25px 0px 25px 0px;" class=3D"el_hide">=0A                </td>=
+=0A              </tr>=0A            </tbody>=0A          </table>=0A=0A   =
+       <table role=3D"presentation" align=3D"center" width=3D"800" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"el_main_table" style=3D=
+"width:800px;table-layout:fixed;" bgcolor=3D"#E5E5E5">=0A            <tbody=
+ bgcolor=3D"#ffffff" class=3D"darkmode">=0A=0A              <!-- Logo -->=
+=0A              <tr>=0A                <td>=0A                  <table cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"es-left" align=3D"left" style=3D"=
+mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-s=
+pacing:0px;float:left;">=0A                    <tr style=3D"border-collapse=
+:collapse;" bgcolor=3D"#ffffff" class=3D"darkmode">=0A                     =
+ <td align=3D"left" class=3D"el_aside20 el_ptop darkmode" style=3D"padding:=
+23px 45px 23px 45px;margin:0;width:800px;" bgcolor=3D"#ffffff">=0A         =
+               <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" ro=
+le=3D"presentation" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;bord=
+er-collapse:collapse;border-spacing:0px;">=0A                          <tr =
+style=3D"border-collapse:collapse;">=0A                            <td alig=
+n=3D"left" class=3D"es-m-txt-c" style=3D"padding:0;margin:0;font-size:0px;"=
+>=0A<img class=3D"logo" src=3D"https://cdn.braze.eu/appboy/communication/as=
+sets/image_assets/images/62a855570eada67ecf6b4102/original.png=3F1655199063=
+" width=3D"160" alt=3D"Elementor" border=3D"0" style=3D"max-width:160px; fo=
+nt-family: 'Dm Sans',  Arial, Sans-serif; font-size:15px; line-height:18px;=
+ color:#EB4426; font-weight:400;">=0A                            </td>=0A=
+=0A                            <td align=3D"right" class=3D"mob_dis">=0A   =
+                        =0A                              <b class=3D"es-m-t=
+xt-c link2" style=3D"padding:0;margin:0; font-family: 'Dm Sans',  Arial, Sa=
+ns-serif; color: #000; font-size: 16px; line-height: 55px; letter-spacing: =
+6px; text-transform: uppercase;">=0A                               Birthday=
+ sale</b>=0A                            =0A                            </td=
+>=0A                          </tr>=0A                        </table>=0A  =
+                    </td>=0A                    </tr>=0A                  <=
+/table>=0A=0A                </td>=0A              </tr>=0A            </tb=
+ody>=0A          </table>=0A        </td>=0A      </tr>=0A    </tbody>=0A  =
+</table>=0A  <!-- =3D=3D //Header Section =3D=3D -->=0A=0A  <!-- =3D=3D Bod=
+y Section =3D=3D -->=0A  <table role=3D"presentation" width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"el_full_wrap" bgcolor=
+=3D"#E5E5E5">=0A    <tbody>=0A      <tr>=0A        <td align=3D"center" val=
+ign=3D"top">=0A          <table role=3D"presentation" align=3D"center" widt=
+h=3D"800" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"el_main=
+_table darkmode" style=3D"width:800px; table-layout:fixed;" bgcolor=3D"#fff=
+fff">=0A            <tbody>=0A              <tr bgcolor=3D"#ffffff" class=
+=3D"darkmode">=0A                <td valign=3D"top" align=3D"center" bgcolo=
+r=3D"#ffffff" class=3D"darkmode">=0A                  <table role=3D"presen=
+tation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" ali=
+gn=3D"center" bgcolor=3D"#ffffff" class=3D"darkmode">=0A                   =
+ <tbody>=0A=0A=0A                                            <!-- Spacer --=
+>=0A                               <tr>=0A                                <=
+td height=3D"24" class=3D"el_h20 darkmode" style=3D"height:24px;" bgcolor=
+=3D"#ffffff">=C2=A0</td>=0A                              </tr>=0A          =
+             =0A=0A                      <!-- Text -->=0A                  =
+  =0A=0A                      <!-- Title Header -->=0A                     =
+ <tr bgcolor=3D"#ffffff" class=3D"darkmode el_hide">=0A                    =
+    <td class=3D"el_aside10 darkmode" align=3D"top" bgcolor=3D"#ffffff" sty=
+le=3D"padding:0px 46px 0 46px;">=0A                          <table role=3D=
+"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" align=3D"center" class=3D"darkmode" bgcolor=3D"#ffffff">=0A            =
+                <tbody class=3D"darkmode" bgcolor=3D"#ffffff">=0A          =
+                    <tr bgcolor=3D"#ffffff" class=3D"darkmode">=0A         =
+                       <td class=3D"el_aside10 darkmode" valign=3D"top" ali=
+gn=3D"left" bgcolor=3D"#ffffff" style=3D"color:#000000; font-family: 'Dm Sa=
+ns',  Arial, Sans-serif; font-size:18px; line-height:44px; font-weight:400;=
+ text-align: center;">=0A                                  <strong style=3D=
+"font-size: 32px; line-height: 48px; font-family:'Source Serif Pro', Georgi=
+a,  serif; color: #212121;" class=3D"title_mob">=0A                <span cl=
+ass=3D"title_mob1" style=3D"color:#000000; font-family: 'Dm Sans',  Arial, =
+Sans-serif; font-size:14px; line-height:32px; text-transform:uppercase;lett=
+er-spacing: 0.12em;">Save up to 30% on Elementor Pro Website Builder Plugin=
+</span><br>Grab this Deal Before it&nbsp;Ends!=0A                          =
+        </strong>=0A                                </td>=0A               =
+               </tr>=0A                            </tbody>=0A             =
+             </table>=0A                        </td>=0A                   =
+   </tr>=0A=09=09=09=09=09  =0A=09=09=09=09=09  =0A                      <!=
+-- Title Header mobile-->=0A                     <!--[if !mso]><\!-->=0A   =
+                   <tr bgcolor=3D"#ffffff" style=3D"mso-hide:all;display:no=
+ne;max-height:0px;overflow:hidden;" class=3D"darkmode el_show">=0A         =
+               <td class=3D"el_aside10 darkmode" align=3D"top" bgcolor=3D"#=
+ffffff" style=3D"padding:0px 46px 0 46px;">=0A                          <ta=
+ble role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0" align=3D"center" class=3D"darkmode" bgcolor=3D"#ffffff">=0A =
+                           <tbody class=3D"darkmode" bgcolor=3D"#ffffff">=
+=0A                              <tr bgcolor=3D"#ffffff" class=3D"darkmode"=
+>=0A                                <td class=3D"el_aside10 darkmode" valig=
+n=3D"top" align=3D"left" bgcolor=3D"#ffffff" style=3D"color:#000000; font-f=
+amily: 'Dm Sans',  Arial, Sans-serif; font-size:18px; line-height:44px; fon=
+t-weight:400; text-align: center;">=0A                                  <st=
+rong style=3D"font-size: 32px; line-height: 48px; font-family:'Source Serif=
+ Pro', Georgia,  serif; color: #212121;" class=3D"title_mob">=0A           =
+     <span class=3D"title_mob1" style=3D"color:#000000; font-family: 'Dm Sa=
+ns',  Arial, Sans-serif; font-size:14px; line-height:32px; text-transform:u=
+ppercase;letter-spacing: 0.12em;">Save up to 30% on Elementor Pro </span><b=
+r>Grab this Deal Before it&nbsp;Ends!=0A                                  <=
+/strong>=0A                                </td>=0A                        =
+      </tr>=0A                            </tbody>=0A                      =
+    </table>=0A                        </td>=0A                      </tr>=
+=0A=09=09=09=09=09   <!-- <![endif]--> =0A=09=09=09=09=09 =0A=0A=09=09=09=
+=09=09=09=09     <!-- Spacer -->=0A                      <tr bgcolor=3D"#ff=
+ffff" class=3D"darkmode">=0A                        <td height=3D"25" style=
+=3D"height:25px; line-height: 0px;" bgcolor=3D"#ffffff" class=3D"darkmode e=
+l_h20">=C2=A0</td>=0A                      </tr>=0A=09=09=09=09=09         =
+         <!-- Banner Desktop normal-->=0A                      <tr bgcolor=
+=3D"#ffffff" class=3D"darkmode el_hide">=0A                        <td vali=
+gn=3D"bottom" align=3D"center" bgcolor=3D"#ffffff" class=3D"darkmode">=0A  =
+                        <table role=3D"presentation" width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#ffffff" class=3D"dar=
+kmode el_full_img">=0A                            <tbody>=0A               =
+               <tr bgcolor=3D"#ffffff" class=3D"darkmode">=0A              =
+                  <td valign=3D"bottom" align=3D"center" style=3D"max-width=
+: 800px; text-align: center;" bgcolor=3D"#ffffff" class=3D"darkmode el_padn=
+on">=0A                                   <a style=3D"color: #ffffff; text-=
+align:center;text-decoration: none; font-weight:600;" href=3D"https://click=
+s-mail.elementor.com/f/a/5uKiSN81GqEg15PguafH7A~~/AAAHagA~/RgRmYFTxP0R-aHR0=
+cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvP3V0bV9zb3VyY2U9YnJhemU=
+mdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80JnV0bV=
+90ZXJtPUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAA=
+AFK" name=3D"banner" target=3D"_self"> =0A                                 =
+ <img src=3D"https://cdn.braze.eu/appboy/communication/assets/image_assets/=
+images/646f15dd34c0423e592eefde/original.png=3F1685001693" width=3D"800" al=
+t=3D"Elementor Sale" class=3D"el_full_img bgmobile" border=3D"0" align=3D"a=
+bsbottom" style=3D"max-width: 800px; font-family: 'Dm Sans', Arial, Sans-se=
+rif; font-size:35px; line-height:48px; color:#FF3700; font-weight:400; disp=
+lay: block; image-rendering: -webkit-optimize-contrast;">=0A               =
+                    </a> =0A                                </td>=0A       =
+                       </tr>=0A                            </tbody>=0A     =
+                     </table>=0A                        </td>=0A           =
+           </tr>=0A=09=09=09=09=09   <!--[if !mso]><\!-->=0A               =
+       <tr bgcolor=3D"#ffffff" style=3D"mso-hide:all;display:none;max-heigh=
+t:0px;overflow:hidden;" class=3D"darkmode el_show">=0A                     =
+   <td valign=3D"bottom" align=3D"center" bgcolor=3D"#ffffff" class=3D"dark=
+mode">=0A                          <table role=3D"presentation" width=3D"10=
+0%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#ffffff" cl=
+ass=3D"darkmode el_full_img">=0A                            <tbody>=0A     =
+                         <tr bgcolor=3D"#ffffff" class=3D"darkmode">=0A    =
+                            <td valign=3D"bottom" align=3D"center" style=3D=
+"max-width: 800px; text-align: center;" bgcolor=3D"#ffffff" class=3D"darkmo=
+de el_padnon">=0A                                   <a style=3D"color: #fff=
+fff; text-align:center;text-decoration: none; font-weight:600;" href=3D"htt=
+ps://clicks-mail.elementor.com/f/a/5uKiSN81GqEg15PguafH7A~~/AAAHagA~/RgRmYF=
+TxP0R-aHR0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvP3V0bV9zb3VyY=
+2U9YnJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJl=
+ZV80JnV0bV90ZXJtPUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWw=
+uY29tWAQAAAFK" name=3D"banner" target=3D"_self"> =0A                       =
+           <img src=3D"https://cdn.braze.eu/appboy/communication/assets/ima=
+ge_assets/images/646f15ddd713526e047c53cb/original.png=3F1685001693" width=
+=3D"800" alt=3D"Elementor Sale" class=3D"el_full_img bgmobile" border=3D"0"=
+ align=3D"absbottom" style=3D"max-width: 800px; font-family: 'Dm Sans', Ari=
+al, Sans-serif; font-size:35px; line-height:48px; color:#FF3700; font-weigh=
+t:400; display: block; image-rendering: -webkit-optimize-contrast;">=0A    =
+                             </a>=0A                                </td>=
+=0A                              </tr>=0A                            </tbod=
+y>=0A                          </table>=0A                        </td>=0A =
+                     </tr>=0A=09=09=09=09=09  <!-- <![endif]-->   =0A      =
+                                    =0A                      <!-- Body Cont=
+ent -->=0A                      <tr>=0A                        <td class=3D=
+"darkmode" align=3D"top" bgcolor=3D"#ffffff">=0A                          <=
+table role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" c=
+ellpadding=3D"0" align=3D"center" class=3D"">=0A                           =
+ <tbody>=0A=0A                              <!-- Spacer -->=0A             =
+                  <tr>=0A                                <td height=3D"32" =
+class=3D"el_h30 darkmode" style=3D"height:32px;" bgcolor=3D"#ffffff">=C2=A0=
+</td>=0A                              </tr>=0A=0A                          =
+    <!-- Text -->=0A                              <tr>=0A                  =
+              <td class=3D"el_aside20 darkmode" valign=3D"middle" align=3D"=
+center" style=3D"color:#212121; font-family: 'Dm Sans',  Arial, Sans-serif;=
+ font-size:16px; padding:0px 80px 0 80px; line-height:25px; font-weight:400=
+; text-align: center;">=0AIn celebration of our birthday, we want to treat =
+you to a<br class=3D"mob_dis"> <strong>big discount</strong> on an Elemento=
+r Pro subscription.=C2=A0<br>=C2=A0=0A<strong>There=E2=80=99s still time to=
+ act - but don=E2=80=99t delay. This deal won=E2=80=99t last much longer!</=
+strong>=0A=0A=0A=09=09=09=09=09=09=09=09 =0A=09=09=09=09=09=09=09=09</td>=
+=0A                              </tr>=0A=09=09=09=09=09=09=09  =0A=09=09=
+=09=09=09=09=09  <!-- Spacer -->=0A                              <tr>=0A   =
+                             <td height=3D"32" class=3D"el_h30 darkmode" st=
+yle=3D"height:32px;" bgcolor=3D"#ffffff">=C2=A0</td>=0A                    =
+          </tr>=0A=09=09=09=09=09=09=09  =0A=09=09=09=09=09=09=09    <!-- C=
+TA -->=0A                              <tr>=0A                             =
+   <td valign=3D"top" align=3D"center" class=3D"darkmode" bgcolor=3D"#fffff=
+f">=0A                                =0A                                  =
+<table role=3D"presentation" width=3D"195" style=3D"width:195px;" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"center" class=3D"">=0A    =
+                                <tbody>=0A                                 =
+     <tr>=0A                                        <td class=3D"el_default=
+link link" height=3D"50" valign=3D"middle" bgcolor=3D"#FF3700" align=3D"cen=
+ter" style=3D"color:#ffffff;font-family: 'Dm Sans',  Arial, Sans-serif;font=
+-size:18px;font-weight:500;">=0A                                          <=
+a href=3D"https://clicks-mail.elementor.com/f/a/5uKiSN81GqEg15PguafH7A~~/AA=
+AHagA~/RgRmYFTxP0R-aHR0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMv=
+P3V0bV9zb3VyY2U9YnJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUx=
+FXzIwMjNfRnJlZV80JnV0bV90ZXJtPUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW=
+50dTBAZ21haWwuY29tWAQAAAFK" target=3D"_blank" class=3D"" style=3D"text-deco=
+ration:none;color:#ffffff;display:block;line-height:50px;">&nbsp;Explore Pr=
+o Plans&nbsp;</a>=0A                                        </td>=0A       =
+                               </tr>=0A                                    =
+</tbody>=0A                                  </table>=0A                   =
+             =0A                                </td>=0A                   =
+           </tr>=0A=09=09=09=09=09=09=09  =09=09=09=09=09  =0A=09=09=09=09=
+=09   <!-- Spacer -->=0A                               <tr>=0A             =
+                   <td height=3D"42" class=3D"el_h40 darkmode" style=3D"hei=
+ght:42px;" bgcolor=3D"#ffffff">=C2=A0</td>=0A                              =
+</tr>=0A=0A=09=09=09=09=09=09=09  <tr>=0A                                <t=
+d class=3D"el_aside20 darkmode" valign=3D"top" align=3D"left" bgcolor=3D"#f=
+fffff" style=3D"padding:0px 24px 0 24px; color:#000000;font-family: 'Dm San=
+s', Arial, Sans-serif;font-size:16px;line-height:24px;font-weight:400; text=
+-align: center;">=0A=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09  <tabl=
+e role=3D"presentation" width=3D"100%" style=3D"max-width:800px;" bgcolor=
+=3D"#ffffff" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"cent=
+er" class=3D"darkmode">=0A                                    <tr>=0A      =
+                                <td align=3D"center" valign=3D"middle" styl=
+e=3D"display:block;padding-bottom:40px;">=0A                               =
+         <table role=3D"presentation" width=3D"100%" align=3D"center" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0">=0A                            =
+              <tbody>=0A                                            <tr>=0A=
+                                              <td class=3D"threeColl" width=
+=3D"269" align=3D"center" valign=3D"middle"><a href=3D"https://clicks-mail.=
+elementor.com/f/a/5uKiSN81GqEg15PguafH7A~~/AAAHagA~/RgRmYFTxP0R-aHR0cHM6Ly9=
+lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvP3V0bV9zb3VyY2U9YnJhemUmdXRtX2=
+1lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80JnV0bV90ZXJtP=
+UVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK" ta=
+rget=3D"_blank" class=3D""> <img src=3D"https://cdn.braze.eu/appboy/communi=
+cation/assets/image_assets/images/646f15dd34c04244e32eebfe/original.png=3F1=
+685001693" width=3D"269" border=3D"0" style=3D"width:100%;  border:none; ou=
+tline:none; text-decoration:none; image-rendering: -webkit-optimize-contras=
+t;" alt=3D"Extended Design Capabilities"> </a></td>=0A                     =
+                         <td class=3D"threeColl" width=3D"44" height=3D"20"=
+ style=3D"height:20px;">=C2=A0</td>=0A                                     =
+         <td class=3D"threeColl" width=3D"auto" align=3D"right" valign=3D"m=
+iddle" style=3D"font-size:16px; font-family: 'Dm Sans',  Arial, Sans-serif;=
+ text-align:left;line-height:23px; font-weight: 400;"> <table>=0A          =
+                                        <tr>=0A                            =
+                        <td height=3D"5" style=3D"height:5px;"></td>=0A    =
+                                              </tr>=0A                     =
+                           </table>=0A                                     =
+           <table width=3D"100%">=0A                                       =
+           <tr>=0A                                                    <td c=
+lass=3D"threeColl el_font20" style=3D"font-family:'Source Serif Pro', Georg=
+ia,  serif; font-size: 18px; line-height: 25px; color: #212121; font-weight=
+:bold;">=0A                                                Extended Design =
+Capabilities=0A                                                    </td>=0A=
+                                                  </tr>=0A                 =
+                               </table>=0A                                 =
+               <table width=3D"100%"> <tr>=0A                              =
+                      <td height=3D"5" style=3D"height:5px;display: block;"=
+></td>=0A                                                  </tr>=0A        =
+                                        </table>=0A                        =
+                        <table width=3D"100%">=0A                          =
+                        <tr>=0A                                            =
+        <td class=3D"threeColl el_padnon" style=3D"color: #727272; padding-=
+right: 20px;">=0A                                                  Enjoy al=
+l the advanced features of Elementor Pro: live editing, 100+ widgets, anima=
+tions, responsive design, dynamic content, and more. You=E2=80=99ll love th=
+e complete design freedom you get, especially with no coding required.=0A  =
+                                                  </td>=0A                 =
+                                 </tr>=0A                                  =
+              </table> </td>=0A                                            =
+</tr>=0A                                          </tbody>=0A              =
+                          </table>=0A                                      =
+</td>=0A                                    </tr>=0A                       =
+           </table>=0A=09=09=09=09=09=09=09=09  <table role=3D"presentation=
+" width=3D"100%" style=3D"max-width:800px;" bgcolor=3D"#ffffff" cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" class=3D"darkmode">=
+=0A                                    <tr>=0A                             =
+         <td align=3D"center" valign=3D"middle" style=3D"display:block;padd=
+ing-bottom:40px;">=0A                                        <table role=3D=
+"presentation" width=3D"100%" align=3D"center" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0">=0A                                          <tbody>=
+=0A                                            <tr>=0A                     =
+                         <td class=3D"threeColl" width=3D"269" align=3D"cen=
+ter" valign=3D"middle"><a href=3D"https://clicks-mail.elementor.com/f/a/5uK=
+iSN81GqEg15PguafH7A~~/AAAHagA~/RgRmYFTxP0R-aHR0cHM6Ly9lbGVtZW50b3IuY29tL3Bh=
+Z2VzL2JpcnRoZGF5LTIwMjMvP3V0bV9zb3VyY2U9YnJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1=
+fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80JnV0bV90ZXJtPUVtYWlsVwVzcGNldUIKZH=
+Txz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK" target=3D"_blank" class=
+=3D""> <img src=3D"https://cdn.braze.eu/appboy/communication/assets/image_a=
+ssets/images/646f15dd76408236fea0aa91/original.png=3F1685001693" width=3D"2=
+69" border=3D"0" style=3D"width:100%;  border:none; outline:none; text-deco=
+ration:none; image-rendering: -webkit-optimize-contrast;" alt=3D"Advanced W=
+eb Customization"> </a></td>=0A                                            =
+  <td class=3D"threeColl" width=3D"44" height=3D"20" style=3D"height:20px;"=
+>=C2=A0</td>=0A                                              <td class=3D"t=
+hreeColl" width=3D"auto" align=3D"right" valign=3D"middle" style=3D"font-si=
+ze:16px; font-family: 'Dm Sans',  Arial, Sans-serif; text-align:left;line-h=
+eight:23px; font-weight: 400;"> <table>=0A                                 =
+                 <tr>=0A                                                   =
+ <td height=3D"5" style=3D"height:5px;"></td>=0A                           =
+                       </tr>=0A                                            =
+    </table>=0A                                                <table width=
+=3D"100%">=0A                                                  <tr>=0A     =
+                                               <td class=3D"threeColl el_fo=
+nt20" style=3D"font-family:'Source Serif Pro', Georgia,  serif; font-size: =
+18px; line-height: 25px; color: #212121; font-weight:bold;">=0A            =
+                                      Advanced Web Customization=0A        =
+                                            </td>=0A                       =
+                           </tr>=0A                                        =
+        </table>=0A                                                <table w=
+idth=3D"100%"> <tr>=0A                                                    <=
+td height=3D"5" style=3D"height:5px;display: block;"></td>=0A              =
+                                    </tr>=0A                               =
+                 </table>=0A                                               =
+ <table width=3D"100%">=0A                                                 =
+ <tr>=0A                                                    <td class=3D"th=
+reeColl el_padnon" style=3D"color: #727272; padding-right: 20px;">=0A      =
+                                         With Elementor Pro, adapt any pre-=
+designed website kit or template to create a complete website in just a few=
+ clicks. You have all the tools you need to customize just about anything i=
+ncluding themes, forms, popups, WooCommerce, and much more.=0A             =
+                                       </td>=0A                            =
+                      </tr>=0A                                             =
+   </table> </td>=0A                                            </tr>=0A   =
+                                       </tbody>=0A                         =
+               </table>=0A                                      </td>=0A   =
+                                 </tr>=0A                                  =
+</table> <table role=3D"presentation" width=3D"100%" style=3D"max-width:800=
+px;" bgcolor=3D"#ffffff" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" a=
+lign=3D"center" class=3D"darkmode">=0A                                    <=
+tr>=0A                                      <td align=3D"center" valign=3D"=
+middle" style=3D"display:block;padding-bottom:40px;">=0A                   =
+                     <table role=3D"presentation" width=3D"100%" align=3D"c=
+enter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">=0A                =
+                          <tbody>=0A                                       =
+     <tr>=0A                                              <td class=3D"thre=
+eColl" width=3D"269" align=3D"center" valign=3D"middle"><a href=3D"https://=
+clicks-mail.elementor.com/f/a/5uKiSN81GqEg15PguafH7A~~/AAAHagA~/RgRmYFTxP0R=
+-aHR0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvP3V0bV9zb3VyY2U9Yn=
+JhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80J=
+nV0bV90ZXJtPUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29t=
+WAQAAAFK" target=3D"_blank" class=3D""> <img src=3D"https://cdn.braze.eu/ap=
+pboy/communication/assets/image_assets/images/646b50fa7640827ee49f1583/orig=
+inal.png=3F1684754682" width=3D"269" border=3D"0" style=3D"width:100%;  bor=
+der:none; outline:none; text-decoration:none; image-rendering: -webkit-opti=
+mize-contrast;" alt=3D"24/7 Premium Support"> </a></td>=0A                 =
+                             <td class=3D"threeColl" width=3D"44" height=3D=
+"20" style=3D"height:20px;">=C2=A0</td>=0A                                 =
+             <td class=3D"threeColl" width=3D"auto" align=3D"right" valign=
+=3D"middle" style=3D"font-size:16px; font-family: 'Dm Sans',  Arial, Sans-s=
+erif; text-align:left;line-height:23px; font-weight: 400;"> <table>=0A     =
+                                             <tr>=0A                       =
+                             <td height=3D"5" style=3D"height:5px;"></td>=
+=0A                                                  </tr>=0A              =
+                                  </table>=0A                              =
+                  <table width=3D"100%">=0A                                =
+                  <tr>=0A                                                  =
+  <td class=3D"threeColl el_font20" style=3D"font-family:'Source Serif Pro'=
+, Georgia,  serif; font-size: 18px; line-height: 25px; color: #212121; font=
+-weight:bold;">=0A                                                   24/7 P=
+remium Support=0A                                                    </td>=
+=0A                                                  </tr>=0A              =
+                                  </table>=0A                              =
+                  <table width=3D"100%"> <tr>=0A                           =
+                         <td height=3D"5" style=3D"height:5px;display: bloc=
+k;"></td>=0A                                                  </tr>=0A     =
+                                           </table>=0A                     =
+                           <table width=3D"100%">=0A                       =
+                           <tr>=0A                                         =
+           <td class=3D"threeColl el_padnon" style=3D"color: #727272; paddi=
+ng-right: 20px;">=0A                                                   Get =
+around-the-clock premium support with Elementor Pro. Whether you need assis=
+tance when you=E2=80=99re just getting started or want to solve a complex i=
+ssue, we=E2=80=99ve got your back.=0A                                      =
+              </td>=0A                                                  </t=
+r>=0A                                                </table> </td>=0A     =
+                                       </tr>=0A                            =
+              </tbody>=0A                                        </table>=
+=0A                                      </td>=0A                          =
+          </tr>=0A                                  </table>=0A            =
+                    </td>=0A                              </tr>=0A=09=09=09=
+=09=09=09=09=09=09  <!-- Text -->=0A                              <tr>=0A  =
+                              <td class=3D"el_aside20 darkmode" valign=3D"m=
+iddle" align=3D"center" style=3D"color:#212121; font-family: 'Dm Sans',  Ar=
+ial, Sans-serif; font-size:18px; padding:0px 80px 0 80px; line-height:25px;=
+ font-weight:700; text-align:center;">=0AThe clock is ticking. Don=E2=80=99=
+t miss out on this special offer!=09=09=09=09=09=09=09=09 =0A=09=09=09=09=
+=09=09=09=09</td>=0A                              </tr>=0A                 =
+            <!-- Spacer -->=0A                             =0A=09=09=09=09=
+=09=09=09  <tr>=0A                                <td height=3D"30" class=
+=3D"el_h30 darkmode" style=3D"height:30px;" bgcolor=3D"#ffffff">=C2=A0</td>=
+=0A                              </tr>=0A=09=09=09=09=09=0A=09=09=09=09=09=
+=09=09    <tr>=0A                                <td valign=3D"top" align=
+=3D"center" class=3D"darkmode" bgcolor=3D"#ffffff">=0A                     =
+           =0A                                  <table role=3D"presentation=
+" width=3D"204" style=3D"width:204px;" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" align=3D"center" class=3D"">=0A                               =
+     <tbody>=0A                                      <tr>=0A               =
+                         <td class=3D"el_defaultlink link" height=3D"50" va=
+lign=3D"middle" bgcolor=3D"#FF3700" align=3D"center" style=3D"color:#ffffff=
+;font-family: 'Dm Sans',  Arial, Sans-serif;font-size:18px;font-weight:500;=
+">=0A                                          <a href=3D"https://clicks-ma=
+il.elementor.com/f/a/5uKiSN81GqEg15PguafH7A~~/AAAHagA~/RgRmYFTxP0R-aHR0cHM6=
+Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JpcnRoZGF5LTIwMjMvP3V0bV9zb3VyY2U9YnJhemUmdXR=
+tX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80JnV0bV90ZX=
+JtPUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK"=
+ target=3D"_blank" class=3D"" style=3D"text-decoration:none;color:#ffffff;d=
+isplay:block;line-height:50px;">&nbsp;Get Elementor Pro&nbsp;</a>=0A       =
+                                 </td>=0A                                  =
+    </tr>=0A                                    </tbody>=0A                =
+                  </table>=0A                                =0A           =
+                     </td>=0A                              </tr>=0A        =
+                 =0A                               =0A=0A                  =
+           =0A=09=09=09=09=09=09=09  <tr>=0A                               =
+ <td height=3D"30" class=3D"el_h30 darkmode" style=3D"height:30px;" bgcolor=
+=3D"#ffffff">=C2=A0</td>=0A                              </tr>=0A=0A       =
+                       <!-- Text -->=0A                              <tr>=
+=0A                                <td class=3D"el_aside20 darkmode" valign=
+=3D"middle" align=3D"center" style=3D"color:#212121; font-family: 'Dm Sans'=
+,  Arial, Sans-serif; font-size:12px; padding:0px 80px 0 80px; line-height:=
+25px; font-weight:400; text-align: center;">=0AThe offer is subject to thes=
+e <a style=3D"color:#212121;text-decoration:underline" href=3D"https://clic=
+ks-mail.elementor.com/f/a/UC7DRUOYGGyjTJBgY8pb7g~~/AAAHagA~/RgRmYFTxP0R7aHR=
+0cHM6Ly9lbGVtZW50b3IuY29tL3BhZ2VzL2JkMjMtdGVybXMvP3V0bV9zb3VyY2U9YnJhemUmdX=
+RtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80JnV0bV90Z=
+XJtPUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK=
+">Terms &amp; Conditions</a>=0A=09=09=09=09=09=09=09=09 =0A=09=09=09=09=09=
+=09=09=09</td>=0A                              </tr>=0A=09=09=09=09=09     =
+</tbody>=0A                          </table>=0A                        </t=
+d>=0A                      </tr>=0A=09=09=09=09=09  =0A=09=09=09=09=09   <!=
+-- =3D=3D Body Section =3D=3D -->=0A                    </tbody>=0A        =
+          </table>=0A                </td>=0A              </tr>=0A        =
+    </tbody>=0A          </table>=0A          <!-- =3D=3D //Body Section =
+=3D=3D -->=0A          <!-- =3D=3D Footer Section =3D=3D -->=0A           <=
+table role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" c=
+ellpadding=3D"0" class=3D"el_full_wrap">=0A            <tbody>=0A          =
+    <tr>=0A                <td align=3D"center" valign=3D"top" bgcolor=3D"#=
+E5E5E5">=0A                  <table role=3D"presentation" align=3D"center" =
+width=3D"800" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#=
+ffffff" class=3D"el_main_table darkmode" style=3D"width:800px;table-layout:=
+fixed;">=0A                    <tbody bgcolor=3D"#ffffff" class=3D"darkmode=
+">=0A                      <tr bgcolor=3D"#ffffff" class=3D"darkmode">=0A  =
+                      <td valign=3D"top" align=3D"center" style=3D"padding:=
+35px 46px;" class=3D"el_padall darkmode" bgcolor=3D"#ffffff">=0A           =
+               <table role=3D"presentation" width=3D"100%" border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#ffffff" align=3D"center" class=
+=3D"darkmode">=0A                            <tbody>=0A                    =
+          <tr>=0A                                <td valign=3D"top" align=
+=3D"center">=0A                                  <table role=3D"presentatio=
+n" width=3D"508" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"=
+center" style=3D"width:508px;" class=3D"el_wrapper">=0A                    =
+                <tbody>=0A                                      <tr>=0A    =
+                                    <td valign=3D"top" align=3D"center">=0A=
+                                          <table role=3D"presentation" widt=
+h=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left" =
+class=3D"el_wrapper">=0A                                            <tbody>=
+=0A                                              <tr>=0A                   =
+                             <td height=3D"24" class=3D"el_h20 darkmode" st=
+yle=3D"height:24px;" bgcolor=3D"#ffffff">=0A                               =
+                 </td>=0A                                              </tr=
+>=0A                                              <!-- Social -->=0A       =
+                                       <tr>=0A                             =
+                   <td width=3D"100%" align=3D"center" style=3D"padding-bot=
+tom: 40px;" bgcolor=3D"#ffffff" class=3D"darkmode">=0A=0A                  =
+                                <table role=3D"presentation" border=3D"0" c=
+ellpadding=3D"0%" cellspacing=3D"0%" width=3D"50%" style=3D"max-width:100%;=
+font-weight:normal!important; font-size: 9px;text-align: center;">=0A=0A   =
+                                                 <tr>=0A                   =
+                                   <td align=3D"center" style=3D"font-weigh=
+t:normal!important; padding:2px; width: 20%;" class=3D"socialicon">=0A     =
+                                                   <a name=3D"twitter" href=
+=3D"https://clicks-mail.elementor.com/f/a/6P0-4ZY6NJOgBCd-jd0pLg~~/AAAHagA~=
+/RgRmYFTxP0RxaHR0cHM6Ly90d2l0dGVyLmNvbS9lbGVtbnRvci8_dXRtX3NvdXJjZT1icmF6ZS=
+Z1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1CREFZX1NBTEVfMjAyM19GcmVlXzQmdXRtX=
+3Rlcm09RW1haWxXBXNwY2V1QgpkdPHPfWTzunBkUhVlbHkudWJ1bnR1MEBnbWFpbC5jb21YBAAA=
+AUo~" target=3D"_blank">=0A                                                =
+          <img src=3D"https://mcusercontent.com/08d77a35a5440eecde6540d14/i=
+mages/152dc995-a1af-a7a9-6b97-1e4587d20818.png" width=3D"32" alt=3D"tw" sty=
+le=3D"border-width:0;height:auto;line-height:100%;-ms-interpolation-mode:bi=
+cubic;display:block;outline-style:none;text-decoration:none; color: #000000=
+; font-family: 'Dm Sans',  Arial, Sans-serif; font-size: 15px;"></a>=0A    =
+                                                  </td>=0A=0A              =
+                                        <td align=3D"center" style=3D"font-=
+weight:normal!important; padding:2px; width: 20%;" class=3D"socialicon">=0A=
+                                                        <a name=3D"facebook=
+" href=3D"https://clicks-mail.elementor.com/f/a/_IW9uJDXvmpAoBLJVo964A~~/AA=
+AHagA~/RgRmYFTxP0R2aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL2VsZW1udG9yLz91dG1fc291=
+cmNlPWJyYXplJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPUJEQVlfU0FMRV8yMDIzX0Z=
+yZWVfNCZ1dG1fdGVybT1FbWFpbFcFc3BjZXVCCmR08c99ZPO6cGRSFWVseS51YnVudHUwQGdtYW=
+lsLmNvbVgEAAABSg~~" target=3D"_blank">=0A                                  =
+                        <img src=3D"https://mcusercontent.com/08d77a35a5440=
+eecde6540d14/images/cff4a98a-d1e1-176d-01ce-1d0e0e753e19.png" width=3D"32" =
+alt=3D"fb" style=3D"border-width:0;height:auto;line-height:100%;-ms-interpo=
+lation-mode:bicubic;display:block;outline-style:none;text-decoration:none; =
+color: #000000; font-family: 'Dm Sans',  Arial, Sans-serif; font-size: 15px=
+;"></a>=0A                                                      </td>=0A=0A=
+                                                      <td align=3D"center" =
+style=3D"font-weight:normal!important; padding:2px; width: 20%;" class=3D"s=
+ocialicon">=0A                                                        <a na=
+me=3D"instagram" href=3D"https://clicks-mail.elementor.com/f/a/fj2tNKqMbFoR=
+d3SYxHesxQ~~/AAAHagA~/RgRmYFTxP0RzaHR0cDovL2luc3RhZ3JhbS5jb20vZWxlbWVudG9yL=
+z91dG1fc291cmNlPWJyYXplJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPUJEQVlfU0FM=
+RV8yMDIzX0ZyZWVfNCZ1dG1fdGVybT1FbWFpbFcFc3BjZXVCCmR08c99ZPO6cGRSFWVseS51YnV=
+udHUwQGdtYWlsLmNvbVgEAAABSg~~" target=3D"_blank"><img src=3D"https://mcuser=
+content.com/08d77a35a5440eecde6540d14/images/f8cf8334-163e-57e4-6802-576669=
+f8f994.png" width=3D"32" alt=3D"in" style=3D"border-width:0;height:auto;lin=
+e-height:100%;-ms-interpolation-mode:bicubic;display:block;outline-style:no=
+ne;text-decoration:none; color: #000000; font-family: 'Dm Sans',  Arial, Sa=
+ns-serif; font-size: 15px;"></a>=0A                                        =
+              </td>=0A=0A                                                  =
+    <td align=3D"center" style=3D"font-weight:normal!important; padding:2px=
+; width: 20%;" class=3D"socialicon">=0A                                    =
+                    <a name=3D"youtube" href=3D"https://clicks-mail.element=
+or.com/f/a/KTagnDUmQjpOFNc__h08Hw~~/AAAHagA~/RgRmYFTxP0R4aHR0cHM6Ly93d3cueW=
+91dHViZS5jb20vYy9lbGVtZW50b3IvP3V0bV9zb3VyY2U9YnJhemUmdXRtX21lZGl1bT1lbWFpb=
+CZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80JnV0bV90ZXJtPUVtYWlsVwVzcGNl=
+dUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK" target=3D"_blank"=
+>=0A                                                          <img src=3D"h=
+ttps://mcusercontent.com/08d77a35a5440eecde6540d14/images/0c6b3bd9-01a6-c16=
+3-27c5-4594f3b61a8d.png" width=3D"32" alt=3D"yt" style=3D"border-width:0;he=
+ight:auto;line-height:100%;-ms-interpolation-mode:bicubic;display:block;out=
+line-style:none;text-decoration:none; color: #000000; font-family: 'Dm Sans=
+',  Arial, Sans-serif; font-size: 15px;"></a>=0A                           =
+                           </td>=0A=0A                                     =
+               </tr>=0A                                                  </=
+table>=0A                                                </td>=0A          =
+                                    </tr>=0A=0A                            =
+                  <tr>=0A                                                <t=
+d style=3D"color:#000000; background-color:#ffffff; font-family: 'Dm Sans',=
+  Arial, Sans-serif; font-size:13px; line-height:15px; font-weight:normal; =
+text-align:center;" bgcolor=3D"#ffffff" class=3D"el_main_table darkmode">=
+=0A=0A                                                  =C2=A9 2023 Tuval S=
+treet 40, Ramat Gan 5252247, Israel<br><br>=0A=0A                          =
+                        <a name=3D"contact-us" style=3D"color:#000000; text=
+-decoration: underline;" href=3D"https://clicks-mail.elementor.com/f/a/Tu2I=
+MYwPSau0-JrR8NrdYw~~/AAAHagA~/RgRmYFTxP0RvaHR0cHM6Ly9lbGVtZW50b3IuY29tL2hlb=
+HAvP3V0bV9zb3VyY2U9YnJhemUmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9T=
+QUxFXzIwMjNfRnJlZV80JnV0bV90ZXJtPUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnV=
+idW50dTBAZ21haWwuY29tWAQAAAFK" target=3D"_blank" class=3D"footer">Help=0A  =
+                                                  Center</a>=0A            =
+                                        &nbsp;|&nbsp;=0A                   =
+                               <a name=3D"contact-us" style=3D"color:#00000=
+0; text-decoration: underline;" href=3D"https://clicks-mail.elementor.com/f=
+/a/e9scXqKMeTdHJAjkjUWmeA~~/AAAHagA~/RgRmYFTxP0RwaHR0cHM6Ly9lbGVtZW50b3IuY2=
+9tL3Rlcm1zLz91dG1fc291cmNlPWJyYXplJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduP=
+UJEQVlfU0FMRV8yMDIzX0ZyZWVfNCZ1dG1fdGVybT1FbWFpbFcFc3BjZXVCCmR08c99ZPO6cGRS=
+FWVseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~" target=3D"_blank" class=3D"footer=
+">Terms=0A                                                    &amp; Conditi=
+ons</a>=0A                                                  &nbsp;|&nbsp;=
+=0A                                                  <a name=3D"contact-us"=
+ style=3D"color:#000000; text-decoration: underline;" href=3D"https://click=
+s-mail.elementor.com/f/a/GEdxnCjVr4PGOIQXyP5b1Q~~/AAAHagA~/RgRmYFTxP4TFAmh0=
+dHBzOi8vMDEuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5ldS9lbWFpbC9tYW5hZ2Vfc3Vic2NyaXB=
+0aW9ucy8lMjQxJTI0JTJGbWpERUVDeU56WEVYYTBZRnZacTRBJTNEJTNEJTI0enBnSmNsOHlvYV=
+l3OVl4c3pOVHdEME02OWhJa041M3JSUUs2TkhFTiUyQm5nJTNEP2Q9JTI0MSUyNHNBak1WeEFzV=
+TlieWRaSjM3NzIlMkJhUSUzRCUzRCUyNHA4YyUyQkcyTkwlMkZqaiUyRk0xTHY4UTJXdXVZUDd0=
+QktWUSUyRmRTMmdQcWpYVFFRb0taQ0wlMkJ3SDVNNzAwTiUyRkI2MCUwQThDSHc0Q0F4Q1djSEh=
+XM0tDS2J2ZUY3JTJCSmRlUUJVMDdFN0ZsVG1qJTJGVW0wNjBPc2IlMkY0S0JkcEMlMkJGdUkxJT=
+BBSGUzQWdacHJqeENuJTJCR0hBbm5wenpTZEthSkZmRndtT0xIcWVpQmNuJTJGSDFwYnNBNlFDU=
+zJBRzRaR1prOCUwQU8wN0FSRTM4QXpVZklkZ2poaW15JTJCR2RVY09JJTJGTUJjUzNhSUJGeElO=
+YktVRUFQdWYlMkZqNk1xNXp5ZUdnbSUwQVM2aEVyNUxnNSUyQnFFZElZQk1mZXlnS2RlaUF0R1B=
+5eEpaUEczaTJGRzNSJTJCYjFPNkZrUXhlU1BhWkp5djUlMEFreGExRkNOWUp6JTJCbXBxNVZwWG=
+lRTHMxS0d0JTJCTHlrV1ZHa1dGRGd2ODE0YVQlMkJ0JTJGdVJvVWJFc0pJV2w3OSUwQWVFNCUzR=
+CYxPTE_dXRtX3NvdXJjZT1icmF6ZSZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1CREFZ=
+X1NBTEVfMjAyM19GcmVlXzQmdXRtX3Rlcm09RW1haWxXBXNwY2V1QgpkdPHPfWTzunBkUhVlbHk=
+udWJ1bnR1MEBnbWFpbC5jb21YBAAAAUo~" target=3D"_blank" class=3D"footer">Updat=
+e Email Preferences</a>=0A                                                 =
+ &nbsp;|&nbsp;=0A                                                  <a href=
+=3D"https://clicks-mail.elementor.com/f/a/aw5a-cCrG8NhDLdkrMp_7g~~/AAAHagA~=
+/RgRmYFTxP4RmAmh0dHBzOi8vMDEuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5ldS9lbmNfdXNlci=
+91bnN1YnNjcmliZT9kPSUyNDElMjRzQWpNVnhBc1U5YnlkWkozNzcyJTJCYVElM0QlM0QlMjRwO=
+GMlMkJHMk5MJTJGamolMkZNMUx2OFEyV3V1WVA3dEJLVlElMkZkUzJnUHFqWFRRUW9LWkNMJTJC=
+d0g1TTcwME4lMkZCNjAlMEE4Q0h3NENBeENXY0hIVzNLQ0tidmVGNyUyQkpkZVFCVTA3RTdGbFR=
+taiUyRlVtMDYwT3NiJTJGNEtCZHBDJTJCRnVJMSUwQUhlM0FnWnByanhDbiUyQkdIQW5ucHp6U2=
+RLYUpGZkZ3bU9MSHFlaUJjbiUyRkgxcGJzQTZRQ1MyQUc0WkdaazglMEFPMDdBUkUzOEF6VWZJZ=
+GdqaGlteSUyQkdkVWNPSSUyRk1CY1MzYUlCRnhJTmJLVUVBUHVmJTJGajZNcTV6eWVHZ20lMEFT=
+NmhFcjVMZzUlMkJxRWRJWUJNZmV5Z0tkZWlBdEdQeXhKWlBHM2kyRkczUiUyQmIxTzZGa1F4ZVN=
+QYVpKeXY1JTBBa3hhMUZDTllKeiUyQm1wcTVWcFhpUUxzMUtHdCUyQkx5a1dWR2tXRkRndjgxNG=
+FUJTJCdCUyRnVSb1ViRXNKSVdsNzklMEFlRTQlM0QmMT0xP3V0bV9zb3VyY2U9YnJhemUmdXRtX=
+21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249QkRBWV9TQUxFXzIwMjNfRnJlZV80JnV0bV90ZXJt=
+PUVtYWlsVwVzcGNldUIKZHTxz31k87pwZFIVZWx5LnVidW50dTBAZ21haWwuY29tWAQAAAFK" s=
+tyle=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-te=
+xt-size-adjust: 100%;color: #000000;font-weight: normal;text-decoration: un=
+derline;">Unsubscribe</a>=0A=0A                                            =
+      <br><br>=0A=0A=0A=0A                                                 =
+ This email is intended for <a href=3D"mailto:ely.ubuntu0@gmail.com" style=
+=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-s=
+ize-adjust: 100%;color: #000000;font-weight: normal;text-decoration: none;"=
+>ely.ubuntu0@gmail.com</a>.=0A                                             =
+     <br>To ensure delivery of this email and future mailings,=0A          =
+                                        please add us=0A                   =
+                               to your contacts book or safe senders list.=
+=0A                                                </td>=0A                =
+                              </tr>=0A=0A                                  =
+            <tr>=0A                                                <td heig=
+ht=3D"40" class=3D"el_h30 darkmode" style=3D"height:40px;" bgcolor=3D"#ffff=
+ff">=C2=A0=0A                                                </td>=0A      =
+                                        </tr>=0A=0A                        =
+                    </tbody>=0A                                          </=
+table>=0A                                        </td>=0A                  =
+                    </tr>=0A                                    </tbody>=0A=
+                                  </table>=0A                              =
+  </td>=0A                              </tr>=0A                           =
+ </tbody>=0A                          </table>=0A                        </=
+td>=0A                      </tr>=0A                    </tbody>=0A        =
+          </table>=0A=0A                  <!-- Buffer -->=0A               =
+   <table role=3D"presentation" align=3D"center" width=3D"800" border=3D"0"=
+ cellspacing=3D"0" cellpadding=3D"0" class=3D"el_main_table" style=3D"width=
+:800px;table-layout:fixed;" bgcolor=3D"#E5E5E5">=0A                    <tbo=
+dy>=0A                      <tr>=0A                        <td valign=3D"to=
+p" align=3D"center" style=3D"padding:25px 0px 25px 0px;" class=3D"el_hide">=
+=0A                        </td>=0A                      </tr>=0A          =
+          </tbody>=0A                  </table>=0A=0A                </td>=
+=0A              </tr>=0A            </tbody>=0A          </table>=0A      =
+  </td>=0A      </tr>=0A    </tbody>=0A  </table>=0A=0D=0A<img border=3D"0"=
+ width=3D"1" height=3D"1" alt=3D"" src=3D"https://clicks-mail.elementor.com=
+/q/zhyZUavDs0q7RH3o_R3MFw~~/AAAHagA~/RgRmYFTxPlcFc3BjZXVCCmR08c99ZPO6cGRSFW=
+VseS51YnVudHUwQGdtYWlsLmNvbVgEAAABSg~~">=0D=0A</body>=0A=0A</html>
+--_----OhQeV4l5oQ8I4DK2Ph1kRg===_24/36-08784-1FFCD746--
+

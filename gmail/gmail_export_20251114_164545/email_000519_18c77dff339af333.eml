@@ -1,0 +1,692 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:756:b0:523:83ca:23d5 with SMTP id i22csp6663440pxv;
+        Sun, 17 Dec 2023 05:03:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGY3WaUAg3o3jt+HrnA1IthTzHaqSWudvQCF2SknW0cCJ6qbmTGymZaOHq1vIZxsSgDS7+N
+X-Received: by 2002:ad4:5de2:0:b0:67f:276d:a113 with SMTP id jn2-20020ad45de2000000b0067f276da113mr3424926qvb.72.1702818214466;
+        Sun, 17 Dec 2023 05:03:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702818214; cv=none;
+        d=google.com; s=arc-20160816;
+        b=k6pIJgM9ayr9zFhdBb2TgR0b4NMbFjQb1jCy1em7NIND9nLeLjOtrdwXyyW97Rckjj
+         mryMhcGV7BdGMI2OLmEtkShEIcVGJbtiDPNhNVIYMbpm7O6Fer3krVZ/+JEth1QhLsnZ
+         b6AtgV+Ai4+FAM0t4sRnyiQFxPLp2NCKmw6sikTxnZD4rd9+snfDE/pLsm2mDA/hECC9
+         s0GYkbs2p6bf9euZie7PHupafKOKuyygwLIL0oWrI3H+ukCCpSAOXh/W7gb198nrXG5W
+         BGEYyFvxFksVogq+FMzFZ4nt7O6S5L64YYyL2/4191WrHDLtV+idjKYvnJx2w2MP9EJD
+         6Jrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:to:reply-to:subject:message-id:mime-version:from
+         :date:dkim-signature:dkim-signature;
+        bh=ogNOk5eJ9dw80gR7Ft7ZB9Jig8X+0QMPKZ4lU4bzatA=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=PaTHxsv19FPVLOrdz//Z1W3SuYfCvNY2mQYMWfl/IsLcSuxo06vPY7lUaZmIhoQGn3
+         JSh2Nq2vxKHtrfRzeV7hO/OoviLSVqpxOWLtu8WNXXe1ZSqomisdnDxb01kzsNc3nWUP
+         4sp2RNLLJU56NkhKqcuuds+ZZr8W5bRASGVFovYgarpK4y9EtAeHQfi74E1Y8omj2HXZ
+         Oe86ARZazVBwMpcLzJRBwrnTeXZoKXjQxeRGtzmKd8cUL9dx60Y/PAkR5B2fM3f7o/2l
+         bOw4mpksH2Z5zN2Qz5tw5IXuXLyMZhrnpTIL2JjYtRYJZjQYT1BLBp7sbywJOvsWAFOV
+         w6Sg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.openai.com header.s=s1 header.b=Dba3G0tW;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="tSDgOc/i";
+       spf=pass (google.com: domain of bounces+39958162-1edf-ely.ubuntu0=gmail.com@em7497.email.openai.com designates 159.183.224.10 as permitted sender) smtp.mailfrom="bounces+39958162-1edf-ely.ubuntu0=gmail.com@em7497.email.openai.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=openai.com
+Return-Path: <bounces+39958162-1edf-ely.ubuntu0=gmail.com@em7497.email.openai.com>
+Received: from s.wfbtzhhx.outbound-mail.sendgrid.net (s.wfbtzhhx.outbound-mail.sendgrid.net. [159.183.224.10])
+        by mx.google.com with ESMTPS id o15-20020a0ccb0f000000b0067efe972feasi2352960qvk.227.2023.12.17.05.03.33
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 17 Dec 2023 05:03:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+39958162-1edf-ely.ubuntu0=gmail.com@em7497.email.openai.com designates 159.183.224.10 as permitted sender) client-ip=159.183.224.10;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.openai.com header.s=s1 header.b=Dba3G0tW;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="tSDgOc/i";
+       spf=pass (google.com: domain of bounces+39958162-1edf-ely.ubuntu0=gmail.com@em7497.email.openai.com designates 159.183.224.10 as permitted sender) smtp.mailfrom="bounces+39958162-1edf-ely.ubuntu0=gmail.com@em7497.email.openai.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=openai.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.openai.com;
+	h=content-type:from:mime-version:subject:reply-to:x-feedback-id:to:
+	list-unsubscribe:cc:content-type:from:subject:to;
+	s=s1; bh=ogNOk5eJ9dw80gR7Ft7ZB9Jig8X+0QMPKZ4lU4bzatA=;
+	b=Dba3G0tW/vkRPe/t6ByoAvGCCoHkLt191UOu0+gD/4Bo0v64fi+VhJMg1IcGx088TTcq
+	0jYVIw1kbW/GVPSz4uEqrep5/BCdgZdiDrRrxL9QnjfX3OEHkVZQz9CSSeyqTmlQGxM7ww
+	mBrhvi1LAUuS3oUgnqwZ/teKFPxG+o4AOkoOhzWVJDDp+djB7q7jcmqM22tnCDX8zd9cAO
+	AfxLmFuaA+vDLDDp7D5L47KFeHVeLK99zGK1nHmtHp0lhgEp7iiZrq9V08hyiuESBe75YN
+	JciUr2Wx2joVHhZRBVv38OtS3oZUmZmxwGGS0EoHHdAR9997P3qcfzHwe2uk1Sng==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:reply-to:x-feedback-id:to:
+	list-unsubscribe:cc:content-type:from:subject:to;
+	s=smtpapi; bh=ogNOk5eJ9dw80gR7Ft7ZB9Jig8X+0QMPKZ4lU4bzatA=;
+	b=tSDgOc/ix923u8YqHC+BrplxxxOl9vo4I1xhEgtAy0oHlKZMYe95lw31QVdO2eYuA1p5
+	VkuiPb8qVrfLnAcozs8fYUVoP/ubUYvjW9Q9jbQjkNdF8CA7sf+gmv8ZfTq0gwcjn2iuxQ
+	2YHHy454TJtkym5aI/+/q2BaQzrqWb/uk=
+Received: by filterdrecv-54568dd86-xccq4 with SMTP id filterdrecv-54568dd86-xccq4-1-657EF1A3-44
+        2023-12-17 13:03:31.175306236 +0000 UTC m=+5250085.853143678
+Received: from Mzk5NTgxNjI (unknown)
+	by geopod-ismtpd-13 (SG) with HTTP
+	id Ef7rvGuURuyiRGPEt82Nbg
+	Sun, 17 Dec 2023 13:03:31.148 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=a8722b4bf206f61c1e1e119ad4652bf8c1136457939849983927a13d4bb8
+Date: Sun, 17 Dec 2023 13:03:32 +0000 (UTC)
+From: OpenAI <noreply@email.openai.com>
+Mime-Version: 1.0
+Message-ID: <Ef7rvGuURuyiRGPEt82Nbg@geopod-ismtpd-13>
+Subject: Updates to our Terms of Use & Privacy Policy
+Reply-To: noreply@email.openai.com
+X-Feedback-ID: 39958162:SG
+X-SG-EID: 
+ =?us-ascii?Q?pHX1L=2FMrXM21=2Fp81WqXY333U7mvXYETxqkw7LqefyisplGEXmVdE854gCvaPSD?=
+ =?us-ascii?Q?SZ6QIExYD8NtiQMQfM9kckt7obLnHAepzxOGP1T?=
+ =?us-ascii?Q?XpDAmhj3PVQj7bfZt2j5IufUoEEiri0Rlz+rmZV?=
+ =?us-ascii?Q?UKak08uJBaP1szfDxvwNcZ1bS4OlaVv26BuK6lh?=
+ =?us-ascii?Q?sg8D++OItWte5koxqtmSKZQjSL3AVhbVZq7v4au?=
+ =?us-ascii?Q?bOXbPHEffNGPAoYYCebwa+vyjuPeOsw7BiLDYD?=
+X-SG-ID: 
+ =?us-ascii?Q?se=2F49CGmbS0sfR97ImeXvDoOrI1ra2UfBi=2FYp+tM4sZlJ2PdK+SetPMIv+rKLE?=
+ =?us-ascii?Q?zDnvN4zk0akB3=2FjR6SINy8fbSnHDpV1PIajS90D?=
+ =?us-ascii?Q?L4SxTrTHfqGFC=2FJTzLzCr05gCtyckjWRIW0Ifcw?=
+ =?us-ascii?Q?RPBqClApk3MTXgl0U89wq0cz7dXgijL=2Fis+6si8?=
+ =?us-ascii?Q?DCyPTWKvmb9XW51cIbf0HhwOrQlRZw7x5q6KQSW?=
+ =?us-ascii?Q?EdfrDMnqvwsIcsCGRhX697NiK+4ZdTHT889UveM?=
+ =?us-ascii?Q?mKDyPWptMhqo+oAqaXCVPL33GBDg=2FxkN3kUb2mE?=
+ =?us-ascii?Q?er0sRgQ9D8xZMJxvUso4OPY9vzkTFaxWGdE9r4Z?=
+ =?us-ascii?Q?Ai=2FP58qB9JHOZ1bbS5hIjophQn0Ky3UT0cazVmR?=
+ =?us-ascii?Q?5pJPvsoGBeCyxvvt6csXK9XTwPFsAlFLCh5vRcH?=
+ =?us-ascii?Q?NeTNZ=2Fp=2FsmEihM68YeDdCN6fbVQKaw7K0m9LT4X?=
+ =?us-ascii?Q?R4CPbxI8cnB+Qjowa7pkHpvQ43liX9RlEOJJfiY?=
+ =?us-ascii?Q?87lQiQsacNWGLl9GqUx+EPMo1RmVgl8gvQ=2FKFGN?=
+ =?us-ascii?Q?lF8fAvYSYRMWVgmw+ndOKcLaRkeqNiJcSTWvFyD?=
+ =?us-ascii?Q?bK3WDuevmUTXhMtX4GhtvEVSxkzh5FC9dyOm9zX?=
+ =?us-ascii?Q?47lWNfU+4LdUnA6VtmMWl1bn3rElo69=2FQYPKELc?=
+ =?us-ascii?Q?u0+mtZmr53DRDjQg8EDgVvo4IfWDMaCWHBoAJQ5?=
+ =?us-ascii?Q?JhR2z=2FHdYbl1jIaLUP0igWrilEcaG5B5fdhueFA?=
+ =?us-ascii?Q?0TdELMdd=2FMfq1NDslzveRw=3D?=
+To: ely.ubuntu0@gmail.com
+X-Entity-ID: m4XhTaFcpAtjkCLKGNZbNQ==
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40em7497=2Eemail=2Eopenai=2Ecom=3Fsubject=3D39958162=2Ej?=
+ =?us-ascii?Q?=5Frtb4ug70JuViGG2ndRZ0lEBpA3=5F9PQ0OggyGDG?=
+ =?us-ascii?Q?KXNoMDAwdTAwMKqMr5OkQ5DVWNxa=5F0tFc3XIcHa?=
+ =?us-ascii?Q?ZbXt-KGJOigUrXRgnAj8-s5cwSZRa2NWEUOg-c-?=
+ =?us-ascii?Q?AqNi72HJ7IFseR52iuy7xDEVaA7w97-AeuKqX9V?=
+ =?us-ascii?Q?A9TE3T5hYKkFrqekr7G89ecng=3D=3D=2EKXivyY3eull?=
+ =?us-ascii?Q?HSqd3Pgka6qCRzB6QCaTYBnBDL8aPdFBoMDAwdT?=
+ =?us-ascii?Q?AwMJ7-W4Tvz6k5mslwquVfmIald0mXy=5Fr4blYMY?=
+ =?us-ascii?Q?DipD5CPsn1ax=5F=5F8aRaI7iP9y=5F1kPOmng7nrhjy-?=
+ =?us-ascii?Q?KSb4eGM0abhtW3jSSR8qszq9EBmBdDwKjLMML3-?=
+ =?us-ascii?Q?2fyDAcqyuzimtECt9hktyl55VB9bs6svP4FhWam?=
+ =?us-ascii?Q?mVRz8xdE4fZjW1ALW7TzHLFnFquElld0WFZSp-U?=
+ =?us-ascii?Q?L80wORAnqbyN-60eJmyoD-rqqnQ8V6P4P0krPvx?=
+ =?us-ascii?Q?-PeRwNk=5FjsXqGxe93oL1rYR7dxpWZupNWxKf0Lo?=
+ =?us-ascii?Q?=5FiYAGcx5xVgD6g3nKX8l4lmnZXNJEgsAg2g2TIr?=
+ =?us-ascii?Q?Iwzrhfftp5t=5FZjwiHHfApv3nigRViUbaAheyyyj?=
+ =?us-ascii?Q?la5wrwkJW4Fsf6f-Gdj4yNqIIKKZzBD-Fs5Vlaf?=
+ =?us-ascii?Q?D567-1buOfdWeh1GM=5FOPgkaOtKX8ChdcnaUrobs?=
+ =?us-ascii?Q?45WuR0p4cSL=5F7lGBcEiVTWVwQm3oiZLxWMY5cbR?=
+ =?us-ascii?Q?nikbX2RuOUWQtms6PzUSbsNLWmSm1-KScBkpPja?=
+ =?us-ascii?Q?D8q23UkWEttLY2hC83uimiGOkD8Rt08TzJL3b2n?=
+ =?us-ascii?Q?0OLMMtnNgh9GpBj5J=5F3ja6Tg6xrbRIhJaG9BiK9?=
+ =?us-ascii?Q?5G2k7ctcqlxPlysBIZUTrLzMbqXgQeFUvp=5F=5F4V7?=
+ =?us-ascii?Q?97k6i5a=5FFGF7rBYUn5tEFiBiCvw7tQp=5FAP-iqD7?=
+ =?us-ascii?Q?D3cLgKqGo4ImJijK4=5FB=5FUtT85BPKO1brnOd0-v=5F?=
+ =?us-ascii?Q?M1Tz3tcBxT1Z4yeEiIXqzSVSxSPkmenisRPfwTG?=
+ =?us-ascii?Q?EhzjMAEelsFSkrusPrPfC5N06dvey3-amnXWH5Y?=
+ =?us-ascii?Q?DyRtPMaWKoK8IwGW4GvyQU4mauUxbMC933wcdQD?=
+ =?us-ascii?Q?yHIlM0n6qIbnm-6lPey0tsThel3RupG6Q0I2SP-?=
+ =?us-ascii?Q?YhRiuwBiUUGYekyy5JFPGlCD8sXjlXjXsZc60EH?=
+ =?us-ascii?Q?DOfmjGe3ClOR9pUZ4Yae=5F1apJpu6MwaiveoSEbL?=
+ =?us-ascii?Q?hc6Xsn=3E?=
+
+--a8722b4bf206f61c1e1e119ad4652bf8c1136457939849983927a13d4bb8
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+We want to let you know about some upcoming changes to our Terms of Use ( h=
+ttps://openai.com/policies/terms-of-use ) and Privacy Policy ( https://open=
+ai.com/policies/privacy-policy ). These changes will make it easier for you=
+ to understand what to expect from OpenAI as you use our services. The Term=
+s of Use and Privacy Policy will take effect on *January 31, 2024*.
+
+We encourage you to read the updated policies, but here is a quick overview=
+ of some key changes:
+
+*Terms of Use*
+
+* *Separate business terms*. We've removed the sections of the Terms of Use=
+ that relate to the use of our services for businesses and developers, name=
+ly ChatGPT Enterprise and our APIs. We=E2=80=99ve created a new set of Busi=
+ness Terms ( https://openai.com/policies/business-terms ) that apply to tho=
+se services.
+
+* *Updated arbitration procedures*. We've updated some of the procedures by=
+ which we will resolve any arbitrated disputes.
+
+* *Improved readability*. We've re-organized and clarified some parts of ou=
+r Terms of Use (yes, with a little help from ChatGPT) to make them simpler =
+and easier to understand.
+
+*Privacy Policy*
+
+* *Personal information we collect*. We've provided additional details and =
+examples about the information we collect, such as when you participate in =
+OpenAI=E2=80=99s events or surveys.
+* *Business accounts*. We've provided information about how administrators =
+of ChatGPT Enterprise and team accounts can access and control accounts ass=
+ociated with their organization.
+
+If you have questions about any of these changes, please see this Help Cent=
+er FAQ ( https://help.openai.com/en/articles/8541945-terms-of-use-and-priva=
+cy-policy-updates ).
+
+You don't need to take any action in response to this update. By continuing=
+ to use our services after *January 31, 2024* , you are agreeing to the upd=
+ated Terms of Use ( https://openai.com/policies/terms-of-use ) and acknowle=
+dge that our Privacy Policy ( https://openai.com/policies/privacy-policy ) =
+applies to data processed in OpenAI=E2=80=99s services. If you do not agree=
+ to the updates, you may delete your account ( https://help.openai.com/en/a=
+rticles/6378407-how-to-delete-your-account ).
+
+Thank you for choosing OpenAI!
+
+Unsubscribe ( http://url3243.email.openai.com/asm/unsubscribe/?user_id=3D39=
+958162&data=3DQPlkxtR_gr88gX_NNr7GRdlvnMIOpx53cAf4_I_FCH1oMDAwdTAwMJcXqanTB=
+qYy9aRNYIEXEQMYieyjp169UGEjtMM8sRkurITxbgpIyxZeyyrmQOvwigKmVeS0rFf7tVmkC2hJ=
+866EXabXZ4dDGJR1XqU9g191m6p6HnmidNVO92mJrvhdrfoShInq_XxlcUTfe3OuIDakmVD1nzV=
+rObyP_2HC3RzTGSIVv9LQn8ERMDLxr6wvIjHcDCW9x859jWjPbPwjOXK4dDR_DC6mAY1u50uJzi=
+6fooIz_9IPkgI8Aebh392BLhOvldN8FlMc4dXeWRUZYTmmUV8WH3Nj1BE6Oc_PwXvAQGdbbU0Qd=
+MVy96f-7oBGgN4Jhm99ySjB8hrYHzdQQkP_pvWsVmYUVYhK914rWKhvvi81Xhxclp7Tvreugxn9=
+SR1nXPdDANT13EOpvPfCMyCSy3KSbAIKhWxfYh5cFfSEX-SC0fEfuqD8ZzbJwcFzje_uR1JkRIY=
+An_tN-3nPUR7WQpLswilc4nQtj6D8g1QKZujib-2VJnP-LPZLFrjLmYNHH7dvcBFCOn5zBEn5Zz=
+Us6FHdVAWfT2b6mRYtZ9NwuOgr8T57shk2udJYo3g6IcYb_cKNpu5yIlIkscIhZfRhlI3VblW_n=
+GFVvqx2-VhvHWiw6JRN_e8P-iTKah8RJgA_nwwk9-6VhB7EZmMg7I-iUUrMEMbbJxQXIx1uBz3_=
+FvGRB0pcq1-Ax9BIwDfcw1er59JhiTuXAN81oPDxbS6FQnD5wKrCdHASQpfA8K1HHnkofhuiTqo=
+s2vBphE5N6XYEHlNZwn2VR4hD4UvwNoBzfIH_GAsuAg5nQjaHs4xCuVSTbPd0e-NP0Af5o2qA0b=
+YJe9imV8dqPPFWSp17dO36HFe5vwZSBNRYtKLLhf4RkAkt-lYlUg-HDvrKj3I4mZ9cLgXqjN-6L=
+kFzeAYsDr2aUK5IR4YtTKfmjmHFMW6SrN6WW-S_PjxIhycAf6p5Fxkio2k9k9yyXM023-I_ELlG=
+rj3oX9x6YD8P-r89QuSkqMhbNwFGw8ix-K2Q08d7pQFnALXKU3Jz3r_BM5cHF1rv8bFBHDA7NO2=
+LoxNPhOYs-j6-Ub_Ff-Ldn5gSNqQwmVZA5OTEVx4ett44a2E_aA0=3D )
+--a8722b4bf206f61c1e1e119ad4652bf8c1136457939849983927a13d4bb8
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.=
+w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 600px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: inherit;
+      font-size: 14px;
+    }
+    body {
+      color: #565869;
+    }
+    body a {
+      color: #ADADAD;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start--><style type=3D"text/css">
+  @media screen {
+    @font-face {
+      font-family: Colfax;
+      src: url(https://openai-public.s3-us-west-2.amazonaws.com/beta/fonts/=
+ColfaxAIRegular.woff2);
+      font-weight: normal;
+    }
+
+    @font-face {
+      font-family: Colfax;
+      src: url(https://openai-public.s3-us-west-2.amazonaws.com/beta/fonts/=
+ColfaxAIMedium.woff2);
+      font-weight: bold;
+    }
+  }
+  body {
+    font-family: Colfax, Helvetica, Arial, sans-serif;
+  }
+  a {
+      text-decoration: none
+  }
+  .ii a[href] {
+      color: #D8D8D8;
+  }
+</style><!--End Head user entered-->
+    </head>
+    <body>
+      <center class=3D"wrapper" data-link-color=3D"#ADADAD" data-body-style=
+=3D"font-size:14px; font-family:inherit; color:#565869; background-color:#F=
+FFFFF;">
+        <div class=3D"webkit">
+          <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"=
+100%" class=3D"wrapper" bgcolor=3D"#FFFFFF">
+            <tr>
+              <td valign=3D"top" bgcolor=3D"#FFFFFF" width=3D"100%">
+                <table width=3D"100%" role=3D"content-container" class=3D"o=
+uter" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                  <tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"600">
+  <![endif]-->
+                                    <table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" style=3D"width:100%; max-width:600px;" alig=
+n=3D"center">
+                                      <tr>
+                                        <td role=3D"modules-container" styl=
+e=3D"padding:0px 0px 0px 0px; color:#565869; text-align:left;" bgcolor=3D"#=
+FFFFFF" width=3D"100%" align=3D"left"><table class=3D"module preheader preh=
+eader-hide" role=3D"module" data-type=3D"preheader" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"display: none !important;=
+ mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height:=
+ 0; width: 0;">
+    <tr>
+      <td role=3D"module-content">
+        <p></p>
+      </td>
+    </tr>
+  </table><table class=3D"wrapper" role=3D"module" data-type=3D"image" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-=
+layout: fixed;" data-muid=3D"e8a4c2e3-4470-4dd9-a5b3-5b5e41f0ae84">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:32px 32px 32p=
+x 32px;" valign=3D"top" align=3D"left">
+          <img class=3D"max-width" border=3D"0" style=3D"display:block; col=
+or:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif;=
+ font-size:16px; max-width:40% !important; width:40%; height:auto !importan=
+t;" width=3D"240" alt=3D"" data-proportionally-constrained=3D"true" data-re=
+sponsive=3D"true" src=3D"http://cdn.mcauto-images-production.sendgrid.net/1=
+9b58e2431fe8f54/0ca910be-6ddc-45d0-9295-0e6a006da956/1180x320.png">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"49bdf158-b5fc-4f36-afec-0a8334ab87e5" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 32px 20px 32px; line-height:22px; text-ali=
+gn:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-con=
+tent"><div><div style=3D"font-family: inherit; text-align: inherit"><span s=
+tyle=3D"font-family: inherit">We want to let you know about some upcoming c=
+hanges to our </span><a href=3D"http://url3243.email.openai.com/ls/click?up=
+n=3D5bA8MEa6kfYUNNNHoFgSQ5pWmp8AzHrqM4o8ezyybFeOwUPE2tcbxhnsMJRWjl8lgppaw2f=
+4hx1jDJnc9kcn0Q-3D-3DT1Jp_-2F7NlvmT-2FkwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2=
+Fg5ZaBgiuL7sQwIRlZAS-2BR7QXQ0ovh7GjdwnUuUQTxIIsZsPybLpqIVMsPylzq-2F9-2FdHiQ=
+P7VkTLozZpREV2Jg83zOK6iKsyesXs-2B5MuTDO-2ByfhVK1YLC1DeyBnW9pZJUP6t2DcqD3NBD=
+v-2BEI9L8tOneugAhP3mD9k8CPowO-2BiVWVXE5Mv3nwz3mNd-2BHXmOENnsrQPrbovMqQl5npd=
+PbT0P63lETMaPGoRoai7ekzebVv7ch1LAsQ0BrI7LZr2hb0WxCziWimhc-2F0N0R8rVwJH-2Fpc=
+w7roX76ie6z1JXGFex-2BdqDhVoDRyB0op2-2By-2FhHE5Gz9ZAizRxQlYqqSiymEdCT3syU4X4=
+hw-2BQZ-2FxzKbJjg8u3mFihgenVdxVPtaS0v3Vqtn2W7AZa-2BTnnOo2gy6oF0v4Jj9xN0v2rd=
+O97W9S1NBUIWOKHnk-2FAMc-2F-2FlHA983YMfrv71moz8IaI7RKE6-2FWpAJiy1ED5e3QuKqtQ=
+gfsoMbcu8-2Frqhl8XjSMVAYSdO8gqU3HSKZnbpDMME3y7ZLWSjdaBuu48oKOVIz2IXa8nWF-2F=
+6tGCaeDKd69fbr5B5COommdUfUYfo-2BtjvY7qdvQFHKa1wJjB6k-2FzYzb2AvFT1REmjoayAiX=
+oeFQQL7X7OuV8uplCdVBTLZVqcEikmd0VFqXKUudJmB3KI9izx2yLJVuJkweWTHUdymVg6TYIkJ=
+q9GPV5BKK-2FJUC19NBdQEgfnheZpIIznivfLLikRzJjyBQKLCF9MjpRRGBPPXEzoWDezHYfT4g=
+Kv2DHhHY7jPOeaGwFhnTJLJsx-2B1ZOeXLY9HCSW-2FL74aP2pUj4e6D54D48mewd9-2BNegMxt=
+FQ1fj4aMN6zKLlpFKRpE6C1RwZkGhLBE2eiV9CmtAhEOwjDPaWJv0Ci6wFQw6FHoj22SCAhH-2B=
+wK"><span style=3D"font-family: inherit; color: #10a37f">Terms of Use</span=
+></a><span style=3D"font-family: inherit"> and </span><a href=3D"http://url=
+3243.email.openai.com/ls/click?upn=3D5bA8MEa6kfYUNNNHoFgSQ5pWmp8AzHrqM4o8ez=
+yybFeJvv-2BsziV55D0fZFgSjsz-2FfnQ1BAuvoAMHfqOSh624LQ-3D-3DjmyN_-2F7NlvmT-2F=
+kwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2Fg5ZaBgiuL7sQwIRlZAS-2BR7QXQ0ovh7Gjdwn=
+UuUQTxIIsZsPybLpqIVMsPylzq-2F9-2FdHiQP7VkTLozZpREV2Jg83zOK6iKsyesXs-2B5MuTD=
+O-2ByfhVK1YLC1DeyBnW9pZJUP6t2DcqD3NBDv-2BEI9L8tOneugAhP3mD9k8CPowO-2BiVWVXE=
+5Mv3nwz3mNd-2BHXmOENnsrQPrbovMqQl5npdPbT0P63lETMaPGoRoai7ekzebVv7ch1LAsQ0Br=
+I7LZr2hb0WxCziWimhc-2F0N0R8rVwJH-2Fpcw7roX76ie6z1JXGFex-2BdqDhVoDRyB0op2-2B=
+y-2FhHE5Gz9ZAizRxQlYqqSiymEdCT3syU4X4hw-2BQZ-2FxzKbJjg8u3mFihgenVdxVPtaS0v3=
+Vqtn2W7AZa-2BTnnOo2gy6oF0v4Jj9xN0v2rdO97W9S1NBUIWOKHnk-2FAMc-2F-2FlHA983YMf=
+rv71moz8IaI7RKE6-2FWpAJiy1ED5e3QuKqtQgfsoMbcu8-2Frqhl8XjSMVAYSdO8gqU3HSKZnb=
+pDMME3y7ZLWSjdaBuu48oKOVIz2IXa8nWF-2F6tGCaeDKd69fbr5B5COommdUfUYfo-2BtjvY7q=
+dvQFHKa1wJjB6k-2FzYzb2AvFT1REmjoayAiXoeFQQL7X7OuV8uplCdVBTLZVqcEikmd0VFqXKU=
+udJmB3KI9izx2yLJVuJkweWTHUdymVg6TYIkJq9GPV5BKK-2FJUC19NBdQEgfnheQBOsNFbbEcc=
+3q3oX-2FQSFMUi7Ww2sHS87ho4hhs9oHMFcSEHY-2B2iawxvRLBaHpx3O8gU-2F03IIBhx1-2BP=
+SJqzp1H71yHysqqdRvIraQRLklXpUEVujoKNooUPJbzZh5HEnOJEdXRvwbWQYNbbsVCnMElG0O-=
+2B3VuEldHK7Fr4D9-2BvoKMrt-2Fh4Dax-2BHETfxO4cjci"><span style=3D"font-family=
+: inherit; color: #10a37f">Privacy Policy</span></a><span style=3D"font-fam=
+ily: inherit">. These changes will make it easier for you to understand wha=
+t to expect from OpenAI as you use our services. The Terms of Use and Priva=
+cy Policy will take effect on </span><span style=3D"font-family: inherit"><=
+strong>January 31, 2024</strong></span><span style=3D"font-family: inherit"=
+>.&nbsp;</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-family: inherit">We encourage you to read the updated policies, but here =
+is a quick overview of some key changes:</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-family: inherit"><strong>Terms of Use</strong></span></div>
+<ul>
+  <li style=3D"text-align: inherit; font-family: inherit"><span style=3D"fo=
+nt-family: inherit"><strong>Separate business terms</strong></span><span st=
+yle=3D"font-family: inherit">. We've removed the sections of the Terms of U=
+se that relate to the use of our services for businesses and developers, na=
+mely ChatGPT Enterprise and our APIs. We=E2=80=99ve created a new set of</s=
+pan><span style=3D"font-family: inherit; color: #10a37f"> </span><a href=3D=
+"http://url3243.email.openai.com/ls/click?upn=3D5bA8MEa6kfYUNNNHoFgSQ5pWmp8=
+AzHrqM4o8ezyybFfaBeAVBJtRbMhQ-2BXyTDRpZQk62VAwIgXvZwZFbHhGq5A-3D-3DrSOM_-2F=
+7NlvmT-2FkwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2Fg5ZaBgiuL7sQwIRlZAS-2BR7QXQ0=
+ovh7GjdwnUuUQTxIIsZsPybLpqIVMsPylzq-2F9-2FdHiQP7VkTLozZpREV2Jg83zOK6iKsyesX=
+s-2B5MuTDO-2ByfhVK1YLC1DeyBnW9pZJUP6t2DcqD3NBDv-2BEI9L8tOneugAhP3mD9k8CPowO=
+-2BiVWVXE5Mv3nwz3mNd-2BHXmOENnsrQPrbovMqQl5npdPbT0P63lETMaPGoRoai7ekzebVv7c=
+h1LAsQ0BrI7LZr2hb0WxCziWimhc-2F0N0R8rVwJH-2Fpcw7roX76ie6z1JXGFex-2BdqDhVoDR=
+yB0op2-2By-2FhHE5Gz9ZAizRxQlYqqSiymEdCT3syU4X4hw-2BQZ-2FxzKbJjg8u3mFihgenVd=
+xVPtaS0v3Vqtn2W7AZa-2BTnnOo2gy6oF0v4Jj9xN0v2rdO97W9S1NBUIWOKHnk-2FAMc-2F-2F=
+lHA983YMfrv71moz8IaI7RKE6-2FWpAJiy1ED5e3QuKqtQgfsoMbcu8-2Frqhl8XjSMVAYSdO8g=
+qU3HSKZnbpDMME3y7ZLWSjdaBuu48oKOVIz2IXa8nWF-2F6tGCaeDKd69fbr5B5COommdUfUYfo=
+-2BtjvY7qdvQFHKa1wJjB6k-2FzYzb2AvFT1REmjoayAiXoeFQQL7X7OuV8uplCdVBTLZVqcEik=
+md0VFqXKUudJmB3KI9izx2yLJVuJkweWTHUdymVg6TYIkJq9GPV5BKK-2FJUC19NBdQEgfnhe6g=
+C29TvLNOGnqW4k8pI74Qaj1i6gtH234UXXJXip4TzmaLbVheMPUzD-2F2TqgQVwLqd8QKcLJZ7x=
+1xzVU33yUlcREpYQGIubMBtUoJYmesp3XErsZMz2vNcs-2FEuyMdwWjBMOEnxNSA8VjLfbXTwL6=
+QG6Ovbb7Q1YfafMtZUC5dKy8OEQCVQPE22gSIWC8-2F6Li"><span style=3D"font-family:=
+ inherit; color: #10a37f">Business Terms</span></a><span style=3D"font-fami=
+ly: inherit; color: #10a37f"> </span><span style=3D"font-family: inherit">t=
+hat apply to those services.&nbsp;<br>
+</span></li>
+  <li style=3D"text-align: inherit; font-family: inherit"><span style=3D"fo=
+nt-family: inherit"><strong>Updated arbitration procedures</strong></span><=
+span style=3D"font-family: inherit">. We've updated some of the procedures =
+by which we will resolve any arbitrated disputes.<br>
+</span></li>
+  <li style=3D"text-align: inherit; font-family: inherit"><span style=3D"fo=
+nt-family: inherit"><strong>Improved readability</strong></span><span style=
+=3D"font-family: inherit">. We've re-organized and clarified some parts of =
+our Terms of Use (yes, with a little help from ChatGPT) to make them simple=
+r and easier to understand.<br>
+</span></li>
+</ul>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-family: inherit"><strong>Privacy Policy</strong></span></div>
+<ul>
+  <li style=3D"text-align: inherit; font-family: inherit"><span style=3D"fo=
+nt-family: inherit"><strong>Personal information we collect</strong></span>=
+<span style=3D"font-family: inherit">. We've provided additional details an=
+d examples about the information we collect, such as when you participate i=
+n OpenAI=E2=80=99s events or surveys.</span></li>
+  <li style=3D"text-align: inherit; font-family: inherit"><span style=3D"fo=
+nt-family: inherit"><strong>Business accounts</strong></span><span style=3D=
+"font-family: inherit">. We've provided information about how administrator=
+s of ChatGPT Enterprise and team accounts can access and control accounts a=
+ssociated with their organization.</span></li>
+</ul>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-family: inherit">If you have questions about any of these changes, please=
+ see this </span><a href=3D"http://url3243.email.openai.com/ls/click?upn=3D=
+5bA8MEa6kfYUNNNHoFgSQ6fdVw5ikQ9fqTuvqaxnekJ7mKf-2BifRocDSHrelDLlZxrB7x3HtyA=
+0QT7CewzYIwgJX-2FQ33sr1YqMf-2B7NWg6E-2F-2F3SQneWzHRw3ZUNR68lvHfzkjM_-2F7Nlv=
+mT-2FkwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2Fg5ZaBgiuL7sQwIRlZAS-2BR7QXQ0ovh7=
+GjdwnUuUQTxIIsZsPybLpqIVMsPylzq-2F9-2FdHiQP7VkTLozZpREV2Jg83zOK6iKsyesXs-2B=
+5MuTDO-2ByfhVK1YLC1DeyBnW9pZJUP6t2DcqD3NBDv-2BEI9L8tOneugAhP3mD9k8CPowO-2Bi=
+VWVXE5Mv3nwz3mNd-2BHXmOENnsrQPrbovMqQl5npdPbT0P63lETMaPGoRoai7ekzebVv7ch1LA=
+sQ0BrI7LZr2hb0WxCziWimhc-2F0N0R8rVwJH-2Fpcw7roX76ie6z1JXGFex-2BdqDhVoDRyB0o=
+p2-2By-2FhHE5Gz9ZAizRxQlYqqSiymEdCT3syU4X4hw-2BQZ-2FxzKbJjg8u3mFihgenVdxVPt=
+aS0v3Vqtn2W7AZa-2BTnnOo2gy6oF0v4Jj9xN0v2rdO97W9S1NBUIWOKHnk-2FAMc-2F-2FlHA9=
+83YMfrv71moz8IaI7RKE6-2FWpAJiy1ED5e3QuKqtQgfsoMbcu8-2Frqhl8XjSMVAYSdO8gqU3H=
+SKZnbpDMME3y7ZLWSjdaBuu48oKOVIz2IXa8nWF-2F6tGCaeDKd69fbr5B5COommdUfUYfo-2Bt=
+jvY7qdvQFHKa1wJjB6k-2FzYzb2AvFT1REmjoayAiXoeFQQL7X7OuV8uplCdVBTLZVqcEikmd0V=
+FqXKUudJmB3KI9izx2yLJVuJkweWTHUdymVg6TYIkJq9GPV5BKK-2FJUC19NBdQEgfnheBeQxpr=
+yBrKXlbJ4tdzWvmW-2BH7dJzvLHisyM3AqO5413qc33IVEBGURJqenuJMY7HfPfUTaOnPaM-2FZ=
+69yZ5RhPtgE-2BQiyYkhtHEhkdz2wMt7vCdR50UhqAIR6oksVA57t59kFSunP3ZA0-2FCioGLgz=
+bFMygnWG-2FLHYW93d1Qiw-2FhW5k5V6CG7tveYirnv2NBN-2B"><span style=3D"font-fam=
+ily: inherit; color: #10a37f">Help Center FAQ</span></a><span style=3D"font=
+-family: inherit">.&nbsp;</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-family: inherit">You don't need to take any action in response to this up=
+date. By continuing to use our services after </span><span style=3D"font-fa=
+mily: inherit"><strong>January 31, 2024</strong></span><span style=3D"font-=
+family: inherit">, you are agreeing to the updated </span><a href=3D"http:/=
+/url3243.email.openai.com/ls/click?upn=3D5bA8MEa6kfYUNNNHoFgSQ5pWmp8AzHrqM4=
+o8ezyybFeOwUPE2tcbxhnsMJRWjl8lgppaw2f4hx1jDJnc9kcn0Q-3D-3DJue__-2F7NlvmT-2F=
+kwkWeBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2Fg5ZaBgiuL7sQwIRlZAS-2BR7QXQ0ovh7Gjdwn=
+UuUQTxIIsZsPybLpqIVMsPylzq-2F9-2FdHiQP7VkTLozZpREV2Jg83zOK6iKsyesXs-2B5MuTD=
+O-2ByfhVK1YLC1DeyBnW9pZJUP6t2DcqD3NBDv-2BEI9L8tOneugAhP3mD9k8CPowO-2BiVWVXE=
+5Mv3nwz3mNd-2BHXmOENnsrQPrbovMqQl5npdPbT0P63lETMaPGoRoai7ekzebVv7ch1LAsQ0Br=
+I7LZr2hb0WxCziWimhc-2F0N0R8rVwJH-2Fpcw7roX76ie6z1JXGFex-2BdqDhVoDRyB0op2-2B=
+y-2FhHE5Gz9ZAizRxQlYqqSiymEdCT3syU4X4hw-2BQZ-2FxzKbJjg8u3mFihgenVdxVPtaS0v3=
+Vqtn2W7AZa-2BTnnOo2gy6oF0v4Jj9xN0v2rdO97W9S1NBUIWOKHnk-2FAMc-2F-2FlHA983YMf=
+rv71moz8IaI7RKE6-2FWpAJiy1ED5e3QuKqtQgfsoMbcu8-2Frqhl8XjSMVAYSdO8gqU3HSKZnb=
+pDMME3y7ZLWSjdaBuu48oKOVIz2IXa8nWF-2F6tGCaeDKd69fbr5B5COommdUfUYfo-2BtjvY7q=
+dvQFHKa1wJjB6k-2FzYzb2AvFT1REmjoayAiXoeFQQL7X7OuV8uplCdVBTLZVqcEikmd0VFqXKU=
+udJmB3KI9izx2yLJVuJkweWTHUdymVg6TYIkJq9GPV5BKK-2FJUC19NBdQEgfnhej5f1RqjtKLW=
+saqp3M3N7Z-2BrKXv4J6SzIKsPocA0IDlI4YuulHmha4nD0U0stkSooe5qT6grhLx9QJPp4jMOO=
+jAU7ZrW7Lo4Oqt1R65nIyJMXSnvHCgOv0TVkVWBDdYk1jRt3QT1CnPr65cObFtmDE0ys9E3gMqu=
+iD98Lfb0UR-2BzSoUlLlcD2kcg-2BDXkXOvQC"><span style=3D"font-family: inherit;=
+ color: #10a37f">Terms of Use</span></a><span style=3D"font-family: inherit=
+"> and acknowledge that our </span><a href=3D"http://url3243.email.openai.c=
+om/ls/click?upn=3D5bA8MEa6kfYUNNNHoFgSQ5pWmp8AzHrqM4o8ezyybFeJvv-2BsziV55D0=
+fZFgSjsz-2FfnQ1BAuvoAMHfqOSh624LQ-3D-3DBN4E_-2F7NlvmT-2FkwkWeBOI1Ju-2BZGb66=
+MBOat7i5T4VIW8LA-2Fg5ZaBgiuL7sQwIRlZAS-2BR7QXQ0ovh7GjdwnUuUQTxIIsZsPybLpqIV=
+MsPylzq-2F9-2FdHiQP7VkTLozZpREV2Jg83zOK6iKsyesXs-2B5MuTDO-2ByfhVK1YLC1DeyBn=
+W9pZJUP6t2DcqD3NBDv-2BEI9L8tOneugAhP3mD9k8CPowO-2BiVWVXE5Mv3nwz3mNd-2BHXmOE=
+NnsrQPrbovMqQl5npdPbT0P63lETMaPGoRoai7ekzebVv7ch1LAsQ0BrI7LZr2hb0WxCziWimhc=
+-2F0N0R8rVwJH-2Fpcw7roX76ie6z1JXGFex-2BdqDhVoDRyB0op2-2By-2FhHE5Gz9ZAizRxQl=
+YqqSiymEdCT3syU4X4hw-2BQZ-2FxzKbJjg8u3mFihgenVdxVPtaS0v3Vqtn2W7AZa-2BTnnOo2=
+gy6oF0v4Jj9xN0v2rdO97W9S1NBUIWOKHnk-2FAMc-2F-2FlHA983YMfrv71moz8IaI7RKE6-2F=
+WpAJiy1ED5e3QuKqtQgfsoMbcu8-2Frqhl8XjSMVAYSdO8gqU3HSKZnbpDMME3y7ZLWSjdaBuu4=
+8oKOVIz2IXa8nWF-2F6tGCaeDKd69fbr5B5COommdUfUYfo-2BtjvY7qdvQFHKa1wJjB6k-2FzY=
+zb2AvFT1REmjoayAiXoeFQQL7X7OuV8uplCdVBTLZVqcEikmd0VFqXKUudJmB3KI9izx2yLJVuJ=
+kweWTHUdymVg6TYIkJq9GPV5BKK-2FJUC19NBdQEgfnhet7drqwq2qHJkbAHrvoMvhnbc-2BwHL=
+4-2FZSxmBwMGPlyg-2BWPEbL1e3ne3oXpN-2BlhsPmy4gnEJCdaIbh5-2Br10GwLbsEyTURGN-2=
+FFx2x0o9wL8tlbbmZGvXTfc-2BUvBE8TFNcIriqYQdVfi9IxA3Qjacs-2BripVRmiIPZbzzccgf=
+zbvCZRScCvFZs3QWT5MRHt-2BYWZl-2F"><span style=3D"font-family: inherit; colo=
+r: #10a37f">Privacy Policy</span></a><span style=3D"font-family: inherit"> =
+applies to data processed in OpenAI=E2=80=99s services. If you do not agree=
+ to the updates, you may </span><a href=3D"http://url3243.email.openai.com/=
+ls/click?upn=3D5bA8MEa6kfYUNNNHoFgSQ6fdVw5ikQ9fqTuvqaxnekIA7uPLPTUaMrJV9gSv=
+bzJ2f-2BtGeBr-2FFiG7RnGlMqS4PRFholwv1artLlJcaMenqis-3Dp1fL_-2F7NlvmT-2FkwkW=
+eBOI1Ju-2BZGb66MBOat7i5T4VIW8LA-2Fg5ZaBgiuL7sQwIRlZAS-2BR7QXQ0ovh7GjdwnUuUQ=
+TxIIsZsPybLpqIVMsPylzq-2F9-2FdHiQP7VkTLozZpREV2Jg83zOK6iKsyesXs-2B5MuTDO-2B=
+yfhVK1YLC1DeyBnW9pZJUP6t2DcqD3NBDv-2BEI9L8tOneugAhP3mD9k8CPowO-2BiVWVXE5Mv3=
+nwz3mNd-2BHXmOENnsrQPrbovMqQl5npdPbT0P63lETMaPGoRoai7ekzebVv7ch1LAsQ0BrI7LZ=
+r2hb0WxCziWimhc-2F0N0R8rVwJH-2Fpcw7roX76ie6z1JXGFex-2BdqDhVoDRyB0op2-2By-2F=
+hHE5Gz9ZAizRxQlYqqSiymEdCT3syU4X4hw-2BQZ-2FxzKbJjg8u3mFihgenVdxVPtaS0v3Vqtn=
+2W7AZa-2BTnnOo2gy6oF0v4Jj9xN0v2rdO97W9S1NBUIWOKHnk-2FAMc-2F-2FlHA983YMfrv71=
+moz8IaI7RKE6-2FWpAJiy1ED5e3QuKqtQgfsoMbcu8-2Frqhl8XjSMVAYSdO8gqU3HSKZnbpDMM=
+E3y7ZLWSjdaBuu48oKOVIz2IXa8nWF-2F6tGCaeDKd69fbr5B5COommdUfUYfo-2BtjvY7qdvQF=
+HKa1wJjB6k-2FzYzb2AvFT1REmjoayAiXoeFQQL7X7OuV8uplCdVBTLZVqcEikmd0VFqXKUudJm=
+B3KI9izx2yLJVuJkweWTHUdymVg6TYIkJq9GPV5BKK-2FJUC19NBdQEgfnheuMgh2P3GFslt-2B=
+kzFpGBqGV00BhfPBI0oAEs3maaT-2FgQUZdS-2BAEt0alfw7OFChB8oqKFEdRw5OAnOt6q9Gw1C=
+LZ4BDMauh3saXumAmTQrJ2-2BE9XPiMS7Oh7-2B4dB93KrvP0BfHp-2ByKSO1VW-2BtVAzdceuU=
+mDcX-2F2bZCtu3mtEzCdRRiRVqi1b8gzZ-2F6dT-2B1XpUn"><span style=3D"font-family=
+: inherit; color: #10a37f">delete your account</span></a><span style=3D"fon=
+t-family: inherit">.&nbsp;<br>
+</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-family: inherit">Thank you for choosing OpenAI!&nbsp;</span></div><div></=
+div></div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"divider" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table=
+-layout: fixed;" data-muid=3D"3b1b2d92-4621-4995-adeb-5ecd26698604">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 0px 0px;" role=3D"module-content" heig=
+ht=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"1px" style=3D"line-height:1px; font-size:1=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 1px 0px;" bgcolor=3D"#E7E7E7">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><div data-role=3D"module-unsubscribe" class=3D"module" role=3D"mo=
+dule" data-type=3D"unsubscribe" style=3D"color:#D8D8D8; font-size:12px; lin=
+e-height:20px; padding:16px 16px 16px 16px; text-align:center;" data-muid=
+=3D"1cd6e0a8-adb9-4c1d-8274-8c33e1a6cf64"><div class=3D"Unsubscribe--addres=
+sLine"></div><p style=3D"font-size:12px; line-height:20px;"><a class=3D"Uns=
+ubscribe--unsubscribeLink" href=3D"http://url3243.email.openai.com/asm/unsu=
+bscribe/?user_id=3D39958162&amp;data=3DQPlkxtR_gr88gX_NNr7GRdlvnMIOpx53cAf4=
+_I_FCH1oMDAwdTAwMJcXqanTBqYy9aRNYIEXEQMYieyjp169UGEjtMM8sRkurITxbgpIyxZeyyr=
+mQOvwigKmVeS0rFf7tVmkC2hJ866EXabXZ4dDGJR1XqU9g191m6p6HnmidNVO92mJrvhdrfoShI=
+nq_XxlcUTfe3OuIDakmVD1nzVrObyP_2HC3RzTGSIVv9LQn8ERMDLxr6wvIjHcDCW9x859jWjPb=
+PwjOXK4dDR_DC6mAY1u50uJzi6fooIz_9IPkgI8Aebh392BLhOvldN8FlMc4dXeWRUZYTmmUV8W=
+H3Nj1BE6Oc_PwXvAQGdbbU0QdMVy96f-7oBGgN4Jhm99ySjB8hrYHzdQQkP_pvWsVmYUVYhK914=
+rWKhvvi81Xhxclp7Tvreugxn9SR1nXPdDANT13EOpvPfCMyCSy3KSbAIKhWxfYh5cFfSEX-SC0f=
+EfuqD8ZzbJwcFzje_uR1JkRIYAn_tN-3nPUR7WQpLswilc4nQtj6D8g1QKZujib-2VJnP-LPZLF=
+rjLmYNHH7dvcBFCOn5zBEn5ZzUs6FHdVAWfT2b6mRYtZ9NwuOgr8T57shk2udJYo3g6IcYb_cKN=
+pu5yIlIkscIhZfRhlI3VblW_nGFVvqx2-VhvHWiw6JRN_e8P-iTKah8RJgA_nwwk9-6VhB7EZmM=
+g7I-iUUrMEMbbJxQXIx1uBz3_FvGRB0pcq1-Ax9BIwDfcw1er59JhiTuXAN81oPDxbS6FQnD5wK=
+rCdHASQpfA8K1HHnkofhuiTqos2vBphE5N6XYEHlNZwn2VR4hD4UvwNoBzfIH_GAsuAg5nQjaHs=
+4xCuVSTbPd0e-NP0Af5o2qA0bYJe9imV8dqPPFWSp17dO36HFe5vwZSBNRYtKLLhf4RkAkt-lYl=
+Ug-HDvrKj3I4mZ9cLgXqjN-6LkFzeAYsDr2aUK5IR4YtTKfmjmHFMW6SrN6WW-S_PjxIhycAf6p=
+5Fxkio2k9k9yyXM023-I_ELlGrj3oX9x6YD8P-r89QuSkqMhbNwFGw8ix-K2Q08d7pQFnALXKU3=
+Jz3r_BM5cHF1rv8bFBHDA7NO2LoxNPhOYs-j6-Ub_Ff-Ldn5gSNqQwmVZA5OTEVx4ett44a2E_a=
+A0=3D" target=3D"_blank" style=3D"">Unsubscribe</a></p></div></td>
+                                      </tr>
+                                    </table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+    <img src=3D"http://url3243.email.openai.com/wf/open?upn=3Dh8N8diOjzhqiv=
+QitawNQhv9CMmmWkZ8kGCVKWZT1LH4djg8Yo5ppcyx-2Frq22uju6PQ-2FWv6tXzUtyNDj4jxp2=
+XYyAYV1U57DwvLMENfeYRorioe2AbIdPJRNzRhaW4JGzkk-2Fbvb0o5VZJJeJQg4eDLZB-2FgSR=
+m38o5-2FMa14c0DgREn16jUqOFBV59yaCxcMtUYTTBDA6H3j8Hyb-2Bume5g-2Fh9bRCAlgZqeq=
+a5zd3Qv-2BSl4-2BKGcvnJwrNEXuJdojzMI27gKl-2BlgEQJ-2F1FaLyYNlb2D89shy32LtX7sk=
+UNSM53Fr8KoBSJCPQL-2F94xPRfDRpoWg5whtLOBqhoSQ8qtKsRChV-2F-2FTD2YYKzO9BKZXMe=
+HLiEI-2B7XsLMM8ALTu3IlAywvulmgEKtzcQq4hJ9D2ow1b0yvrsU0mSygemAgDxO9o9rl5jwUM=
+HPF3x1kL0xYbIBFLnrJMRr9-2FyGiriRryNctyUELj7l7Hz8Cna-2BTnQTPdB7sU6XqyLABlB99=
+t6OwHyHobREvXt8Mt9SLFp6v-2BJWWxyrRmBs3h2mjJ3ajE3w4SSPiDqAOOmDBXmqnnoEueCOIt=
+6uWBhLBs3txcQZuHZYj9S2qb-2B02PK0zKZ2tmQXnvzMl-2Bo79Ky-2BrTBr6gmLF9-2BxT8yaP=
+vjKQdPYJaJI3PiepQfS7ACb5MqAL0CvpaV1KNBbrBJDdYz31tuliUbWa3ysEDwD2QvG2vFwr7yM=
+48UagZF2MbvReDJvQiNlOY4DkBbSDmoEE5gieYCCXPrTpNpIVcYFBMIbtt8m2l59lN9dSr-2BEL=
+1qwl4ywF3H-2BYza20oenOvttMvtM68siS9IWilU0WilpHEY-2BmbPiOF43Jdy-2FCi0VvkQeI6=
+1Gw4xggZi8VuvFe4hkCDRJDGP0VOVdzGqz2qw0h7EPbkroj4qCIq-2BT1aUlaVE0UxF22b3AROl=
+nQ27dByHmabET01GfLbeatMkQQ" alt=3D"" width=3D"1" height=3D"1" border=3D"0" =
+style=3D"height:1px !important;width:1px !important;border-width:0 !importa=
+nt;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !impor=
+tant;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !im=
+portant;padding-right:0 !important;padding-left:0 !important;"/></body>
+  </html>
+--a8722b4bf206f61c1e1e119ad4652bf8c1136457939849983927a13d4bb8--

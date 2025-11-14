@@ -1,0 +1,312 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:3606:0:b0:2d2:748b:49b8 with SMTP id d6csp326089lja;
+        Thu, 14 Mar 2024 08:03:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFdsz0Kt1g6Mn+4BRwH+u/RDxwvfetYXedqje/DpolCUvM2+zjkyxuT8HZskbWQJihlq3Tm
+X-Received: by 2002:a05:6214:1792:b0:690:c1c9:c422 with SMTP id ct18-20020a056214179200b00690c1c9c422mr1050953qvb.53.1710428602283;
+        Thu, 14 Mar 2024 08:03:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710428602; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dvX5xTFcUKO0Lslbz9eDGuUcCj4LjZ8RVD4Hkayh5V4Bti2f7zD55V8gm0mx78rKN9
+         eeyl5ZtBA3c8GwraWrt7hxm8neLyJatDX/QCBqeBClFRWnzK9AiJEZ5GOp6Y0/hYb4Ah
+         37l9ugqz5siW6uU503dWkxNAN3JAByd4nqVZyyoJHqPn+7uejt6J1oedSrkAtPLfcx4q
+         vb+pgAazG2sWQqJnsKxhMwyE78d9T6jhr8aEZ9eFNdVQsyPG4SHeC0FP98+//CHZDYEV
+         RDpnx1wVCSwpiUCir5NCagMVVVZvRUEZq+SmRRYMCIMl+vIXtXgkO9lnC0O6rxoxclv9
+         K/FA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:feedback-id:precedence:list-unsubscribe:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=VKX78X7SwpiCpYscx+nyZVkXZucYMvWo6Xx+XuRy6cg=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=GsVwT0z1XO5GZq9PlEUGSP3Nlip+phD6TUuoJUPewGAdYUvXR+QPhC1W1CWubJSQ6B
+         mQg+6IG8oODnFgFlomWoMGjiIpUGdxH/L9boJT8bq0hO5eCD9wG18tf6GIoFG5y1hGqE
+         tLJ0kYFUlITZV3XFuM11fXPepIrJOxJEPhFukFT159CQfATf+mDpmO29ZdY3Hy89tvmg
+         /46IdRcoBUULZrqh7pEIW9ygycH2cxBTIxRSJ2MfuJgSqDoFiO50CM2bJ9OHJRRFhFxJ
+         6XjXenepiN2PqtZXzMu5FOcVTBJXzalFzAxTBEEvmc5N11RRAhAN7F+DGr+tSF+ttQCS
+         hqUA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=HCW8AEIL;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=tHScBVVj;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o47.ck.n.convertkit.com (o47.ck.n.convertkit.com. [149.72.60.6])
+        by mx.google.com with ESMTPS id om26-20020a0562143d9a00b0068f0f1b978esi788272qvb.119.2024.03.14.08.03.21
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 14 Mar 2024 08:03:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) client-ip=149.72.60.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=HCW8AEIL;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=tHScBVVj;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=VKX78X7SwpiCpYscx+nyZVkXZucYMvWo6Xx+XuRy6cg=;
+	b=HCW8AEIL9ct3WgAJvAP940ALB/IfzfKpybw5QeMF1VmQllK/fvLu8vxJBi+Iu77UtodK
+	A9xza46nhQYDh0QYiV2l/MQF+uUqNfESrFbjywgBHKS/kMFFiR8gg/yfIMdmjUEj3EmrJo
+	goZqOJeDBYB1pW/pvK3tvT9Jxr1AtRNAM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=VKX78X7SwpiCpYscx+nyZVkXZucYMvWo6Xx+XuRy6cg=;
+	b=tHScBVVjGvX/YccTxWEKEDNzUKhJkCzJtPq5E/jAgUkgf8hsuUColS8i9wEG2q2jZU92
+	hIVSvy01QzAPstQCWRxz6xN6wQv1aEbJDcvZr3yI3fIn6uO73r6oV6Kj+be/mWr1aBIPTv
+	k8hnBCdOw47oFAyargMi3XXSh1vv1i1wk=
+Received: by filterdrecv-fdcccfcd9-x4zbm with SMTP id filterdrecv-fdcccfcd9-x4zbm-1-65F311B8-4E
+        2024-03-14 15:03:20.22765662 +0000 UTC m=+835588.998693333
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-15 (SG) with HTTP
+	id sFVPXQVzRnild6cAn5qeRQ
+	Thu, 14 Mar 2024 15:03:20.073 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=4559cc45f9f8d82b91997b5e021e1ba6b62633da62b0338a235aa93a7b3f
+Date: Thu, 14 Mar 2024 15:03:20 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <92udrgxog3tnhqrlnv3f9h0x48633@convertkit-mail2.com>
+Subject: Join me on Node Congress
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 13347508:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2E9iKReg6MmXOnRZvsQzWQJ3lPH0tO4yiaHftVEEnLM4wy5BnLoLlAcpdQp?=
+ =?us-ascii?Q?uAcltvhbsvR1HoWuE3BRvA2KUJntqySxa5a5EQT?=
+ =?us-ascii?Q?uORfbf2pp3bliKNH58piOB2kXBDyqag+W125qv3?=
+ =?us-ascii?Q?V12ESQlilC6bYo3mBdj2b7Sv8TKuv0zjTO8hDzi?=
+ =?us-ascii?Q?P5y1Y2gAtP9zxxeULAi2NzuguQJdeTVRkBuG3SO?=
+ =?us-ascii?Q?jHj1HD=2FdvaX4barZG8OpMR9h=2FbUKV9dkZL0Ht+O?=
+ =?us-ascii?Q?yErd?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprBTLquV1ImzFIrgT?=
+ =?us-ascii?Q?SaJ3+RZekPz4Lnwtd5tH=2Fh4x3MGnN=2FuFThO+a0q?=
+ =?us-ascii?Q?FoKM71D8eUExAF9SVosv9f0EVt+y8NJEZAwNaC=2F?=
+ =?us-ascii?Q?henB=2F5omdz9mr3MH7SDwlHYWe6yQdVoyAuzfDAa?=
+ =?us-ascii?Q?e1EC+hmJPZrhsSlxzcT1p82YSc3vN1V4g727K76?=
+ =?us-ascii?Q?LupEGjTdddUUwO2E2A=2FUCW+rbDIN3BOLrcxtmFJ?=
+ =?us-ascii?Q?ZZa=2FXPh=2F3ZRYRUBpl8n7nLEvsAgNMTQ9oiN4aj+?=
+ =?us-ascii?Q?fPHpWHcrsD7emmfHp6=2Fz2Mm3POAo6j9TNPMAbqs?=
+ =?us-ascii?Q?tvQ75cZhwQopo77H7ugnUtQQjUPhibMw0=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: u001.U5uR4hiqEeo/H3zk+7BOfQ==
+
+--4559cc45f9f8d82b91997b5e021e1ba6b62633da62b0338a235aa93a7b3f
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+* { word-break: break-word; }
+
+Hi whyoucare,
+
+I just wanted to quickly reach out and tell you that I got you a
+free limited ticket for Node Congress 2024 (
+https://click.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633/g3hnhwu3pr=
+mqqvb3/aHR0cHM6Ly9ub2RlY29uZ3Jlc3MuY29tLz91dG1fc291cmNlPUdpdE5hdGlvbitUZWFt=
+JnV0bV9jYW1wYWlnbj02NDg3ZmVmYjIwLUVNQUlMX0NBTVBBSUdOXzIwMjRfMDJfMjdfMDhfMjB=
+fQ09QWV8wMSZ1dG1fbWVkaXVtPWVtYWlsJnV0bV90ZXJtPTBfLThiYTYyYTNiMjItJTVCTElTVF=
+9FTUFJTF9JRCU1RCZtY19jaWQ9NjQ4N2ZlZmIyMCZtY19laWQ9VU5JUUlE
+) (excluding workshops) on April 4 & 5, 2024 online!
+
+There will be some great speakers like Matteo Collina, James
+Snell, Tamar Twena-Stern, and others (
+https://click.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633/48hvh7urgv=
+mx79fq/aHR0cHM6Ly9ub2RlY29uZ3Jlc3MuY29tLz91dG1fc291cmNlPUdpdE5hdGlvbitUZWFt=
+JnV0bV9jYW1wYWlnbj02NDg3ZmVmYjIwLUVNQUlMX0NBTVBBSUdOXzIwMjRfMDJfMjdfMDhfMjB=
+fQ09QWV8wMSZ1dG1fbWVkaXVtPWVtYWlsJnV0bV90ZXJtPTBfLThiYTYyYTNiMjItJTVCTElTVF=
+9FTUFJTF9JRCU1RCZtY19jaWQ9NjQ4N2ZlZmIyMCZtY19laWQ9VU5JUUlEI3NwZWFrZXJz
+).
+
+Share your badge on LinkedIn/Twitter, and invite 3+ friends if
+you want to get a full remote ticket for free:
+
+(
+https://click.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633/08hwhgudzv=
+2lp7cp/aHR0cHM6Ly9wb3J0YWwuZ2l0bmF0aW9uLm9yZy9iYWRnZXMvbm9kZS1jb25ncmVzcy0y=
+MDI0L21hdHRlb19jb2xsaW5hP2Zyb209SlNNYXN0ZXJ5JnV0bV9zb3VyY2U9R2l0TmF0aW9uK1R=
+lYW0mdXRtX2NhbXBhaWduPTY0ODdmZWZiMjAtRU1BSUxfQ0FNUEFJR05fMjAyNF8wMl8yN18wOF=
+8yMF9DT1BZXzAxJnV0bV9tZWRpdW09ZW1haWwmdXRtX3Rlcm09MF8tOGJhNjJhM2IyMi0lNUJMS=
+VNUX0VNQUlMX0lEJTVEJm1jX2NpZD02NDg3ZmVmYjIwJm1jX2VpZD1VTklRSUQ=3D
+)
+-->=E2=80=8BGet Your Free Limited Ticket (
+https://click.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633/08hwhgudzv=
+2lp7cp/aHR0cHM6Ly9wb3J0YWwuZ2l0bmF0aW9uLm9yZy9iYWRnZXMvbm9kZS1jb25ncmVzcy0y=
+MDI0L21hdHRlb19jb2xsaW5hP2Zyb209SlNNYXN0ZXJ5JnV0bV9zb3VyY2U9R2l0TmF0aW9uK1R=
+lYW0mdXRtX2NhbXBhaWduPTY0ODdmZWZiMjAtRU1BSUxfQ0FNUEFJR05fMjAyNF8wMl8yN18wOF=
+8yMF9DT1BZXzAxJnV0bV9tZWRpdW09ZW1haWwmdXRtX3Rlcm09MF8tOGJhNjJhM2IyMi0lNUJMS=
+VNUX0VNQUlMX0lEJTVEJm1jX2NpZD02NDg3ZmVmYjIwJm1jX2VpZD1VTklRSUQ=3D
+)
+=E2=80=8BGet Your Free Limited Ticket (
+https://portal.gitnation.org/badges/node-congress-2024/matteo_collina?from=
+=3DJSMastery&utm_source=3DGitNation+Team&utm_campaign=3D6487fefb20-EMAIL_CA=
+MPAIGN_2024_02_27_08_20_COPY_01&utm_medium=3Demail&utm_term=3D0_-8ba62a3b22=
+-%5BLIST_EMAIL_ID%5D&mc_cid=3D6487fefb20&mc_eid=3DUNIQID
+)
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633
+)
+--4559cc45f9f8d82b91997b5e021e1ba6b62633da62b0338a235aa93a7b3f
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content">
+<style type=3D"text/css">* { word-break: break-word; }</style>
+<!--[if mso]><style>.button-table { padding: 12px 0 }</style><![endif]--><t=
+able cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separate;=
+mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;margin:0 auto"><tbody>=
+<tr><td style=3D"vertical-align:top">
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Hi whyoucare, </p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I just wanted to quickly reach out and tell you that I got =
+you a free limited ticket for <a href=3D"https://click.convertkit-mail2.com=
+/92udrgxog3tnhqrlnv3f9h0x48633/g3hnhwu3prmqqvb3/aHR0cHM6Ly9ub2RlY29uZ3Jlc3M=
+uY29tLz91dG1fc291cmNlPUdpdE5hdGlvbitUZWFtJnV0bV9jYW1wYWlnbj02NDg3ZmVmYjIwLU=
+VNQUlMX0NBTVBBSUdOXzIwMjRfMDJfMjdfMDhfMjBfQ09QWV8wMSZ1dG1fbWVkaXVtPWVtYWlsJ=
+nV0bV90ZXJtPTBfLThiYTYyYTNiMjItJTVCTElTVF9FTUFJTF9JRCU1RCZtY19jaWQ9NjQ4N2Zl=
+ZmIyMCZtY19laWQ9VU5JUUlE" target=3D"_blank" rel=3D"noopener noreferrer" sty=
+le=3D"color:#0f82f0" url-id=3D"1621193975"><strong>Node Congress 2024</stro=
+ng></a> (excluding workshops) on <strong>April 4 &amp; 5, 2024</strong> onl=
+ine!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">There will be some great speakers like Matteo Collina, Jame=
+s Snell, Tamar Twena-Stern, and <a href=3D"https://click.convertkit-mail2.c=
+om/92udrgxog3tnhqrlnv3f9h0x48633/48hvh7urgvmx79fq/aHR0cHM6Ly9ub2RlY29uZ3Jlc=
+3MuY29tLz91dG1fc291cmNlPUdpdE5hdGlvbitUZWFtJnV0bV9jYW1wYWlnbj02NDg3ZmVmYjIw=
+LUVNQUlMX0NBTVBBSUdOXzIwMjRfMDJfMjdfMDhfMjBfQ09QWV8wMSZ1dG1fbWVkaXVtPWVtYWl=
+sJnV0bV90ZXJtPTBfLThiYTYyYTNiMjItJTVCTElTVF9FTUFJTF9JRCU1RCZtY19jaWQ9NjQ4N2=
+ZlZmIyMCZtY19laWQ9VU5JUUlEI3NwZWFrZXJz" target=3D"_blank" rel=3D"noopener n=
+oreferrer" style=3D"color:#0f82f0" url-id=3D"1621193979"><strong>others</st=
+rong></a>.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Share your badge on LinkedIn/Twitter, and invite 3+ friends=
+ if you want to get a full remote ticket for free:</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;ma=
+x-width:523px;width:100%"><a style=3D"color:#0f82f0;display:block" href=3D"=
+https://click.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633/08hwhgudzv=
+2lp7cp/aHR0cHM6Ly9wb3J0YWwuZ2l0bmF0aW9uLm9yZy9iYWRnZXMvbm9kZS1jb25ncmVzcy0y=
+MDI0L21hdHRlb19jb2xsaW5hP2Zyb209SlNNYXN0ZXJ5JnV0bV9zb3VyY2U9R2l0TmF0aW9uK1R=
+lYW0mdXRtX2NhbXBhaWduPTY0ODdmZWZiMjAtRU1BSUxfQ0FNUEFJR05fMjAyNF8wMl8yN18wOF=
+8yMF9DT1BZXzAxJnV0bV9tZWRpdW09ZW1haWwmdXRtX3Rlcm09MF8tOGJhNjJhM2IyMi0lNUJMS=
+VNUX0VNQUlMX0lEJTVEJm1jX2NpZD02NDg3ZmVmYjIwJm1jX2VpZD1VTklRSUQ=3D" target=
+=3D"_blank" rel=3D"noopener noreferrer" url-id=3D"1621193982"><img src=3D"h=
+ttps://media.superhuman.com/images/_/https%3A%2F%2Fmcusercontent.com%2F9102=
+84f989b81c945f27311af%2Fimages%2Fad0ff706-aa08-d032-c4c6-7a9875207e91.png" =
+alt=3D"" width=3D"523" height=3D"auto" style=3D"display:block;height:auto;l=
+ine-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:n=
+one;max-width:100%;border:0 none;border-radius:4px 4px 4px 4px;width:523px;=
+height:auto;object-fit:contain"></a></figure></td></tr></tbody></table>
+<!--[if !mso]>--><table width=3D"100%" style=3D"border-collapse:separate;ms=
+o-table-lspace:0pt;mso-table-rspace:0pt"><tbody><tr><td align=3D"left" styl=
+e=3D"vertical-align:top"><a class=3D"email-button" href=3D"https://click.co=
+nvertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633/08hwhgudzv2lp7cp/aHR0cHM6L=
+y9wb3J0YWwuZ2l0bmF0aW9uLm9yZy9iYWRnZXMvbm9kZS1jb25ncmVzcy0yMDI0L21hdHRlb19j=
+b2xsaW5hP2Zyb209SlNNYXN0ZXJ5JnV0bV9zb3VyY2U9R2l0TmF0aW9uK1RlYW0mdXRtX2NhbXB=
+haWduPTY0ODdmZWZiMjAtRU1BSUxfQ0FNUEFJR05fMjAyNF8wMl8yN18wOF8yMF9DT1BZXzAxJn=
+V0bV9tZWRpdW09ZW1haWwmdXRtX3Rlcm09MF8tOGJhNjJhM2IyMi0lNUJMSVNUX0VNQUlMX0lEJ=
+TVEJm1jX2NpZD02NDg3ZmVmYjIwJm1jX2VpZD1VTklRSUQ=3D" target=3D"_blank" rel=3D=
+"noopener noreferrer" style=3D"color:#0f82f0;margin-bottom:0.5em;border:0 n=
+one;font-size:16px;line-height:1.4;background-color:#0f81f0;color:#ffffff;b=
+order-radius:5px;border-color:#0f81f0;background-color:#0f81f0;box-sizing:b=
+order-box;border-style:solid;color:#ffffff;display:inline-block;text-align:=
+left;text-decoration:none;padding:12px 20px;margin-top:8px;margin-bottom:8p=
+x;font-size:16px;border-radius:4px 4px 4px 4px" url-id=3D"1621193982">=E2=
+=80=8BGet Your Free Limited Ticket</a></td></tr></tbody></table>
+<!--<![endif]--><!--[if mso]><table class=3D"button-table" width=3D"100%" b=
+order=3D"0" cellSpacing=3D"0" cellPadding=3D"0" style=3D"margin-top:8px;mar=
+gin-bottom:8px"><tr><td align=3D"left"><table border=3D"0" cellSpacing=3D"0=
+" cellPadding=3D"0"><tr><td align=3D"center" bgcolor=3D"#0f81f0" style=3D"b=
+ackground-color:#0f81f0;overflow:hidden;padding:12px 20px"><a class=3D"emai=
+l-button" href=3D"https://portal.gitnation.org/badges/node-congress-2024/ma=
+tteo_collina?from=3DJSMastery&utm_source=3DGitNation+Team&utm_campaign=3D64=
+87fefb20-EMAIL_CAMPAIGN_2024_02_27_08_20_COPY_01&utm_medium=3Demail&utm_ter=
+m=3D0_-8ba62a3b22-%5BLIST_EMAIL_ID%5D&mc_cid=3D6487fefb20&mc_eid=3DUNIQID" =
+target=3D"_blank" rel=3D"noopener noreferrer" style=3D"background-color:inh=
+erit;display:inline-block;text-decoration:none;border-style:solid;margin:0;=
+color:#ffffff;font-size:16px" data-ck-element=3D"button">=E2=80=8BGet Your =
+Free Limited Ticket</a></td></tr></table></td></tr></table><![endif]-->
+</td></tr></tbody></table>
+</div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/92udrgxog3tnhqrlnv3f9h0x48633" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/92udrgxog3tnhqrlnv3f9h0x48633=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--4559cc45f9f8d82b91997b5e021e1ba6b62633da62b0338a235aa93a7b3f--

@@ -1,0 +1,373 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:b5d0:b0:4fd:292a:fcfe with SMTP id v16csp1776251pxt;
+        Mon, 9 Oct 2023 02:25:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGWD9qFFU2q2BlnUKOC/Eihgc/6nfBKLMuOh1nQb1Fw+Rw1JxcooxcLWUXSBQk89S+6SMdg
+X-Received: by 2002:a17:90a:9481:b0:26d:49c8:78aa with SMTP id s1-20020a17090a948100b0026d49c878aamr12346742pjo.32.1696843508830;
+        Mon, 09 Oct 2023 02:25:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696843508; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qHXEinyn68BHdlsZVqlp7LmWrd9it229+8XdMRVUscyIk4Yz5KwqjdHw7eVnE8fTNO
+         iH8PZqvBUEUIFFKBvQCsp+WXlSmKb7I0A7UwRevxSsD2TvE9D6HbVJ8ND8SRk2pnfbWh
+         b9C4doh1S0DRjEkQm9zoB51cq+XhZ3ttIVSMbDTYRsPOlM1gy89yTyUQDuCFUVwVpmZk
+         VqFULzAqX6zvHNmkWPkiBA6rJbz8A3NS52QHZIu7nzADOUYZJBhIn9ojoFDhmClUobPV
+         RELRVw5hBc9xDuVwpJr0o4fY+IOoheNAK6ba4B25Zd7l2CYkCSvvAhktrQuvzUWejLtH
+         +NTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=5iT2msgJwqsKaJYdIRU89BvVigE2+4JqWopGbvieiFE=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=CKTSZXb29BufsauPcjnBERk1wbgHSl39cHoOYhXzhpj/tpx9DAmLuyCoGu5dtvy11U
+         VicqRXUVBXJ/DwZAS3IMh0Fr0DfGJrC1qJyY2DmUyP+8hitlboSwY3kIAOsYeYyXG0Tq
+         cQ498qRLp7kDAz7QpBJOqrAkG5+WjIIQJr9crWXzyQPNy5APUtVl87USQZ+JEkimGtrH
+         CKNO+kBdW61XzxnkD/QUqx73ndg1U3f+zCNIqYsI8UT7cb8eOIE5YK+BUaKln7IIwiuU
+         TIO2/+V87OYH2KUdpWJkhk6wKbaFl94Z1W0lz02XQOJZVoLeSTyAZLNJ5OgdAN7AIkbU
+         yqtA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=nUdEbQp+;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=o6m7rhUa;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o48.ck.n.convertkit.com (o48.ck.n.convertkit.com. [149.72.193.89])
+        by mx.google.com with ESMTPS id nv5-20020a17090b1b4500b002736ff3cc79si6631798pjb.23.2023.10.09.02.25.07
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Oct 2023 02:25:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) client-ip=149.72.193.89;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=nUdEbQp+;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=o6m7rhUa;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=5iT2msgJwqsKaJYdIRU89BvVigE2+4JqWopGbvieiFE=;
+	b=nUdEbQp+QoYDzGEZ5juu9M7/EVgD9XurYEddJN6lsZrCkpSt9DAw4bTb87pO0RR0kUpr
+	CMmCrxBaVjCMRPz6HeKh9KDxKATj0dq9Hg4UPNddVFa/3RuJVMgPb36h1rP2FcfQVehGg0
+	lqs64LjdJO6sTAmd/sX7jKRSyjhHTvIOE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=5iT2msgJwqsKaJYdIRU89BvVigE2+4JqWopGbvieiFE=;
+	b=o6m7rhUabfVy5pPforKBAkA0EwzmB9ELAuNFzMDtyvrGqEDnLDiR/lHfPWfSxHw6lgR7
+	JtLK+bszOP6itdC8XFi4cdeKaZ+SR/5lA/tEdBp6oAUdP1hxawQ74ie6sEjzB86YRBqyLZ
+	1u/2dNNtasY9vIyN7CXNPuF6LlU8LjP4Q=
+Received: by filterdrecv-78f7f967cb-dwwc7 with SMTP id filterdrecv-78f7f967cb-dwwc7-1-6523C6F2-1A
+        2023-10-09 09:25:06.679758859 +0000 UTC m=+302535.421989033
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-23 (SG) with HTTP
+	id 7ytvfAepRXaskzcSnp0ULA
+	Mon, 09 Oct 2023 09:25:06.460 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=e05bf089a99a5ba138bc1a1236fa40090ce060eef34211dd782eee084bc8
+Date: Mon, 09 Oct 2023 09:25:06 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <lmum65p85vtmh0rgmkpa6hde0k600@convertkit-mail2.com>
+Subject: The myth of experience
+Precedence: bulk
+Feedback-ID: 11940646:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/lmum65p85vtmh0rgmkpa6hde0k600>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfUHO1YlSWGk5d11s6?=
+ =?us-ascii?Q?PRlBapR+hBaUYJNSXsdBZ36Sk2hCTol4jHt8fB5?=
+ =?us-ascii?Q?SrPQ5wip=2FYb+PGNELpykzDwQ5KpHOpPjgYYpniW?=
+ =?us-ascii?Q?4F1R5m+kZ7bP7wehEmveLxx3bUYmlSWlz3LKBdt?=
+ =?us-ascii?Q?SPzMeXug9nv19ZizYxy6mQyGBCttsvpZw05T9B?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADq=2FyCjzOL1+Ulw2yfkAt7+Hmc+Oa9=2FqKLwjWFI?=
+ =?us-ascii?Q?CqoDrMOrLUrlnl+xjbp1PZDkEjk=2FWm8gMFAiQMj?=
+ =?us-ascii?Q?ma+JhYFoskFJ56ZITDJOoNh5we3zaDEem4pUazA?=
+ =?us-ascii?Q?Oqgv3CodltsyCvkpa78BW0c79jwoNbPuJ+hkW48?=
+ =?us-ascii?Q?63MFvNVWyezcKcGxYII3uz0JCmodEZmccFIoUMr?=
+ =?us-ascii?Q?sUclXinG61fSeHcgBZ=2FHTdYmSlNWFDQYNFtiB2K?=
+ =?us-ascii?Q?ej=2FjFDf8F8E0B8Y+ir+CyCZB=2FgTlrIfFWLHVWoV?=
+ =?us-ascii?Q?=2FXObDhA9Cm1H2zxpXfrqjJPtqR5U=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--e05bf089a99a5ba138bc1a1236fa40090ce060eef34211dd782eee084bc8
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Experience. A big issue in many jobs, coding especially.
+
+You=E2=80=99ve probably seen something like:
+
+Entry level position. 3 years of experience.
+And thought:
+
+???????
+
+=E2=80=8B
+
+So how do you get out of this years of experience trap?
+
+=E2=80=8B
+
+The answer is simple, but not easy.
+
+=E2=80=8B
+
+Let=E2=80=99s start with the obvious. The =E2=80=98years of experience=E2=
+=80=99 criteria
+is horribly flawed.
+
+One dev with 2 years of experience can be worlds apart in skill
+level from another dev who also has the same 2 years of
+experience on paper.
+
+=E2=80=8B
+
+Time isn=E2=80=99t the best way to measure expertise. Time is the best
+way to measure=E2=80=A6 time.
+
+=E2=80=8B
+
+So how can we measure expertise or ability?
+
+By what you can do and what you=E2=80=99ve done. As a dev, that=E2=80=99s y=
+our
+portfolio.
+
+=E2=80=8B
+
+Sounds boring, but you can=E2=80=99t count on the entire market to change
+their way of doing things. That=E2=80=99s absolving responsibility and
+letting outside factors decide your career.
+
+=E2=80=8B
+
+Instead, become so good they can=E2=80=99t ignore you. Prove your
+expertise without a doubt even if you have less than the 194
+years of experience you need for that job.
+
+=E2=80=8B
+
+See, time will pass anyway. But you can choose to use it to
+become the best you can be. And I=E2=80=99ll go over how to learn at 2 or
+3 times the rate of other devs in tomorrow=E2=80=99s email.
+
+=E2=80=8B
+
+Here=E2=80=99s to you being the best you you can be,
+Adrian
+
+P.S. If you're interested in experiencing a real development job
+environment without needing 3 years of experience, and you want
+to work with a team of developers on real projects while
+receiving guidance from expert mentors, then the October cohort
+of the Masterclass sounds right for you. You can learn more and
+apply here. (
+https://click.convertkit-mail2.com/lmum65p85vtmh0rgmkpa6hde0k600/48hvh7ur2q=
+4009hq/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVu=
+dC1ib290Y2FtcA=3D=3D
+)=E2=80=8B
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/lmum65p85vtmh0rgmkpa6hde0k600
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/lmum65p85vtmh0rgmkpa6hde0k600
+)
+--e05bf089a99a5ba138bc1a1236fa40090ce060eef34211dd782eee084bc8
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Experience. A big issue in many jobs, coding especially.</p=
+>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You=E2=80=99ve probably seen something like:</p>
+<div style=3D"font-family:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI'=
+,Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363=
+d43;font-size:16px;line-height:1.4;padding:10px 20px;margin:0 0 20px;border=
+-left-style:solid;border-left-width:5px;border-left-color:#e1e1e1" class=3D=
+"blockquotes"><div class=3D"blockquotes-line">Entry level position. 3 years=
+ of experience.</div></div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And thought:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">???????</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So how do you get out of this years of experience trap?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The answer is simple, but not easy.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Let=E2=80=99s start with the obvious. The =E2=80=98years of=
+ experience=E2=80=99 criteria is horribly flawed.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">One dev with 2 years of experience can be worlds apart in s=
+kill level from another dev who also has the same 2 years of experience on =
+paper.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Time isn=E2=80=99t the best way to measure expertise. Time =
+is the best way to measure=E2=80=A6 time.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So how can we measure expertise or ability?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">By what you can do and what you=E2=80=99ve done. As a dev, =
+that=E2=80=99s your portfolio.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Sounds boring, but you can=E2=80=99t count on the entire ma=
+rket to change their way of doing things. That=E2=80=99s absolving responsi=
+bility and letting outside factors decide your career.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Instead, become so good they can=E2=80=99t ignore you. Prov=
+e your expertise without a doubt even if you have less than the 194 years o=
+f experience you need for that job.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">See, time will pass anyway. But you can choose to use it to=
+ become the best you can be. And I=E2=80=99ll go over how to learn at 2 or =
+3 times the rate of other devs in tomorrow=E2=80=99s email.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Here=E2=80=99s to you being the best you you can be,<br>Adr=
+ian</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">P.S. If you're interested in experiencing a real developmen=
+t job environment without needing 3 years of experience, and you want to wo=
+rk with a team of developers on real projects while receiving guidance from=
+ expert mentors, then the October cohort of the Masterclass sounds right fo=
+r you. <a href=3D"https://click.convertkit-mail2.com/lmum65p85vtmh0rgmkpa6h=
+de0k600/48hvh7ur2q4009hq/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLX=
+dlYi1kZXZlbG9wbWVudC1ib290Y2FtcA=3D=3D" target=3D"_blank" rel=3D"noopener n=
+oreferrer" style=3D"color:#0f82f0" url-id=3D"1578193515">You can learn more=
+ and apply here.</a>=E2=80=8B</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/lmum65p85vtmh0rgmkpa6hde0k600" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/lmum65p85vtmh0rgmkpa6hde0k600" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/lmum65p85vtmh0rgmkpa6hde0k600=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--e05bf089a99a5ba138bc1a1236fa40090ce060eef34211dd782eee084bc8--

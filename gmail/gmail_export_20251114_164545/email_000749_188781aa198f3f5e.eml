@@ -1,0 +1,471 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:a6ce:b0:4c2:1c2:d4f7 with SMTP id q14csp624217pxv;
+        Thu, 1 Jun 2023 10:56:31 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6SqlQ4IYU5Tu5f/S/6ymjZzQJllqaDMLhT59XD4K91UXPJNB1lEhkh7tBBw2zM7oN4SByF
+X-Received: by 2002:ac8:5c43:0:b0:3ef:4100:cd0c with SMTP id j3-20020ac85c43000000b003ef4100cd0cmr11466425qtj.63.1685642191295;
+        Thu, 01 Jun 2023 10:56:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685642191; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Jza3vw7AUgM90ARt5K3m9+7q9BWWck3HndRB7jMSJSHPQt6UwVvEOzj3pVi8T+ZM8N
+         ogYgo4v51aONg2Vl7mWdqGm/UbiIUba8swFmwqUWK3ngmZasIzPpTyMUiU3jgV4sv1sJ
+         l0WGV3nTnzHQWwLydVYnlLy6HNBHuEaMVIU/DHlGkQYRgP2F1nkx3N2ZCqW3TlFzNUzX
+         34++k8GDlMhkVk+cJupw8MzkGRltxqrUSoktI7GNkz9eg2Zo57Kr8Lh+HsCW3i1B+UwM
+         Ej9KB+3WFfqNXpn/y9Xel2QkVya5kBZC6ixcvMfVVEkTRKcthDNjILizivZH7tBENcCL
+         jLqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe:subject
+         :to:from:dkim-signature:dkim-signature;
+        bh=SInTEAjMWN9S+HIWgpqCdn3MLixR3kBFsbFiaRiCxww=;
+        b=xFNlXM5WlzGfiOZuHpx9EtU/RFHD7JFL17fGUbWDCqN++b1PAbj3Ill30e8qOPsh83
+         6H4nLiLBX7/7bYdtQ2ybxEf0y8aG6DFYc6yd/MrpyD1pDRWq1TKRf3k5P5uuKviou6V9
+         Omn2+lWL35wMFdDEzuBRX1zSx/fN3nApXYqBJ5XqU2J9ENQ9/ygRk9OJE/EUOdr61aQm
+         YY7TB4qdDVcvonURbNyNrBX2BGY6/LAnSURWwswMdja9mhBUwcM25IwooQR5FFMt9ruo
+         HBXEKjcsLRoPtkr9kX0YfnF3YkvWhfqL8f1t2i2srJ6Zw4PFCmNqNzCopVJ500+4PFFt
+         4+sQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=aocrfwooimxgblufgcm77hxfw4y6cevd header.b=Idujv88Y;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=ZYeRGYJE;
+       spf=pass (google.com: domain of 01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id v4-20020a05622a144400b003ef69e491a5si10182043qtx.159.2023.06.01.10.56.31
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Jun 2023 10:56:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=aocrfwooimxgblufgcm77hxfw4y6cevd header.b=Idujv88Y;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=ZYeRGYJE;
+       spf=pass (google.com: domain of 01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=aocrfwooimxgblufgcm77hxfw4y6cevd; d=pipedream.com; t=1685642190;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type;
+	bh=SInTEAjMWN9S+HIWgpqCdn3MLixR3kBFsbFiaRiCxww=;
+	b=Idujv88YdInIYUsVaqykr0S3moeSZVf7P3pMtHOg4c7x2yskIFgCU6L+uz2OPYXN
+	wYwQYHuOdIHQ6pTzp7gwtuKxwbig0fjsTBKAQZvDsCF+9UcYfsrbVWXvITll8gFYDvC
+	CMeR4s7yfwATX69usiy4l62BE1XsDo9jbStxPsb8=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1685642190;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=SInTEAjMWN9S+HIWgpqCdn3MLixR3kBFsbFiaRiCxww=;
+	b=ZYeRGYJEgljBiR1W6ClsnQ6SzGNVshKBfPGNT6M9EHBinfx1+Nm/A6WOploB4ZVE
+	TI16RnwfI+A4cw43zGWBo4NHKu/iV4rfwz5SySgKK4/bGYCEn1y20KrrNhJqKPZhXkO
+	FyofCrnjYN7rCvB8gkVJNLaVOjUviXd3S0K7XoHk=
+From: Tod Sacerdoti <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Introducing Workflow Sharing
+X-EmailOctopus-Parent-Id: 1863eed4-ff18-11ed-8875-1f93f058931c
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-06-01T16:34:06+00:00
+X-EmailOctopus-Sent-At: 2023-06-01T17:56:30+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=1863eed4-ff18-11ed-8875-1f93f058931c&pt=campaign&pv=4&spa=1685637246&t=1685642190&s=c2937398b35545331e9e6fb2817170bd15d70ffc75e8949219cff68078b00501&skipConfirmation=1>
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Thu, 1 Jun 2023 17:56:30 +0000
+Message-ID: <01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=XmuN6T7f
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.06.01-54.240.123.37
+
+--XmuN6T7f
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Pipedream has launched the ability to share workflow templates with
+colle=
+agues, friends, and followers.=C2=A0
+
+ [Pipedream] [https://pipedream.c=
+om]=20
+
+[A group of robots sharing workflows]
+[https://pipedream.com/do=
+cs/workflows/sharing/#sharing-workflows]=20
+
+WORKFLOWS ARE NOW SHAREABLE!=
+
+
+You can now share your workflows as templates with a unique shareable=
+
+link. Users can copy your workflow, use their own connected accounts,
+=
+and edit the workflow in any way.=20
+
+- SHARE YOUR WORKFLOWS with colleag=
+ues or followers
+
+- Your connected accounts and event history ARE NOT S=
+HARED
+
+- Read the documentation
+[https://pipedream.com/docs/workflows=
+/sharing/#sharing-workflows]
+
+Here is an example workflow
+[https://pi=
+pedream.com/new?h=3Dtch_OYWfjz]=C2=A0that sends you a daily SMS
+message w=
+ith today's schedule.
+
+=09=09Try it now [https://pipedream.com/new?h=3D=
+tch_OYWfjz]
+
+-------------------------
+
+HOW TO CREATE A SHAREABLE L=
+INK
+
+To share a workflow, open the BUILDER for the workflow. Then in th=
+e
+top right menu, select CREATE SHARE LINK.
+
+[A demo of sharing a wor=
+kflow]
+[https://pipedream.com/docs/workflows/sharing/#sharing-workflows] =
+
+
+HOW WORKFLOW SHARING WORKS
+
+- You can include values of individua=
+l props, and can=C2=A0specific props
+or INCLUDE ALL=C2=A0prop values=20
+=
+
+- When you create a shared link for your workflow, that link is frozen=
+
+to the version of your workflow at the time the link was created
+
+- =
+Changes to the workflow will not be included in the shared workflow
+link =
+or in any workflows copied
+
+- See a full list of Frequently Asked Quest=
+ions
+[https://pipedream.com/docs/workflows/sharing/#frequently-asked-ques=
+tions]
+
+Please reach out
+[https://join.slack.com/t/pipedream-users/sh=
+ared_invite/zt-11sazmsg0-oS2VW~mZfhtk3XfEEvb~JA]
+if you'd like to see any=
+ other improvements, or have other feature
+requests.=20
+
+Warm regards, =
+
+The Pipedream Team
+
+-------------------------
+ [https://pipedream.=
+com]44 Montgomery Street
+San Francisco
+CALIFORNIA
+94104
+United Stat=
+es of America=20
+
+Unsubscribe here
+[https://alatus.eocampaign.com/unsub=
+scribe?ep=3D1&l=3D358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=3D860f934a-f025-1=
+1ed-b8ff-059d97be6197&p=3D1863eed4-ff18-11ed-8875-1f93f058931c&pt=3Dcampaig=
+n&pv=3D4&spa=3D1685637246&t=3D1685642190&s=3Dc2937398b35545331e9e6fb2817170=
+bd15d70ffc75e8949219cff68078b00501]
+--XmuN6T7f
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><title></title></head><body class=3D=
+"notranslate">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">Pipedream has launched the ability to share workflow templates with coll=
+eagues, friends, and followers.&nbsp;</div>
+
+<p>
+
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DUTF-8">
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica =
+Neue&quot;,sans-serif;" width=3D"100%"><tbody><tr><td>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"max-width:560px;margin:40px auto;background-color:#ffffff;padding:40=
+px 30px 40px;border-radius:15px;" width=3D"100%"><tbody><tr style=3D"width:=
+100%;"><td>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/1/01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/a2y6v5=
+cfxAfGPeAgboFWq4Um8nw=3D324" rel=3D"noopener noreferrer" target=3D"_blank">=
+<img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image/=
+upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=3D=
+"display: block; outline: none; border: none; text-decoration: none; width:=
+ 2.2rem; height: 2.2rem;"></a>
+<br>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fworkflows%2Fsharing%2F%23sharing-workflows/1/01000188781a9f4=
+e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/ZFLB0P9TXL7RJbSJPMOZHdJZJKo=
+=3D324" rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A group o=
+f robots sharing workflows" src=3D"https://res.cloudinary.com/pipedreamin/i=
+mage/upload/v1685478884/sharing_vmw5s7.png" style=3D"display: block; outlin=
+e: none; border: none; text-decoration: none; width: 100%; height: auto; ma=
+rgin: 0px 0px 15px;"></a>
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1.4rem;line-he=
+ight:1.5rem;margin:0px;color:rgb(30, 41, 59);"><strong>Workflows are now sh=
+areable!</strong></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">You can now share your workflo=
+ws as templates with a unique shareable link. Users can copy your workflow,=
+ use their own connected accounts, and edit the workflow in any way.
+<br>
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- <strong>Share your workflows</strong> with colleagues or followers</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- Your connected accounts and event history <strong>are not shared</strong>=
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedr=
+eam.com%2Fdocs%2Fworkflows%2Fsharing%2F%23sharing-workflows/2/01000188781a9=
+f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/CDFNRBepzakQkBbuwUCCiA9Xqwo=
+=3D324" rel=3D"noopener noreferrer" style=3D"color:rgb(0, 0, 0);text-decora=
+tion:none;font-weight:600;text-decoration-line:underline;text-decoration-co=
+lor:#34D28B;" target=3D"_blank">Read the documentation</a></p>
+
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);"><a href=3D"https://sc1sc285.r.=
+us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_OYWfjz/1=
+/01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/vbriweDtLXhex=
+F4Yq8kp-1_pu64=3D324" rel=3D"noopener noreferrer" style=3D"color:rgb(0, 0, =
+0);text-decoration:none;font-weight:600;text-decoration-line:underline;text=
+-decoration-color:#34D28B;" target=3D"_blank">Here is an example workflow</=
+a>&nbsp;that sends you a daily SMS message with today's schedule.</p>
+<br>
+
+<br>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mb-6" style=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td>=
+<a class=3D"bg-button rounded-xl font-semibold text-white text-base text-ce=
+nter block" href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2=
+Fpipedream.com%2Fnew%3Fh=3Dtch_OYWfjz/2/01000188781a9f4e-6fa7f315-2276-4cd1=
+-9f43-ae4306b66594-000000/TSjScZ8uuWdv2geLTTVDvS1SqoA=3D324" rel=3D"noopene=
+r noreferrer" style=3D"display:inline-block;border-radius:0.75rem;backgroun=
+d-color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-height:100%=
+;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;text-decoration=
+:none;max-width:100%;padding:11px 23px;" target=3D"_blank"><span style=3D"d=
+isplay:inline-block;border-radius:0.75rem;background-color:rgb(52, 117, 210=
+);text-align:center;font-size:1rem;line-height:120%;font-weight:600;color:r=
+gb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;text-decoration:none;tex=
+t-transform:none;mso-padding-alt:0px;mso-text-raise:8.25px;">Try it now</sp=
+an></a></td></tr></tbody></table>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 class=3D"text-black dark:text-white text-2xl font-semibold tracking-tig=
+ht" style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">How to c=
+reate a shareable link</h1>
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">To share a workflow, open the =
+<strong>Builder</strong> for the workflow. Then in the top right menu, sele=
+ct <strong>Create Share Link</strong>.</p>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fworkflows%2Fsharing%2F%23sharing-workflows/3/01000188781a9f4=
+e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/d0Y8vxCSEb6ljpnmP3ezv7QWaB4=
+=3D324" rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of=
+ sharing a workflow" src=3D"https://res.cloudinary.com/pipedreamin/image/up=
+load/v1685479617/2023-05-30_13.46.09_zr2vcw.gif" style=3D"display: block; o=
+utline: none; border-width: 1px; text-decoration: none; width: 100%; height=
+: auto; margin: 0px 0px 15px;" class=3D"fr-bordered"></a>
+
+<h1 style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">
+<br>How workflow sharing works</h1>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">- You can include values of individual props, and can&nbsp;<span styl=
+e=3D"color: rgb(44, 62, 80); font-family: system-ui, &quot;system-ui&quot;,=
+ -apple-system, sans-serif, Helvetica, Roboto, &quot;Helvetica Neue&quot;, =
+Arial; font-size: 16px; font-style: normal; font-variant-ligatures: normal;=
+ font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orpha=
+ns: 2; text-align: start; text-indent: 0px; text-transform: none; white-spa=
+ce: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; b=
+ackground-color: rgb(255, 255, 255); text-decoration-thickness: initial; te=
+xt-decoration-style: initial; text-decoration-color: initial; display: inli=
+ne !important; float: none;">specific props or </span><strong style=3D"box-=
+sizing: border-box; border-width: 0px; border-style: solid; border-color: r=
+gba(229,231,235,var(--tw-border-opacity)); border-image: initial; --tw-bord=
+er-opacity:1; --tw-shadow:0 0 transparent; --tw-ring-inset:var(--tw-empty, =
+); --tw-ring-offset-width:0px; --tw-ring-offset-color:#fff; --tw-ring-color=
+:rgba(59,130,246,0.5); --tw-ring-offset-shadow:0 0 transparent; --tw-ring-s=
+hadow:0 0 transparent; font-weight: 600; color: rgb(44, 62, 80); font-famil=
+y: system-ui, &quot;system-ui&quot;, -apple-system, sans-serif, Helvetica, =
+Roboto, &quot;Helvetica Neue&quot;, Arial; font-size: 16px; font-style: nor=
+mal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spac=
+ing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-st=
+roke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thic=
+kness: initial; text-decoration-style: initial; text-decoration-color: init=
+ial;">include all</strong><span style=3D"color: rgb(44, 62, 80); font-famil=
+y: system-ui, &quot;system-ui&quot;, -apple-system, sans-serif, Helvetica, =
+Roboto, &quot;Helvetica Neue&quot;, Arial; font-size: 16px; font-style: nor=
+mal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight=
+: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: =
+0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0p=
+x; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); te=
+xt-decoration-thickness: initial; text-decoration-style: initial; text-deco=
+ration-color: initial; display: inline !important; float: none;">&nbsp;prop=
+ values </span></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>- When you create a shared link for your workflow, that link is frozen =
+to the version of your workflow at the time the link was created</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Changes to the workflow will=
+ not be included in the shared workflow link or in any workflows copied</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- See a full list of <a href=
+=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2=
+Fdocs%2Fworkflows%2Fsharing%2F%23frequently-asked-questions/1/01000188781a9=
+f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/ACC5dUp2h_W8HUXUxTKbHtBTJeM=
+=3D324" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-family=
+: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxyge=
+n-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-siz=
+e: medium; font-style: normal; font-variant-ligatures: normal; font-variant=
+-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-=
+indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spa=
+cing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, =
+255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); fo=
+nt-weight: 600;" target=3D"_blank">Frequently Asked Questions</a></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);"> </p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Please <a class=3D"underline d=
+ecoration-brand font-semibold text-black" href=3D"https://sc1sc285.r.us-eas=
+t-1.awstrack.me/L0/https:%2F%2Fjoin.slack.com%2Ft%2Fpipedream-users%2Fshare=
+d_invite%2Fzt-11sazmsg0-oS2VW~mZfhtk3XfEEvb~JA/1/01000188781a9f4e-6fa7f315-=
+2276-4cd1-9f43-ae4306b66594-000000/q7uv1zeQqi6msXRg3OcGjbzAyfY=3D324" style=
+=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:600;text-decoration=
+-line:underline;text-decoration-color:#34D28B;" target=3D"_blank">reach out=
+</a> if you'd like to see any other improvements, or have other feature req=
+uests.
+<br>
+<br>Warm regards,
+<br>The Pipedream Team</p>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/2/01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/pYlhNA=
+tlvs8W_YIvZuRBS-KVde4=3D324" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank"></a><a href=3D"https://sc1sc285.r.us-east-=
+1.awstrack.me/L0/https:%2F%2Fpipedream.com/3/01000188781a9f4e-6fa7f315-2276=
+-4cd1-9f43-ae4306b66594-000000/uERmh1DU7kXvz931Pxs9iuxliwY=3D324" style=3D"=
+color:#b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">44 Mo=
+ntgomery Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United States of=
+ America</a>
+<br>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Falatus.e=
+ocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D358ac956-f01d-11ed-bcd1-db2977b1=
+fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6197%26p=3D1863eed4-ff18-11ed-8=
+875-1f93f058931c%26pt=3Dcampaign%26pv=3D4%26spa=3D1685637246%26t=3D16856421=
+90%26s=3Dc2937398b35545331e9e6fb2817170bd15d70ffc75e8949219cff68078b00501/1=
+/01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/e7hK0kXHcq9MA=
+nhcfEmO_jzuyg4=3D324" style=3D"font-size:14px;color:#b4becc;">Unsubscribe h=
+ere</a>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/4/01000188781a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/t-qg16=
+et7RRtT0UZBULY0aLiXj4=3D324" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank">
+<br>
+<br>
+</a>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<p>
+
+
+
+
+
+
+
+<br>
+</p>
+
+
+
+
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/0100018878=
+1a9f4e-6fa7f315-2276-4cd1-9f43-ae4306b66594-000000/HTFR2E4_IT0z8EYqfrrFrLQH=
+hWI=3D324" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--XmuN6T7f--

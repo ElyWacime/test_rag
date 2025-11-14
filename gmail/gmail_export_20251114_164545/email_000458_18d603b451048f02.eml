@@ -1,0 +1,588 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:b0c4:0:b0:2d0:7014:6346 with SMTP id g4csp61214ljl;
+        Wed, 31 Jan 2024 07:55:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHMTV6Z85PS2f/+lBDrjNWnBxU6E9n8I6PKytvYnWM3cAfseVB/vzSuJ9eTVMNXf+LP95FE
+X-Received: by 2002:a05:600c:154c:b0:40e:f681:b88f with SMTP id f12-20020a05600c154c00b0040ef681b88fmr1473936wmg.33.1706716513669;
+        Wed, 31 Jan 2024 07:55:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706716513; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zNi04knctqiKF8Xf1r2EJYb8DjS6GOvr71ZkYueu0bxzFQI48XoWFKF6dBPZJR3bwx
+         Hyi83bCoxjdTu3A1izXfAexgiwjrmIIBlXxCNI3GtZ8LJ6y1aPJ1B0XofHta5feIo5MY
+         1IErJ9gh/VKOkaCLZGkqtH8plH26fGn/JJ683cIANTOqSoJ9+WsMOdNUWKwwdohhUgaX
+         6GP6F/Okjdyjs05QxAPaI2dWPf5cukPtnccfXumCwm5XmNwHBi+wxi9yhz0cGqS/BIOt
+         Qq72isuQG2R2f8AcReLHb81Y/c67XtYo7aIYOIlbk0dv4cAhJgGot5iPRimJR7yC39Pd
+         9quw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:message-id:subject:to:from:date:dkim-signature;
+        bh=DJ47PXLRxgW1lsRMw35UAlRKgeDKxfnKUGZ9JaWZqpM=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=hJsUKWmattaALwxFEfq72T41uCKwBoNmpZbrRremhUqagmdwSGEzzTAU01ka8iHoEp
+         Ukv6ALRjFjHiuKm8kigLKkRt2XsbkiryxHIlpsOTjSAM0VtEAYEYQno6h/Cs5wwVmcRn
+         o9txzao7BkQLMnuqjGt4thMzZdOK0Se/ZT0djIO/aZ/lFL1UW0fp7keMhSgoXGNmJjck
+         ZertO+Ld+lPtiCZthFG9XzWTiyVDifov4C/IbHXwPwatO6Wzm06Ss8y46bWS0jEPDgli
+         l0q3kTfvbo0H2eXQZPGrbRKRs6N7Jl4DENq4lWwN6XnISgCW9L9/63PXlFPQOxHuwlp3
+         c54g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pokerstars.net header.s=s1024 header.b=XYs0Vsx8;
+       spf=pass (google.com: domain of support@pokerstars.net designates 77.87.178.110 as permitted sender) smtp.mailfrom=support@pokerstars.net;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=pokerstars.net
+Return-Path: <support@pokerstars.net>
+Received: from mx16.pokerstars.eu (mx16.pokerstars.eu. [77.87.178.110])
+        by mx.google.com with ESMTPS id l19-20020a05600c1d1300b0040efa463b5csi877063wms.29.2024.01.31.07.55.13
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 Jan 2024 07:55:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of support@pokerstars.net designates 77.87.178.110 as permitted sender) client-ip=77.87.178.110;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pokerstars.net header.s=s1024 header.b=XYs0Vsx8;
+       spf=pass (google.com: domain of support@pokerstars.net designates 77.87.178.110 as permitted sender) smtp.mailfrom=support@pokerstars.net;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=pokerstars.net
+Received: by mx16.pokerstars.eu (mailer, from userid 76)
+	id 57972D74042D; Wed, 31 Jan 2024 10:55:13 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=pokerstars.net; h=date
+	:from:to:subject:message-id:mime-version:content-type; s=s1024;
+	 bh=npYqP+9d16tzoOqA0yuA9J/QQko=; b=XYs0Vsx8CDifl89kZKS3a9bdGwaq
+	v8fVNuAKDvzLH+YLTY1lpb1MDAiaa4kgr9lpnJek34bIOUPms+brZT1vR/9S5Kyc
+	PS0OTsGlghqZQfLyGUrKdpuS99QAixxRt7BBO5twUA/hQtfFWgvnNeF/OJvUBUJG
+	9wzH/ediPx7q9Ts=
+X-PS-ID: ZWx5LnVidW50dTBAZ21haWwuY29t
+Received: from pokerstars.com (IOM-20-81 [192.168.8.81])
+	by mx16.pokerstars.eu (mailer) with SMTP id 3C561D6EF025
+	for <ely.ubuntu0@gmail.com>; Wed, 31 Jan 2024 10:55:13 -0500 (EST)
+Date: Wed, 31 Jan 2024 10:55:13 -0500
+From: "Stars Support" <support@pokerstars.net>
+To: ely.ubuntu0@gmail.com
+Subject: Activate your Stars Account
+Message-Id: <65BA6D61.AC7EF712AEA2@pokerstars.com>
+MIME-Version: 1.0
+Content-type: multipart/alternative;
+ boundary="------ShPufpxfuEM3mCPcREbRQMIMOfJ9MIbf"
+
+
+--------ShPufpxfuEM3mCPcREbRQMIMOfJ9MIbf
+Content-Type: text/plain;
+ charset="windows-1252"
+Content-Transfer-Encoding: 8bit
+
+
+Dear djenty01,
+
+				Your email validation code is: 9215
+
+https://link.pokerstars.net/ram/validate/?language=en&site=NET&c=MA&m=yB0T0rgjFT3ludU6dV26LWZS4Do5wKwtM95YJNaG0AHWQ4ztb3l3WA%3D%3D&h=ZKiK4n%2BtqhYLd4Tas3j2LipKfNvJX0j%2Fap3Q7CQ8wgs%3D
+
+Stars Support
+
+--------ShPufpxfuEM3mCPcREbRQMIMOfJ9MIbf
+Content-Type: text/html;
+ charset="windows-1252"
+Content-Transfer-Encoding: 8bit
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- rpcampaign: PROMONAMECOMEN_YYYYMMDD-->
+      <head>
+      <meta http-equiv="Content-Type" content="text/watch-html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Please hit the ‘Confirm’ button below to confirm this email address for your Stars Account.</title>
+      <style type="text/css">
+/* Client-specific Styles */
+#outlook a {
+	padding: 0;
+} /* Force Outlook to provide a "view in browser" menu link. */
+body {
+	width: 100% !important;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	margin: 0;
+	padding: 0;
+}
+/* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+ .ExternalClass {
+	width: 100%;
+} /* Force Hotmail to display emails at full width */
+ .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+	line-height: 100%;
+} /* Force Hotmail to display normal line spacing. */
+#backgroundTable {
+	margin: 0;
+	padding: 0;
+	width: 100% !important;
+	line-height: 100% !important;
+}
+img {
+	outline: none;
+	text-decoration: none;
+	border: none;
+	-ms-interpolation-mode: bicubic;
+}
+a img {
+	border: none;
+}
+ .image_fix {
+	display: block;
+}
+p {
+	margin: 0px 0px !important;
+}
+table td {
+	border-collapse: collapse;
+}
+table {
+	border-collapse: collapse;
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+}
+/*STYLES*/
+table[class=full] {
+	width: 100%;
+	clear: both;
+}
+table[class=boxmobileborder] {
+	border-left: 1px solid #f5f5f5 !important;
+}
+/* Button Font */
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'), url(https://fonts.gstatic.com/s/robotocondensed/v13/b9QBgL0iMZfDSpmcXcE8nFVSrcc0PghHf9qMZsyNJkz2Ot9t5h1GRSTIE78Whtoh.woff2) format('woff2');
+ unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+
+/*################################################*/
+         /*Tablet STYLES*/
+         /*################################################*/
+@media only screen and (max-width: 640px) {
+a[href^="tel"], a[href^="sms"] {
+	text-decoration: none;
+	color: #4b7e8b;
+	pointer-events: none;
+	cursor: default;
+}
+ .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+	text-decoration: default;
+	color: #4b7e8b !important;
+	pointer-events: auto;
+	cursor: default;
+}
+table[class=devicewidth] {
+	width: 100%!important;
+	text-align: center!important;
+}
+table[class=devicewidthinner] {
+	width: 100%!important;
+	text-align: center!important;
+}
+table[class=devicewidthboxes] {
+	width: 300px!important;
+	text-align: center!important;
+}
+table[class="sthide"] {
+	display: none!important;
+}
+img[class="bigimage"] {
+	width: 100%!important;
+	height: auto!important;
+}
+img[class="bannerimage"] {
+	width: 100%!important;
+	height: 148px!important;
+}
+td[class="menu"] {
+	text-align: center !important;
+	padding: 0 0 10px 0 !important;
+}
+td[class="logo"] {
+	padding: 10px 0 5px 0!important;
+	margin: 0 auto !important;
+}
+td[class="nomobile"] {
+	display: none!important
+}
+img[class="logo"] {
+	padding: 0!important;
+	margin: 0 auto !important;
+}
+/* This replaces the TITLE GRAPHIC with a smaller version */
+td[class="headercell"] {
+	width: 100% !important;
+	height: auto !important;
+}
+a[id=headercell-link] {
+	display: block !important;
+	width: 100% !important
+}
+/* This replaces the POKERSTARS LOGO GRAPHIC with a smaller version */
+td[class="pscell"] {
+	background-image: url(http://newsletters.starsaccount.com/2017/images/sa-440.jpg);
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	width: 100% !important;
+	height: 55px !important;
+}
+td[class="pscell"] img {
+	display: none !important;
+}
+#pscell-link {
+	display: block !important;
+	width: 440px !important;
+	height: 35px !important;
+}
+/* This activates the MOBILE MENU */
+a[class=emailnobbutton] {
+	display: block !important;
+	font-size: 24px !important;
+	color: #656565 !important;
+	font-weight: normal !important;
+	padding: 10px 10px 10px 10px !important;
+	background: #FFFFFF !important;
+	text-align: center !important;
+	text-decoration: none !important;
+	margin-bottom: 1px !important;
+	margin-top: 1px !important;
+}
+td[class="emailmenunodesk"] {
+	background: #656565 !important;
+}
+/* 4 Boxes */
+td[class="pattern"] .spacer {
+	display: none;
+}
+td[class="pattern"] .col {
+	width: 100%;
+	display: block;
+}
+td[class="pattern"] .col {
+	margin-bottom: 30px;
+}
+td[class="pattern"] .hero_image img {
+	width: 100%;
+}
+img[class="boxbigimage"] {
+	width: 100% !important;
+	height: auto !important;
+}
+}
+
+/*##############################################*/
+         /*PHONE STYLES*/
+         /*##############################################*/
+@media only screen and (max-width: 480px) {
+a[href^="tel"], a[href^="sms"] {
+	text-decoration: none;
+	color: #ffffff;
+	pointer-events: none;
+	cursor: default;
+}
+ .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+	text-decoration: default;
+	color: #ffffff !important;
+	pointer-events: auto;
+	cursor: default;
+}
+table[class=devicewidth] {
+	width: 100% !important;
+	text-align: center!important;
+}
+table[class=devicewidthinner] {
+	width: 100% !important;
+	text-align: center!important;
+}
+table[class="sthide"] {
+	display: none !important;
+}
+table[class="social"] {
+	display: none !important;
+}
+img[class="bigimage"] {
+	width: 100%!important;
+	height: auto!important;
+}
+img[class="bannerimage"] {
+	width: 280px!important;
+	height: 94px!important;
+}
+img[class="logo-banner"] {
+	width: 280px!important;
+	height: 36px!important;
+}
+img[class="cta-button"] {
+	width: 200px!important;
+}
+td[class="nomobile"] {
+	display: none!important
+}
+/* This replaces the TITLE GRAPHIC with a smaller version */
+td[class="headercell"] {
+	width: 100% !important;
+}
+a[id=headercell-link] {
+	display: block !important;
+	width: 100% !important;
+	height: auto !important;
+}
+}
+td[class="pscell"] img {
+	display: none !important;
+}
+#pscell-link {
+	display: block !important;
+	width: 280px !important;
+	height: 35px !important;
+}
+/* This activates the MOBILE MENU */
+a[class=emailnobbutton] {
+	display: block !important;
+	font-size: 24px !important;
+	color: #656565 !important;
+	font-weight: normal !important;
+	padding: 10px 10px 10px 10px !important;
+	background: #FFFFFF !important;
+	text-align: center !important;
+	text-decoration: none !important;
+	margin-bottom: 1px !important;
+	margin-top: 1px !important;
+}
+td[class="emailmenunodesk"] {
+	background: #656565 !important;
+}
+/* 4 Boxes */
+img[class="boxbigimage"] {
+	width: 100% !important;
+auto !important;
+}
+}
+</style>
+      </head>
+      <body bgcolor="#e5e5e5">
+<div class="block"> 
+        <!-- Start of preheader -->
+        <table width="100%" bgcolor="#e5e5e5" cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+    <tbody>
+            <tr>
+        <td width="100%"><table width="640" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+            <tbody>
+              <tr>
+                <td width="100%" height="6"></td>
+              </tr>
+              <tr>
+                <td width="640" align="center" valign="middle" style="font-family: Verdana, Geneva, sans-serif; font-size: 10px; color: #656565;"><span style="color:#e5e5e5;">Confirm your email</span><br>
+                 
+              </tr>
+              <tr>
+                <td align="center" height="10"></td>
+              </tr>
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+          </tbody>
+  </table>
+        <!-- End of preheader --> 
+      </div>
+<div class="block"> 
+        <!-- start of header -->
+        <table width="100%" bgcolor="#e5e5e5" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" >
+    <tbody>
+            <tr>
+        <td><table width="640" bgcolor="#000000" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+            <tbody>
+              <tr style="border-collapse:collapse;">
+                <td width="640" bgcolor="#000000" class="devicewidth" valign="center"><table cellpadding="0" cellspacing="0" border="0" align="left" class="devicewidth">
+                    <tbody>
+                      <tr>
+                        <td align="left" bgcolor="#000000" class="pscell"><a href="TBC" target="_blank"><img src="http://newsletters.starsaccount.com/2017/images/sa-250.jpg" alt="" width="250" height="50" border="0" style="display:block; line-height: 50%; vertical-align:bottom;" /></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table border="0" cellspacing="0" cellpadding="0" bgcolor="#000000" align="center">
+                    <tr>
+                      <td height="10" colspan="4"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+          </tbody>
+  </table>
+        <!-- end of header --> 
+      </div>
+<div class="block">
+        <table width="100%" bgcolor="#e5e5e5" cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+    <tbody>
+            <tr>
+        <td><table bgcolor="#ffffff" width="640" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidth">
+            <tbody>
+              <tr>
+                <td><table width="640" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidthinner">
+                    <tbody>
+                      <tr> <!-- TITLE GRAPHIC BEGIN -->
+                        <td width="640" bgcolor="#000000" style="font-family: Helvetica, Arial, sans-serif; font-size:30px; color:#dc2227; margin:0; padding:0; vertical-align:top;" align="center" class="headercell"><a href="https://link.pokerstars.net/ram/validate/?language=en&amp;site=NET&amp;c=MA&amp;m=yB0T0rgjFT3ludU6dV26LWZS4Do5wKwtM95YJNaG0AHWQ4ztb3l3WA%3D%3D&amp;h=ZKiK4n%2BtqhYLd4Tas3j2LipKfNvJX0j%2Fap3Q7CQ8wgs%3D" id="headercell-link" target="_blank"><img src="http://newsletters.starsaccount.com/2019/starsaccount/gmpp4614/images/title_en.jpg" alt="Please hit the ‘Confirm’ button below to confirm this email address for your Stars Account." width="640" border="0" style="display:block; line-height:0; vertical-align:abs" class="bigimage" /></a></td>
+                      </tr>
+                      <!-- TITLE GRAPHIC END -->
+                      
+                                 <tr>
+                                    <td width="100%" height="30"></td>
+                                 </tr>
+                    </tbody>
+                  </table>
+                  <table width="640" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidthinner"   >
+                    <tbody>
+                    </tbody>
+                  </table>
+                  <table width="640" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidth">
+                    <tbody>
+                      <tr>
+                        <td style="font-family:  Verdana, Geneva, sans-serif; font-size: 12px; color: #2b2b2b; text-align:left;line-height: 1.2em; padding-right:30px; padding-left:30px;"><strong>Dear djenty01,</strong><br>
+                          <br>
+                          Please hit the ‘Confirm’ button below to confirm this email address for your Stars Account. You only need to do this once, then you’ll be able to enjoy everything we have to offer!
+<br><br>
+
+
+You may also use this code to confirm your address: 9215 <!-- START CENTERED BUTTON -->
+                          
+                          <center>
+                            <table width="100%" border="0">
+                              <tr>
+                                <td><table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                      <td height="20" width="100%" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
+                                    </tr>
+                                  </table>
+                                  <table border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                                    <tbody>
+                                      <tr>
+                                        <td align="center"><table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                                            <tr>
+                                              <td align="center"  bgcolor="#00b665" width="150" height="45" style="-moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px;"><a href="https://link.pokerstars.net/ram/validate/?language=en&amp;site=NET&amp;c=MA&amp;m=yB0T0rgjFT3ludU6dV26LWZS4Do5wKwtM95YJNaG0AHWQ4ztb3l3WA%3D%3D&amp;h=ZKiK4n%2BtqhYLd4Tas3j2LipKfNvJX0j%2Fap3Q7CQ8wgs%3D" style="padding: 15px;width:150px;display: block;text-decoration: none;border:0;text-align: center;font-weight: normal;font-size: 18px; text-transform: uppercase; color: #ffffff;  font-family: 'Roboto Condensed', Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; background: #00b665; -webkit-border-radius: .3em; -moz-border-radius: .3em; border-radius: .3em; 
+text-shadow:0px -1px 3px rgba(10,10,10,0.5); min-height:15px !important; background: #00b665; background: -moz-linear-gradient(top,  #00b665 0%, #00b665 49%, #006d26 100%); background: -webkit-linear-gradient(top,  #00b665 0%,#00b665 49%,#006d26 100%); background: linear-gradient(to bottom,  #00b665 0%,#00b665 49%,#006d26 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b665', endColorstr='#31672a',GradientType=0 );" target="_blank">Confirm</a></td>
+                                            </tr>
+                                          </table></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                      <td height="20" width="100%" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
+                                    </tr>
+                                  </table></td>
+                              </tr>
+                            </table>
+                          </center>
+                          
+                          <!-- END CENTERED BUTTON --></td>
+                      </tr>
+                      <tr>
+                        <td width="640" height="15"></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+          </tbody>
+  </table>
+      </div>
+<div class="block">
+        <table width="100%" bgcolor="#e5e5e5" cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+            <tr>
+        <td><table width="640" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+            <tbody>
+              <tr>
+                <td style="padding-left:30px; padding-right:30px;" valign="bottom"><!-- logo -->
+                  
+                  <table border="0" cellspacing="0" cellpadding="0"  align="left">
+                    <tr>
+                      <td align="left" valign="bottom" style="font-family: Verdana, Geneva, sans-serif; color:#000000; font-size:12px; ">Regards,<br>
+                        <strong>Support Team</strong></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td width="640" style="padding-right:30px; padding-left:30px;"></td>
+              </tr>
+			  <tr>
+                <td style="padding-left:30px; padding-right:30px;" valign="bottom"><!-- FOOTER-WRAPPER -->
+                  
+                  <table border="0" cellspacing="0" cellpadding="0"  align="left">
+                    <tr>
+                      <td align="left" valign="bottom" style="font-family: Verdana, Geneva, sans-serif; color:#000000; font-size:8px; "><br><br> 
+You are receiving this email as it contains important information about your Stars Account.<br><br>
+
+Please note: This email was sent from a notification-only address that doesn't accept incoming email. Please don't reply to this message. If you would like to contact us please visit our <a href="http://pokerstars.net/help">Help Centre</a> to find out how.<br><br>
+
+If you’re interested in how we treat your information, please review our <a href="http://pokerstars.net/privacy">Privacy Policy</a>.<br><br> 
+
+Rational Poker School Limited, Douglas Bay Complex, King Edward Road, Onchan, IM3 1DZ, Isle of Man.<br><br>
+
+Copyright &copy; 2001-2024, Rational Intellectual Holdings Limited. All rights reserved. 
+
+
+<br/>
+
+					  </td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td width="100%" height="30"></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+          </tbody>
+  </table>
+      </div>
+<div class="block">
+        <table width="100%" bgcolor="#e5e5e5" cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+    <tbody>
+            <tr>
+        <td><table bgcolor="#000000" width="640" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidth">
+            <tr>
+              <td width="640" height="1" bgcolor="#313131"></td>
+            </tr>
+            <tr>
+              <td align="center" bgcolor="#000000" width="640" height="57"> </td>
+            </tr>
+          </table></td>
+      </tr>
+          </tbody>
+  </table>
+      </div>
+<div class="block">
+        <table width="100%" bgcolor="#e5e5e5" cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+    <tbody>
+            <tr>
+        <td width="100%"><table width="640" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+            <tbody>
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size: 10px;color: #656565">
+                          </td>
+              </tr>
+              <tr>
+                <td width="100%" height="5"></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+          </tbody>
+  </table>
+      </div>
+</body>
+</html>
+</td>
+              </tr>
+
+--------ShPufpxfuEM3mCPcREbRQMIMOfJ9MIbf--
+
+

@@ -1,0 +1,901 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:9f41:b0:523:83ca:23d5 with SMTP id a1csp2245703pxz;
+        Mon, 25 Dec 2023 06:03:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEC3zBhrkSHO35RfBlSe5JIKPmlH8k7v/cOtGYvaZRG51HofaqLLRx0/lPNi3Onp/YQ0BGx
+X-Received: by 2002:ac8:5782:0:b0:423:6e3e:72ab with SMTP id v2-20020ac85782000000b004236e3e72abmr9708235qta.55.1703512982342;
+        Mon, 25 Dec 2023 06:03:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703512982; cv=none;
+        d=google.com; s=arc-20160816;
+        b=aGc+xuyG7NOFu/7QFuEZkXOefzrYaqJIE2Uaovkg9l7pcw7FCC3izDyiywgLJKw1UM
+         JsJnTwKq35sNib55v/C2J1RB66hmIXMNAJUeCi3jYqIeQpDBYJJkbShA4kR2CmEDAHbV
+         c7sl+qjooBMTKi7tFa59S0zpXXiKvigtFqvP6QPScRkb6e+9ysXLRTppbRBhg8JG3IWL
+         cqFcHy2ecJF8KJxJZ3w7Kd/vKGfcPVEQARnMNlItYgFWsbI6obeocGWDLsZWeNLSL9Z+
+         tRawvgaygGl8Fx63bBJ3N5iJBeEkd4/iIFXHNC+TZznfwuDqCJTQ0rxbknYzLeGvvOfQ
+         avkw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe-post
+         :list-unsubscribe:subject:to:from:dkim-signature;
+        bh=91LSaSO0dEe1hubWqm68BHx58Hn5+zUZjeFvEyRarjI=;
+        fh=LE4PlG1cXKs+3oNhnvtzEUGKssuVUvVQ0ZSABMSdYTA=;
+        b=wZLvR2QsxEz97Q7P8l5mIjaA2L39KEtUSQz4+Ma4wxuxxFkpWs6Og4rHaR/sfOFn9e
+         KSgJkgAzbxo3YJ82nujeEKwA+drepQSWjOxW7Kif/TjlgZO9ft9U27Wd1LBiE+erNXvs
+         ZgKwZR2qhlB9rHntyj3WqE5Z9U0nZ5eWtVoD/RHpmqKRAAGdRKJpMPF5FzAP7192IV38
+         cl857B/wsJV73YrqfFSshGHDERFnHDVbqmLWpIE6aLxfpOwOn2H263cB80od7ykPcF63
+         ox5s16NImttGDbQ3z3KR1TcbuoTvw3hpufRvZ0ddhQcBHfjnjk/d/6a3jfvQalnP86L3
+         KYdQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=aW1skmrd;
+       spf=pass (google.com: domain of 0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000@amazonses.com designates 54.240.11.120 as permitted sender) smtp.mailfrom=0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000@amazonses.com
+Return-Path: <0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000@amazonses.com>
+Received: from a11-120.smtp-out.amazonses.com (a11-120.smtp-out.amazonses.com. [54.240.11.120])
+        by mx.google.com with ESMTPS id g6-20020ac85806000000b004278ae7591csi10580944qtg.592.2023.12.25.06.03.00
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 Dec 2023 06:03:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of 0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000@amazonses.com designates 54.240.11.120 as permitted sender) client-ip=54.240.11.120;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=aW1skmrd;
+       spf=pass (google.com: domain of 0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000@amazonses.com designates 54.240.11.120 as permitted sender) smtp.mailfrom=0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000@amazonses.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1703512980;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=91LSaSO0dEe1hubWqm68BHx58Hn5+zUZjeFvEyRarjI=;
+	b=aW1skmrdGeFgtqBBRbhXwKmDXskiorubXjDfiIBIEylkqQpSNGKI6qLEvFM60KTz
+	/fW62Ypm8Ypk1tTIQc2osMQFGRFLbVe2QISIcEh6xqsBTYnVjOLqik6h4vSbdmGFHl4
+	JoXjPRLcB+t21a1h9GzXdrkiAOsniSczhDE8t86A=
+From: Mia from Insync <support@insynchq.com>
+To: NULL <ely.ubuntu0@gmail.com>
+Subject: Get 35% OFF on your license before the year =?utf-8?Q?ends?=
+ =?utf-8?Q?!=C2=A0=E2=98=83?=
+X-Entity-Ref-Id: ec12e492-50ba-42a6-b7ff-9eee4b383afc
+X-EmailOctopus-Parent-Id: 58a1e696-9ff8-11ee-9758-b73de4cf6d93
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 206c814c-a0a1-11ee-b93e-afd158e20c2e
+X-EmailOctopus-List-Contact-Id: 6cba95f2-a0a1-11ee-bd3c-4d0f923e0fb5
+X-EmailOctopus-Started-Preparing-At: 2023-12-25T14:00:18+00:00
+X-EmailOctopus-Sent-At: 2023-12-25T14:02:59+00:00
+X-EmailOctopus-Team-Id: c951edd2-4f4c-11e9-a3c9-06b79b628af2
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://araneoides.eomail1.com/unsubscribe?ep=1&l=206c814c-a0a1-11ee-b93e-afd158e20c2e&lc=6cba95f2-a0a1-11ee-bd3c-4d0f923e0fb5&p=58a1e696-9ff8-11ee-9758-b73de4cf6d93&pt=campaign&pv=4&spa=1703512818&t=1703512979&s=b4e8b662c68feef52f484eeeb14e61de20234f7010b7a3a2b9bc541a175a790b>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Mon, 25 Dec 2023 14:02:59 +0000
+Message-ID: <0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=LLHmPx8i
+Feedback-ID: 1.us-east-1.kMPw8yWuaLivva0y4oCs8H+U0sOXjFz/H1BJQEUL2g0=:AmazonSES
+X-SES-Outgoing: 2023.12.25-54.240.11.120
+
+--LLHmPx8i
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Happy Holidays from the Insync Team!=20
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0
+
+
+ =09=09 [1]=20
+
+=
+Hey there
+
+_'TIS THE SEASON FOR A HOLIDAY SALE! =F0=9F=8E=84_
+
+Get=
+=C2=A035% OFF on your Insync license until JANUARY 1, 2024!
+
+HOW TO GET=
+ THE DISCOUNT:
+
+=09* Head to our pricing page [1] and click BUY INSYNC,=
+ or click =E2=80=9CBUY
+NOW=E2=80=9D below.=C2=A0
+=09* Enter the code=
+=C2=A0HOLIDAY2023=C2=A0where it says CLICK TO APPLY A
+DISCOUNT CODE.
+=
+=09* Enter your payment details. Make sure to type in the correct email
+y=
+ou want the license for.=C2=A0
+=09* Proceed to checkout.
+
+You may fol=
+low this post-purchase guide [2]=C2=A0for more information.
+
+ Email=
+=C2=A0support@insynchq.com=C2=A0for any questions or concerns.=20
+
+ =09=
+=09 BUY NOW [1]=20
+
+Happy holidays! =F0=9F=AB=B6
+
+- Mia from Insync =
+
+
+_Promo is for new Insync licenses only._
+
+_Promo runs until Janua=
+ry 1, 2024=C2=A0at 6:00 AM PDT_=20
+
+HELP US COMPLETE INSYNC ENCRYPTION!=
+
+
+We are raising $50,000 in GoFundMe to release Insync Encryption
+
+=
+ =09=09 Read about our story [3]=20
+
+ =09=09 [Facebook social link] [4] =
+
+=09=09 [Twitter social link] [5]=20
+=09=09 [Website social link] [6]=20
+=
+
+You received this email because you subscribed to our list. You can
+un=
+subscribe [7] at any time.=20
+
+=20
+
+Links:
+------
+[1] https://www.i=
+nsynchq.com/pricing
+[2] https://help.insynchq.com/en/articles/6652921-pri=
+cing-what-to-do-after-purchase
+[3] https://www.gofundme.com/f/help-us-com=
+plete-insync-encryption
+[4] https://web.facebook.com/insynchq
+[5] https=
+://twitter.com/insynchq
+[6] https://www.insynchq.com/
+[7] https://arane=
+oides.eomail1.com/unsubscribe?ep=3D1&amp;l=3D206c814c-a0a1-11ee-b93e-afd158=
+e20c2e&amp;lc=3D6cba95f2-a0a1-11ee-bd3c-4d0f923e0fb5&amp;p=3D58a1e696-9ff8-=
+11ee-9758-b73de4cf6d93&amp;pt=3Dcampaign&amp;pv=3D4&amp;spa=3D1703512818&am=
+p;t=3D1703512979&amp;s=3Db4e8b662c68feef52f484eeeb14e61de20234f7010b7a3a2b9=
+bc541a175a790b
+--LLHmPx8i
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><link type=3D"text/css" rel=3D"stylesheet" id=3D"dark-mode-cust=
+om-link"><link type=3D"text/css" rel=3D"stylesheet" id=3D"dark-mode-general=
+-link"><style lang=3D"en" type=3D"text/css" id=3D"dark-mode-custom-style">
+.open-sans, .open-sans .text-block, .open-sans .text-block h1, .open-sans t=
+d a {
+font-family: 'Open Sans', 'Google Sans', -apple-system, BlinkMacSystemFont,=
+ Arial, sans-serif!important;
+}
+</style><style lang=3D"en" type=3D"text/css" id=3D"dark-mode-native-style">=
+</style><style lang=3D"en" type=3D"text/css" id=3D"dark-mode-native-sheet">=
+</style>
+<meta charset=3D"UTF-8">
+<!-- Sets size and scale of the viewport. -->
+<meta name=3D"viewport" content=3D"width=3Ddevice-width" initial-scale=3D"1=
+">
+<!-- IE=3DEdge makes good things happen on Windows Phones. -->
+<!--[if !mso]>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<![endif]-->
+<!-- Disables auto-scaling in iOS Mail 10. -->
+<meta name=3D"x-apple-disable-message-reformatting">
+<!-- Will display in auto-preview area in some clients. -->
+<title></title>
+<!-- Desktop Outlook defaults to Times New Roman. Forces a less obscene fal=
+lback font. -->
+<!--[if mso]>
+<style>
+* { font-family: sans-serif !important; }
+</style>
+<![endif]-->
+<style>
+/* Box sizing. Gets decent support. */
+*,
+*:after,
+*:before {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+/* Prevents small text resizing. */
+* {
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+}
+/* Basic reset. Removes default spacing around emails in various clients. *=
+/
+html,
+body,
+.document {
+width: 100% !important;
+height: 100% !important;
+margin: 0;
+padding: 0;
+}
+/* Improves text rendering when supported. */
+body {
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-rendering: optimizeLegibility;
+}
+/* Centers email to device width in Android 4.4. */
+div[style*=3D"margin: 16px 0"] {
+margin: 0 !important;
+}
+/* Removes added spacing within tables in Outlook. */
+table,
+td {
+mso-table-lspace: 0pt;
+mso-table-rspace: 0pt;
+}
+/* Removes added spacing within tables in WebKit. */
+table {
+border-spacing: 0;
+border-collapse: collapse;
+table-layout: fixed;
+margin: 0 auto;
+}
+/* Responsive images. Improves rendering of scaled images in IE. */
+img {
+-ms-interpolation-mode: bicubic;
+max-width: 100%;
+border: 0;
+}
+/* Overrules triggered links in iOS. */
+*[x-apple-data-detectors] {
+color: inherit !important;
+text-decoration: none !important;
+}
+/* Overrules triggered links in Gmail. */
+.x-gmail-data-detectors,
+.x-gmail-data-detectors *,
+.aBn {
+border-bottom: 0 !important;
+cursor: default !important;
+}
+/* Define font */
+body,
+html,
+td {
+font-family: Arial, sans-serif; /* Font family */
+color: rgb(0, 0, 0); /* Font color */
+}
+/* Froala specific styling to make the link take wrapper styling */
+span > a {
+color: inherit !important;
+}
+/* Media queries o' doom. */
+@media screen and (max-width: 450px) {
+/* Transitions container to a fluid layout. */
+.container {
+width: 100%;
+margin: auto;
+}
+/* Collapses table cells into full-width rows. */
+.stack {
+display: block!important;
+width: 100%!important;
+max-width: 100%!important;
+}
+}
+.roboto, .roboto .text-block, .roboto .text-block h1, .roboto td a {
+font-family: 'Roboto', Arial, sans-serif!important;
+}
+.open-sans, .open-sans .text-block, .open-sans .text-block h1, .open-sans t=
+d a {
+font-family: 'Open Sans', 'Google Sans', -apple-system, BlinkMacSystemFont,=
+ Arial, sans-serif!important;
+}
+</style>
+<link href=3D"https://fonts.googleapis.com/css?family=3DOpen+Sans" rel=3D"s=
+tylesheet"><style>.ssBtnDefault{position:absolute;z-index:100000000;backgro=
+und:none;border:none;outline:none;right:0;cursor:pointer;width:26px;height:=
+26px;margin:0;padding:0;top:8px;right:8px;opacity:.6;pointer-events:all;tra=
+nsition-duration:.25s}.ssBtnDefault:hover{opacity:1 !important;transition-d=
+uration:.25s}.ssBtnDefault .fade{transition-duration:5s;opacity:0}.ssBtnYou=
+Tube{background:none;border:none;margin-right:10px !important;padding-top:1=
+px !important;width:21px !important}.ssBtnVimeo svg{width:22px}.ssBtnNetfli=
+x{background:none;border:none;cursor:pointer;width:50px;height:35px !import=
+ant;margin-top:-15px}.ssBtnNetflix:hover{transform:scale(1.2);transition-du=
+ration:.25s}.ssBtnHulu{width:27px;margin-top:4px;margin-right:10px;opacity:=
+.7;cursor:pointer}.ssBtnHulu:hover{opacity:1}.ssBtnAmazon{margin-right:1.5v=
+w;outline:none;cursor:pointer;opacity:.8}.ssBtnAmazon:hover{opacity:1}@medi=
+a(min-width: 1200px){.ssBtnAmazon{width:1.6666666667vw;height:1.6666666667v=
+w}}@media(max-width: 1199px){.ssBtnAmazon{width:20px;height:20px}}body #ssT=
+empHolder{position:fixed;z-index:1000000000000;width:100%;height:100%;top:0=
+;pointer-events:none}body #ssTempHolder video{width:auto !important;height:=
+auto !important;max-width:100% !important;max-height:100% !important;top:0 =
+!important;left:0 !important;transform:none !important}body .ssElement{z-in=
+dex:100000000000 !important}body .ssElement.netflix{background-color:#000}b=
+ody .ssElement.netflix .player-timedtext-text-container{display:none !impor=
+tant;bottom:10% !important}body .ssWrapper{overflow:hidden}body #copiedToCl=
+ipboard{display:flex;width:100%;height:4rem;justify-content:center;align-it=
+ems:center;position:fixed;z-index:1000000000;top:-4rem;animation-name:notif=
+ication;animation-duration:1.5s;animation-iteration-count:1}body #copiedToC=
+lipboard::after{content:"Screenshot copied to clipboard!";position:absolute=
+;color:#155724;background-color:#d4edda;border-color:#c3e6cb;z-index:100000=
+0000;padding:.75rem 1.25em;margin-bottom:1em;border:1px solid transparent;b=
+order-radius:.25em;font-size:12px;height:fit-content;top:0}@keyframes notif=
+ication{0%{top:-4rem}25%{top:3rem}85%{top:3rem}100%{top:-4rem}}</style><sty=
+le>.ssBtnDefault{position:absolute;z-index:100000000;background:none;border=
+:none;outline:none;right:0;cursor:pointer;width:26px;height:26px;margin:0;p=
+adding:0;top:8px;right:8px;opacity:.6;pointer-events:all;transition-duratio=
+n:.25s}.ssBtnDefault:hover{opacity:1 !important;transition-duration:.25s}.s=
+sBtnDefault .fade{transition-duration:5s;opacity:0}.ssBtnYouTube{background=
+:none;border:none;margin-right:10px !important;padding-top:1px !important;w=
+idth:21px !important}.ssBtnVimeo svg{width:22px}.ssBtnNetflix{background:no=
+ne;border:none;cursor:pointer;width:50px;height:35px !important;margin-top:=
+-15px}.ssBtnNetflix:hover{transform:scale(1.2);transition-duration:.25s}.ss=
+BtnHulu{width:27px;margin-top:4px;margin-right:10px;opacity:.7;cursor:point=
+er}.ssBtnHulu:hover{opacity:1}.ssBtnAmazon{margin-right:1.5vw;outline:none;=
+cursor:pointer;opacity:.8}.ssBtnAmazon:hover{opacity:1}@media(min-width: 12=
+00px){.ssBtnAmazon{width:1.6666666667vw;height:1.6666666667vw}}@media(max-w=
+idth: 1199px){.ssBtnAmazon{width:20px;height:20px}}body #ssTempHolder{posit=
+ion:fixed;z-index:1000000000000;width:100%;height:100%;top:0;pointer-events=
+:none}body #ssTempHolder video{width:auto !important;height:auto !important=
+;max-width:100% !important;max-height:100% !important;top:0 !important;left=
+:0 !important;transform:none !important}body .ssElement{z-index:10000000000=
+0 !important}body .ssElement.netflix{background-color:#000}body .ssElement.=
+netflix .player-timedtext-text-container{display:none !important;bottom:10%=
+ !important}body .ssWrapper{overflow:hidden}body #copiedToClipboard{display=
+:flex;width:100%;height:4rem;justify-content:center;align-items:center;posi=
+tion:fixed;z-index:1000000000;top:-4rem;animation-name:notification;animati=
+on-duration:1.5s;animation-iteration-count:1}body #copiedToClipboard::after=
+{content:"Screenshot copied to clipboard!";position:absolute;color:#155724;=
+background-color:#d4edda;border-color:#c3e6cb;z-index:1000000000;padding:.7=
+5rem 1.25em;margin-bottom:1em;border:1px solid transparent;border-radius:.2=
+5em;font-size:12px;height:fit-content;top:0}@keyframes notification{0%{top:=
+-4rem}25%{top:3rem}85%{top:3rem}100%{top:-4rem}}</style><style>.ssBtnDefaul=
+t{position:absolute;z-index:100000000;background:none;border:none;outline:n=
+one;right:0;cursor:pointer;width:26px;height:26px;margin:0;padding:0;top:8p=
+x;right:8px;opacity:.6;pointer-events:all;transition-duration:.25s}.ssBtnDe=
+fault:hover{opacity:1 !important;transition-duration:.25s}.ssBtnDefault .fa=
+de{transition-duration:5s;opacity:0}.ssBtnYouTube{background:none;border:no=
+ne;margin-right:10px !important;padding-top:1px !important;width:21px !impo=
+rtant}.ssBtnVimeo svg{width:22px}.ssBtnNetflix{background:none;border:none;=
+cursor:pointer;width:50px;height:35px !important;margin-top:-15px}.ssBtnNet=
+flix:hover{transform:scale(1.2);transition-duration:.25s}.ssBtnHulu{width:2=
+7px;margin-top:4px;margin-right:10px;opacity:.7;cursor:pointer}.ssBtnHulu:h=
+over{opacity:1}.ssBtnAmazon{margin-right:1.5vw;outline:none;cursor:pointer;=
+opacity:.8}.ssBtnAmazon:hover{opacity:1}@media(min-width: 1200px){.ssBtnAma=
+zon{width:1.6666666667vw;height:1.6666666667vw}}@media(max-width: 1199px){.=
+ssBtnAmazon{width:20px;height:20px}}body #ssTempHolder{position:fixed;z-ind=
+ex:1000000000000;width:100%;height:100%;top:0;pointer-events:none}body #ssT=
+empHolder video{width:auto !important;height:auto !important;max-width:100%=
+ !important;max-height:100% !important;top:0 !important;left:0 !important;t=
+ransform:none !important}body .ssElement{z-index:100000000000 !important}bo=
+dy .ssElement.netflix{background-color:#000}body .ssElement.netflix .player=
+-timedtext-text-container{display:none !important;bottom:10% !important}bod=
+y .ssWrapper{overflow:hidden}body #copiedToClipboard{display:flex;width:100=
+%;height:4rem;justify-content:center;align-items:center;position:fixed;z-in=
+dex:1000000000;top:-4rem;animation-name:notification;animation-duration:1.5=
+s;animation-iteration-count:1}body #copiedToClipboard::after{content:"Scree=
+nshot copied to clipboard!";position:absolute;color:#155724;background-colo=
+r:#d4edda;border-color:#c3e6cb;z-index:1000000000;padding:.75rem 1.25em;mar=
+gin-bottom:1em;border:1px solid transparent;border-radius:.25em;font-size:1=
+2px;height:fit-content;top:0}@keyframes notification{0%{top:-4rem}25%{top:3=
+rem}85%{top:3rem}100%{top:-4rem}}</style><style>.ssBtnDefault{position:abso=
+lute;z-index:100000000;background:none;border:none;outline:none;right:0;cur=
+sor:pointer;width:26px;height:26px;margin:0;padding:0;top:8px;right:8px;opa=
+city:.6;pointer-events:all;transition-duration:.25s}.ssBtnDefault:hover{opa=
+city:1 !important;transition-duration:.25s}.ssBtnDefault .fade{transition-d=
+uration:5s;opacity:0}.ssBtnYouTube{background:none;border:none;margin-right=
+:10px !important;padding-top:1px !important;width:21px !important}.ssBtnVim=
+eo svg{width:22px}.ssBtnNetflix{background:none;border:none;cursor:pointer;=
+width:50px;height:35px !important;margin-top:-15px}.ssBtnNetflix:hover{tran=
+sform:scale(1.2);transition-duration:.25s}.ssBtnHulu{width:27px;margin-top:=
+4px;margin-right:10px;opacity:.7;cursor:pointer}.ssBtnHulu:hover{opacity:1}=
+.ssBtnAmazon{margin-right:1.5vw;outline:none;cursor:pointer;opacity:.8}.ssB=
+tnAmazon:hover{opacity:1}@media(min-width: 1200px){.ssBtnAmazon{width:1.666=
+6666667vw;height:1.6666666667vw}}@media(max-width: 1199px){.ssBtnAmazon{wid=
+th:20px;height:20px}}body #ssTempHolder{position:fixed;z-index:100000000000=
+0;width:100%;height:100%;top:0;pointer-events:none}body #ssTempHolder video=
+{width:auto !important;height:auto !important;max-width:100% !important;max=
+-height:100% !important;top:0 !important;left:0 !important;transform:none !=
+important}body .ssElement{z-index:100000000000 !important}body .ssElement.n=
+etflix{background-color:#000}body .ssElement.netflix .player-timedtext-text=
+-container{display:none !important;bottom:10% !important}body .ssWrapper{ov=
+erflow:hidden}body #copiedToClipboard{display:flex;width:100%;height:4rem;j=
+ustify-content:center;align-items:center;position:fixed;z-index:1000000000;=
+top:-4rem;animation-name:notification;animation-duration:1.5s;animation-ite=
+ration-count:1}body #copiedToClipboard::after{content:"Screenshot copied to=
+ clipboard!";position:absolute;color:#155724;background-color:#d4edda;borde=
+r-color:#c3e6cb;z-index:1000000000;padding:.75rem 1.25em;margin-bottom:1em;=
+border:1px solid transparent;border-radius:.25em;font-size:12px;height:fit-=
+content;top:0}@keyframes notification{0%{top:-4rem}25%{top:3rem}85%{top:3re=
+m}100%{top:-4rem}}</style><style>.ssBtnDefault{position:absolute;z-index:10=
+0000000;background:none;border:none;outline:none;right:0;cursor:pointer;wid=
+th:26px;height:26px;margin:0;padding:0;top:8px;right:8px;opacity:.6;pointer=
+-events:all;transition-duration:.25s}.ssBtnDefault:hover{opacity:1 !importa=
+nt;transition-duration:.25s}.ssBtnDefault .fade{transition-duration:5s;opac=
+ity:0}.ssBtnYouTube{background:none;border:none;margin-right:10px !importan=
+t;padding-top:1px !important;width:21px !important}.ssBtnVimeo svg{width:22=
+px}.ssBtnNetflix{background:none;border:none;cursor:pointer;width:50px;heig=
+ht:35px !important;margin-top:-15px}.ssBtnNetflix:hover{transform:scale(1.2=
+);transition-duration:.25s}.ssBtnHulu{width:27px;margin-top:4px;margin-righ=
+t:10px;opacity:.7;cursor:pointer}.ssBtnHulu:hover{opacity:1}.ssBtnAmazon{ma=
+rgin-right:1.5vw;outline:none;cursor:pointer;opacity:.8}.ssBtnAmazon:hover{=
+opacity:1}@media(min-width: 1200px){.ssBtnAmazon{width:1.6666666667vw;heigh=
+t:1.6666666667vw}}@media(max-width: 1199px){.ssBtnAmazon{width:20px;height:=
+20px}}body #ssTempHolder{position:fixed;z-index:1000000000000;width:100%;he=
+ight:100%;top:0;pointer-events:none}body #ssTempHolder video{width:auto !im=
+portant;height:auto !important;max-width:100% !important;max-height:100% !i=
+mportant;top:0 !important;left:0 !important;transform:none !important}body =
+.ssElement{z-index:100000000000 !important}body .ssElement.netflix{backgrou=
+nd-color:#000}body .ssElement.netflix .player-timedtext-text-container{disp=
+lay:none !important;bottom:10% !important}body .ssWrapper{overflow:hidden}b=
+ody #copiedToClipboard{display:flex;width:100%;height:4rem;justify-content:=
+center;align-items:center;position:fixed;z-index:1000000000;top:-4rem;anima=
+tion-name:notification;animation-duration:1.5s;animation-iteration-count:1}=
+body #copiedToClipboard::after{content:"Screenshot copied to clipboard!";po=
+sition:absolute;color:#155724;background-color:#d4edda;border-color:#c3e6cb=
+;z-index:1000000000;padding:.75rem 1.25em;margin-bottom:1em;border:1px soli=
+d transparent;border-radius:.25em;font-size:12px;height:fit-content;top:0}@=
+keyframes notification{0%{top:-4rem}25%{top:3rem}85%{top:3rem}100%{top:-4re=
+m}}</style><style>.ssBtnDefault{position:absolute;z-index:100000000;backgro=
+und:none;border:none;outline:none;right:0;cursor:pointer;width:26px;height:=
+26px;margin:0;padding:0;top:8px;right:8px;opacity:.6;pointer-events:all;tra=
+nsition-duration:.25s}.ssBtnDefault:hover{opacity:1 !important;transition-d=
+uration:.25s}.ssBtnDefault .fade{transition-duration:5s;opacity:0}.ssBtnYou=
+Tube{background:none;border:none;margin-right:10px !important;padding-top:1=
+px !important;width:21px !important}.ssBtnVimeo svg{width:22px}.ssBtnNetfli=
+x{background:none;border:none;cursor:pointer;width:50px;height:35px !import=
+ant;margin-top:-15px}.ssBtnNetflix:hover{transform:scale(1.2);transition-du=
+ration:.25s}.ssBtnHulu{width:27px;margin-top:4px;margin-right:10px;opacity:=
+.7;cursor:pointer}.ssBtnHulu:hover{opacity:1}.ssBtnAmazon{margin-right:1.5v=
+w;outline:none;cursor:pointer;opacity:.8}.ssBtnAmazon:hover{opacity:1}@medi=
+a(min-width: 1200px){.ssBtnAmazon{width:1.6666666667vw;height:1.6666666667v=
+w}}@media(max-width: 1199px){.ssBtnAmazon{width:20px;height:20px}}body #ssT=
+empHolder{position:fixed;z-index:1000000000000;width:100%;height:100%;top:0=
+;pointer-events:none}body #ssTempHolder video{width:auto !important;height:=
+auto !important;max-width:100% !important;max-height:100% !important;top:0 =
+!important;left:0 !important;transform:none !important}body .ssElement{z-in=
+dex:100000000000 !important}body .ssElement.netflix{background-color:#000}b=
+ody .ssElement.netflix .player-timedtext-text-container{display:none !impor=
+tant;bottom:10% !important}body .ssWrapper{overflow:hidden}body #copiedToCl=
+ipboard{display:flex;width:100%;height:4rem;justify-content:center;align-it=
+ems:center;position:fixed;z-index:1000000000;top:-4rem;animation-name:notif=
+ication;animation-duration:1.5s;animation-iteration-count:1}body #copiedToC=
+lipboard::after{content:"Screenshot copied to clipboard!";position:absolute=
+;color:#155724;background-color:#d4edda;border-color:#c3e6cb;z-index:100000=
+0000;padding:.75rem 1.25em;margin-bottom:1em;border:1px solid transparent;b=
+order-radius:.25em;font-size:12px;height:fit-content;top:0}@keyframes notif=
+ication{0%{top:-4rem}25%{top:3rem}85%{top:3rem}100%{top:-4rem}}</style></he=
+ad>
+<body style=3D"color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-si=
+ze: 16px; background-color: #ffffff;" eo-background=3D"" class=3D"open-sans=
+" bgcolor=3D"#ffffff">
+<!-- Preheader text. Visible in inbox preview, not in email body. -->
+<div style=3D"display: none; max-height: 0px; overflow: hidden;">
+Happy Holidays from the Insync Team!
+</div>
+<!-- Hack to manage presentation of preheader text. -->
+<div style=3D"display: none; max-height: 0px; overflow: hidden;">&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nb=
+sp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nb=
+sp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nb=
+sp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nb=
+sp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nb=
+sp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;</div>
+<table role=3D"presentation" class=3D"document" align=3D"center">
+<tbody>
+<tr>
+<td valign=3D"top">
+<!-- Main -->
+<table role=3D"presentation" class=3D"container" eo-background-container=3D=
+"" width=3D"700" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"=
+center" style=3D"margin: 0px auto;">
+<tbody>
+<tr class=3D"inner-body">
+<td>
+<table role=3D"presentation" width=3D"100%" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" align=3D"center">
+<!-- Header!-->
+<tbody>
+<tr class=3D"header">
+<td class=3D"container" style=3D"background-color: #357dc9;" eo-header=3D""=
+ bgcolor=3D"#357dc9">
+<table role=3D"presentation" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"container" eo-row-container=3D""></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!--Main body-->
+<tr style=3D"background-color: #f6f6f6;" eo-body=3D"" bgcolor=3D"#f6f6f6">
+<td class=3D"container" eo-row-container=3D"">
+<table role=3D"presentation" eo-row=3D"one-column" width=3D"100%" cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"" align=3D"center">
+<tbody>
+<tr>
+<td style=3D"padding: 0px;" eo-block-container=3D""><table border=3D"0" cla=
+ss=3D"container" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%" style=3D"margin-bottom: 5px; margin-top: 5px; background-color: #=
+357dc9;" eo-block=3D"image" role=3D"presentation" bgcolor=3D"#357dc9">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"hero" style=3D"border-collapse: collapse; bor=
+der-spacing: 0; margin: 0;padding: 0;" valign=3D"top">
+<a href=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/L0/https:%2F%2Fwww.insy=
+nchq.com%2Fpricing/1/0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-=
+000000/-w2YNWBDlN__FKnMQtubn3I-ilQ=3D353"><img src=3D"https://gallery.eomai=
+l1.com/c951edd2-4f4c-11e9-a3c9-06b79b628af2%2Fmedia-manager%2F1703232618152=
+-3.png" width=3D"700" style=3D"
+width: 100%;
+max-width: 100%;
+object-fit: cover;
+padding: 0;
+outline: none;
+border: none;
+display: block;
+"></a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table role=3D"presentation" class=3D"container" style=3D"margin-bottom: 0p=
+x; padding-top: 5px; padding-bottom: 5px; background-color: #fffaf1;" eo-ro=
+w=3D"one-column" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" bgcolor=3D"#fffaf1" align=3D"center">
+<tbody>
+<tr>
+<td class=3D"container" style=3D"padding: 0px 15px 15px;" eo-block-containe=
+r=3D"" width=3D"100%">
+<table role=3D"presentation" eo-block=3D"text" style=3D"margin-top: 15px; m=
+argin-bottom: 30px; background-color: #fffaf1;" width=3D"100%" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#fffaf1" align=3D"center">
+<tbody>
+<tr>
+<td class=3D"container" style=3D"padding: 0px 25px;">
+<div class=3D"text-block" style=3D"color: rgb(49, 54, 56); line-height: 150=
+%;"><p dir=3D"ltr" style=3D"line-height: 1;"><span style=3D"line-height: 1;=
+ color: rgb(0, 0, 0); font-family: &quot;Helvetica Neue&quot;, Helvetica, A=
+rial, Verdana, sans-serif;"></span></p><span style=3D"font-family: 'Helveti=
+ca Neue', Helvetica, Arial, Verdana, sans-serif;"><span style=3D"color: rgb=
+(0, 0, 0);">
+</span></span><p dir=3D"ltr" style=3D"line-height: 1.5;"><span style=3D"fon=
+t-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;"><span s=
+tyle=3D"color: rgb(0, 0, 0);"><span style=3D"line-height: 1.5;">Hey there<b=
+r></span></span> <br></span></p><span style=3D"font-family: 'Helvetica Neue=
+', Helvetica, Arial, Verdana, sans-serif;"><strong><em>'Tis the season for =
+a holiday sale! =F0=9F=8E=84</em></strong><br><br><span style=3D"background=
+-color: transparent;">Get</span><strong style=3D"font-family: &quot;Helveti=
+ca Neue&quot;, Helvetica, Arial, Verdana, sans-serif; background-color: tra=
+nsparent;">&nbsp;35</strong><strong style=3D"font-family: &quot;Helvetica N=
+eue&quot;, Helvetica, Arial, Verdana, sans-serif; background-color: transpa=
+rent;">% off</strong><span style=3D"background-color: transparent;"> on you=
+r Insync license until <strong>January 1, 2024</strong></span><strong style=
+=3D"font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, Verdana, san=
+s-serif; background-color: transparent;">!</strong></span><p dir=3D"ltr" st=
+yle=3D"line-height: 1.5;"><span style=3D"font-family: 'Helvetica Neue', Hel=
+vetica, Arial, Verdana, sans-serif;"><br><strong><u>How to get the discount=
+:</u></strong><br></span></p><ol style=3D"margin-top:0;margin-bottom:0;padd=
+ing-inline-start:48px;"><li dir=3D"ltr" style=3D"list-style-type:decimal;fo=
+nt-size:11pt;font-family:Arial;color:#000000;background-color:transparent;f=
+ont-weight:400;font-style:normal;font-variant:normal;text-decoration:none;v=
+ertical-align:baseline;white-space:pre;"><span style=3D"font-family: 'Helve=
+tica Neue', Helvetica, Arial, Verdana, sans-serif;">Head to our <span style=
+=3D"color: rgb(44, 130, 201);"><a href=3D"https://v3xlt8qm.r.us-east-1.awst=
+rack.me/L0/https:%2F%2Fwww.insynchq.com%2Fpricing/2/0100018ca14939da-a02a1c=
+96-cebc-4bd4-8ca6-a9865e46ab92-000000/4liw__7owayhxWXny_0w2X4ShQ0=3D353" re=
+l=3D"noopener noreferrer" style=3D"text-decoration: none; color: inherit;" =
+target=3D"_blank">pricing page</a></span> and click <strong>Buy Insync</str=
+ong>, or click <strong>=E2=80=9CBUY NOW=E2=80=9D</strong> below.&nbsp;</spa=
+n></li><li dir=3D"ltr" style=3D"list-style-type:decimal;font-size:11pt;font=
+-family:Arial;color:#000000;background-color:transparent;font-weight:400;fo=
+nt-style:normal;font-variant:normal;text-decoration:none;vertical-align:bas=
+eline;white-space:pre;"><span style=3D"font-family: 'Helvetica Neue', Helve=
+tica, Arial, Verdana, sans-serif;">Enter the code&nbsp;<span style=3D"color=
+: rgb(255, 255, 255); background-color: rgb(53, 125, 201);"><strong>HOLIDAY=
+2023</strong></span>&nbsp;where it says <strong>Click to apply a discount c=
+ode</strong>.</span></li><li dir=3D"ltr" style=3D"list-style-type:decimal;f=
+ont-size:11pt;font-family:Arial;color:#000000;background-color:transparent;=
+font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;=
+vertical-align:baseline;white-space:pre;"><span style=3D"font-family: 'Helv=
+etica Neue', Helvetica, Arial, Verdana, sans-serif;">Enter your payment det=
+ails. Make sure to type in the correct email you want the license for.&nbsp=
+;</span></li><li dir=3D"ltr" style=3D"list-style-type:decimal;font-size:11p=
+t;font-family:Arial;color:#000000;background-color:transparent;font-weight:=
+400;font-style:normal;font-variant:normal;text-decoration:none;vertical-ali=
+gn:baseline;white-space:pre;"><span style=3D"font-family: 'Helvetica Neue',=
+ Helvetica, Arial, Verdana, sans-serif;">Proceed to checkout.</span></li></=
+ol><span style=3D"font-family: 'Helvetica Neue', Helvetica, Arial, Verdana,=
+ sans-serif;"><br>You may follow this post-purchase <span style=3D"color: r=
+gb(44, 130, 201);"><a href=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/L0/h=
+ttps:%2F%2Fhelp.insynchq.com%2Fen%2Farticles%2F6652921-pricing-what-to-do-a=
+fter-purchase/1/0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-00000=
+0/2tRsgiPVYll4ynyY_CzBuZ6nAhk=3D353" rel=3D"noopener noreferrer" style=3D"t=
+ext-decoration: none; color: inherit;" target=3D"_blank">guide</a>&nbsp;</s=
+pan>for more information.</span><br><span style=3D"font-family: 'Helvetica =
+Neue', Helvetica, Arial, Verdana, sans-serif;"></span><br><span style=3D"fo=
+nt-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;"> Email=
+&nbsp;<span style=3D"color: rgb(44, 130, 201);">support@insynchq.com</span>=
+&nbsp;for any questions or concerns.</span><span style=3D"color: rgb(0, 0, =
+0);"><span style=3D"font-family: 'Helvetica Neue', Helvetica, Arial, Verdan=
+a, sans-serif;">
+</span> </span><span style=3D"font-family: Arial, &quot;Helvetica Neue&quot=
+;, Helvetica, sans-serif; font-size: 18px;"><span style=3D"color: rgb(0, 0,=
+ 0);"> </span><br></span></div>
+</td>
+</tr>
+</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"container" eo-block=3D"button" eo-block-version=3D"3" role=3D"presenta=
+tion" bgcolor=3D"">
+<tbody><tr>
+<td valign=3D"top" align=3D"center" style=3D"padding-bottom: 10px">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" st=
+yle=3D"border-radius: 3px; background-color: rgb(53, 125, 201); width: 49%;=
+ text-size-adjust: 100%; border-collapse: separate !important;" role=3D"pre=
+sentation" class=3D"eo-button" width=3D"328" bgcolor=3D"rgb(53, 125, 201)">
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"middle" style=3D"mso-line-height-rule: exact=
+ly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<a href=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/L0/https:%2F%2Fwww.insy=
+nchq.com%2Fpricing/3/0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-=
+000000/bLqRAbFHlxpU_9q4qqL1KHW98Bo=3D353" target=3D"_blank" style=3D"font-w=
+eight: bold; font-size: 18px; padding: 18px; letter-spacing: -0.5px; line-h=
+eight: 100%; text-align: center; text-decoration: none; color: rgb(255, 255=
+, 255); text-size-adjust: 100%; display: block; font-family: &quot;Helvetic=
+a Neue&quot;, Helvetica, Arial, Verdana, sans-serif;" title=3D"BUY NOW">BUY=
+ NOW</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody></table><table role=3D"presentation" eo-block=3D"text" style=3D"mar=
+gin-top: 12px; margin-bottom: 30px; background-color: #fffaf1;" width=3D"10=
+0%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#fffaf1" al=
+ign=3D"center">
+<tbody>
+<tr>
+<td class=3D"container" style=3D"padding: 0px 25px;">
+<div class=3D"text-block" style=3D"color: rgb(49, 54, 56); line-height: 150=
+%;"><div style=3D"text-align: left;"><span style=3D"font-family: 'Helvetica=
+ Neue', Helvetica, Arial, Verdana, sans-serif;">Happy holidays! =F0=9F=AB=
+=B6</span></div><div style=3D"text-align: left;"><span style=3D"font-family=
+: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;"><span style=3D"=
+color: rgb(0, 0, 0);"><span style=3D"font-size: 16px;"><br></span></span></=
+span><div style=3D"text-align: left;"><span style=3D"color: rgb(0, 0, 0); f=
+ont-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, Verdana, sans-ser=
+if; font-size: 16px;">- Mia from Insync</span></div></div></div>
+</td>
+</tr>
+</tbody>
+</table>
+<table style=3D"table-layout: fixed; width: 100%;" eo-block=3D"divider" rol=
+e=3D"presentation" aria=3D"hidden" width=3D"100%" bgcolor=3D"">
+<tbody>
+<tr>
+<td style=3D"min-width:100%;padding-top:15px; padding-bottom:15px;">
+<table style=3D"border-top: 1px solid rgb(186, 183, 183); border-collapse: =
+collapse; width: 100%;" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" al=
+ign=3D"center">
+<tbody>
+<tr>
+<td>
+<span></span>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table><table role=3D"presentation" eo-block=3D"text" width=3D"100%" cells=
+pacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"" align=3D"center"> =
+<tbody> <tr> <td class=3D"container" style=3D"padding-top: 15px; padding-bo=
+ttom: 20px; padding-left: 25px;"> <div class=3D"text-block" style=3D"line-h=
+eight: 150%;"><em><span style=3D"font-size: 14px; font-family: &quot;Helvet=
+ica Neue&quot;, Helvetica, Arial, Verdana, sans-serif;">Promo is for new In=
+sync licenses only.</span></em><span style=3D"font-size: 14px;"><span style=
+=3D"font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;">=
+<br></span></span><div style=3D"text-align: left;"><em><span style=3D"font-=
+size: 14px; color: rgb(0, 0, 0); font-family: &quot;Helvetica Neue&quot;, H=
+elvetica, Arial, Verdana, sans-serif;">Promo runs until January 1, 2024&nbs=
+p;<span style=3D"box-sizing: border-box; text-size-adjust: 100%;">at 6:00 A=
+M PDT</span></span></em></div></div> </td> </tr> </tbody> </table></td>
+</tr>
+</tbody>
+</table>
+<table border=3D"0" class=3D"container" align=3D"center" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"margin-bottom: 0px; padding-top: 5px; padding-bo=
+ttom: 5px; background-color: #49a275;" eo-row=3D"one-column" bgcolor=3D"#49=
+a275" width=3D"100%" role=3D"presentation">
+<tbody>
+<tr>
+<td width=3D"100%" class=3D"container" style=3D"padding: 0 15px 15px;" eo-b=
+lock-container=3D""><table role=3D"presentation" cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" align=3D"center" width=3D"100%" eo-block=3D"title" b=
+gcolor=3D"">
+<tbody><tr>
+<td width=3D"100%" style=3D"text-decoration: none; padding-top: 15px; paddi=
+ng-bottom: 1px;" class=3D"container text-block"><h1 style=3D"margin-top: 0p=
+x; margin-bottom: 0px; font-size: 26px; line-height: 34px; text-align: cent=
+er;"><span style=3D"color: rgb(255, 255, 255); font-family: &quot;Helvetica=
+ Neue&quot;, Helvetica, Arial, Verdana, sans-serif;"><span style=3D"font-si=
+ze: 18px;">Help us complete Insync Encryption!</span><br></span></h1></td>
+</tr>
+</tbody></table><table role=3D"presentation" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" align=3D"center" width=3D"100%" eo-block=3D"text" bgcol=
+or=3D"">
+<tbody>
+<tr>
+<td class=3D"container" style=3D"padding-top: 0px; padding-bottom: 20px;">
+<div class=3D"text-block"><div style=3D"text-align: center;"><span style=3D=
+"font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, Verdana, sans-s=
+erif; color: rgb(255, 255, 255);">We are raising $50,000 in GoFundMe to rel=
+ease Insync Encryption<br></span></div></div>
+</td>
+</tr>
+</tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"10=
+0%" class=3D"container" eo-block=3D"button" eo-block-version=3D"3" role=3D"=
+presentation" bgcolor=3D"">
+<tbody><tr>
+<td valign=3D"top" align=3D"center" style=3D"padding-bottom: 15px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" st=
+yle=3D"border-radius: 4px; background-color: rgb(255, 255, 255); width: 34%=
+; text-size-adjust: 100%; border-collapse: separate !important; border: 0px=
+ none rgb(0, 0, 0);" role=3D"presentation" class=3D"eo-button" width=3D"227=
+" bgcolor=3D"rgb(255, 255, 255)">
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"middle" style=3D"mso-line-height-rule: exact=
+ly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<a href=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/L0/https:%2F%2Fwww.gofu=
+ndme.com%2Ff%2Fhelp-us-complete-insync-encryption/1/0100018ca14939da-a02a1c=
+96-cebc-4bd4-8ca6-a9865e46ab92-000000/MkoOlPTSKvfSVvrY211qxg-D110=3D353" ta=
+rget=3D"_blank" style=3D"font-weight: bold; font-size: 14px; padding: 10px;=
+ letter-spacing: -0.5px; line-height: 100%; text-align: center; text-decora=
+tion: none; color: rgb(73, 162, 117); text-size-adjust: 100%; display: bloc=
+k; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;" =
+title=3D"Read about our story">Read about our story</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- Footer -->
+<tr style=3D"background: none;">
+<td class=3D"container" eo-row-container=3D"" eo-footer=3D"" bgcolor=3D"">
+<table role=3D"presentation" eo-row=3D"one-column" width=3D"100%" cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center">
+<tbody>
+<tr>
+<td eo-block-container=3D"">
+<table role=3D"presentation" aria-hidden=3D"true" cellspacing=3D"0" cellpad=
+ding=3D"0" border=3D"0" align=3D"center" width=3D"100%" eo-block=3D"social-=
+follow" bgcolor=3D"#FFFCFA" style=3D"background-color: #FFFCFA;">
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"padding-top: 10px; padding-bot=
+tom: 10px;">
+<table class=3D"social-links-container" align=3D"center" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;" role=3D=
+"presentation">
+<tbody>
+<tr class=3D"social-links-row">
+<td class=3D"social-link-container" align=3D"center" valign=3D"middle" widt=
+h=3D"48" style=3D"padding-top: 5px; padding-right: 5px; padding-bottom: 5px=
+; padding-left: 5px;">
+<a href=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/L0/https:%2F%2Fweb.face=
+book.com%2Finsynchq/1/0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92=
+-000000/_KK-iyH5893qtQus_OENHvFDGGk=3D353" target=3D"_blank">
+<img src=3D"https://gallery.eomail1.com/tentacles/icons/v1/social-block/rou=
+nded-facebook.png" style=3D"display: block; border: 0; height: auto; outlin=
+e: none; text-decoration: none; -ms-interpolation-mode: bicubic;" height=3D=
+"48" width=3D"48" alt=3D"Facebook social link">
+</a>
+</td><td class=3D"social-link-container" align=3D"center" valign=3D"middle"=
+ width=3D"48" style=3D"padding-top: 5px; padding-right: 5px; padding-bottom=
+: 5px; padding-left: 5px;">
+<a href=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/L0/https:%2F%2Ftwitter.=
+com%2Finsynchq/1/0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-0000=
+00/H_sRtHjdnQZQmgAkOjMGp0HwPBM=3D353" target=3D"_blank">
+<img src=3D"https://gallery.eomail1.com/tentacles/icons/v1/social-block/rou=
+nded-twitter.png" style=3D"display: block; border: 0; height: auto; outline=
+: none; text-decoration: none; -ms-interpolation-mode: bicubic;" height=3D"=
+48" width=3D"48" alt=3D"Twitter social link">
+</a>
+</td><td class=3D"social-link-container" align=3D"center" valign=3D"middle"=
+ width=3D"48" style=3D"padding-top: 5px; padding-right: 5px; padding-bottom=
+: 5px; padding-left: 5px;">
+<a href=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/L0/https:%2F%2Fwww.insy=
+nchq.com%2F/1/0100018ca14939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000/=
+od9XSYZ6bawWr5-lLrC7UXaBIH0=3D353" target=3D"_blank">
+<img src=3D"https://gallery.eomail1.com/tentacles/icons/v1/social-block/rou=
+nded-website.png" style=3D"display: block; border: 0; height: auto; outline=
+: none; text-decoration: none; -ms-interpolation-mode: bicubic;" height=3D"=
+48" width=3D"48" alt=3D"Website social link">
+</a>
+</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table><table role=3D"presentation" eo-block=3D"text" width=3D"100%" cells=
+pacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#FFFCFA" align=3D"ce=
+nter" style=3D"background-color: #FFFCFA;">
+<tbody>
+<tr>
+<td class=3D"container" style=3D"padding-top: 20px;padding-bottom: 10px;">
+<div class=3D"text-block" style=3D"font-size: 11px; text-align: center; col=
+or: #313638"><span style=3D"font-family: &quot;Helvetica Neue&quot;, Helvet=
+ica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);">You received this em=
+ail because you subscribed to our list. You can <a href=3D"https://v3xlt8qm=
+.r.us-east-1.awstrack.me/L0/https:%2F%2Faraneoides.eomail1.com%2Funsubscrib=
+e%3Fep=3D1%26l=3D206c814c-a0a1-11ee-b93e-afd158e20c2e%26lc=3D6cba95f2-a0a1-=
+11ee-bd3c-4d0f923e0fb5%26p=3D58a1e696-9ff8-11ee-9758-b73de4cf6d93%26pt=3Dca=
+mpaign%26pv=3D4%26spa=3D1703512818%26t=3D1703512979%26s=3Db4e8b662c68feef52=
+f484eeeb14e61de20234f7010b7a3a2b9bc541a175a790b/1/0100018ca14939da-a02a1c96=
+-cebc-4bd4-8ca6-a9865e46ab92-000000/pQE3fjonPQyMmQXTrGa3uHYA-c8=3D353" styl=
+e=3D"color: inherit;">unsubscribe</a> at any time.</span><span style=3D"col=
+or: rgb(0, 0, 0);"><span style=3D"font-family: 'Helvetica Neue', Helvetica,=
+ Arial, Verdana, sans-serif;">
+<br><br>
+</span></span><span style=3D"font-family: &quot;Helvetica Neue&quot;, Helve=
+tica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"></span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<img alt=3D"" src=3D"https://v3xlt8qm.r.us-east-1.awstrack.me/I0/0100018ca1=
+4939da-a02a1c96-cebc-4bd4-8ca6-a9865e46ab92-000000/nTHbecSUlUHA5blWojIaCi43=
+nMw=3D353" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--LLHmPx8i--

@@ -1,0 +1,1175 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:107:b0:2f3:f124:3d70 with SMTP id a7csp2122193ljb;
+        Mon, 18 Nov 2024 05:35:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG7dp4EWWziMynVi0eBPdoKfYjwwKxyjeeEcJhmomUz/sAP18DCcfFPEq/IlPOFu3i7kuyl
+X-Received: by 2002:a05:6214:2624:b0:6d4:e0a:230e with SMTP id 6a1803df08f44-6d40e0a2f5amr129763246d6.16.1731936938052;
+        Mon, 18 Nov 2024 05:35:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731936938; cv=none;
+        d=google.com; s=arc-20240605;
+        b=SaZNoQYvtDSGC1ECqPkiznMyElKnEuJ8EcfE7PMWaQodMNVahMOTu5KFFCt2u5LUFF
+         cb8YN/aCORR/DNqte2DENiy9EJmJsZSInr4v3G3GUkBFF0D4Kjwm9v9UB7B4kOH4kdAi
+         frsAArfrXgGksSUijQ/w3M/0znOuSCxSPP7Rcxrvqyh9UO62c8NdnpKlllc8xvhbuxwy
+         k0tDx8etaPQmq/SxD42VsNdHXRdZ0imPASlSmaxLy3lLmFAwrr1rBCgjz4xeMEanOfNj
+         4vemRBiqXG3KMrASkoCOoZdueq2dFgi09RdlethSEOrtE/wuClLsiMDTP+8SkRo3bPFY
+         Gbwg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:to:date:mime-version:message-id:subject
+         :from:dkim-signature:dkim-signature;
+        bh=KiZGA70ZmI66M1Eg0ov6XlcNoKKA/onL6DZ8KVsXFVQ=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=hRhaWHTUroK1Ekea1+IwoE0MxUG9F/1w7JUEmGvg+FMWYf3/VS5ldt8BVI8S8YOy4B
+         kmB6tfH5F+GVvLs6Pcx6dYO+j0Dmrrl37d1whaxfuckwj+TiigqM1laMEdJM7IxuLLUM
+         vTMPl0SirCAVHwFmJ93Ff3lKTLK4oTgF/2S2Iwt4b05TBelmWlPzro34mfoz9ZQ8RcRs
+         F+uWLLl0zR2Bg7qlw0sc8Da6IDNayFfI42A3wKIR4EDP+7AjJc/En5hOLnk70ZbTttDk
+         Zek0BT0OtC9FiG88jyoC0stMzLonvtrL36F1zXfTr01ckv9DRptTlIgaPrAyyjRxtD7P
+         O+Tw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cookieyes.com header.s=s1 header.b=pTKqTMgX;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=nAKPeDLd;
+       spf=pass (google.com: domain of bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com designates 198.37.158.238 as permitted sender) smtp.mailfrom="bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=cookieyes.com
+Return-Path: <bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com>
+Received: from o1.ptr6221.cookieyes.com (o1.ptr6221.cookieyes.com. [198.37.158.238])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d429705166si3491716d6.521.2024.11.18.05.35.36
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Nov 2024 05:35:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com designates 198.37.158.238 as permitted sender) client-ip=198.37.158.238;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cookieyes.com header.s=s1 header.b=pTKqTMgX;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=nAKPeDLd;
+       spf=pass (google.com: domain of bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com designates 198.37.158.238 as permitted sender) smtp.mailfrom="bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=cookieyes.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cookieyes.com;
+	h=from:subject:mime-version:x-feedback-id:to:content-type:
+	content-transfer-encoding:cc:content-type:from:subject:to;
+	s=s1; bh=KiZGA70ZmI66M1Eg0ov6XlcNoKKA/onL6DZ8KVsXFVQ=;
+	b=pTKqTMgXYNM8fkqY43mDbjpCt2JZSlNh5ZSMlLKl7RLFS/7u9NC/X6bdPECiszh34BSu
+	2FfU95ZU0iEcsRVZw4/gCUVDA7yrYY9XITIVpGDDZWbrwG8dnyubkpFSAcX8L4tkd1ihL1
+	+XUu6HUKbKYoO7cIBovOBbq1p4TzA2aPSn30fJrFsxGGXEMxhD+ijAEFxwSRXjzlogBFJg
+	n+LIwawl31u6ATx22t7B/okpq+VduhvnLhSfDZvXpeC/PjhuZEDQi0ZEnUgOzB0/Ycz0d1
+	fS0ylAnOcUrkwjLmjNk1HJNzoJKnD/qrUpXby8YtP1ptjZJwK7S2m/8xP/SzvNeA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=from:subject:mime-version:x-feedback-id:to:content-type:
+	content-transfer-encoding:cc:content-type:from:subject:to;
+	s=smtpapi; bh=KiZGA70ZmI66M1Eg0ov6XlcNoKKA/onL6DZ8KVsXFVQ=;
+	b=nAKPeDLdkQ5HnXm6CIqP46rysZiJ0q21jhwWk+3gkA3eUS97MoKf3xVgrtrlqsAg2862
+	hK3P1pTzEM6Kv5jgEMXRhW7TS8Db7nushOaBuYuSvHfPe4nNzrfiLVwXeI457swtZoJQAz
+	lIdoPrn58jCqGglkpvdfick+fnpUbTB/8=
+Received: by recvd-7f9db5675c-4kfz6 with SMTP id recvd-7f9db5675c-4kfz6-1-673B429C-C
+	2024-11-18 13:35:24.130565971 +0000 UTC m=+317629.010259303
+Received: from [127.0.0.1] (unknown)
+	by geopod-ismtpd-4 (SG) with ESMTP
+	id INdiY89TSIq65Eh_w1YwmA
+	for <ely.ubuntu0@gmail.com>;
+	Mon, 18 Nov 2024 13:35:24.062 +0000 (UTC)
+From: CookieYes <support@cookieyes.com>
+Subject: Important: Changes to your Free plan features - act now!
+Message-ID: <fc5f7fa2ae790006baff161bfd24b637@cookieyes.com>
+MIME-Version: 1.0
+Date: Mon, 18 Nov 2024 13:35:24 +0000 (UTC)
+X-Feedback-ID: 19544371:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EgbJE0RiambVeSQjG18ue7ZryLwHNlQqILlMx5h3LiFbtfH5ov8r+dFm2n?=
+ =?us-ascii?Q?nFEddsTWKMnG+CeBbgL0wB6pugomBDy6J7faD3q?=
+ =?us-ascii?Q?D3HKLe9wqI6zPKCIqmIY8a=2F1VOHzusSk8tB61mR?=
+ =?us-ascii?Q?0zbowl=2F8GXLcjLGZMIYCLLXXyV2xWDQEz1OlVgx?=
+ =?us-ascii?Q?WceYrHShw13whHB8599svsnO0Yc=2FJc3T7Oi2E+g?=
+ =?us-ascii?Q?ZGf1Vv7u20vPwG3f=2F6n4HPrGzkSjNlZDg1B=2FHq4?=
+ =?us-ascii?Q?4m5J?=
+To: ely.ubuntu0@gmail.com
+X-Entity-ID: u001.ISjbUaNP301bswHtXTERaw==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+    <meta name=3D"format-detection" content=3D"telephone=3Dno">
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1.0">
+    <title>Important: Changes to your Free plan features - act now!</title>
+    <style type=3D"text/css" emogrify=3D"no">
+        #outlook a {
+            padding: 0;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+
+        table td {
+            border-collapse: collapse;
+            mso-line-height-rule: exactly;
+        }
+
+        .editable.image {
+            font-size: 0 !important;
+            line-height: 0 !important;
+        }
+
+        .nl2go_preheader {
+            display: none !important;
+            mso-hide: all !important;
+            mso-line-height-rule: exactly;
+            visibility: hidden !important;
+            line-height: 0px !important;
+            font-size: 0px !important;
+        }
+
+        body {
+            width: 100% !important;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        a img {
+            border: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        th {
+            font-weight: normal;
+            text-align: left;
+        }
+
+        *[class=3D"gmail-fix"] {
+            display: none !important;
+        }
+    </style>
+    <style type=3D"text/css" emogrify=3D"no">
+        @media (max-width: 600px) {
+            .gmx-killpill {
+                content: ' \03D1';
+            }
+        }
+    </style>
+    <style type=3D"text/css" emogrify=3D"no">
+        @media (max-width: 600px) {
+            .gmx-killpill {
+                content: ' \03D1';
+            }
+
+            .r0-o {
+                border-style: solid !important;
+                margin: 0 auto 0 auto !important;
+                width: 320px !important
+            }
+
+            .r1-i {
+                background-color: #eff2f7 !important
+            }
+
+            .r2-c {
+                box-sizing: border-box !important;
+                text-align: center !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r3-o {
+                background-size: auto !important;
+                border-style: solid !important;
+                margin: 0 auto 0 auto !important;
+                margin-top: 0px !important;
+                width: 100% !important
+            }
+
+            .r4-i {
+                background-color: #ffffff !important;
+                padding-bottom: 0px !important;
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+                padding-top: 0px !important
+            }
+
+            .r5-c {
+                box-sizing: border-box !important;
+                display: block !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r6-o {
+                border-style: solid !important;
+                width: 100% !important
+            }
+
+            .r7-i {
+                padding-left: 0px !important;
+                padding-right: 0px !important
+            }
+
+            .r8-c {
+                box-sizing: border-box !important;
+                padding-bottom: 0px !important;
+                padding-right: 0px !important;
+                padding-top: 6px !important;
+                text-align: center !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r9-c {
+                box-sizing: border-box !important;
+                text-align: left !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r10-o {
+                border-bottom-color: #ffffff !important;
+                border-bottom-width: 0px !important;
+                border-left-width: 0px !important;
+                border-right-color: #ffffff !important;
+                border-right-width: 10px !important;
+                border-style: solid !important;
+                border-top-color: #ffffff !important;
+                border-top-width: 8px !important;
+                margin: 0 auto 0 0 !important;
+                margin-bottom: 0px !important;
+                margin-top: 0px !important;
+                width: 100% !important
+            }
+
+            .r11-i {
+                padding-bottom: 8px !important;
+                padding-top: 0px !important;
+                text-align: left !important
+            }
+
+            .r12-o {
+                border-bottom-color: #ffffff !important;
+                border-bottom-width: 4px !important;
+                border-left-width: 0px !important;
+                border-right-color: #ffffff !important;
+                border-right-width: 10px !important;
+                border-style: solid !important;
+                border-top-color: #ffffff !important;
+                border-top-width: 18px !important;
+                margin: 0 auto 0 0 !important;
+                margin-bottom: 0px !important;
+                margin-top: 0px !important;
+                width: 100% !important
+            }
+
+            .r13-i {
+                padding-bottom: 0px !important;
+                padding-top: 0px !important;
+                text-align: left !important
+            }
+
+            .r14-c {
+                box-sizing: border-box !important;
+                padding-bottom: 0px !important;
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+                padding-top: 0px !important;
+                width: 100% !important
+            }
+
+            .r15-c {
+                box-sizing: border-box !important;
+                padding-bottom: 15px !important;
+                padding-top: 0px !important;
+                text-align: left !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r16-o {
+                border-bottom-color: #ffffff !important;
+                border-bottom-width: 0px !important;
+                border-left-width: 0px !important;
+                border-right-color: #ffffff !important;
+                border-right-width: 8px !important;
+                border-style: solid !important;
+                border-top-color: #ffffff !important;
+                border-top-width: 19px !important;
+                margin: 0 auto 0 0 !important;
+                width: 100% !important
+            }
+
+            .r17-i {
+                padding-bottom: 8px !important;
+                padding-left: 0px !important;
+                padding-top: 0px !important;
+                text-align: left !important
+            }
+
+            .r18-c {
+                box-sizing: border-box !important;
+                padding: 0 !important;
+                text-align: left !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r19-o {
+                border-style: solid !important;
+                margin: 0 auto 0 0 !important;
+                margin-bottom: 8px !important;
+                margin-top: 15px !important;
+                width: 100% !important
+            }
+
+            .r20-i {
+                padding: 0 !important;
+                text-align: center !important
+            }
+
+            .r21-r {
+                background-color: #1863dc !important;
+                border-color: #1863dc !important;
+                border-radius: 4px !important;
+                border-width: 1px !important;
+                box-sizing: border-box;
+                height: initial !important;
+                padding: 0 !important;
+                padding-bottom: 15px !important;
+                padding-left: 1px !important;
+                padding-right: 1px !important;
+                padding-top: 15px !important;
+                text-align: center !important;
+                width: 100% !important
+            }
+
+            .r22-o {
+                border-bottom-color: #ffffff !important;
+                border-bottom-width: 0px !important;
+                border-left-width: 0px !important;
+                border-right-color: #ffffff !important;
+                border-right-width: 10px !important;
+                border-style: solid !important;
+                border-top-color: #ffffff !important;
+                border-top-width: 27px !important;
+                margin: 0 auto 0 0 !important;
+                width: 100% !important
+            }
+
+            .r23-o {
+                border-bottom-color: #ffffff !important;
+                border-bottom-width: 7px !important;
+                border-left-width: 0px !important;
+                border-right-color: #ffffff !important;
+                border-right-width: 10px !important;
+                border-style: solid !important;
+                border-top-color: #ffffff !important;
+                border-top-width: 19px !important;
+                margin: 0 auto 0 0 !important;
+                width: 100% !important
+            }
+
+            .r24-o {
+                border-style: solid !important;
+                margin: 0 auto 0 auto !important;
+                width: 100% !important
+            }
+
+            .r25-c {
+                box-sizing: border-box !important;
+                text-align: center !important;
+                valign: top !important;
+                width: 320px !important
+            }
+
+            .r26-i {
+                padding-bottom: 20px !important;
+                padding-left: 10px !important;
+                padding-right: 15px !important;
+                padding-top: 2px !important
+            }
+
+            .r27-c {
+                box-sizing: border-box !important;
+                padding-bottom: 3px !important;
+                padding-top: 15px !important;
+                width: 100% !important
+            }
+
+            .r28-c {
+                box-sizing: border-box !important;
+                padding-bottom: 15px !important;
+                padding-top: 15px !important;
+                text-align: center !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r29-c {
+                box-sizing: border-box !important;
+                color: #3b3f44 !important;
+                padding-bottom: 0px !important;
+                padding-top: 8px !important;
+                text-align: center !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r30-c {
+                box-sizing: border-box !important;
+                color: #3b3f44 !important;
+                padding-bottom: 0px !important;
+                padding-top: 0px !important;
+                text-align: center !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            .r31-c {
+                box-sizing: border-box !important;
+                color: #3b3f44 !important;
+                padding-bottom: 15px !important;
+                padding-top: 15px !important;
+                text-align: center !important;
+                valign: top !important;
+                width: 100% !important
+            }
+
+            body {
+                -webkit-text-size-adjust: none
+            }
+
+            .nl2go-responsive-hide {
+                display: none
+            }
+
+            .nl2go-body-table {
+                min-width: unset !important
+            }
+
+            .mobshow {
+                height: auto !important;
+                overflow: visible !important;
+                max-height: unset !important;
+                visibility: visible !important
+            }
+
+            .resp-table {
+                display: inline-table !important
+            }
+
+            .magic-resp {
+                display: table-cell !important
+            }
+        }
+    </style><!--[if !mso]><!-->
+    <style type=3D"text/css" emogrify=3D"no">
+        @import url("https://fonts.googleapis.com/css2?family=3DMontserrat"=
+);
+    </style><!--<![endif]-->
+    <style type=3D"text/css">
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        ol,
+        ul,
+        li {
+            margin: 0;
+        }
+
+        .nl2go-default-textstyle {
+            color: #000000;
+            font-family: arial, helvetica, sans-serif;
+            font-size: 11px;
+            line-height: 1.5;
+            word-break: break-word
+        }
+
+        .default-button {
+            color: #ffffff;
+            font-family: arial, helvetica, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 1.15;
+            text-decoration: none;
+            word-break: break-word
+        }
+
+        a,
+        a:link {
+            color: #1863dc;
+            text-decoration: underline
+        }
+
+        .default-heading1 {
+            color: #1F2D3D;
+            font-family: arial, helvetica, sans-serif;
+            font-size: 36px;
+            word-break: break-word
+        }
+
+        .default-heading2 {
+            color: #1F2D3D;
+            font-family: arial, helvetica, sans-serif;
+            font-size: 32px;
+            word-break: break-word
+        }
+
+        .default-heading3 {
+            color: #1F2D3D;
+            font-family: arial, helvetica, sans-serif;
+            font-size: 24px;
+            word-break: break-word
+        }
+
+        .default-heading4 {
+            color: #1F2D3D;
+            font-family: arial, helvetica, sans-serif;
+            font-size: 18px;
+            word-break: break-word
+        }
+
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: inherit !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        .no-show-for-you {
+            border: none;
+            display: none;
+            float: none;
+            font-size: 0;
+            height: 0;
+            line-height: 0;
+            max-height: 0;
+            mso-hide: all;
+            overflow: hidden;
+            table-layout: fixed;
+            visibility: hidden;
+            width: 0;
+        }
+    </style><!--[if mso]><xml> <o:OfficeDocumentSettings> <o:AllowPNG/> <o:=
+PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </xml><![end=
+if]-->
+    <style type=3D"text/css">
+        a:link {
+            color: #1863dc;
+            text-decoration: underline;
+        }
+
+        .table-responsive {
+            max-width: calc(100% - 20px);
+        }
+
+        @media (max-width: 600px) {
+            .table-responsive {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body bgcolor=3D"#eff2f7" text=3D"#000000" link=3D"#1863dc" yahoo=3D"fix" s=
+tyle=3D"background-color: #eff2f7; padding-bottom: 0px; padding-top: 0px;">
+    <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"present=
+ation" class=3D"nl2go-body-table" width=3D"100%" style=3D"background-color:=
+ #eff2f7; width: 100%;">
+        <tr>
+            <td>
+                <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" rol=
+e=3D"presentation" width=3D"600" align=3D"center" class=3D"r0-o" style=3D"t=
+able-layout: fixed; width: 600px;">
+                    <tr>
+                        <td valign=3D"top" class=3D"r1-i" style=3D"backgrou=
+nd-color: #eff2f7;">
+                            <table cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0" role=3D"presentation" width=3D"100%" align=3D"center" class=3D"r3-=
+o" style=3D"table-layout: fixed; width: 100%;">
+                                <tr>
+                                    <td class=3D"r4-i" style=3D"background-=
+color: #ffffff;">
+                                        <table width=3D"100%" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation">
+                                            <tr>
+                                                <th width=3D"100%" valign=
+=3D"top" class=3D"r5-c" style=3D"font-weight: normal;">
+                                                    <tcellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=3D"r=
+6-o" style=3D"table-layout: fixed; width: 100%;">
+                                            <tr>
+                                                <td valign=3D"top" class=3D=
+"r7-i" style=3D"padding-left: 30px; padding-right: 30px;">
+                                                    <table width=3D"100%" c=
+ellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation">
+                                                        <tr>
+                                                            <td class=3D"r8=
+-c" align=3D"center" style=3D"font-size: 0px; line-height: 0px; padding-top=
+: 6px; valign: top;"> <img src=3D"https://img.mailinblue.com/3443606/images=
+/content_library/original/669a48bae4c966909743625d.png" width=3D"540" borde=
+r=3D"0" style=3D"display: block; width: 100%;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class=3D"r9=
+-c" align=3D"left">
+                                                                <table cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D=
+"100%" class=3D"r10-o" style=3D"table-layout: fixed; width: 100%;">
+                                                                    <tr cla=
+ss=3D"nl2go-responsive-hide">
+                                                                        <td=
+ height=3D"8" style=3D"font-size: 8px; line-height: 8px; background-color: =
+#ffffff;">=C2=AD</td>
+                                                                        <td=
+ height=3D"8" width=3D"10" style=3D"font-size: 8px; line-height: 8px; backg=
+round-color: #ffffff;">=C2=AD </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td=
+ align=3D"left" valign=3D"top" class=3D"r11-i nl2go-default-textstyle" styl=
+e=3D"color: #000; font-family: arial,helvetica,sans-serif; font-size: 11px;=
+ word-break: break-word; line-height: 1.5; padding-bottom: 8px; text-align:=
+ left;">
+                                                                           =
+ <div>
+                                                                           =
+     <p style=3D"margin: 0;"><span style=3D"color: #000000; font-family: Ar=
+ial, helvetica, sans-serif; font-size: 15px;">Hi there,</span></p>
+                                                                           =
+     <p style=3D"margin: 0;">=C2=A0</p>
+                                                                           =
+     <p style=3D"margin: 0;">=C2=A0</p>
+                                                                           =
+     <p style=3D"margin: 0;"><span style=3D"font-size: 15px;">Starting <str=
+ong>December 01, 2024</strong>, we=E2=80=99re updating our pricing and plan=
+s, which will also affect your Free plan.=C2=A0</span></p>
+                                                                           =
+     <p style=3D"margin: 0;">=C2=A0</p>
+                                                                           =
+     <p style=3D"margin: 0;"><span style=3D"font-size: 15px;">After five ye=
+ars without a price change, we=E2=80=99re revising our plans to meet evolvi=
+ng data privacy standards and continue improving our product. We want to as=
+sure you that most of your current features, including essential ones like =
+Google Consent Mode, will remain unchanged.</span></p>
+                                                                           =
+ </div>
+                                                                        </t=
+d>
+                                                                        <td=
+ class=3D"nl2go-responsive-hide" width=3D"10" style=3D"font-size: 0px; line=
+-height: 1px; background-color: #ffffff;">=C2=AD </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class=3D"r9=
+-c" align=3D"left">
+                                                                <table cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D=
+"100%" class=3D"r12-o" style=3D"table-layout: fixed; width: 100%;">
+                                                                    <tr cla=
+ss=3D"nl2go-responsive-hide">
+                                                                        <td=
+ height=3D"18" style=3D"font-size: 18px; line-height: 18px; background-colo=
+r: #ffffff;">=C2=AD</td>
+                                                                        <td=
+ height=3D"18" width=3D"10" style=3D"font-size: 18px; line-height: 18px; ba=
+ckground-color: #ffffff;">=C2=AD </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td=
+ align=3D"left" valign=3D"top" class=3D"r13-i nl2go-default-textstyle" styl=
+e=3D"color: #000; font-family: arial,helvetica,sans-serif; font-size: 11px;=
+ word-break: break-word; line-height: 1.5; text-align: left;">
+                                                                           =
+ <div>
+                                                                           =
+     <p style=3D"margin: 0;"><span style=3D"font-family: Arial, helvetica, =
+sans-serif; font-size: 17px;"><strong>Changes to your Free plan</strong></s=
+pan></p>
+                                                                           =
+ </div>
+                                                                        </t=
+d>
+                                                                        <td=
+ class=3D"nl2go-responsive-hide" width=3D"10" style=3D"font-size: 0px; line=
+-height: 1px; background-color: #ffffff;">=C2=AD </td>
+                                                                    </tr>
+                                                                    <tr cla=
+ss=3D"nl2go-responsive-hide">
+                                                                        <td=
+ height=3D"4" style=3D"font-size: 4px; line-height: 4px; background-color: =
+#ffffff;">=C2=AD</td>
+                                                                        <td=
+ height=3D"4" width=3D"10" style=3D"font-size: 4px; line-height: 4px; backg=
+round-color: #ffffff;">=C2=AD </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class=3D"r1=
+4-c nl2go-default-textstyle" style=3D"color: #000; font-family: arial,helve=
+tica,sans-serif; font-size: 11px; line-height: 1.5; word-break: break-word;=
+">
+                                                                <div style=
+=3D"overflow-x: auto;" class=3D"table-responsive">
+                                                                    <table =
+class=3D"cy-pricing-table" style=3D"border-collapse: collapse; background-c=
+olor: #fff; min-width: 250px; margin: 20px 0px; border: 2px solid #dcebff; =
+width: 100%;">
+                                                                        <th=
+ead>
+                                                                           =
+ <tr>
+                                                                           =
+     <th width=3D"" style=3D"font-weight: 600; vertical-align: top; border-=
+bottom: 1px solid #eee; font-family: Arial,helvetica,sans-serif; font-size:=
+ 15px; padding: 10px; word-break: keep-all;">Features</th>
+                                                                           =
+     <th width=3D"35%" style=3D"font-weight: 600; vertical-align: top; bord=
+er-bottom: 1px solid #eee; font-family: Arial,helvetica,sans-serif; font-si=
+ze: 15px; padding: 10px; word-break: keep-all;">Current plan</th>
+                                                                           =
+     <th width=3D"35%" style=3D"font-weight: 600; vertical-align: top; bord=
+er-bottom: 1px solid #eee; font-family: Arial,helvetica,sans-serif; font-si=
+ze: 15px; padding: 10px; word-break: keep-all;">
+                                                                           =
+         <p style=3D"margin: 0; word-break: keep-all; font-family: Arial,he=
+lvetica,sans-serif; font-size: 15px;"><strong>Upcoming changes</strong></p>
+                                                                           =
+     </th>
+                                                                           =
+ </tr>
+                                                                        </t=
+head>
+                                                                        <tb=
+ody>
+                                                                           =
+ <tr>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">Pagev=
+iews</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">25,00=
+0 pageviews/month</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">15,00=
+0 pageviews/month</td>
+                                                                           =
+ </tr>
+                                                                           =
+ <tr></tr>
+                                                                           =
+ <tr>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">Cooki=
+e scans</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">Unlim=
+ited</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">5 sca=
+ns/month</td>
+                                                                           =
+ </tr>
+                                                                           =
+ <tr>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">Langu=
+ages</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">170+ =
+languages</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">1 def=
+ault language</td>
+                                                                           =
+ </tr>
+                                                                           =
+ <tr>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">Subdo=
+main consent sharing</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">=E2=
+=9C=85</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">=E2=
+=9D=8C</td>
+                                                                           =
+ </tr>
+                                                                           =
+ <tr>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">Multi=
+-user access</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">=E2=
+=9C=85</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">=E2=
+=9D=8C</td>
+                                                                           =
+ </tr>
+                                                                           =
+ <tr>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">Chat =
+support</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">=E2=
+=9C=85</td>
+                                                                           =
+     <td style=3D"border-bottom: 1px solid #eee; font-family: Arial,helveti=
+ca,sans-serif; font-size: 15px; padding: 10px; word-break: keep-all;">=E2=
+=9D=8C</td>
+                                                                           =
+ </tr>
+                                                                        </t=
+body>
+                                                                    </table=
+>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class=3D"r15-c nl2go-de=
+fault-textstyle r7-i" align=3D"left" style=3D"color: #000; font-family: ari=
+al,helvetica,sans-serif; font-size: 11px; line-height: 1.5; word-break: bre=
+ak-word; padding-bottom: 15px; text-align: left; valign: top;padding-left: =
+30px; padding-right: 30px;">
+                                                    <div>
+                                                        <p style=3D"margin:=
+ 0;"><span style=3D"font-size: 15px;"><strong>Important note:</strong> Your=
+ existing settings for Languages, Subdomain consent sharing and Multi-user =
+access will remain unaffected. However, you will no longer be able to make =
+any changes or update the settings. Learn more on </span><a href=3D"https:/=
+/www.cookieyes.com/new-pricing-2024/" target=3D"_blank" style=3D"color: #18=
+63dc; text-decoration: underline;"><span style=3D"font-size: 15px;"><u>What=
+=E2=80=99s new in our plans?</u></span></a></p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class=3D"r9-c r7-i" ali=
+gn=3D"left" style=3D"padding-left: 30px; padding-right: 30px;">
+                                                    <table cellspacing=3D"0=
+" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=
+=3D"r16-o" style=3D"table-layout: fixed; width: 100%;">
+                                                        <tr class=3D"nl2go-=
+responsive-hide">
+                                                            <td height=3D"1=
+9" style=3D"font-size: 19px; line-height: 19px; background-color: #ffffff;"=
+>=C2=AD</td>
+                                                            <td height=3D"1=
+9" width=3D"8" style=3D"font-size: 19px; line-height: 19px; background-colo=
+r: #ffffff;">=C2=AD </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align=3D"le=
+ft" valign=3D"top" class=3D"r17-i nl2go-default-textstyle" style=3D"color: =
+#000; font-family: arial,helvetica,sans-serif; font-size: 11px; word-break:=
+ break-word; line-height: 1.5; padding-bottom: 8px; text-align: left;">
+                                                                <div>
+                                                                    <p styl=
+e=3D"margin: 0;"><span style=3D"font-size: 17px;"><strong>How to retain my =
+current features?</strong></span></p>
+                                                                    <p styl=
+e=3D"margin: 0;">=C2=A0</p>
+                                                                    <p styl=
+e=3D"margin: 0;"><span style=3D"font-size: 15px;">Upgrade to the Basic plan=
+ to maintain full access to features that will no longer be available in yo=
+ur Free plan.</span></p>
+                                                                </div>
+                                                            </td>
+                                                            <td class=3D"nl=
+2go-responsive-hide" width=3D"8" style=3D"font-size: 0px; line-height: 1px;=
+ background-color: #ffffff;">=C2=AD </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class=3D"r18-c r7-i" al=
+ign=3D"left" style=3D"align: left; padding-bottom: 8px; padding-top: 15px; =
+valign: top;padding-left: 30px; padding-right: 30px;">
+                                                    <table cellspacing=3D"0=
+" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"226" class=
+=3D"r19-o" style=3D"background-color: #1863dc; border-collapse: separate; b=
+order-color: #1863dc; border-radius: 4px; border-style: solid; border-width=
+: 1px; table-layout: fixed; width: 226px;">
+                                                        <tr>
+                                                            <td height=3D"1=
+9" align=3D"center" valign=3D"top" class=3D"r20-i nl2go-default-textstyle" =
+style=3D"word-break: break-word; background-color: #1863dc; border-radius: =
+4px; color: #ffffff; font-family: arial,helvetica,sans-serif; font-size: 16=
+px; font-style: normal; line-height: 1.15; padding-bottom: 15px; padding-le=
+ft: 1px; padding-right: 1px; padding-top: 15px; text-align: center;"> <a hr=
+ef=3D"https://app.cookieyes.com/lock-multi-year-pricing?upgradeSource=3DEMP=
+CFe" class=3D"r21-r default-button" target=3D"_blank" data-btn=3D"1" style=
+=3D"font-style: normal; font-weight: bold; line-height: 1.15; text-decorati=
+on: none; word-break: break-word; word-wrap: break-word; display: block; -w=
+ebkit-text-size-adjust: none; color: #ffffff; font-family: arial,helvetica,=
+sans-serif; font-size: 16px;"> <span><span style=3D"font-size: 17px;">Upgra=
+de to Basic</span></span></a> </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class=3D"r9-c r7-i" sty=
+le=3D"padding-left: 30px; padding-right: 30px;"" align=3D" left" style=3D"p=
+adding-left: 30px; padding-right: 30px;">
+                                                    <table cellspacing=3D"0=
+" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=
+=3D"r22-o" style=3D"table-layout: fixed; width: 100%;">
+                                                        <tr class=3D"nl2go-=
+responsive-hide">
+                                                            <td height=3D"2=
+7" style=3D"font-size: 27px; line-height: 27px; background-color: #ffffff;"=
+>=C2=AD</td>
+                                                            <td height=3D"2=
+7" width=3D"10" style=3D"font-size: 27px; line-height: 27px; background-col=
+or: #ffffff;">=C2=AD </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align=3D"le=
+ft" valign=3D"top" class=3D"r11-i nl2go-default-textstyle" style=3D"color: =
+#000; font-family: arial,helvetica,sans-serif; font-size: 11px; word-break:=
+ break-word; line-height: 1.5; padding-bottom: 8px; text-align: left;">
+                                                                <div>
+                                                                    <p styl=
+e=3D"margin: 0;"><span style=3D"font-family: Arial, helvetica, sans-serif; =
+font-size: 15px;"><strong>Questions? </strong>We=E2=80=99ve put together an=
+ </span><a href=3D"https://www.cookieyes.com/new-pricing-2024/#faq" style=
+=3D"color: #1863dc; text-decoration: underline;"><span style=3D"font-family=
+: Arial, helvetica, sans-serif; font-size: 15px;"><u>FAQ to help you</u></s=
+pan></a><span style=3D"font-family: Arial, helvetica, sans-serif; font-size=
+: 15px;"> navigate the updates. If you have further questions, feel free to=
+ reply to this email. We=E2=80=99re here to help!</span><br>=C2=A0</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class=3D"nl=
+2go-responsive-hide" width=3D"10" style=3D"font-size: 0px; line-height: 1px=
+; background-color: #ffffff;">=C2=AD </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class=3D"r9-c r7-i" sty=
+le=3D"padding-left: 30px; padding-right: 30px;" align=3D"left">
+                                                    <table cellspacing=3D"0=
+" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=
+=3D"r23-o" style=3D"table-layout: fixed; width: 100%;">
+                                                        <tr class=3D"nl2go-=
+responsive-hide">
+                                                            <td height=3D"1=
+9" style=3D"font-size: 19px; line-height: 19px; background-color: #ffffff;"=
+>=C2=AD</td>
+                                                            <td height=3D"1=
+9" width=3D"10" style=3D"font-size: 19px; line-height: 19px; background-col=
+or: #ffffff;">=C2=AD </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align=3D"le=
+ft" valign=3D"top" class=3D"r11-i nl2go-default-textstyle" style=3D"color: =
+#000; font-family: arial,helvetica,sans-serif; font-size: 11px; word-break:=
+ break-word; line-height: 1.5; padding-bottom: 8px; text-align: left;">
+                                                                <div>
+                                                                    <p styl=
+e=3D"margin: 0;"><span style=3D"font-family: Arial, helvetica, sans-serif; =
+font-size: 15px;">Best regards,</span></p>
+                                                                    <p styl=
+e=3D"margin: 0;"><span style=3D"font-family: Arial, helvetica, sans-serif; =
+font-size: 15px;">Team CookieYes</span><br><span style=3D"font-family: Aria=
+l, helvetica, sans-serif; font-size: 15px;">=C2=A0</span></p>
+                                                                </div>
+                                                            </td>
+                                                            <td class=3D"nl=
+2go-responsive-hide" width=3D"10" style=3D"font-size: 0px; line-height: 1px=
+; background-color: #ffffff;">=C2=AD </td>
+                                                        </tr>
+                                                        <tr class=3D"nl2go-=
+responsive-hide">
+                                                            <td height=3D"7=
+" style=3D"font-size: 7px; line-height: 7px; background-color: #ffffff;">=
+=C2=AD</td>
+                                                            <td height=3D"7=
+" width=3D"10" style=3D"font-size: 7px; line-height: 7px; background-color:=
+ #ffffff;">=C2=AD </td>
+                                                        </tr>
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        </th>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+    <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"present=
+ation" width=3D"100%" align=3D"center" class=3D"r24-o" style=3D"table-layou=
+t: fixed; width: 100%;">
+        <tr>
+            <td valign=3D"top" class=3D"r1-i" style=3D"background-color: #e=
+ff2f7;">
+                <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" rol=
+e=3D"presentation" width=3D"600" align=3D"center" class=3D"r0-o" style=3D"t=
+able-layout: fixed; width: 600px;">
+                    <tr>
+                        <td class=3D"r26-i" style=3D"padding-bottom: 20px; =
+padding-top: 2px;">
+                            <table width=3D"100%" cellspacing=3D"0" cellpad=
+ding=3D"0" border=3D"0" role=3D"presentation">
+                                <tr>
+                                    <th width=3D"100%" valign=3D"top" class=
+=3D"r5-c" style=3D"font-weight: normal;">
+                                        <table cellspacing=3D"0" cellpaddin=
+g=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=3D"r6-o" st=
+yle=3D"table-layout: fixed; width: 100%;">
+                                            <tr>
+                                                <td valign=3D"top" class=3D=
+"r7-i" style=3D"padding-left: 15px; padding-right: 15px;">
+                                                    <table width=3D"100%" c=
+ellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation">
+                                                        <tr>
+                                                            <td class=3D"r2=
+4-c nl2go-default-textstyle" style=3D"color: #000; font-family: verdana,gen=
+eva,sans-serif; font-size: 14px; line-height: 1.6; word-break: break-word; =
+padding-bottom: 10px; padding-top: 15px;">
+                                                                <p style=3D=
+"margin: 0; text-align: center; margin-bottom: 0; padding-bottom: 0;"><a hr=
+ef=3D"https://www.cookieyes.com/?" style=3D"text-decoration: none; font-siz=
+e: 14px; font-family: verdana; font-weight: bold; text-align: center; color=
+: #000;">CookieYes</a></p>
+                                                                <p style=3D=
+"margin: 0; text-align: center; font-size: 10px;">3 Warren Yard, Warren Par=
+k, Wolverton Mill, Milton Keynes, MK12 5NW, United Kingdom</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class=3D"r2=
+8-c" align=3D"center" style=3D"font-size: 0px; line-height: 0px; padding-bo=
+ttom: 15px; padding-top: 15px; valign: top;"> <img src=3D"https://img.maili=
+nblue.com/3443606/images/content_library/original/667403403df01b9748b5f02a.=
+png" width=3D"570" border=3D"0" style=3D"display: block; width: 100%;"></td=
+>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class=3D"r2=
+9-c nl2go-default-textstyle" align=3D"center" style=3D"font-family: arial,h=
+elvetica,sans-serif; word-break: break-word; color: #3b3f44; font-size: 18p=
+x; line-height: 1.5; padding-top: 8px; text-align: center; valign: top;">
+                                                                <div>
+                                                                    <p styl=
+e=3D"margin: 0; font-size: 14px;"><span style=3D"font-family: Arial, helvet=
+ica, sans-serif; font-size: 12px;">This email was sent to=C2=A0ely.ubuntu0@=
+gmail.com</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class=3D"r3=
+0-c nl2go-default-textstyle" align=3D"center" style=3D"font-family: arial,h=
+elvetica,sans-serif; word-break: break-word; color: #3b3f44; font-size: 18p=
+x; line-height: 1; text-align: center; valign: top;">
+                                                                <div>
+                                                                    <p styl=
+e=3D"margin: 0; font-style: normal; font-weight: 400; text-decoration-style=
+: initial; text-decoration-thickness: initial;"><span style=3D"font-family:=
+ Arial, helvetica, sans-serif; font-size: 10px;">This is a transactional em=
+ail to keep you informed about critical updates from CookieYes.=C2=A0</span=
+></p>
+                                                                    <p styl=
+e=3D"margin: 0; font-style: normal; font-weight: 400; text-decoration-style=
+: initial; text-decoration-thickness: initial;"><span style=3D"font-family:=
+ Arial, helvetica, sans-serif; font-size: 10px;">You will not be able to un=
+subscribe from these emails.</span><span style=3D"font-family: Arial, helve=
+tica, sans-serif;">=C2=A0</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </th>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+<img src=3D"http://url1411.cookieyes.com/wf/open?upn=3Du001.RoKsPc3-2F5FGKt=
+zps28WN1OniVg1-2FOQWCTkn1xIhWsGr824x930mOjD2T8HUKC3YEy0qkp4wZNZprVdtwhpjdRe=
+0vatoBp08sJwiLjnv2cOqO4a80-2FBJH2Z-2FymQ-2F-2BBjLpW2VxNimtzGRYgtR5Urcvm4Clc=
+3LxtQiDUFDqifm692SBFOve3D49xydp5tSxjzzyzPjL8s4R4BsEgqvgD1YcaQ-3D-3D" alt=3D=
+"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !important;wid=
+th:1px !important;border-width:0 !important;margin-top:0 !important;margin-=
+bottom:0 !important;margin-right:0 !important;margin-left:0 !important;padd=
+ing-top:0 !important;padding-bottom:0 !important;padding-right:0 !important=
+;padding-left:0 !important;"/></body>
+
+</html>

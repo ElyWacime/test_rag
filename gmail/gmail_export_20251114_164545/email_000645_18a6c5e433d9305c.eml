@@ -1,0 +1,418 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a11:5909:b0:4e9:a527:629 with SMTP id sh9csp2817333pxb;
+        Wed, 6 Sep 2023 14:20:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEBwyR1mSNPa1F3tspq7lAPGjEWEXNaes34MzuxOOqcnpQR5EvvTIO+yVedbK4efV9Sgqiz
+X-Received: by 2002:a17:90a:ea08:b0:26d:4642:1bd7 with SMTP id w8-20020a17090aea0800b0026d46421bd7mr13778116pjy.34.1694035231624;
+        Wed, 06 Sep 2023 14:20:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694035231; cv=none;
+        d=google.com; s=arc-20160816;
+        b=k0hFdXMj9ebhb64Vzak6kZbl3JDJ13wRDTsleiYUqS6GbEyKNcKcDhtirHp3A3JFfW
+         Yo0uEjDCou9n9kBVxGmUdNRq36MH2sLJAYH1ZW0jXN5X/iiVqteknqd8nvV708tbXRUa
+         mB/K/ghkkAuHT14dowARd05mfdou06G5s2UNBbOEdr9hPrv9JAvMBsodPlVbnWmBeMTJ
+         85t2+X+TIrJuWDK/YYoWumoI14wmPlguKms06d8C3h0lSQsDfEF+xG3KxBZ+A8AowGKl
+         iOdro/ZNsQ0NoNrrAJSorMOMh9AE+diFpfV7E57LwTvCUaEEo6XmLgwGQYmVpo0P4faA
+         fKoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe-post:precedence:list-id:list-unsubscribe
+         :message-id:mime-version:reply-to:to:date:subject:from
+         :dkim-signature;
+        bh=/zOEkEbH9/sAs7rkQIMEaAumm0g+xktCvPPCvZ6Ytwg=;
+        fh=/S7jIxfmjXkj7IUEEa3JnMkvupQCA3FMe9xo6kNUiKM=;
+        b=L93RWc1AA/1KpR9CGXPzTOepaAcgFfVkr6DbHCkSFyMIMyGPRQ7Y5uLzljoRV+Iye6
+         OgRzfGQ1ke0hvebUmktL5un3EafUvGGOK5GFBn8WTQbejFlyJbZSqPt64VXYnZCkA1ZA
+         2cScOJ7qPBSiKybEyOWJv1G1p2oDZF7PLUecuc8iHw7DwBTqkVbQgm3mxwqguI8TI5g5
+         eUtlrs/Jn1gci1dNTg4SLDMeWZJNORDusYwtokZCv5x3OBMbkuxx4djExVSwAvc/S/VF
+         H4YlDi/Z0rVSRaSDWwEhCL+CQwxvOY8c8do3vrePPa8jzsKuJNmsszxeXUYV4LZPglMS
+         CHRQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b=VgJh0n67;
+       spf=pass (google.com: domain of camp@mail.adobe.com designates 192.243.226.43 as permitted sender) smtp.mailfrom=camp@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <camp@mail.adobe.com>
+Received: from r43.mail.adobe.com (r43.mail.adobe.com. [192.243.226.43])
+        by mx.google.com with ESMTPS id in8-20020a17090b438800b002532c9b252asi311206pjb.73.2023.09.06.14.20.31
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 06 Sep 2023 14:20:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of camp@mail.adobe.com designates 192.243.226.43 as permitted sender) client-ip=192.243.226.43;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b=VgJh0n67;
+       spf=pass (google.com: domain of camp@mail.adobe.com designates 192.243.226.43 as permitted sender) smtp.mailfrom=camp@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <camp@mail.adobe.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mail.adobe.com;
+	s=neolane; t=1694034158;
+	bh=/zOEkEbH9/sAs7rkQIMEaAumm0g+xktCvPPCvZ6Ytwg=;
+	h=From:Subject:Date:To:MIME-Version:Message-ID:List-Unsubscribe:
+	 Content-Type;
+	b=VgJh0n67y4EXk+LiA0lkmkmH9jOeNDAOzNF0AMEjlGwZaXcevF0RGtbUqkQa5Ljwa
+	 XrAhn8QaWLgbe2E5Q2KZbb2u5qZda78xbn526D/RtlJbmiBKejiIUSEcw7aDoWmYsI
+	 eTKJzb+WIj02D/Dr5TngoL1Vbkn0SGwDstL7ixMA=
+X-MSFBL: mEBhxpWOHUS771k5pbO1IoLjI5bOBWnyy2o9G851hhw=|eyJiIjoiYXdzX2Fkb2J
+	laW50X3Byb2Q0X21pZC5yZWFjdGl2YXRpb25fbW9tZW50dW0xN19tdGEwMDFfMTk
+	yLjI0My4yMjYuNDMiLCJyIjoiZWx5LnVidW50dTBAZ21haWwuY29tIiwicmNwdF9
+	tZXRhIjp7ICJpbiI6ICJhZG9iZWluX21pZF9wcm9kNiIsICJyIjogImVseS51YnV
+	udHUwQGdtYWlsLmNvbSIsICJtIjogIi0yMDAyMTk1MDQ0IiwgImQiOiAiNjgzNjA
+	xNjAiLCAiaSI6ICIiIH0sImciOiJtaWQucmVhY3RpdmF0aW9uXzFkMGU2MzExLTZ
+	mOTgtNGM1Yi04YjBlLThkZjgwZDViNzczOSJ9
+Received: from [10.139.37.129] ([10.139.37.129:32908] helo=r43.mail.adobe.com)
+	by momentum17.or1.cpt.adobe.net (envelope-from <camp@mail.adobe.com>)
+	(ecelerity 4.2.38.999 r(:)) with ESMTP
+	id 28/4E-11794-EE8E8F46; Wed, 06 Sep 2023 14:02:38 -0700
+From: "Adobe Creative Cloud" <mail@mail.adobe.com>
+Subject: =?utf-8?B?RGlzY29udGludWF0aW9uIG9mIENyZWF0aXZlIENsb3VkIFN5bg==?=
+ =?utf-8?B?Y2VkIGZpbGVz?=
+Date: Wed, 06 Sep 2023 14:02:33 -0700
+To: <ely.ubuntu0@gmail.com>
+Reply-To: "Adobe Creative Cloud" <mail@mail.adobe.com>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 6.7.0
+Message-ID: <NM615BD41D2041317E0adobein_mid_prod6@mail.adobe.com>
+List-Unsubscribe: List-Unsubscribe: <mailto: camp@mail.adobe.com?subject=unsubscribe%3CNM615BD41D2041317E0adobein_mid_prod6@mail.adobe.com%3E>
+X-CSA-Complaints: whitelist-complaints@eco.de
+List-Id: <256664832.neolane.client.com>
+Precedence: bulk
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative;
+	charset="windows-1252";
+	boundary="----=_NextPart_389_B75B9303.B75B9303"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_389_B75B9303.B75B9303
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+
+------------------------------------------------------------------------
+
+View Web Version:
+https://t-info.mail.adobe.com/r/?id=t88a8ed9c,fbc9229d,beed03bb&e=cDE9JTQwQ0pwYXdJMEF4JTJCcWM2aUFCWGlOYlM4RHRKdm5XcWN3cjU4WHBlakNTMHhVJTNE&s=YCF5IyFXbq08484AdfvcxjGPk6GUZIJoVCYaIERcoBo
+
+------------------------------------------------------------------------
+
+Unfortunately, the email customer program cannot display HTML or the setting is turned off. To view this email, click the link above or copy and paste it into your browser.
+
+------------------------------------------------------------------------
+
+Registered office: Adobe Systems Software Ireland Limited, 4 6 Riverwalk, Citywest Business Park, Dublin 24, Ireland. Registered number: 344992 
+
+
+
+------=_NextPart_389_B75B9303.B75B9303
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+<body>
+ 
+
+  
+
+
+<html xmlns=3D"https://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+<head>
+<link rel=3D"icon" href=3D"https://www.adobe.com/favicon.ico" type=3D"image=
+/x-icon">
+<link rel=3D"shortcut icon" href=3D"https://www.adobe.com/favicon.ico" type=
+=3D"image/x-icon">
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1.0=
+">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+<meta name=3D"format-detection" content=3D"date=3Dno">
+<meta name=3D"format-detection" content=3D"address=3Dno">
+<meta name=3D"format-detection" content=3D"email=3Dno">
+<title>Discontinuation of Creative&nbsp;Cloud Synced files</title>
+
+<!--[if mso]>
+<style type=3D"text/css">
+body, table, td {
+font-family:Helvetica Neue, Helvetica, Verdana, Arial, sans-serif !importan=
+t;
+}
+=2Ebutton {
+background:transparent !important;
+color:#ffffff !important;
+}
+</style>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+
+<style type=3D"text/css">
+@import url("https://use.typekit.net/onr8tbr.css");
+@media (prefers-color-scheme: dark)
+=2EReadMsgBody { width:100%;}
+=2EExternalClass {width:100%;}
+table {border-collapse:collapse; margin:0 auto;}
+a, a:visited {color:#1473E6; text-decoration:none;}
+=2Elegal a {text-decoration:underline;}
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {color:inherit !important; text-decoration:none !=
+important; font-size:inherit !important; font-family:inherit !important; fo=
+nt-weight:inherit !important; line-height:inherit !important;}
+
+=2Emobile {border-spacing:0;display:none!important;height:0;max-height:0;ms=
+o-hide:all;overflow:hidden;visibility:hidden;width:0;}
+  
+  @media only screen and (max-width:480px) {
+    u ~ div {
+      min-width:100vw;
+    }
+    div > u ~ div {
+          min-width: 100%;
+    }
+    .web {
+       display:none !important;
+       }
+     
+     .mobile {
+       display:block !important;
+       width:auto !important;
+       overflow:visible !important;
+       height:auto !important;
+       max-height:inherit !important;
+       font-size:18px !important;
+       line-height:26px !important;
+       visibility:visible !important;
+       }
+     
+     .email-width {
+       width:84% !important;
+       }
+     
+     .full-width {
+       width:100% !important;
+       }
+     
+     .mobile-image {
+       height:auto !important;
+       width:100% !important;
+       }
+    
+    .social {
+      float:left !important;
+      padding-top:66px !important;
+      text-align:left !important;
+    }
+  }
+</style>
+</head>
+
+<body bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E4E4; margin:0; padd=
+ing:0;-webkit-font-smoothing:antialiased;width:100% !important;-webkit-text=
+-size-adjust:none;" topmargin=3D"0"><div style=3D"font-size:1px; color:#E4E=
+4E4; display:none; overflow:hidden; visibility:hidden;">Adobe is discontinu=
+ing the Creative Cloud Synced files feature starting 1 February 2024. &nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
+
+<table width=3D"100%" bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E4E4=
+;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+  <tr>
+    <td>
+      <table class=3D"full-width" align=3D"center" width=3D"600" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width=
+:600px;">
+    <tr>
+           <td bgcolor=3D"#ffffff" style=3D"border-top:4px solid #EB1000; b=
+ackground-color:#ffffff; padding-bottom:60px;">
+           
+             <!-- pod1 -->
+            <table class=3D"email-width" align=3D"center" width=3D"500" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"width:500px;">
+       <tr>
+              <td style=3D"color:#EB1000; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:=
+18px; padding-top:50px;"><img alt=3D"Adobe" src=3D"https://landing.adobe.co=
+m/dam/global/images/adobe-logo.420x110.png" width=3D"108" height=3D"auto" b=
+order=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#EB1000; font-family:a=
+dobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-siz=
+e:12px; line-height:18px; display:block; vertical-align:top;"/></td>
+             </tr>
+             <tr>
+              <td style=3D"color:#2C2C2C; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:=
+26px; padding-top:66px;">Dear Creative&nbsp;Cloud User,<br/><br/>
+        We want to let you know about an upcoming change to&nbsp;your perso=
+nal Creative&nbsp;Cloud account. Adobe is modernising the Creative&nbsp;Clo=
+ud storage experience and&nbsp;will&nbsp;begin discontinuing Creative&nbsp;=
+Cloud Synced files on&nbsp;1&nbsp;February 2024.<br/><br/>
+        <strong>How this may impact you:</strong></td>
+             </tr>
+       <tr>
+              <td style=3D"color:#2C2C2C; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:=
+26px; padding-top:16px;">
+         <table class=3D"full-width" align=3D"left" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+          <tr> 
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:26px;=
+ line-height:26px;  padding-top:4px;">&bull;&nbsp;</td>
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px;=
+ line-height:26px;  padding-top:4px;">Files saved to Creative&nbsp;Cloud Fi=
+les folder on your computer will&nbsp;no&nbsp;longer automatically sync wit=
+h&nbsp;assets.adobe.com.</td>
+          </tr>
+          <tr>
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:26px;=
+ line-height:26px;  padding-top:4px;">&bull;&nbsp;</td>
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px;=
+ line-height:26px;  padding-top:4px;">Files that are uploaded directly to a=
+ssets.adobe.com or the Creative&nbsp;Cloud Mobile&nbsp;App will not be auto=
+matically copied to&nbsp;your&nbsp;computer.  </td>
+          </tr>
+          
+          
+         </table>
+        </td>
+             </tr>
+             <tr>
+              <td style=3D"color:#2C2C2C; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:=
+26px; padding-top:16px;"><strong>Recommended actions:</strong></td>
+             </tr>
+       <tr>
+              <td style=3D"color:#2C2C2C; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:=
+26px; padding-top:20px;">
+         <table class=3D"full-width" align=3D"left" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+          <tr>
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:26px;=
+ line-height:26px;  padding-top:4px;">&bull;&nbsp;</td>
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px;=
+ line-height:26px;  padding-top:4px;">If you do not save assets to the Crea=
+tive&nbsp;Cloud Synced files, no&nbsp;action is&nbsp;needed.</td>
+          </tr>
+          <tr>
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:26px;=
+ line-height:26px;  padding-top:4px;">&bull;&nbsp;</td>
+            <td valign=3D"top" style=3D"color:#2C2C2C; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px;=
+ line-height:26px;  padding-top:4px;">Ensure your assets are properly backe=
+d up locally or to third-party cloud storage.</td>
+          </tr>
+         </table>
+        </td>
+             </tr>
+       <tr>
+              <td style=3D"color:#2C2C2C; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:=
+26px; padding-top:20px;">It is important to emphasise that there will be no=
+ change to Creative&nbsp;Cloud Documents functionality. You can still save =
+files as&nbsp;Creative&nbsp;Cloud Documents via applications such as Adobe&=
+nbsp;Photoshop and Adobe&nbsp;Illustrator; these files will remain&nbsp;in&=
+nbsp;sync across devices.  <br/><br/>
+        Regards,<br/>
+        Adobe Creative&nbsp;Cloud Team</td>
+             </tr>
+            </table>
+            <!-- END pod1 -->
+         
+           <!-- END email content -->
+           </td>
+        </tr>
+    <tr>
+    <td bgcolor=3D"#F5F5F5" style=3D"background-color:#F5F5F5;">
+      
+      <!-- logo, links & legal-->
+      <table class=3D"email-width" align=3D"center" width=3D"500" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"widt=
+h:500px;">
+       <tr>
+      <td style=3D"color:#EB1000; font-family:adobe-clean, Helvetica Neue, =
+Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:18px; pa=
+dding-top:40px;"><img alt=3D"Adobe" src=3D"https://landing.adobe.com/dam/gl=
+obal/images/adobe-logo.classic.160x222.png" width=3D"30" height=3D"auto" bo=
+rder=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#EB1000; font-family:ad=
+obe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size=
+:12px; line-height:18px; display:block; vertical-align:top;"/></td>
+       </tr>
+      <tr>
+        <td class=3D"legal" style=3D"color:#959595; font-family:adobe-clean=
+, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:16px; li=
+ne-height:32px; padding-top:60px;"><a href=3D"https://t-info.mail.adobe.com=
+/r/=3Fid=3Dh88a8ed9c,fbc9229d,beed039a" target=3D"_blank" style=3D"color:#9=
+59595; text-decoration:underline;">Manage Account</a><br/>
+        <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh88a8ed9c,fbc922=
+9d,beed039b" target=3D"_blank" style=3D"color:#959595; text-decoration:unde=
+rline;">Customer Support</a><br/>
+        <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh88a8ed9c,fbc922=
+9d,beed039c" target=3D"_blank" style=3D"color:#959595; text-decoration:unde=
+rline;">Forums</a></td>
+      </tr>
+       <tr>
+        <td class=3D"legal" style=3D"color:#959595; font-family:adobe-clean=
+, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:11px; li=
+ne-height:18px; padding-top:50px; padding-bottom:100px;">Adobe, the Adobe l=
+ogo, Creative Cloud, the Creative Cloud logo and Document Cloud are either =
+registered trademarks or trademarks of Adobe in the United States and/or ot=
+her countries.<br/><br/>
+        This is not a comprehensive list of Adobe trademarks. For a full li=
+st, refer to the <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh88a8ed=
+9c,fbc9229d,beed039d" alias=3D"FOOTER - Trademark Guidelines" target=3D"_bl=
+ank" style=3D"color:#959595;">Adobe Trademark Guidelines</a>. All other tra=
+demarks are the property of their respective owners.<br/><br/>
+         Registered office: Adobe Systems Software Ireland Limited, 4&#8209=
+;6&nbsp;Riverwalk, Citywest Business Park, Dublin&nbsp;24, Ireland. Registe=
+red number: 344992
+      <br/><br/><a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh88a8ed9=
+c,fbc9229d,beed039e&e=3DcDE9JTQwQ0pwYXdJMEF4JTJCcWM2aUFCWGlOYlM4RHRKdm5XcWN=
+3cjU4WHBlakNTMHhVJTNE&s=3DgaKDhqF0ZfOus7OcKtNLJXddXLapdw0csmFlh1BdKNo" alia=
+s=3D"Read Online" target=3D"_blank" style=3D"color:#959595;">Read online</a=
+></td>
+      </tr>
+      </table>
+      <!-- END logo, links & legal-->
+      
+    </td>
+    </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+
+
+</html><div id=3D"cqa_technical" style=3D"display:none; overflow:hidden; vi=
+sibility:hidden;">
+    <div id=3D"cqa_activityid">A568807</div>
+    
+    <div id=3D"cqa_language">en_ROW</div>
+</div><img height=3D'0' width=3D'0' alt=3D'' src=3D'https://t-info.mail.ado=
+be.com/r/=3Fid=3Dh88a8ed9c,fbc9229d,1'/><img height=3D'0' width=3D'0' alt=
+=3D'' src=3D'https://adobe.demdex.net/event=3Fc_syncplacement=3Demail&d_cid=
+=3D813%01B3C91EB5647678940A495F93'/>
+
+------=_NextPart_389_B75B9303.B75B9303--
+

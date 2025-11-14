@@ -1,0 +1,684 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:c046:b0:4e4:7f03:179d with SMTP id v6csp810521pxc;
+        Wed, 2 Aug 2023 13:34:30 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGXGzOfBIVWP0ZMuQHkEc3fOEj9XC1q/s4t871PZgZ6pxhe5NWT3gvMlNqUQGIm+Sya+yBP
+X-Received: by 2002:a05:620a:952:b0:76c:99e3:ba76 with SMTP id w18-20020a05620a095200b0076c99e3ba76mr11149196qkw.26.1691008470109;
+        Wed, 02 Aug 2023 13:34:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691008470; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VFBIWSrjB24A4Nb8ZfBQeg9uwPud6QZWtEsGVY8nhXaac7P/MT+HqvCWEftmlnxurz
+         jYWK0dfmQbFEGCR0TjVc+bioyvaVkRIaCY48rahYC+46orEEBaEd1l9FT71G3rN+AMD+
+         v8R/I6x/J8NS+glIAm2/R9bz4kZndKvEOWDFYMZl6nYT3IasIIViXSLcfeAWgyATeomX
+         bcC5Jkm7VgmfvyfqxuCGT7uVDUkTZnYzi7vd8j7uG2M3DQUBIVdURGlv6bMgSpepZHwf
+         XIayhKlGaWartS/ZDkLDHcX1uYbhOTWVEkIPK3IeOiKjlMcmX5XQGloyupOhJ9NzmBc1
+         MC3A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe:subject
+         :to:from:dkim-signature:dkim-signature;
+        bh=R22pPCxUx/malwIFGNwzwaS2upzqDOqezdpYIJqobYQ=;
+        fh=OqqxkZup079oYd282Wd2h8OFFbYR9yMd26X8sFVLQ1E=;
+        b=ntFamb7o7M9nx7BEOQoWIAfIad8I2oaCQ61bdVbk8F+H/lzpugU3DT0x5xB1BOC0+8
+         mpqG+fB6XkirFyd4I52Cp5qDOQ2G8JvNAeBSX0ia2TPJ8mPmglUHQg55k5JQiljn11w8
+         bnNNTiVvfvtSMcsXIEStDiBSEFR7rbEci/Ohifx+W+WizzrnxrcMITWRyj6O+m+wz+TP
+         gTGMBIQr9WgnmqdMecxykga4ko0jv5WqPAqLiaWwiNaGTNCDlTuCLnLhEEbtT1LuJbnc
+         8qcqXG9il/ENnzTzEcals7eDl+mj2tBElXjDefCAHwjweedhE0A2e0vXqE5E6UtV+jZA
+         xz/A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=NT4Sig8u;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=UGO2G8Ob;
+       spf=pass (google.com: domain of 01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id w7-20020a05620a444700b007683fd3dec9si9033369qkp.121.2023.08.02.13.34.29
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 02 Aug 2023 13:34:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=NT4Sig8u;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=UGO2G8Ob;
+       spf=pass (google.com: domain of 01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1691008469;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type;
+	bh=8U8lGJK8kf1OWa/tvFLtrU0L4um2xnP00vben99wIuo=;
+	b=NT4Sig8u6Kbj2lkt5CS9sMDyFUhmza2GF6hoNq1uHbNa6lPNVJcCLE6FTCtoWrUt
+	jyOVhXTD6+w5nuB+Qh8LybGebC6UadWyMDAbJX1NXvwV8OAnM0gQByn+OVb0cxdo71r
+	XCeIo7dE0sbDO2VsD7m5GbVxSMFJZznPIHVMOphs=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1691008469;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=8U8lGJK8kf1OWa/tvFLtrU0L4um2xnP00vben99wIuo=;
+	b=UGO2G8ObVltb4q2KmqJhsWx0YCdF2bZFBkqf9LE2TT+b0N5ZFhNNNXbMMiuDiSsN
+	Fgmuc0GGTJTSDhSYnh7k+/KoNcSx8sglxPQ72ho19oFGuSntEoiu2p2rBaqWN0p4dmI
+	GjO6Z06awBbEIkQQuKIiRM8YRKQg1uyjSBswzy/0=
+From: Tod Sacerdoti <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: One second cron jobs
+X-EmailOctopus-Parent-Id: 38c58cec-2663-11ee-9433-11df60ae2c75
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-08-02T19:20:17+00:00
+X-EmailOctopus-Sent-At: 2023-08-02T20:34:29+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=38c58cec-2663-11ee-9433-11df60ae2c75&pt=campaign&pv=4&spa=1691004017&t=1691008469&s=bf25ecf42c3bcd02d921f9be690a751ea847f0172ba4d35dc451f07350fbb0f8&skipConfirmation=1>
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Wed, 2 Aug 2023 20:34:29 +0000
+Message-ID: <01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=bbpbPziV
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.08.02-54.240.123.37
+
+--bbpbPziV
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Pipedream runs scheduled jobs =E2=80=94 often called a "cron job" =E2=80=
+=94 for
+free but only one per five mins. Now, paid users can run one per=
+
+second.=C2=A0
+
+ [Pipedream] [https://pipedream.com]=20
+
+[A robot e=
+xperiencing one minute cron schedules]
+[https://pipedream.com/new?h=3Dtch=
+_OQlf8y]=20
+
+INTRODUCING ONE SECOND CRON JOBS
+
+Pipedream [https://pip=
+edream.com] allows you to run hosted scheduled
+jobs =E2=80=94 commonly ca=
+lled a "cron job" =E2=80=94=C2=A0for free
+[https://pipedream.com/pricing/=
+]. Before, these jobs could be run
+every 5 minutes.=20
+
+Today, we're in=
+troducing up to ONE SECOND CRON JOBS.=20
+
+- Make HTTP REQUESTS, BUILD AN =
+API OR RUN CODE ON A SCHEDULE
+
+- Trigger workflows as frequently as ONC=
+E PER SECOND
+
+- Available on our Advanced & Business [https://pipedream=
+.com/pricing]
+plans
+
+-=C2=A0Read our documentation
+[https://pipedre=
+am.com/docs/workflows/steps/triggers/#schedule]
+
+ =09=09Try Now [https:=
+//pipedream.com/new?h=3Dtch_OQlf8y]
+
+-------------------------
+
+HOW=
+ IT WORKS
+
+Pipedream manages the servers where these cron jobs run, so =
+you don't
+have to worry about setting up a server of your own or operatin=
+g some
+service just to run code on a schedule.
+
+You can write a cron =
+job to:
+
+- Send an HTTP request to any URL on a schedule
+[https://pip=
+edream.com/new?h=3Dtch_32Efnj]
+
+- PULL DATA FROM AN API, process it, & =
+send results to Slack or S3
+
+- Run any Node.js code, using almost any n=
+pm package
+[https://pipedream.com/new?h=3Dtch_OQlf8y]
+
+--------------=
+-----------
+
+SETTING YOUR SCHEDULE
+
+First, select the CUSTOM INTERV=
+AL trigger.
+
+[A demo of sharing a workflow]
+[https://pipedream.com/ne=
+w?h=3Dtch_OQlf8y]
+
+Then, select your SCHEDULING OPTIONS:
+
+- EVERY: =
+run the job every second, minute or hour
+
+- DAILY / WEEKLY / MONTHLY: r=
+un the job at a specified time
+
+- CRON EXPRESSION: schedule your job us=
+ing a cron expression. For
+example, the expression 0 0 * * * will run the=
+ job every day at
+midnight.
+
+[A demo of sharing a workflow]
+[https:=
+//pipedream.com/new?h=3Dtch_OQlf8y]=20
+
+Please reach out
+[https://join.=
+slack.com/t/pipedream-users/shared_invite/zt-11sazmsg0-oS2VW~mZfhtk3XfEEvb~=
+JA]
+if you'd like to see any other improvements, or have other feature
+=
+requests.
+
+ =09=09Try Now [https://pipedream.com/new?h=3Dtch_OQlf8y]
+=
+
+Warm regards,=20
+The Pipedream Team
+
+-------------------------
+ [h=
+ttps://pipedream.com]44 Montgomery Street
+San Francisco
+CALIFORNIA
+94=
+104
+United States of America=20
+
+Unsubscribe here
+[https://alatus.eoc=
+ampaign.com/unsubscribe?ep=3D1&l=3D358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=
+=3D860f934a-f025-11ed-b8ff-059d97be6197&p=3D38c58cec-2663-11ee-9433-11df60a=
+e2c75&pt=3Dcampaign&pv=3D4&spa=3D1691004017&t=3D1691008469&s=3Dbf25ecf42c3b=
+cd02d921f9be690a751ea847f0172ba4d35dc451f07350fbb0f8]
+--bbpbPziV
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head>
+=09=09<title></title>
+=09</head>
+=09<body class=3D"notranslate">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=09=09<div style=3D"display:none; font-size:0px; line-height:0px; max-heigh=
+t:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hi=
+de:all;">Pipedream runs scheduled jobs =E2=80=94 often called a &quot;cron =
+job&quot; =E2=80=94 for free but only one per five mins.  Now, paid users c=
+an run one per second.&nbsp;</div>
+
+=09=09<p>
+
+
+=09=09=09<meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DU=
+TF-8">
+=09=09</p>
+
+=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helv=
+etica Neue&quot;,sans-serif;" width=3D"100%">
+=09=09=09<tbody>
+=09=09=09=09<tr>
+=09=09=09=09=09<td>
+
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"max-width:560px;margin:40px auto;background-color:=
+#ffffff;padding:40px 30px 40px;border-radius:15px;" width=3D"100%">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr style=3D"width:100%;">
+=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/1/01000189b7f588ea-4b73dad9-6f19-4d0f-8=
+8ac-531f4e33b2a7-000000/cOqikJ6J-k8fv25I0HF21tV1ZxU=3D333" rel=3D"noopener =
+noreferrer" target=3D"_blank"><img alt=3D"Pipedream" src=3D"https://gallery=
+.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1689805702716-168980=
+5702518.png" style=3D"display:block;outline:none;border:none;text-decoratio=
+n:none;width:2.2rem;height:2.2rem;"></a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_OQlf8y/1/01000189b7f588=
+ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/HbmtA-upqQkvr3fwveIQEvoFMyg=
+=3D333" rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A robot e=
+xperiencing one minute cron schedules" src=3D"https://gallery.eocampaign.co=
+m/ce951396-a346-11ed-a0ed-4f354f26462b%2F1689805644651-1689805642103.png" s=
+tyle=3D"display: block; outline: none; border: none; text-decoration: none;=
+ width: 100%; height: auto; margin: 0px 0px 15px;"></a>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1.4rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);=
+"><strong>Introducing one second cron jobs</strong></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/2/01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/hNRfRc=
+AnftMaIKs6duhkCtFP-Js=3D333" rel=3D"noopener noreferrer" style=3D"user-sele=
+ct: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI=
+&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;,=
+ sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: n=
+ormal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-=
+align: start; text-indent: 0px; text-transform: none; white-space: normal; =
+widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-co=
+lor: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rg=
+b(52, 210, 139); font-weight: 600;" target=3D"_blank">Pipedream</a>
+=09=09=09=09=09=09=09=09=09=09=09<meta charset=3D"utf-8"><span style=3D"col=
+or: rgb(44, 62, 80); font-family: system-ui, &quot;system-ui&quot;, -apple-=
+system, sans-serif, Helvetica, Roboto, &quot;Helvetica Neue&quot;, Arial; f=
+ont-size: 16px; font-style: normal; font-variant-ligatures: normal; font-va=
+riant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; widows: 2; word-s=
+pacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgroun=
+d-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decor=
+ation-style: initial; text-decoration-color: initial; display: inline !impo=
+rtant; float: none;">allows you to run hosted scheduled jobs =E2=80=94 comm=
+only called a "cron job" =E2=80=94&nbsp;</span><a href=3D"https://sc1sc285.=
+r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fpricing%2F/1/0100018=
+9b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/bntdRjXg8HUpbUtI2qgcv=
+-LCqUs=3D333" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-=
+family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto,=
+ Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; fo=
+nt-size: 16px; font-style: normal; font-variant-ligatures: normal; font-var=
+iant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; t=
+ext-indent: 0px; text-transform: none; white-space: normal; widows: 2; word=
+-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 2=
+55, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139)=
+; font-weight: 600;" target=3D"_blank">for free</a>. Before, these jobs cou=
+ld be run every 5 minutes.
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09=09<br>Today, we're introducing up to <strong=
+>one second cron jobs.</strong>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- Make <strong>HTTP requests, build an API=
+ or run code on a schedule</strong></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- Trigger workflows as frequently as <stro=
+ng>once per second</strong></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- Available on our <a href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fpricing/1/01000=
+189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/hzs0XnCtxHMsYNItnqT=
+ti3_MKxw=3D333" rel=3D"noopener noreferrer" style=3D"color:rgb(0, 0, 0);tex=
+t-decoration:none;font-weight:600;text-decoration-line:underline;text-decor=
+ation-color:#34D28B;" target=3D"_blank">Advanced &amp; Business</a> plans</=
+p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09-&nbsp;<a href=3D"https://sc1sc285.r.us-ea=
+st-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fworkflows%2Fsteps%2F=
+triggers%2F%23schedule/1/01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b=
+2a7-000000/V6WwKShUc7_r0G2ff32nKkEuA3k=3D333" rel=3D"noopener noreferrer" s=
+tyle=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:600;text-decora=
+tion-line:underline;text-decoration-color:#34D28B;" target=3D"_blank">Read =
+our documentation</a></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"mb-6" style=3D"margin-bottom:1.5rem;" =
+width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<td><a class=3D"bg-button rounded-xl=
+ font-semibold text-white text-base text-center block" href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_O=
+Qlf8y/2/01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/Gwrw0x=
+EC6BjwiswBw5pHvFB2msc=3D333" rel=3D"noopener noreferrer" style=3D"display:i=
+nline-block;border-radius:0.75rem;background-color:rgb(52, 117, 210);text-a=
+lign:center;font-size:1rem;line-height:100%;font-weight:600;color:rgb(255, =
+255, 255);p-x:23px;p-y:11px;text-decoration:none;max-width:100%;padding:11p=
+x 23px;" target=3D"_blank"><span style=3D"display:inline-block;border-radiu=
+s:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font-size:1r=
+em;line-height:120%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:1=
+1px;max-width:100%;text-decoration:none;text-transform:none;mso-padding-alt=
+:0px;mso-text-raise:8.25px;">Try Now</span></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<h1 class=3D"text-black dark:text-white text-=
+2xl font-semibold tracking-tight" style=3D"font-size:1.5rem;line-height:2re=
+m;font-weight:600;letter-spacing:-0.025em;color:rgb(0, 0, 0);prefers-color-=
+scheme:dark){.dark\;">How it works</h1>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+Pipedream manages the servers where these cron jobs run, so you don't have =
+to worry about setting up a server of your own or operating some service ju=
+st to run code on a schedule.</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<meta charset=3D"utf-8"><span style=3D"col=
+or: rgb(44, 62, 80); font-family: system-ui, &quot;system-ui&quot;, -apple-=
+system, sans-serif, Helvetica, Roboto, &quot;Helvetica Neue&quot;, Arial; f=
+ont-size: 16px; font-style: normal; font-variant-ligatures: normal; font-va=
+riant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; widows: 2; word-s=
+pacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgroun=
+d-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decor=
+ation-style: initial; text-decoration-color: initial; display: inline !impo=
+rtant; float: none;">You can write a cron job to:</span></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+ </p>
+
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <a href=3D"https://sc1sc285.r.us-east-1.=
+awstrack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_32Efnj/1/01000189b=
+7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/AwoQIeP6ev0LqainKWHi5Zo=
+evRA=3D333" rel=3D"noopener noreferrer" style=3D"color:rgb(0, 0, 0);text-de=
+coration:none;font-weight:600;text-decoration-line:underline;text-decoratio=
+n-color:#34D28B;" target=3D"_blank">Send an HTTP request to any URL on a sc=
+hedule</a></p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <strong>Pull data from an API</strong>, =
+process it, &amp; send results to Slack or S3</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <a href=3D"https://sc1sc285.r.us-east-1.=
+awstrack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_OQlf8y/3/01000189b=
+7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/vuLxlQt9OuXsWTCU5gPJFw2=
+XBQk=3D333" rel=3D"noopener noreferrer" style=3D"color:rgb(0, 0, 0);text-de=
+coration:none;font-weight:600;text-decoration-line:underline;text-decoratio=
+n-color:#34D28B;" target=3D"_blank">Run any Node.js code, using almost any =
+npm package</a></p>
+
+
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<h1 class=3D"text-black dark:text-white text-=
+2xl font-semibold tracking-tight" style=3D"font-size:1.5rem;line-height:2re=
+m;font-weight:600;letter-spacing:-0.025em;color:rgb(0, 0, 0);prefers-color-=
+scheme:dark){.dark\;">Setting your schedule</h1>
+
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+First, select the <strong>Custom Interval</strong> trigger.</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_OQlf8y/4/01000189b7f588=
+ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/_OXq4uFV9qNNdZc79AqUmcZSWQ8=
+=3D333" rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of=
+ sharing a workflow" src=3D"https://gallery.eocampaign.com/ce951396-a346-11=
+ed-a0ed-4f354f26462b%2F1689800698416-1689800697404.png" style=3D"display: b=
+lock; outline: none; border-width: 1px; text-decoration: none; width: 100%;=
+ height: auto; margin: 0px 0px 15px;"></a>
+
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+Then, select your<strong style=3D"box-sizing: border-box; border-width: 0px=
+; border-style: solid; border-color: rgba(229,231,235,var(--tw-border-opaci=
+ty)); border-image: initial; --tw-border-opacity: 1; --tw-shadow: 0 0 trans=
+parent; --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/); --tw-ring-offset-widt=
+h: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,0.5)=
+; --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transpare=
+nt; font-weight: 600;"> scheduling options</strong>:</p>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <strong>Every</strong>: run the job ever=
+y second, minute or hour</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <strong>Daily / Weekly / Monthly</strong=
+>: run the job at a specified time</p>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09- <strong>Cron Expression</strong>: schedu=
+le your job using a cron expression. For example, the expression <code styl=
+e=3D"box-sizing: border-box; border-width: 0px; border-style: solid; border=
+-color: rgba(229,231,235,var(--tw-border-opacity)); border-image: initial; =
+--tw-border-opacity: 1; --tw-shadow: 0 0 transparent; --tw-ring-inset: var(=
+--tw-empty,/*!*/ /*!*/); --tw-ring-offset-width: 0px; --tw-ring-offset-colo=
+r: #fff; --tw-ring-color: rgba(59,130,246,0.5); --tw-ring-offset-shadow: 0 =
+0 transparent; --tw-ring-shadow: 0 0 transparent; font-family: source-code-=
+pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; font-size=
+: 0.85em; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; b=
+ackground-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">0 0 * * *</co=
+de> will run the job every day at midnight.</p>
+
+
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_OQlf8y/5/01000189b7f588=
+ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/fGjePSBnw923vxQFkZBxNtig0dE=
+=3D333" rel=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of=
+ sharing a workflow" src=3D"https://gallery.eocampaign.com/ce951396-a346-11=
+ed-a0ed-4f354f26462b%2F1689800524095-1689800523046.png" style=3D"display: b=
+lock; outline: none; border-width: 1px; text-decoration: none; width: 100%;=
+ height: auto; margin: 0px 0px 15px;"></a>
+
+
+
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+Please <a class=3D"underline decoration-brand font-semibold text-black" hre=
+f=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fjoin.slack.com=
+%2Ft%2Fpipedream-users%2Fshared_invite%2Fzt-11sazmsg0-oS2VW~mZfhtk3XfEEvb~J=
+A/1/01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/svJ2XsR1UH=
+6n-AGrawV3toeeCe4=3D333" style=3D"color:rgb(0, 0, 0);text-decoration:none;f=
+ont-weight:600;text-decoration-line:underline;text-decoration-color:#34D28B=
+;" target=3D"_blank">reach out</a> if you'd like to see any other improveme=
+nts, or have other feature requests.</p>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"mb-6" style=3D"margin-bottom:1.5rem;" =
+width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<td><a class=3D"bg-button rounded-xl=
+ font-semibold text-white text-base text-center block" href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fnew%3Fh=3Dtch_O=
+Qlf8y/6/01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/J9n9dF=
+NDcOG2ii29u49Lz41CylI=3D333" rel=3D"noopener noreferrer" style=3D"display:i=
+nline-block;border-radius:0.75rem;background-color:rgb(52, 117, 210);text-a=
+lign:center;font-size:1rem;line-height:100%;font-weight:600;color:rgb(255, =
+255, 255);p-x:23px;p-y:11px;text-decoration:none;max-width:100%;padding:11p=
+x 23px;" target=3D"_blank"><span style=3D"display:inline-block;border-radiu=
+s:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font-size:1r=
+em;line-height:120%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:1=
+1px;max-width:100%;text-decoration:none;text-transform:none;mso-padding-alt=
+:0px;mso-text-raise:8.25px;">Try Now</span></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09<br>Warm regards,
+=09=09=09=09=09=09=09=09=09=09<br>The Pipedream Team
+
+=09=09=09=09=09=09=09=09=09=09<p>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/3/01000189b7f588ea-4b73dad9-6f19-4d0f-8=
+8ac-531f4e33b2a7-000000/WtojM1LPWsRT6is3y4tM1SU2SbQ=3D333" style=3D"color:#=
+b4becc;text-decoration:none;font-size:14px;" target=3D"_blank"></a><a href=
+=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com/4=
+/01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/xr9cyFEHVV2cL=
+pLvP4FGH-PP0Fw=3D333" style=3D"color:#b4becc;text-decoration:none;font-size=
+:14px;" target=3D"_blank">44 Montgomery Street<br>San Francisco<br>CALIFORN=
+IA<br>94104<br>United States of America</a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Falatus.eocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D35=
+8ac956-f01d-11ed-bcd1-db2977b1fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6=
+197%26p=3D38c58cec-2663-11ee-9433-11df60ae2c75%26pt=3Dcampaign%26pv=3D4%26s=
+pa=3D1691004017%26t=3D1691008469%26s=3Dbf25ecf42c3bcd02d921f9be690a751ea847=
+f0172ba4d35dc451f07350fbb0f8/1/01000189b7f588ea-4b73dad9-6f19-4d0f-88ac-531=
+f4e33b2a7-000000/g9r4dBdClsvu-oCxLvn2CK52z0k=3D333" style=3D"font-size:14px=
+;color:#b4becc;">Unsubscribe here</a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/5/01000189b7f588ea-4b73dad9-6f19-4d0f-8=
+8ac-531f4e33b2a7-000000/W7BGZwX_mhWDeLNTNtpBoba3Xcc=3D333" style=3D"color:#=
+b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+
+
+
+
+=09=09=09=09=09=09=09=09=09=09</a>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09</td>
+=09=09=09=09</tr>
+=09=09=09</tbody>
+=09=09</table>
+
+=09=09<p>
+
+
+
+
+
+
+
+=09=09=09<br>
+=09=09</p>
+
+
+
+
+
+
+
+
+
+
+=09
+
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/01000189b7=
+f588ea-4b73dad9-6f19-4d0f-88ac-531f4e33b2a7-000000/ObtMzWdCPr-UbA-kSY-wbnM-=
+hkk=3D333" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--bbpbPziV--

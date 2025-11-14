@@ -1,0 +1,560 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:9f41:b0:523:83ca:23d5 with SMTP id a1csp4645070pxz;
+        Fri, 29 Dec 2023 16:12:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHwfKDgkVx0Z9WOzc6t7fYWHrdOC36UOlQjPlzadfhW2kLOG1d1mnDtTnUzjTsfyCd3laup
+X-Received: by 2002:ac8:574b:0:b0:427:8e8f:8655 with SMTP id 11-20020ac8574b000000b004278e8f8655mr24242100qtx.53.1703895157588;
+        Fri, 29 Dec 2023 16:12:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703895157; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vsOX7dAmstdx+HDtXdTi0J7mWa+IJxFKkrjCi7BqFxEs2VZH1Qh6uNiFo0NmPkfziP
+         7yOqp3vVjIMLq2YIvWzksRspGRkUZT4lWCO0n69zs/T8nMyPthZkUKnPCTsJ+1jUAcFd
+         nxnrCxNra6ekuYQsx1fM95XtV8+969dCRptNRrwv+KEFKdwsU88NLkSqZxWSpB3r75bb
+         CS/nDkIZd4tvhM/iFEiYw8dXJj4LrcfhJbjNGc7qcn4tKBe/0zUPRpc4nmh6No0BZAPS
+         KcZVwq7duceNnADhg/hZB3P7zHUdkyKuoRTkZRpgwzC7hLqgV7hFnIPTWpLg6MC4nAOR
+         ry9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:feedback-id:precedence:list-unsubscribe:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=w0/B2xZnZr8egG4Hau2ALzJ4WF3FdYnMMi5J943P5Wk=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=KAVEChgGfiHxzYSM7CTVcV6UABeUIpZnioAztENQlnQqKJiUsKAb7viCFdXm+e/M2Q
+         g2mpY9zgDhTyy6ixa4+kh76cA1pbuQGSNrRNM28SYLRKUBcwiPP3aJSrg6EfQ6MhB6bl
+         HxtLGopdAHZxFqfSEY1W2z/5ClCQ8RT59owawiPNr051AlIi2AvhMbkFGXAoJ0H6EJeq
+         LWPr0i9CyDm1hAVrvITXjPWGxyg4hArAyBFLn95Mtgkfp1S2pHixlERYeYqfU2F2aXge
+         RSKKD3u0NjT353UbSCoQQLT1X/SozKCvRYjVtkiwEXbqGlQv6YhmGZ1g/osPOaEWZsYu
+         /myQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=BGQktDcL;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=oWM1hxuq;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o38.ck.n.convertkit.com (o38.ck.n.convertkit.com. [149.72.39.237])
+        by mx.google.com with ESMTPS id c13-20020ac87dcd000000b004280c36c260si1099884qte.160.2023.12.29.16.12.36
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 29 Dec 2023 16:12:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) client-ip=149.72.39.237;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=BGQktDcL;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=oWM1hxuq;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=w0/B2xZnZr8egG4Hau2ALzJ4WF3FdYnMMi5J943P5Wk=;
+	b=BGQktDcLieQBWBJ2U0j/NkFmu5/LrL4SiEns95Vcr5gq/ydYwBOeoZZ+q4M04JLQWuYR
+	r3Lxrj1hlYWt5Gbjj3+VBV3zySdSjrcngr9OlE9IuiAmOs16cnUapRHB6c+lloVkgHDZkz
+	vgMW39i62DcdHQl9LC+tqBq3SdU/s1tvw=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=w0/B2xZnZr8egG4Hau2ALzJ4WF3FdYnMMi5J943P5Wk=;
+	b=oWM1hxuqyTE+7XrOodfjGWXssKORpruxitLss3q9eUuf8VXALEiP+sFTawb6Y2O39vSU
+	s7IQGg4eLIDWG6IDUcaStSSEoXRuPmHlpMOr5hL6QiWpJ9mC7twxSxa7C0V58X1C/McSOz
+	OOmQhzGICa9md2LYfbFwuYvwRW4kL2LGg=
+Received: by filterdrecv-64db4f9f4f-rqbrx with SMTP id filterdrecv-64db4f9f4f-rqbrx-1-658F6074-1F
+        2023-12-30 00:12:36.234815702 +0000 UTC m=+6327083.575779146
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-34 (SG) with HTTP
+	id IdWZDLtKQq2AT8qco1B4gA
+	Sat, 30 Dec 2023 00:12:36.194 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=e9182af154334a3b3fb81cf8e2bb68ac1014cf0760e2f909f600864ae4cc
+Date: Sat, 30 Dec 2023 00:12:36 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <d0uolzk3zpb0h4vk277cmhmogp444@convertkit-mail2.com>
+Subject: Introducing... =?UTF-8?B?8J+lgQ==?= ... JSM Weekly!
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 12661206:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfQ7Ol2qA3SEkyCupq?=
+ =?us-ascii?Q?KrQHPO64tESdFrbm=2FHccL8EVXFadmCLj6v8pwdt?=
+ =?us-ascii?Q?khpkgnBKpXBHfDp6edWEC2d=2FZqUTwTgiHRz6Rtw?=
+ =?us-ascii?Q?6zYcNmF+vkQD33=2FKmqVEjg7R+=2FemINKUi=2Fj=2FDXa?=
+ =?us-ascii?Q?+zPyTnv+zJEaN7VXC9SZUwe6t1eiovf+FuCDlz?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADux8Kt3hjsOEI7=2Fjt0KTE8GrJRjMFJW1Pk=2Fq00?=
+ =?us-ascii?Q?eqyOClbmZMx=2F5NbQ0ky2RFxbCDNAdb7ZWWReODW?=
+ =?us-ascii?Q?ZpkZ7A4EjVivuW2DmNMHsMJaG6qhUyufgTlGiN=2F?=
+ =?us-ascii?Q?nLLHw6sSM3opLS0FgF0l=2FUcYzyRCzJQvH=2Fe7S5l?=
+ =?us-ascii?Q?llh1ZH=2F+AFlNaum3agfgInn86mnNvVpPhGjEzJU?=
+ =?us-ascii?Q?lPXuKUuKiKKCBPxFtgW4=2F4KLX0ZEolTgwkHUSj5?=
+ =?us-ascii?Q?H5Lb519FFKS=2Fy25kDNWhqBhv7gXLS2C6B9r7zhk?=
+ =?us-ascii?Q?creJerZ92yxdWIsMPfrh=2FHNdFynr8GPLydBN9gE?=
+ =?us-ascii?Q?3LlH5wvAz0?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--e9182af154334a3b3fb81cf8e2bb68ac1014cf0760e2f909f600864ae4cc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Welcome to the very first issue of JSM Weekly, where you=E2=80=99ll get:
+=E2=80=8B
+
+=F0=9F=91=89 The newest and most important happenings in the dev world I=E2=
+=80=99m
+keeping an eye on
+=E2=80=8B
+
+=F0=9F=91=89 What I found this week and find useful
+=E2=80=8B
+
+=F0=9F=91=89 Updates on JSM including new videos and more projects I=E2=80=
+=99m
+working on!
+
+=E2=80=8B
+
+There=E2=80=99s a lot of noise in the dev world, and you can waste hours
+every week on something you=E2=80=99ll forget all about a month later.
+The goal of JSM Weekly is to help with that, so you can save that
+time wasted on X, YT, and Reddit and spend it wisely.
+=E2=80=8B
+
+Now, let=E2=80=99s get started!
+
+=E2=80=8B
+
+What's new
+----------
+
+=F0=9F=A6=BE v0 by Vercel (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/6qhehou779=
+5kx0c9/aHR0cHM6Ly94LmNvbS92ZXJjZWwvc3RhdHVzLzE3MzU3MTkzODE3Mzk0NTQ3MzA_cz0y=
+MA=3D=3D
+) is now publicly open for everyone. Create UI components using
+AI with simple prompts and get pretty good code in Next.js and
+HTML instantly.
+=E2=80=8B
+
+=F0=9F=93=A7 Resend (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/kkhmh2ullx=
+5dzztk/aHR0cHM6Ly9yZXNlbmQuY29tL25leHRqcw=3D=3D
+), a leading email provider is now supporting sending emails
+using Next.js server actions.=E2=80=8B
+=E2=80=8B
+
+=F0=9F=A7=91=E2=80=8D=F0=9F=92=BB Clerk (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/58hvh8umm6=
+nv3qs7/aHR0cHM6Ly9jbGVyay5jb20vYmxvZy9pbnRyb2R1Y2luZy1hdXRob3JpemF0aW9u
+) has recently released more features regarding Authorization for
+both front and backend to protect access to unauthorized features
+and role management.
+=E2=80=8B
+
+=F0=9F=92=BE Supabase preview branches (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/25h2h9u22m=
+8vl9t8/aHR0cHM6Ly9zdXBhYmFzZS5jb20vZG9jcy9ndWlkZXMvcGxhdGZvcm0vYnJhbmNoaW5n
+) - Supabase released a new feature of branching that allows us
+to create preview branches of the supabase project. Just like
+Vercel deployments =F0=9F=A4=AF
+
+=E2=80=8B
+
+A sneak peek into JSM
+---------------------
+
+=F0=9F=96=A5=EF=B8=8F Git Nation=E2=80=99s React Day Berlin 2023 (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/qvh8h8urrk=
+47eptg/aHR0cHM6Ly9wb3J0YWwuZ2l0bmF0aW9uLm9yZy9jb250ZW50cy9uZXh0anMtZm9yLXJl=
+YWN0anMtZGV2ZWxvcGVycw=3D=3D
+) - I had been invited to the event to host a live workshop
+(around 3 hours long!). The workshop takes you from a beginner
+with no knowledge to deep understanding of React Server
+Components, their workflow, streaming, cache, and all the other
+important knowledge in React and Next.js. You can watch the
+workshop with a ticket using the link above.
+=E2=80=8B
+
+=F0=9F=90=B3 I=E2=80=99m working on my upcoming video, where you=E2=80=99ll=
+ learn about
+Docker and how to dockerize any React, Node, and Next.js
+application!
+=E2=80=8B
+
+=F0=9F=86=95 One of our Masterclass teams wanted to challenge themselves an=
+d
+try something new. They opted for Vercel=E2=80=99s Postgres (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/g3hnhwu33q=
+ldg5c3/aHR0cHM6Ly92ZXJjZWwuY29tL3N0b3JhZ2UvcG9zdGdyZXM=3D
+) storage while building a Car Rental application. It=E2=80=99s going
+pretty well so far!
+
+=E2=80=8B
+
+What are you working on this week? Reply to this email, and I
+will feature the best submission in the next email.
+
+=E2=80=8B
+
+Before I sign off, I found this hilarious =F0=9F=98=86
+
+=E2=80=8B
+
+Until next time,
+Adrian from jsmastery.pro (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/9qhzhdupp5=
+6q4vsz/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby8=3D
+)=E2=80=8B
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/3ohphdu77p=
+2oxefp/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5
+) =E2=80=8B (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/n2hohqu337=
+x827b0/aHR0cHM6Ly90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/48hvh7urrx=
+p5w7hq/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bWFzdGVyeS8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/wnh2h6uww0=
+k5mdcl/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcnkv
+) =E2=80=8B (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/08hwhguddl=
+9ov0ip/aHR0cHM6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D
+)
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444
+)=E2=80=8B
+--e9182af154334a3b3fb81cf8e2bb68ac1014cf0760e2f909f600864ae4cc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><div>
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box"><div class=3D"ck-inner-section ck-padding-left-mobile-friendly ck=
+-padding-right-mobile-friendly" style=3D"padding:0px 5px 0px 5px"><div styl=
+e=3D"margin-left:auto;margin-right:auto;max-width:640px">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;display:inline-bloc=
+k;max-width:800px;width:100%"><div style=3D"display:block"><img src=3D"http=
+s://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/gWJmN92FyV97FAL7ZGBCRf/em=
+ail" width=3D"800" height=3D"auto" style=3D"border:0 none;display:block;bor=
+der:0;height:auto;line-height:100%;outline:none;-webkit-text-decoration:non=
+e;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;border=
+-radius:4px 4px 4px 4px;width:800px;height:auto;object-fit:contain"></div><=
+/figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>Welcome to the very first issue of JSM Weekly, where you=E2=
+=80=99ll get:<br>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=91=89 The newest and most important happenings in the dev worl=
+d I=E2=80=99m keeping an eye on<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=91=89 What I found this week and find useful<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=91=89 Updates on JSM including new videos and more projects I=
+=E2=80=99m working on!</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">There=E2=80=99s a lot of noise in the dev world, and you can <strong>=
+waste hours</strong> every week on something you=E2=80=99ll forget all abou=
+t a month later. The goal of JSM Weekly is to help with that, so you can sa=
+ve that time wasted on X, YT, and Reddit and spend it wisely.<br>=E2=80=8B<=
+/p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>Now, let=E2=80=99s get started!</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:28px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D""><strong>What's new</strong></h3=
+>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=A6=BE <a href=3D"https://click.convertkit-mail2.com/d0uolzk3zp=
+b0h4vk277cmhmogp444/6qhehou7795kx0c9/aHR0cHM6Ly94LmNvbS92ZXJjZWwvc3RhdHVzLz=
+E3MzU3MTkzODE3Mzk0NTQ3MzA_cz0yMA=3D=3D" target=3D"_blank" rel=3D"noopener n=
+oreferrer" style=3D"color:#0F82F0" url-id=3D"1599188868">v0 by Vercel</a> i=
+s now publicly open for everyone. Create UI components using AI with simple=
+ prompts and get pretty good code in Next.js and HTML instantly.<br>=E2=80=
+=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=93=A7 <a href=3D"https://click.convertkit-mail2.com/d0uolzk3zp=
+b0h4vk277cmhmogp444/kkhmh2ullx5dzztk/aHR0cHM6Ly9yZXNlbmQuY29tL25leHRqcw=3D=
+=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" =
+url-id=3D"1599188869">Resend</a>, a leading email provider is now supportin=
+g sending emails using Next.js server actions.<strong>=E2=80=8B<br>=E2=80=
+=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=A7=91=E2=80=8D=F0=9F=92=BB <a href=3D"https://click.convertkit=
+-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/58hvh8umm6nv3qs7/aHR0cHM6Ly9jbGVya=
+y5jb20vYmxvZy9pbnRyb2R1Y2luZy1hdXRob3JpemF0aW9u" target=3D"_blank" rel=3D"n=
+oopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1599188870">Clerk</a>=
+ has recently released more features regarding Authorization for both front=
+ and backend to protect access to unauthorized features and role management=
+.<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=92=BE <a href=3D"https://click.convertkit-mail2.com/d0uolzk3zp=
+b0h4vk277cmhmogp444/25h2h9u22m8vl9t8/aHR0cHM6Ly9zdXBhYmFzZS5jb20vZG9jcy9ndW=
+lkZXMvcGxhdGZvcm0vYnJhbmNoaW5n" target=3D"_blank" rel=3D"noopener noreferre=
+r" style=3D"color:#0F82F0" url-id=3D"1599188871">Supabase preview branches<=
+/a> - Supabase released a new feature of branching that allows us to create=
+ preview branches of the supabase project. Just like Vercel deployments =F0=
+=9F=A4=AF </p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:28px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D""><strong>A sneak peek into JSM</=
+strong></h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=96=A5=EF=B8=8F <a href=3D"https://click.convertkit-mail2.com/d=
+0uolzk3zpb0h4vk277cmhmogp444/qvh8h8urrk47eptg/aHR0cHM6Ly9wb3J0YWwuZ2l0bmF0a=
+W9uLm9yZy9jb250ZW50cy9uZXh0anMtZm9yLXJlYWN0anMtZGV2ZWxvcGVycw=3D=3D" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1=
+599188872">Git Nation=E2=80=99s React Day Berlin 2023</a> - I had been invi=
+ted to the event to host a live workshop (around 3 hours long!). <strong>Th=
+e workshop takes you from a beginner with no knowledge to deep understandin=
+g of React Server Components</strong>, their workflow, streaming, cache, an=
+d all the other important knowledge in React and Next.js. You can watch the=
+ workshop with a ticket using the link above.<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=90=B3 I=E2=80=99m working on my upcoming video, where you=E2=
+=80=99ll learn about Docker and how to dockerize any React, Node, and Next.=
+js application! <br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=86=95 One of our Masterclass teams wanted to challenge themsel=
+ves and try something new. They opted for <a href=3D"https://click.convertk=
+it-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/g3hnhwu33qldg5c3/aHR0cHM6Ly92ZXJ=
+jZWwuY29tL3N0b3JhZ2UvcG9zdGdyZXM=3D" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0F82F0" url-id=3D"1599188873">Vercel=E2=80=99s Post=
+gres</a> storage while building a Car Rental application. It=E2=80=99s goin=
+g pretty well so far!</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;display:inline-bloc=
+k;max-width:404px;width:100%"><div style=3D"display:block"><img src=3D"http=
+s://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/dectHo7qgtL69CCrQQDzRq/em=
+ail" width=3D"404" height=3D"auto" style=3D"border:0 none;display:block;bor=
+der:0;height:auto;line-height:100%;outline:none;-webkit-text-decoration:non=
+e;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;border=
+-radius:4px 4px 4px 4px;width:404px;height:auto;object-fit:contain"></div><=
+/figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>What are you working on this week? Reply to this email, and I=
+ will feature the best submission in the next email.</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Before I sign off, I found this hilarious =F0=9F=98=86</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;display:inline-bloc=
+k;max-width:350px;width:100%"><div style=3D"display:block"><img src=3D"http=
+s://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/nefb1S9o3B9AfGTQAQBPbP/em=
+ail" width=3D"350" height=3D"auto" style=3D"border:0 none;display:block;bor=
+der:0;height:auto;line-height:100%;outline:none;-webkit-text-decoration:non=
+e;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;border=
+-radius:4px 4px 4px 4px;width:350px;height:auto;object-fit:contain"></div><=
+/figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Until next time,<br>Adrian from <a href=3D"https://click.convertkit-m=
+ail2.com/d0uolzk3zpb0h4vk277cmhmogp444/9qhzhdupp56q4vsz/aHR0cHM6Ly93d3cuanN=
+tYXN0ZXJ5LnByby8=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D=
+"color:#0F82F0" url-id=3D"1599188874">jsmastery.pro</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box"><div class=3D"ck-inner-section ck-padding-left-none ck-padding-ri=
+ght-none" style=3D"padding:0px 0px 0px 0px"><div style=3D"margin-left:auto;=
+margin-right:auto;max-width:640px">
+<div style=3D"text-align:left;margin-top:16px;margin-bottom:16px">
+<a href=3D"https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444=
+/3ohphdu77p2oxefp/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5"=
+ style=3D"display:inline-block;padding-right:8px;border:none;text-decoratio=
+n:none" url-id=3D"1599188875"><img src=3D"https://functions-js.convertkit.c=
+om/icons?icon=3Dyoutube&amp;foreground=3Dffffff&amp;background=3Dcc0000&amp=
+;shape=3Dcircle&amp;v=3D3" alt=3D"youtube" width=3D"32" height=3D"32" style=
+=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-webki=
+t-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubic;=
+max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"><=
+!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.convert=
+kit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/n2hohqu337x827b0/aHR0cHM6Ly90d2=
+l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D" style=3D"display:inline-block;padding-rig=
+ht:8px;border:none;text-decoration:none" url-id=3D"1599188876"><img src=3D"=
+https://functions-js.convertkit.com/icons?icon=3Dx-twitter&amp;foreground=
+=3Dffffff&amp;background=3D000000&amp;shape=3Dcircle&amp;v=3D3" alt=3D"x-tw=
+itter" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:au=
+to;line-height:100%;outline:none;-webkit-text-decoration:none;text-decorati=
+on:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width:3=
+2px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=
+=8B</a><a href=3D"https://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmh=
+mogp444/48hvh7urrxp5w7hq/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bW=
+FzdGVyeS8=3D" style=3D"display:inline-block;padding-right:8px;border:none;t=
+ext-decoration:none" url-id=3D"1599188877"><img src=3D"https://functions-js=
+.convertkit.com/icons?icon=3Dinstagram&amp;foreground=3Dffffff&amp;backgrou=
+nd=3De1306c&amp;shape=3Dcircle&amp;v=3D3" alt=3D"instagram" width=3D"32" he=
+ight=3D"32" style=3D"display:block;border:0;height:auto;line-height:100%;ou=
+tline:none;-webkit-text-decoration:none;text-decoration:none;-ms-interpolat=
+ion-mode:bicubic;max-width:100%;border:0 none;width:32px;height:32px;displa=
+y:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"http=
+s://click.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/wnh2h6uww0k5md=
+cl/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcnkv" st=
+yle=3D"display:inline-block;padding-right:8px;border:none;text-decoration:n=
+one" url-id=3D"1599188878"><img src=3D"https://functions-js.convertkit.com/=
+icons?icon=3Dlinkedin&amp;foreground=3Dffffff&amp;background=3D0077b5&amp;s=
+hape=3Dcircle&amp;v=3D3" alt=3D"linkedin" width=3D"32" height=3D"32" style=
+=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-webki=
+t-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubic;=
+max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"><=
+!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.convert=
+kit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444/08hwhguddl9ov0ip/aHR0cHM6Ly9kaX=
+Njb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D" style=3D"display:inline-block;paddi=
+ng-right:8px;border:none;text-decoration:none" url-id=3D"1599188880"><img s=
+rc=3D"https://functions-js.convertkit.com/icons?icon=3Ddiscord&amp;foregrou=
+nd=3Dffffff&amp;background=3D7289da&amp;shape=3Dcircle&amp;v=3D3" alt=3D"di=
+scord" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:au=
+to;line-height:100%;outline:none;-webkit-text-decoration:none;text-decorati=
+on:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width:3=
+2px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=
+=8B</a>
+</div>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#656565;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none" class=3D"">=E2=80=8B<a href=3D"https=
+://unsubscribe.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#656565">Unsubscribe=
+</a> =C2=B7 <a href=3D"https://preferences.convertkit-mail2.com/d0uolzk3zpb=
+0h4vk277cmhmogp444" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"=
+color:#656565">Preferences</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</div></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/d0uolzk3zpb0h4vk277cmhmogp444=
+" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line-h=
+eight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-=
+ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--e9182af154334a3b3fb81cf8e2bb68ac1014cf0760e2f909f600864ae4cc--

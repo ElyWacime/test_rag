@@ -1,0 +1,406 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:b083:b0:4fd:292a:fcfe with SMTP id y3csp346781pxa;
+        Tue, 10 Oct 2023 13:16:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGBWIVkuzkWFHhyZXpAcFIIK2qfvF9FzYUcjSIOHq9maBZcvrkRjMPRAmy4hE2QKw9AaxrQ
+X-Received: by 2002:aca:91a:0:b0:3a7:26fd:b229 with SMTP id 26-20020aca091a000000b003a726fdb229mr19212923oij.48.1696969008276;
+        Tue, 10 Oct 2023 13:16:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696969008; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CrAit99KV9oRuwH5Wmb4MsmKufqQTFfCckGhXLiMHeazUxsPfF6lYrzA/VesNHfoDx
+         BMjaqkRagBGAYyFDpgg33JoRThSAbpGbrWK64mRX/QXwQjX9G2ihllpqcUM2pIGcs2Fk
+         wq3KjnPz+f2n2Ftcx4Yzf1NdXzyQxy4GyvJqC+JCNYswrVOV4ojJEYH3mC8JS/Jdi/ZJ
+         1Dn92vFp6RTKBX2Enctb2io8qYTuXtrZgjvqXMFXn8Uh2z3/8TwPwNEpYJzdX/akD255
+         2idVN5nXMhL9VpNEkDYRVuR5ZmTvXQFJBM51jff6wEG0xqVmKia7GCAPFvWQtEfIH63S
+         YVRg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=512yVSD80bgcUzCBL9aBu2In1UDPmdrZvKKSPOLOBNE=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=f+cmXnOd8H6OOLXd7Tmlpcc8jngdznxw0eNGf+y9I8q/OpiXetRwclHf47NF903FdJ
+         Ol7X4HXHWpXznz2W+7ieoUf+Yhc5PmBN/V3oRPkzNR4dCGgA/0urzHCfqQLTCSSe4jkF
+         DPDYcVYqty/izOIPyToK7wxbXP2JNkw/lCYv0rAjDEm9Yc4vSloCT293guPBWcRbl4jJ
+         r6PpkX+6vOF8V3S/Hj8rCkYWJRFYTdAs5LNvC1aa6X6YJapPRmeFlnC6+wH5eL7DEEjn
+         HT0wyRaI16/43WTw986tMi40NuEKgHM6goOD6L0fcx3YlpXclkFf/CrFawXYFpqqp1VV
+         la/A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=Sqh3dUhN;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=WXBG8+9F;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o46.ck.n.convertkit.com (o46.ck.n.convertkit.com. [149.72.61.159])
+        by mx.google.com with ESMTPS id w7-20020a05620a424700b00773eb4de2c7si8548608qko.257.2023.10.10.13.16.48
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Oct 2023 13:16:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) client-ip=149.72.61.159;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=Sqh3dUhN;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=WXBG8+9F;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=512yVSD80bgcUzCBL9aBu2In1UDPmdrZvKKSPOLOBNE=;
+	b=Sqh3dUhNyomFUkFwo1zKpYsgOJqv0zmRW4oXyPHSwrPWLiy6vrXl4ltW21YwO3ND+Yf7
+	QtLhNiXK5nX7FJpKSsEcWGbW1E5S5XSVkffFP0fqSdVqNgRYKQzG3gKRMPMyXD/me3hWgj
+	Y+9RxJ69coy1IBWXtgNfzmat13I+j5LuM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=512yVSD80bgcUzCBL9aBu2In1UDPmdrZvKKSPOLOBNE=;
+	b=WXBG8+9FMI+Ws0323c57ti34PewPPz81Xg6FEoUS2qPaNy8qBBdo7l1IvIMqfvFQ4PIs
+	/4uwOUDrRdKQUL20Iq2R31jVxGtLs2K+EyVej8mO4Dkum1NkuYOvSqGLsLMd5DtcLu9sbn
+	c5cZFzb4abjLm8GQjxPfdMhWLSwYu4fCo=
+Received: by filterdrecv-5466c76686-4xlsb with SMTP id filterdrecv-5466c76686-4xlsb-1-6525B12F-1D
+        2023-10-10 20:16:47.67232793 +0000 UTC m=+428093.087106949
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-19 (SG) with HTTP
+	id VCokFukRQQ-d0zBzsYoRlw
+	Tue, 10 Oct 2023 20:16:47.676 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=e15f47b065994f464fd04f7619bfeb134367c06ae532643bdf65d895f238
+Date: Tue, 10 Oct 2023 20:16:47 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <o8u97dw4d3bqhk53zk6uvhpnrz7rr@convertkit-mail2.com>
+Subject: How to condense time
+Feedback-ID: 11957210:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfedndTHHPoDkgvgZ=2F?=
+ =?us-ascii?Q?YmmonSByzU=2FbKN+Kh7=2FfjPJ92kxBqN=2FRlYxD=2Fzp?=
+ =?us-ascii?Q?9fzoY3kgvwZjkCesAQyOn2ysb3+nPJVleBxHjND?=
+ =?us-ascii?Q?5lcmTozBOcl7+9Ls9D7MNthNV8Q3QwJYTm3F7A2?=
+ =?us-ascii?Q?GR+hBViObp=2FA=2FOr3NmgCdsc+vHcFZH0tJ0FqjV?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADx9M=2FWT5ilsXAcQHeGsgJBf7DyYmKEqPhzYdVh?=
+ =?us-ascii?Q?MTcFs2QDASBS+7ifBghvV63glrwNiA5qSfeOiVH?=
+ =?us-ascii?Q?9qxQJg6FaUCm7KJuXRi1L0RFBAW1HNMdv7BUb6k?=
+ =?us-ascii?Q?Fj7K8cQA0drDPOOYEPfcfLKzPCHvMJEqb8oX1Yn?=
+ =?us-ascii?Q?3TjLYTOv5CuorfcXMCOnKCTspnbYBg51ZiqgREI?=
+ =?us-ascii?Q?W1JAxKA+wMRC=2FzUBIk9nDGUn7NoplCNCpHY+eYh?=
+ =?us-ascii?Q?oI3kXlHT4rraQ84wkgCQnogkixdaVK7pb3Q668b?=
+ =?us-ascii?Q?aG2EeGz1nn230XyB5KxLE2wO65ks=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--e15f47b065994f464fd04f7619bfeb134367c06ae532643bdf65d895f238
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+In yesterday=E2=80=99s email I mentioned how you can progress 2 - 3x
+times faster.
+
+=E2=80=8B
+
+It=E2=80=99s pretty simple. Let=E2=80=99s say you have two devs. Same abili=
+ty and
+experience.
+
+One codes for 2 hours a day. Sometimes more, sometimes less. He
+procrastinates on YT & Reddit. He=E2=80=99s still moving forward, just
+not that fast.
+
+=E2=80=8B
+
+The other, with the same ability and experience as the first gets
+serious.
+
+He dedicates 6 hours a day to coding.
+
+The result?
+
+=E2=80=8B
+
+About 3x the rate of progress.
+
+But it=E2=80=99s hard. Those extra 4 hours compared to the first dev need
+to be taken from somewhere. Meaning, a lot less YT, Reddit or
+Netflix, or even time with friends and family. Remember what our
+Masterclass students said before?
+
+=E2=80=8B
+
+Hanna: "We all have something outside of work. Family, friends,
+or other responsibilities, but we can't give that as an excuse
+not to work. We all are here to learn...=E2=80=9D
+
+Wira: "I wake up in the morning, have breakfast, and I open the
+laptop. I then have lunch, I take a break, and then I open the
+laptop. I then have dinner and come back again to work on the
+laptop. No matter the other responsibilities, I always return and
+open the laptop to finish the task.=E2=80=9D
+
+=E2=80=8B
+
+Of course, just doing anything and everything isn=E2=80=99t enough.
+
+If you want to progress the fastest, you need to do the right
+things. More on how to know what the right things in an email
+soon.
+
+=E2=80=8B
+
+For now, remember. To get time for coding, you need to take it
+from somewhere since there are only 24 hours in a day. What will
+you sacrifice to get the time you need to get where you want to
+go?
+
+=E2=80=8B
+
+I personally started spending almost all my free time on coding
+back in high school. And though it didn=E2=80=99t seem worth it then, it
+is now.
+
+If you think it=E2=80=99s worth it, find time to exchange for the
+realization of your goal. And do your absolute best.
+
+=E2=80=8B
+
+Also, if you=E2=80=99re want to progress way more than 3x the average
+dev, and you=E2=80=99re committed to putting in extraordinary effort,
+then the Masterclass sounds perfect for you.
+
+Here=E2=80=99s what a student, Santiago, said: =E2=80=9C=E2=80=A6the end re=
+sult of all of
+that after six months is huge. I see the difference in myself and
+the code that I write.=E2=80=9D
+
+So, if you=E2=80=99re looking to make a huge improvement in your skill
+level and career, here=E2=80=99s the link for you
+jsmastery.pro/masterclass (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr/m2h7h6u8nn=
+qk3zul/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVu=
+dC1ib290Y2FtcA=3D=3D
+)=E2=80=8B
+
+=E2=80=8B
+
+Your #1 fan,
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr
+)
+--e15f47b065994f464fd04f7619bfeb134367c06ae532643bdf65d895f238
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">In yesterday=E2=80=99s email I mentioned how you can progre=
+ss 2 - 3x times faster.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It=E2=80=99s pretty simple. Let=E2=80=99s say you have two =
+devs. Same ability and experience.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">One codes for 2 hours a day. Sometimes more, sometimes less=
+. He procrastinates on YT &amp; Reddit. He=E2=80=99s still moving forward, =
+just not that fast.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The other, with the same ability and experience as the firs=
+t <strong>gets serious</strong>.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">He dedicates 6 hours a day to coding.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The result?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">About 3x the rate of progress.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But it=E2=80=99s hard. Those extra 4 hours compared to the =
+first dev need to be taken from somewhere. Meaning, a lot less YT, Reddit o=
+r Netflix, or even time with friends and family. Remember what our Mastercl=
+ass students said before?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Hanna: "We all have something outside of work. Family, frie=
+nds, or other responsibilities, but we can't give that as an excuse not to =
+work. We all are here to learn...=E2=80=9D</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Wira: "I wake up in the morning, have breakfast, and I open=
+ the laptop. I then have lunch, I take a break, and then I open the laptop.=
+ I then have dinner and come back again to work on the laptop. No matter th=
+e other responsibilities, I always return and open the laptop to finish the=
+ task.=E2=80=9D</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Of course, just doing anything and everything isn=E2=80=99t=
+ enough.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you want to progress the fastest, you need to do the rig=
+ht things. More on how to know what the right things in an email soon.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">For now, remember. To get time for coding, you need to take=
+ it from somewhere since there are only 24 hours in a day. What will you sa=
+crifice to get the time you need to get where you want to go?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I personally started spending almost all my free time on co=
+ding back in high school. And though it didn=E2=80=99t seem worth it then, =
+it is now.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you think it=E2=80=99s worth it, find time to exchange f=
+or the realization of your goal. And do your absolute best.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Also, if you=E2=80=99re want to progress way more than 3x t=
+he average dev, and you=E2=80=99re committed to putting in extraordinary ef=
+fort, then the Masterclass sounds perfect for you. </p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Here=E2=80=99s what a student, Santiago, said: =E2=80=9C<em=
+>=E2=80=A6the end result of all of that after six months is huge. I see the=
+ difference in myself and the code that I write.</em>=E2=80=9D </p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So, if you=E2=80=99re looking to make a huge improvement in=
+ your skill level and career, here=E2=80=99s the link for you <a href=3D"ht=
+tps://click.convertkit-mail2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr/m2h7h6u8nnqk=
+3zul/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVudC=
+1ib290Y2FtcA=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"=
+color:#0f82f0" url-id=3D"1578618088">jsmastery.pro/masterclass</a>=E2=80=8B=
+</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Your #1 fan,<br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/o8u97dw4d3bqhk53zk6uvhpnrz7rr=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--e15f47b065994f464fd04f7619bfeb134367c06ae532643bdf65d895f238--

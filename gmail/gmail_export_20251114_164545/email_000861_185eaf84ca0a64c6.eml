@@ -1,0 +1,392 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:395:b0:3fa:3eac:b4c9 with SMTP id 21csp15155pxh;
+        Wed, 25 Jan 2023 14:06:59 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXulDkXDBDoX1pf46RKDno927pZ790sezyQFIF2kHXn+ZNcTRhm/cTj65tGVzm2S3dVfKVvZ
+X-Received: by 2002:a05:6a20:5491:b0:b8:80e4:e008 with SMTP id i17-20020a056a20549100b000b880e4e008mr39649231pzk.35.1674684419534;
+        Wed, 25 Jan 2023 14:06:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674684419; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GaEEguBnEHyiOGhgNFW3GCIDUQ6z1xRyWnkLkNUqSpnL7GVfuDqmGWvOfcHzxNaNQq
+         OO+02PMXIo7aYW0/TD+a/azgC1Kx67dO0iAKEuKO9DztRfFLMy28fTY+MI84Is0882jo
+         9fSDirOMsRt4TRXrbl9PqBLvAexud6fYzMfnovN4oT+8mJ0OXCfkcGhVrEA+wcOYeGDh
+         tpTwrkxgcoKQGqVmzH4kxok3V8iiqroObUvRQ6XplOVSgZKf4+8xPb5YQrifZO5XYs2l
+         ya//4QZyayv+ha/4T/MHTX4PgbNOCvuJwnK+t41ZnkM9bb7VPpEJeNX1iLxz3z8SKgJ8
+         MlAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:reply-to:list-unsubscribe:to:from:subject:mime-version
+         :date:sender:dkim-signature:dkim-signature;
+        bh=uO9TnGZhpb8XDH/sVUXHiAY55hJ/ZpuYdh9z9/R/ejQ=;
+        b=bSEadN+Z1JIghjQQ2w+AaB/IJwEWjGX7179+f0Ubq6ycA6aQpC0EYG3ZXK7NYxkyY/
+         RN9EOi1QjQEsOS/JF9pz54dWlk1Ze3OMFvXflz03AXLCZ/qxBg0L3jtRCy5lX18bQwpK
+         Hdqmbm/dkH2wdtn3n6h+DfiK3VXhBSFOcOrW+43lygemBaiGzepFepJ28bL9tyqHBsw5
+         /uVJlKVf648MQe2wDI3qVQDHMuWwIv52EUFx9W2/ZUG641HE5mKu9flF6cidA/2OJnMB
+         YrRIabCbsOFnjIhzypej5rLPc67ULtIs4MF1e59s8Vgq1ooiUyYY4lnhSZgXogdQiB6d
+         ELZQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bitnami.com header.s=smtp header.b=kwu4jK7k;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=qSXDRldU;
+       spf=pass (google.com: domain of bounce+266032.83882-ely.ubuntu0=gmail.com@bitnami.com designates 69.72.47.65 as permitted sender) smtp.mailfrom="bounce+266032.83882-ely.ubuntu0=gmail.com@bitnami.com"
+Return-Path: <bounce+266032.83882-ely.ubuntu0=gmail.com@bitnami.com>
+Received: from m47-65.mailgun.net (m47-65.mailgun.net. [69.72.47.65])
+        by mx.google.com with UTF8SMTPS id v5-20020a17090a4ec500b002298cb34320si3427846pjl.116.2023.01.25.14.06.58
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Jan 2023 14:06:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce+266032.83882-ely.ubuntu0=gmail.com@bitnami.com designates 69.72.47.65 as permitted sender) client-ip=69.72.47.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bitnami.com header.s=smtp header.b=kwu4jK7k;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=qSXDRldU;
+       spf=pass (google.com: domain of bounce+266032.83882-ely.ubuntu0=gmail.com@bitnami.com designates 69.72.47.65 as permitted sender) smtp.mailfrom="bounce+266032.83882-ely.ubuntu0=gmail.com@bitnami.com"
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=bitnami.com; q=dns/txt;
+ s=smtp; t=1674684418; x=1674691618; h=Message-Id: Reply-To:
+ List-Unsubscribe: To: To: From: From: Subject: Subject: Content-Type:
+ Mime-Version: Date: Sender: Sender: X-Feedback-Id;
+ bh=uO9TnGZhpb8XDH/sVUXHiAY55hJ/ZpuYdh9z9/R/ejQ=; b=kwu4jK7kNcRCPRZvKIIvrRel/KrTYeK1bp1ljtUtta+87h/HLBOsOE2gbVm/zGOYi8fJcA8B
+ yGS4ufx+6dydc06LBkQ7398TGQTgpB0sGNWOFAqEpbkelHv2ZaHyUpUrDemTaIYGd5fVlU7u
+ XlvCg+c1dglaABkdvBZ1abFr/4k=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg;
+ t=1674684418; x=1674691618; h=Message-Id: Reply-To: List-Unsubscribe:
+ To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date:
+ Sender: Sender: X-Feedback-Id;
+ bh=uO9TnGZhpb8XDH/sVUXHiAY55hJ/ZpuYdh9z9/R/ejQ=; b=qSXDRldUq2fiXCdQ7hP0tcigeYqUkRIK00PoaSWlMmdn26InCL/+mSjfphKqZRuNhdv+tJE6
+ zshCGLUDVI3bBing7jpajNyjmMnS3D61RhuybAHaRP3EojLb/UhQO61tpDvv4Iem0vSUhA0V
+ IvL1CecywERLszJzeEFwI4tUrGY=
+X-Feedback-Id: 530251b3386774621318b88a:mailgun
+X-Mailgun-Sending-Ip: 69.72.47.65
+X-Mailgun-Sid: WyI0MDQ5OCIsImVseS51YnVudHUwQGdtYWlsLmNvbSIsIjgzODgyIl0=
+Received: from <unknown> (<unknown> []) by ed4f637db323 with HTTP id
+ 63d1a802ca52aa2fc3efb7a6; Wed, 25 Jan 2023 22:06:58 GMT
+Sender: howdy@bitnami.com
+Date: Wed, 25 Jan 2023 22:06:58 +0000
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary="b30d88b13dcc96451392e53f54c15ede80599193d938cb0cce05b0cfe03f"
+Subject: Your account has been activated
+From: Bitnami <howdy@bitnami.com>
+To: ely.ubuntu0@gmail.com
+X-Mailgun-Tag: behavioural
+X-Mailgun-Tag: vero
+X-Mailgun-Track-Opens: true
+X-Mailgun-Track-Clicks: true
+List-Unsubscribe: http://app.getvero.com/unsubscribe/now?data=eJxj4ahmt-JPzs8tSMyrjM9MyWSq4rHiK0gtKs7PA3JztNl9qvxyAd19DBY|945dc63d0726381b9c66535509193c12&variation_id=17891
+X-Vero-Id: 22068404720
+Reply-To: howdy@bitnami.com
+X-Mailgun-Variables: {"campaign[campaign_id]": "15475",
+ "campaign[email_subject]": "Your account has been activated",
+ "campaign[project_name]": "Bitnami", "campaign[recipient_domain]":
+ "gmail.com", "campaign[subject]": "Your account has been activated",
+ "campaign[template_name]": "Bitnami Plain Transactional (New design)",
+ "campaign[type]": "Transactional", "campaign[variation]": "Control"}
+Message-Id: <20230125220658.35e95ecf0090fb66@bitnami.com>
+
+--b30d88b13dcc96451392e53f54c15ede80599193d938cb0cce05b0cfe03f
+Content-Type: text/plain; charset="ascii"
+Content-Transfer-Encoding: quoted-printable
+
+-------------------
+Welcome to Bitnami!
+-------------------
+
+Hi Ubuntu,Your account has been activated!You now have the ability to simpl=
+y click to deploy any one of 120+ ready-to-run applications from the Bitnam=
+i Application Catalog ( http://email.bitnami.com/c/eJydUk1vozAQ_TVwQY2MwYQc=
+OCRh06L0Y1ebrpRekDGTxA1gxxja_Pu1SaLSPa6EYHjjN_PmjRmtJeX7xiELBYxLDo3OS1FTbqA=
+02ZugmjBRu5D40TSM4jD0Y7dM4iCOscu-2D1VnGouBtpSNFqJyuUJRjhAPiYYo4jEk4DAjADbIT=
+RDuyKKnBAVXDe05kOTQwLMD3aI7mYzRMswRBRKhPwwnAKJ_SLcuSqB6jzpiq7RHTL0L4VVctBat=
+k4wd_DKPKPC5o9KWXE2KLwzH1qJvROsOl3nregUAydIe1DCwZHFaih5VxsMbPkryMxUxh6Dsst8=
+N_zmQpAuLj0dMzCaMyaMymuseU81lFeKBmWrbxRtWsqsKGqrWQW2TW9y6Lycv22fHpuHbA3HPyl=
+rTlL9KrM7wtPpfpNntaqKl1eU3cf3pxUWi4fXud5gKosjJ02GF_L587NPt-y0zqrpy1w_ti2Rvz=
+-WTydVr7uVPm7T9x9vfLU3CoN0eI0X2nbFOzBt17k1Dnn0Mo53oK1XADQevc00Zt3CnJeW6ZNwS=
+sZ5qYStmhuXwB64GjY-os9ySH0zZ3xg2En-f_o01LIy4L8CvJ-VufLet56eg-Nn-PBKaC0Zz1yd=
+FHCgPTf9jCSd2H39Be-OHEM ). If you have any questions, please check out our =
+documentation ( http://email.bitnami.com/c/eJydUk1vozAQ_TVwQRvZBhNy4JCETYvS=
+j11tulJ6QcZMEjeAiTG0-fe1SaLSPa6ErNGbeTPvzcBZ1TCxrx26UMBFI6DWWSErJgyUxHsTlBM=
+uKxdiHE6DMAoCHLlFHPlRRFz-xe6ZEkwLOdCWstZKlq6ICSI-woQSgkIaTXwKMwp8h9AM7fIwdA=
+KUC12zSgxDDjHzMRgGR7mPcYBnnGC-o2FEAswIxVNXxVCeJ13e1bpDhv6lsIwPWjet488dsjJfI=
+Xk7GXW3qL_qdJW1slMcHD_pQUmHhBaroBBdZTCwDa8gNz7MQgzKL45u-M23nywuAxxjEc05l0bX=
+NdaiZxqKK0WDst03itUt43ZRzHazCuyY3uTQeTl_3T4-1PfpGo5_E16fGvW7SH9QkUz3myytVJk=
+_v6D0Lro7rYhc3L_M9YawJj8KWqdk0Tx9fPTJlp_WaTl9nuuHtqXNn_fl40lV626lj9vk7eerWO=
+2NQj8ZnvEJ2y5_A67tAbdmQx672PEOrPVygNpjN09j1i3MRGGZmAZTOs43StqumdkS2ILrwsYl-=
+twMqW_LGRcMN8n-T5-GqikN-K8A71dpfnLv20zPIdETvHsFtJZMZq6OcziwXph5RpKO7b0-Afst=
+FX0 ) or post to our community support forum ( http://email.bitnami.com/c/e=
+JydUk1vozAQ_TVwQRsZg4EcOCRh06L0Y1ebrpRekDGTxA02xBja_Pva-VDpHldC1ujNvHlvZmBU=
+tJTvpEPmChhvOUhdVI2g3EBZujNBPWGNcCH1oziMkjD0E7dKkyBJsMu-2ANVnGrenGmLRmrV1C5=
+PMcIB8jHBGEUkmQQEpgTYFqEp2pZR5ISo5FpSwc8i-9Qv44QFFalin2Kowimj0ZbFOCGUYMKQq1=
+KoT5O-7KXukaF_OazTvdZt5wQzBy_NZzDRS65Pk5GETQXLXouia3rFwAmyAVTj4MhiAireC4OB7=
+XoFmRnGbMWg7DLWDb8NH2Tzi4Bj5kQzxhpj7hprPlAN1ZWiQdnua0VlR5ndFrXdrAMrM5gcOi1m=
+r5vHB3mfr-DwN2Py2KrfVf6D8CzerYtcqLp8fkH5XXJ3XOJmfv8y02tM2_LAiczxvH36-BiyDTu=
+u8jp-numHriPtn_fF41GJVb_Uh0329vOVL3fGYZCdn_Edu758A6btFTdmQx69jOPtaeeVANKjt5=
+nGrFtY8MoyfRLGZJxvVWO7FmZLYAuuCxuX6FN7Tn1bzrjgfJPi__xpEG1twH8NeL9q86d73zQ9B=
+ydP8O5V0Fkynro6LWFPB270jCWd2nt9Ak1LGMg ). Our team would be happy to help y=
+ou there!
+
+For more information, support, or to log in to your account, visit the Bitn=
+ami website ( http://email.bitnami.com/c/eJydUslu2zAQ_RrpItSgSVHLQQfbqhPBWV=
+rUKeBcBJIa24y1maKU-O9DekGUHgsIxODNvDdvZiRY1TK5qx06VyBkK6HWedFUTBooTXYmKCeiq=
+VxIpkHoB5HvTyO3SCISRdgVX-yBKcm0bM60RVNr1ZSuTDDCBE0xxRgFNJoQCjEFsUUoRlseBI6P=
+uNQ1q-S5yT7BtAiDAmJEaMAjTENSBCjmYUywvy0Yd1UC5WnS877WPTL0L4dlste67Rwyc_DSfCN=
+hhyx7XeVd0ysBDkkHUI2DA4tVUMjeFKRgha6gMP7NIgwqLpPc8Nu8JJ1f1B0zGpoJ0Rg_11jLgW=
+korhQNyqqvFas7JuyCmFWzDmybweTQaTF73Tw-1PfZCg5_U1EfW_W7yH5QmYa7dZ5VquTPLyi7i=
+-6OS9zM719meo1Zyw-S1hmet08fH0O6EcdVVobPM_3QdbT98754PKpq1S_1YZO-_XyVy51xSNLz=
+Mz5d1_M3ENoebmM25LHLON6edR4HqD12m2nMuoW5LCxzSv2QjvOtaqxqbrYEtuC6sHGJPrXn1Lf=
+ljAvON8n_z5-Gqi0N-K8B71dpfm7vW0_PwdETvHsFdJaMY1cnHPZskKafsaQTe69PhdATlw ).
+
+To be removed from this mailing list, click Unsubscribe ( http://email.bitn=
+ami.com/c/eJydkklv2zAQhX-NdBFqcBEp8aCDHSMoHDgwkAJFTgaXsUVDWyjKifPrS3pp3AK9F=
+NCBeuSb-fiGWraDtPsuYQsH2g4WOr81fSttkJbVPiyame7bFCrMi5yXeY7L1FQlLUuS6i_3UTor=
+ve3Ptoe-865vUlsRRCjChBGCOCtnlIFgoHcICbRTnCc5UtZ3srXnJnXFIFc7QZAxQhiqTA5ICVC=
+Ucyh2muDUVdCcZpOaOj-hYP8ibKra-yGh84Q8hk8Ow2wP_giuj9tBmbpxUqN2VkH46_r3hD4a6W=
+VCl7D6OOSybv231eZzLP3L-uQOa7E-_Xx5y913-4T2_mksNnO6-vTPjXg7fpzmBovl4jUhrHgQO=
+TOaU4MKwmmJldCcM8oYElhQjUlC-O-AttaEjrgoBQ7y5Nvt2E9OQxAj7FVrwdipjWjxgldRh1zD=
+gIKqLwnf9Nsc6HJxiTNQETTXug85XdfeHqUHc7V4cLH6Dye7UerIJZv7eYaoDqB9nOZrwMvkpVZ=
+WyzFTAF0mbwXvXbdlvGNwYpYX7H5_cH2sug2IEA9cae-P-NNw3von2TmQ7f_xeWiHJoh_A2SbJr=
+z47I-eWULKZ3jPDIzRTETqKwW1PNrQLyD5Ko7rFwR5GJc ).
+--b30d88b13dcc96451392e53f54c15ede80599193d938cb0cce05b0cfe03f
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D'font-family: "Helveti=
+ca Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 0;'>
+<head>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<title>Your account has been activated</title>
+<style>img {
+max-width: 100%;
+}
+body {
+-webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width:=
+ 100% !important; height: 100%; font-size: 14px; line-height: 1.5; color: #=
+1C2B39;
+}
+=2Ebtn:hover {
+background: #F58220;
+}
+@media only screen and (max-width: 600px) {
+  a[class=3D"btn"] {
+    display: block !important; margin-bottom: 10px !important; margin-right=
+: 0 !important;
+  }
+  div[class=3D"column"] {
+    width: auto !important; float: none !important;
+  }
+  table.social div[class=3D"column"] {
+    width: auto !important;
+  }
+}
+</style></head>
+<body bgcolor=3D"#FFFFFF" style=3D'font-family: "Helvetica Neue", Helvetica=
+, Arial, sans-serif; -webkit-font-smoothing: antialiased; -webkit-text-size=
+-adjust: none; width: 100% !important; height: 100%; font-size: 14px; line-=
+height: 1.5; color: #1C2B39; margin: 0; padding: 0;'>
+<!-- HEADER -->
+<table class=3D"head-wrap" bgcolor=3D"white" style=3D'font-family: "Helveti=
+ca Neue", Helvetica, Arial, sans-serif; width: 100%; margin: 0; padding: 0;=
+'><tr style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;=
+ margin: 0; padding: 0;'>
+<td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; m=
+argin: 0; padding: 0;'></td>
+    <td class=3D"header container" style=3D'font-family: "Helvetica Neue", =
+Helvetica, Arial, sans-serif; display: block !important; max-width: 600px !=
+important; clear: both !important; margin: 0 auto; padding: 0;'>
+       =20
+        <div class=3D"content" style=3D'font-family: "Helvetica Neue", Helv=
+etica, Arial, sans-serif; font-weight: normal; color: #555555; font-size: 1=
+4px; line-height: 1.6; max-width: 600px; display: block; margin: 0 auto; pa=
+dding: 15px 15px 0;'>
+        <table bgcolor=3D"#ffffff" style=3D'font-family: "Helvetica Neue", =
+Helvetica, Arial, sans-serif; width: 100%; margin: 0; padding: 0px;'><tr st=
+yle=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin:=
+ 0; padding: 0;'>
+<td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; m=
+argin: 0; padding: 0;'><img src=3D"https://d33np9n32j53g7.cloudfront.net/as=
+sets/mailing/header-5c142354ed2db530284dfa0029a3d7d2.png" style=3D'font-fam=
+ily: "Helvetica Neue", Helvetica, Arial, sans-serif; max-width: 100%; margi=
+n: 0; padding: 0;'></td>
+          </tr></table>
+</div>
+       =20
+    </td>
+    <td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-seri=
+f; margin: 0; padding: 0;'></td>
+  </tr></table>
+<!-- /HEADER --><!-- BODY --><table class=3D"body-wrap" style=3D'font-famil=
+y: "Helvetica Neue", Helvetica, Arial, sans-serif; width: 100%; margin: 0; =
+padding: 0;'><tr style=3D'font-family: "Helvetica Neue", Helvetica, Arial, =
+sans-serif; margin: 0; padding: 0;'>
+<td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; m=
+argin: 0; padding: 0;'></td>
+    <td class=3D"container" bgcolor=3D"#FFFFFF" style=3D'font-family: "Helv=
+etica Neue", Helvetica, Arial, sans-serif; display: block !important; max-w=
+idth: 600px !important; clear: both !important; margin: 0 auto; padding: 0;=
+'>
+      <div class=3D"content" style=3D'font-family: "Helvetica Neue", Helvet=
+ica, Arial, sans-serif; font-weight: normal; color: #555555; font-size: 14p=
+x; line-height: 1.6; max-width: 600px; display: block; margin: 0 auto; padd=
+ing: 15px;'>
+      <table style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans=
+-serif; width: 100%; margin: 0; padding: 0;'><tr style=3D'font-family: "Hel=
+vetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 0;'>
+<td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; m=
+argin: 0; padding: 0;'>
+            <h2 class=3D"title vero-editable" align=3D"center" style=3D'fon=
+t-family: "Helvetica Neue", "Helvetica", Arial, sans-serif; line-height: 1.=
+4; color: #1C2B39; font-weight: 500; font-size: 30px; margin: 0 0 24px; pad=
+ding: 0;'>Welcome to Bitnami!</h2>
+           =20
+  <div class=3D"vero-editable" style=3D'font-family: "Helvetica Neue", Helv=
+etica, Arial, sans-serif; font-weight: normal; color: #555555; font-size: 1=
+4px; line-height: 1.6; margin: 0 0 15px; padding: 0;'>Hi Ubuntu,<br style=
+=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0;=
+ padding: 0;'><br style=3D'font-family: "Helvetica Neue", Helvetica, Arial,=
+ sans-serif; margin: 0; padding: 0;'>Your account has been activated!<br st=
+yle=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin:=
+ 0; padding: 0;'><br style=3D'font-family: "Helvetica Neue", Helvetica, Ari=
+al, sans-serif; margin: 0; padding: 0;'>You now have the ability to simply =
+click to deploy any one of 120+ ready-to-run applications from the <a href=
+=3D"http://email.bitnami.com/c/eJydUk1vozAQ_TVwQY2MwYQcOCRh06L0Y1ebrpRekDGT=
+xA1gxxja_Pu1SaLSPa6EYHjjN_PmjRmtJeX7xiELBYxLDo3OS1FTbqA02ZugmjBRu5D40TSM4jD=
+0Y7dM4iCOscu-2D1VnGouBtpSNFqJyuUJRjhAPiYYo4jEk4DAjADbITRDuyKKnBAVXDe05kOTQw=
+LMD3aI7mYzRMswRBRKhPwwnAKJ_SLcuSqB6jzpiq7RHTL0L4VVctBatk4wd_DKPKPC5o9KWXE2K=
+LwzH1qJvROsOl3nregUAydIe1DCwZHFaih5VxsMbPkryMxUxh6Dsst8N_zmQpAuLj0dMzCaMyaM=
+ymuseU81lFeKBmWrbxRtWsqsKGqrWQW2TW9y6Lycv22fHpuHbA3HPylrTlL9KrM7wtPpfpNntaq=
+Kl1eU3cf3pxUWi4fXud5gKosjJ02GF_L587NPt-y0zqrpy1w_ti2Rvz-WTydVr7uVPm7T9x9vfL=
+U3CoN0eI0X2nbFOzBt17k1Dnn0Mo53oK1XADQevc00Zt3CnJeW6ZNwSsZ5qYStmhuXwB64GjY-o=
+s9ySH0zZ3xg2En-f_o01LIy4L8CvJ-VufLet56eg-Nn-PBKaC0Zz1ydFHCgPTf9jCSd2H39Be-O=
+HEM" rel=3D"noopener noreferrer" target=3D"_blank" style=3D'font-family: "H=
+elvetica Neue", Helvetica, Arial, sans-serif; color: #F58220; margin: 0; pa=
+dding: 0;'>Bitnami Application Catalog</a>.&nbsp;<br style=3D'font-family: =
+"Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 0;'><br=
+ style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; marg=
+in: 0; padding: 0;'>If you have any questions, please check out our <a href=
+=3D"http://email.bitnami.com/c/eJydUk1vozAQ_TVwQRvZBhNy4JCETYvSj11tulJ6QcZM=
+EjeAiTG0-fe1SaLSPa6ErNGbeTPvzcBZ1TCxrx26UMBFI6DWWSErJgyUxHsTlBMuKxdiHE6DMAo=
+CHLlFHPlRRFz-xe6ZEkwLOdCWstZKlq6ICSI-woQSgkIaTXwKMwp8h9AM7fIwdAKUC12zSgxDDj=
+HzMRgGR7mPcYBnnGC-o2FEAswIxVNXxVCeJ13e1bpDhv6lsIwPWjet488dsjJfIXk7GXW3qL_qd=
+JW1slMcHD_pQUmHhBaroBBdZTCwDa8gNz7MQgzKL45u-M23nywuAxxjEc05l0bXNdaiZxqKK0WD=
+st03itUt43ZRzHazCuyY3uTQeTl_3T4-1PfpGo5_E16fGvW7SH9QkUz3myytVJk_v6D0Lro7rYh=
+c3L_M9YawJj8KWqdk0Tx9fPTJlp_WaTl9nuuHtqXNn_fl40lV626lj9vk7eerWO2NQj8ZnvEJ2y=
+5_A67tAbdmQx672PEOrPVygNpjN09j1i3MRGGZmAZTOs43StqumdkS2ILrwsYl-twMqW_LGRcMN=
+8n-T5-GqikN-K8A71dpfnLv20zPIdETvHsFtJZMZq6OcziwXph5RpKO7b0-AfstFX0" rel=3D"=
+noopener noreferrer" target=3D"_blank" style=3D'font-family: "Helvetica Neu=
+e", Helvetica, Arial, sans-serif; color: #F58220; margin: 0; padding: 0;'>d=
+ocumentation</a> or post to our <a href=3D"http://email.bitnami.com/c/eJydU=
+k1vozAQ_TVwQRsZg4EcOCRh06L0Y1ebrpRekDGTxA02xBja_Pva-VDpHldC1ujNvHlvZmBUtJTv=
+pEPmChhvOUhdVI2g3EBZujNBPWGNcCH1oziMkjD0E7dKkyBJsMu-2ANVnGrenGmLRmrV1C5PMcI=
+B8jHBGEUkmQQEpgTYFqEp2pZR5ISo5FpSwc8i-9Qv44QFFalin2Kowimj0ZbFOCGUYMKQq1KoT5=
+O-7KXukaF_OazTvdZt5wQzBy_NZzDRS65Pk5GETQXLXouia3rFwAmyAVTj4MhiAireC4OB7XoFm=
+RnGbMWg7DLWDb8NH2Tzi4Bj5kQzxhpj7hprPlAN1ZWiQdnua0VlR5ndFrXdrAMrM5gcOi1mr5vH=
+B3mfr-DwN2Py2KrfVf6D8CzerYtcqLp8fkH5XXJ3XOJmfv8y02tM2_LAiczxvH36-BiyDTuu8jp=
+-numHriPtn_fF41GJVb_Uh0329vOVL3fGYZCdn_Edu758A6btFTdmQx69jOPtaeeVANKjt5nGrF=
+tY8MoyfRLGZJxvVWO7FmZLYAuuCxuX6FN7Tn1bzrjgfJPi__xpEG1twH8NeL9q86d73zQ9BydP8=
+O5V0Fkynro6LWFPB270jCWd2nt9Ak1LGMg" rel=3D"noopener noreferrer" target=3D"_=
+blank" style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif=
+; color: #F58220; margin: 0; padding: 0;'>community support forum</a>. Our =
+team would be happy to help you there!<br style=3D'font-family: "Helvetica =
+Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 0;'><br style=3D'f=
+ont-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padd=
+ing: 0;'>
+</div>
+  <div class=3D"vero-editable" style=3D'font-family: "Helvetica Neue", Helv=
+etica, Arial, sans-serif; font-weight: normal; color: #555555; font-size: 1=
+4px; line-height: 1.6; margin: 0 0 15px; padding: 0;'></div>
+   <div align=3D"center" class=3D"vero-editable" style=3D'font-family: "Hel=
+vetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; color: #55=
+5555; font-size: 14px; line-height: 1.6; margin: 0 0 15px; padding: 0;'></d=
+iv>
+            <div class=3D"vero-editable" style=3D'font-family: "Helvetica N=
+eue", Helvetica, Arial, sans-serif; font-weight: normal; color: #555555; fo=
+nt-size: 14px; line-height: 1.6; margin: 0 0 15px; padding: 0;'></div>
+   <div class=3D"vero-editable" style=3D'font-family: "Helvetica Neue", Hel=
+vetica, Arial, sans-serif; font-weight: normal; color: #555555; font-size: =
+14px; line-height: 1.6; margin: 0 0 15px; padding: 0;'></div>
+     <div align=3D"center" class=3D"vero-editable" style=3D'font-family: "H=
+elvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; color: #=
+555555; font-size: 14px; line-height: 1.6; margin: 0 0 15px; padding: 0;'><=
+/div>
+           =20
+          </td>
+        </tr></table>
+</div>
+<!-- /content -->
+                 =20
+    </td>
+    <td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-seri=
+f; margin: 0; padding: 0;'></td>
+  </tr></table>
+<!-- /BODY --><hr class=3D"footer" style=3D'font-family: "Helvetica Neue", =
+Helvetica, Arial, sans-serif; background-color: #f1f1f1; height: 1px; max-w=
+idth: 570px; margin: 16px auto 10px; padding: 0; border: 0;'>
+<!-- FOOTER --><table class=3D"footer-wrap" style=3D'font-family: "Helvetic=
+a Neue", Helvetica, Arial, sans-serif; width: 100%; clear: both !important;=
+ margin: 0; padding: 0;'><tr style=3D'font-family: "Helvetica Neue", Helvet=
+ica, Arial, sans-serif; margin: 0; padding: 0;'>
+<td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; m=
+argin: 0; padding: 0;'></td>
+    <td class=3D"container" style=3D'font-family: "Helvetica Neue", Helveti=
+ca, Arial, sans-serif; display: block !important; max-width: 600px !importa=
+nt; clear: both !important; margin: 0 auto; padding: 0;'>
+     =20
+        <!-- content -->
+        <div class=3D"content" style=3D'font-family: "Helvetica Neue", Helv=
+etica, Arial, sans-serif; font-weight: normal; color: #555555; font-size: 1=
+4px; line-height: 1.6; max-width: 600px; display: block; margin: 0 auto; pa=
+dding: 15px;'>
+        <table style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sa=
+ns-serif; width: 100%; margin: 0; padding: 0;'><tr style=3D'font-family: "H=
+elvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 0;'>
+<td align=3D"center" style=3D'font-family: "Helvetica Neue", Helvetica, Ari=
+al, sans-serif; margin: 0; padding: 0;'>
+            <p class=3D"footer" style=3D'font-family: "Helvetica Neue", Hel=
+vetica, Arial, sans-serif; color: #aaa; font-size: 12px; text-align: left; =
+font-weight: normal; line-height: 1.6; margin: 0 0 15px; padding: 0;' align=
+=3D"left">
+              For more information, support, or to log in to your account, =
+visit the <a href=3D"http://email.bitnami.com/c/eJydUslu2zAQ_RrpItSgSVHLQQf=
+bqhPBWVrUKeBcBJIa24y1maKU-O9DekGUHgsIxODNvDdvZiRY1TK5qx06VyBkK6HWedFUTBooTX=
+YmKCeiqVxIpkHoB5HvTyO3SCISRdgVX-yBKcm0bM60RVNr1ZSuTDDCBE0xxRgFNJoQCjEFsUUoR=
+lseBI6PuNQ1q-S5yT7BtAiDAmJEaMAjTENSBCjmYUywvy0Yd1UC5WnS877WPTL0L4dlste67Rwy=
+c_DSfCNhhyx7XeVd0ysBDkkHUI2DA4tVUMjeFKRgha6gMP7NIgwqLpPc8Nu8JJ1f1B0zGpoJ0Rg=
+_11jLgWkorhQNyqqvFas7JuyCmFWzDmybweTQaTF73Tw-1PfZCg5_U1EfW_W7yH5QmYa7dZ5Vqu=
+TPLyi7i-6OS9zM719meo1Zyw-S1hmet08fH0O6EcdVVobPM_3QdbT98754PKpq1S_1YZO-_XyVy=
+51xSNLzMz5d1_M3ENoebmM25LHLON6edR4HqD12m2nMuoW5LCxzSv2QjvOtaqxqbrYEtuC6sHGJ=
+PrXn1LfljAvON8n_z5-Gqi0N-K8B71dpfm7vW0_PwdETvHsFdJaMY1cnHPZskKafsaQTe69PhdA=
+Tlw" style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; =
+color: #F58220; margin: 0; padding: 0;'>Bitnami website</a>.
+            </p>
+            <p class=3D"footer" style=3D'font-family: "Helvetica Neue", Hel=
+vetica, Arial, sans-serif; color: #aaa; font-size: 12px; text-align: left; =
+font-weight: normal; line-height: 1.6; margin: 0 0 15px; padding: 0;' align=
+=3D"left">
+              To be removed from this mailing list, click <a href=3D"http:/=
+/email.bitnami.com/c/eJydkklv2zAQhX-NdBFqcBEp8aCDHSMoHDgwkAJFTgaXsUVDWyjKif=
+PrS3pp3AK9FNCBeuSb-fiGWraDtPsuYQsH2g4WOr81fSttkJbVPiyame7bFCrMi5yXeY7L1FQlL=
+UuS6i_3UTorve3Ptoe-865vUlsRRCjChBGCOCtnlIFgoHcICbRTnCc5UtZ3srXnJnXFIFc7QZAx=
+QhiqTA5ICVCUcyh2muDUVdCcZpOaOj-hYP8ibKra-yGh84Q8hk8Ow2wP_giuj9tBmbpxUqN2VkH=
+46_r3hD4a6WVCl7D6OOSybv231eZzLP3L-uQOa7E-_Xx5y913-4T2_mksNnO6-vTPjXg7fpzmBo=
+vl4jUhrHgQOTOaU4MKwmmJldCcM8oYElhQjUlC-O-AttaEjrgoBQ7y5Nvt2E9OQxAj7FVrwdipj=
+WjxgldRh1zDgIKqLwnf9Nsc6HJxiTNQETTXug85XdfeHqUHc7V4cLH6Dye7UerIJZv7eYaoDqB9=
+nOZrwMvkpVZWyzFTAF0mbwXvXbdlvGNwYpYX7H5_cH2sug2IEA9cae-P-NNw3von2TmQ7f_xeWi=
+HJoh_A2SbJrz47I-eWULKZ3jPDIzRTETqKwW1PNrQLyD5Ko7rFwR5GJc">Unsubscribe</a>.=20
+            </p>
+          </td>
+        </tr></table>
+</div>
+<!-- /content -->
+       =20
+    </td>
+    <td style=3D'font-family: "Helvetica Neue", Helvetica, Arial, sans-seri=
+f; margin: 0; padding: 0;'></td>
+  </tr></table>
+<!-- /FOOTER -->
+<img width=3D"1px" height=3D"1px" alt=3D"" src=3D"http://email.bitnami.com/=
+o/eJyVkTFvwyAQhX9NvCBZGBsbDyxp56pDl07WAZeEyAYLY1f594VUVZ2qS7enu8f3HqBhmsGe3=
+YEfA2o7W3RxMH4Cm0bP8pzEWGo_FfrHiHk4LKu6oo7Z9e7XQEBrv7pILrAQhejSINoNIprCSFEL=
+wfaMDYKFaP095cm7GPxYWMkoq2nFOGO05aKsOfYc9YnSnp5U2x4aqmx0MNl7p4vsuxMHZcBUpmd=
+JtjVyxaAzDLnuOrqP_EfhIHG8latK65Wm0D-fYQ4-84ZUBzP0-NVsb4m3-b56C-CWjPcOxgJl1X=
+ZNK5qmEg9unOYx5f8mktcxfQd5gJADEy_4QQwu-TDr96BvOViTMRVvOl5EqfACm01XTx2i3DD4T=
+-mfrW4"></body>
+</html>
+
+--b30d88b13dcc96451392e53f54c15ede80599193d938cb0cce05b0cfe03f--

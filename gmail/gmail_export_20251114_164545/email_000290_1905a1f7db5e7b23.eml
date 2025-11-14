@@ -1,0 +1,809 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:2ac4:0:b0:2ec:51be:6cd5 with SMTP id q187csp322736ljq;
+        Thu, 27 Jun 2024 07:35:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEElePn+FqeDPF8kGhBIde4NNLcbLanPsFnSzsVO2cI+xfqUuvB7E17YuUaJ6WCsYh0RAml
+X-Received: by 2002:a67:f8cd:0:b0:48f:9608:ac37 with SMTP id ada2fe7eead31-48f9608b110mr1055034137.21.1719498931387;
+        Thu, 27 Jun 2024 07:35:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719498931; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GuUaPEn5Kj1aM20O+U50TIHR08NNyXQXuZEk6DgF3/fDzYXu9NKaTeQ3iCHTYI9ib7
+         zDKu//JLMlKSQvoHLxIKBeKNkvagrrlF1tyN30udbgiX6G1HqaRYgLu920XxbNgOA0wI
+         dYpvDeaOYbLU0ckYugU+DCNo7l9hTyfnlEPKGx7/WxDWQcvfVQge6VQ+fETYZoX+Dpv8
+         z6zEAKEyR3f16DrsbU3EO98FYa5E/fj4nQbMKdZNR7EBofRL4JCGQkEXv/0cez9bfRve
+         JzsgA8NVDK2qYTbT4ykjd6GCZTY2tXWPgLvJuxWU+vEvLtSZ0a3IDa/l34UVlIIhxf41
+         126g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:to:list-unsubscribe-post:list-unsubscribe:list-id
+         :feedback-id:reply-to:message-id:subject:date:from:dkim-signature
+         :dkim-signature;
+        bh=dcRpBeJwTrBMFnaqzN2JEMVayFLodOGthbuXDpVNMNo=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=000T54BENhTNI8ees4NW3evWvxffIk4KCg1QmkDgRqzNQnAqfyFb1/YS9qzNMYXTGC
+         H9v9itxIaP4ZT2PKxJHd05B0cpbJ6QGZRBQgCRTX0H64gRboWQgv1e4N4tFVk/z7h8FB
+         nCW5pF9U+V4jsOy5ygHYwTLC/DcohC/mWyvrvDPITrOmoBUNP9kaFQKD1ggjiLjKNXlh
+         Ywx/g9gCYeOBPTJurbYkELqHbguokEjHugabYrENRTami64bURAxCq6G13bNa0WUfUUZ
+         A3yYFlgWHkDBjSoWeiwiQ7yvolV6Nh5PhuPHllExENRJDC8hV6sNAYFVT6axDQVM4hCr
+         ia7Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cythelia.fr header.s=1395910 header.b=gx+mYRto;
+       dkim=pass header.i=@bmsend.com header.s=bmdeda header.b=eW9m2Enh;
+       spf=pass (google.com: domain of bounce.ffb172.100ea2b2e.146f37a.154cc6.bme@r1395910.cythelia.fr designates 207.8.97.39 as permitted sender) smtp.mailfrom=BOUNCE.FFB172.100EA2B2E.146F37A.154CC6.bme@r1395910.cythelia.fr;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=cythelia.fr
+Return-Path: <BOUNCE.FFB172.100EA2B2E.146F37A.154CC6.bme@r1395910.cythelia.fr>
+Received: from mail291.bms6.bmsend.com (mail291.bms6.bmsend.com. [207.8.97.39])
+        by mx.google.com with ESMTPS id ada2fe7eead31-48f8e452b4bsi187546137.156.2024.06.27.07.35.30
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Jun 2024 07:35:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce.ffb172.100ea2b2e.146f37a.154cc6.bme@r1395910.cythelia.fr designates 207.8.97.39 as permitted sender) client-ip=207.8.97.39;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cythelia.fr header.s=1395910 header.b=gx+mYRto;
+       dkim=pass header.i=@bmsend.com header.s=bmdeda header.b=eW9m2Enh;
+       spf=pass (google.com: domain of bounce.ffb172.100ea2b2e.146f37a.154cc6.bme@r1395910.cythelia.fr designates 207.8.97.39 as permitted sender) smtp.mailfrom=BOUNCE.FFB172.100EA2B2E.146F37A.154CC6.bme@r1395910.cythelia.fr;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=cythelia.fr
+DKIM-Signature: v=1; a=rsa-sha256; d=cythelia.fr; s=1395910;
+	c=relaxed/relaxed; i=contact@cythelia.fr; t=1719498927;
+	h=subject:from:reply-to:to:date:message-id:list-unsubscribe:content-type:
+	mime-version;
+	bh=dcRpBeJwTrBMFnaqzN2JEMVayFLodOGthbuXDpVNMNo=;
+	b=gx+mYRtoTjVdGGntZ41nC/GhXjBNCo488Xf1wcj4s+Naip+fmPwy8U47joMT+ULUzQubxZdIVX2
+	dZYsMb4zLATDTo8uNrkf4FAqo8Ow/i6BLilYnxZ/PzW4UC9K3wJXXJ2e1OVnowo+NIvEjhKqGOjWR
+	VGj2YLvzAU0/ytDNfGs=
+DKIM-Signature: v=1; a=rsa-sha256; d=bmsend.com; s=bmdeda; c=relaxed/relaxed;
+	t=1719498927;
+	h=subject:from:reply-to:to:date:message-id:feedback-id:list-unsubscribe:
+	content-type:mime-version;
+	bh=dcRpBeJwTrBMFnaqzN2JEMVayFLodOGthbuXDpVNMNo=;
+	b=eW9m2EnhiIEfRK9VXvCWE3EOSH0Nm4cXmg+9gLWFKumwuNjVRvGOOCkZLX9KhOhWcNoDm1hdYBC
+	HqoRbh+80tglJqCdNlDe79bKLBE5gT/d2gysCPX9VwvfRZc1i+5FS5K+GjmmvHprskYF8xNVMoIQg
+	lL89t43gdsLI2y78TPg=
+From: Cythelia Energy <contact@cythelia.fr>
+Date: Thu, 27 Jun 2024 10:35:27 -0400
+Subject: Etudes
+ =?utf-8?q?d=E2=80=99=C3=A9blouissement_pr=C3=A9cises_de_vos_projets?=
+ =?utf-8?q?_photovolta=C3=AFques?=
+Message-Id: <ad9fce1b5a034aa38d3b888d11964590@cythelia.fr>
+Reply-To: Cythelia Energy <contact@cythelia.fr>
+X-Identify: <16757106_4310313774@benchmarkemail.com>
+X-CMC: 146F37A.100EA2B2E
+X-Campaignid: 16757106
+X-SentFromRelay: mail291.bms6.bmsend.com
+X-SentFromServer: 207.8.97.39
+X-Report-Abuse: 
+ =?us-ascii?q?https=3A=2F=2Fclt1395910=2Ebenchurl=2Ecom=2FAbuse=3F9tSN8Jgb1CYgAI5tGpG9M6V?=
+ =?us-ascii?q?vVaCNLCC0AFqe3qHQKLUECRYEeLK0N7LnqlFFjNnSFojDhbpzaFw3Ih4P1Wxc?=
+ =?us-ascii?q?tQ%3D%3D?=
+X-BM-User: 154CC6
+Feedback-ID: 1395910:16757106:us:benchmarkemail
+X-Mailer: BME Mailer - **BME16757106-1395910-4310313774**
+List-ID: 4310313774BM list <4310313774.1395910@benchmarkemail.com>
+List-Unsubscribe: 
+ =?us-ascii?q?=3Chttps=3A=2F=2Fclt1395910=2Ebenchurl=2Ecom=2Fud=3F9tSN8Jgb1CYgAI5tGpG9M6VvV?=
+ =?us-ascii?q?aCNLCC0AFqe3qHQKLUECRYEeLK0N7LnqlFFjNnSFojDhbpzaFw3Ih4P1WxctQ?=
+ =?us-ascii?q?%3D%3D=3E?=
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+To: ely.ubuntu0@gmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=-55NryHJ73bHtG33TNxieCQ=="
+
+--=-55NryHJ73bHtG33TNxieCQ==
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+[1] Ouvrir cet email dans votre navigateur
+
+Sp=C3=A9cialis=C3=A9e dans l=E2=80=99ing=C3=A9nierie et le conseil pho=
+tovolta=C3=AFque, [2] Cythelia Energyr=C3=A9alise des =C3=A9tudes d=E2=
+=80=99=C3=A9blouissement depuis 2010 et cumule une exp=C3=A9rience de =
+plusieurs centaines d=E2=80=99=C3=A9tudes r=C3=A9alis=C3=A9espourdes p=
+rojets :
+
+au sol,
+sur b=C3=A2timents,
+ombri=C3=A8res de parking.
+
+Nos =C3=A9tudes r=C3=A9pondent aux exigences de la derni=C3=A8re Note =
+d=E2=80=99Information Technique (NIT) de la DGAC et permettent d=E2=80=
+=99=C3=A9valuer le risque pour les usagers d=E2=80=99infrastructures d=
+iverses : les a=C3=A9rodromes et h=C3=A9liports, les routes, les voies=
+ ferr=C3=A9es, ou m=C3=AAme des b=C3=A2timents.
+
+Pour les projets =C3=A0 proximit=C3=A9 des a=C3=A9rodromes et h=C3=A9l=
+iports, la mise =C3=A0 jour de la NIT en novembre 2022 a marqu=C3=A9 u=
+n r=C3=A9el changement qui a profond=C3=A9ment modifi=C3=A9 la mani=C3=
+=A8re d=E2=80=99=C3=A9valuer le risque d=E2=80=99=C3=A9blouissement.
+
+Afin de pouvoir r=C3=A9pondre aux demandes de nos clients, nous avons =
+en l=E2=80=99espace de quelques mois revu notre m=C3=A9thodologie de c=
+alcul, apr=C3=A8s avoir =C3=A9chang=C3=A9 avec la DGAC.
+
+Nos =C3=A9tudes permettent de dire si un projet d=E2=80=99installation=
+ photovolta=C3=AFqueest potentiellement source de risque d=E2=80=99=C3=
+=A9blouissement d=E2=80=99incapacit=C3=A9 ou d=E2=80=99inconfort.
+
+S=E2=80=99il pr=C3=A9sente un risque d=E2=80=99=C3=A9blouissement d=E2=
+=80=99incapacit=C3=A9, nous proposons des solutionsqui permettent d=E2=
+=80=99=C3=A9liminer ce risque. De m=C3=AAme, le client pourra choisir =
+d=E2=80=99=C3=A9liminer ou de r=C3=A9duire un =C3=A9blouissement d'inc=
+onfort.
+
+Nos clients disposent ainsi des informations n=C3=A9cessaires pour d=C3=
+=A9cider de la meilleure configuration, compatible avec leur business-=
+plan.
+
+La m=C3=AAme d=C3=A9marche est appliqu=C3=A9e aux =C3=A9tudes d=E2=80=99=
+=C3=A9blouissement pour les projets situ=C3=A9s =C3=A0 proximit=C3=A9 =
+de routes ou voies ferr=C3=A9es, avec les particularit=C3=A9s suivante=
+s :
+
+les portions (de route ou de voies ferr=C3=A9es) affect=C3=A9es sont i=
+dentifi=C3=A9es pr=C3=A9cis=C3=A9ment,
+la visibilit=C3=A9 de la centrale depuis la route est prise en compte,=
+ en consid=C3=A9rant la topographie; l=E2=80=99=C3=A9tude peut pr=C3=A9=
+coniser, si n=C3=A9cessaire, la mise en place d=E2=80=99obstacles (des=
+ haies, typiquement).
+
+Nos =C3=A9tudes vont donc au-del=C3=A0 d=E2=80=99une r=C3=A9ponse =C2=AB=
+ Oui / Non =C2=BB, mais constituent un r=C3=A9el outil d=E2=80=99aide =
+=C3=A0 la d=C3=A9cision aux porteurs de projets.
+
+N=E2=80=99h=C3=A9sitez pas =C3=A0 nous consulter pour une pr=C3=A9sent=
+ation g=C3=A9n=C3=A9rale de nos =C3=A9tudes, ou pour un devis sur un p=
+rojet : [3] contact@cythelia.fr
+[4] je prends contact
+[5]
+CYTHELIA ENERGY
+
+Tel.: +33 (0)4 79 25 31 75
+
+[6] Visitez notre site Internet
+
+[7] Contactez-nous
+
+[8] [9]
+LinkedIn
+
+ References:
+
+1. https://clt1395910.benchurl.com/c/v?e=3D1843AD1&c=3D154CC6&t=3D0&l=3D=
+100EA2B2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu
+2. https://clt1395910.benchurl.com/c/l?u=3D11028BED&e=3D17F61AC&c=3D15=
+4CC6&t=3D0&seq=3D1
+3. mailto:contact@cythelia.fr
+4. https://clt1395910.benchurl.com/c/l?u=3D11028BEC&e=3D17F61AC&c=3D15=
+4CC6&t=3D0&seq=3D1
+5. https://clt1395910.benchurl.com/c/l?u=3D11028BED&e=3D17F61AC&c=3D15=
+4CC6&t=3D0&seq=3D2
+6. https://clt1395910.benchurl.com/c/l?u=3D11028BED&e=3D17F61AC&c=3D15=
+4CC6&t=3D0&seq=3D3
+7. https://clt1395910.benchurl.com/c/l?u=3D11028BEC&e=3D17F61AC&c=3D15=
+4CC6&t=3D0&seq=3D2
+8. https://clt1395910.benchurl.com/c/l?u=3D11028BEE&e=3D17F61AC&c=3D15=
+4CC6&t=3D0&seq=3D1
+9. https://clt1395910.benchurl.com/c/l?u=3D11028BEE&e=3D17F61AC&c=3D15=
+4CC6&t=3D0&seq=3D2   =20
+   =20
+Ce message a =C3=A9t=C3=A9 envoy=C3=A9 =C3=A0 ely.ubuntu0@gmail.com pa=
+r contact@cythelia.fr   =20
+   =20
+Vous pouvez modifier/actualiser votre abonnement en cliquant sur le li=
+en ci-dessous.   =20
+   =20
+D sabonnement de tous les courriels   =20
+https://clt1395910.benchurl.com/c/su?e=3D1843AD1&c=3D154CC6&l=3D100EA2=
+B2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&relid=3DAFA2127   =20
+   =20
+G=C3=A9rer inscriptions   =20
+https://clt1395910.benchurl.com/c/s?e=3D1843AD1&c=3D154CC6&l=3D100EA2B=
+2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&relid=3DAFA2127   =20
+   =20
+14 All=C3=A9e du Lac de Tignes, La Motte Servolex, Savoie, 73290
+
+--=-55NryHJ73bHtG33TNxieCQ==
+Content-Type: text/html; charset=utf-8
+Content-Id: <KLMIDXDDFNU4.6BP6DKDGNUIW@prod-app61>
+Content-Transfer-Encoding: quoted-printable
+
+
+<!DOCTYPE html>   =20
+<html>   =20
+<head>   =20
+<meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"vi=
+ewport">   =20
+<style type=3D"text/css">   =20
+/*** BMEMBF Start ***/   =20
+/* CMS V4 Editor Test */   =20
+[name=3DbmeMainBody]{min-height:1000px;}   =20
+@media only screen and (max-width: 480px){table.blk, table.tblText, .b=
+meHolder, .bmeHolder1, table.bmeMainColumn{width:100% !important;} }  =
+     =20
+@media only screen and (max-width: 480px){.bmeImageCard table.bmeCapti=
+onTable td.tblCell{padding:0px 20px 20px 20px !important;} }       =20
+@media only screen and (max-width: 480px){.bmeImageCard table.bmeCapti=
+onTable.bmeCaptionTableMobileTop td.tblCell{padding:20px 20px 0 20px !=
+important;} }       =20
+@media only screen and (max-width: 480px){table.bmeCaptionTable td.tbl=
+Cell{padding:10px !important;} }       =20
+@media only screen and (max-width: 480px){table.tblGtr{ padding-bottom=
+:20px !important;} }       =20
+@media only screen and (max-width: 480px){td.blk_container, .blk_paren=
+t, .bmeLeftColumn, .bmeRightColumn, .bmeColumn1, .bmeColumn2, .bmeColu=
+mn3, .bmeBody{display:table !important;max-width:600px !important;widt=
+h:100% !important;} }       =20
+@media only screen and (max-width: 480px){table.container-table, .bmeh=
+eadertext, .container-table { width: 95% !important; } }       =20
+@media only screen and (max-width: 480px){.mobile-footer, .mobile-foot=
+er a{ font-size: 13px !important; line-height: 18px !important; } .mob=
+ile-footer{ text-align: center !important; } table.share-tbl { padding=
+-bottom: 15px; width: 100% !important; } table.share-tbl td { display:=
+ block !important; text-align: center !important; width: 100% !importa=
+nt; } }       =20
+@media only screen and (max-width: 480px){td.bmeShareTD, td.bmeSocialT=
+D{width: 100% !important; } }       =20
+@media only screen and (max-width: 480px){td.tdBoxedTextBorder{width: =
+auto !important;} }   =20
+@media only screen and (max-width: 480px){th.tdBoxedTextBorder{width: =
+auto !important;} }   =20
+   =20
+@media only screen and (max-width: 480px){table.blk, table[name=3DtblT=
+ext], .bmeHolder, .bmeHolder1, table[name=3DbmeMainColumn]{width:100% =
+!important;} }   =20
+@media only screen and (max-width: 480px){.bmeImageCard table.bmeCapti=
+onTable td[name=3DtblCell]{padding:0px 20px 20px 20px !important;} }  =
+ =20
+@media only screen and (max-width: 480px){.bmeImageCard table.bmeCapti=
+onTable.bmeCaptionTableMobileTop td[name=3DtblCell]{padding:20px 20px =
+0 20px !important;} }   =20
+@media only screen and (max-width: 480px){table.bmeCaptionTable td[nam=
+e=3DtblCell]{padding:10px !important;} }   =20
+@media only screen and (max-width: 480px){table[name=3DtblGtr]{ paddin=
+g-bottom:20px !important;} }   =20
+@media only screen and (max-width: 480px){td.blk_container, .blk_paren=
+t, [name=3DbmeLeftColumn], [name=3DbmeRightColumn], [name=3DbmeColumn1=
+], [name=3DbmeColumn2], [name=3DbmeColumn3], [name=3DbmeBody]{display:=
+table !important;max-width:600px !important;width:100% !important;} } =
+  =20
+@media only screen and (max-width: 480px){table[class=3Dcontainer-tabl=
+e], .bmeheadertext, .container-table { width: 95% !important; } }   =20
+@media only screen and (max-width: 480px){.mobile-footer, .mobile-foot=
+er a{ font-size: 13px !important; line-height: 18px !important; } .mob=
+ile-footer{ text-align: center !important; } table[class=3D"share-tbl"=
+] { padding-bottom: 15px; width: 100% !important; } table[class=3D"sha=
+re-tbl"] td { display: block !important; text-align: center !important=
+; width: 100% !important; } }   =20
+@media only screen and (max-width: 480px){td[name=3DbmeShareTD], td[na=
+me=3DbmeSocialTD]{width: 100% !important; } }   =20
+@media only screen and (max-width: 480px){td[name=3DtdBoxedTextBorder]=
+{width: auto !important;} }   =20
+@media only screen and (max-width: 480px){th[name=3DtdBoxedTextBorder]=
+{width: auto !important;} }   =20
+              =20
+@media only screen and (max-width: 480px){.bmeImageCard table.bmeImage=
+Table{height: auto !important; width:100% !important; padding:20px !im=
+portant;clear:both; float:left !important; border-collapse: separate;}=
+ }               =20
+@media only screen and (max-width: 480px){.bmeMblInline table.bmeImage=
+Table{height: auto !important; width:100% !important; padding:10px !im=
+portant;clear:both;} }   =20
+@media only screen and (max-width: 480px){.bmeMblInline table.bmeCapti=
+onTable{width:100% !important; clear:both;} }   =20
+@media only screen and (max-width: 480px){table.bmeImageTable{height: =
+auto !important; width:100% !important; padding:10px !important;clear:=
+both; } }   =20
+@media only screen and (max-width: 480px){table.bmeCaptionTable{width:=
+100% !important;  clear:both;} }   =20
+@media only screen and (max-width: 480px){table.bmeImageContainer{widt=
+h:100% !important; clear:both; float:left !important;} }              =
+ =20
+@media only screen and (max-width: 480px){table.bmeImageTable td{paddi=
+ng:0px !important; height: auto; } }               =20
+@media only screen and (max-width: 480px){img.mobile-img-large{width:1=
+00% !important; height:auto !important;} }   =20
+@media only screen and (max-width: 480px){img.bmeRSSImage{max-width:32=
+0px; height:auto !important;} }   =20
+@media only screen and (min-width: 640px){img.bmeRSSImage{max-width:60=
+0px !important; height:auto !important;} }               =20
+@media only screen and (max-width: 480px){.trMargin img{height:10px;} =
+}             =20
+@media only screen and (max-width: 480px){div.bmefooter, div.bmeheader=
+{ display:block !important;} }     =20
+@media only screen and (max-width: 480px){.tdPart{ width:100% !importa=
+nt; clear:both; float:left !important; } }   =20
+@media only screen and (max-width: 480px){table.blk_parent1, table.tbl=
+Part {width: 100% !important; } }               =20
+@media only screen and (max-width: 480px){.tblLine{min-width: 100% !im=
+portant;} }               =20
+@media only screen and (max-width: 480px){.bmeMblCenter img { margin: =
+0 auto; } }      =20
+@media only screen and (max-width: 480px){.bmeMblCenter, .bmeMblCenter=
+ div, .bmeMblCenter span  { text-align: center !important; text-align:=
+ -webkit-center !important; } }   =20
+@media only screen and (max-width: 480px){.bmeNoBr br, .bmeImageGutter=
+Row, .bmeMblStackCenter .bmeShareItem .tdMblHide { display: none !impo=
+rtant; } }   =20
+@media only screen and (max-width: 480px){.bmeMblInline table.bmeImage=
+Table, .bmeMblInline table.bmeCaptionTable, .bmeMblInline { clear: non=
+e !important; width:50% !important; } }   =20
+@media only screen and (max-width: 480px){.bmeMblInlineHide, .bmeShare=
+Item .trMargin { display: none !important; } }   =20
+@media only screen and (max-width: 480px){.bmeMblInline table.bmeImage=
+Table img, .bmeMblShareCenter.tblContainer.mblSocialContain, .bmeMblFo=
+llowCenter.tblContainer.mblSocialContain{width: 100% !important; } }  =
+ =20
+@media only screen and (max-width: 480px){.bmeMblStack> .bmeShareItem{=
+width: 100% !important; clear: both !important;} }   =20
+@media only screen and (max-width: 480px){.bmeShareItem{padding-top: 1=
+0px !important;} }               =20
+@media only screen and (max-width: 480px){.tdPart.bmeMblStackCenter, .=
+bmeMblStackCenter .bmeFollowItemIcon {padding:0px !important; text-ali=
+gn: center !important;} }   =20
+@media only screen and (max-width: 480px){.bmeMblStackCenter> .bmeShar=
+eItem{width: 100% !important;} }   =20
+@media only screen and (max-width: 480px){ td.bmeMblCenter {border: 0 =
+none transparent !important;} }   =20
+@media only screen and (max-width: 480px){.bmeLinkTable.tdPart td{padd=
+ing-left:0px !important; padding-right:0px !important; border:0px none=
+ transparent !important;padding-bottom:15px !important;height: auto !i=
+mportant;} }   =20
+@media only screen and (max-width: 480px){.tdMblHide{width:10px !impor=
+tant;} }               =20
+@media only screen and (max-width: 480px){.bmeShareItemBtn{display:tab=
+le !important;} }   =20
+@media only screen and (max-width: 480px){.bmeMblStack td {text-align:=
+ left !important;} }   =20
+@media only screen and (max-width: 480px){.bmeMblStack .bmeFollowItem{=
+clear:both !important; padding-top: 10px !important;} }   =20
+@media only screen and (max-width: 480px){.bmeMblStackCenter .bmeFollo=
+wItemText{padding-left: 5px !important;} }   =20
+@media only screen and (max-width: 480px){.bmeMblStackCenter .bmeFollo=
+wItem{clear:both !important;align-self:center; float:none !important; =
+padding-top:10px;margin: 0 auto;} }               =20
+@media only screen and (max-width: 480px){   =20
+.tdPart> table{width:100% !important;}   =20
+}   =20
+@media only screen and (max-width: 480px){.tdPart>table.bmeLinkContain=
+er{ width:auto !important; } }   =20
+@media only screen and (max-width: 480px){.tdPart.mblStackCenter>table=
+.bmeLinkContainer{ width:100% !important;} }    =20
+.blk_parent:first-child, .blk_parent{float:left;}               =20
+.blk_parent:last-child{float:right;}   =20
+/*** BMEMBF END ***/   =20
+   =20
+</style>   =20
+<!--[if gte mso 9]>   =20
+<xml>   =20
+<o:OfficeDocumentSettings>   =20
+<o:AllowPNG/>   =20
+<o:PixelsPerInch>96</o:PixelsPerInch>   =20
+</o:OfficeDocumentSettings>   =20
+</xml>   =20
+<![endif]-->   =20
+   =20
+</head>   =20
+<body topmargin=3D"0" leftmargin=3D"0" style=3D"height: 100% !importan=
+t; margin: 0; padding: 0; width: 100% !important;min-width: 100%;"><di=
+v class=3D"inbox-preview" style=3D"display: none; font-size: 0; max-he=
+ight: 0; line-height: 0; padding: 0; mso-hide: all;">Plusieurs centain=
+es d=E2=80=99=C3=A9tudes r=C3=A9alis=C3=A9es pour des projets sur b=C3=
+=A2timents, ombri=C3=A8res</div><!-- inbox-preview --><img   =20
+ src=3D'https://clt1395910.benchurl.com/c/o?e=3D1843AD1&c=3D154CC6&l=3D=
+100EA2B2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&relid=3DAFA2127' al=
+t=3D'' border=3D"0" style=3D"display:none;" height=3D"1" width=3D"1"> =
+  =20
+   =20
+<table name=3D"bmeMainBody" style=3D"background-color: rgb(255, 255, 2=
+55);" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+bgcolor=3D"#ffffff"><tbody><tr><td width=3D"100%" valign=3D"top" align=
+=3D"center" style=3D"border: none;">   =20
+<table name=3D"bmeMainColumnParentTable" width=3D"100%" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0"><tbody><tr><td name=3D"bmeMainColum=
+nParent" style=3D"border: none; border-radius: 0px; border-collapse: s=
+eparate; border-spacing: 0px; overflow: visible;">      =20
+<table name=3D"bmeMainColumn" class=3D"bmeMainColumn" style=3D"max-wid=
+th: 100%; overflow: visible;" width=3D"100%" cellspacing=3D"0" cellpad=
+ding=3D"0" border=3D"0" align=3D"center"><tbody><tr id=3D"section_1" c=
+lass=3D"flexible-section" data-columns=3D"1" data-section-type=3D"bmeP=
+reHeader"><td class=3D"blk_container bmeHolder" name=3D"bmePreHeader" =
+style=3D"color: rgb(102, 102, 102); border: none; background-color: rg=
+b(255, 255, 255);" width=3D"100%" valign=3D"top" bgcolor=3D"#ffffff" a=
+lign=3D"center"><div id=3D"dv_1" class=3D"blk_wrapper" style=3D"">   =20
+<table class=3D"blk" name=3D"blk_permission" style=3D"" width=3D"600" =
+cellspacing=3D"0" cellpadding=3D"0" border=3D"0"><tbody><tr><td name=3D=
+"tblCell" class=3D"tblCell" style=3D"padding: 10px; word-break: break-=
+word; border: none;" valign=3D"top" align=3D"left">   =20
+<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"=
+><tbody><tr><td name=3D"bmePermissionText" style=3D"text-align: center=
+; border: none;" align=3D"center"><span style=3D"font-family: Arial, H=
+elvetica, sans-serif; font-weight: normal; font-size: 11px;line-height=
+: 140%;"><a style=3D"color: #16a7e0;" target=3D"_new" href=3D"https://=
+clt1395910.benchurl.com/c/v?e=3D1843AD1&c=3D154CC6&t=3D0&l=3D100EA2B2E=
+&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu">Ouvrir cet email dans votre=
+ navigateur</a>
+</span></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div></td></tr>   <tr><td class=3D"bmeHolder" name=3D"bmeMain=
+ContentParent" style=3D"border: none; border-radius: 0px; border-colla=
+pse: separate; border-spacing: 0px; overflow: hidden;" width=3D"100%" =
+valign=3D"top" align=3D"center">   =20
+<table name=3D"bmeMainContent" style=3D"border-radius: 0px; border-col=
+lapse: separate; border-spacing: 0px; border: 0px none transparent; ov=
+erflow: visible;" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" align=3D"center"><tbody><tr id=3D"section_2" class=3D"flex=
+ible-section" data-columns=3D"1"><td class=3D"blk_container bmeHolder"=
+ name=3D"bmeHeader" style=3D"color: rgb(56, 56, 56); border: none; bac=
+kground-color: rgb(245, 249, 252);" width=3D"100%" valign=3D"top" bgco=
+lor=3D"#f5f9fc" align=3D"center">
+<div id=3D"dv_7" class=3D"blk_wrapper" style=3D"">   =20
+<table width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+class=3D"blk" name=3D"blk_image"><tbody><tr><td style=3D"border: none;=
+">   =20
+<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"=
+><tbody><tr><td align=3D"center" class=3D"bmeImage" style=3D"border-co=
+llapse: collapse; padding: 20px; border: none;"><img   =20
+ src=3D"https://images.benchmarkemail.com/client1395910/image15720556.=
+png" class=3D"mobile-img-large" width=3D"560" style=3D"max-width: 640p=
+x; display: block; border-radius: 0px;" alt=3D"" data-radius=3D"0" bor=
+der=3D"0" data-original-max-width=3D"640"></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div></td></tr> <tr id=3D"section_3" class=3D"flexible-sectio=
+n" data-columns=3D"1"><td class=3D"blk_container bmeHolder bmeBody" na=
+me=3D"bmeBody" style=3D"color: rgb(56, 56, 56); border: none; backgrou=
+nd-color: rgb(245, 249, 252);" width=3D"100%" valign=3D"top" bgcolor=3D=
+"#f5f9fc" align=3D"center">
+
+<div id=3D"dv_8" class=3D"blk_wrapper" style=3D"">   =20
+<table width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+class=3D"blk" name=3D"blk_text"><tbody><tr><td style=3D"border: none;"=
+>   =20
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"=
+ class=3D"bmeContainerRow"><tbody><tr><th class=3D"tdPart" valign=3D"t=
+op" align=3D"center" style=3D"border: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"600" =
+name=3D"tblText" class=3D"tblText" style=3D"float:left; background-col=
+or:transparent;" align=3D"left"><tbody><tr><td valign=3D"top" align=3D=
+"left" name=3D"tblCell" class=3D"tblCell" style=3D"padding: 10px 20px;=
+ font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weig=
+ht: 400; color: rgb(56, 56, 56); text-align: left; word-break: break-w=
+ord; border: none;"><div style=3D"line-height: 150%;">
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">Sp=C3=A9cialis=C3=A9=
+e dans l=E2=80=99ing=C3=A9nierie et le conseil photovolta=C3=AFque, <s=
+pan style=3D"font-size: 15px;"><a href=3D"https://clt1395910.benchurl.=
+com/c/l?u=3D113CDEB2&e=3D1843AD1&c=3D154CC6&t=3D0&l=3D100EA2B2E&email=3D=
+Cyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&seq=3D1" target=3D"_blank" style=3D"t=
+ext-decoration: none;">Cythelia Energy</a> </span>r=C3=A9alise des =C3=
+=A9tudes d=E2=80=99=C3=A9blouissement depuis 2010 et cumule une exp=C3=
+=A9rience de plusieurs centaines d=E2=80=99=C3=A9tudes r=C3=A9alis=C3=A9=
+es<strong> </strong>pour<strong> des projets :</strong></p>
+<ul>
+   =20
+<li><strong>au sol, </strong></li>
+   =20
+<li><strong>sur b=C3=A2timents,</strong></li>
+   =20
+<li><strong>ombri=C3=A8res de parking</strong>.</li>
+</ul>
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">Nos =C3=A9tudes r=C3=
+=A9pondent aux exigences de la derni=C3=A8re Note d=E2=80=99Informatio=
+n Technique (NIT) de la DGAC et permettent d=E2=80=99=C3=A9valuer le r=
+isque pour les usagers d=E2=80=99infrastructures diverses&nbsp;: <stro=
+ng>les a=C3=A9rodromes et h=C3=A9liports, les routes, les voies ferr=C3=
+=A9es, ou m=C3=AAme des b=C3=A2timents.</strong></p>
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">&nbsp;</p>
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">Pour les projets =C3=
+=A0 proximit=C3=A9 des a=C3=A9rodromes et h=C3=A9liports, la mise =C3=A0=
+ jour de la NIT en novembre 2022 a marqu=C3=A9 un r=C3=A9el changement=
+ qui a profond=C3=A9ment modifi=C3=A9 la mani=C3=A8re d=E2=80=99=C3=A9=
+valuer le risque d=E2=80=99=C3=A9blouissement.</p>
+</div></td></tr></tbody>   =20
+</table></th></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div><div id=3D"dv_9" class=3D"blk_wrapper" style=3D"">   =20
+<table width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+class=3D"blk" name=3D"blk_image"><tbody><tr><td style=3D"border: none;=
+">   =20
+<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"=
+><tbody><tr><td align=3D"center" class=3D"bmeImage" style=3D"border-co=
+llapse: collapse; padding: 20px; border: none;"><img   =20
+ src=3D"https://images.benchmarkemail.com/client1395910/image15720478.=
+png" class=3D"mobile-img-large" width=3D"560" style=3D"max-width: 792p=
+x; display: block; border-radius: 0px;" alt=3D"" data-radius=3D"0" bor=
+der=3D"0"></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div><div id=3D"dv_3" class=3D"blk_wrapper" style=3D"">   =20
+<table width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+class=3D"blk" name=3D"blk_text"><tbody><tr><td style=3D"border: none;"=
+>   =20
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"=
+ class=3D"bmeContainerRow"><tbody><tr><th class=3D"tdPart" valign=3D"t=
+op" align=3D"center" style=3D"border: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"600" =
+name=3D"tblText" class=3D"tblText" style=3D"float:left; background-col=
+or:transparent;" align=3D"left"><tbody><tr><td valign=3D"top" align=3D=
+"left" name=3D"tblCell" class=3D"tblCell" style=3D"padding: 10px 20px;=
+ font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weig=
+ht: 400; color: rgb(56, 56, 56); text-align: left; word-break: break-w=
+ord; border: none;"><div style=3D"line-height: 150%;">
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">Afin de pouvoir r=C3=
+=A9pondre aux demandes de nos clients, nous avons en l=E2=80=99espace =
+de quelques mois revu notre m=C3=A9thodologie de calcul, apr=C3=A8s av=
+oir =C3=A9chang=C3=A9 avec la&nbsp;DGAC.</p>
+<ul>
+   =20
+<li>Nos =C3=A9tudes permettent de dire si un projet d=E2=80=99installa=
+tion photovolta=C3=AFque<span> est potentiellement source de <strong s=
+tyle=3D"">risque d=E2=80=99=C3=A9blouissement d=E2=80=99incapacit=C3=A9=
+ ou d=E2=80=99inconfort</strong>.</span></li>
+</ul>
+<ul>
+   =20
+<li>S=E2=80=99il pr=C3=A9sente un risque d=E2=80=99=C3=A9blouissement =
+d=E2=80=99incapacit=C3=A9, <strong style=3D"">nous proposons des solut=
+ions</strong><span> qui permettent d=E2=80=99=C3=A9liminer ce risque. =
+De m=C3=AAme, le client pourra choisir d=E2=80=99=C3=A9liminer ou de r=
+=C3=A9duire un =C3=A9blouissement d'inconfort.&nbsp;</span></li>
+</ul>
+<ul>
+   =20
+<li>Nos clients disposent ainsi des informations n=C3=A9cessaires pour=
+ d=C3=A9cider de la <strong style=3D"">meilleure configuration</strong=
+><span>, compatible avec leur business-plan.</span></li>
+</ul>
+</div></td></tr></tbody>   =20
+</table></th></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div><div id=3D"dv_10" class=3D"blk_wrapper" style=3D"">   =20
+<table width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+class=3D"blk" name=3D"blk_group" style=3D""><tbody><tr><td style=3D"bo=
+rder: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" class=3D"bmeGroupContainer"=
+ layout=3D"12" width=3D"100%"><tbody><tr><td valign=3D"top" class=3D"b=
+meImageContainerRow" style=3D"border-collapse: collapse; padding: 10px=
+ 20px; border: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%"=
+><tbody><tr><th valign=3D"top" align=3D"center" class=3D"tdPart" style=
+=3D"border: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"bmeIm=
+ageTable" imgid=3D"1" width=3D"270" align=3D"left" style=3D"height: 16=
+7.469px;"><tbody><tr><td name=3D"bmeImgHolder" align=3D"center" valign=
+=3D"top" style=3D"border: none;"><img   =20
+ src=3D"https://images.benchmarkemail.com/client1395910/image15720505.=
+png" class=3D"mobile-img-large" width=3D"270" style=3D"max-width: 582p=
+x; border-radius: 0px; display: block;" alt=3D"" data-radius=3D"0"></t=
+d></tr></tbody>   =20
+</table></th><td valign=3D"top" align=3D"center" class=3D"bmeImageGutt=
+erRow" gutter=3D"20" style=3D"border: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"20"><=
+tbody><tr><td style=3D"border: none;"></td></tr></tbody>   =20
+</table></td><th valign=3D"top" align=3D"center" class=3D"tdPart" styl=
+e=3D"border: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"bmeIm=
+ageTable" imgid=3D"2" width=3D"270" align=3D"right" style=3D"height: 1=
+67.469px;"><tbody><tr><td name=3D"bmeImgHolder" align=3D"center" valig=
+n=3D"top" style=3D"border: none;"><img   =20
+ src=3D"https://images.benchmarkemail.com/client1395910/image15720507.=
+png" class=3D"mobile-img-large" width=3D"270" style=3D"max-width: 554p=
+x; border-radius: 0px; display: block;" alt=3D"" data-radius=3D"0" dat=
+a-original-max-width=3D"554"></td></tr></tbody>   =20
+</table></th></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div><div id=3D"dv_2" class=3D"blk_wrapper" style=3D"">   =20
+<table class=3D"blk" name=3D"blk_text" width=3D"600" cellspacing=3D"0"=
+ cellpadding=3D"0" border=3D"0"><tbody><tr><td style=3D"border: none;"=
+>   =20
+<table class=3D"bmeContainerRow" width=3D"100%" cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0"><tbody><tr><th class=3D"tdPart" valign=3D"t=
+op" align=3D"center" style=3D"border: none;">   =20
+<table name=3D"tblText" class=3D"tblText" style=3D"float:left; backgro=
+und-color:transparent;" width=3D"600" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"left"><tbody><tr><td name=3D"tblCell" class=3D=
+"tblCell" style=3D"padding: 20px; font-family: Arial, Helvetica, sans-=
+serif; font-size: 14px; font-weight: 400; color: rgb(56, 56, 56); text=
+-align: left; word-break: break-word; border: none;" valign=3D"top" al=
+ign=3D"left"><div style=3D"line-height: 150%; text-align: justify;">
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">La m=C3=AAme d=C3=A9=
+marche est appliqu=C3=A9e aux =C3=A9tudes d=E2=80=99=C3=A9blouissement=
+ pour les projets situ=C3=A9s =C3=A0 proximit=C3=A9 de <strong>routes =
+ou voies ferr=C3=A9es</strong>, avec les particularit=C3=A9s suivantes=
+&nbsp;:</p>
+<ul>
+   =20
+<li>les portions (de route ou de voies ferr=C3=A9es) affect=C3=A9es so=
+nt <strong>identifi=C3=A9es pr=C3=A9cis=C3=A9ment</strong>,</li>
+   =20
+<li>la visibilit=C3=A9 de la centrale depuis la route est prise en com=
+pte, <strong>en consid=C3=A9rant la topographie</strong> ; l=E2=80=99=C3=
+=A9tude peut pr=C3=A9coniser, si n=C3=A9cessaire, la mise en place d=E2=
+=80=99obstacles (des haies, typiquement).</li>
+</ul>
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">Nos =C3=A9tudes vont=
+ donc au-del=C3=A0 d=E2=80=99une r=C3=A9ponse =C2=AB&nbsp;Oui / Non&nb=
+sp;=C2=BB, mais constituent un r=C3=A9el <strong>outil d=E2=80=99aide =
+=C3=A0 la d=C3=A9cision </strong>aux porteurs de projets.</p>
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">&nbsp;</p>
+<p style=3D"margin-top: 0px; margin-bottom: 0px;">N=E2=80=99h=C3=A9sit=
+ez pas =C3=A0 nous consulter pour une pr=C3=A9sentation g=C3=A9n=C3=A9=
+rale de nos =C3=A9tudes, ou pour un devis sur un projet :&nbsp;<a href=
+=3D"mailto:contact@cythelia.fr">contact@cythelia.fr</a>&nbsp;</p>
+</div></td></tr></tbody>   =20
+</table></th></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div><div id=3D"dv_6" class=3D"blk_wrapper">   =20
+<table class=3D"blk" name=3D"blk_button" style=3D"background-color: rg=
+b(245, 249, 252);" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0"><tbody><tr><td width=3D"25" style=3D"border: none;"></td><=
+td align=3D"center" style=3D"border: none;">   =20
+<table class=3D"tblContainer" width=3D"100%" cellspacing=3D"0" cellpad=
+ding=3D"0" border=3D"0"><tbody><tr><td height=3D"10" style=3D"border: =
+none;"></td></tr><tr><td align=3D"center" style=3D"border: none;">   =20
+<table class=3D"bmeButton" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0" align=3D"center" style=3D"border-collapse: separate;"><tbody><tr><=
+td style=3D"border-radius: 10px; border: none; background-color: rgb(2=
+2, 167, 224); text-align: center; font-family: Arial, Helvetica, sans-=
+serif; font-size: 14px; padding: 15px 40px; font-weight: bold; border-=
+collapse: separate; font-style: normal; word-break: break-word;" class=
+=3D"bmeButtonText"><span style=3D"font-family:Arial, Verdana; font-siz=
+e:14px;color:#FFFFFF;"><a style=3D"color:#FFFFFF;text-decoration:none;=
+" target=3D"_blank" href=3D"https://clt1395910.benchurl.com/c/l?u=3D11=
+3CDEB3&e=3D1843AD1&c=3D154CC6&t=3D0&l=3D100EA2B2E&email=3DCyfxqp0iHJfq=
+1M9ed7UwOJq4wOJ2jUnu&seq=3D1" target=3D"_blank" data-link-type=3D"web"=
+>je prends contact</a></span></td></tr></tbody>   =20
+</table></td></tr><tr><td height=3D"10" style=3D"border: none;"></td><=
+/tr></tbody>   =20
+</table></td><td width=3D"25" style=3D"border: none;"></td></tr></tbod=
+y>   =20
+</table></div></td></tr>   </tbody>   =20
+</table></td> </tr>  <tr id=3D"section_5" class=3D"flexible-section" d=
+ata-columns=3D"1" data-section-type=3D"bmeFooter"><td class=3D"blk_con=
+tainer bmeHolder" name=3D"bmeFooter" style=3D"color: rgb(102, 102, 102=
+); border: none; background-color: rgb(245, 249, 252);" width=3D"100%"=
+ valign=3D"top" bgcolor=3D"#f5f9fc" align=3D"center"><div id=3D"dv_5" =
+class=3D"blk_wrapper" style=3D"">   =20
+<table width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+class=3D"blk" name=3D"blk_imagecaption" style=3D"width: 600px; backgro=
+und-color: rgb(255, 255, 255);"><tbody><tr><td style=3D"border: none;"=
+>   =20
+<table cellspacing=3D"0" cellpadding=3D"0" class=3D"bmeCaptionContaine=
+r" width=3D"100%" style=3D"padding-left:20px; padding-right:20px; padd=
+ing-top:10px; padding-bottom:10px;border-collapse:separate;"><tbody><t=
+r><td class=3D"bmeImageContainerRow" valign=3D"top" gutter=3D"10" styl=
+e=3D"border: none;">   =20
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+><tbody><tr><td class=3D"tdPart" valign=3D"top" style=3D"border: none;=
+">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"bmeIm=
+ageContainer" width=3D"100%" align=3D"left" style=3D"float:left;"><tbo=
+dy><tr><td valign=3D"top" name=3D"tdContainer" style=3D"border: none;"=
+>   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"bmeIm=
+ageTable" dimension=3D"50%" imgid=3D"1" style=3D"float: left; width: 2=
+70px;" align=3D"left" width=3D"270" height=3D"85.5999984741211"><tbody=
+><tr><td name=3D"bmeImgHolder" width=3D"280" align=3D"left" valign=3D"=
+top" height=3D"85.5999984741211" style=3D"border: none;"><a href=3D"ht=
+tps://clt1395910.benchurl.com/c/l?u=3D113CDEB2&e=3D1843AD1&c=3D154CC6&=
+t=3D0&l=3D100EA2B2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&seq=3D2" =
+target=3D"_blank"><img   =20
+ src=3D"https://images.benchmarkemail.com/client1395910/image11463353.=
+png" width=3D"145.8" style=3D"max-width: 145.8px; display: block; bord=
+er-radius: 0px;" alt=3D"" data-radius=3D"0" data-original-max-width=3D=
+"434" class=3D"keep-custom-width" data-customwidth=3D"54"></a></td></t=
+r></tbody>   =20
+</table>   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"bmeCa=
+ptionTable" style=3D"float: right; width: 270px; word-break: break-wor=
+d;" align=3D"right" width=3D"270"><tbody><tr><td name=3D"tblCell" clas=
+s=3D"tblCell" valign=3D"top" align=3D"left" style=3D"font-family: Aria=
+l, Helvetica, sans-serif; font-size: 14px; font-weight: normal; color:=
+ rgb(56, 56, 56); text-align: left; border: none; word-break: break-wo=
+rd;"><div style=3D"line-height: 150%;">
+<p style=3D"color: rgb(243, 248, 255); font-family: Arial; line-height=
+: 150%; text-align: right; margin-top: 0px; margin-bottom: 0px;"><span=
+ style=3D"color: rgb(127, 127, 127); line-height: 150%; font-size: 12p=
+x;">CYTHELIA ENERGY</span></p>
+<p style=3D"color: rgb(243, 248, 255); line-height: 150%; text-align: =
+right; margin-top: 0px; margin-bottom: 0px;"><span style=3D"color: rgb=
+(127, 127, 127); line-height: 150%; font-size: 12px;">Tel.: +33 (0)4 7=
+9 25 31 75</span></p>
+<p style=3D"color: rgb(243, 248, 255); line-height: 150%; text-align: =
+right; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-size:=
+ 12px;"><a href=3D"https://clt1395910.benchurl.com/c/l?u=3D113CDEB2&e=3D=
+1843AD1&c=3D154CC6&t=3D0&l=3D100EA2B2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq=
+4wOJ2jUnu&seq=3D3" target=3D"_blank" style=3D"text-decoration: none;">=
+<span style=3D"text-decoration: underline; line-height: 150%;"><span s=
+tyle=3D"color: rgb(127, 127, 127); text-decoration: underline; line-he=
+ight: 150%;">V</span></span><span style=3D"color: rgb(127, 127, 127); =
+line-height: 150%;"><span style=3D"text-decoration: underline; line-he=
+ight: 150%;">isitez notre site Internet</span></span></a></span></p>
+<p style=3D"color: rgb(243, 248, 255); line-height: 150%; text-align: =
+right; margin-top: 0px; margin-bottom: 0px;"><span style=3D"text-decor=
+ation: underline; line-height: 150%;"><a href=3D"https://clt1395910.be=
+nchurl.com/c/l?u=3D113CDEB3&e=3D1843AD1&c=3D154CC6&t=3D0&l=3D100EA2B2E=
+&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&seq=3D2" target=3D"_blank" s=
+tyle=3D"text-decoration: none;"><span style=3D"color: rgb(127, 127, 12=
+7); text-decoration: underline; line-height: 150%;"><span style=3D"fon=
+t-size: 12px;">Contactez-nous</span></span></a></span></p>
+</div></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div><div id=3D"dv_13" class=3D"blk_wrapper" style=3D"">   =20
+<table width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+class=3D"blk" name=3D"blk_social_follow" style=3D"background-color: rg=
+b(245, 249, 252);"><tbody><tr><td class=3D"tblCellMain" style=3D"paddi=
+ng: 10px 20px; border: none;">   =20
+<table class=3D"tblContainer mblSocialContain" cellspacing=3D"0" cellp=
+adding=3D"0" border=3D"0" align=3D"right" style=3D""><tbody><tr><td cl=
+ass=3D"tdItemContainer" style=3D"border: none;">   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"mblSo=
+cialContain" style=3D"table-layout: auto;"><tbody><tr><td valign=3D"to=
+p" name=3D"bmeSocialTD" class=3D"bmeSocialTD" style=3D"border: none;">=
+<!--[if gte mso 6]></td><td align=3D"left" valign=3D"top"><![endif]-->=
+   =20
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"bmeFo=
+llowItem" type=3D"linkedin" style=3D"float: left; display: block;" ali=
+gn=3D"left"><tbody><tr><td align=3D"left" class=3D"bmeFollowItemIcon" =
+gutter=3D"0" width=3D"24" style=3D"padding-right: 5px; height: 20px; b=
+order: none;"><a href=3D"https://clt1395910.benchurl.com/c/l?u=3D113CD=
+EB4&e=3D1843AD1&c=3D154CC6&t=3D0&l=3D100EA2B2E&email=3DCyfxqp0iHJfq1M9=
+ed7UwOJq4wOJ2jUnu&seq=3D1" target=3D"_blank" style=3D"display: inline-=
+block;background-color: rgb(127, 127, 127);border-radius: 0px;border-s=
+tyle: none; border-width: 0px; border-color: rgb(0, 0, 238);" target=3D=
+"_blank"><img   =20
+ src=3D"https://ui.benchmarkemail.com/images/editor/socialicons/li_btn=
+.png" alt=3D"LinkedIn" style=3D"display: block; max-width: 114px;" bor=
+der=3D"0" width=3D"24" height=3D"24"></a></td> <td align=3D"left" vali=
+gn=3D"middle" class=3D"bmeFollowItemText" style=3D"font-family: Arial,=
+ Helvetica, sans-serif; font-size: 14px; font-weight: normal; text-ali=
+gn: left; border: none;"><a href=3D"https://clt1395910.benchurl.com/c/=
+l?u=3D113CDEB4&e=3D1843AD1&c=3D154CC6&t=3D0&l=3D100EA2B2E&email=3DCyfx=
+qp0iHJfq1M9ed7UwOJq4wOJ2jUnu&seq=3D2" target=3D"_blank" target=3D"_bla=
+nk" style=3D"text-decoration:none;"><div style=3D"font-family:Arial, V=
+erdana; font-size:14px; font-weight:400; font-style:normal; text-decor=
+ation:none solid rgb(0, 0, 238);color:rgb(0, 0, 238);">LinkedIn</div><=
+/a></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div><div id=3D"dv_14" class=3D"blk_wrapper" style=3D"">   =20
+<table class=3D"blk" name=3D"blk_footer" style=3D"" width=3D"600" cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0"><tbody><tr><td name=3D"tb=
+lCell" class=3D"tblCell" style=3D"padding: 0px; word-break: break-word=
+; border: none;" valign=3D"top" align=3D"left">   =20
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"=
+><tbody><tr><td name=3D"bmeBadgeText" style=3D"text-align: center; wor=
+d-break: break-word; border: none;" align=3D"center"><span id=3D"spnFo=
+oterText" style=3D"font-family: Arial, Helvetica, sans-serif; font-wei=
+ght: normal; font-size: 11px; line-height: 140%;">Ce message a =C3=A9t=
+=C3=A9 envoy=C3=A9 =C3=A0 ely.ubuntu0@gmail.com par contact@cythelia.f=
+r   =20
+<br>14 All&#233;e du Lac de Tignes, La Motte Servolex, Savoie, 73290</=
+span>   =20
+<br>   =20
+<br><span style=3D"font-family: Arial, Helvetica, sans-serif; font-wei=
+ght: normal; font-size: 11px; line-height: 140%;"><span href=3D"https:=
+//clt1395910.benchurl.com/c/su?e=3D1843AD1&c=3D154CC6&l=3D100EA2B2E&em=
+ail=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&relid=3DAFA2127"><img   =20
+ src=3D"https://ui.benchmarkemail.com/images/verified.png" alt=3D"Se d=
+=C3=A9sinscrire de toutes les newsletters" title=3D"Unsubscribe from a=
+ll mailings" border=3D"0"></span> <a class=3D"bmefootertext" href=3D"h=
+ttps://clt1395910.benchurl.com/c/su?e=3D1843AD1&c=3D154CC6&l=3D100EA2B=
+2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq4wOJ2jUnu&relid=3DAFA2127" style=3D"=
+color:inherit;text-decoration:underline;">Se d=C3=A9sinscrire</a>   | =
+<a class=3D"bmefootertext" href=3D"https://clt1395910.benchurl.com/c/s=
+?e=3D1843AD1&c=3D154CC6&l=3D100EA2B2E&email=3DCyfxqp0iHJfq1M9ed7UwOJq4=
+wOJ2jUnu&relid=3DAFA2127" style=3D"color:inherit;text-decoration:under=
+line;">G=C3=A9rer inscriptions</a>     =20
+<br></span></td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table></div></td></tr> </tbody>   =20
+</table> </td></tr></tbody>   =20
+</table></td></tr></tbody>   =20
+</table>   =20
+</body>   =20
+</html>
+
+
+--=-55NryHJ73bHtG33TNxieCQ==--
+

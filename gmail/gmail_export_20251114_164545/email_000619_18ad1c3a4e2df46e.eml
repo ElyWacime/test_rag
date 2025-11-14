@@ -1,0 +1,414 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:a78d:b0:4f9:f04b:a54 with SMTP id t13csp1008704pxx;
+        Tue, 26 Sep 2023 06:52:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEG+e9/kQdt5Yj0V0DR2Uml3l6z/K+Qo1Z4ZSRA0LicqPKG48URJpkrXZk8sMzzy9tg9FIW
+X-Received: by 2002:a25:e094:0:b0:d80:1604:f6e9 with SMTP id x142-20020a25e094000000b00d801604f6e9mr9018864ybg.44.1695736374507;
+        Tue, 26 Sep 2023 06:52:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695736374; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UMD+33xSfOuYi52WZKAC9FGp3X+BMvoUJ9mFWKsMnrtJ76Pv7obrtn0w5TL9eJFdZa
+         6Ic59CajO+7NHma5BPAnBlN56TjbHGyxIWb7Iqb2yhU77e/1xT/N+uTjc0hrdRl8aB3q
+         qRe4MCrvoPv1u28toIqOijnal5e5pQUXe+cx99fY5FeVMD6wOya7j2helkFKSakrdyc+
+         RDh7/ndeZzLfpvSAmnErPOaTxjDXCyGy/+o6c7F5pqKXVFOUTLSNyR41uFH/13P6dIdr
+         XfIcwjp9isSV6U6LWwlCOLxVhhFR1r9Apcsgayhdbnk+zZiF+RrY3CUC+/ruXoWU88q2
+         0P0Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:feedback-id:precedence:list-unsubscribe:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=HdFQbvpT338L0zlJGLhiQb4no6hjgg8wIfOnGFHPVTA=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=WoaWaau2hVXvfXMQeQ7QEIvHZ87rNANp42SK15Gucfz+nCVoh7qLBiz8GWPFXEa3Ot
+         u8ENd1b0AKEra6GJW8TpJ40qpU3r1PGbFP4TqZrbT0+GEGY3Kyc4EmkWNiDgCGOfIrvv
+         qz2WRSw2rS6cl+GdJeN/UOAyNOVyplSPrYVrW4OJKbhViegBLNtYb553q4l2g7pPaeFH
+         7pEdZwAuoRL7KeIRt7PKPrLw360QKkzC0rygBGzgdTVg6k9HtspPTIZEjJB4NJPLWZp5
+         9aaMjx77x+VF1CRBuqR9Y2bJqOjpSuZh6+jc5X2Se2eRVhvEkacEHQF+3VCNV9ewj2QU
+         eYzg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=mkqBUjJW;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=PEsGotMz;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o47.ck.n.convertkit.com (o47.ck.n.convertkit.com. [149.72.60.6])
+        by mx.google.com with ESMTPS id h2-20020a05620a244200b00767c77c80b5si2753077qkn.477.2023.09.26.06.52.54
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Sep 2023 06:52:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) client-ip=149.72.60.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=mkqBUjJW;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=PEsGotMz;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=HdFQbvpT338L0zlJGLhiQb4no6hjgg8wIfOnGFHPVTA=;
+	b=mkqBUjJW3CwWpQN+co90YvcREWrwRfDDMB466DltugE+WZJOzhudIEQ0/mnpQaCKDHs7
+	/+xoYoX1tiWiliny8/Q8/gwvX3d5T0+vcSS9zJmSfV355KnpOlFmU9AYmSwa64fkbObqQG
+	zQiBD7VlvhlMrXH2pPIjrXR+IVmRdukbE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=HdFQbvpT338L0zlJGLhiQb4no6hjgg8wIfOnGFHPVTA=;
+	b=PEsGotMzvs3E5iQypH3dsm9ooEDzStzyDDkT0uDKDgvA86MdSSbR6dmEDsUMxtzciUk2
+	tLBy9jDpDV0e0ExvlpSpco8uKvCRjBRkBgFQeAi49MvpA97lvQ0i60uD1AoRYFRcMOcNm5
+	PEHVgrUmH87grY8+Rb0Rgsh/M3HGy880I=
+Received: by filterdrecv-6bbb5c74f4-bjnnv with SMTP id filterdrecv-6bbb5c74f4-bjnnv-1-6512E235-3B
+        2023-09-26 13:52:53.67457621 +0000 UTC m=+3512775.462315251
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-17 (SG) with HTTP
+	id Nf2zHe-gRCuvHJLpY7hD_A
+	Tue, 26 Sep 2023 13:52:53.630 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=0de5bb2fc365f1f299d25c73993f8c17024c63b1a4920e7888982b61ba28
+Date: Tue, 26 Sep 2023 13:52:54 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <xmur32lq24b6hr324r9a5h0m6vdll@convertkit-mail2.com>
+Subject: "Why do you email so much"
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/xmur32lq24b6hr324r9a5h0m6vdll>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 11831650:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3Zfco56mclzhoOEpSnF?=
+ =?us-ascii?Q?kLPFFTctAnAwx=2Fw6Ol+9nYOejUx0knGmrX83M3u?=
+ =?us-ascii?Q?4VjcEYsY6UC7UytoM1SEIWlEdAGB2mKxtiOuD4B?=
+ =?us-ascii?Q?7BLl1PGT9mW4TtiTj0nX6XkvruJnFViwX4Og8Q2?=
+ =?us-ascii?Q?nMF6UxmQKK6yyzQ6TsUGiH6K7rjf9FovtMmsl4?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADETQBGFqJkZ5c7ShxW61j9dELXhMMxzHG2oD1s?=
+ =?us-ascii?Q?wLq0d4xCB+8R6Euq9byf8bFziGC3JTOsaQVshf9?=
+ =?us-ascii?Q?wWVEL=2FU2ccgiXMv+75i9Xy0vg1DUIMehzmsQcFU?=
+ =?us-ascii?Q?M+T5uIaUIrziJXyoNNKQwv+CcpDzqH7W6x8+g00?=
+ =?us-ascii?Q?3P9r6wyt4X5gNx+7uvyfb1RRKevUAxW8PUWwJ3p?=
+ =?us-ascii?Q?jP2bweSlEQXXU1cP6aCu5Q2VoNTIaINKiUWUns3?=
+ =?us-ascii?Q?tY4nHhyW6ETRl0i1GPFjDb1J1szqqw4vRMYbgIu?=
+ =?us-ascii?Q?eOZBMrtjzk6sHjccTvAizyxZJBkb72MjqLAD8ec?=
+ =?us-ascii?Q?N89tpsXyWd?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--0de5bb2fc365f1f299d25c73993f8c17024c63b1a4920e7888982b61ba28
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Rookie question. But no worries, I=E2=80=99ll answer it.
+
+The reason I send so many emails is=E2=80=A6
+
+Because it works!
+
+=E2=80=8B
+
+You see=E2=80=A6
+
+People have a tendency to procrastinate until the last minute
+with buying decisions and life in general.
+
+Heck, back in college or school, didn=E2=80=99t you always start studying
+a day or two before the exam?
+
+=E2=80=8B
+
+It=E2=80=99s human psychology. It=E2=80=99s especially worse for us devs wh=
+o
+don=E2=80=99t like wasting effort.
+
+But we can use that to our advantage. That=E2=80=99s why Elon uses so
+many deadlines.
+
+Speaking of Elon=E2=80=A6
+
+=E2=80=8B
+
+not a real tweet/X if not obvious to some
+=E2=80=8B
+
+If you don=E2=80=99t have deadlines, you get very little done.
+
+=E2=80=8B
+
+I mean, how long have you been going from one tutorial to the
+next?
+
+How long have you been =E2=80=9Ctrying to figure it out=E2=80=9D?
+
+If you want to learn, put time and money behind it. Make a
+decision today.
+
+I believe you can do it.
+
+=E2=80=8B
+
+I also believe tomorrow will be just like today unless YOU make a
+change.
+
+=E2=80=8B
+
+Like with GitHub=E2=80=A6
+
+Nothing happens until you commit.
+
+No change. No growth.
+
+So stop what you=E2=80=99re doing and commit right now. You can return to
+what you were doing =E2=80=93 when you have time. But lock in your spot
+NOW. You can always get a refund by sending an email if it=E2=80=99s not
+worth it. It takes 30 seconds. And I=E2=80=99ll refund you, no questions
+asked.\
+
+=E2=80=8B
+
+Here it is, with just over 2 hours left:
+
+=E2=80=8B>> https://www.jsmastery.pro/ultimate-next13-course =E2=80=8B
+
+P.S. Click here (
+https://click.convertkit-mail2.com/xmur32lq24b6hr324r9a5h0m6vdll/kkh7xvmmt2=
+ul3077xkuk/aHR0cHM6Ly9pbWFnZXMuY3RmYXNzZXRzLm5ldC91YjNid2ZkNTNtd3kvNVdGdjZs=
+RVViMWU2a1dlUDA2Q0xYci9hY2QzMjg0MTdmMjQ3ODZhZjk4YjE3NTBkOTA4MTNkZS80X0ltYWd=
+lLmpwZz93PTc1MA=3D=3D
+) if you don't want any more emails about the launch.
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/xmur32lq24b6hr324r9a5h0m6vdll
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/xmur32lq24b6hr324r9a5h0m6vdll
+)
+--0de5bb2fc365f1f299d25c73993f8c17024c63b1a4920e7888982b61ba28
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:left" class=3D"">Rookie question. But no worries, I=E2=80=99=
+ll answer it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The reason I send so many emails is=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Because it works!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You see=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">People have a tendency to procrastinate until the last minu=
+te with buying decisions and life in general.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Heck, back in college or school, didn=E2=80=99t you always =
+start studying a day or two before the exam?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It=E2=80=99s human psychology. It=E2=80=99s especially wors=
+e for us devs who don=E2=80=99t like wasting effort.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But we can use that to our advantage. That=E2=80=99s why El=
+on uses so many deadlines.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Speaking of Elon=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/3QuPYzZW=
+iZ1SjvSsWuH9ma/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:block">not a real tweet/X if not obvious to some</figcaption></figure>=
+</td></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>If you don=E2=80=99t have deadlines, you get very l=
+ittle done.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I mean, how long have you been going from one tutorial to t=
+he next?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">How long have you been =E2=80=9Ctrying to figure it out=E2=
+=80=9D?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you want to learn, put time and money behind it. Make a =
+decision <strong><em>today.</em></strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I believe you can do it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>I also believe tomorrow will be just like today unl=
+ess YOU make a change.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Like with GitHub=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>Nothing happens until you commit.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">No change. No growth.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So stop what you=E2=80=99re doing and commit right now. You=
+ can return to what you were doing =E2=80=93 when you have time. But <stron=
+g>lock in your spot NOW.</strong> You can always get a refund by sending an=
+ email if it=E2=80=99s not worth it. It takes 30 seconds. And I=E2=80=99ll =
+refund you, no questions asked.\</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Here it is, with just over 2 hours left:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B<a href=3D"https://click.convertkit-mail2.com/xmur=
+32lq24b6hr324r9a5h0m6vdll/48hvh7urndooxeiq/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnBy=
+by91bHRpbWF0ZS1uZXh0MTMtY291cnNl" target=3D"_blank" rel=3D"noopener norefer=
+rer" style=3D"color:#0f82f0" url-id=3D"1574940593">&gt;&gt; https://www.jsm=
+astery.pro/ultimate-next13-course &lt;&lt;</a>=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">P.S. <a href=3D"https://click.convertkit-mail2.com/xmur32lq=
+24b6hr324r9a5h0m6vdll/kkh7xvmmt2ul3077xkuk/aHR0cHM6Ly9pbWFnZXMuY3RmYXNzZXRz=
+Lm5ldC91YjNid2ZkNTNtd3kvNVdGdjZsRVViMWU2a1dlUDA2Q0xYci9hY2QzMjg0MTdmMjQ3ODZ=
+hZjk4YjE3NTBkOTA4MTNkZS80X0ltYWdlLmpwZz93PTc1MA=3D=3D" trigger-id=3D"405561=
+6" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0" ur=
+l-id=3D"1574940595">Click here</a> if you don't want any more emails about =
+the launch.</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/xmur32lq24b6hr324r9a5h0m6vdll" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/xmur32lq24b6hr324r9a5h0m6vdll" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/xmur32lq24b6hr324r9a5h0m6vdll=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--0de5bb2fc365f1f299d25c73993f8c17024c63b1a4920e7888982b61ba28--

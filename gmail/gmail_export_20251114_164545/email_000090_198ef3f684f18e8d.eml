@@ -1,0 +1,863 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:1543:b0:336:8149:879d with SMTP id y3csp426441ljp;
+        Wed, 27 Aug 2025 22:56:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEOeO4vHQmAzdSPDctDlKGqFYv2A5C9D8Uvdrlf/jdpM6exm7prUB6oURl5rerT7Q5pa79L
+X-Received: by 2002:a05:620a:aa10:b0:7e9:f1c3:6852 with SMTP id af79cd13be357-7ea11090ccemr2750874485a.72.1756360567208;
+        Wed, 27 Aug 2025 22:56:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1756360567; cv=none;
+        d=google.com; s=arc-20240605;
+        b=gmwPUQL+LMOWe+pIjFlYjM+0PhQTKiuxREMNPtZeqwNUcjzPkXERaxyBO3q9WopIoK
+         g4CPX80RuiLcjs0PQJnvpKcEQFsPcl75YF2BB0KDVLiYLuzmY0XY/oTu/39pDKraGFM5
+         akp3VyglVXhwIgVZGddmYFeFQPYEC1mvYHSsplvBYmb1gCngGZLtfTbnT05ti+tOE8my
+         TCUtR5XpUdqKHXqaAykuAZ9QuZUPUiZHGHjO6qM6GVgp5GSAX8iOEA8qtR4BxwgKiA17
+         /8j20l4xtfkrT4i0ePi/s37L37201IMtX2NFOC2TKpEXYrdmL/N4idOyiFRueRiGpiGr
+         tPLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:to:date:mime-version:message-id:subject
+         :from:dkim-signature:dkim-signature;
+        bh=s5wvOu/nTeESs7WCaR67cHudxKN1oR3V6pz8wSGBIAY=;
+        fh=le1LXeLtHQcncYouxbBoA7SWzeg6XoPjda4F54Xz2IQ=;
+        b=f46dEKVv2cUKhmrhx4MwoHhbMa7W/3GmOQh0i8rT1bElYBs4Np0dLoraXTNCaxjG2r
+         MGsA0mQKCoe3md0oG69bCXsvsPQu68pFw0yclugtnG/TNtmqvXmPdhfORmaNyEYT4Phx
+         20TL/6aA/MhJE5s5yVhkIr8h7pYI1bpyJsfDkx02OvvV0j69iGqVWCseVvRZ48pKe2HN
+         cJV1RYycNThK4shrCVNtMz7QG8lMBUggDLEjk5oFmI9udY53hJTihjIvIiG8poam8SEI
+         h/LDk7lxg7XeT6ltqUrHGfxFJvTFDidb02AEq3tGzl4G32mNM+3ejrDO9AgEiJucoEAW
+         /tnQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cookieyes.com header.s=s1 header.b="XdA/6xWY";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=m7xR+n1q;
+       spf=pass (google.com: domain of bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com designates 198.37.158.238 as permitted sender) smtp.mailfrom="bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=cookieyes.com
+Return-Path: <bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com>
+Received: from o1.ptr6221.cookieyes.com (o1.ptr6221.cookieyes.com. [198.37.158.238])
+        by mx.google.com with ESMTPS id af79cd13be357-7faa7601e53si10548185a.1199.2025.08.27.22.56.06
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 27 Aug 2025 22:56:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com designates 198.37.158.238 as permitted sender) client-ip=198.37.158.238;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cookieyes.com header.s=s1 header.b="XdA/6xWY";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=m7xR+n1q;
+       spf=pass (google.com: domain of bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com designates 198.37.158.238 as permitted sender) smtp.mailfrom="bounces+19544371-9466-ely.ubuntu0=gmail.com@em7154.cookieyes.com";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=cookieyes.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cookieyes.com;
+	h=from:subject:mime-version:date:to:content-type:
+	content-transfer-encoding:cc:content-type:date:feedback-id:from:subject:to;
+	s=s1; bh=s5wvOu/nTeESs7WCaR67cHudxKN1oR3V6pz8wSGBIAY=;
+	b=XdA/6xWYVol9GxgOife00nWqmdCzzl9Tz5pSyjN67c4e7ZW8Lwl7i+OlVEmL17lREmhc
+	NzDDLEO3fSXLRtdGKvBpk5vzyRCBtY35hRhA3WT8YSZVMzIikU42Ng3w/dIvreBdwNCqhz
+	UizctKxp3nwhesrQgVmZOxsaUWLTVx3pWSLSBiJ1D2FHMpdRvYCBYxjeq2gLZh0Ag9MK0r
+	60FfdckyjvihmiTi0/yifPWqm8jEV99LoaS47MxM3//k5z1K/75Uz1XUYdwTcuBMCrRRFT
+	uRPq43QSMZtMveGctvIENGyhPXKSRCpykychDv9qss0VwtMRHZO/9FMRtx8b8Jcw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=from:subject:mime-version:date:to:content-type:
+	content-transfer-encoding:cc:content-type:date:feedback-id:from:subject:to;
+	s=smtpapi; bh=s5wvOu/nTeESs7WCaR67cHudxKN1oR3V6pz8wSGBIAY=;
+	b=m7xR+n1qmkosAFklahxrW3iG2yw/7Ds0gQI2/u9xOiGnMEFwmfGXOJNk5GI+hQo/acEO
+	QhuRTL4RnWPqnZ87+d7tPi50MkZi+QQUnKjJCG3rAMw55VRZvmFh60NevvhiFlHt/92JiS
+	eJ7pdJWCtYUUqOtSTsIM4At6JX4kV7AHM=
+Received: by recvd-586cc6856c-2x7cr with SMTP id recvd-586cc6856c-2x7cr-1-68AFEF76-A
+	2025-08-28 05:56:06.460132789 +0000 UTC m=+7305079.605379578
+Received: from [127.0.0.1] (unknown)
+	by geopod-ismtpd-11 (SG) with ESMTP
+	id QULCt5rfRXyTaqjU0gfcBg
+	for <ely.ubuntu0@gmail.com>;
+	Thu, 28 Aug 2025 05:56:06.368 +0000 (UTC)
+From: CookieYes <no-reply@cookieyes.com>
+Subject: Comply with =?UTF-8?B?R29vZ2xl4oCZcw==?= EU User Consent Policy with
+ CookieYes
+Message-ID: <1baeb23d3c0dbf92408d31042460446c@cookieyes.com>
+MIME-Version: 1.0
+Date: Thu, 28 Aug 2025 05:56:06 +0000 (UTC)
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EgbJE0RiambVeSQjG18ue7V4DgaEYODnc1PQ6svAlp8lx2c3mo6EzrjpVf?=
+ =?us-ascii?Q?33lZ=2Fkme0LFipBEdBWMufU6zexrhqH9l36bZqr+?=
+ =?us-ascii?Q?Nn30jl558TH3p=2FLK+GBr3MLkWq0m6xLENL7eGa2?=
+ =?us-ascii?Q?af8RCO+q6VR7EHA9U3AISg1GRgpkzuH0UYCH5EX?=
+ =?us-ascii?Q?Eg=2FnkpvPwge4AZ2eB2KosHfjdS=2Fy6YOFM6QHhD6?=
+ =?us-ascii?Q?qLVi8RXS29nWRzrB+p5qEnX0Tm3tE8fRgFf8Fdn?= =?us-ascii?Q?5jbA?=
+To: "ely.ubuntu0" <ely.ubuntu0@gmail.com>
+X-Entity-ID: u001.ISjbUaNP301bswHtXTERaw==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title>
+  </title>
+  <!--[if !mso]><!-->
+  <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+  <!--<![endif]-->
+  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D=
+1">
+  <style type=3D"text/css">
+    #outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+
+    h1 a {
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+   =20
+    .header-container h1 {
+      text-decoration: none !important;
+    }
+   =20
+    .header-container h1 * {
+      text-decoration: none !important;
+    }
+  </style>
+  <!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]-->
+  <!--[if lte mso 11]>
+        <style type=3D"text/css">
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]-->
+  <!--[if !mso]><!-->
+  <link href=3D"https://fonts.googleapis.com/css?family=3DUbuntu:300,400,50=
+0,700" rel=3D"stylesheet" type=3D"text/css">
+  <style type=3D"text/css">
+    @import url(https://fonts.googleapis.com/css?family=3DUbuntu:300,400,50=
+0,700);
+  </style>
+  <!--<![endif]-->
+  <style type=3D"text/css">
+    @media only screen and (min-width:480px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+
+      .mj-column-per-30 {
+        width: 30% !important;
+        max-width: 30%;
+      }
+
+      .mj-column-per-40 {
+        width: 40% !important;
+        max-width: 40%;
+      }
+
+      .mj-column-per-50 {
+        width: 50% !important;
+        max-width: 50%;
+      }
+
+      .mj-column-per-75 {
+        width: 75% !important;
+        max-width: 75%;
+      }
+    }
+  </style>
+  <style media=3D"screen and (min-width:480px)">
+    .moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .moz-text-html .mj-column-per-30 {
+      width: 30% !important;
+      max-width: 30%;
+    }
+
+    .moz-text-html .mj-column-per-40 {
+      width: 40% !important;
+      max-width: 40%;
+    }
+
+    .moz-text-html .mj-column-per-50 {
+      width: 50% !important;
+      max-width: 50%;
+    }
+
+    .moz-text-html .mj-column-per-75 {
+      width: 75% !important;
+      max-width: 75%;
+    }
+  </style>
+  <style type=3D"text/css">
+    @media only screen and (max-width:480px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+  </style>
+  <style type=3D"text/css">
+    .email-body {
+      background-color: #F0F6FF;
+    }
+
+    .email-content-section {
+      padding: 60px 0px 0px 0px;
+      max-width: 784px !important;
+    }
+
+    .gradient-bar {
+      border-top: none;
+      height: 7px;
+      background: linear-gradient(90deg, #1160C6 0%, #52A5FF 10.63%, #228CF=
+0 21%, #1E81E6 32.5%, #1871D7 48.86%, #228CF0 62%, #399FFF 80.5%, #0056A7 1=
+00%);
+    }
+
+    .inner-column {
+      background-color: #F8FAFC;
+    }
+
+    .header-container {
+      margin-bottom: 17px;
+    }
+
+    .seperator {
+      margin-bottom: 38px;
+    }
+
+    .table-padding {
+      padding: 0px 73px 40px 73px !important;
+    }
+
+    .mj-column-per-30 {
+      width: 50% !important;
+      max-width: 50% !important;
+    }
+
+    .mj-column-per-40 {
+      width: 50% !important;
+      max-width: 50% !important;
+    }
+
+    .signature-text div {
+      color: #6E7191 !important;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      padding: 12px 0px 0px 0px !important;
+    }
+
+    .cy-paragraph {
+      font-size: 14px;
+      color: #384860;
+      line-height: 21px;
+      letter-spacing: 0.2px;
+      margin-bottom: 17px;
+    }
+    .cy-primary-button {
+      display: inline-block;
+      color: #ffffff !important;
+      background-color: #007bff;
+      border: solid 1px #007bff;
+      border-radius: 5px;
+      box-sizing: border-box;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+      padding: 12px 25px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .email-body {
+        background-color: #FFF !important;
+      }
+
+      .email-content-section {
+        padding: 0px !important;
+      }
+
+      .gradient-bar {
+        display: none !important;
+      }
+
+      .header-mobile-reset {
+        padding: 0 !important;
+      }
+
+      .header-container {
+        margin: 0 0 38px 0 !important;
+      }
+
+      .inner-column {
+        background-color: #fff !important;
+      }
+
+      .table-padding {
+        padding: 0px !important;
+      }
+
+      .signature-text-container {
+        width: 130px !important;
+        max-width: 130px !important;
+      }
+
+      .mj-column-per-40 {
+        width: 59% !important;
+        max-width: 59% !important;
+      }
+
+      .box {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 15px !important;
+      }
+    }
+  </style>
+</head>
+
+<body style=3D"word-spacing:normal;">
+    <div class=3D"email-body" >
+    <!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" class=3D"email-content-section-outlook" style=3D"width:=
+600px;" width=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-l=
+ine-height-rule:exactly;"><![endif]-->
+    <div class=3D"email-content-section" style=3D"margin:0px auto;max-width=
+:600px;">
+            <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style=3D"width:100%;">
+        <tbody>
+          <tr>
+            <td style=3D"direction:ltr;font-size:0px;padding:20px 0;text-al=
+ign:center;">
+              <!--[if mso | IE]><table role=3D"presentation" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"inner-column-outlook" s=
+tyle=3D"vertical-align:top;width:600px;" ><![endif]-->
+              <div class=3D"mj-column-per-100 mj-outlook-group-fix inner-co=
+lumn" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-b=
+lock;vertical-align:top;width:100%;">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" width=3D"100%">
+                  <tbody>
+                    <tr>
+                      <td style=3D"vertical-align:top;padding-bottom:0;">
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"" width=3D"100%">
+                          <tbody>
+                            <tr>
+                              <td align=3D"center" class=3D"gradient-bar" s=
+tyle=3D"font-size:0px;padding:0;word-break:break-word;">
+                                <p style=3D"border-top:solid 0px #cccccc;fo=
+nt-size:1px;margin:0px auto;width:100%;">
+                                </p>
+                                <!--[if mso | IE]><table align=3D"center" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-top:solid 0=
+px #cccccc;font-size:1px;margin:0px auto;width:600px;" role=3D"presentation=
+" width=3D"600px" ><tr><td style=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]-->
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align=3D"center" style=3D"font-size:0px;p=
+adding:38px 0px;word-break:break-word;">
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;border=
+-spacing:0px;">
+                                  <tbody>
+                                    <tr>
+                                      <td style=3D"width:146px;">
+                                        <img alt=3D"cookieyes-logo"=20
+                                        height=3D"auto" src=3D"https://cdn-=
+cookieyes.com/assets/images/email/header/cy-logo.png" style=3D"border:0;dis=
+play:block;outline:none;text-decoration:none;height:auto;width:100%;font-si=
+ze:13px;" width=3D"146" />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align=3D"left" class=3D"table-padding" st=
+yle=3D"font-size:0px;padding:10px 25px;word-break:break-word;">
+                                <table cellpadding=3D"0" cellspacing=3D"0" =
+width=3D"100%" border=3D"0" style=3D"color:#000000;font-family:Ubuntu, Helv=
+etica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;=
+width:100%;border:none;">
+                                  <tr>
+                                    <td class=3D"header-mobile-reset" style=
+=3D"padding: 40px 50px 40px 30px; background-color: #fff;">
+                                      <div class=3D"header-container sepera=
+tor">
+                                                                           =
+     <h1 style=3D"font-size: 24px; font-weight: bold; margin: 0 0 24px; lin=
+e-height: 36px;">    Comply with Google=E2=80=99s EU User Consent Policy wi=
+th CookieYes
+</h1>
+                                                                           =
+                                                                           =
+          <p style=3D"font-size: 14px; color: #384860; line-height: 21px; l=
+etter-spacing: 0.2px;">Hi there,</p>
+                                                                           =
+     <p style=3D"font-size: 14px; color: #384860; line-height: 21px; letter=
+-spacing: 0.2px; margin-bottom: 17px;">    <p class=3D"cy-paragraph">If you=
+r website uses Google Ads, AdSense, or other advertising services, you=E2=
+=80=99re required to comply with the <a href=3D"https://www.google.com/abou=
+t/company/user-consent-policy/">EU User Consent Policy</a>.</p>
+
+    <p class=3D"cy-paragraph">
+        This policy requires publishers and advertisers serving users in th=
+e EEA, the UK, and Switzerland to provide clear disclosures and obtain vali=
+d consent before collecting or using personal data for purposes such as ad =
+personalisation and measurement.
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>As a Google-certified CMP, our platform is designed to enab=
+le you to easily comply with Google=E2=80=99s compliance standards.</strong=
+>
+    </p>
+
+    <h3>Here=E2=80=99s your Google compliance checklist with CookieYes</h3>
+
+    <p class=3D"cy-paragraph">
+        <a href=3D"https://app.cookieyes.com/login">Log in to CookieYes</a>=
+ to check your setup and stay compliant.
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Display banner to all users in the EEA, UK, and S=
+witzerland:</strong>
+        Make sure your consent banner is visible to users across these regi=
+ons.
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Clearly explain how you use personal data:</stron=
+g>
+        Mention ads personalisation specifically in the first layer of your=
+ consent banner.
+        You can use CookieYes=E2=80=99 pre-configured text or customise it =
+to meet Google=E2=80=99s requirements.
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Offer a clear choice for consent:</strong>
+        Provide users with an easy way to give consent, such as an =E2=80=
+=9CAccept all=E2=80=9D or =E2=80=9CI agree=E2=80=9D button.
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Link to <a href=3D"https://business.safety.google=
+/privacy/">Google=E2=80=99s Privacy Policy</a>:</strong>
+        Add a link in your banner to inform users about how Google uses the=
+ir data.
+        <img src=3D"https://cdn-cookieyes.com/assets/images/email/eu-user-c=
+onsent-policy/show-googles-privacy-policy.png" alt=3D"CookieYes setting to =
+show Google's privacy policy on the cookie banner" style=3D"margin-top: 16p=
+x; width: 100%; max-width: 100%; height: auto;">
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Send validated consent signals to Google</strong>=
+.
+        If you use services like Google Ads or Google Analytics to serve us=
+ers in the EEA, UK, or Switzerland, <strong>implement Google Consent Mode</=
+strong>.
+        <img src=3D"https://cdn-cookieyes.com/assets/images/email/eu-user-c=
+onsent-policy/google-consent-mode-setting.png" alt=3D"CookieYes setting to =
+send validated consent signals to Google using Google Consent Mode" style=
+=3D"margin-top: 16px; width: 100%; max-width: 100%; height: auto;">
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Use the Transparency & Consent Framework (TCF):</=
+strong>
+        If you serve personalised ads or work with multiple ad-tech vendors=
+, make sure you=E2=80=99re using the IAB TCF banner.
+        <img src=3D"https://cdn-cookieyes.com/assets/images/email/eu-user-c=
+onsent-policy/enable-iab-tcf-banner.png" alt=3D"CookieYes setting to enable=
+ the IAB TCF banner when serving personalised ads or working with multiple =
+ad-tech vendors" style=3D"margin-top: 16px; width: 100%; max-width: 100%; h=
+eight: auto;">
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Don=E2=80=99t set non-essential cookies before co=
+nsent:</strong>
+        Scan your site regularly to detect cookies, categorise non-essentia=
+l cookies correctly, and manually update any that aren=E2=80=99t detected i=
+n scans.
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <strong>=E2=9C=85 Allow users to change or withdraw consent easily:=
+</strong>
+        Display a floating cookie widget, so users can update their prefere=
+nces anytime after giving consent.
+        <img src=3D"https://cdn-cookieyes.com/assets/images/email/eu-user-c=
+onsent-policy/floating-revisit-consent-widget.png" alt=3D"CookieYes setting=
+ to display a floating widget on site that allows users to revisit, change,=
+ or withdraw their consent at any time" style=3D"margin-top: 16px; width: 1=
+00%; max-width: 100%; height: auto;">
+    </p>
+
+    <p class=3D"cy-paragraph">
+        <a href=3D"https://app.cookieyes.com/login" class=3D"cy-primary-but=
+ton">Review setup on CookieYes</a>
+    </p>
+
+    <h3 style=3D"margin-top: 26px;">=E2=9A=A0=EF=B8=8F What happens if you'=
+re not compliant?</h3>
+
+    <p class=3D"cy-paragraph">
+        Non-compliance with the EU User Consent Policy could result in rest=
+ricted ad functionalities, including limited ads or disabled ad personalisa=
+tion.
+    </p>
+
+
+
+                                        </p>
+                                                                           =
+   </div>           =20
+                       =20
+            <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+  <tr>
+    <td>
+            <h3 style=3D"margin: 0; font-size: 16px; font-weight: 600;">Nee=
+d help?</h3>
+      <p style=3D"color: #384860; font-size: 14px; line-height: 21px; lette=
+r-spacing: 0.2px;margin-top: 6px; margin-bottom: 24px">
+        If you have any questions or issues, please feel free to <a href=3D=
+"http://www.cookieyes.com/support/" target=3D"_blank" style=3D"color: #1578=
+F7;">contact us</a> and we=E2=80=99ll get right back to you.
+
+</p>
+                  <p style=3D"color: #384860; margin:0px; font-size: 14px; =
+line-height: 21px; letter-spacing: 0.2px;">Regards, <br />CookieYes Team</p=
+>
+          </td>
+  </tr>
+</table>
+</td>
+</tr>
+</mj-button>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+<!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"" style=3D"width:784px;" width=3D"600" ><tr><td st=
+yle=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endi=
+f]-->
+<div style=3D"margin:0px auto;max-width:784px;">
+  <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"width:100%;">
+    <tbody>
+      <tr>
+        <td style=3D"direction:ltr;font-size:0px;padding:0px;padding-top:38=
+px;text-align:center;">
+          <!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"width:600px;" ><=
+![endif]-->
+          <div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"fo=
+nt-size:0;line-height:0;text-align:left;display:inline-block;width:100%;dir=
+ection:ltr;">
+            <!--[if mso | IE]><table border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" role=3D"presentation" ><tr><td style=3D"vertical-align:top;width=
+:180px;" ><![endif]-->
+            <div class=3D"mj-column-per-30 mj-outlook-group-fix signature-t=
+ext-container" style=3D"font-size:0px;text-align:left;direction:ltr;display=
+:inline-block;vertical-align:top;width:30%;">
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"vertical-align:top;" width=3D"100%">
+                <tbody>
+                  <tr>
+                    <td align=3D"left" class=3D"mobile-logo" style=3D"font-=
+size:0px;padding:0;padding-bottom:12px;word-break:break-word;">
+                      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" role=3D"presentation" style=3D"border-collapse:collapse;border-spacing:0=
+px;">
+                        <tbody>
+                          <tr>
+                            <td style=3D"width:180px; text-align: left; pad=
+ding: 0;">
+                              <img alt=3D"CookieYes" height=3D"20" src=3D"h=
+ttps://cdn-cookieyes.com/assets/images/logo-grey.png"
+                                style=3D"border:0;display:block;outline:non=
+e;text-decoration:none;height:20px;width:auto;font-size:13px;"
+                                width=3D"180">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align=3D"left" class=3D"signature-text" style=3D"fo=
+nt-size:0px;padding:0px;padding-bottom:12px;word-break:break-word;">
+                      <div style=3D"font-family:Ubuntu, Helvetica, Arial, s=
+ans-serif;font-size:12px;letter-spacing:0.2px;line-height:1;text-align:left=
+;color:#000000;">=C2=A9 2025 CookieYes. All rights reserved.</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align=3D"left" class=3D"signature-text" style=3D"fo=
+nt-size:0px;padding:0px;word-break:break-word;">
+                      <div style=3D"font-family:Ubuntu, Helvetica, Arial, s=
+ans-serif;font-size:12px;letter-spacing:0.2px;line-height:16px;text-align:l=
+eft;color:#000000;">3 Warren Yard Warren Park, Wolverton Mill,<br class=3D"=
+mobile-break" /> Milton Keynes, MK12 5NW, United Kingdom</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--[if mso | IE]></td><td style=3D"align:right;vertical-align:=
+bottom;width:240px;" ><![endif]-->
+            <div class=3D"mj-column-per-40 mj-outlook-group-fix" style=3D"f=
+ont-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-al=
+ign:bottom;width:40%;">
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"vertical-align:bottom;" width=3D"100%">
+                <tbody>
+                  <tr>
+                    <td align=3D"right" style=3D"font-size:0px;padding:0;wo=
+rd-break:break-word;">
+                      <!--[if mso | IE]><table align=3D"right" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" ><tr><td><![endi=
+f]-->
+                      <table align=3D"right" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"float:none;display:inline=
+-table;">
+                        <tr>
+                          <td style=3D"padding:4px;vertical-align:middle;">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation">
+                              <tr>
+                                <td style=3D"font-size:0;height:25px;vertic=
+al-align:middle;width:25px;">
+                                  <a href=3D"https://www.linkedin.com/compa=
+ny/cookieyeshq" target=3D"_blank">
+                                    <img height=3D"26" src=3D"https://cdn-c=
+ookieyes.com/assets/images/email/footer/linkedInIcon.png" style=3D"border-r=
+adius:3px;display:block;" width=3D"25" />
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso | IE]></td><td><![endif]-->
+                      <table align=3D"right" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"float:none;display:inline=
+-table;">
+                        <tr>
+                          <td style=3D"padding:4px;vertical-align:middle;">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation">
+                              <tr>
+                                <td style=3D"font-size:0;height:25px;vertic=
+al-align:middle;width:25px;">
+                                  <a href=3D"https://twitter.com/CookieYesH=
+Q" target=3D"_blank">
+                                    <img height=3D"26" src=3D"https://cdn-c=
+ookieyes.com/assets/images/email/footer/twitterIcon.png" style=3D"border-ra=
+dius:3px;display:block;" width=3D"25" />
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso | IE]></td><td><![endif]-->
+                      <table align=3D"right" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"float:none;display:inline=
+-table;">
+                        <tr>
+                          <td style=3D"padding:4px;vertical-align:middle;">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation">
+                              <tr>
+                                <td style=3D"font-size:0;height:25px;vertic=
+al-align:middle;width:25px;">
+                                  <a href=3D"https://www.youtube.com/c/cook=
+ieyes" target=3D"_blank">
+                                    <img height=3D"26" src=3D"https://cdn-c=
+ookieyes.com/assets/images/email/footer/youtubeIcon.png" style=3D"border-ra=
+dius:3px;display:block;" width=3D"25" />
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso | IE]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--[if mso | IE]></td></tr></table><![endif]-->
+          </div>
+          <!--[if mso | IE]></td></tr></table><![endif]-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+  <tbody>
+    <tr>
+      <td>
+        <!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"" style=3D"width:784px;" width=3D"600" ><=
+tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;=
+"><![endif]-->
+        <div style=3D"margin:0px auto;max-width:784px;">
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" style=3D"width:100%;">
+            <tbody>
+              <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:24px 0px;t=
+ext-align:center;">
+                  <!--[if mso | IE]><table role=3D"presentation" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"center" class=3D"" =
+style=3D"" ><![endif]-->
+                  <p style=3D"border-top:solid 1px #DFE3E8;font-size:1px;ma=
+rgin:0px auto;width:100%;">
+                  </p>
+                  <!--[if mso | IE]><table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"border-top:solid 1px #DFE3E8;fon=
+t-size:1px;margin:0px auto;width:600px;" role=3D"presentation" width=3D"600=
+px" ><tr><td style=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+  <tbody>
+    <tr>
+      <td>
+        <!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"" style=3D"width:600px;" width=3D"600" ><=
+tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;=
+"><![endif]-->
+        <div style=3D"margin:0px auto;max-width:600px;">
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" style=3D"width:100%;">
+            <tbody>
+              <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:0px;paddin=
+g-bottom:60px;text-align:center;">
+                  <!--[if mso | IE]><table role=3D"presentation" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical=
+-align:top;width:450px;" ><![endif]-->
+                  <div class=3D"mj-column-per-75 mj-outlook-group-fix" styl=
+e=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;verti=
+cal-align:top;width:100%;">
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%">
+                      <tbody>
+                        <tr>
+                          <td align=3D"center" style=3D"font-size:0px;paddi=
+ng:10px 6px;word-break:break-word;">
+                            <div style=3D"font-family:Ubuntu, Helvetica, Ar=
+ial, sans-serif;font-size:12px;line-height:20px;text-align:center;color:#6E=
+7191;">This email was sent to <a href=3D"mailto:ely.ubuntu0@gmail.com" styl=
+e=3D"color: #1578F7; text-decoration: underline;">ely.ubuntu0@gmail.com</a>=
+.You received this email because you are registered with CookieYes Limited.=
+</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>
+
+</html>        </div>
+    </div>
+<img src=3D"http://url1411.cookieyes.com/wf/open?upn=3Du001.RoKsPc3-2F5FGKt=
+zps28WN1OniVg1-2FOQWCTkn1xIhWsGpT5gVmInQw9q9iVBfu-2B7p3ZYfx-2BqX4knhZdd5j7r=
+X-2BaD4CTJQWpRW-2FICy0fl80inbjd88WM24P6rB3q01BReIlc7zr7kjwwx-2FLjd29Wbt8gpB=
+O-2FPyNRD93-2B0SHned7xwwa2Bo9Wv4DZR3AKWF-2BErmCJYDyYS9o-2F3cK0MyIre66yg-3D-=
+3D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !imp=
+ortant;width:1px !important;border-width:0 !important;margin-top:0 !importa=
+nt;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !impo=
+rtant;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 =
+!important;padding-left:0 !important;"/></body>
+</html>=20

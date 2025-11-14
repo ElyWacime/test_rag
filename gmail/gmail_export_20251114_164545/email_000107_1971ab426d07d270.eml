@@ -1,0 +1,546 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:8006:0:b0:32a:6808:eadb with SMTP id j6csp145617ljg;
+        Wed, 28 May 2025 23:21:43 -0700 (PDT)
+X-Received: by 2002:a05:620a:248d:b0:7cd:49a6:67e with SMTP id af79cd13be357-7ceecc144b3mr3029219085a.41.1748499703360;
+        Wed, 28 May 2025 23:21:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1748499703; cv=none;
+        d=google.com; s=arc-20240605;
+        b=e+DDf5YiVPPSvQucZTfqKuNRQxiIgS7+IKzMhwWVie9lt/LQ/VTsn7mbf6W6b61o3Y
+         LjjioF3R1M/JMxKHV6o3N9XFwAfhR9OZBAIoXq/YgJ1tXPQdCFxoszexaRepzYhkNlws
+         4tRxG1gVg8PvLFLbykiTys40NFFKr0xBSeS3Kvqxkb6ktPy4UxiSxFZ47YqWlwS/bAtK
+         /7/4xxIlwaFytOAFdD+OPPAHj3s42HLMUvj3XM9NzkjK1Q4yYv/vWoti2jJaACUAK9HU
+         x6tvrdmeCZi7hzM2w0oQTP/QxoAhj/rBuZvDgLlqPOG3zGWRAlJgSs2StH7gqxe4EO86
+         RFYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=u4Rqw3MBJsd4OeIMHgfK5c4X5xOEsaZfO+/l/Vn9cdE=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=atxKS+IQ7zaYxjNZAKiuSB92kjfGBwYRrDj1ZWlboKfjSDrLQkDaxBUbly++ZJBvnA
+         srm3JhdD8mPDXbCG0S8Af7ruYSaIv2xfKcSgbQYYaFt3hW5ozd4wrHWa1xZJwx8Z3yIL
+         hmuoDsy1p5BDojptJ9TXXW41+dtrkIpy8hlvfIMriAQzkJXDz80jamGJ3/RAM9xDN7xK
+         SykbPR+DDPSpTUedKOs3bwbsEIlbm10qz+K7Ifx+bZb33n+JdmpV9XoEQqpmWxfk6SSr
+         Lsq6+m+bz0TvRb2YD1hzdExfIw4iRIVqJh3Li5WJl7zcQhxaAuaRktkcMypGT/GtLebF
+         rFhA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=NGG0rFBg;
+       spf=pass (google.com: domain of 39vw3abgkabkfdd5a3c3k3ade3gh-cdg3ean5dd5a3.1db@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=39vw3aBgKABkfDD5A3c3K3ADE3GH-CDG3EAN5DD5A3.1DB@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <39vw3aBgKABkfDD5A3c3K3ADE3GH-CDG3EAN5DD5A3.1DB@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id af79cd13be357-7d09a131166sor97102485a.5.2025.05.28.23.21.42
+        for <ely.ubuntu0@gmail.com>
+        (Google Transport Security);
+        Wed, 28 May 2025 23:21:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 39vw3abgkabkfdd5a3c3k3ade3gh-cdg3ean5dd5a3.1db@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=NGG0rFBg;
+       spf=pass (google.com: domain of 39vw3abgkabkfdd5a3c3k3ade3gh-cdg3ean5dd5a3.1db@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=39vw3aBgKABkfDD5A3c3K3ADE3GH-CDG3EAN5DD5A3.1DB@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1748499702; x=1749104502; dara=google.com;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=u4Rqw3MBJsd4OeIMHgfK5c4X5xOEsaZfO+/l/Vn9cdE=;
+        b=NGG0rFBgJX76G+NS7Ib2hZ/XtoHm/jbhEx5uSnsZDr+DTGfA0Q68D4rRI55plv+gql
+         3gxzyRvQeWHEvWhMX/dylpfAbsi4FrQAOl/1mtJ7TAImE2nQb2o3tYHPeRxFQn0zqX/M
+         LVu2qurzftfaCmh4Z5WiRJuL6if8L7S3NcMRtRbMuy1m8LshS114tZ7TcSve8EFCn5G3
+         NWpuW+WhWRZ8AaTWuu+Qip+Cipp+2HrD2Exp3aEaEMV/ntXf4xTb9u8/fggVqXYFHXsJ
+         0Kbw2Nsr/RUXF8tZQEiVnr7ll6yaXpYZH4Ac4HSRfESCk1/fLBc6XSzKvpeGa+3uMSEP
+         9Wyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748499702; x=1749104502;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=u4Rqw3MBJsd4OeIMHgfK5c4X5xOEsaZfO+/l/Vn9cdE=;
+        b=QJk/MrEQvBm5rTjvuxzNCzp4O+SkLfSXNlgCkIq8BHPxTClFST7KWsgzIlFNUZ7+Tz
+         B/k/rNtyjj7TMWb8/u9xC1bMSHYKJFIqwt7oHI5cgIi+kIO1avxfwC35YsaTWpLetAgB
+         NR7YkP5xNesTM6iyfPAbtJBfJ+SYxW+37VOod14lPY0Hzh+nf37tDfnoWo8HBI3cSiBy
+         W6+LewnBuIlvGJVcdG0oUxImINM7bQfsnjOqhmeG9drXedaTF7l47ozhYdaV/ZCt59o4
+         /p0AF417i5hc7P4wbMte4VcykOjTh9GYHz0Tb1wGhKsDdkUNdxMK/5rhSQs3ik/ECKrz
+         jQaw==
+X-Gm-Message-State: AOJu0YyUoGNam8vEDIrEagv1NOBv8kdo15IPHfswI5mh6SvN4wto3B8O
+	XrRhPG5ST9CUJtP8sQcGHG6TrdcLDxu1rElmttHAQM33rl7/fT5WvAkpH4uS
+X-Google-Smtp-Source: AGHT+IFgxr+6CqbbDo6hz6QzQwxtCv5kCGYWmYWgOF6aCXRCOP7KUWAMwUoAUZlhqhQS1VNfSDoJTmM=
+MIME-Version: 1.0
+X-Received: by 2002:a05:620a:2682:b0:7ca:cb02:7942 with SMTP id
+ af79cd13be357-7ceecba4556mr2751122885a.1.1748499702737; Wed, 28 May 2025
+ 23:21:42 -0700 (PDT)
+Date: Wed, 28 May 2025 23:21:42 -0700
+Reply-To: Google Developers <GoogleDevelopers-noreply@google.com>
+X-Google-Id: 4366986
+Feedback-ID: P-441349030-0:C20357783:M110977884-en-US:gamma
+X-Notifications: 9c1b108ba5ca0000
+X-Notifications-Bounce-Info: AWoTSIGSgAMWjxD-r0Owzss7VdJbklKs0Fdn6TQXtVC3YhIUu-4qZmema3rxA79uBty3619KauLm65DEXm8YgSygdtak_qwzMRUl0oZCcJsWp2JjhQa8tbgT_kDe7dq82Jo8mmZOppKSPK566fi-jvtvMgHVYn25h8eY0abfT0faIT-1Nla88hGAaaSr2V004o5RTypXfpFFxY_umO-xJIG4nekW1iwHTlvIs0zKf2dvYZRwx_2V2y_Lr8Dcim2J3vPQMM29BdNi7Wh99KSqHSrRNrqbv9W5IzwN9xZYG5PtxOvSPLviIxiVxI7bwtEAWIj7ej0UBziqBcwNUWplEYumvg9r9jV6RCN2H--cao_a1iqWUKWJobz0PY74xJ7COvD9_ZG1ouNZjx1n7c6NJx1elnf8VeU2yZPseQGPktLUKqo1cKlSGVn3ajgCttct_p2a4HkQll3f8nBwelwKQSDtZHo47z6gOg8GZWNKa9Y5GrVE2LQuUfD-1HG2QQNjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <7cb7f1ba3ba4f6a74c698eb70494dfde0c7051e2-20357783-111685842@google.com>
+Subject:  [Action Advised] Manage your unused OAuth clients and protect your information
+From: Google Developers <GoogleDevelopers-noreply@google.com>
+To: ely.ubuntu0@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000abed650636404fce"
+
+--000000000000abed650636404fce
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIERldmVsb3BlcnMgbG9nbw0KDQoNCg0KT0F1dGggY2xpZW50cyBpbmFjdGl2ZSBmb3Ig
+NiBtb250aHMgd2lsbCBiZSBhdXRvbWF0aWNhbGx5IGRlbGV0ZWQgc3RhcnRpbmcgIA0KSnVuZSAy
+MDI1Lg0KDQoNCg0KSGVsbG8gR29vZ2xlIERldmVsb3BlciwNCg0KV2UncmUgd3JpdGluZyB0byBp
+bmZvcm0geW91IGFib3V0IGFuIHVwY29taW5nIGNoYW5nZSB0aGF0IG1heSBhZmZlY3QgeW91ciAg
+DQphcHBsaWNhdGlvbnMgYW5kIHNjcmlwdHMgdXNpbmcgR29vZ2xlIEF1dGggUGxhdGZvcm0gZm9y
+IFNpZ24taW4gd2l0aCBHb29nbGUgIA0Kb3IgZm9yIGNhbGxpbmcgR29vZ2xlIEFQSXMuDQoNCldl
+J3ZlIHByb3ZpZGVkIGFkZGl0aW9uYWwgaW5mb3JtYXRpb24gYmVsb3cgdG8gZ3VpZGUgeW91IHRo
+cm91Z2ggdGhpcyAgDQpjaGFuZ2UuDQoNCldoYXQgeW91IG5lZWQgdG8ga25vdw0KDQpBcyB3ZSBy
+ZWNlbnRseSBhbm5vdW5jZWQsIHN0YXJ0aW5nIEp1bmUgMjAyNSwgT0F1dGggY2xpZW50cyB0aGF0
+IGhhdmUgIA0KcmVtYWluZWQgaW5hY3RpdmUgZm9yIHNpeCBtb250aHMgd2lsbCBiZSBhdXRvbWF0
+aWNhbGx5IGRlbGV0ZWQuIFRoaXMgY2hhbmdlICANCmhlbHBzIHByZXZlbnQgY3JlZGVudGlhbCB0
+aGVmdCBhbmQgbWlzdXNlLg0KDQpJbmFjdGl2aXR5IGlzIGRldGVybWluZWQgYmFzZWQgb24gdGhl
+IGFic2VuY2Ugb2YgdG9rZW4gZXhjaGFuZ2VzIG9yIGNsaWVudCAgDQp1cGRhdGVzLiBWaWV3aW5n
+IGFuIE9BdXRoIGNsaWVudCBvbiBHb29nbGUgQ2xvdWQgQ29uc29sZSBpcyBub3QgY29uc2lkZXJl
+ZCAgDQphY3Rpdml0eS4gQWZ0ZXIgYW4gT0F1dGggY2xpZW50IGlzIGRlbGV0ZWQsIHlvdSB3aWxs
+IGhhdmUgMzAgZGF5cyB0byAgDQpyZXN0b3JlIHRoZSBjbGllbnQgdmlhIHRoZSBHb29nbGUgQXV0
+aCBQbGF0Zm9ybSBzZWN0aW9uIG9mIHRoZSBHb29nbGUgQ2xvdWQgIA0KQ29uc29sZS4NCg0KSW1w
+YWN0ZWQgT0F1dGggY2xpZW50cw0KDQpUaGUgZm9sbG93aW5nIE9BdXRoIGNsaWVudHMgdGhhdCB5
+b3UgbWFuYWdlIGhhdmUgYmVlbiBpbmFjdGl2ZSBmb3IgYXQgbGVhc3QgIA0KZml2ZSBtb250aHMu
+IFRoZXkgd2lsbCBiZSBkZWxldGVkIHVubGVzcyB5b3UgdGFrZSBhY3Rpb246DQoNCg0Kc2hhcnAt
+bWFrZXItNDA1NDEyICg3MTI0NTY3MjIwMjMpDQoNCjcxMjQ1NjcyMjAyMy1wam9ob21wOW9pajlr
+YXZwZjNnY2xvMjNpN28yNzM0ay5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbQ0KDQoNCldoYXQg
+eW91IG5lZWQgdG8gZG8NCg0KTWFuYWdlIHlvdXIgdW51c2VkIGNsaWVudHMNCg0KVG8gcHJldmVu
+dCBkZWxldGlvbiBvZiBjbGllbnRzIHlvdSB3aXNoIHRvIHJldGFpbiwgaW5pdGlhdGUgYSBTaWdu
+LWluIHdpdGggIA0KR29vZ2xlIGZsb3cgb3IgZXhjaGFuZ2UgYSByZWZyZXNoIHRva2VuIGZvciBh
+biBhY2Nlc3MgdG9rZW4gZm9yIGVhY2ggY2xpZW50ICANCmxpc3RlZCBhYm92ZS4NCg0KSWYgeW91
+IG5vIGxvbmdlciBuZWVkIHRoZXNlIGNsaWVudHMsIG5vIGFjdGlvbiBpcyByZXF1aXJlZCBmcm9t
+IHlvdS4gVGhleSAgDQp3aWxsIGJlIGRlbGV0ZWQgYXV0b21hdGljYWxseSBhZnRlciBzaXggbW9u
+dGhzIG9mIGluYWN0aXZpdHkuIFlvdSB3aWxsIGhhdmUgIA0KdXAgdG8gMzAgZGF5cyB0byByZXN0
+b3JlIHRoZW0gaW4gdGhlIEdvb2dsZSBDbG91ZCBDb25zb2xlLg0KDQpQcm90ZWN0IHlvdXIgYXBw
+bGljYXRpb25zDQoNClRvIHByb3RlY3QgeW91ciBhcHBsaWNhdGlvbnMgYW5kIGVuaGFuY2Ugc2Vj
+dXJpdHksIHBsZWFzZSBhZGhlcmUgdG8gdGhlICANCmZvbGxvd2luZyBiZXN0IHByYWN0aWNlczoN
+Cg0KDQpOZXZlciBjaGVjayBjbGllbnQgc2VjcmV0cyBpbnRvIHZlcnNpb24gY29udHJvbCBzeXN0
+ZW1zLCBlc3BlY2lhbGx5IHRob3NlICANCnRoYXQgYWxsb3cgYWNjZXNzIHRvIHVzZXIgZGF0YSBv
+ciBvdGhlciBwcm9kdWN0aW9uIHN5c3RlbXMNCk5ldmVyIHNoYXJlIGNsaWVudCBzZWNyZXRzIHdp
+ZGVseSBvbiB0aGUgaW50ZXJuZXQNClJvdGF0ZSBjbGllbnQgc2VjcmV0cyBwZXJpb2RpY2FsbHkg
+YW5kIGNoYW5nZSB0aGVtIGltbWVkaWF0ZWx5LCBpZiBhIGRhdGEgIA0KYnJlYWNoIG9jY3Vycw0K
+S2VlcCB5b3VyIGRldmVsb3BlciBjb250YWN0IGluZm9ybWF0aW9uIGN1cnJlbnQgdG8gZW5zdXJl
+IHlvdSByZWNlaXZlICANCmZ1dHVyZSB1cGRhdGVzIGZyb20gdXMNCg0KV2UncmUgaGVyZSB0byBo
+ZWxwDQoNCklmIHlvdSBoYXZlIGFueSBxdWVzdGlvbnMgb3IgcmVxdWlyZSBhc3Npc3RhbmNlLCBw
+bGVhc2UgdmlzaXQgb3VyIEhlbHAgIA0KQ2VudGVyIG9yIHJldmlldyBvdXIgZGV2ZWxvcGVyIGRv
+Y3VtZW50YXRpb24uDQoNClRoYW5rcyBmb3IgY2hvb3NpbmcgR29vZ2xlIEF1dGggUGxhdGZvcm0u
+DQoNCuKAkyBUaGUgR29vZ2xlIENsb3VkIFRlYW0NCg0KDQoNCg0KV2FzIHRoaXMgaW5mb3JtYXRp
+b24gaGVscGZ1bD8NCg0KQSBzbWlsaW5nIGZhY2UgQSBuZXV0cmFsIGZhY2UgQSBzYWQgZmFjZQ0K
+DQoNCsKpIDIwMjUgR29vZ2xlIExMQyAxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5LCBNb3VudGFp
+biBWaWV3LCBDQSA5NDA0Mw0KDQpZb3UgaGF2ZSByZWNlaXZlZCB0aGlzIG1hbmRhdG9yeSBzZXJ2
+aWNlIGFubm91bmNlbWVudCB0byB1cGRhdGUgeW91IGFib3V0ICANCmltcG9ydGFudCBjaGFuZ2Vz
+IHRvIEdvb2dsZSBzZXJ2aWNlcyB5b3UgdXNlLg0KDQoNClR3aXR0ZXIgRmFjZWJvb2sgTGlua2Vk
+SW4gWW91VHViZQ0KDQoNCg0K
+--000000000000abed650636404fce
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+<!doctype html public "- / / w3c / / dtd html 4.01 transitional / / en" "ht=
+tp: / / www.w3.org / tr / html4 / loose.dtd">
+
+<html>
+<head></head>
+<body bgcolor=3D#f8f9fa style=3D"width: 100%; margin:0; padding:0 !importan=
+t; background-color: #f8f9fa;">
+<center style=3D"width: 100%; table-layout: fixed;">
+
+<!--START OF MAIN CONTAINER-->
+<table align=3Dcenter bgcolor=3D#FFFFFF border=3D0 cellpadding=3D0 cellspac=
+ing=3D0 style=3D"max-width:600px; width:600px; Margin: 0 auto; " width=3D60=
+0>
+<!--START OF CONTENT CONTAINER-->
+<tr>
+<td align=3Dcenter bgcolor=3D#ffffff class=3DmktoContainer id=3Dcontent_con=
+tainer style=3D"background-color: #ffffff; " valign=3Dtop>
+ =20
+<!--LOGO CONTAINER-->
+<table align=3Dcenter border=3D0 cellpadding=3D0 cellspacing=3D0 style=3D"m=
+ax-width:600px; width:100%; background: #f8f9fa; " width=3D600>
+<tbody>
+<tr>
+ =20
+<td height=3D80 style=3D"padding:0 24px 0 30px; height: 80px; vertical-alig=
+n: middle; text-align: left" valign=3Dmiddle>
+  <!--Change this logo accordingly baseD on the MSA requirement-->
+<span style=3D"font-family: Roboto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> </span>
+<div style=3D"padding-top: 22px; padding-bottom: 8px; border-bottom-style: =
+solid; border-bottom-color: #dcdcdc; border-bottom-width: 1px" width=3D100%=
+><span style=3D"font-family: Roboto, Arial, sans-serif; font-size: 14px; co=
+lor: #000000;"><img alt=3D"Google Developers logo" src=3Dhttp://services.go=
+ogle.com/fh/files/emails/logo_lockup_google_developers_horizontal_color.png=
+ style=3D"display: block; border-width: 0px; border-style: solid;" title=3D=
+"Google Developers" width=3D360> </span></div>
+<span style=3D"font-family: Roboto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> <!-- This is the beginning of the subject --> </span>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END OF LOGO CONTAINER-->
+<!--START OF PREHEADER-->
+
+<!-- Include the Pre-header snippet, copy HTML from TEMPLATE SNIPPET ID 916=
+0213 and add the pre-header text-->
+<div style=3D"height:0px; font-size:0px; max-height:0px; min-height: 0px; l=
+ine-height:0px; width: 100%; color: #fff; display:none;">OAuth clients inac=
+tive for 6 months will be automatically deleted starting June 2025.</div>
+<!--END OF PREHEADER-->
+
+
+
+<table align=3Dcenter border=3D0 cellpadding=3D0 cellspacing=3D0 class=3Dmk=
+toModule id=3DbodyCopyModule role=3Dpresentation style=3D"max-width:600px; =
+width:100%;" width=3D600>
+<tbody>
+<tr>
+
+<td style=3D"font-family: Roboto,Arial,sans-serif; font-size: 14px; line-he=
+ight: 24px; color: #3C4043; margin: 0; padding: 0; text-align: left; paddin=
+g:8px 50px 8px 50px;" valign=3Dtop>
+
+<!--START OF MSA DEVELOPER MESSAGE-->
+ =20
+
+<p>Hello Google Developer,</p>
+
+<p>We=E2=80=99re writing to inform you about an upcoming change that may af=
+fect your applications and scripts using <strong>Google Auth Platform</stro=
+ng> for Sign-in with Google or for calling Google APIs.</p>
+
+<p>We=E2=80=99ve provided additional information below to guide you through=
+ this change.</p>
+
+<h3>What you need to know</h3>
+
+<p>As we recently <a href=3Dhttps://c.gle/ANiao5obK7NGVvWB6VfYO6ygiujpQFTC-=
+jGiw7Zu4mSykaQZAqT9Xq_Yo-CAP3-RGIHv-Vo-ZwpQeTE2C2yHePPC8kihDnH_O65gwm5IX1lu=
+pmLU5K2vmUaJIz6g-J4W1FjwTF1Wrxs6zSaPpIAoynecR51bpLBs9TYxJ_RhH1zRBWNFmoa3opr=
+P8dfLVzI1FCi2lKIF7cyE0uU target=3D_blank>announced</a>, starting <strong>Ju=
+ne 2025</strong>, OAuth clients that have remained inactive for six months =
+will be automatically deleted. This change helps prevent credential theft a=
+nd misuse.</p>
+
+<p>Inactivity is determined based on the absence of token exchanges or clie=
+nt updates. Viewing an OAuth client on Google Cloud Console is not consider=
+ed activity. After an OAuth client is deleted, you will have 30 days to res=
+tore the client via the <a href=3Dhttps://c.gle/ANiao5oIN1dBUiwRqDQyFxRkTHt=
+WcI_PSUvn3n6wN_CW3GWpOMG6VsjmqvG_gnMuQfwgEmYje6cR0EK6mMYxk4MmAh6UOF35hC3DXO=
+wvw9vJXTLmfwGBzNSkgSwF63nvxmXGyYkL5XpbQEdA93U target=3D_blank>Google Auth P=
+latform section</a> of the Google Cloud Console.</p>
+
+<p><strong>Impacted OAuth clients</strong></p>
+
+<p>The following OAuth clients that you manage have been inactive for at le=
+ast five months. They will be deleted unless you take action:</p>
+
+<ul>
+  <li><a href=3Dhttps://c.gle/ANiao5rUI8VkC3SBdgLQbmTfmV13iq3CrEZXaG11DzqNA=
+hUg5pRRPOgD8SQnzZw8ykYmOuUOPXm1rT9epLBy6KWb7ohTgRAJNtsFZP_U19H2a6VBCSDHFTk2=
+QD9exg7wv2QuhuNqCi-m-PY4e3E-rnY-PTADEw_U-BeWESd42mWaye9aLvFGdPw target=3D_b=
+lank>sharp-maker-405412 (712456722023)</a>
+
+    <ul>
+      <li><a rel=3Dnofollow style=3D"text-decoration:none; color:#455A64">7=
+12456722023-pjohomp9oij9kavpf3gclo23i7o2734k.apps.googleusercontent.com</a>=
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>What you need to do</h3>
+
+<p><strong>Manage your unused clients</strong></p>
+
+<p>To prevent deletion of clients you wish to retain, initiate a Sign-in wi=
+th Google flow or exchange a refresh token for an access token for each cli=
+ent listed above.</p>
+
+<p>If you no longer need these clients,<strong> no action is required from =
+you</strong>. They will be deleted automatically after six months of inacti=
+vity. You will have up to 30 days to restore them in the <a href=3Dhttps://=
+c.gle/ANiao5psTVvZFu0G4hYkKWweNMA5bU3tSuha8LdxbL6ob_5SV42le4N2A4u4Mi3GqcRvC=
+OwZcsV9Zo_FXINJ5_9yYXhUHXhacl4zEnjF0JR_i6DvYOV3qsTT5YdJwG97AovJ3KfTSgt-ilXM=
+s1WHx7tbImgHtv2KuxI target=3D_blank>Google Cloud Console</a>.</p>
+
+<p><strong>Protect your applications</strong></p>
+
+<p>To protect your applications and enhance security, please adhere to the =
+following best practices:</p>
+
+<ul>
+  <li><a href=3Dhttps://c.gle/ANiao5rjROJkxKvGqJ7CszLw0Bv_j34FWefyei71bqF-O=
+UMayF9h77LtvFv8j-IZfw_F0UU91fnF63ICMF0dsRsNcMl1MM5FtnZv27UisCRc2f4W8MQxMyPT=
+GZhe1EmtgWBcbcKljQX_qGdic5DPc8SQvJZ24ebpLyB1vEZN-rKnQDLk3M-CLRG9gEP3-dDqzQR=
+O6Q target=3D_blank>Never check client secrets into version control systems=
+</a>, especially those that allow access to user data or other production s=
+ystems</li>
+  <li>Never share client secrets widely on the internet</li>
+  <li><a href=3Dhttps://c.gle/ANiao5pkE_oX_P7Qcpf56NAY_kQTksOutaaxm8XGNCbjA=
+_Gm_iJGhEr6oRgJTdE1oTc66WxOciQzpy6LzIAx4d5fVv0NkG7q-FQHeR9aGlIWxKMjhxe5yw85=
+tsHm9rR3rR2mHA21aunw_gx-6mzc2-6KTCl5NYD-8SIVgraumz_i8w target=3D_blank>Rota=
+te client secrets</a> periodically and change them immediately, if a data b=
+reach occurs</li>
+  <li><a href=3Dhttps://c.gle/ANiao5rRb8F6Rpmw9XVjSdNrPSjyFrytB2AWOoR8seX9G=
+WdlcxLBy3vlafZZOZV8Vc2bgTSLCFdG1QTP1MPBgTPX8vbnanx-xb45Eg6NKzL7dYiHuLUBATkA=
+8UQ1zzPVLrlYw-8aCtizEgTZykC7yJKBLiUGX7GzsE18B5jsG_L4CtiGh7qH_2PRlzfxr0E tar=
+get=3D_blank>Keep your developer contact information current</a> to ensure =
+you receive future updates from us</li>
+</ul>
+
+<h3>We=E2=80=99re here to help</h3>
+
+<p>If you have any questions or require assistance, please visit our <a hre=
+f=3Dhttps://c.gle/ANiao5o9IoIA2ELfHwqdjPbpi0OJFJHesBVXN6SGcaWBBLlOcAzv_j2j3=
+joswcudUGGsULc4kjQmXr287-ie2NbXXxaZXFS40e-6lJNl1YGe7AjHQzS7ou6hQGQJ7hDfNVOs=
+ISqRq5ANxtFdqAgLVQ target=3D_blank>Help Center</a> or review our <a href=3D=
+https://c.gle/ANiao5p8yEt7M4B94_WiL5JemL2yyEDQmK9t_uWybzQRZMXQ9k3URo-qaGi0X=
+s-T6ZJbX8IkbH-wg9CYM4w4MlDPkZBEuXbUbL9beyHpXVojqK4NBNtomR4fUbGCwAhCH-ijmFlQ=
+lQ target=3D_blank>developer documentation</a>.</p>
+
+<p>Thanks for choosing Google Auth Platform.</p>
+
+<p><strong>=E2=80=93 The Google Cloud Team</strong></p>
+
+
+<!--END OF MSA DEVELOPER MESSAGE-->
+</td>
+ =20
+</tr>
+</tbody>
+</table>
+
+
+<!-- Include the Customer feedback form snippet, copy HTML from TEMPLATE SN=
+IPPET ID coco/7501725 and add relevant links -->
+<table style=3Dwidth:100%;border:1px;>
+  <tbody>
+    <tr>
+      <td colspan=3D2 style=3Dtext-align:center; width=3D100%><strong style=
+=3D"font-size:14px; color:#919599ff;">Was this information helpful?</strong=
+></td>
+    </tr>
+    <tr>
+      <td style=3Dtext-align:center;><a href=3Dhttps://c.gle/ANiao5rc8K60NY=
+Ts8RWKfMBpkUv-45lrPnLO1agr0c6K2Ib2-FvZqZTdCe1Plr3WAn0Ij0d_SKEPFzBm1sOilqMg5=
+IrIQzlBmM21GIPliav3_jYlTYbCI9_WSInKpwPnGygBGauHaur2osyUDyzYWiy0PGFnsXC6cjGG=
+Yu0zFSXa1REuY4m2-OD3r1sdCQL299-LDY44xECfuqyVdJkWVu3C-pnlNO04tnjkPOun81q5peY=
+qc3waUbvSsktkAYlIkbCWAw style=3D"color:#1a73e8; font-family:Roboto, arial; =
+font-size:14px; text-decoration:none" target=3D_blank><img alt=3D"A smiling=
+ face" src=3Dhttps://services.google.com/fh/files/emails/happy_emojis.png s=
+tyle=3D"-ms-interpolation-mode:bicubic; border:none; outline:none; text-dec=
+oration:none; padding-top: 1px;" width=3D30> </a> =C2=A0=C2=A0=C2=A0 <a hre=
+f=3Dhttps://c.gle/ANiao5rVrv3wJq6gBCy9g_CTx8X1aIjtsr16DzbMQ0BVH79z6E9GQ_60s=
+VgIBdCJuztII_Bdju-pNOEr8Bg4dUcIhevNJ8mijiFiUbwnSPHW4gZy7QuEJinu4RO7F-gXTNI5=
+D4JOG3zTDZPJM4GAWTfaFLD4EGbZtTF8QaanQA8DIYdy0d10Mu-iwgMv1e3w8kudoWoiDQtOlHT=
+hoA064royYDNvKvFnVGx_yAQ66kiNwHoRx79r0DEiwrVzdoI62b_8hTrONvM style=3D"color=
+:#1a73e8; font-family:Roboto, arial; font-size:14px; text-decoration:none" =
+target=3D_blank><img alt=3D"A neutral face" src=3Dhttps://services.google.c=
+om/fh/files/emails/neutral_emojis.png style=3D"-ms-interpolation-mode:bicub=
+ic; border:none; outline:none; text-decoration:none" width=3D30> </a> =C2=
+=A0=C2=A0=C2=A0 <a href=3Dhttps://c.gle/ANiao5pdBv3J7fPcIuZfs-ox36WZ4gCTihD=
+9hcDTsvHU4x7V0__c-9pgM4Uh_OGT_uk7vC97noR3GEfWd7vweh8MPWhaUtXWFVjsncSC5l4Ng9=
+cdybJ23AL_TPZinGojaVzX0uFhiiOC6C0Y4W9NS4iKwiqjUBH49ZMkIdwwgVR2IDr2SKFVL5UMK=
+CKTEeeNe2oFZItH2OiXV8eFsPs41d_yl26jy7T2GCqfxw13RtuHTOpAOqogTD9EdsGqFenwTLKQ=
+ style=3D"color:#1a73e8; font-family:Roboto, arial; font-size:14px; text-de=
+coration:none" target=3D_blank><img alt=3D"A sad face" src=3Dhttps://servic=
+es.google.com/fh/files/emails/sad_emojis.png style=3D"-ms-interpolation-mod=
+e:bicubic; border:none; outline:none; text-decoration:none" width=3D30></a>=
+</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div>
+<table border=3D0 cellpadding=3D0 cellspacing=3D0 class=3Dwidth100 role=3Dp=
+resentation>
+<tbody>
+<tr>
+<th class=3D"width100 mobile-block prefooter-parent" style=3D"text-align: l=
+eft;">
+<table border=3D0 cellpadding=3D0 cellspacing=3D0 role=3Dpresentation>
+<tbody>
+<tr>
+<td dir=3Dltr></td>
+<!--IMPORTANT LINK SECTION || Remove if Necessary-->
+<!--
+<td align=3D"middle" dir=3D"ltr" style=3D"width: 24px;" width=3D"24"></td>
+<td dir=3D"ltr" style=3D"white-space: nowrap; padding-left: 7px;"><a href=
+=3D"" style=3D"font-family: 'Google Sans',Roboto,Arial,sans-serif; font-siz=
+e: 14px; font-weight: 400; line-height: 18px; color: #1a73e8; margin: 0; pa=
+dding: 0; text-align: left; text-decoration: none;">Important Link 1</a></t=
+d>
+</tr>
+</tbody>
+</table> </th>
+<th class=3D"hom" style=3D"width: 37px; min-width: 20px;"> </th>
+<th class=3D"width100 mobile-block prefooter-parent" style=3D"text-align: l=
+eft;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n">
+<tbody>
+<tr>
+<td align=3D"middle" dir=3D"ltr" style=3D"width: 24px;" width=3D"24"></td>
+<td dir=3D"ltr" style=3D"white-space: nowrap; padding-left: 7px;"><a href=
+=3D"" style=3D"font-family: 'Google Sans',Roboto,Arial,sans-serif; font-siz=
+e: 14px; font-weight: 400; line-height: 18px; color: #1a73e8; margin: 0; pa=
+dding: 0; text-align: left; text-decoration: none;">Important Link 2</a></t=
+d>
+</tr>
+</tbody>
+</table> </th>
+<th class=3D"hom" style=3D"width: 37px; min-width: 20px;"> </th>
+<th class=3D"width100 mobile-block" style=3D"text-align: left;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n">
+<tbody>
+<tr>
+<td align=3D"middle" dir=3D"ltr" style=3D"width: 24px;" width=3D"24"></td>
+<td dir=3D"ltr" style=3D"white-space: nowrap; padding-left: 7px;"><a href=
+=3D"" style=3D"font-family: 'Google Sans',Roboto,Arial,sans-serif; font-siz=
+e: 14px; font-weight: 400; line-height: 18px; color: #1a73e8; margin: 0; pa=
+dding: 0; text-align: left; text-decoration: none;">Important Link 3</a></t=
+d>-->
+<!--IMPORTANT LINK SECTION-->
+</tr>
+</tbody>
+</table> </th>
+</tr>
+</tbody>
+</table>
+</div> </td>
+</tr>
+</tbody>
+</table>
+<table align=3Dcenter border=3D0 cellpadding=3D0 cellspacing=3D0 style=3D"m=
+ax-width:600px; width:100%; background: #f8f9fa;" width=3D600>
+<tbody>
+<tr>
+<td style=3D"padding: 24px 50px 0 50px;" valign=3Dtop>
+<table border=3D0 cellpadding=3D0 cellspacing=3D0 role=3Dpresentation style=
+=3D"max-width:600px; width:100%;" width=3D600>
+<tbody>
+<tr>
+<td>
+<table border=3D0 cellpadding=3D0 cellspacing=3D0 role=3Dpresentation style=
+=3D"width: 100%; ">
+<tbody>
+<tr>
+<td align=3Dleft dir=3Dltr style=3D"padding-bottom: 0px;">
+<table border=3D0 cellpadding=3D0 cellspacing=3D0 style=3D"width: 100%; pad=
+ding-bottom: 1px;" width=3D100%>
+<tbody>
+<tr>
+<td align=3Dleft dir=3Dltr style=3D"vertical-align: middle;" valign=3Dmiddl=
+e> <img height=3D28 src=3Dhttps://services.google.com/fh/files/emails/googl=
+e_plain_gray.png style=3D"width: 86px; display: block; margin: 0; border: n=
+one; " width=3D86> </td>
+<td align=3Dright dir=3Dltr style=3D"vertical-align: middle; mso-hide: none=
+; " valign=3Dmiddle> <img src=3Dhttps://services.google.com/fh/files/emails=
+/gws_hero_icon.png display: block; margin: 0; border: none; mso-hide: none;=
+;" width=3D137> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+<tr>
+<td dir=3Dltr style=3D"margin: 0; color: #5F6368; font-family: Roboto,Arial=
+,sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; margin: =
+0; padding: 0; text-align: left; padding-bottom: 18px;">
+<div>
+<div style=3D"font-size: 10px; color: #666666; padding-top: 8px; border-top=
+-style: solid; border-top-color: #dcdcdc; border-top-width: 0px">
+  <p>
+    <!--START OF FOOTER-->
+<div style=3D"font-size: 10px; color: #666666; padding-top: 8px; border-top=
+-style: solid; border-top-color: #dcdcdc; border-top-width: 1px">
+  <p>=C2=A9 2025 Google LLC 1600 Amphitheatre Parkway, Mountain View, CA 94=
+043</p>
+
+  <p>You have received this mandatory service announcement to update you ab=
+out important changes to Google services you use.</p>
+</div>
+    <!--END OF FOOTER-->
+  </p>
+</div></td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+<tr>
+<td style=3D"padding:0 50px 40px 35px;" valign=3Dtop>
+<table border=3D0 cellpadding=3D0 cellspacing=3D0 role=3Dpresentation style=
+=3D"max-width:600px; width:100%;" width=3D600>
+<tbody>
+<tr>
+<td>
+<table border=3D0 cellpadding=3D0 cellspacing=3D0 role=3Dpresentation style=
+=3D"width: 100%;">
+<tbody>
+<tr>
+<td align=3Dleft>
+<div>
+<table align=3Dleft border=3D0 cellpadding=3D0 cellspacing=3D0 style=3D"wid=
+th: auto;">
+<tbody>
+<tr>
+<!--START OF SOCIALS-->
+<td style=3D"width: 48px; font-family: Roboto,Arial,sans-serif;" width=3D48=
+><a href=3Dhttps://c.gle/ANiao5pvswQlXOwgFe82zDEb4rjt5u3lr5eUJMi8MGiBjGrfAn=
+Y1FSMhdcG1OKFnAtKRHlpVIxqyT69M2l0VbfAFQnfhb6uzH9cJn-sBc8rTNxeuU6rqGyutSyVOG=
+bVtUtPmNg><img alt=3DTwitter border=3D0 height=3D48 src=3Dhttps://services.=
+google.com/fh/files/misc/twitter_grey_a11y.png style=3D"height: 48px;"></a>=
+</td>
+<td style=3D"width: 48px; padding-left: 8px; font-family: Roboto,Arial,sans=
+-serif;" width=3D48><a href=3Dhttps://c.gle/ANiao5ouht_4ySNyHy4QvvswRIJEs6g=
+RczSeFQukmFJn-vmwLNlTFTHeOpvT0fEAZ6zWAKZN_Uiqd5-wfyBExtYQe_HH8UaYvscaN1v0nn=
+1rqJu6ZFKgilKTmxSH46CK-C3gxGRwSPjIJg><img alt=3DFacebook border=3D0 height=
+=3D48 src=3Dhttps://services.google.com/fh/files/misc/facebook_grey_a11y.pn=
+g style=3D"height: 48px;"></a></td>
+<td style=3D"width: 48px; padding-left: 8px; font-family: Roboto,Arial,sans=
+-serif;" width=3D48><a href=3Dhttps://c.gle/ANiao5rhwBVzU-nCIn5FPHbO2kZxqLD=
+BytcOnwGe4xTRuGw7P_sdzjHPj6HsEKgaQXimCIr49bZP30D19W_S4kiGI-1QbF3kX3FW1uybIX=
+KE1iK0pt5F3p9q1TXcZI7ckL3oABDyGIPDgrFA-h9VriQ><img alt=3DLinkedIn border=3D=
+0 height=3D48 src=3Dhttps://services.google.com/fh/files/misc/linkedin_grey=
+_a11y.png style=3D"height: 48px;"></a></td>
+<td style=3D"width: 48px; padding-left: 8px; font-family: Roboto,Arial,sans=
+-serif;" width=3D48><a href=3Dhttps://c.gle/ANiao5rlBcrGT0yQJrycYT9U3sKmuFK=
+Ua7-rgCrHgJpDL2VkfRmknxjgsQXoI3qZSd7YCJIRiMTG0qMgr2XMgGrrhm5zAFO91hYPm86z4H=
+rYs9b2R5Eb4zJubL5cB6S9Ngy0Rq-CjIc><img alt=3DYouTube border=3D0 height=3D48=
+ src=3Dhttps://services.google.com/fh/files/misc/youtube_grey_a11y.png styl=
+e=3D"height: 48px;"></a>
+</td>
+<!--END OF SOCIALS-->
+</tr>
+</tbody>
+</table>
+</div> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<!--END OF CONTENT CONTAINER-->
+</table>
+<!--END OF MAIN CONTAINER-->
+</center>
+<img alt=3D"" height=3D1 width=3D3 src=3Dhttps://notifications.google.com/g=
+/img/ANiao5qay9HXT0zdLgyfXs2QHvJwXBJTvERYswV8QeDlsfETHmWiEBZ1zuF0IFetEJRz3G=
+NibPm25P3iXdLqQt_hB4J3wX0PM0bEjtGD-38FrJnmdBcm8YscsruE5tsaVvOmJ6smgQ.gif></=
+body>
+</html>
+
+--000000000000abed650636404fce--

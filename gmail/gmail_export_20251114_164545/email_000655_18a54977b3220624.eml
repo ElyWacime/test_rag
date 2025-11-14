@@ -1,0 +1,811 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a11:5909:b0:4e9:a527:629 with SMTP id sh9csp49002pxb;
+        Fri, 1 Sep 2023 23:32:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGpkbikgDRppYtk7wIq5YEszFM7W0rHSTg233OCoYoVvw/8F0010rCWcyHUEmf30/Bbxrxj
+X-Received: by 2002:a25:1904:0:b0:d5c:1b9b:6f5a with SMTP id 4-20020a251904000000b00d5c1b9b6f5amr4265777ybz.44.1693636328430;
+        Fri, 01 Sep 2023 23:32:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693636328; cv=none;
+        d=google.com; s=arc-20160816;
+        b=aPU/CmLuPOMcCNiSz7WHl/gqq0KO32grK5LejHg8suKgO4JEPDbmrnsuhsOX/2oqsR
+         M/EQLBW325ouCE3ma7kGOMZRXuhOOyIv8KcY9yOhxEkunYRgotAfZM5/0DPpHyIJQ3oe
+         2j9jYcA7Yj0ZHfcAJ0Ni2OrBUbmj3YDx81HCyeYavv1Cr0feLvCyEtI+ZsAjZILSKsrb
+         pvpKCXU8grkAOh+opNnPMYqCPBjKbMlERWnay/6ZTHpmcHeaRo80jzs+PbGEXlIeLFId
+         TIUtOIKqDj7V2irho8zJgyozzcBQ8GMtGG++JS06Xo9TYxeGvslQrtA5dWqkg6dJPWNu
+         7+GQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=hzbPlW2kXnl6rBrQA6bgJqYoFjil1SYJiMrYJbBqLpQ=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=GyIBFxjYK3ghi2b3g8C2fIz5V1+JTkAFldcA2CEGcxU4oZXo0fnVivotDYu8XyPV9o
+         JawCN03Qmd8ELkiXyc/47Hfky7K2ATNi5E4q05kbvn9WwsdwBqVkcNy5FZl+V7bpMxwx
+         GtcqodJ3cqbyAfYAfkQE1f2+2nj3xJ4lgUTnLCRGmgrECSupn9ByK10qwU4DeeSTgmhq
+         W3VbTEdU9noApKOtInqwIyeclr/oRi2fLuuilblSzULzoTmbQGTRRSDwFLypxS86NTLb
+         geBytSj/dq/JNaHlh18oO3lJktm/tlb5jPtFB1pqMnwVMrNuAiCqNumvarM4kVX7FNlD
+         wxqA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=oRryr+ru;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="n/mtf2BJ";
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o48.ck.n.convertkit.com (o48.ck.n.convertkit.com. [149.72.193.89])
+        by mx.google.com with ESMTPS id p64-20020a252943000000b00d77fdef98e0si4917261ybp.367.2023.09.01.23.32.08
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 01 Sep 2023 23:32:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) client-ip=149.72.193.89;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=oRryr+ru;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="n/mtf2BJ";
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=hzbPlW2kXnl6rBrQA6bgJqYoFjil1SYJiMrYJbBqLpQ=;
+	b=oRryr+ruTa5nTARUwqco7RcWpNbsw9zZqC2Z3aUTkDOEtiLW3mCya6XwdwhXsVP9dd21
+	mjpI1WuDDD7wfXVBDUB2mQ4SMnDRZ3Ko6xY87Ye511qLpmNs+ol4jnPj8XeA/BAr+nly1M
+	2eRCxr9HvQVMSrlq3MgIazVb+P5Si0ayY=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=hzbPlW2kXnl6rBrQA6bgJqYoFjil1SYJiMrYJbBqLpQ=;
+	b=n/mtf2BJ+/FC/QFVj5gTHy6W4PDCXEBH7dxHcfG4y98uVQMZoHqQqOti1vtUj4FlTGmc
+	YjedYe8V4k1ENIeO2fxetUD6E93nOX4QJFsEHXWL/YilWFPprUjcaoP9a9gi4m8RfpUO6F
+	B2TWKQuk07Qpcl78DB0LdGgl6KsFnexM0=
+Received: by filterdrecv-84854fb664-xwxl5 with SMTP id filterdrecv-84854fb664-xwxl5-1-64F2D6E7-11
+        2023-09-02 06:32:07.318423256 +0000 UTC m=+4777889.924903239
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-7 (SG) with HTTP
+	id PP7KzGQYRHy3duDo42mwjw
+	Sat, 02 Sep 2023 06:32:07.252 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=384963f6f96373c89ddc548949cc86bb973dd7075f3eeddb25fb086a5586
+Date: Sat, 02 Sep 2023 06:32:07 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <68u0rvopv3u8hkokd28uohzwvm0kk@convertkit-mail2.com>
+Subject: 9-hour coding call =?UTF-8?B?8J+krw==?=
+Feedback-ID: 11629026:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfdAtjTcq79RXb8rFO?=
+ =?us-ascii?Q?B1bFuj20HibXGR4b1qVXQX0obN4iGFcDSMjneta?=
+ =?us-ascii?Q?kJvr24kaL6ldU1iOnxYVsWHv6vwd9b5Lw28XTFN?=
+ =?us-ascii?Q?EpAxPnrGleDuCiO+1ArMbUUfX1ZOSvWBBhVTTpw?=
+ =?us-ascii?Q?X3PIwT7naWr7mjPNksu2pNkNGYqCnGCxBslYSC?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADqNVD=2FRbuoZoyFRPqUqrQyGt8coBsEgSJGw1dS?=
+ =?us-ascii?Q?vOrCy3RpKBQXN5F6g02ulIiS4GVw+a=2F1bHz4UeU?=
+ =?us-ascii?Q?ieU9vyy6TrEqhOzs0Yr6UZKwEDXgkVYvKqZsP=2Fu?=
+ =?us-ascii?Q?Zw02rH4CDCiq=2FEWh+KxsqnoW93x7iohiu0Rxlfg?=
+ =?us-ascii?Q?Fpc33MQUUsMbyyQHfOH0GvwAGXeB0FiA7RAoiHY?=
+ =?us-ascii?Q?CU=2FBIJOSVivvJHD1eJ+aX0tnJOSvU1L=2FvMtEILE?=
+ =?us-ascii?Q?RgRMsSMlif8N53KU1ZzZahsMCjNaEnRxLxtSbxR?=
+ =?us-ascii?Q?9sVRlvUvOcLWyKfA+9nkIcJs7r2I=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--384963f6f96373c89ddc548949cc86bb973dd7075f3eeddb25fb086a5586
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Yup.
+
+One team of students in the Masterclass had a 9-hour pair
+programming session.
+
+On average they commit 7-8 hours per day to their dev career.
+
+=E2=80=8B
+
+That=E2=80=99s why I need to interrupt the Next13 course hype to share
+the story of the Masterclass team Code fam =F0=9F=AA=B4 (yes the emoji is
+part of the name).
+
+=E2=80=8B
+
+Here=E2=80=99s how it begins.
+
+=E2=80=8B
+
+July. Cohort #5 start.
+
+Code fam =F0=9F=AA=B4 is the least experienced team.
+
+=E2=80=8B
+
+In my head?
+
+I=E2=80=99m thinking the team with the most experience will develop the
+best First Monthly project.
+
+=E2=80=8B
+
+The first project is a job search platform with advanced API,
+filtering, pagination, and an impeccable design to put it all
+together.
+
+Not a weekend project.
+
+=E2=80=8B
+
+Fast-forward a month later to the Project Showcase.
+
+=E2=80=8B
+
+They made the best project. By far.
+
+=E2=80=8B
+
+Now this all sounds good, but what can you learn from it? From
+them?
+
+=E2=80=8B
+
+I=E2=80=99ll tell you about them, and you can find the shared traits.
+
+=E2=80=8B
+
+Wira =F0=9F=87=AE=F0=9F=87=A9 is the winner of the Masterclass giveaway we =
+had for our
+100th video special.
+
+He started coding on his phone when the pandemic started. I don=E2=80=99t
+know if you tried it, but coding responsive websites on a phone
+isn=E2=80=99t a fun time.
+
+=E2=80=8B
+
+Only a year ago did he get a laptop.
+
+It isn=E2=80=99t uncommon for him to work late into the morning to finish
+a task before a deadline.
+
+=E2=80=8B
+
+And that=E2=80=99s true for all other members, which are:
+
+Hayley =F0=9F=87=A6=F0=9F=87=BA, Haiying (Hanna) =F0=9F=87=A8=F0=9F=87=B3, =
+and Suraj =F0=9F=87=AE=F0=9F=87=B3. They all have jobs.
+
+And they still show up every day.
+
+=E2=80=8B
+
+Hanna: "We all have something outside of work. Family, friends,
+or other responsibilities, but we can't give that as an excuse
+not to work. We all are here to learn...=E2=80=9D
+
+Wira: "I wake up in the morning, have breakfast, and I open the
+laptop. I then have lunch, I take a break, and then I open the
+laptop. I then have dinner and come back again to work on the
+laptop. No matter the other responsibilities, I always return and
+open the laptop to finish the task.=E2=80=9D
+
+=E2=80=8B
+
+So, what are common character traits? How did they go from the
+worst team to the best?
+
+=E2=80=8B
+
+Here=E2=80=99s what their mentor said:
+
+Amazing team bonding
+
+They always support and help each other. They=E2=80=99ve become friends.
+
+=E2=80=8B
+
+Group study/pair programming
+
+A faster way to help each other debug problems. These sessions
+can last hours, but they make a lot of progress.
+
+=E2=80=8B
+
+Dedication
+
+Example: Hayley is traveling to a different country - and she is
+working on her tasks even while at the airport and in-between
+flights.
+
+=E2=80=8B
+
+Take responsibility
+
+They take responsibility for their and their teammates tasks and
+ensure they=E2=80=99re done in time. No matter the difficulty of the
+tasks.
+
+=E2=80=8B
+
+Consistency.
+
+They commit hours every day to their craft. In fact, their mentor
+had to tell them to take a break so they don=E2=80=99t burn out =F0=9F=98=
+=85
+
+=E2=80=8B
+
+Always ask why
+
+=E2=80=9CWhy is X like that? How does that work?=E2=80=9D
+
+They aren=E2=80=99t afraid to ask once, twice, or however many times it
+takes to understand. And deep understanding is becoming even more
+crucial than before with the advent of AI that can output basic
+code.
+
+=E2=80=8B
+
+Listening to their mentor :)
+
+Their mentor is pretty strict to be honest. But they understand
+that it=E2=80=99s good for them. That when they look back, they=E2=80=99ll =
+be
+glad they went the extra mile.
+
+=E2=80=8B
+
+Grit.
+
+Above all, they don't shy away from putting in extra effort. All
+of them were beginners. But they took everything one step at a
+time, spent countless hours learning, and the results speak for
+themselves.
+
+=E2=80=8B
+
+=E2=80=8B
+
+Pretty cool.
+
+My takeaways are:
+
+* Hard work and dedication can=E2=80=99t be overstated no matter how much
+they=E2=80=99re mentioned. There are times to rest and recover, and there
+are times to push (especially when starting out). Back when I
+started coding, I=E2=80=99d come back from high school and go straight to
+the computer and code until midnight. That was my Rocky cut scene
+=F0=9F=A5=8A, and this is theirs.
+* Environment is key. Surround yourself with friendly people
+(ideally other developers) who have the same goal as you. Four
+people can push a boulder much farther than one person. Heck, one
+person might not even be able to move it at all.
+* Always seek to understand, not memorize. Especially now.
+
+=E2=80=8B
+
+=E2=80=8B
+
+Before I go, I=E2=80=99ll leave you with their LinkedIn profiles in case
+you want to connect with them. They share their journey almost
+daily, so you might find that useful.
+
+Also, the next Masterclass cohort starts in ~October. If you=E2=80=99d
+like to apply and join other developers in reaching their career
+goals, feel free to do that here (
+https://click.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/9qhzhduplk=
+8p6mfz/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVu=
+dC1ib290Y2FtcA=3D=3D
+).
+
+Their profiles:
+
+=E2=80=8BSuraj, (
+https://click.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/3ohphdu7n6=
+8725bp/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3N1cmFqcmVjLw=3D=3D
+) Wira (
+https://click.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/n2hohqu3kw=
+43xzt0/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3dpcmEteXVkYTI5Lw=3D=3D
+), Hayley (
+https://click.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/48hvh7urnz=
+3rpxcq/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2hheWxleWlzY29kaW5nLw=3D=3D
+), Haiying (Hanna) (
+https://click.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/wnh2h6uw39=
+dwklcl/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2hhaXlpbmctbGlhby8=3D
+).
+
+=E2=80=8B
+
+To your Rocky cut scene =F0=9F=A5=82 & growth-oriented environment =F0=9F=
+=AA=B4,
+Adrian
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk
+) | Update your profile (
+https://preferences.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk
+)=E2=80=8B
+--384963f6f96373c89ddc548949cc86bb973dd7075f3eeddb25fb086a5586
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%" bgcolor=3D"#ffff=
+ff"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Yup.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">One team of students in the Masterclass =
+had a 9-hour pair programming session.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">On average they commit 7-8 hours per day=
+ to their dev career.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">That=E2=80=99s why I need to interrupt t=
+he Next13 course hype to share the story of the Masterclass team <strong>Co=
+de fam =F0=9F=AA=B4</strong> (yes the emoji is part of the name).</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Here=E2=80=99s how it begins.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>July. Cohort #5 start.</strong><=
+/p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Code fam =F0=9F=AA=B4 is the least exper=
+ienced team.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">In my head?</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">I=E2=80=99m thinking the team with the m=
+ost experience will develop the best First Monthly project.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">The first project is a job search platfo=
+rm with advanced API, filtering, pagination, and an impeccable design to pu=
+t it all together.</p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"border-col=
+lapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;text-align:justify=
+;table-layout:fixed;float:none" class=3D"email-image"><tbody><tr><td align=
+=3D"justify" style=3D"vertical-align:top"><figure style=3D"margin:1em 0;mar=
+gin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;display:inline=
+-block;max-width:800px;width:100%"><div style=3D"display:block"><img src=3D=
+"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/kqYqC1vJUphDC8HS198t=
+7M" width=3D"800" height=3D"auto" style=3D"border:0 none;display:block;heig=
+ht:auto;line-height:100%;outline:none;-webkit-text-decoration:none;text-dec=
+oration:none;max-width:100%;border-top-left-radius:4px;border-top-right-rad=
+ius:4px;border-bottom-left-radius:4px;border-bottom-right-radius:4px;width:=
+800px;height:auto;object-fit:contain"></div></figure></td></tr></tbody></ta=
+ble>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Not a weekend project.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Fast-forward a month later to the Projec=
+t Showcase.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>They made the best project. By f=
+ar.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Now this all sounds good, but what can y=
+ou learn from it? From them?</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">I=E2=80=99ll tell you about them, and yo=
+u can find the shared traits.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Wira =F0=9F=87=AE=F0=9F=87=A9 is=
+ the winner of the Masterclass giveaway we had for our 100th video special.=
+</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">He started coding on his phone when the =
+pandemic started. I don=E2=80=99t know if you tried it, but coding responsi=
+ve websites on a phone isn=E2=80=99t a fun time.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Only a year ago did he get a laptop.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">It isn=E2=80=99t uncommon for him to wor=
+k late into the morning to finish a task before a deadline.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">And that=E2=80=99s true for all other me=
+mbers, which are:</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Hayley =F0=9F=87=A6=F0=9F=87=BA,=
+ Haiying (Hanna) =F0=9F=87=A8=F0=9F=87=B3, and Suraj =F0=9F=87=AE=F0=9F=87=
+=B3. They all have jobs.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>And they still show up every day=
+.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Hanna: "We all have something outside of=
+ work. Family, friends, or other responsibilities, but we can't give that a=
+s an excuse not to work. We all are here to learn...=E2=80=9D</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Wira: "I wake up in the morning, have br=
+eakfast, and I open the laptop. I then have lunch, I take a break, and then=
+ I open the laptop. I then have dinner and come back again to work on the l=
+aptop. No matter the other responsibilities, I always return and open the l=
+aptop to finish the task.=E2=80=9D</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">So, what are common character traits? Ho=
+w did they go from the worst team to the best?</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Here=E2=80=99s what their mentor said:</=
+p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Amazing team bonding</strong></p=
+>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">They always support and help each other.=
+ They=E2=80=99ve become friends.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Group study/pair programming</st=
+rong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">A faster way to help each other debug pr=
+oblems. These sessions can last hours, but they make a lot of progress.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Dedication</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Example: Hayley is traveling to a differ=
+ent country - and she is working on her tasks even while at the airport and=
+ in-between flights.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Take responsibility</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">They take responsibility for their and t=
+heir teammates tasks and ensure they=E2=80=99re done in time. No matter the=
+ difficulty of the tasks.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Consistency.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">They commit hours every day to their cra=
+ft. In fact, their mentor had to tell them to take a break so they don=E2=
+=80=99t burn out =F0=9F=98=85</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Always ask why</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=9CWhy is X like that? How does th=
+at work?=E2=80=9D</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">They aren=E2=80=99t afraid to ask once, =
+twice, or however many times it takes to understand. And deep understanding=
+ is becoming even more crucial than before with the advent of AI that can o=
+utput basic code.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Listening to their mentor :)</st=
+rong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Their mentor is pretty strict to be hone=
+st. But they understand that it=E2=80=99s good for them. That when they loo=
+k back, they=E2=80=99ll be glad they went the extra mile.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D""><strong>Grit.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Above all, they don't shy away from putt=
+ing in extra effort. All of them were beginners. But they took everything o=
+ne step at a time, spent countless hours learning, and the results speak fo=
+r themselves.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Pretty cool.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">My takeaways are:</p>
+<ol class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span><strong>Hard work and dedication can=E2=80=99t be overstated</stron=
+g> no matter how much they=E2=80=99re mentioned. There are times to rest an=
+d recover, and there are times to push (especially when starting out). Back=
+ when I started coding, I=E2=80=99d come back from high school and go strai=
+ght to the computer and code until midnight. That was my Rocky cut scene =
+=F0=9F=A5=8A, and this is theirs.</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span><strong>Environment is key</strong>. Surround yourself with friendl=
+y people (ideally other developers) who have the same goal as you. Four peo=
+ple can push a boulder much farther than one person. Heck, one person might=
+ not even be able to move it at all.</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span><strong>Always seek to understand, not memorize.</strong> Especiall=
+y now.</span></li>
+</ol>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Before I go, I=E2=80=99ll leave you with=
+ their LinkedIn profiles in case you want to connect with them. They share =
+their journey almost daily, so you might find that useful.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Also, the next Masterclass cohort starts=
+ in ~October. If you=E2=80=99d like to apply and join other developers in r=
+eaching their career goals, feel free to do that <a href=3D"https://click.c=
+onvertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/9qhzhduplk8p6mfz/aHR0cHM6=
+Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVudC1ib290Y2FtcA=
+=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f=
+0" url-id=3D"1568945729">here</a>.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">Their profiles:</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B<a href=3D"https://click.conver=
+tkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/3ohphdu7n68725bp/aHR0cHM6Ly93d=
+3cubGlua2VkaW4uY29tL2luL3N1cmFqcmVjLw=3D=3D" target=3D"_blank" rel=3D"noope=
+ner noreferrer" style=3D"color:#0f82f0" url-id=3D"1568945730">Suraj,</a> <a=
+ href=3D"https://click.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/n=
+2hohqu3kw43xzt0/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3dpcmEteXVkYTI5Lw=3D=
+=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0" =
+url-id=3D"1568945731">Wira</a>, <a href=3D"https://click.convertkit-mail2.c=
+om/68u0rvopv3u8hkokd28uohzwvm0kk/48hvh7urnz3rpxcq/aHR0cHM6Ly93d3cubGlua2Vka=
+W4uY29tL2luL2hheWxleWlzY29kaW5nLw=3D=3D" target=3D"_blank" rel=3D"noopener =
+noreferrer" style=3D"color:#0f82f0" url-id=3D"1568945732">Hayley</a>, <a hr=
+ef=3D"https://click.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk/wnh2=
+h6uw39dwklcl/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2hhaXlpbmctbGlhby8=3D" ta=
+rget=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0" url-id=
+=3D"1568945733">Haiying (Hanna)</a>.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:justify" class=3D"">To your Rocky cut scene =F0=9F=A5=82 &am=
+p; growth-oriented environment =F0=9F=AA=B4,<br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px">=E2=80=
+=8B</span><a href=3D"https://unsubscribe.convertkit-mail2.com/68u0rvopv3u8h=
+kokd28uohzwvm0kk" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"co=
+lor:#0f82f0"><span style=3D"font-size:14px">Unsubscribe</span></a><span sty=
+le=3D"font-size:14px"> | </span><a href=3D"https://preferences.convertkit-m=
+ail2.com/68u0rvopv3u8hkokd28uohzwvm0kk" target=3D"_blank" rel=3D"noopener n=
+oreferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Update yo=
+ur profile</span></a><span style=3D"font-size:14px">=E2=80=8B</span></p></d=
+iv></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/68u0rvopv3u8hkokd28uohzwvm0kk=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--384963f6f96373c89ddc548949cc86bb973dd7075f3eeddb25fb086a5586--

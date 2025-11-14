@@ -1,0 +1,414 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:9887:0:b0:2f3:f124:3d70 with SMTP id b7csp655859ljj;
+        Wed, 30 Oct 2024 03:01:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF/mAq4WODguTyo4Bw1TJEF8Qb9v3QCa+FNVCKYi5AqU/AqKBdrefk2JpLy6sSZ0nL3yHw3
+X-Received: by 2002:a05:620a:24c6:b0:7b1:35bc:adf8 with SMTP id af79cd13be357-7b1aedbadeamr307468785a.31.1730282465195;
+        Wed, 30 Oct 2024 03:01:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730282465; cv=none;
+        d=google.com; s=arc-20240605;
+        b=eX8O93dTzKzvzyF3fJxgEueqGpc+4+9QXHkmVAw4XfL1q4SQwhxx12cgW3xi3Z7N0J
+         JRHMSjA9qHOQQMwvHEweIjhR0ApTzcPnwo7mag57XJ9zPqXXhHaiT2/i/cicXFwia/Vv
+         GYZf2OhXNWKM5f46ee1VQpmhlzbxcKF/cBKiPSNUOeITP8DRmJYxdpRiF1TQ359gMbS/
+         xVJB8cljTxec73H/j5z5BdPblYTfE8H6YsxNCiSpsZzaHwuVNv5lZdeWFQLbzqTwfOJg
+         gt1atVUlnpLvytMF+B8f6aYL+rL6ZF+zSPnLJqQHzu7JP9BBarGegYCmLpdPTsdz6N7f
+         JRgA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:feedback-id:list-unsubscribe-post:precedence:list-unsubscribe
+         :subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=7oILiHNM8duxAOM915KMtSnq06fzYMZqZa2G35pIJK8=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=JNuURES08GF/j0Me3SrnrXYZRgB+vYas7hnz35Huy5WzisFZrHhMO+PbdNvsA2H0oO
+         VIxpKUSx0fVIFvPscupxGcQyArdE2sKeavZ3+jSg5XlVNIPOiVGv5FeXjLytNuSZENjf
+         voHibkbrs4MlQPkzDg3vFMiWP9o57msai+UcokwYd77bNyWI8sWg6KLJPN/ssE4Lx1JP
+         inAvgtxysGEAy4vJIT3GT/7JkdAaSL5ciOQ7oWxXmYGQq/CknoAOdTvHHeaE33LC5F6e
+         ejKuqbF8ba+j4zLxGLP9ebEnm/bo8QPEhv7zUCb4BtS97tECa0JKOZJ7921Qc5rZtDeU
+         8wfQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=DWrjLtNO;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=wmdLpo1N;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 192.254.115.187 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o42.ck.n.convertkit.com (o42.ck.n.convertkit.com. [192.254.115.187])
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d3450ddsi1399440485a.504.2024.10.30.03.01.04
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 30 Oct 2024 03:01:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 192.254.115.187 as permitted sender) client-ip=192.254.115.187;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=DWrjLtNO;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=wmdLpo1N;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 192.254.115.187 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:
+	list-unsubscribe-post:x-feedback-id:to:cc:content-type:from:subject:to;
+	s=cka; bh=7oILiHNM8duxAOM915KMtSnq06fzYMZqZa2G35pIJK8=;
+	b=DWrjLtNOG4PlU2GRzb/yeeyXykrRFtAfEL7xjyUVkkpHZa3KRQJDFH4/JyFf8Ly69aXl
+	wiNge00Ov86Lm2LfvyAzCA/vzwkX0+C70L4BAErniZzreP2qP10v42RitTnuA8Q0cxt9fu
+	54oIcYp/bVVblS01brXrbWWZC/+KCNr1Q=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:
+	list-unsubscribe-post:x-feedback-id:to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=7oILiHNM8duxAOM915KMtSnq06fzYMZqZa2G35pIJK8=;
+	b=wmdLpo1N4B8m1gH0M1lC78mAqF18XC3jjcV9tDME30wUEgS0LHWiu4a715WMXzkGD95r
+	orx6z99pnWHku/G7EdayXiHMK08iqRDQY2X0vNMWNmjG4MIoA+GUGuvvE2KbIkTf5dXsDd
+	/SluT3aIbTO3j3TyoD9tZKzT0RepaDeWw=
+Received: by recvd-868695ff98-sww4t with SMTP id recvd-868695ff98-sww4t-1-672203DF-45
+	2024-10-30 10:01:03.499098011 +0000 UTC m=+4118694.889666199
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-17 (SG) with HTTP
+	id VsC4QzP_T7KYuMdViMN5hw
+	Wed, 30 Oct 2024 10:01:03.439 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=459b78db771f47c3f8d582522db4594375460e33b6650d4a70e675e1884d
+Date: Wed, 30 Oct 2024 10:01:03 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <lmum65p85vtmh0p2xw0u6h80onv00cg@convertkit-mail2.com>
+Subject: Free <<< Paid
+List-Unsubscribe: 
+ <mailto:unsub+lmum65p85vtmh0p2xw0u6h80onv00cg@convertkit-mail.com>,
+ <https://unsubscribe.kit.com/lmum65p85vtmh0p2xw0u6h80onv00cg>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: 15480865:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2E9iKReg6MmXOnRZvsQzWQJ3lPH0tO4yiaHftVEEnLM4wy5BnLoLlAcpdQp?=
+ =?us-ascii?Q?uAcltvhbsvR1HoWuE3BRvA2KUJntvjXeASIGQNt?=
+ =?us-ascii?Q?RMK=2FqjGM+79RBQ6MPdJ4OvbnVh5claxXyokjPp+?=
+ =?us-ascii?Q?aQyaUTFo68PJeSKQus4dljLOMQfNofpmBjCaeok?=
+ =?us-ascii?Q?BqoIXMP30WfIBZksYt9cihtXuOr6duOhW8ZN+M3?=
+ =?us-ascii?Q?B3ALcDkmNaRzjIg6jfi5Y=2F8L4bti+86LD2dheeO?= =?us-ascii?Q?shfy?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprBTLquV1ImzFIrgT?=
+ =?us-ascii?Q?SaJ3+RZk3pC9bCamrVP5v8ph5vwnjEaaqHTmVrr?=
+ =?us-ascii?Q?dSB10=2FxbRpTdho4q3huAcFXrWCIyP+6E1GRySIA?=
+ =?us-ascii?Q?4tg+I26fh4oeayXZLXzKSjnSqqArEHMkRmWCQYN?=
+ =?us-ascii?Q?7K7Cp1jVe7Aibii8TSGQjRykPO1+zr=2FWR9tfjLg?=
+ =?us-ascii?Q?sLp3d16EFBWwd8QQ9r+i6pPGiF9+mui3u+rGgBo?=
+ =?us-ascii?Q?vsONFJTsuexfmCQHpMddeP75rnTpvRTf18pPI5R?=
+ =?us-ascii?Q?2mNT6Mwe3uiJVt7NNM=2F1E5Jk0o6zjueiG1oMyoH?=
+ =?us-ascii?Q?92Lkwo55oTGbFmR8Ihv6fPVPqFNRqHR7e6kjn3p?=
+ =?us-ascii?Q?fJyLNtjPPe5grCN?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: u001.U5uR4hiqEeo/H3zk+7BOfQ==
+
+--459b78db771f47c3f8d582522db4594375460e33b6650d4a70e675e1884d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Yup. Free is much worse than paid.
+
+=E2=80=8B
+
+Let me explain why on a familiar example.
+
+=E2=80=8B
+
+Let=E2=80=99s say you lose something.
+
+=E2=80=8B
+
+If you lose a pack of gum?
+
+You might search for it for a few minutes. Check your pockets,
+jacket and backpack. If you don=E2=80=99t find it - oh well.
+
+The truth is you don=E2=80=99t care. It=E2=80=99s cheap.
+
+=E2=80=8B
+
+If you lose your phone or wallet?
+
+You search until you find it. Pockets, jacket, backpack, your
+room, your home, car, and everywhere you went recently until you
+find it. See=E2=80=A6
+
+=E2=80=8B
+
+The high cost is what makes it worth it. It makes you dedicated
+so you don=E2=80=99t stop until the cost you paid is returned.
+
+=E2=80=8B
+
+And cost isn=E2=80=99t necessarily just monetary price.
+
+=E2=80=8B
+
+Here=E2=80=99s another example:
+
+If everyone could have a six-pack at the press of a button, it
+would be worthless.
+
+But getting in good shape is hard. Going through that struggle is
+what makes it worth it.
+
+=E2=80=8B
+
+Because the majority will never do that and will just stay the
+same. Day after day. Year after year.
+
+=E2=80=8B
+
+So if you want to be in the minority of web devs that excel at
+what they do?
+
+There are a couple of buttons you need to press here and a whole
+lot of effort after that.
+
+=E2=80=8B
+
+So if that makes you excited:
+
+=E2=80=8Bhttps://www.jsmastery.pro/ultimate-next-course (
+https://click.convertkit-mail2.com/lmum65p85vtmh0p2xw0u6h80onv00cg/58hvh8um=
+r586v0h7/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby91bHRpbWF0ZS1uZXh0LWNvdXJzZQ=3D=
+=3D
+)=E2=80=8B
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/lmum65p85vtmh0p2xw0u6h80onv00cg
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/lmum65p85vtmh0p2xw0u6h80onv00cg
+)=E2=80=8B
+--459b78db771f47c3f8d582522db4594375460e33b6650d4a70e675e1884d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen { .email * { word-break: break-word; } }
+@media screen and (max-width: 384px) { .mail-message-content { width: 414px=
+ !important; } }
+@media only screen and (max-width:600px) {
+        .ck-padding-left-none {
+          padding-left: 0px !important;
+        }
+        .ck-padding-right-none {
+          padding-right: 0px !important;
+        }
+        .ck-padding-left-mobile-friendly {
+          padding-left: 18px !important;
+        }
+        .ck-padding-right-mobile-friendly {
+          padding-right: 18px !important;
+        }
+    }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><table c=
+ellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#ffffff" style=3D"border-coll=
+apse:separate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;wid=
+th:100%;margin:0 auto;background-color:#ffffff"><tbody><tr><td style=3D"mso=
+-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 5px 0px 5px"><div class=3D"ck-inner-section ck=
+-padding-left-mobile-friendly ck-padding-right-mobile-friendly" style=3D"pa=
+dding:0px 5px 0px 5px"><div style=3D"margin-left:auto;margin-right:auto;max=
+-width:640px">
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Yup. Free is much worse than paid.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Let me explain why on a familiar example.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Let=E2=80=99s say you lose something.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>If you lose a pack of gum?</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">You might search for it for a few minutes. Check your pockets, jacket=
+ and backpack. If you don=E2=80=99t find it - oh well.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">The truth is you don=E2=80=99t care. It=E2=80=99s cheap.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>If you lose your phone or wallet?</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">You search until you find it. Pockets, jacket, backpack, your room, y=
+our home, car, and everywhere you went recently until you find it. See=E2=
+=80=A6</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>The high cost is what makes it worth it. It makes you dedicat=
+ed so you don=E2=80=99t stop until the cost you paid is returned.</strong><=
+/p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">And cost isn=E2=80=99t necessarily just monetary price.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Here=E2=80=99s another example:</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">If everyone could have a six-pack at the press of a button, it would =
+be worthless.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">But getting in good shape is hard. Going through that struggle is wha=
+t makes it worth it.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Because the majority will never do that and will just stay the same. =
+Day after day. Year after year.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">So if you want to be in the minority of web devs that excel at what t=
+hey do?</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">There are a couple of buttons you need to press here and a whole lot =
+of effort after that. </p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">So if that makes you excited:</p>
+<div style=3D"padding:10px 20px;margin:0 0 20px;border-left-style:solid;bor=
+der-left-width:5px;border-left-color:#000000;font-family:-apple-system, Bli=
+nkMacSystemFont, sans-serif;font-size:18px;color:#353535;font-weight:400;le=
+tter-spacing:0;line-height:1.5;text-align:left;text-transform:none" class=
+=3D"blockquotes"><div class=3D"blockquotes-line">=E2=80=8B<a href=3D"https:=
+//click.convertkit-mail2.com/lmum65p85vtmh0p2xw0u6h80onv00cg/58hvh8umr586v0=
+h7/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby91bHRpbWF0ZS1uZXh0LWNvdXJzZQ=3D=3D" ta=
+rget=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=
+=3D"1682682651">https://www.jsmastery.pro/ultimate-next-course</a>=E2=80=8B=
+</div></div>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 0px 0px 0px"><div class=3D"ck-inner-section ck=
+-padding-left-none ck-padding-right-none" style=3D"padding:0px 0px 0px 0px"=
+><div style=3D"margin-left:auto;margin-right:auto;max-width:640px"><p style=
+=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFont, sans=
+-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:0;line-h=
+eight:1.5;text-transform:none" class=3D"">=E2=80=8B<a href=3D"https://unsub=
+scribe.convertkit-mail2.com/lmum65p85vtmh0p2xw0u6h80onv00cg" target=3D"_bla=
+nk" rel=3D"noopener noreferrer" style=3D"color:#656565">Unsubscribe</a> =C2=
+=B7 <a href=3D"https://preferences.convertkit-mail2.com/lmum65p85vtmh0p2xw0=
+u6h80onv00cg" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:=
+#656565">Preferences</a>=E2=80=8B</p></div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</td></tr></tbody></table></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/lmum65p85vtmh0p2xw0u6h80onv00=
+cg" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line=
+-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:none=
+;-ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--459b78db771f47c3f8d582522db4594375460e33b6650d4a70e675e1884d--

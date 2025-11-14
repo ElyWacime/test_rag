@@ -1,0 +1,537 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:1b05:b0:4ed:3ce7:19fb with SMTP id ou5csp486175pxb;
+        Thu, 14 Sep 2023 20:29:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFE3tAqV4agK7GnCNJ8p73LoO8TR8kEBOQ/IscOTAHT3cxWHqfRd2ePndkpJONegrp4dlC5
+X-Received: by 2002:a05:620a:4105:b0:76f:1d46:4a9f with SMTP id j5-20020a05620a410500b0076f1d464a9fmr441963qko.4.1694748581220;
+        Thu, 14 Sep 2023 20:29:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694748581; cv=none;
+        d=google.com; s=arc-20160816;
+        b=teJBdkhx7WYfSNut9TyMnz3BhSFcI4aGGxbCHIOdACMFUNxrAEHtpgVzTAcGMvC2Pw
+         rUs1LkhrS2IFCqmKuqLBvdQ7kP4zo9tQztQHXaiKNtY9Bvf6NpN2KInVaVoLL3+FFHvy
+         lb1mEnbKCjFOnWsR92ylJfmNRne++ZSRNQDJ+6op/26hvYORp4LcK6mk/tajey8kZiOl
+         xwc1KzXWbt6GTu1DfvYaBV6+X1POLf/V0a6OgRv3MM8AhLKINu0jfbPVAZr1YFg9uW3T
+         F/KCLXrMwnTbGqcIqibwKQ9DoQ4wzfzIiQ0RL7vdkbeZHXJ4a9dryPLbr2jCI/fZPEXr
+         NBFw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=BQXx69p9z/dzSz/nW6jcli2Cx5Qob6kqiznG0PRQgoM=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=CPGf1mXfTOmKGpy2TdMgT2RF9iJNmEli85aMZuTKlZy36LxfImeUtdNMx4YoiTZMiG
+         /y+AZAQFbkrip+FiojAQo4cMcESaD09MuTL/xEN0FNVGdnEJLnV2bF2wuT8sP08LT+24
+         i5q2d0IUp7VJCYIJg+GbAh9/lntMl2GhPvlloJTdrGK3iWEr20hKBjZbUljdfvef99eZ
+         U7FTCXzBaT8PpeNzmtri2NTaXMvA4ctNcZm0Cdv/9M1t88vOMcAfqm2Gkwrj/CPr2WVL
+         ArUEh8/mHSdVGKFWPniMtIW5gnWUDq/iVJvEyQkLH9cf10LfBlKNwlj+JHLzjfUVCFLJ
+         h+NQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=lFjNZKKD;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=xR8JZIH7;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o38.ck.n.convertkit.com (o38.ck.n.convertkit.com. [149.72.39.237])
+        by mx.google.com with ESMTPS id s22-20020a05620a081600b0076e43c59ef1si1810733qks.214.2023.09.14.20.29.40
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 14 Sep 2023 20:29:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) client-ip=149.72.39.237;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=lFjNZKKD;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=xR8JZIH7;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=BQXx69p9z/dzSz/nW6jcli2Cx5Qob6kqiznG0PRQgoM=;
+	b=lFjNZKKDVH5ADYEn2Xcp80jDuQ+X3D4ghC/UOzj8GSnMkiflqHHSWF1ZB9X6Eucq8UMt
+	BlFLlRAXaNI1pJ5NHA4WZc2rsFPP0Cvk4HC0tg7hRWP6O2F4GNjMat11H4GaRAIYLYf8oO
+	Nh0/5IsmndlQ6l6rIq5WV8LyNCn7kMAR0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=BQXx69p9z/dzSz/nW6jcli2Cx5Qob6kqiznG0PRQgoM=;
+	b=xR8JZIH7IFG2uUtKeim2yGX0uwrl97YjOhzD5Na0QOGl7MuCZ819oU7ZKwhk2nPE+zlM
+	0NEL+joy/U2ItkmVsR20FzM8hZL+N/VgXb5qXw/EElQiDpB0R5k8IngjJ7B5Sh7UOZqUV4
+	qAjiqpIwPJ6/5fYI6KQvsLJ36hfZy3KP0=
+Received: by filterdrecv-6d55674f9c-xvpdq with SMTP id filterdrecv-6d55674f9c-xvpdq-1-6503CFA4-F
+        2023-09-15 03:29:40.378867304 +0000 UTC m=+10986602.007702866
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-6 (SG) with HTTP
+	id VkDkemFnRCGXsXOUJvFXbA
+	Fri, 15 Sep 2023 03:29:40.250 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=4a501f9a961a424a5e39c1b9a6aaa7151ec9ca59751aa9245d151ccd4133
+Date: Fri, 15 Sep 2023 03:29:40 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <wvu9opkrp0bgh5gq996h7hewlmzxx@convertkit-mail2.com>
+Subject: The future of web development
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 11736592:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/wvu9opkrp0bgh5gq996h7hewlmzxx>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfRylDXiLEIMgrd1Ws?=
+ =?us-ascii?Q?r=2FSrZVn6sORuAO7h6pKoj0MHUPojuErHcNm+fkU?=
+ =?us-ascii?Q?yCkGE56myr8EL5TcdZkpQw=2FULj8sML2SHSb9KTY?=
+ =?us-ascii?Q?bzdYz+8J1v1kXpWY81LUMgwjP3fuWdn89NTvqyv?=
+ =?us-ascii?Q?kKwALUg18BQ0+wvz8DCvZXOM3Tlc9NriyGj7b1?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADNFAZWc+J7fAHRBQ4aIpToeBVJpSO55qN=2FpAZE?=
+ =?us-ascii?Q?Wso9rnWrOkBZ0BtOUnqRgk=2FuJZV14YELzLMgHS6?=
+ =?us-ascii?Q?k39V3KjzRHV03wDECE5PAe4wkBZLS=2Fv7ULYNN7a?=
+ =?us-ascii?Q?bI7YjDdptbVpPWGS7zulVxJGF84H3R20aT5QP2v?=
+ =?us-ascii?Q?lmFulCH=2FrEH8jXLbPuIqqcjh0YZwswYWN2Fjs=2F9?=
+ =?us-ascii?Q?h9oLCs58UNHR6cUuQB8A2MDgpB0nGMdhnM7Q=2FVw?=
+ =?us-ascii?Q?iqbGi1xOXi5R3FlFidesONPOHeFwHpiE8fmzulP?=
+ =?us-ascii?Q?VEPpj8nn+QxSLHiDR7NzkmGpMIbzRUT7be86XhG?=
+ =?us-ascii?Q?upNnRRZldb?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--4a501f9a961a424a5e39c1b9a6aaa7151ec9ca59751aa9245d151ccd4133
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Thanks for all the kind wishes, replies, and questions about the
+course you=E2=80=99ve sent over the last few days. It means a lot.
+
+I=E2=80=99ll keep it coming! We=E2=80=99re only 8 days out now!
+
+=E2=80=8B
+
+Onto the topic of today=E2=80=99s email.
+
+How has the web evolved in the last few decades since the first
+ever website? And why should you even care?
+
+=E2=80=8B
+
+Tim Berners-Lee wrote the first proposal for the World Wide Web
+in 1989. The first ever website looked like this.
+
+It was just a bunch of hyperlinks leading to pieces of text.
+
+CSS was introduced in 1994 and adopted a few years later. Now we
+can make our websites =E2=9C=A8 pretty =E2=9C=A8
+
+Then JavaScript was created in 1995.
+
+It allowed developers to create interactive and dynamic web
+pages. JavaScript made it possible to add functionality to web
+pages like pop-ups, drop-down menus, and form validation.
+
+=E2=80=8B
+
+But JavaScript wasn=E2=80=99t perfect.
+
+So along came jQuery. It addressed the limitations of vanilla
+JavaScript. It made managing the state and changing the DOM
+easier.
+
+=E2=80=8B
+
+But if you weren=E2=80=99t careful managing the state became a huge mess.
+backbone.js and Angular tried to fix the problems with jQuery.
+
+But none of them made the impact React did.
+
+=E2=80=8B
+
+React was developed by Facebook in 2013 and it quickly outshined
+all other options.
+
+It had a new way of thinking. Instead of separating code by
+technology (page structure with HTML, styling with CSS,
+interactivity with JS), you separate the code by function. Say hi
+to JSX, a combination of HTML and JS.
+
+You could write the page structure, manage the state, and even
+style everything all in one file (but don=E2=80=99t have to).
+
+Pretty cool, right?
+
+=E2=80=8B
+
+But, even the immensely popular React has its own challenges,
+which have now been addressed by Next.js.
+
+=E2=80=8B
+
+Next.js:
+
+* Fixes React=E2=80=99s SEO
+* Makes routing effortless & makes writing backend code on the
+frontend not just possible but easy
+* Allows rendering (executing code) on the server side which
+makes your pages and components load much faster than in plain
+client-side React.
+
+=E2=80=8B
+
+Web dev is evolving faster than it ever has. And it=E2=80=99s up to us
+developers not to look at change as a bad thing, but as an
+improvement. One that will allow us to write better apps in less
+time and deliver a better experience to people on the other side
+of the screen.
+
+=E2=80=8B
+
+See, web dev isn=E2=80=99t going away any time soon. It=E2=80=99s here to s=
+tay.
+No amount of no-code and AI builders will ever replace the need
+for innovative and complex applications.
+
+=E2=80=8B
+
+The next Facebook or Google won=E2=80=99t be built by Wix.
+
+=E2=80=8B
+
+So create the future. One app at a time. And if you want to learn
+the best tech in web dev while building an incredible app?
+
+The tech OpenAI, Midjourney, and half of the other most visited
+Generative AI companies use?
+
+=E2=80=8B
+
+Then take the Ultimate Next13 course, launching on September 22nd
+at 9AM ET.
+
+If you'd like you can add it to your calendar here so you don't
+miss it. (
+https://click.convertkit-mail2.com/wvu9opkrp0bgh5gq996h7hewlmzxx/48hvh7urn6=
+k5v4tq/aHR0cHM6Ly9kb3dubG9hZC5maWxla2l0Y2RuLmNvbS9kL2hia2ZkOVhqaUNoTGEyZGhC=
+NW9jbWcvbVhkZ2IzS1RxS2dFWGhib1V3YnBQWg=3D=3D
+) (download .ics calendar file and open it)
+
+=E2=80=8B
+
+See you tomorrow,
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/wvu9opkrp0bgh5gq996h7hewlmzxx
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/wvu9opkrp0bgh5gq996h7hewlmzxx
+)
+--4a501f9a961a424a5e39c1b9a6aaa7151ec9ca59751aa9245d151ccd4133
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#efeff3"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#efeff3;wid=
+th:100%" bgcolor=3D"#efeff3"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Thanks for all the kind wishes, replies, and questions abou=
+t the course you=E2=80=99ve sent over the last few days. It means a lot.</p=
+>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I=E2=80=99ll keep it coming! We=E2=80=99re only 8 days out =
+now!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Onto the topic of today=E2=80=99s email.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>How has the web evolved in the last few decades sin=
+ce the first ever website? And why should you even care?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Tim Berners-Lee wrote the first proposal for the World Wide=
+ Web in 1989. The first ever website looked like this.</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/rDCNo2XY=
+xrLgAAh2grRYz3/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It was just a bunch of hyperlinks leading to pieces of text=
+.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">CSS was introduced in 1994 and adopted a few years later. N=
+ow we can make our websites =E2=9C=A8 pretty =E2=9C=A8</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/pZhqWf2T=
+fRmJ2BAHtxL82f/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Then JavaScript was created in 1995.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It allowed developers to create interactive and dynamic web=
+ pages. JavaScript made it possible to add functionality to web pages like =
+pop-ups, drop-down menus, and form validation.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>But JavaScript wasn=E2=80=99t perfect.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So along came jQuery. It addressed the limitations of vanil=
+la JavaScript. It made managing the state and changing the DOM easier.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But if you weren=E2=80=99t careful managing the state becam=
+e a huge mess. backbone.js and Angular tried to fix the problems with jQuer=
+y.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But none of them made the impact React did.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>React was developed by Facebook in 2013 and it quic=
+kly outshined all other options.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It had a new way of thinking. Instead of separating code by=
+ technology (page structure with HTML, styling with CSS, interactivity with=
+ JS), you separate the code by function. Say hi to JSX, a combination of HT=
+ML and JS.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You could write the page structure, manage the state, and e=
+ven style everything all in one file (but don=E2=80=99t have to).</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/qUF4ALyk=
+LYdLJ7jNfpjgim/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Pretty cool, right?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But, even the immensely popular React has its own challenge=
+s, which have now been addressed by Next.js.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Next.js:</p>
+<ol class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Fixes React=E2=80=99s SEO</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Makes routing effortless &amp; makes writing backend code on the fr=
+ontend not just possible but easy</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Allows rendering (executing code) on the server side which makes yo=
+ur pages and components load much faster than in plain client-side React.</=
+span></li>
+</ol>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Web dev is evolving faster than it ever has. And it=E2=80=
+=99s up to us developers not to look at change as a bad thing, but as an im=
+provement. One that will allow us to write better apps in less time and del=
+iver a better experience to people on the other side of the screen.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">See, web dev isn=E2=80=99t going away any time soon. It=E2=
+=80=99s here to stay. No amount of no-code and AI builders will ever replac=
+e the need for innovative and complex applications.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>The next Facebook or Google won=E2=80=99t be built =
+by Wix.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So create the future. One app at a time. And if you want to=
+ learn the best tech in web dev while building an incredible app?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The tech OpenAI, Midjourney, and half of the other most vis=
+ited Generative AI companies use?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Then take the Ultimate Next13 course, launching on Septembe=
+r 22nd at 9AM ET.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you'd like you can <a href=3D"https://click.convertkit-m=
+ail2.com/wvu9opkrp0bgh5gq996h7hewlmzxx/48hvh7urn6k5v4tq/aHR0cHM6Ly9kb3dubG9=
+hZC5maWxla2l0Y2RuLmNvbS9kL2hia2ZkOVhqaUNoTGEyZGhCNW9jbWcvbVhkZ2IzS1RxS2dFWG=
+hib1V3YnBQWg=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"=
+color:#0f82f0" url-id=3D"1572121507">add it to your calendar here so you do=
+n't miss it.</a> (download .ics calendar file and open it)</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">See you tomorrow,<br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/wvu9opkrp0bgh5gq996h7hewlmzxx" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/wvu9opkrp0bgh5gq996h7hewlmzxx" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/wvu9opkrp0bgh5gq996h7hewlmzxx=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--4a501f9a961a424a5e39c1b9a6aaa7151ec9ca59751aa9245d151ccd4133--

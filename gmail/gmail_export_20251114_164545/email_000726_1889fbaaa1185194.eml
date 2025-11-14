@@ -1,0 +1,504 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:a6ce:b0:4c2:1c2:d4f7 with SMTP id q14csp639920pxv;
+        Fri, 9 Jun 2023 03:36:31 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7nO5zQIcQcUmm2e67KNiZ0tl86NjI7bevfYx4KaXKFHJFB/pUVOZ8GL8qNNNx8KcFJCTU7
+X-Received: by 2002:adf:e106:0:b0:30e:3d3d:4329 with SMTP id t6-20020adfe106000000b0030e3d3d4329mr521492wrz.35.1686306990839;
+        Fri, 09 Jun 2023 03:36:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686306990; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WcPzwLObP8Cv7y2VvUEv54A8Amo6zVznZVaE7emeyDUpyRW+13QLMjqVucmFwj6IqU
+         AF1HB6Kcm3IgnyOSnGwRXiQPcEuXRXHlAdMA1FVhS4HIi6UfRVR9byAD4voiiQZKudpE
+         UbqOlp5cRM1dHFllMmrWZUWXHbUlAo/wdanSQl1CP+8IhO+37ZBbNeQomV+7XrEl9Ozl
+         7fCl7U1kzneTaVyNfdQRZlfSlvo/6DWXthGcR8nejVgY0/mGEki1kcq87SKGynxcFYgw
+         uPv2IecNjk6xaClWdUx+0I2arfYSGIRytYQrKz9+tnqt/LCBoVUNjAvRnjwZu8c1T7r2
+         sTGQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe-post:list-unsubscribe:feedback-id
+         :content-transfer-encoding:mime-version:subject:message-id:to
+         :reply-to:from:date:dkim-signature;
+        bh=ydP68Eho+tE/h9vS/Fzrm+P930urfxe6VrpGJocsvNU=;
+        b=sdyBOEiqd927oQkmxXop46ah8AF8W301kys3VJ7KZSvAjHwwM5d35KLhRrpzVCKdio
+         oM8RL3FRPqDQk1U3UJGsLWn92r/c0NxUS+zEGELD9TeFleszkvgyMoOnzBa/nwvucofH
+         tG5b/6bhVgw+I4ZgYi/82QyXtxcilIF5hGo7nHV46R6qidak+/+PBfCFyvOfprwZdp9k
+         m+6rgJeRURV/jwEgkmhO7Z2xNxKWrjuHFlM4pY8DX8nnrIVDGIKlhlrXJJmCHqWaLuAX
+         V/0y6MtXas70qLz3iZK8qO7QM+4TcagBeI/8AFJeu5VJ4yJzHT7dyrL8rwXKTnc25u7E
+         E0SQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sendingservice.net header.s=s01 header.b=Vd7LqBf0;
+       spf=pass (google.com: domain of bounce-345905@m2.sendingservice.net designates 176.9.183.136 as permitted sender) smtp.mailfrom=bounce-345905@m2.sendingservice.net
+Return-Path: <bounce-345905@m2.sendingservice.net>
+Received: from mta136.sendingservice.net (mta136.sendingservice.net. [176.9.183.136])
+        by mx.google.com with ESMTPS id i9-20020a05600011c900b0030af25c51bbsi1574665wrx.940.2023.06.09.03.36.30
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Jun 2023 03:36:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-345905@m2.sendingservice.net designates 176.9.183.136 as permitted sender) client-ip=176.9.183.136;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@sendingservice.net header.s=s01 header.b=Vd7LqBf0;
+       spf=pass (google.com: domain of bounce-345905@m2.sendingservice.net designates 176.9.183.136 as permitted sender) smtp.mailfrom=bounce-345905@m2.sendingservice.net
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=s01; d=sendingservice.net;
+ h=Date:From:Reply-To:To:Message-ID:Subject:Mime-Version:Content-Type:
+ Content-Transfer-Encoding:Feedback-ID:List-Unsubscribe:List-Unsubscribe-Post;
+ i=bounce-345905@sendingservice.net;
+ bh=ydP68Eho+tE/h9vS/Fzrm+P930urfxe6VrpGJocsvNU=;
+ b=Vd7LqBf0GuJ+Xp48hMQZo7r0ZtCC11kiErsuuCwPjqUKsRveqxx19nS18xjQhE48qK0a+jSx37ya
+   K9HZhlar1a2u59pkUmUsX57DiEHvSZkYlKrfeSNQ5laZDNx7If6ThiT/LeGu9eU+ox4NeJVphKo/
+   lyVCNNR1IelIxQ/0OMjIxHqRRwXL3XYmR2VROoU6aQU5wCbfwMRuoneLJK9R4M86VN3ghr5Oh9Vh
+   cE4uOECU2hoqyu6US+ZkRE5vGLGC5HufKSO3EPcrUColDSm+6Dl9j51YzjRlbGLP9eVl7dq4vDbq
+   aP8PqpNte/G/iRqsrKZr4wJYMCDYV12LgE1P2g==
+Date: Fri, 09 Jun 2023 10:36:30 +0000
+From: EnerVivo <sylvain.frederic@enervivo.fr>
+Reply-To: Sylvain Frederic <sylvain.frederic@enervivo.fr>
+To: ely.ubuntu0@gmail.com
+Message-ID: <6967c24c-45e5-4f73-bf0e-fe53cef2c8ff@sendingservice.net>
+Subject: NewsLetter Test
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_648300ae3f6bb_f12ac55325652";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-RID: F0UOmvakXvQ92wYWcDtZEx+uiHP1+LsZEP9xPsb+X1+91Bx7p65ZZUUMBq4HGsxMRB27HReZQJRavoTSm6x/Wag3tltPSLS7FssRRILw97U=
+X-Message-ID: 6967c24c-45e5-4f73-bf0e-fe53cef2c8ff
+X-Campaign-ID: 4849ed51a2f95515-5de708e68b1f12ee
+X-UserID: 345905
+Feedback-ID: 345905:mailpoet
+List-Unsubscribe: <https://enervivo.fr/?mailpoet_page=subscriptions&mailpoet_router&endpoint=subscription&action=unsubscribe&data=eyJxdWV1ZUlkIjoxLCJ0b2tlbiI6ImMzYmIzNzc1OTEyMzEwNTlkMWIyYjY0MzRhNDkxNGZiIiwiZW1haWwiOiJlbHkudWJ1bnR1MEBnbWFpbC5jb20ifQ>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Virtual-MTA: mta136
+
+
+----==_mimepart_648300ae3f6bb_f12ac55325652
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+NewsLetter test=0D
+=0D
+[Logo enervivo]=0D
+=0D
+Bonjour abonn=C3=A9=C2=B7e,=0D
+=0D
+Dans MailPoet, vous pouvez r=C3=A9diger des e-mails en texte brut, comme =
+un e-mail ordinaire. Ceci peut rendre votre e-mail de newsletter plus per=
+sonnel et attractif.=0D
+=0D
+Cela reste trop simple ? Vous pouvez toujours personnaliser votre texte a=
+vec du formatage simple comme du gras ou de l=E2=80=99italique.=0D
+=0D
+Enfin, vous pouvez ajouter un bouton d=E2=80=99appel =C3=A0 l=E2=80=99act=
+ion entre deux blocs de texte, comme ceci :=0D
+=0D
+[Prendre un rendez-vous](https://enervivo.fr?mailpoet_router&endpoint=3Dt=
+rack&action=3Dclick&data=3DWyI3IiwiYzNiYjM3NzU5MTIzMTA1OWQxYjJiNjQzNGE0OT=
+E0ZmIiLCIxIiwiNDgwOTljYjAxMzk3IixmYWxzZV0)=0D
+=0D
+[agrivoltaisme-dynamique-picto]=0D
+=0D
+Merci pour votre attention et =C3=A0 tr=C3=A8s bient=C3=B4t !=0D
+=0D
+L=E2=80=99=C3=A9quipe MailPoet=0D
+[Se d=C3=A9sabonner](https://enervivo.fr?mailpoet_router&endpoint=3Dtrack=
+&action=3Dclick&data=3DWyI3IiwiYzNiYjM3NzU5MTIzMTA1OWQxYjJiNjQzNGE0OTE0Zm=
+IiLCIxIiwiNzk2MjdmNTFjZDA1IixmYWxzZV0) | [G=C3=A9rer votre abonnement](ht=
+tps://enervivo.fr?mailpoet_router&endpoint=3Dtrack&action=3Dclick&data=3D=
+WyI3IiwiYzNiYjM3NzU5MTIzMTA1OWQxYjJiNjQzNGE0OTE0ZmIiLCIxIiwiOGRkMTM1MmQ3Z=
+GM2IixmYWxzZV0)=0D
+Ajoutez votre adresse postale ici !=0D
+=0D
+[Email Marketing Powered by MailPoet](https://enervivo.fr?mailpoet_router=
+&endpoint=3Dtrack&action=3Dclick&data=3DWyI3IiwiYzNiYjM3NzU5MTIzMTA1OWQxY=
+jJiNjQzNGE0OTE0ZmIiLCIxIiwiNDhmZjM3N2I0NTBhIixmYWxzZV0)=
+
+----==_mimepart_648300ae3f6bb_f12ac55325652
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<html lang=3D"fr-FR" style=3D"margin:0;padding:0">=0D
+<head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
+-8" />=0D
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1" />=0D
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />=0D
+    <meta name=3D"format-detection" content=3D"telephone=3Dno" />=0D
+    =0D
+    <title>NewsLetter Test</title>=0D
+    <style type=3D"text/css"> @media screen and (max-width: 480px) {=0D
+            .mailpoet_button {width:100% !important;}=0D
+        }=0D
+ @media screen and (max-width: 599px) {=0D
+            .mailpoet_header {=0D
+                padding: 10px 20px;=0D
+            }=0D
+            .mailpoet_button {=0D
+                width: 100% !important;=0D
+                padding: 5px 0 !important;=0D
+                box-sizing:border-box !important;=0D
+            }=0D
+            div, .mailpoet_cols-two, .mailpoet_cols-three {=0D
+                max-width: 100% !important;=0D
+            }=0D
+        }=0D
+</style>=0D
+    =0D
+</head>=0D
+<body leftmargin=3D"0" topmargin=3D"0" marginwidth=3D"0" marginheight=3D"=
+0" style=3D"margin:0;padding:0;background-color:#ffffff">=0D
+    <table class=3D"mailpoet_template" border=3D"0" width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" style=3D"border-collapse:collapse;border-sp=
+acing:0;mso-table-lspace:0;mso-table-rspace:0">=0D
+        <tbody>=0D
+        <tr>=0D
+            <td class=3D"mailpoet_preheader" style=3D"border-collapse:col=
+lapse;display:none;visibility:hidden;mso-hide:all;font-size:1px;color:#33=
+3333;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;-=
+webkit-text-size-adjust:none" height=3D"1">=0D
+                NewsLetter test=0D
+            </td>=0D
+        </tr>=0D
+        <tr>=0D
+            <td align=3D"center" class=3D"mailpoet-wrapper" valign=3D"top=
+" style=3D"border-collapse:collapse;background-color:#ffffff"><!--[if mso=
+]>=0D
+                <table align=3D"center" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0"=0D
+                       width=3D"660">=0D
+                    <tr>=0D
+                        <td class=3D"mailpoet_content-wrapper" align=3D"c=
+enter" valign=3D"top" width=3D"660">=0D
+                <![endif]--><table class=3D"mailpoet_content-wrapper" bor=
+der=3D"0" width=3D"660" cellpadding=3D"0" cellspacing=3D"0" style=3D"bord=
+er-collapse:collapse;background-color:#ffffff;border-spacing:0;mso-table-=
+lspace:0;mso-table-rspace:0;max-width:660px;width:100%">=0D
+                    <tbody>=0D
+                    =0D
+      <tr>=0D
+        <td class=3D"mailpoet_content" align=3D"center" style=3D"border-c=
+ollapse:collapse;background-color:#ffffff!important" bgcolor=3D"#ffffff">=
+=0D
+          <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspa=
+ce:0;mso-table-rspace:0">=0D
+            <tbody>=0D
+              <tr>=0D
+                <td style=3D"border-collapse:collapse;padding-left:0;padd=
+ing-right:0">=0D
+                  <table width=3D"100%" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"mailpoet_cols-one" style=3D"border-collapse:coll=
+apse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:=
+fixed;margin-left:auto;margin-right:auto;padding-left:0;padding-right:0">=
+=0D
+                    <tbody>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_spacer" height=3D"30" valign=3D"top" style=3D=
+"border-collapse:collapse"></td>=0D
+      </tr>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_image mailpoet_padded_vertical mailpoet_pad=
+ded_side" align=3D"center" valign=3D"top" style=3D"border-collapse:collap=
+se;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:2=
+0px">=0D
+          <img src=3D"https://enervivo.fr/wp-content/uploads/2022/09/2_Lo=
+gotype_vert-foret-e1664460441226-1024x319.png" width=3D"270" alt=3D"Logo =
+enervivo" style=3D"height:auto;max-width:100%;-ms-interpolation-mode:bicu=
+bic;border:0;display:block;outline:none;text-align:center" />=0D
+        </td>=0D
+      </tr>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_text mailpoet_padded_vertical mailpoet_padd=
+ed_side" valign=3D"top" style=3D"border-collapse:collapse;padding-top:10p=
+x;padding-bottom:10px;padding-left:20px;padding-right:20px;word-break:bre=
+ak-word;word-wrap:break-word">=0D
+          <table style=3D"border-collapse:collapse;border-spacing:0;mso-t=
+able-lspace:0;mso-table-rspace:0" width=3D"100%" cellpadding=3D"0">=0D
+        <tr>=0D
+          <td class=3D"mailpoet_paragraph" style=3D"border-collapse:colla=
+pse;mso-ansi-font-size:16px;color:#000000;font-family:Arial,'Helvetica Ne=
+ue',Helvetica,sans-serif;font-size:15px;line-height:24px;mso-line-height-=
+alt:24px;word-break:break-word;word-wrap:break-word;text-align:left">=0D
+            <strong>Bonjour abonn=C3=A9=C2=B7e,</strong><br /><br />=0D
+          </td>=0D
+        </tr></table>=0D
+=0D
+<table style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspac=
+e:0;mso-table-rspace:0" width=3D"100%" cellpadding=3D"0">=0D
+        <tr>=0D
+          <td class=3D"mailpoet_paragraph" style=3D"border-collapse:colla=
+pse;mso-ansi-font-size:16px;color:#000000;font-family:Arial,'Helvetica Ne=
+ue',Helvetica,sans-serif;font-size:15px;line-height:24px;mso-line-height-=
+alt:24px;word-break:break-word;word-wrap:break-word;text-align:left">=0D
+            Dans MailPoet, vous pouvez r=C3=A9diger des e-mails en texte =
+brut, comme un e-mail ordinaire. Ceci peut rendre votre e-mail de newslet=
+ter plus personnel et attractif.<br /><br />=0D
+          </td>=0D
+        </tr></table>=0D
+=0D
+<table style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspac=
+e:0;mso-table-rspace:0" width=3D"100%" cellpadding=3D"0">=0D
+        <tr>=0D
+          <td class=3D"mailpoet_paragraph" style=3D"border-collapse:colla=
+pse;mso-ansi-font-size:16px;color:#000000;font-family:Arial,'Helvetica Ne=
+ue',Helvetica,sans-serif;font-size:15px;line-height:24px;mso-line-height-=
+alt:24px;word-break:break-word;word-wrap:break-word;text-align:left">=0D
+            Cela reste trop simple ? Vous pouvez toujours personnaliser v=
+otre texte avec du formatage simple comme du <strong>gras</strong> ou de =
+l=E2=80=99<em>italique.</em><br /><br />=0D
+          </td>=0D
+        </tr></table>=0D
+=0D
+<table style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspac=
+e:0;mso-table-rspace:0" width=3D"100%" cellpadding=3D"0">=0D
+        <tr>=0D
+          <td class=3D"mailpoet_paragraph" style=3D"border-collapse:colla=
+pse;mso-ansi-font-size:16px;color:#000000;font-family:Arial,'Helvetica Ne=
+ue',Helvetica,sans-serif;font-size:15px;line-height:24px;mso-line-height-=
+alt:24px;word-break:break-word;word-wrap:break-word;text-align:left">=0D
+            Enfin, vous pouvez ajouter un bouton d=E2=80=99appel =C3=A0 l=
+=E2=80=99action entre deux blocs de texte, comme ceci :=0D
+          </td>=0D
+        </tr></table>=0D
+        </td>=0D
+      </tr>=0D
+                    </tbody>=0D
+                  </table>=0D
+                </td>=0D
+              </tr>=0D
+            </tbody>=0D
+          </table>=0D
+        </td>=0D
+      </tr>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_content-cols-two" align=3D"left" style=3D"b=
+order-collapse:collapse">=0D
+          <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspa=
+ce:0;mso-table-rspace:0">=0D
+            <tbody>=0D
+              <tr>=0D
+                <td align=3D"center" style=3D"border-collapse:collapse;fo=
+nt-size:0"><!--[if mso]>=0D
+                  <table border=3D"0" width=3D"100%" cellpadding=3D"0" ce=
+llspacing=3D"0">=0D
+                    <tbody>=0D
+                      <tr>=0D
+      <td width=3D"330" valign=3D"top">=0D
+        <![endif]--><div style=3D"display:inline-block; max-width:330px; =
+vertical-align:top; width:100%;">=0D
+          <table width=3D"330" class=3D"mailpoet_cols-two" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" align=3D"left" style=3D"border-collaps=
+e:collapse;width:100%;max-width:330px;border-spacing:0;mso-table-lspace:0=
+;mso-table-rspace:0;table-layout:fixed;margin-left:auto;margin-right:auto=
+;padding-left:0;padding-right:0">=0D
+            <tbody>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_padded_vertical mailpoet_padded_side" valig=
+n=3D"top" style=3D"border-collapse:collapse;padding-top:10px;padding-bott=
+om:10px;padding-left:20px;padding-right:20px">=0D
+          <div>=0D
+            <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse;border-spacing:0;mso-table-ls=
+pace:0;mso-table-rspace:0">=0D
+              <tr>=0D
+                <td class=3D"mailpoet_button-container" style=3D"border-c=
+ollapse:collapse;text-align:left"><!--[if mso]>=0D
+                  <v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word"=0D
+                    href=3D"enervivo.fr/contact"=0D
+                    style=3D"height:44px;=0D
+                           width:267px;=0D
+                           v-text-anchor:middle;"=0D
+                    arcsize=3D"55%"=0D
+                    strokeweight=3D"0px"=0D
+                    strokecolor=3D"#0074a2"=0D
+                    fillcolor=3D"#26af82">=0D
+                  <w:anchorlock/>=0D
+                  <center style=3D"color:#ffffff;=0D
+                    font-family:Verdana;=0D
+                    font-size:16px;=0D
+                    font-weight:bold;">Prendre un rendez-vous=0D
+                  </center>=0D
+                  </v:roundrect>=0D
+                  <![endif]-->=0D
+                  <!--[if !mso]><![endif]-->=0D
+                  <a class=3D"mailpoet_button" href=3D"https://enervivo.f=
+r?mailpoet_router&endpoint=3Dtrack&action=3Dclick&data=3DWyI3IiwiYzNiYjM3=
+NzU5MTIzMTA1OWQxYjJiNjQzNGE0OTE0ZmIiLCIxIiwiNDgwOTljYjAxMzk3IixmYWxzZV0" =
+style=3D"color:#ffffff;text-decoration:none;display:inline-block;-webkit-=
+text-size-adjust:none;mso-hide:all;text-align:center;background-color:#26=
+af82;border-color:#0074a2;border-width:0px;border-radius:24px;border-styl=
+e:solid;width:267px;line-height:44px;font-family:Verdana, Geneva, sans-se=
+rif;font-size:16px;font-weight:normal"> Prendre un rendez-vous</a>=0D
+                  <!--<![endif]-->=0D
+                </td>=0D
+              </tr>=0D
+            </table>=0D
+          </div>=0D
+        </td>=0D
+      </tr>=0D
+            </tbody>=0D
+          </table>=0D
+        </div><!--[if mso]>=0D
+      </td>=0D
+      <td width=3D"330" valign=3D"top">=0D
+        <![endif]--><div style=3D"display:inline-block; max-width:330px; =
+vertical-align:top; width:100%;">=0D
+          <table width=3D"330" class=3D"mailpoet_cols-two" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" align=3D"left" style=3D"border-collaps=
+e:collapse;width:100%;max-width:330px;border-spacing:0;mso-table-lspace:0=
+;mso-table-rspace:0;table-layout:fixed;margin-left:auto;margin-right:auto=
+;padding-left:0;padding-right:0">=0D
+            <tbody>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_image mailpoet_padded_vertical mailpoet_pad=
+ded_side" align=3D"center" valign=3D"top" style=3D"border-collapse:collap=
+se;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:2=
+0px">=0D
+          <img src=3D"https://enervivo.fr/wp-content/uploads/2022/10/agri=
+voltaisme-dynamique-picto-e1665759708688.png" width=3D"41" alt=3D"agrivol=
+taisme-dynamique-picto" style=3D"height:auto;max-width:100%;-ms-interpola=
+tion-mode:bicubic;border:0;display:block;outline:none;text-align:center" =
+/>=0D
+        </td>=0D
+      </tr>=0D
+            </tbody>=0D
+          </table>=0D
+        </div><!--[if mso]>=0D
+      </td>=0D
+                  </tr>=0D
+                </tbody>=0D
+              </table>=0D
+            <![endif]--></td>=0D
+            </tr>=0D
+          </tbody>=0D
+        </table>=0D
+      </td>=0D
+    </tr>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_content" align=3D"center" style=3D"border-c=
+ollapse:collapse;background-color:#ffffff!important" bgcolor=3D"#ffffff">=
+=0D
+          <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspa=
+ce:0;mso-table-rspace:0">=0D
+            <tbody>=0D
+              <tr>=0D
+                <td style=3D"border-collapse:collapse;padding-left:0;padd=
+ing-right:0">=0D
+                  <table width=3D"100%" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"mailpoet_cols-one" style=3D"border-collapse:coll=
+apse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:=
+fixed;margin-left:auto;margin-right:auto;padding-left:0;padding-right:0">=
+=0D
+                    <tbody>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_spacer" height=3D"23" valign=3D"top" style=3D=
+"border-collapse:collapse"></td>=0D
+      </tr>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_text mailpoet_padded_vertical mailpoet_padd=
+ed_side" valign=3D"top" style=3D"border-collapse:collapse;padding-top:10p=
+x;padding-bottom:10px;padding-left:20px;padding-right:20px;word-break:bre=
+ak-word;word-wrap:break-word">=0D
+          <table style=3D"border-collapse:collapse;border-spacing:0;mso-t=
+able-lspace:0;mso-table-rspace:0" width=3D"100%" cellpadding=3D"0">=0D
+        <tr>=0D
+          <td class=3D"mailpoet_paragraph" style=3D"border-collapse:colla=
+pse;mso-ansi-font-size:16px;color:#000000;font-family:Arial,'Helvetica Ne=
+ue',Helvetica,sans-serif;font-size:15px;line-height:24px;mso-line-height-=
+alt:24px;word-break:break-word;word-wrap:break-word;text-align:left">=0D
+            Merci pour votre attention et =C3=A0 tr=C3=A8s bient=C3=B4t !=
+<br /><br />=0D
+          </td>=0D
+        </tr></table>=0D
+=0D
+<table style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspac=
+e:0;mso-table-rspace:0" width=3D"100%" cellpadding=3D"0">=0D
+        <tr>=0D
+          <td class=3D"mailpoet_paragraph" style=3D"border-collapse:colla=
+pse;mso-ansi-font-size:16px;color:#000000;font-family:Arial,'Helvetica Ne=
+ue',Helvetica,sans-serif;font-size:15px;line-height:24px;mso-line-height-=
+alt:24px;word-break:break-word;word-wrap:break-word;text-align:left">=0D
+            <em>L=E2=80=99=C3=A9quipe MailPoet</em>=0D
+          </td>=0D
+        </tr></table>=0D
+        </td>=0D
+      </tr>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_header_footer_padded mailpoet_footer" style=
+=3D"border-collapse:collapse;padding:10px 20px;line-height:19.2px;text-al=
+ign:left;color:#222222;font-family:Arial, 'Helvetica Neue', Helvetica, sa=
+ns-serif;font-size:12px">=0D
+          <a href=3D"https://enervivo.fr?mailpoet_router&endpoint=3Dtrack=
+&action=3Dclick&data=3DWyI3IiwiYzNiYjM3NzU5MTIzMTA1OWQxYjJiNjQzNGE0OTE0Zm=
+IiLCIxIiwiNzk2MjdmNTFjZDA1IixmYWxzZV0" style=3D"color:#6cb7d4;text-decora=
+tion:none">Se d=C3=A9sabonner</a> | <a href=3D"https://enervivo.fr?mailpo=
+et_router&endpoint=3Dtrack&action=3Dclick&data=3DWyI3IiwiYzNiYjM3NzU5MTIz=
+MTA1OWQxYjJiNjQzNGE0OTE0ZmIiLCIxIiwiOGRkMTM1MmQ3ZGM2IixmYWxzZV0" style=3D=
+"color:#6cb7d4;text-decoration:none">G=C3=A9rer votre abonnement</a><br /=
+>Ajoutez votre adresse postale ici=C2=A0!=0D
+        </td>=0D
+      </tr>=0D
+                    </tbody>=0D
+                  </table>=0D
+                </td>=0D
+              </tr>=0D
+            </tbody>=0D
+          </table>=0D
+        </td>=0D
+      </tr>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_content" align=3D"center" style=3D"border-c=
+ollapse:collapse;background-color:#ffffff!important" bgcolor=3D"#ffffff">=
+=0D
+          <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-collapse:collapse;border-spacing:0;mso-table-lspa=
+ce:0;mso-table-rspace:0">=0D
+            <tbody>=0D
+              <tr>=0D
+                <td style=3D"border-collapse:collapse;padding-left:0;padd=
+ing-right:0">=0D
+                  <table width=3D"100%" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"mailpoet_cols-one" style=3D"border-collapse:coll=
+apse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:=
+fixed;margin-left:auto;margin-right:auto;padding-left:0;padding-right:0">=
+=0D
+                    <tbody>=0D
+      <tr>=0D
+        <td class=3D"mailpoet_image mailpoet_padded_vertical mailpoet_pad=
+ded_side" align=3D"center" valign=3D"top" style=3D"border-collapse:collap=
+se;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:2=
+0px">=0D
+          <a href=3D"https://enervivo.fr?mailpoet_router&endpoint=3Dtrack=
+&action=3Dclick&data=3DWyI3IiwiYzNiYjM3NzU5MTIzMTA1OWQxYjJiNjQzNGE0OTE0Zm=
+IiLCIxIiwiNDhmZjM3N2I0NTBhIixmYWxzZV0" style=3D"color:#21759B;text-decora=
+tion:underline"><img src=3D"https://enervivo.fr/wp-content/plugins/mailpo=
+et/assets/img/mailpoet_logo_newsletter.png" width=3D"108" alt=3D"Email Ma=
+rketing Powered by MailPoet" style=3D"height:auto;max-width:100%;-ms-inte=
+rpolation-mode:bicubic;border:0;display:block;outline:none;text-align:cen=
+ter" /></a>=0D
+        </td>=0D
+      </tr>=0D
+                    </tbody>=0D
+                  </table>=0D
+                </td>=0D
+              </tr>=0D
+            </tbody>=0D
+          </table>=0D
+        </td>=0D
+      </tr>=0D
+                    </tbody>=0D
+                </table><!--[if mso]>=0D
+                </td>=0D
+                </tr>=0D
+                </table>=0D
+                <![endif]--></td>=0D
+        </tr>=0D
+        </tbody>=0D
+    </table>=0D
+<img alt=3D"" class=3D"" src=3D"https://enervivo.fr?mailpoet_router&endpo=
+int=3Dtrack&action=3Dopen&data=3DWyI3IiwiYzNiYjM3NzU5MTIzMTA1OWQxYjJiNjQz=
+NGE0OTE0ZmIiLCIxIixudWxsLGZhbHNlXQ" /></body>=0D
+</html>=0D
+
+----==_mimepart_648300ae3f6bb_f12ac55325652--

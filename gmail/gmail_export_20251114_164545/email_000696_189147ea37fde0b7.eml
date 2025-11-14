@@ -1,0 +1,458 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4094:b0:4c5:a633:e965 with SMTP id r20csp11162044pxb;
+        Sat, 1 Jul 2023 19:46:30 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEpIeOj5mXHSoiu5YOZYbeHg+NBXigjgfs45QZhDKSkvmqROnkcXsIpBQF9hFtRATii9dmb
+X-Received: by 2002:a05:6a00:890:b0:67a:153d:1cf9 with SMTP id q16-20020a056a00089000b0067a153d1cf9mr6384217pfj.6.1688265990740;
+        Sat, 01 Jul 2023 19:46:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688265990; cv=none;
+        d=google.com; s=arc-20160816;
+        b=r/7+dMqSmwsfgQTXgqJrIwdFBp/5lWLzX+ErrckWLW6yT8bS723aQqtQ2vLpmflcTI
+         fM+zk53BJTRIBxlz9WWq3EtMPl4BFCCqxhThLc8fPMIosSf1V6rcHr+e3FrQrAb9I8ON
+         7syAPae/XHHbOQ10ZdGHE60EzCNA+vNl5VjZGt/2yxod0C6B2P4H4pxSPVAymQZuAUtP
+         fuUtHLe6sFur8l7xq4xiGqsWnKukQkGOR+Y2F9zGvCuIlsKjaq81b3cSHdfZJfoSMKLB
+         LsWzvjCOtZWYLbdNq337EBJjYQW1uvQnoADK5vLdz+YhTwskehJzmf1HPEXfxOOiNgnH
+         aBzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=fvo0852N0YzPjsaRBsVza2pNlqZf6X5sTrUhgoh6OP0=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=ad2d/8GZFLmlQpYHnJp4g+MJ4P4ezZVcPT/W0I7kX12HZVysYLuXFuEFRKmUtoapdm
+         DFL6x4NW5XecFcnKwlU3widzcbO59fsWOWlSCqW2s1XKN/ZFbpRFB6gievxkGAlbmiO/
+         uytVMB/ji2k5AW43cy+BUNaiIoi0pXyLR8nZgjDWKB0w7eGBEWrFZdRVsbq5LhpvQuW+
+         elA0cwGbdsvBZ6qJjaCGVGAvu71Z2juVZwcfDIILH9osnIc0RsoCLw40i5/p+0NHdiT6
+         mbTt3t+ean2AWgzh16ZvQikDTCjiRtmfBUw6d4kQVqntqxvZMuk6j7TQfVVkzkazYfy/
+         QtRQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=S+hOvoo3;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=njDQ5d7x;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o47.ck.n.convertkit.com (o47.ck.n.convertkit.com. [149.72.60.6])
+        by mx.google.com with ESMTPS id i70-20020a638749000000b005578a320ea6si3395073pge.872.2023.07.01.19.46.30
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 01 Jul 2023 19:46:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) client-ip=149.72.60.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=S+hOvoo3;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=njDQ5d7x;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=fvo0852N0YzPjsaRBsVza2pNlqZf6X5sTrUhgoh6OP0=;
+	b=S+hOvoo3MGP+jMryKFY1yttkptx3VcoQj/lFhLwbWV/fh2gJsWtN+yGcMtNVCNNRTfNR
+	q5ZRiLXDZuX9Ogzatxjgtsjxbx/fCfm1W2J8ggAQx4xMcG7czt0G8wvr0yW4zLi8+IV3Pl
+	l3YmqBUehSd8IkjRmECkoqkpk1ZS4dQfY=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=fvo0852N0YzPjsaRBsVza2pNlqZf6X5sTrUhgoh6OP0=;
+	b=njDQ5d7xZZ/hxdztTFiUAONK7+aVIajiskRWochwihYcFcA2fjCoObt8zG+IQWUWoKfI
+	KOBEEH1GodbYYcsWpQnbo8w06K4c1upwZPMV68geNTd0eMa79v6jDvVaWfaGgH93wWAz+X
+	ryUhune0rE+DOEccAQU4Y4RFDn6dRbAeo=
+Received: by filterdrecv-7bd4cff9b4-pgz85 with SMTP id filterdrecv-7bd4cff9b4-pgz85-1-64A0E505-20
+        2023-07-02 02:46:29.737984519 +0000 UTC m=+4504086.057457972
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-1 (SG) with HTTP
+	id E6N5eK5PSN6JdycVenBZZQ
+	Sun, 02 Jul 2023 02:46:29.505 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=296953690cc9aeba579faf45b17cda754af7cc4ef38da8ebf3d6b140b97e
+Date: Sun, 02 Jul 2023 02:46:30 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <68u0rvopv3u8hklxgq3to@convertkit-mail2.com>
+Subject: The Next.js 13 eBook. Here.
+ =?UTF-8?B?RmluYWxseeKApiDwn5iu4oCN8J+SqA==?=
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 11138685:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/68u0rvopv3u8hklxgq3to>
+X-Report-Spam: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfTSBTKg5BqGor9gHH?=
+ =?us-ascii?Q?DCmsFwZFnBzBoZqas+caNSGT5b8drP8781tPnld?=
+ =?us-ascii?Q?36rnpnTBhn+rnzXX3lc3DCP5Du4ohksi0OVL+Un?=
+ =?us-ascii?Q?eS33U8baUP63bKcpd97WdNpJmwFYdFaqm6TqBu6?=
+ =?us-ascii?Q?vF6RC4Sh5rfjBZ77zkWgOoTl6r+BaLtGA0FMI+?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADPPzVR803BPWdN4m5iEKubndvZZ9hnGDP43s9b?=
+ =?us-ascii?Q?HNl+EtT52TXmEI3RXOmndI96LJ5ITytMVt+Zz3P?=
+ =?us-ascii?Q?4iLxXipFIV6b=2FEUgqn+9lwKjpbKyjR28wfe4Oav?=
+ =?us-ascii?Q?+dKZvFvO65Pz31Ti2TlvLCrxaLjmh=2FMl9DRnfgU?=
+ =?us-ascii?Q?PJ=2FMSGqfzYQI8FLhxH7N8yHpZELE7rS5bmnZqQR?=
+ =?us-ascii?Q?3gG3EqYG0LFXUP4D6Hw=2FSgT0jlnuJtDZQMBjJLu?=
+ =?us-ascii?Q?6WLO7MNXBRWfhgTjHpvbMdX+4k9gVsZL9pfqu3m?=
+ =?us-ascii?Q?VTn30I7PTY2g37upxrFHV=2FbK02uFVQodT+iCyBJ?=
+ =?us-ascii?Q?EUC6yMBGFl?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--296953690cc9aeba579faf45b17cda754af7cc4ef38da8ebf3d6b140b97e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Hi there =F0=9F=91=8B
+
+This catastrophe started at the beginning of the year when we set
+out to create our custom course platform. Little did we know that
+this journey would soon become a comedy of errors, with Next.js
+playing a starring role.
+
+In our eagerness to leverage the latest features of Next.js 13,
+we made the regrettable mistake of diving in without fully
+grasping the underlying architecture.
+
+We believed we had it all under control, only to realize shortly
+after that we were cluttering our pages with state management and
+client-side fetch calls.
+
+Relying on useState and useEffect hooks - as you would in plain
+React, came at an unexpected cost.
+
+We thought we had mastered React, but Next.js 13 surprised us
+with twists and turns.
+
+Suddenly, we found ourselves facing critical decisions regarding:
+
+* rendering strategies (SSR, ISG, or SSG)
+* choice of rendering environment (client or server)
+* optimal timing (build time or run time)
+* and how to do state management.
+
+After dedicating months to thorough research and implementation,
+we finally discovered the answers we sought.
+
+It struck us that we should share this valuable information with
+our community too. And that's how our journey to create The
+Ultimate Next.js eBook began.
+
+Having received hundreds of emails asking "How to do X" in
+Next.js, we're confident that this eBook will transform you into
+the next Next.js Master by answering all those burning questions
+- and teaching you things you never thought of.
+
+Introducing=E2=80=A6
+
+With over:
+
+* 17+ chapters packed with example source code
+* comprehensive answers to popular interview questions
+* best practices
+* useful tips & tricks
+
+...this eBook is a must-have for any web developer.
+
+The first part of the highly anticipated Next.js eBook is now
+out. And as promised, you are one of the lucky individuals who
+will receive the first six chapters of our eBook for FREE!
+
+Click the button below to claim your first six chapters for FREE
+and begin your journey towards Next.js mastery!
+
+-->Download The Ultimate Next.js eBook (
+https://click.convertkit-mail2.com/68u0rvopv3u8hklxgq3to/x0hph3uwzdx0rlcg/a=
+HR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3VjP2V4cG9ydD1kb3dubG9hZCZpZD0xSHpSZV9IMXho=
+ZThvd3FVc0J5aGpyUk8ycDE0cVE5ZTM=3D
+)
+Download The Ultimate Next.js eBook (
+https://drive.google.com/uc?export=3Ddownload&id=3D1HzRe_H1xhe8owqUsByhjrRO=
+2p14qQ9e3
+)Before you go:
+
+Your feedback means the world to us! We would greatly appreciate
+it if you could share your thoughts and suggestions on how we can
+further enhance the eBook after you've had the chance to read it.
+Share the feedback simply by replying to this email.
+
+Best,
+Adrian
+
+P.S. We=E2=80=99re working hard on a JSM Pro course covering EVERYTHING
+you need to know about Next.js 13. It will be a 100% Next13
+project-based course - and your ticket to fully mastering Next13
+in an easy-to-understand video format. If you enjoy the free
+chapters of this eBook, keep an eye out for the course - and
+reply with anything you want to see in the course; I=E2=80=99ll share
+more info soon!
+
+=E2=80=8B
+
+=E2=80=8B
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/68u0rvopv3u8hklxgq3to )
+| Update your profile (
+https://preferences.convertkit-mail2.com/68u0rvopv3u8hklxgq3to )
+| 113 Cherry St, Seattle, WA 92768
+--296953690cc9aeba579faf45b17cda754af7cc4ef38da8ebf3d6b140b97e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-layout-block td {
+          display: block !important;
+          width: 100% !important;
+          padding: 0 !important;
+        }
+        .ck-column:first-of-type {
+          margin-bottom: 32px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#9fcdf9"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#9fcdf9;wid=
+th:100%" bgcolor=3D"#9fcdf9"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#f1f7fe"><tr><td><![endif]--><div=
+ style=3D"background-color:#f1f7fe;border-radius:11px;overflow:hidden;max-w=
+idth:600;margin:0px auto"><table bgcolor=3D"#f1f7fe" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"100%" style=3D"border-collapse:separate;mso-table-ls=
+pace:0pt;mso-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"v=
+ertical-align:top;padding:20px"><div class=3D"email-body" style=3D"backgrou=
+nd-color:#f1f7fe">
+<div class=3D"email-content">
+<!--[if mso]><style>.button-table { padding: 12px 0 }</style><![endif]--><d=
+iv>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5;text-align:left">Hi there =F0=9F=91=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">This catastrophe started at the beginning of the year when we set out =
+to create our custom course platform. Little did we know that this journey =
+would soon become a comedy of errors, with Next.js playing a starring role.=
+</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">In our eagerness to leverage the latest features of Next.js 13, we mad=
+e the regrettable mistake of diving in without fully grasping the underlyin=
+g architecture.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">We believed we had it all under control, only to realize shortly after=
+ that we were cluttering our pages with state management and client-side fe=
+tch calls.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5"><strong>Relying on useState and useEffect hooks - as you would in plai=
+n React, came at an unexpected cost.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">We thought we had mastered React, but Next.js 13 surprised us with twi=
+sts and turns.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">Suddenly, we found ourselves facing critical decisions regarding:</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.5;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>rendering strategies (SSR, ISG, or SSG)</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>choice of rendering environment (client or server)</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>optimal timing (build time or run time)</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>and how to do state management.</span></li>
+</ul>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5"><strong>After dedicating months to thorough research and implementatio=
+n, we finally discovered the answers we sought.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">It struck us that we should share this valuable information with our c=
+ommunity too. And that's how our journey to create <strong>The Ultimate Nex=
+t.js eBook</strong> began.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">Having received hundreds of emails asking "How to do X" in Next.js, we=
+'re confident that this eBook will transform you into the next Next.js Mast=
+er by answering all those burning questions - and teaching you things you n=
+ever thought of.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">Introducing=E2=80=A6</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:block;max-width:100%;width:100%"><div style=3D"display:block"><img sr=
+c=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/8soasd95Eevpu9We=
+Lb3eed" width=3D"100%" height=3D"auto" style=3D"border:0 none;display:block=
+;height:auto;line-height:100%;outline:none;-webkit-text-decoration:none;tex=
+t-decoration:none;max-width:100%;border-bottom-left-radius:4px;border-botto=
+m-right-radius:4px;width:100%;height:auto;object-fit:contain"></div></figur=
+e></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">With over:</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.5;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>17+ chapters packed with example source code</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>comprehensive answers to popular interview questions</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>best practices</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>useful tips &amp; tricks</span></li>
+</ul>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">...this eBook is a must-have for any web developer.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">The first part of the highly anticipated Next.js eBook is now out. And=
+ as promised, you are one of the lucky individuals who will receive the fir=
+st six chapters of our eBook for FREE!</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5"><strong>Click the button below to claim your first six chapters for FR=
+EE and begin your journey towards Next.js mastery!</strong></p>
+<!--[if !mso]>--><table width=3D"100%" style=3D"border-collapse:separate;ms=
+o-table-lspace:0pt;mso-table-rspace:0pt"><tbody><tr><td align=3D"center" st=
+yle=3D"vertical-align:top"><a class=3D"email-button" href=3D"https://click.=
+convertkit-mail2.com/68u0rvopv3u8hklxgq3to/x0hph3uwzdx0rlcg/aHR0cHM6Ly9kcml=
+2ZS5nb29nbGUuY29tL3VjP2V4cG9ydD1kb3dubG9hZCZpZD0xSHpSZV9IMXhoZThvd3FVc0J5aG=
+pyUk8ycDE0cVE5ZTM=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#0f82f0;margin-bottom:0.5em;border:0 none;font-size:16px;line-hei=
+ght:1.5;background-color:#0f81f0;color:#ffffff;border-radius:5px;border-wid=
+th:1px;border-color:#0f81f0;background-color:#0f81f0;box-sizing:border-box;=
+border-radius:4px;border-style:solid;color:#ffffff;display:inline-block;tex=
+t-align:center;text-decoration:none;padding:12px 20px;margin:8px 0;font-siz=
+e:16px" url-id=3D"1554213917">Download The Ultimate Next.js eBook</a></td><=
+/tr></tbody></table>
+<!--<![endif]--><!--[if mso]><table class=3D"button-table" width=3D"100%" b=
+order=3D"0" cellSpacing=3D"0" cellPadding=3D"0" style=3D"margin:8px 0"><tr>=
+<td align=3D"center"><table border=3D"0" cellSpacing=3D"0" cellPadding=3D"0=
+"><tr><td align=3D"center" bgcolor=3D"#0f81f0" style=3D"background-color:#0=
+f81f0;border-radius:4px;overflow:hidden;padding:12px 20px"><a class=3D"emai=
+l-button" href=3D"https://drive.google.com/uc?export=3Ddownload&id=3D1HzRe_=
+H1xhe8owqUsByhjrRO2p14qQ9e3" target=3D"_blank" rel=3D"noopener noreferrer" =
+style=3D"background-color:inherit;display:inline-block;text-decoration:none=
+;border-width:1px;border-style:solid;margin:0;color:#ffffff;border-color:#0=
+f81f0;font-size:16px" data-ck-element=3D"button">Download The Ultimate Next=
+.js eBook</a></td></tr></table></td></tr></table><![endif]--><p style=3D"ma=
+rgin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system=
+,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helveti=
+ca Neue',sans-serif;color:#363d43;font-size:16px;line-height:1.5"><strong>B=
+efore you go:</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">Your feedback means the world to us! We would greatly appreciate it if=
+ you could share your thoughts and suggestions on how we can further enhanc=
+e the eBook after you've had the chance to read it. Share the feedback simp=
+ly by replying to this email.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5">Best,<br>Adrian</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.5"><strong>P.S.</strong> We=E2=80=99re working hard on a JSM Pro course c=
+overing EVERYTHING you need to know about Next.js 13. It will be a 100% Nex=
+t13 project-based course - and your ticket to fully mastering Next13 in an =
+easy-to-understand video format. If you enjoy the free chapters of this eBo=
+ok, keep an eye out for the course - and reply with anything you want to se=
+e in the course; I=E2=80=99ll share more info soon!</p>
+<table class=3D"ck-layout-block" width=3D"100%" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" bgcolor=3D"#f1f7fe" style=3D"border-collapse:separate=
+;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#f1f7fe;margin-=
+top:24px;margin-right:0;margin-bottom:24px;margin-left:0;padding-top:18px;p=
+adding-right:18px;padding-bottom:18px;padding-left:18px;border-top-right-ra=
+dius:13px;border-top-left-radius:13px;border-bottom-right-radius:13px;borde=
+r-bottom-left-radius:13px;overflow:hidden;background-size:cover;background-=
+position:center"><tbody><tr>
+<td as=3D"td" class=3D"ck-column" width=3D"20%" style=3D"vertical-align:top=
+;background-size:cover;background-position:center;border-top-right-radius:0=
+;border-top-left-radius:0;border-bottom-right-radius:0;border-bottom-left-r=
+adius:0;vertical-align:top"><div style=3D"padding-top:0;padding-right:0;pad=
+ding-bottom:0;padding-left:0"><p style=3D"margin:1em 0;font-size:18px;line-=
+height:1.5em;font-family:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',=
+Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d=
+43;font-size:16px;line-height:1.5;margin:0 !important;padding:0 !important;=
+margin:8px 0 !important;color:#4d4d4d">=E2=80=8B</p></div></td>
+<td style=3D"vertical-align:top;padding-left:30px" contenteditable=3D"false=
+"></td>
+<td as=3D"td" class=3D"ck-column" width=3D"80%" style=3D"vertical-align:top=
+;background-size:cover;background-position:center;border-top-right-radius:0=
+;border-top-left-radius:0;border-bottom-right-radius:0;border-bottom-left-r=
+adius:0;vertical-align:middle"><div style=3D"padding-top:0;padding-right:0;=
+padding-bottom:0;padding-left:0"><p style=3D"margin:1em 0;font-size:18px;li=
+ne-height:1.5em;font-family:Arial,-apple-system,BlinkMacSystemFont,'Segoe U=
+I',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#3=
+63d43;font-size:16px;line-height:1.5;margin:0 !important;padding:0 !importa=
+nt;margin:8px 0 !important;color:#4d4d4d">=E2=80=8B</p></div></td>
+</tr></tbody></table>
+</div>
+</div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><p=
+ style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial,-=
+apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantar=
+ell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:1.=
+5;text-align:center"><span style=3D"font-size:14px">=E2=80=8B</span><a href=
+=3D"https://unsubscribe.convertkit-mail2.com/68u0rvopv3u8hklxgq3to" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=
+=3D"font-size:14px">Unsubscribe</span></a><span style=3D"font-size:14px"> |=
+ </span><a href=3D"https://preferences.convertkit-mail2.com/68u0rvopv3u8hkl=
+xgq3to" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f=
+0"><span style=3D"font-size:14px">Update your profile</span></a><span style=
+=3D"font-size:14px">  | 113 Cherry St, Seattle, WA 92768</span></p></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/68u0rvopv3u8hklxgq3to" alt=3D=
+"" style=3D"border:0 none;display:block;height:auto;line-height:100%;outlin=
+e:none;-webkit-text-decoration:none;text-decoration:none;max-width:100%">
+</body>
+</html>
+
+--296953690cc9aeba579faf45b17cda754af7cc4ef38da8ebf3d6b140b97e--

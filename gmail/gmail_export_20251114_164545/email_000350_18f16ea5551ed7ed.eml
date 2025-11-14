@@ -1,0 +1,838 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:9891:0:b0:2da:8f9e:8689 with SMTP id b17csp999984ljj;
+        Thu, 25 Apr 2024 13:20:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGX/uGt0kex6rVJKlIhJwEAggN4YutzooKKZWosOKM6TeYZ0gJ3z6ZIPAOpeoWdjHDjnngY
+X-Received: by 2002:a05:6358:7282:b0:18d:9d25:725e with SMTP id w2-20020a056358728200b0018d9d25725emr566232rwf.16.1714076407253;
+        Thu, 25 Apr 2024 13:20:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714076407; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kkwSxUrxGO0gK8/ldp6ZronanPTAwT5EqIm5WoTlyK70rzxRPodNzWF+h0obEiAyuz
+         N/33xbL10UlGE1Dq8i7xwSdtElgETCdrgglw3l7xYYEz5+KrVfSAJ7YnWSbVQwuapGFV
+         01Vik2E+kEDKoH2JyQBw3Gw+ULhaH8UMAvHXu0QTuLwkjWu7vx9z76D2ZsNeuE3DbMfS
+         jf6auckg0ySgxPyw0atzdlMp913Ua1VmU0IME7l2yCSJWwtZQcugn0QwKo/DP+5FftZ7
+         9x+M07bQM2gKyUerQAGjCYCCuXyk4CH3iwUMmvmSTICvWDgGHdE4nClZOoTR4bf5LUe8
+         oppA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:list-unsubscribe-post:precedence:mime-version:subject
+         :message-id:to:reply-to:from:date:list-unsubscribe:dkim-signature
+         :dkim-signature;
+        bh=Zvw2dw7ZWe872rO2Y9NPksdOUjGsbOUgYRWYGJAC5Mk=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=gcCB+JsxPuyC1vE8YaWJQ4STgDb2cNjPVyrOviGrYy810o77/lyVlTl0UmKLdjjkKX
+         4fOWvkfowMX6xPiYUMBQWf8MPlOa4NfkIePg96Ks6hHfZEf7AqIe6ZhNvNjLsRmcyqqF
+         hCfvJXm4wHmTe1Zt5raKrFo4hdbjGcnD/oRdv6G++FJ4Gpx+n5/8w7jtRLdOhzVPSHbH
+         Pns66gCuZazGKthGZLnCGbF+UqdjdbcZVezuqJIAU8KLl1O7pLggfNv8WHgr23Z6dUQv
+         drVfgAF7VsoCk78w7vzNlMHACoq8n5Qwlj7c7EmKXUUb2eIj1IjGvRuFiPuHzMr3T/QT
+         fGxA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bf57x.hubspotemail.net header.s=hs1 header.b=Q4wRO+vN;
+       dkim=pass header.i=@infura.io header.s=hs1-4795067 header.b=h8F0JdHF;
+       spf=pass (google.com: domain of 1axb65m7u45shlkb9pg27arc5s11dvqqbduyv9-ely+2eubuntu0=gmail.com@bf57x.hubspotemail.net designates 143.244.90.166 as permitted sender) smtp.mailfrom="1axb65m7u45shlkb9pg27arc5s11dvqqbduyv9-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=infura.io
+Return-Path: <1axb65m7u45shlkb9pg27arc5s11dvqqbduyv9-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net>
+Received: from bd77ghk.bf57x.hubspotemail.net (bd77ghk.bf57x.hubspotemail.net. [143.244.90.166])
+        by mx.google.com with ESMTPS id jx8-20020a0562142b0800b006a04c263f60si18308327qvb.578.2024.04.25.13.20.06
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Apr 2024 13:20:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 1axb65m7u45shlkb9pg27arc5s11dvqqbduyv9-ely+2eubuntu0=gmail.com@bf57x.hubspotemail.net designates 143.244.90.166 as permitted sender) client-ip=143.244.90.166;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bf57x.hubspotemail.net header.s=hs1 header.b=Q4wRO+vN;
+       dkim=pass header.i=@infura.io header.s=hs1-4795067 header.b=h8F0JdHF;
+       spf=pass (google.com: domain of 1axb65m7u45shlkb9pg27arc5s11dvqqbduyv9-ely+2eubuntu0=gmail.com@bf57x.hubspotemail.net designates 143.244.90.166 as permitted sender) smtp.mailfrom="1axb65m7u45shlkb9pg27arc5s11dvqqbduyv9-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=infura.io
+Received: by 172.16.165.25 with SMTP id azcy9tjx9kyl1nhot33j7s7oy3bnxz903y17j7mis;
+        Thu, 25 Apr 2024 20:19:15 GMT
+DKIM-Signature: v=1; s=hs1; d=bf57x.hubspotemail.net; 
+        i=@bf57x.hubspotemail.net; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id:list-unsubscribe-post; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=Zvw2dw7ZWe872rO2Y9NPksdOUjGsbOUgYRWYGJAC5Mk=; 
+        b=Q4wRO+vN+GBDVFfb8w0l7p3zP0VxbH2WUxumR4K8s9YQ3fLDCAyMjsxlMKzPQ6
+         1F9PhYtJKaTFBrLXySAwJ/1drw6QB7zIjRwhgW+iRaxzeSMukiBWf4U6WNvv7/l
+         ShXIHjQZ+bAC51oBXZWrrfHG8VFhtrVnn3SNy5JUMwzug+0jPSeGiQfErQA+n/P
+         kgF1gtcfPN0jqCFL2HVmQa510t/+fF3SjU09bkM/VNLWANMfdcXSlUT7sANTnPr
+         LFA0rQbNWERiOx2b1FzFunYEEnZgvggmolvmA3K3T3URbgVB0omjX4xWLuMeuHE
+         gV0ppeQlhLO+8pVn4HMVisK/Uxng==; q=dns/txt; t=1714076034; 
+        x=1714338834;
+DKIM-Signature: v=1; s=hs1-4795067; d=infura.io; i=@infura.io; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id:list-unsubscribe-post; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=Zvw2dw7ZWe872rO2Y9NPksdOUjGsbOUgYRWYGJAC5Mk=; 
+        b=h8F0JdHFCQ/jEmwJ3yZYkGH/TuVIj6Jlg+VqHpaXPikO3ZjIdElW680WJKFDjt
+         J20mtTnuRS9dukVaYywy2r/r59Io5XAcFn+amuamKpmhTxCP/BmIF8uo/ylgnXB
+         XtFicyrIX5dfqg14BXf2ZqcwukpSWgvAN4h1nQortq42q1XrB68nbqVk9FvPFgK
+         iKS+TgGY1G4pj6lb1rgGKS6ZajTjE7KTNmcjZGsJ7vVgZICJQ+N5jZK8FDxmVxM
+         ST7nnH1cUIQLA/Bz/Q4iWb6b+j9Xbuc4J0e23TPb1u6GDYrraV1CmZnpqIeVzO8
+         O9z+fkMB9J5rPYz/6lZBhzLS3tIw==; q=dns/txt; t=1714076034; 
+        x=1714338834;
+Return-Path: <1axb65m7u45shlkb9pg27arc5s11dvqqbduyv9-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net>
+X-HS-Cid: 1axfz64h6yn5gz94qjw822t05v45w27guvmdj9
+List-Unsubscribe: <mailto:1axdcgk85aie9ng74q6zdwi6n82jm9x3x7ol5l-ely+2Eubuntu0=gmail.com@bf57x.hubspotemail.net?subject=unsubscribe>, <https://newsletter.consensys.io/subscription-preferences/v2/unsubscribe-all?data=W2nXS-N30h-B1W2sZ_3g3V-bd5W4rqYr93Zt_ZPW3XQ__-2YfvgmW1VrhxP32qt_QW4tgKyp2r3YnzW4pz-Mk1XmMGpW2xtPDn3DMK7JW3XR05f1Q3jfFW1BwV-w49yhJ7W21k2W43jgMKYW45QtdM1BGKHNW4pzccZ2TtC4mW1QcGNh2MnQXkW3V-z7C1Vg5vNW2RNbby4kbcX_W3jcp4f1V7w4kW2vKmCL3KcKgDW1Sx3tB36C4jbW38Dx7K4cwSCLW2FK2yn3dvmqgW45r30D2x-LkyW2YqFPF2CVmktW2MMNRd2sCnbSW3d9jzR32zj9_W1Xdf8330kDYWW3K4G88306VFcW3g74143BMvLsW2Tw8Db2t7w35W2RlKGb4hqtg-W2WfHby24-nvvW3M0HYs43R01WW3Zt5NX3_V1_jW34G-1B3FfMFzW30jTfy4hq4G1W4rlLLS4t7DP2W2vyKQY2PLfsrW1Xn_t541r3RNW3F6c5H3QSyZpW1X87bN24Vh5GW2Yt93432J0j_W3_YH5t2KnClKW4hDH7Z3LYZswW232l071V26tJW3ZFk1h2KZpmLf4hmzsZ04>
+Date: Thu, 25 Apr 2024 16:19:15 -0400
+From: Team Infura <hello@infura.io>
+Reply-To: hello@infura.io
+To: ely.ubuntu0@gmail.com
+Message-ID: <1714075533180.6993e9a3-3f89-45b8-a6e0-0fcefa78576a@bf57x.hubspotemail.net>
+Subject: Ethereum is for everyone.
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_152240_88265044.1714076034837"
+Precedence: bulk
+X-Report-Abuse-To: abuse@hubspot.com (see
+ https://policy.hubspot.com/abuse-complaints)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: aec416l:aifbieoi:aidf:HubSpot
+
+------=_Part_152240_88265044.1714076034837
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Today Infura=E2=80=99s parent company, Consensys, took an important step to=
+wards preserving access to the Ethereum blockchain.
+
+Gx Infura builder,
+
+This is a special email dedicated to every builder in the Ethereum ecosyste=
+m.
+
+Today our parent company, Consensys, took an important step towards preserv=
+ing access to ether and by extension the Ethereum blockchain and filed liti=
+gation against the U.S. Securities and Exchange Commission (SEC).
+
+The SEC should not be allowed to arbitrarily expand its jurisdiction in an =
+attempt to include its regulatory purview over a technology, which is what =
+Ethereum is at its core. The impact of such unlawful regulation by the SEC =
+would limit access and utility to every builder and user of Ethereum today.
+
+This is why Consensys took this step, to show the world:
+
+- The SEC has no authority=E2=80=94nor should it=E2=80=94to regulate techno=
+logy.
+- The SEC only has jurisdiction over securities. Ether is not and should no=
+t be treated as a security.
+- Ether is a commodity. For that reason and many more, applications like Me=
+taMask that people around the globe rely upon to access and use the Ethereu=
+m blockchain are not securities intermediaries or brokers.
+
+At its core, Consensys' case intends to hold the SEC accountable to the bas=
+ic fact that it possesses no jurisdiction to regulate Ether, software built=
+ on Ethereum, or the Ethereum blockchain in general.
+
+We cannot and should not allow government overreach and arbitrariness to im=
+pede innovation and deprive builders and users from Ethereum=E2=80=99s abil=
+ity to improve security, traceability, transparency, and trust in the syste=
+ms that underpin our digital lives.
+
+Consensys' actions this week intend to protect the entire Ethereum ecosyste=
+m from overzealous interference of their work in web3. Because Ethereum isn=
+'t just about information being permissionless. It's about human ingenuity =
+being permissionless.
+
+Ethereum is for everyone. Do you feel the same?
+
+To support the Ethereum community in making its voice heard, we=E2=80=99re =
+calling on you to join the movement. Sign up for future updates about how y=
+ou can contribute to protecting the Ethereum ecosystem and learn more (http=
+s://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5-5w0DW6Mk_4Q7znPY=
+3W3V7XmG5dkFS1N4xH9dF3gP0xW7lCdLW6lZ3p4W8ZG8wM3bh-JKW9b26HD44_L74VV_2Jy3zKn=
+J4W8Qc7N61fZpmQW52dXkP1dC9TdVyCPHL5FnLwFVcpFyr1Y8q73W2jXpfq6gRTbyW8QSXhH6fW=
+DGHW8m3CPF3WxdnjW8jY2nc2fpbYyW7cxSDP6G6W86N4y8svqZzWK0W3krRsx1llM33W6sKX_P7=
+RQG5hW33DH_T4nvh4ZW5z_mKS7Rh0V7N4p42RHPYXTzW1Jz9tf6Y1tCBW1cslGY7rK8JBW2R3Z1=
+x4dZyKTW41H1jZ2fJcftW5D827C72mLB3W4N0Hxq2lFWxPf1RjJV204 ) .
+
+website (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5-5w0=
+DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dF3prCCW7lCdLW6lZ3ljW1HsKVT764gYFW4JyMhK1NC=
+h2WW1FY_V86MwF2fW1WxDdw3Vmft7W8X_HV5857SMrW3Y3gxJ2KKhyfW4_lZgg2rgKX1N67dK0X=
+sy4qDW8kFrvV2KgZRCW4Hl4pv4q55JgW8SFkV96k_yjTW5S3xYK6zJn7_W8mPyNM99PR5vV2BH0=
+r2M4wTSW3zCRfq4KbhcMN37FmnJN9q35W54Xh-R5LV42kW4TmwSN5HtlM1VpZ_kw86Z_x9W8swY=
+x-96K1N0W3mR__z1Kd5p0W1TGCJD8YfcM3VRmld58CkbzDW5q98HW3wT1KSf7h313F04 )
+
+blog (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5-5w0DW6=
+Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dF3prCCW7lCdLW6lZ3kzW4mLnKQ7bMYQ2W730vbX53CSfB=
+W3cJZZP74_KmxW5hQ0lW17MF5QW65DGgC7VQjqzW3d3bh451cn8DW1v_cH98pVJjQW8RdR5w77s=
+1fmW1DQk-R16KB5dVhsHM-7t50zgW8Jp_zh6RzxV2W5wpyTZ4wcxkcW4kT6QD7x067bW1jYC1X1=
+5v1D0W4NMN6P7crDJDW65JGjS3zhlqgW1Nb5Kq6cQcR4V8ZMg291ShSkN4-RxsC7Dw0FW30tVW7=
+5RF40lW8w--gd77t8c9W815dd526QLpKW6hjWcJ3H_0YSN7QRb5n73QySf5WQdRC04 )
+
+community_3 (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5=
+-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dY3prCCW7Y8-PT6lZ3pMW72TYfd2yrrGTW3rGfd=
+N165jmKW67Cy6Q1MXxj-W4tgr1m5vlhhhW5qr3WG8lQh6WW37WpmX1zTK9XW8-X8PY1H8zppN7D=
+4f3_SzYXtVwsw3F7rrrN_W2Ncx6V7sQYdTW7YKRZk3K0pW1W2KL4ML4D1mdHW6s5ftV8sJf-YN7=
+pkBN6f4-4-VGz7067ZbBlpW85Nplr69y682W4thxTL3-QRN_W7GhmZB5DyP0_W5P-n2D68Ld9_W=
+1tDTZQ81qB62W6lKrVB7kRhffW2WDxt_6NbC3cW92VZvc7yNpv_W5cSGB-4fMyBBW39rclb2G38=
+2lN8Sb_GPXjDzff4kfKnM04 )
+
+twitter (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5-5w0=
+DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dY3prCCW7Y8-PT6lZ3kQW96RrdJ4q5xzYW9gCspx1fB=
+smDW49T5388fqHKSW4cD34z6f1WKtW5RjFl16Mhq5yW5Wfg8y6B2rmLN5TzRHfFk50bW9hq-1-2=
+rZ9VNW26wH-0180fRCVp3RsN3VdGsmW2QqjGD1Kj4gWW5XZ_B-90gDhwW6dm9xT6FmKfWW3B5Mj=
+X4X9GhJW1mP5Hk5vTfm_VkQgKT3kmx1vW2C5yGD1_6YbTW7g8KN85H12wrW2XHTWx73Bnc_W5K_=
+kkt6NFmt7W2SZ4HD3Ry7wqW1c-9Ns2t3Rb4W63Mw9423DL-lW4PpRFc2MQtw9VjLsZ72_61gPW3=
+SrJvM695xwNf1fxJd-04 )
+
+github (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5-5w0D=
+W6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dY3prCCW7Y8-PT6lZ3n5W26Z0qp93fFvKM5Rq25LR0m0=
+W1NGKTL8tTsd1W77YM6h34TV9GW633Kln7J8nF2W72lTL32l52YWW4Xv-cr84zWN2W2tKqvZ47v=
+8fxV6HKkz6H3s1CW4Hc3JK2n0btdW21knBq3DGPMxW4KXBmJ74hLtrW1LD_zt5LKlFFW2VXRTg3=
+Mm5mbW67SNxh25WwyXW7QvN2J77xYgsW14MF3K8PMYG6W7x-BmP98xtkXW5qCFY76DTLqqW5hMX=
+Zp8XfftdW2fdJhr26HQ6-W61kQkR13Q2dYW49gyNH7qS7l8W2mHXft44zmJkW4CwhkX6wSW_5W4=
+Bb6vy7ylKL3f3nGwTs04 )
+
+linkedin (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5-5w=
+0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9fd3prCCW8wLKSR6lZ3mGW4JQMt17Zx9x-W3SpsjM8x=
+lLWZW54cTK21ddpMSW86zffT7RfxzxVLKdNR8l9jVJW90cRM23yYN76W9hbwxN3b6lJtW2Y3GQq=
+2CZfvpN1q8Ghl9GM_CW8ZGcRC5YmN1_W6_JsTk1JJVbjW8LPDZ-5fDtNZW2Mk1zG83WDKdW8QrS=
+C16G8jPzW4V06nr5NGrN_W42CDd05vfQRcW7QLSKw27l_hHW2PTPkS6tbwQ0W83VdjY1DDwsWW5=
+Js_WK2m4y8hW2rzm_k8q6mTfW69tFTq8wbM-1V2PKS668xccbN7Bg0l5DGxqzW7SDHc58wMrWTV=
+Q9V9L8VSGLGW5V1LNT4wNcv_W507Jrh3yvc21f5NdWSY04 )
+
+_____________________________________________________
+
+Copyright =C2=A9 2024 Infura
+
+A Consensys (https://newsletter.consensys.io/e3t/Ctc/T8+113/czspy04/VW92WN5=
+-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dF3prCCW7lCdLW6lZ3m8W3ZjyY62GPl2ZW8_Dfx=
+45Hg8GfW6xm2VH7V60PbW3S3Dqj6-JJF6W4t2fHs2r5vXNW1qMWZW8ZgBRXW23pByX1gRm-yW5d=
+gMR92ZYZ7DW3nN-L03Kz9QrW3J9VKx6j1mBlW2T667D5bYG4rW7j6nCw28C5l6W63sc2t7SzdWD=
+W736fvt7CHpvKW9lHtgj7DtcbYW1Rqnb67mJJY9W6gX-GC4nVs3YW5045mn2_RVf6W3zVnRn63b=
+KTbW8YT66C48mfwqW5cBRpC9jfwMXW5-f8J96gjvCFW8V_Hdj6sf5VMW7dpMGy1h-6CBf4ZpyDg=
+04 ) Formation
+
+Want to change how you receive these emails?
+
+You can update your preferences (https://newsletter.consensys.io/hs/prefere=
+nces-center/en/page?data=3DW2nXS-N30h-F_W3ZWvtR25m5k2W3bbp6y4cMJZRW3W1vZY3y=
+-lB2W2MMHyz3SP10MW3QzYnp1QcD1XW22XfdH2p5TlvW2PQSFB1NlW-gW1Q4y7Y2FTQ2hW3NF1V=
+n3P03LPW2nMJ-M47vZTQW3M34YR2C_b88W4rfl5l4cs_Q1W1N7Df_47m5vQW43B8HP21hs89W3S=
+Mldk1Zbr3wW2CxdLH4rrkcKW1SzclB3P6GFbW1V0r4c2CT4BhW2-lMQ33yRqN7W3djtWk3BXJ9W=
+W23pWvB386VdwW2KSwtP2D05vZW1NBs0N2t53_JW1Vw27_1QDGnMW34mnRK4cyV0NW45z5NX3T5=
+37TW41t9Jw3dzZ7wW2YCDGg30sLCcW3646VN3GZnpmW2qFLq-1Nx3NcW45yMnj2nNv62W4ff-2n=
+1Q5SQMW1_7f4M3F6csqW1NvMX41Z01_jW1_lWhS3QPZNJW2xwT5N2Rv_HQW3QW1kN2zFH1ZW3SZ=
+9sH3Z_v4hW1XmnFy38Cd-8W2MMPwL1NmKftW230c5v3H0dmyW3XPmBW4mcbC1W4cyzC636vBL-W=
+47SL041Xb9cDW3DZYwh2H-rF_0&_hsenc=3Dp2ANqtz--ikzYy-cNm-7qZ0hQNmTqxX-OpewlVj=
+PDWSsw6PnFMdUMwrmAuxJ3WoPJgXchR5D6NBmF9dDddRFL833F1EciTbkfhbw&_hsmi=3D30438=
+9440 ) or unsubscribe here (https://newsletter.consensys.io/hs/preferences-=
+center/en/direct?data=3DW2nXS-N30h-F_W3ZWvtR25m5k2W3bbp6y4cMJZRW3W1vZY3y-lB=
+2W2MMHyz3SP10MW3QzYnp1QcD1XW22XfdH2p5TlvW2PQSFB1NlW-gW1Q4y7Y2FTQ2hW3NF1Vn3P=
+03LPW2nMJ-M47vZTQW3M34YR2C_b88W4rfl5l4cs_Q1W1N7Df_47m5vQW43B8HP21hs89W3SMld=
+k1Zbr3wW2CxdLH4rrkcKW1SzclB3P6GFbW1V0r4c2CT4BhW2-lMQ33yRqN7W3djtWk3BXJ9WW23=
+pWvB386VdwW2KSwtP2D05vZW1NBs0N2t53_JW1Vw27_1QDGnMW34mnRK4cyV0NW45z5NX3T537T=
+W41t9Jw3dzZ7wW2YCDGg30sLCcW3646VN3GZnpmW2qFLq-1Nx3NcW45yMnj2nNv62W4ff-2n1Q5=
+SQMW1_7f4M3F6csqW1NvMX41Z01_jW1_lWhS3QPZNJW2xwT5N2Rv_HQW3QW1kN2zFH1ZW3SZ9sH=
+3Z_v4hW1XmnFy38Cd-8W2MMPwL1NmKftW230c5v3H0dmyW3XPmBW4mcbC1W4cyzC636vBL-W47S=
+L041Xb9cDW3DZYwh2H-rF_0&_hsenc=3Dp2ANqtz--ikzYy-cNm-7qZ0hQNmTqxX-OpewlVjPDW=
+Ssw6PnFMdUMwrmAuxJ3WoPJgXchR5D6NBmF9dDddRFL833F1EciTbkfhbw&_hsmi=3D30438944=
+0 ) .
+
+Consensys Software Inc   5049 Edwards Ranch Rd    Fort Worth  TX   76109   =
+United States
+------=_Part_152240_88265044.1714076034837
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3=
+.org/1999/xhtml" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:=
+v=3D"urn:schemas-microsoft-com:vml" lang=3D"en"><head><!--[if !mso]><!-- --=
+><link rel=3D"stylesheet" type=3D"text/css" hs-webfonts=3D"true" href=3D"ht=
+tps://fonts.googleapis.com/css?family=3DLato|Lato:i,b,bi"><!--<![endif]-->
+    <title>Ethereum is for everyone.</title>
+    <meta property=3D"og:title" content=3D"Ethereum is for everyone.">
+    <meta name=3D"twitter:title" content=3D"Ethereum is for everyone.">
+   =20
+   =20
+   =20
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+    <!--[if gte mso 9]>
+  <xml>
+      <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+  </xml>
+ =20
+  <style>
+    ul > li {
+      text-indent: -1em;
+    }
+  </style>
+<![endif]-->
+<!--[if mso]>
+<style type=3D"text/css">
+ body, td {font-family: Arial, Helvetica, sans-serif;}
+ .hse-body-wrapper-table {background-color: #f2f2f2;}
+</style>
+<![endif]-->
+   =20
+     =20
+   =20
+  <meta name=3D"generator" content=3D"HubSpot"><meta property=3D"og:url" co=
+ntent=3D"https://newsletter.consensys.io/-temporary-slug-0d06acce-4857-4d83=
+-83af-7b5aef37e647"><meta name=3D"robots" content=3D"noindex,follow"><!--[i=
+f !((mso)|(IE))]><!-- --><style type=3D"text/css">.moz-text-html .hse-colum=
+n-container{max-width:600px !important;width:600px !important}
+.moz-text-html .hse-column{display:table-cell;vertical-align:top}.moz-text-=
+html .hse-section .hse-size-12{max-width:600px !important;width:600px !impo=
+rtant}
+@media only screen and (min-width:640px){.hse-column-container{max-width:60=
+0px !important;width:600px !important}
+.hse-column{display:table-cell;vertical-align:top}.hse-section .hse-size-12=
+{max-width:600px !important;width:600px !important}
+}@media only screen and (max-width:639px){img.stretch-on-mobile,.hs_rss_ema=
+il_entries_table img,.hs-stretch-cta .hs-cta-img{height:auto !important;wid=
+th:100% !important}
+.display_block_on_small_screens{display:block}.hs_padded{padding-left:20px =
+!important;padding-right:20px !important}
+.hs-hm,table.hs-hm{display:none}.hs-hd{display:block !important}table.hs-hd=
+{display:table !important}
+ul,blockquote{margin:0;padding:1em 40px} }@media screen and (max-width:639p=
+x){.social-network-cell{display:inline-block}
+}</style><!--<![endif]--><style type=3D"text/css">#hs_body #hs_cos_wrapper_=
+main a[x-apple-data-detectors]{color:inherit !important;text-decoration:non=
+e !important;font-size:inherit !important;font-family:inherit !important;fo=
+nt-weight:inherit !important;line-height:inherit !important}
+a{text-decoration:underline}p{margin:0}body{-ms-text-size-adjust:100%;-webk=
+it-text-size-adjust:100%;-webkit-font-smoothing:antialiased;moz-osx-font-sm=
+oothing:grayscale}</style></head>
+  <body id=3D"hs_body" bgcolor=3D"#f2f2f2" style=3D"margin:0 !important; pa=
+dding:0 !important; font-family:Lato, Tahoma, sans-serif; font-size:18px; c=
+olor:#000000; word-break:break-word">
+    <div id=3D"preview_text" style=3D"display:none;font-size:1px;color:#f2f=
+2f2;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;=
+" lang=3D"en">Today Infura=E2=80=99s parent company, Consensys, took an imp=
+ortant step towards preserving access to the Ethereum blockchain.</div>
+   =20
+<!--[if gte mso 9]>
+<v:background xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"t">
+    <v:fill type=3D"tile" size=3D"100%,100%" color=3D"#ffffff"/>
+</v:background>
+<![endif]-->
+    <div class=3D"hse-body-background" lang=3D"en" style=3D"background-colo=
+r:#f2f2f2" bgcolor=3D"#f2f2f2">
+      <table role=3D"presentation" class=3D"hse-body-wrapper-table" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !important; border-c=
+ollapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; margin:0; pad=
+ding:0; width:100% !important; min-width:320px !important; height:100% !imp=
+ortant" width=3D"100%" height=3D"100%">
+        <tbody><tr>
+          <td class=3D"hse-body-wrapper-td" valign=3D"top" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding-t=
+op:20px; padding-bottom:20px">
+            <div id=3D"hs_cos_wrapper_main" class=3D"hs_cos_wrapper hs_cos_=
+wrapper_widget hs_cos_wrapper_type_dnd_area" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"dnd_area"> =20
+  <div id=3D"section-0" class=3D"hse-section hse-section-first" style=3D"pa=
+dding-left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; Margin-left:auto; Margin-right:auto; border-collapse:collapse; bo=
+rder-spacing:0; background-color:#121212" bgcolor=3D"#121212">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#121212">
+      <tr style=3D"background-color:#121212;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column-0-0" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_module-0-0-0" class=3D"hs_cos_wrapper hs_cos_wr=
+apper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-size=
+: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" data-=
+hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"presentat=
+ion" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-spa=
+cing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-tabl=
+e-rspace:0pt">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"border-collapse:collapse=
+; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; color=
+:#000000; word-break:break-word; text-align:center; padding:0px; font-size:=
+0px">
+        <img alt=3D"Infura" src=3D"https://newsletter.consensys.io/hs-fs/hu=
+bfs/Infura%20Banner.png?width=3D1200&amp;upscale=3Dtrue&amp;name=3DInfura%2=
+0Banner.png" style=3D"outline:none; text-decoration:none; -ms-interpolation=
+-mode:bicubic; max-width:100%; font-size:16px" width=3D"600" align=3D"middl=
+e" srcset=3D"https://newsletter.consensys.io/hs-fs/hubfs/Infura%20Banner.pn=
+g?upscale=3Dtrue&amp;width=3D1200&amp;upscale=3Dtrue&amp;name=3DInfura%20Ba=
+nner.png 600w, https://newsletter.consensys.io/hs-fs/hubfs/Infura%20Banner.=
+png?upscale=3Dtrue&amp;width=3D2400&amp;upscale=3Dtrue&amp;name=3DInfura%20=
+Banner.png 1200w" sizes=3D"(max-width: 600px) 100vw, 600px">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+ =20
+ =20
+  <div id=3D"section_1649341538166" class=3D"hse-section" style=3D"padding-=
+left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; Margin-left:auto; Margin-right:auto; border-collapse:collapse; bo=
+rder-spacing:0; background-color:#ffffff" bgcolor=3D"#ffffff">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#ffffff">
+      <tr style=3D"background-color:#ffffff;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column_1649341538167_0" class=3D"hse-column hse-size-12">
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-=
+table-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" =
+style=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-famil=
+y:Lato, Tahoma, sans-serif; font-size:18px; color:#000000; word-break:break=
+-word; padding:10px 30px"><div id=3D"hs_cos_wrapper_module_16491719943731" =
+class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" s=
+tyle=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-=
+cos-general-type=3D"widget" data-hs-cos-type=3D"module"><div id=3D"hs_cos_w=
+rapper_module_16491719943731_" class=3D"hs_cos_wrapper hs_cos_wrapper_widge=
+t hs_cos_wrapper_type_rich_text" style=3D"color: inherit; font-size: inheri=
+t; line-height: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-t=
+ype=3D"rich_text"><p style=3D"mso-line-height-rule:exactly; line-height:100=
+%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; font-weight:bol=
+d">Gx Infura builder,&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">This is a speci=
+al email dedicated to every builder in the Ethereum ecosystem.</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">Today our paren=
+t company, Consensys, took an important step towards preserving access to e=
+ther and by extension the Ethereum blockchain and filed litigation against =
+the U.S. Securities and Exchange Commission (SEC).&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">The SEC should =
+not be allowed to arbitrarily expand its jurisdiction in an attempt to incl=
+ude its regulatory purview over a technology, which is what Ethereum is at =
+its core. The impact of such unlawful regulation by the SEC would limit acc=
+ess and utility to every builder and user of Ethereum today.&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">This is why Con=
+sensys took this step, to show the world:&nbsp;</p>
+<ul style=3D"mso-line-height-rule:exactly; line-height:175%">
+<li aria-level=3D"1" style=3D"mso-line-height-rule:exactly">The SEC has no =
+authority=E2=80=94nor should it=E2=80=94to regulate technology.</li>
+<li aria-level=3D"1" style=3D"mso-line-height-rule:exactly">The SEC only ha=
+s jurisdiction over securities. Ether is not and should not be treated as a=
+ security.&nbsp;</li>
+<li aria-level=3D"1" style=3D"mso-line-height-rule:exactly">Ether is a comm=
+odity. For that reason and many more, applications like MetaMask that peopl=
+e around the globe rely upon to access and use the Ethereum blockchain are =
+not securities intermediaries or brokers.</li>
+</ul>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">At its core, Co=
+nsensys' case intends to hold the SEC accountable to the basic fact that it=
+ possesses no jurisdiction to regulate Ether, software built on Ethereum, o=
+r the Ethereum blockchain in general.&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">We cannot and s=
+hould not allow government overreach and arbitrariness to impede innovation=
+ and deprive builders and users from Ethereum=E2=80=99s ability to improve =
+security, traceability, transparency, and trust in the systems that underpi=
+n our digital lives.&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">Consensys' acti=
+ons this week intend to protect the entire Ethereum ecosystem from overzeal=
+ous interference of their work in web3. <span style=3D"color: #121212;">Bec=
+ause Ethereum isn't just about information being permissionless. It's about=
+ human ingenuity being permissionless.&nbsp;</span></p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">Ethereum is for=
+ everyone. Do you feel the same?&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%"><br>To support =
+the Ethereum community in making its voice heard, <span style=3D"font-weigh=
+t: bold;">we=E2=80=99re calling on you to join the movement.</span> Sign up=
+ for future updates about how you can contribute to protecting the Ethereum=
+ ecosystem and <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/cz=
+spy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dF3hCZPW7lCdLW6lZ3lCW5h5B3=
+-6hzpNRN5pzRvj-B6GxF76xZrXNk2CW8b5msx1-xbSsW4kkwHl1hgcmYW9g3rQy3YWnDtW668_n=
+t65B87DW73nMmP4P9dS-W14KTvK16vm5rW4MPFwV7m_S3rW77ncQy7tBFphW98L9Bd5Qyb6JW2z=
+PbsJ1cgrKwVRQPLW4HykH2N7ctD5YR15ZcW3NJWRG5Vv6kKW3QlXKP5yVfRmW6h7s_l1CDBKBW8=
+c7VnS92DhZHW5Jpj8551M8YqW8tfSsP1GbHY2W8dM_3v41CV33VSNmJj56lsRkW3N6TMs86mRqZ=
+f6PYCx804" style=3D"mso-line-height-rule:exactly; color:#2c56dd; font-weigh=
+t:bold" rel=3D"noopener" data-hs-link-id=3D"0" target=3D"_blank">learn more=
+</a><span style=3D"font-weight: bold;">.</span></p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p></div=
+></div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+ =20
+ =20
+  <div id=3D"section-2" class=3D"hse-section hse-section-last" style=3D"pad=
+ding-left:10px; padding-right:10px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; Margin-left:auto; Margin-right:auto; border-collapse:collapse; bo=
+rder-spacing:0; background-color:#121212; padding-bottom:10px; padding-top:=
+10px" bgcolor=3D"#121212">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#121212">
+      <tr style=3D"background-color:#121212;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;padding-bottom:10px; padding-top:=
+10px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column-2-0" class=3D"hse-column hse-size-12">
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-=
+table-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" =
+style=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-famil=
+y:Lato, Tahoma, sans-serif; font-size:18px; color:#000000; word-break:break=
+-word; padding:12px 20px 0px"><div id=3D"hs_cos_wrapper_module-2-0-0" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"presenta=
+tion" align=3D"center" style=3D"border-spacing:0 !important; border-collaps=
+e:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-al=
+ign:center" class=3D"hs_cos_wrapper_type_social_module" width=3D"auto">
+  <tbody>
+    <tr align=3D"center">
+      <td class=3D"social-network-cell" style=3D"border-collapse:collapse; =
+mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; font-si=
+ze:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dF3qgyTW7lCdLW6lZ3l0W5j7R=
+8z87kMn5W7lwY-_1St-JlW7SYwBW7kVQqDW3M_DjB4rsz78W4PRPjN4GV12lW13zDl26ddG0pW1=
+qWhbV27X0QBW4tJPtz4gtpJ2N7RKvQB8HbfDV2VNLS4NctYWW2qTkZq650c2TV2cPbQ8M8NKwW7=
+yKqSH1SK9nQW1h-sPL21XXpYW7w77725_gC4-W7chtVt64KYCFW1k0Bf77D2pkWW41cTmw9cHG6=
+9W8X1M1279zQcmW2b27RF5GmQq2W95h2Yh7Q033XW8m2S5D4f6fkHMXxGNsPqMS6VQbglc1KPHg=
+Gf6r4Rwg04" style=3D"color:#00a4bd; mso-line-height-rule:exactly; text-deco=
+ration:none !important" data-hs-link-id=3D"0" target=3D"_blank"><img src=3D=
+"https://newsletter.consensys.io/hs-fs/hubfs/Infura%20Email%20Template/webs=
+ite.png?height=3D50&amp;upscale=3Dtrue&amp;name=3Dwebsite.png" alt=3D"websi=
+te" height=3D"25" style=3D"outline:none; text-decoration:none; -ms-interpol=
+ation-mode:bicubic; border:none; width:auto!important; height:25px!importan=
+t; vertical-align:middle" valign=3D"middle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dY3qgyTW7Y8-PT6lZ3q2N5LLk=
+33jTZ7pN7m4NrwQ07sFW5lncwt5GHC3CW3s2Rxf46DvphVBVFR46d5kDZW8mKxXX2_550FW4nC_=
+_B5b6z72W2GBBYX4SFNBgW7gZ9v56Wb-XHN2cWtJGvCjDNW5Fg1_B5rBFWfN6tMWdNZ6gDbW62K=
+hWC44g57TTTfNw2-3gMnW1hrFW06FR_GHV-Y2T27wqTvkW7hc6kp14PxNCW35WL7f4QFVLPW3XS=
+qL01493ZnW7xCQKz2HGVV0W498HM415RyPfW58yS5V4ltHjnW2WqGV19lqk1VN56BW9hzT_GjW5=
+ZW56q5mskVTW7f_Fq83W7GGcf1RrW4C04" style=3D"color:#00a4bd; mso-line-height-=
+rule:exactly; text-decoration:none !important" data-hs-link-id=3D"0" target=
+=3D"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/Infura%=
+20Email%20Template/blog.png?height=3D50&amp;upscale=3Dtrue&amp;name=3Dblog.=
+png" alt=3D"blog" height=3D"25" style=3D"outline:none; text-decoration:none=
+; -ms-interpolation-mode:bicubic; border:none; width:auto!important; height=
+:25px!important; vertical-align:middle" valign=3D"middle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dY3qgyTW7Y8-PT6lZ3nFW71vd=
+J31WjkykW9cJvzj69x820W8SFlD31cppkkV6X8pB4Sy6GTW5MvfB61ZlPMYW153kYr1SwPLPW4c=
+G87K3DGvP8W1QLJ116gk7NfW3mwCH4862nZzW4s4qYR1gzLcNW8thhPK5YZyVnW4-HGgW3Qq3V9=
+W34F-v_4rrkMSW7n6bcg8snrXkW8LbCJs2RDSBgW5cfF418-7YkxN3WLrV8gtFZVW4rdcph2MFs=
+1tW7JPyfl5NnG8xW6gDZVT5Gl5qWW68NdyG84_ybDW4hk4sS6TGhKfW7Lh3Kt13qYQ5W1zBjfr6=
+0zjy1W4jv-mv6mjKksW4dDzwb7Ny65qf4cbsXP04" style=3D"color:#00a4bd; mso-line-=
+height-rule:exactly; text-decoration:none !important" data-hs-link-id=3D"0"=
+ target=3D"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/=
+Infura%20Email%20Template/community_3.png?height=3D50&amp;upscale=3Dtrue&am=
+p;name=3Dcommunity_3.png" alt=3D"community_3" height=3D"25" style=3D"outlin=
+e:none; text-decoration:none; -ms-interpolation-mode:bicubic; border:none; =
+width:auto!important; height:25px!important; vertical-align:middle" valign=
+=3D"middle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dY3qgyTW7Y8-PT6lZ3ngN93tW=
+nk82TKTW7vf1182T8W4JW6qzrqJ67w7j8W2Zrslt2bwTG8W7V-mD_5xPB1WW5FjR3n2LgK7SW7K=
+6WqC8NX4TgW1mbdyv2V0PpJW4VG0Xt2wPYG5W6NqgN68rBN_5W62dv1l6CFxRMW1cXGPG44nqTZ=
+W8md-462rJvTLW423TSm7MdvqVW2Zd9f6998hT3N8qfFgzQTnnKW4pH_Lw3B9y55W3LZ5hZ5-wB=
+XWVClwQ031TtnJVsT1GB1bfzLDW131Vhg2f4SKHW3cFDt12Cv37_W2TVq225XXwC7W2QY2Nh2lH=
+c3WW8p0RCV74GRNnW2y6lnq8PqL9vf5NSlR804" style=3D"color:#00a4bd; mso-line-he=
+ight-rule:exactly; text-decoration:none !important" data-hs-link-id=3D"0" t=
+arget=3D"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/In=
+fura%20Email%20Template/twitter.png?height=3D50&amp;upscale=3Dtrue&amp;name=
+=3Dtwitter.png" alt=3D"twitter" height=3D"25" style=3D"outline:none; text-d=
+ecoration:none; -ms-interpolation-mode:bicubic; border:none; width:auto!imp=
+ortant; height:25px!important; vertical-align:middle" valign=3D"middle" wid=
+th=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dY3qgyTW7Y8-PT6lZ3mvN1sVk=
+lktHXKZW2qPJZN7fm2DhW2jDkD48vhC1JW6vqBHs8smjGVN7cr1lMMmZm2W8JJgvB6gvcv_W56B=
+0dt973X33W2CZXfL882QF5N8n836ckXdqTW2NQx4b8L3QTzVjdclp3tycgRW3_kGH18xYWV-W77=
+L8nM8lXzLmW6sB6fm3cVMDZW2sjDQc2_ZtNBV8Bm7h4f_x3KW5S4twv7F7V3sV3Y0326R32kGW2=
+N045X6x83r-N4ZgyXw3Sc8qW8CqW271GbbFrW5jyNHq57dvgHW2dhDz14SQz9HN8dCnp07K6-HW=
+240LHw4CmBjzVvvwK14Pxv9tf3gwqCC04" style=3D"color:#00a4bd; mso-line-height-=
+rule:exactly; text-decoration:none !important" data-hs-link-id=3D"0" target=
+=3D"_blank"><img src=3D"https://newsletter.consensys.io/hs-fs/hubfs/Infura%=
+20Email%20Template/github.png?height=3D50&amp;upscale=3Dtrue&amp;name=3Dgit=
+hub.png" alt=3D"github" height=3D"25" style=3D"outline:none; text-decoratio=
+n:none; -ms-interpolation-mode:bicubic; border:none; width:auto!important; =
+height:25px!important; vertical-align:middle" valign=3D"middle" width=3D"au=
+to">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td><td class=3D"social-network-cell" style=3D"border-collapse:colla=
+pse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, sans-serif; fo=
+nt-size:18px; color:#000000; word-break:break-word">
+        <table role=3D"presentation" align=3D"center" style=3D"border-spaci=
+ng:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; width:auto; text-align:center" class=3D"hs_cos_wrapper_type_soc=
+ial_module_single" width=3D"auto">
+          <tbody>
+            <tr align=3D"center">
+              <td class=3D"display_block_on_small_screens" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Lato, Tahoma, =
+sans-serif; font-size:18px; color:#000000; word-break:break-word; padding:8=
+px 5px; line-height:1; vertical-align:middle" valign=3D"middle">
+                <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+113/c=
+zspy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9fd3qgyTW8wLKSR6lZ3p9W4MDn=
+PH7ppHNGN2QhzZ8J653GW1lL5m21C6w7zW14zy1_3Ykg2sW4tPKlx8NLFb5W7Tdb-_3jFjK6W19=
+jrtv2xDWtqW4WVh_d1MgM2gW4Ygvc886GyzlW39TYrm2QB49lW6_vByt4LtMVxW7ffM1M2k_sT4=
+Vy5qRm6T2bQDW7__lt97ywGbqVfZ845550wryW2ZL4_f8NQqtnW4b5LR98xpZKlW2Gh5b07pyyl=
+CW959JZ37sGrDRN5DSggSm2SqfW2_5tg_3m-TDjW6yNGdf1-CHccW7gW3Tq8ywbccW96-Jy35W8=
+vC7W2Kr4cL16RHbQW2Q29qr25jPBCN7SM4Qm8Hq_ZTM8yR2zgw7ff8dGBZv04" style=3D"col=
+or:#00a4bd; mso-line-height-rule:exactly; text-decoration:none !important" =
+data-hs-link-id=3D"0" target=3D"_blank"><img src=3D"https://newsletter.cons=
+ensys.io/hs-fs/hubfs/Infura%20Email%20Template/linkedin.png?height=3D50&amp=
+;upscale=3Dtrue&amp;name=3Dlinkedin.png" alt=3D"linkedin" height=3D"25" sty=
+le=3D"outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; b=
+order:none; width:auto!important; height:25px!important; vertical-align:mid=
+dle" valign=3D"middle" width=3D"auto">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div></td></tr></tbody></table>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Lato, Tahoma, sans-serif; font-size:18px; color:#000000; word-break:break-w=
+ord; padding:0px 20px 10px"><div id=3D"hs_cos_wrapper_module-2-0-1" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapp=
+er_module-2-0-1_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrap=
+per_type_rich_text" style=3D"color: inherit; font-size: inherit; line-heigh=
+t: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_t=
+ext"><p style=3D"mso-line-height-rule:exactly; line-height:175%; text-align=
+:center" align=3D"center"><span style=3D"color: #ffffff;">_________________=
+____________________________________</span></p>
+<p style=3D"mso-line-height-rule:exactly; text-align:center; font-size:8px;=
+ line-height:175%" align=3D"center">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; text-align:cent=
+er" align=3D"center"><span style=3D"color: #ffffff;"><span style=3D"font-fa=
+mily: Arial, Helvetica, sans-serif; font-size: 12px;">Copyright =C2=A9 2024=
+ Infura</span><br><span style=3D"font-family: Arial, Helvetica, sans-serif;=
+ font-size: 12px;">A <a href=3D"https://newsletter.consensys.io/e3t/Ctc/T8+=
+113/czspy04/VW92WN5-5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1N4xH9dF3qgyTW7lCdLW6lZ3lL=
+W3tZH5q1YzsZkW3n2kcB1KhFVhW6QJ1G733_BCzW7rQJCD8X93w3W1yXBgt1C8w3yW2gvQtV4CW=
+xcMN4DVmQF_bdhpW458VbC1RL7HzW4yjhV_6nhmSZVXmNT03fyvj-W9kl3tW8FpT8XW6mNvMn5-=
+jRB5W5fX60n4rHRxsW51D-ZK25Z-7fW5TYBq41P6gFpVvxWTK3P2F_0W7s7ZjQ8hgBDSW7t_lSH=
+6J4zpWW59fxc76YDm_FW4PdMLb32zFtlW5DKR_r27cdH3W138mQZ2TBxrKW8dWySF4J4W1nV5By=
+p04Ppxq-f2fH8Pn04" target=3D"_blank" style=3D"mso-line-height-rule:exactly;=
+ color:#ffffff" rel=3D"noopener" data-hs-link-id=3D"0">Consensys</a> Format=
+ion</span><br><span style=3D"font-family: Arial, Helvetica, sans-serif; fon=
+t-size: 12px;">Want to change how you receive these emails?</span><br><span=
+ style=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px;">You =
+can <a href=3D"https://newsletter.consensys.io/hs/preferences-center/en/pag=
+e?data=3DW2nXS-N30h-F_W3ZWvtR25m5k2W3bbp6y4cMJZRW3W1vZY3y-lB2W2MMHyz3SP10MW=
+3QzYnp1QcD1XW22XfdH2p5TlvW2PQSFB1NlW-gW1Q4y7Y2FTQ2hW3NF1Vn3P03LPW2nMJ-M47vZ=
+TQW3M34YR2C_b88W4rfl5l4cs_Q1W1N7Df_47m5vQW43B8HP21hs89W3SMldk1Zbr3wW2CxdLH4=
+rrkcKW1SzclB3P6GFbW1V0r4c2CT4BhW2-lMQ33yRqN7W3djtWk3BXJ9WW23pWvB386VdwW2KSw=
+tP2D05vZW1NBs0N2t53_JW1Vw27_1QDGnMW34mnRK4cyV0NW45z5NX3T537TW41t9Jw3dzZ7wW2=
+YCDGg30sLCcW3646VN3GZnpmW2qFLq-1Nx3NcW45yMnj2nNv62W4ff-2n1Q5SQMW1_7f4M3F6cs=
+qW1NvMX41Z01_jW1_lWhS3QPZNJW2xwT5N2Rv_HQW3QW1kN2zFH1ZW3SZ9sH3Z_v4hW1XmnFy38=
+Cd-8W2MMPwL1NmKftW230c5v3H0dmyW3XPmBW4mcbC1W4cyzC636vBL-W47SL041Xb9cDW3DZYw=
+h2H-rF_0&amp;utm_campaign=3DConsensys%20Regulatory%20Campaign%20-%20April%2=
+02024&amp;utm_source=3Dhs_email&amp;utm_medium=3Demail&amp;utm_content=3D30=
+4389440&amp;_hsenc=3Dp2ANqtz-8dy02qERFW4I9Q-9n67IO15CWgBXU1ThAjyOJbUCvKDU-d=
+4JzdTNpgV7YMj1wIG3tlgctydv-1xkflsprxwoQu9VclzQ&amp;_hsmi=3D304389440" style=
+=3D"mso-line-height-rule:exactly; color:#ffffff" data-hs-link-id=3D"0" targ=
+et=3D"_blank">update your preferences</a> or <a href=3D"https://newsletter.=
+consensys.io/hs/preferences-center/en/direct?data=3DW2nXS-N30h-F_W3ZWvtR25m=
+5k2W3bbp6y4cMJZRW3W1vZY3y-lB2W2MMHyz3SP10MW3QzYnp1QcD1XW22XfdH2p5TlvW2PQSFB=
+1NlW-gW1Q4y7Y2FTQ2hW3NF1Vn3P03LPW2nMJ-M47vZTQW3M34YR2C_b88W4rfl5l4cs_Q1W1N7=
+Df_47m5vQW43B8HP21hs89W3SMldk1Zbr3wW2CxdLH4rrkcKW1SzclB3P6GFbW1V0r4c2CT4BhW=
+2-lMQ33yRqN7W3djtWk3BXJ9WW23pWvB386VdwW2KSwtP2D05vZW1NBs0N2t53_JW1Vw27_1QDG=
+nMW34mnRK4cyV0NW45z5NX3T537TW41t9Jw3dzZ7wW2YCDGg30sLCcW3646VN3GZnpmW2qFLq-1=
+Nx3NcW45yMnj2nNv62W4ff-2n1Q5SQMW1_7f4M3F6csqW1NvMX41Z01_jW1_lWhS3QPZNJW2xwT=
+5N2Rv_HQW3QW1kN2zFH1ZW3SZ9sH3Z_v4hW1XmnFy38Cd-8W2MMPwL1NmKftW230c5v3H0dmyW3=
+XPmBW4mcbC1W4cyzC636vBL-W47SL041Xb9cDW3DZYwh2H-rF_0&amp;utm_campaign=3DCons=
+ensys%20Regulatory%20Campaign%20-%20April%202024&amp;utm_source=3Dhs_email&=
+amp;utm_medium=3Demail&amp;utm_content=3D304389440&amp;_hsenc=3Dp2ANqtz-8dy=
+02qERFW4I9Q-9n67IO15CWgBXU1ThAjyOJbUCvKDU-d4JzdTNpgV7YMj1wIG3tlgctydv-1xkfl=
+sprxwoQu9VclzQ&amp;_hsmi=3D304389440" style=3D"mso-line-height-rule:exactly=
+; color:#ffffff" data-hs-link-id=3D"0" target=3D"_blank">unsubscribe here</=
+a>.</span><br><span style=3D"font-size: 12px;">&nbsp;</span><br><span style=
+=3D"font-size: 12px;">Consensys Software Inc &nbsp;&nbsp;5049 Edwards Ranch=
+ Rd &nbsp; &nbsp;Fort Worth &nbsp;TX &nbsp;&nbsp;76109 &nbsp;&nbsp;United S=
+tates</span></span></p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; text-align:cent=
+er" align=3D"center">&nbsp;</p></div></div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  </div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+ =20
+<img src=3D"https://newsletter.consensys.io/e3t/Cto/T8+113/czspy04/VW92WN5-=
+5w0DW6Mk_4Q7znPY3W3V7XmG5dkFS1W4xH8_r3CQKSK122" alt=3D"" width=3D"1" height=
+=3D"1" border=3D"0" style=3D"display:none!important;min-height:1px!importan=
+t;width:1px!important;border-width:0!important;margin-top:0!important;margi=
+n-bottom:0!important;margin-right:0!important;margin-left:0!important;paddi=
+ng-top:0!important;padding-bottom:0!important;padding-right:0!important;pad=
+ding-left:0!important"></body></html>
+------=_Part_152240_88265044.1714076034837--
+

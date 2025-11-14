@@ -1,0 +1,124 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:be9c:0:b0:338:10c1:b0d4 with SMTP id a28csp647936ljr;
+        Fri, 26 Sep 2025 14:17:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFNLQ3gPMz7SE4nXNOMaBmdlazkF2lIV+fX2R1H1P51x4b+kaGVOdvGsdp6xmvQfpPPO6po
+X-Received: by 2002:a5d:9549:0:b0:8e8:222b:4e3b with SMTP id ca18e2360f4ac-9016a2211b4mr1199786139f.15.1758921445950;
+        Fri, 26 Sep 2025 14:17:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1758921445; cv=none;
+        d=google.com; s=arc-20240605;
+        b=d7VOdLQmKhG0nRX6D7/pvYsuqq2TuNOtHnZpO9WkrRo5vvIJoOWx9P46yss2sLbVBj
+         wpLX8FTfL/rm9pJ1TssOboeuXAGp0QFWW+QYTQz3uC4LFyXtlKgWv7LwTZu7tyDRJ/j0
+         IbOanXfnxjZgc/gl7hm0uQEM59hF4VvyprdRNKKC0vb3Tzbq0xb0D2mrNrlW8ksf1oIq
+         SETnFTrvMkrK58HGcExxH/ZBpbsvZ052pAP6JlqEJy50g0aRr8Yq+WVVG51aHO8Toirc
+         sQpU3edaBMQdjku04FEnRrPq05JqmAdGiu2LugxHg381YJA5JsdkD81WRG63gBhfWlhk
+         rf+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:feedback-id:to:message-id
+         :subject:date:from:dkim-signature:dkim-signature;
+        bh=/r6R6KlhkpmED7HDj1EM2opgOhgmcRBdugMs2ar1Hwk=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=dMiN2bOORAnYJkaiObCm9GovCxdMadgEpnOyrtyKOeMTmRUb73ZhlQJXL0zckFNf+T
+         KRgDeti8GTqBRWsD4lIDmBY7EjOK6/b4L/woIjKGjZLr52X0ROs8FI16Ff1wFX9Be/P5
+         TWYiAw91yIocbECw8OREZO6YPlYZr/FOmvOuMOpg7JgpwktnTqf4CknKLYnmHHUqU2K7
+         A/mk9cfzzaeR5XkdzLR7aDZgNw30DZNKtRbR6fIZFBJ8MH/aagosZYanNZb0cGQCFsuP
+         cr6IRqioL5m6FKoy5Hvj484woaUYzT7C15TunyrymVbdfavpcKiCwxhnIthHB45aXXon
+         q6PA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ab.mtasv.net header.s=ab20250324 header.b=BjwqkhmC;
+       dkim=pass header.i=@mail.app.supabase.io header.s=20240920183138pm header.b=POiOov+w;
+       spf=pass (google.com: domain of pm_bounces@pm-bounces.mail.app.supabase.io designates 50.31.205.204 as permitted sender) smtp.mailfrom=pm_bounces@pm-bounces.mail.app.supabase.io;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=supabase.io
+Return-Path: <pm_bounces@pm-bounces.mail.app.supabase.io>
+Received: from mta204-ab1.mtasv.net (mta204-ab1.mtasv.net. [50.31.205.204])
+        by mx.google.com with ESMTPS id ca18e2360f4ac-904162361f3si471593439f.176.2025.09.26.14.17.25
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 Sep 2025 14:17:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pm_bounces@pm-bounces.mail.app.supabase.io designates 50.31.205.204 as permitted sender) client-ip=50.31.205.204;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ab.mtasv.net header.s=ab20250324 header.b=BjwqkhmC;
+       dkim=pass header.i=@mail.app.supabase.io header.s=20240920183138pm header.b=POiOov+w;
+       spf=pass (google.com: domain of pm_bounces@pm-bounces.mail.app.supabase.io designates 50.31.205.204 as permitted sender) smtp.mailfrom=pm_bounces@pm-bounces.mail.app.supabase.io;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=supabase.io
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=ab20250324; d=ab.mtasv.net;
+ h=From:Date:Subject:Message-Id:To:Feedback-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Date:From:Message-ID:Reply-To:Sender:Subject:To:CC;
+ t=1758921445; x=1759007845;
+ bh=/r6R6KlhkpmED7HDj1EM2opgOhgmcRBdugMs2ar1Hwk=;
+ b=BjwqkhmCod+5l83X952HSBkugn6zcm11U5aaxZgSFZ11IssBzHjqTq8IGMR5+sk5wZuMLhsbytgE
+   oty1DZRvlUUieBy7TJpyYJsqLwHZpAbq1DkyAUSYWTZmvMEvf0K7tHzUzW4ulUbWexpKfeD1jcCn
+   eIsXsDrpZ/oLxzWryXnkgir76vDv0XhVGpL7r2EXhrZvPCZvFK+vt3Vkpw4Mxl2tdtRD31IF1nSe
+   f+nMhIjsugY/BE1KD+VWd4xocc2AuIn7SQ+Zr444fGUbdSO7fNRhdx74WKR6sZXlXBgXqDDYkz+H
+   h/3tUPKwgvVJnJPsv4sYL7DGvjzcmlU5+HqUBw==
+Received: by mta204-ab1.mtasv.net id hqs1ea3b84k2 for <ely.ubuntu0@gmail.com>; Fri, 26 Sep 2025 17:17:24 -0400 (envelope-from <pm_bounces@pm-bounces.mail.app.supabase.io>)
+X-PM-IP: 50.31.205.204
+X-IADB-IP: 50.31.205.204
+X-IADB-IP-REVERSE: 204.205.31.50
+DKIM-Signature: v=1; a=rsa-sha256; d=mail.app.supabase.io; s=20240920183138pm;
+	c=relaxed/relaxed; i=noreply@mail.app.supabase.io; t=1758921444;
+	x=1759094244;
+	h=date:date:from:from:message-id:reply-to:sender:subject:subject:to:to:cc:
+	feedback-id:mime-version:content-type:content-transfer-encoding;
+	bh=/r6R6KlhkpmED7HDj1EM2opgOhgmcRBdugMs2ar1Hwk=;
+	b=POiOov+wgfJ5T0FEB2nheBj6ky9uL/3iRDQTgHCWCSpfIPYX8Wbmg0ehcd/RqWY13618Wgv/q+a
+	0pdSxvIv1Z4S8BPmzXeDrkvN7/cMxC6pIEOgY+S6/UhpPFPj4iJzH8762w4xJ170+gfl6jtP/8+bM
+	Hs9PoBXBRDLkIskVMkU=
+From: Supabase Auth <noreply@mail.app.supabase.io>
+Date: Fri, 26 Sep 2025 21:17:24 +0000
+Subject: Your Magic Link
+Message-Id: <f5659763-aa1d-4bf0-b1d5-b09507cb3bf4@mtasv.net>
+To: ely.ubuntu0@gmail.com
+X-SES-Message-Tags: ses:feedback-id-a=qwzfgblkfjwcthrjvzvs,ses:feedback-id-b=magiclink
+Feedback-ID: s14387545-_:s14387545:a268058:postmark
+X-Complaints-To: abuse@postmarkapp.com
+X-PM-Message-Id: f5659763-aa1d-4bf0-b1d5-b09507cb3bf4
+X-PM-RCPT: |bTB8MjY4MDU4fDE0Mzg3NTQ1fGVseS51YnVudHUwQGdtYWlsLmNvbQ==|
+X-PM-Message-Options: v1;1.uKowkJfftxiX_9maa01XvQ.urWlPHIQsDSqaGDmExc7a3YvKrB2-yEityOMigi2QYPsNNQw5fzhcUgTbCB0jTQbEJVu_zzHowO7_AVv5DfIc59H6zeUDZobqHEwaASneqobRV2FNbmFNfk1T4oTdnRHy6NrwfCUsO8be4oJJULTlF6MSgJBz0bic7VHYmsrO1-slU7kS6ihxMgq9dHadyBzkRI3OkEoxuLPYB7Ak9v1q_6rMBMG3xuch8jI3V3B_WU
+MIME-Version: 1.0
+X-PM-MTA-Pool: transactional-3
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+<h2>Magic Link</h2>
+
+<p>Follow this link to login:</p>
+<p><a href=3D"https://qwzfgblkfjwcthrjvzvs.supabase.co/auth/v1/verify?token=
+=3Dc0befc7c2c4879152d8c6c9804b9c08768bf4b1dd3d773ba6432c42f&amp;type=3Dmagi=
+clink&amp;redirect_to=3Dhttp://localhost:3000/">Log In</a></p>
+
+  <div style=3D"width: 100%; margin: 32px 0; padding: 0; font-family: Arial=
+, sans-serif; font-size: 14px; color: #333333; word-break: break-word;">
+    <table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspaci=
+ng=3D"0" style=3D"border-collapse: collapse;">
+      <tr>
+        <td align=3D"center" style=3D"padding: 20px;">
+          <table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cel=
+lspacing=3D"0">
+           =20
+  <tr>
+    <td align=3D"center" style=3D"padding-bottom: 16px; font-size: 14px; co=
+lor: #666666;">
+      You're receiving this email because you signed up for an application
+
+      <a href=3D"https://supabase.com/?utm_source=3Dauth-email&utm_medium=3D=
+email&utm_campaign=3Dpowered-by-supabase" style=3D"color: #666666; text-dec=
+oration:underline">
+  powered by Supabase
+      </a>=E2=9A=A1=EF=B8=8F
+    </td>
+  </tr>
+            <tr>
+              <td align=3D"center" style=3D"font-size: 12px; color: #666666=
+;">
+                <a href=3D"https://supabase.com/opt-out/qwzfgblkfjwcthrjvzv=
+s" style=3D"color: #666666; text-decoration: underline;">Opt out of these e=
+mails</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>

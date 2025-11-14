@@ -1,0 +1,736 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:40c6:b0:4c2:49f0:5a51 with SMTP id s6csp996021pxb;
+        Thu, 27 Jul 2023 13:29:19 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlF+IfOlrEcMlnxGFp7uODED0FdwqMQBnsSafq+wwokROeL6SwtEMFtiI+f79Q+UtvD7ROjL
+X-Received: by 2002:a05:6808:1cd:b0:399:169:75d4 with SMTP id x13-20020a05680801cd00b00399016975d4mr263923oic.36.1690489759364;
+        Thu, 27 Jul 2023 13:29:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690489759; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vH0SS17yzK9QzTfCNUXtJILXXJndDR87lpl21JiQEoONDswyKl/ydUrkIhfyBUGZ1n
+         pTmqkd8+QtIzMDxltuyM8/EQfMpNFIB0FfI1khwTSmyoLESToO6EBRup2lO1Gr0CVLS5
+         27AtsILNyaKSE5Jh6ZeakJUu7zF81XamAlg2Ls6gMf+tHN9WrAiiNlbWNEi20GpiIS8o
+         D80jcTqSr2XpFYWzx0HuSCrNZ/4uzCceYFQkYT/OILDkykwqf7M7PeJKwr5M05HyW+JF
+         aX1Mysf3mqrTUw5zb3I/JsAWqZqviyssc6etuttWhaiiMxesv6hRxkFlehn43sLPZlXO
+         /ulw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe:subject
+         :to:from:dkim-signature:dkim-signature;
+        bh=4VNTwN+3ukxNlivNib2mdw3l+eeQn/hVSWXo6joQxwA=;
+        fh=hpwk412rX/HzOd15xsw8pfuCipMSvUmzUnsS6VgPRZs=;
+        b=toVk0MJ6UsfrrawpHNarU5R2VlVTrZZ5jHnjZLrAS+OHI5sf0el6reuJEZ1t8/OWP1
+         rYcbVVZV1zHCX+txrcTwdhXj1GOEMzyeov1AEtzRQhkEw0ApiGf78vkIFD0VNOYxwwId
+         1+uIEM7NTeprCkemOWBhAtKsCXc98xDVTkAcJ94Hg+ECmw9c9fXBjnwT35kr0blOLxab
+         1VrIvyVQSBbhSgGqCmwWQmQaNT2CAMTHyqY5D8XyyL269TBiObWFWeInIEcVHCYgIafm
+         tlk5b8wSBafXnMEvB0PLpXtgrrO1R6915IW4nV1Hk3FI9VR6ivwAJMGrLH+Bgf1+BWuR
+         2U3Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=V3ZrtjrM;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=VIYyuus2;
+       spf=pass (google.com: domain of 01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id b10-20020a0cf04a000000b00635f631252fsi1211267qvl.286.2023.07.27.13.29.18
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Jul 2023 13:29:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=V3ZrtjrM;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=VIYyuus2;
+       spf=pass (google.com: domain of 01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1690489758;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type;
+	bh=4VNTwN+3ukxNlivNib2mdw3l+eeQn/hVSWXo6joQxwA=;
+	b=V3ZrtjrM5i+v19EMFgU0GxO/e5ooKoRgXAeN2DFV0nWaso8dNEvrqx3z3xHQH29h
+	OLFBHQNfdAtWy4up93JrGy3iW/lVnsEVS36KP7Nyn7zJzUTUZVrwuHWTD7CHG/1jXW4
+	Ojd83EI2EyIzX1JppNZdudpqaumHuO5k64PDPOvg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1690489758;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=4VNTwN+3ukxNlivNib2mdw3l+eeQn/hVSWXo6joQxwA=;
+	b=VIYyuus2NtCIA4W2OW4w/AfZ8bH6ep7Biuv30hSgJPqMi3hfWmk1i6vnKjtwRmMh
+	eT+qSYxgcBMA8DCCbOds94pj8myGYCoDdS354M8ERlH7LQ1myn+U9rrwnVH8Ps1VhlX
+	a6EBqeQcS4legul3IkL2JELfK/QMyG9SiXe3Fqys=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Build workflows faster with AI
+X-EmailOctopus-Parent-Id: a27292e2-2be6-11ee-a3e7-31c177eb676a
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-07-27T19:15:31+00:00
+X-EmailOctopus-Sent-At: 2023-07-27T20:29:18+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=a27292e2-2be6-11ee-a3e7-31c177eb676a&pt=campaign&pv=4&spa=1690485331&t=1690489758&s=704f8545b36de341155d5b2594c03134d617bb2666f1bd6133f1201334a23a55&skipConfirmation=1>
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Thu, 27 Jul 2023 20:29:18 +0000
+Message-ID: <01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=Z7nSpt2v
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.07.27-54.240.123.37
+
+--Z7nSpt2v
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Tell Pipedream the code you want, we generate it for you.=C2=A0
+
+ [Pipe=
+dream] [https://pipedream.com]=20
+
+[A robot in an event history museum]=
+
+[https://pipedream.com/blog/build-workflows-faster-with-ai/]=20
+
+BUILD=
+ WORKFLOWS FASTER WITH AI
+
+Today,=C2=A0Pipedream [https://pipedream.com=
+] is launching a way to
+generate code using plain English. You select an =
+app, tell us what you
+want to do, and we'll generate the Node.js code tha=
+t does it.=20
+
+- GENERATE CODE using plain English=C2=A0
+
+- Build com=
+ponents for ANY INTEGRATED APPLICATION
+
+- Available to all Advanced & B=
+usiness [https://pipedream.com/pricing]
+customers
+
+- Read the blog po=
+st
+[https://pipedream.com/blog/build-workflows-faster-with-ai/] or
+docu=
+mentation
+[https://pipedream.com/docs/code/nodejs/ai-code-generation/#usi=
+ng-ai-to-generate-code]
+
+[A robot in an event history museum]
+[https:=
+//pipedream.com/blog/build-workflows-faster-with-ai/]=20
+
+=09=09Read the =
+blog post
+[https://pipedream.com/blog/build-workflows-faster-with-ai/]
+=
+
+-------------------------
+
+GETTING STARTED
+
+To manage load as we=
+ scale this out, we've released this to all
+Advanced and Business [https:=
+//pipedream.com/pricing] customers first.
+Since you're getting a dedicate=
+d AI engineer, we think it's worth the
+upgrade!=20
+
+Add a new step, sel=
+ect an app, and choose the USE AI option:
+
+[A demo of sharing a workflo=
+w]
+[https://pipedream.com/blog/build-workflows-faster-with-ai/]
+This op=
+ens a modal where you can generate code using plain English. BE
+VERBOSE=
+
+[https://pipedream.com/docs/code/nodejs/ai-code-generation/#getting-the-=
+best-results].
+Here are some examples:
+
+- SLACK: Send a message to th=
+e #general channel that says, "This
+message was sent with AI-generate cod=
+e!" Format it as a Slack block,
+with a header named, "Hello, world!"
+=
+
+- STRIPE: "Get the subscription information about a specific customer
+=
+based on their email address"
+
+The code gen service understands the Pip=
+edream component API
+[http://pipedream.com/docs/components/api/] and refe=
+rences the API
+docs of integrated apps [https://pipedream.com/apps]. For =
+example, you
+can tell it to include specific props
+[http://pipedream.co=
+m/docs/components/api/#props] or async options
+[http://pipedream.com/docs=
+/components/api/#async-options-example], and
+reference specific API endpo=
+ints you want to use for the selected app.
+The more information you provi=
+de, the better the code will be. =C2=A0
+
+-------------------------
+=
+
+WHAT'S NEXT
+
+First, we're adding PYTHON support to the code gen serv=
+ice. Soon
+you'll be able to generate either Node.js or Python code with A=
+I, all
+in the same workflow.
+
+And we're testing the interface for gen=
+erating FULL WORKFLOWS, with
+triggers, actions, custom code, and anything=
+ you need to build your
+app.
+
+We've also been working on our Q&A bot,=
+ Pi, for a few months.=20
+
+[A demo of sharing a workflow] [https://pipedr=
+eam.com/support] Like
+ChatGPT, he provides (mostly) human-level answers o=
+n a range of
+questions about Pipedream, APIs, and code. He's fun to talk =
+to, he's
+saving us hours of time a day, and he's providing support to our=
+
+community that we never could without an artificial assistant.=20
+
+[A =
+demo of sharing a workflow] [https://pipedream.com/support]=20
+
+You can c=
+hat with him in our Slack and Discourse communities
+[https://pipedream.co=
+m/support], and we're planning to embed him
+directly in https://pipedream=
+.com [https://pipedream.com/] so you can
+ask him questions as you build w=
+orkflows.=20
+
+We're also improving the AI code gen service to let you gen=
+erate
+PYTHON code, and even FULL WORKFLOWS with triggers, actions, custom=
+
+code, and anything you need to solve your problem.=20
+
+Please let us k=
+now [https://pipedream.com/support] if you see any
+bugs, want to suggest =
+a feature, or just want to chat about AI
+integrations!
+
+=09=09Read th=
+e blog post
+[https://pipedream.com/blog/build-workflows-faster-with-ai/]=
+
+
+Warm regards,=20
+The Pipedream Team
+
+-------------------------
+=
+ [https://pipedream.com]44 Montgomery Street
+San Francisco
+CALIFORNIA=
+
+94104
+United States of America=20
+
+Unsubscribe here
+[https://alatu=
+s.eocampaign.com/unsubscribe?ep=3D1&l=3D358ac956-f01d-11ed-bcd1-db2977b1fce=
+f&lc=3D860f934a-f025-11ed-b8ff-059d97be6197&p=3Da27292e2-2be6-11ee-a3e7-31c=
+177eb676a&pt=3Dcampaign&pv=3D4&spa=3D1690485331&t=3D1690489758&s=3D704f8545=
+b36de341155d5b2594c03134d617bb2666f1bd6133f1201334a23a55]
+--Z7nSpt2v
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><title></title></head><body class=3D=
+"notranslate fr-no-selection">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">Tell Pipedream the code you want, we generate it for you.&nbsp;</div>
+
+<p>
+
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DUTF-8">
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica =
+Neue&quot;,sans-serif;" width=3D"100%"><tbody><tr><td>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"max-width:560px;margin:40px auto;background-color:#ffffff;padding:40=
+px 30px 40px;border-radius:15px;" width=3D"100%"><tbody><tr style=3D"width:=
+100%;"><td>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/1/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/I2VLEh=
+AsNU0uBillw6wvRfTDdxI=3D332" rel=3D"noopener noreferrer" target=3D"_blank">=
+<img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image/=
+upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=3D=
+"display:block;outline:none;border:none;text-decoration:none;width:2.2rem;h=
+eight:2.2rem;"></a>
+<br>
+<br>
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fblog%2Fbuild-workflows-faster-with-ai%2F/1/01000189990aa2fb-0d6f94e=
+0-94cf-4f72-aef6-938c731409b4-000000/Nw7_HXVV6yly22r3sy7CfjEgZR8=3D332" rel=
+=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A robot in an event =
+history museum" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0=
+ed-4f354f26462b%2F1690476495479-1690476492697.png" style=3D"display: block;=
+ outline: none; border: none; text-decoration: none; width: 100%; height: a=
+uto; margin: 0px 0px 15px;"></a>
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1.4rem;line-he=
+ight:1.5rem;margin:0px;color:rgb(30, 41, 59);"><strong>Build Workflows Fast=
+er with AI</strong></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<meta charset=3D"utf-8"><span style=3D"color: rgb(53, 55, 58); font-family:=
+ Inter, sans-serif; font-size: 16px; font-style: normal; font-variant-ligat=
+ures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: no=
+ne; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-spa=
+ce: normal; background-color: rgb(255, 255, 255); text-decoration-thickness=
+: initial; text-decoration-style: initial; text-decoration-color: initial; =
+display: inline !important; float: none;">Today,&nbsp;</span><a href=3D"htt=
+ps://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com/2/010001=
+89990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/JPNF8vpxKDN2U74w52JP=
+IJiw1pw=3D332" rel=3D"noopener noreferrer" style=3D"user-select: auto; font=
+-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto=
+, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; f=
+ont-size: 16px; font-style: normal; font-variant-ligatures: normal; font-va=
+riant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: 2; wor=
+d-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, =
+255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139=
+); font-weight: 600;" target=3D"_blank">Pipedream</a> is
+<meta charset=3D"utf-8"><span style=3D"color: rgb(53, 55, 58); font-family:=
+ Inter, sans-serif; font-size: 16px; font-style: normal; font-variant-ligat=
+ures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: no=
+ne; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-spa=
+ce: normal; background-color: rgb(255, 255, 255); text-decoration-thickness=
+: initial; text-decoration-style: initial; text-decoration-color: initial; =
+display: inline !important; float: none;">launching a way to generate code =
+using plain English. You select an app, tell us what you want to do, and we=
+'ll generate the Node.js code that does it.</span>
+<br>
+</p>
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- <strong>Generate code</strong> using plain English&nbsp;</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Build components for <strong=
+>any integrated application</strong></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- Available to all <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/h=
+ttps:%2F%2Fpipedream.com%2Fpricing/1/01000189990aa2fb-0d6f94e0-94cf-4f72-ae=
+f6-938c731409b4-000000/-m8oPsFrcSNyOf1NtJHnBZ9K33o=3D332" rel=3D"noopener n=
+oreferrer" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:600=
+;text-decoration-line:underline;text-decoration-color:#34D28B;" target=3D"_=
+blank">Advanced &amp; Business</a> customers</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- Read the <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F=
+%2Fpipedream.com%2Fblog%2Fbuild-workflows-faster-with-ai%2F/2/01000189990aa=
+2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/2kn0jz_uaLfzV_kx9bs9blfKmH0=
+=3D332" rel=3D"noopener noreferrer" style=3D"color:rgb(0, 0, 0);text-decora=
+tion:none;font-weight:600;text-decoration-line:underline;text-decoration-co=
+lor:#34D28B;" target=3D"_blank">blog post</a> or <a href=3D"https://sc1sc28=
+5.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fnode=
+js%2Fai-code-generation%2F%23using-ai-to-generate-code/1/01000189990aa2fb-0=
+d6f94e0-94cf-4f72-aef6-938c731409b4-000000/wADB2DKYJ0ZPnSx-s-SUaljEhJc=3D33=
+2" rel=3D"noopener noreferrer" style=3D"color:rgb(0, 0, 0);text-decoration:=
+none;font-weight:600;text-decoration-line:underline;text-decoration-color:#=
+34D28B;" target=3D"_blank">documentation</a></p>
+<br>
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fblog%2Fbuild-workflows-faster-with-ai%2F/3/01000189990aa2fb-0d6f94e=
+0-94cf-4f72-aef6-938c731409b4-000000/DMBrcgo3nSt40UZjlHCu9824uTQ=3D332" rel=
+=3D"noopener noreferrer" target=3D"_blank"><img src=3D"https://gallery.eoca=
+mpaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1690475360772-ezgif.com-r=
+esize+%282%29.gif" alt=3D"A robot in an event history museum" style=3D"disp=
+lay: block; outline: none; border: none; text-decoration: none; width: 100%=
+; height: auto; margin: 0px 0px 15px;"></a>
+
+<br>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mb-6" style=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td>=
+<a class=3D"bg-button rounded-xl font-semibold text-white text-base text-ce=
+nter block" href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2=
+Fpipedream.com%2Fblog%2Fbuild-workflows-faster-with-ai%2F/4/01000189990aa2f=
+b-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/BeefMU47Do3vxPdoM7UGOyKaNDY=
+=3D332" rel=3D"noopener noreferrer" style=3D"display:inline-block;border-ra=
+dius:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font-size=
+:1rem;line-height:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-=
+y:11px;text-decoration:none;max-width:100%;padding:11px 23px;" target=3D"_b=
+lank"><span style=3D"display:inline-block;border-radius:0.75rem;background-=
+color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-height:120%;f=
+ont-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;te=
+xt-decoration:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:8=
+.25px;">Read the blog post</span></a></td></tr></tbody></table>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 class=3D"text-black dark:text-white text-2xl font-semibold tracking-tig=
+ht" style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Getting =
+Started</h1>
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">To manage load as we scale thi=
+s out, we've released this to all <a href=3D"https://sc1sc285.r.us-east-1.a=
+wstrack.me/L0/https:%2F%2Fpipedream.com%2Fpricing/2/01000189990aa2fb-0d6f94=
+e0-94cf-4f72-aef6-938c731409b4-000000/USqMwb7ynojay6c56pQt_EF60bg=3D332" re=
+l=3D"noopener noreferrer" style=3D"user-select: auto; font-family: -apple-s=
+ystem, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ub=
+untu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; f=
+ont-style: normal; font-variant-ligatures: normal; font-variant-caps: norma=
+l; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px;=
+ text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -=
+webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); color:=
+ rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); font-weight: 6=
+00;" target=3D"_blank">Advanced and Business</a> customers first. Since you=
+'re getting a dedicated AI engineer, we think it's worth the upgrade!
+<br>
+<br>Add a new step, select an app, and choose the <strong>Use AI</strong> o=
+ption:</p>
+<br>
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fblog%2Fbuild-workflows-faster-with-ai%2F/5/01000189990aa2fb-0d6f94e=
+0-94cf-4f72-aef6-938c731409b4-000000/RACVgbKMhNP4WEU6d_Td6ep9htQ=3D332" rel=
+=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A demo of sharing a =
+workflow" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f3=
+54f26462b%2F1690398312082-1690398310696.png" style=3D"display: block; outli=
+ne: none; border-width: 1px; text-decoration: none; width: 100%; height: au=
+to; margin: 0px 0px 15px;" class=3D"fr-bordered"></a>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">This opens a modal where you c=
+an generate code using plain English. <a href=3D"https://sc1sc285.r.us-east=
+-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fcode%2Fnodejs%2Fai-cod=
+e-generation%2F%23getting-the-best-results/1/01000189990aa2fb-0d6f94e0-94cf=
+-4f72-aef6-938c731409b4-000000/plawSxnmbnTeMP8c1r5tKW8Bc3o=3D332" rel=3D"no=
+opener noreferrer" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-we=
+ight:600;text-decoration-line:underline;text-decoration-color:#34D28B;" tar=
+get=3D"_blank"><strong>Be verbose</strong></a>. Here are some examples:</p>
+
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- <strong>Slack</strong>: Send a message to the <code>#general</code> chann=
+el that says, "This message was sent with AI-generate code!" Format it as a=
+ Slack block, with a header named, "Hello, world!"</p>
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+- <strong>Stripe</strong>: "Get the subscription information about a specif=
+ic customer based on their email address"</p>
+
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">The code gen service understan=
+ds the <a href=3D"http://sc1sc285.r.us-east-1.awstrack.me/L0/http:%2F%2Fpip=
+edream.com%2Fdocs%2Fcomponents%2Fapi%2F/1/01000189990aa2fb-0d6f94e0-94cf-4f=
+72-aef6-938c731409b4-000000/RerQvTh_e93-GZ5caeOdzdfnlAA=3D332" rel=3D"noope=
+ner noreferrer" style=3D"user-select: auto; font-family: -apple-system, &qu=
+ot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cant=
+arell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style:=
+ normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-=
+spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-tran=
+sform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-tex=
+t-stroke-width: 0px; background-color: rgb(255, 255, 255); color: rgb(0, 0,=
+ 0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;" targe=
+t=3D"_blank">Pipedream component API</a> and references the API docs of <a =
+href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.c=
+om%2Fapps/1/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/8d=
+E4k0G0xWl427Nfqmi5kTFy3Qg=3D332" rel=3D"noopener noreferrer" style=3D"user-=
+select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Sego=
+e UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&qu=
+ot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligature=
+s: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; white-space: norm=
+al; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; backgroun=
+d-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underlin=
+e rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">integrated apps</=
+a>. For example, you can tell it to include specific <a href=3D"http://sc1s=
+c285.r.us-east-1.awstrack.me/L0/http:%2F%2Fpipedream.com%2Fdocs%2Fcomponent=
+s%2Fapi%2F%23props/1/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-=
+000000/cKgUC0LstgvkBQt53xNxKi77Ggk=3D332" rel=3D"noopener noreferrer" style=
+=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot;, &=
+quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetic=
+a Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant=
+-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orph=
+ans: 2; text-align: start; text-indent: 0px; text-transform: none; white-sp=
+ace: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration:=
+ underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">props</a=
+> or <a href=3D"http://sc1sc285.r.us-east-1.awstrack.me/L0/http:%2F%2Fpiped=
+ream.com%2Fdocs%2Fcomponents%2Fapi%2F%23async-options-example/1/01000189990=
+aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/konNisd5dFmhOtxYhdokha9Cg=
+WU=3D332" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-fami=
+ly: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxy=
+gen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-s=
+ize: 16px; font-style: normal; font-variant-ligatures: normal; font-variant=
+-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-=
+indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spa=
+cing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, =
+255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); fo=
+nt-weight: 600;" target=3D"_blank">async options</a>, and reference specifi=
+c API endpoints you want to use for the selected app. The more information =
+you provide, the better the code will be. &nbsp;
+</p>
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 class=3D"text-black dark:text-white text-2xl font-semibold tracking-tig=
+ht" style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">What's N=
+ext</h1>
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">First, we're adding <strong>Py=
+thon</strong> support to the code gen service. Soon you'll be able to gener=
+ate either Node.js or Python code with AI, all in the same workflow.</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">And we're testing the interfac=
+e for generating <strong>full workflows</strong>, with triggers, actions, c=
+ustom code, and anything you need to build your app.</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">We've also been working on our=
+ Q&amp;A bot, Pi, for a few months.
+<br>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fsupport/1/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000=
+000/Aa-nD739xtxrgXpazgH-1AlVkV0=3D332" rel=3D"noopener noreferrer" target=
+=3D"_blank"><img alt=3D"A demo of sharing a workflow" src=3D"https://galler=
+y.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1690398368975-16903=
+98367533.png" style=3D"display: block; outline: none; border-width: 0px; te=
+xt-decoration: none; width: 100%; height: auto; margin: 0px 0px 15px;" clas=
+s=3D"fr-bordered"></a>
+
+<meta charset=3D"utf-8"><span style=3D"color: rgb(53, 55, 58); font-family:=
+ Inter, sans-serif; font-size: 16px; font-style: normal; font-variant-ligat=
+ures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: no=
+ne; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-spa=
+ce: normal; background-color: rgb(255, 255, 255); text-decoration-thickness=
+: initial; text-decoration-style: initial; text-decoration-color: initial; =
+display: inline !important; float: none;">Like ChatGPT, he provides (mostly=
+) human-level answers on a range of questions about Pipedream, APIs, and co=
+de. He's fun to talk to, he's saving us hours of time a day, and he's provi=
+ding support to our community that we never could without an artificial ass=
+istant.</span>
+<br>
+<br>
+</p>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fsupport/2/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000=
+000/cHSW-oDl-RtRKu2xbpc6qvah3io=3D332" rel=3D"noopener noreferrer" target=
+=3D"_blank"><img alt=3D"A demo of sharing a workflow" src=3D"https://galler=
+y.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1690404786880-16904=
+04786128.png" style=3D"display: block; outline: none; border-width: 0px; te=
+xt-decoration: none; width: 100%; height: auto; margin: 0px 0px 15px;" clas=
+s=3D"fr-bordered"></a>
+
+<br>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+You can chat with him in our <a href=3D"https://sc1sc285.r.us-east-1.awstra=
+ck.me/L0/https:%2F%2Fpipedream.com%2Fsupport/3/01000189990aa2fb-0d6f94e0-94=
+cf-4f72-aef6-938c731409b4-000000/CuFbEBpq7MRRkzy2_i85oboCIug=3D332" rel=3D"=
+noopener noreferrer" style=3D"user-select: auto; font-family: -apple-system=
+, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu,=
+ Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-s=
+tyle: normal; font-variant-ligatures: normal; font-variant-caps: normal; le=
+tter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text=
+-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webki=
+t-text-stroke-width: 0px; background-color: rgb(255, 255, 255); color: rgb(=
+0, 0, 0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;" =
+target=3D"_blank">Slack and Discourse communities</a>, and we're planning t=
+o embed him directly in <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2F/1/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6=
+-938c731409b4-000000/iCmHV7nP9c-lpNYqrBBE-w1Mir8=3D332" rel=3D"noopener nor=
+eferrer" style=3D"user-select: auto; font-family: -apple-system, &quot;syst=
+em-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, =
+&quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal=
+; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing=
+: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-strok=
+e-width: 0px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); te=
+xt-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_b=
+lank">https://pipedream.com</a> so you can ask him questions as you build w=
+orkflows.
+<br>
+<br> We're also improving the AI code gen service to let you generate <stro=
+ng>Python</strong> code, and even <strong>full workflows</strong> with trig=
+gers, actions, custom code, and anything you need to solve your problem.
+<br>
+<br> Please <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2=
+F%2Fpipedream.com%2Fsupport/4/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c=
+731409b4-000000/1N0Pp29_W_xlkLwIiGWPXbUIDPc=3D332" rel=3D"noopener noreferr=
+er" style=3D"user-select: auto; font-family: -apple-system, &quot;system-ui=
+&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot=
+;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; fon=
+t-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: nor=
+mal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none;=
+ white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-wid=
+th: 0px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-de=
+coration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank"=
+>let us know</a> if you see any bugs, want to suggest a feature, or just wa=
+nt to chat about AI integrations!
+</p>
+<br>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mb-6" style=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td>=
+<a class=3D"bg-button rounded-xl font-semibold text-white text-base text-ce=
+nter block" href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2=
+Fpipedream.com%2Fblog%2Fbuild-workflows-faster-with-ai%2F/6/01000189990aa2f=
+b-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/LJlb8MgKbz8omcsb41PWXEGEzsE=
+=3D332" rel=3D"noopener noreferrer" style=3D"display:inline-block;border-ra=
+dius:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font-size=
+:1rem;line-height:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-=
+y:11px;text-decoration:none;max-width:100%;padding:11px 23px;" target=3D"_b=
+lank"><span style=3D"display:inline-block;border-radius:0.75rem;background-=
+color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-height:120%;f=
+ont-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;te=
+xt-decoration:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:8=
+.25px;">Read the blog post</span></a></td></tr></tbody></table>
+<br>
+
+<br>Warm regards,
+<br>The Pipedream Team
+
+<p>
+<br>
+</p>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/3/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/nlQKVs=
+OgvqDYW5U6796SQH7aEkU=3D332" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank"></a><a href=3D"https://sc1sc285.r.us-east-=
+1.awstrack.me/L0/https:%2F%2Fpipedream.com/4/01000189990aa2fb-0d6f94e0-94cf=
+-4f72-aef6-938c731409b4-000000/5gxoBxuiJQuRPy_p3g84H5Rtezg=3D332" style=3D"=
+color:#b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">44 Mo=
+ntgomery Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United States of=
+ America</a>
+<br>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Falatus.e=
+ocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D358ac956-f01d-11ed-bcd1-db2977b1=
+fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6197%26p=3Da27292e2-2be6-11ee-a=
+3e7-31c177eb676a%26pt=3Dcampaign%26pv=3D4%26spa=3D1690485331%26t=3D16904897=
+58%26s=3D704f8545b36de341155d5b2594c03134d617bb2666f1bd6133f1201334a23a55/1=
+/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/484wQ-BM9z959=
+8ZBC8ADmhJ3AVg=3D332" style=3D"font-size:14px;color:#b4becc;">Unsubscribe h=
+ere</a>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/5/01000189990aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/yU7XI7=
+3aXoFfqNigkvq8FRUratU=3D332" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank">
+<br>
+<br>
+
+
+
+
+</a>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<p>
+
+
+
+
+
+
+
+<br>
+</p>
+
+
+
+
+
+
+
+
+
+
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/0100018999=
+0aa2fb-0d6f94e0-94cf-4f72-aef6-938c731409b4-000000/BFcqeBxpEkJPU4RuD4yHlm6M=
+iAg=3D332" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--Z7nSpt2v--

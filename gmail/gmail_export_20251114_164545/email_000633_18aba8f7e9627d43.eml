@@ -1,0 +1,644 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6124:587:b0:382:28f0:b1e6 with SMTP id l7csp811884vlo;
+        Thu, 21 Sep 2023 18:44:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF0kE+ZNb4wXwLf9JqrwHZuEjP0oEqcSF6aG66LQk28dNL6wNh2Oo89SVUBo41buZB0gDoz
+X-Received: by 2002:a05:622a:290:b0:417:b544:f91c with SMTP id z16-20020a05622a029000b00417b544f91cmr8190766qtw.46.1695347081046;
+        Thu, 21 Sep 2023 18:44:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695347081; cv=none;
+        d=google.com; s=arc-20160816;
+        b=cbxY9eO1/9tJp0mpOyozCxMufZDvv54p3QuzwPgIxYplHLfDB6WVBUDOiDM/Qk4v/q
+         j12TLLRUoVSPbgaRgcEXENQoq31VnQADN16mCPPpoCDdMfXqSsU08btUwstbmvhrPSLx
+         PBy3vKHv8EOENMRMNSTXshTPkcjhR7oisVdz776UIPJ5LLAw8zZ1lqh3qS1/maqtnCFU
+         i5K5sFMkEhV48Lj80+vMpL4/spGcH6aWqT6SSTBmfREsuAF4MQMpAhm1YLQ2hB+SEK1Y
+         aFuHKT2nfjmLLVxzSAXkicJQtMbJWFTyusblAMaycursKeIqjhvyth0NHQeu4LoRI6RD
+         dHEA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe:subject
+         :to:from:dkim-signature:dkim-signature;
+        bh=YgZ3FaQv7eIaWxEh3nmXXrw5P9ElUoovEdcfPiqX2Bk=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=JIr5jCB0IFYMDBbmAn0EjYLCtoY5DShAu+H2QB+rPCjwNT/opFiHivTd4T94NCn4Jm
+         aRX3i+r9lzOqWRcdhAagE2w0E7CqQE4rhd8P2q6xPRvHSwLhH/odAMbUWf03j9lNXK3Y
+         OGtcrGZ7oR7iJNu/dNn30S/q5fKq7kP6LuzLhveMswo+IIflgegnKg6CNlPJ1WwF98sC
+         mXF1mQdLeBw0S0IQ67Zww3Pht5QzFxZ7O040SPiRq2WdDgL+3665BhI+kTrOQGvHmhMs
+         iqgWfcKr5RJSwYTsser3RCnAaalah5yjR4SaryPS9r93ZDp1coFs4jYwSiCLklYfAXNM
+         bVVg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=imBT9XbI;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=BUNc9ALx;
+       spf=pass (google.com: domain of 0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id m17-20020a05622a119100b00417afb934casi1670428qtk.683.2023.09.21.18.44.40
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Sep 2023 18:44:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=imBT9XbI;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=BUNc9ALx;
+       spf=pass (google.com: domain of 0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1695324966;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type;
+	bh=Xwn3k/9Uqdg/BTIuWaKl2b1poIMEjXIxFJsgiU/c7s8=;
+	b=imBT9XbI+ITe2+9+tbgUpsKXNRnVyZ+ssv+BikgIFhiZlm9uXguOtR9a8R3+8JPC
+	9aFbx+4fQstOjTa4l5y6oWdRjYQf0/laO2e+mRBQ9WRILLCAdH8eG/cVd+iVQdh/Ec4
+	4wqlu7xfWdE1ALLujt/JDqtX0vKmqEZNzXcnUzQM=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1695324966;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=Xwn3k/9Uqdg/BTIuWaKl2b1poIMEjXIxFJsgiU/c7s8=;
+	b=BUNc9ALxz3A0W7KMLlY5W+rUsdto4HYWctysQaJgVaSgiGS/Nx6IRgwXCj6FzZN3
+	vSfKz4e6hHOTUlProyBQd1VA6/pvXjm0tN/CGkUAywePjZeRfi/ODxEKBDvDTnTiTDX
+	lwVWFS71SCMX5TVp1c4Uqlv8jzgVz4/xeo06GPqY=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: GitHub Sync is now live
+X-EmailOctopus-Parent-Id: f5f9ec32-4124-11ee-a719-05d889ce9fcc
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-09-21T18:16:37+00:00
+X-EmailOctopus-Sent-At: 2023-09-21T19:36:05+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=f5f9ec32-4124-11ee-a719-05d889ce9fcc&pt=campaign&pv=4&spa=1695320197&t=1695324965&s=dc7f5493c220ea2c848741f9ec547bbe14b505e95474f097c2ef0eb8f035d6ea&skipConfirmation=1>
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Thu, 21 Sep 2023 19:36:06 +0000
+Message-ID: <0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=aXJZlNHc
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.09.22-54.240.123.37
+
+--aXJZlNHc
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+When Github Sync is enabled on your project, Pipedream will serialize
+you=
+r workflows and synchronize changes to a GitHub repo.=C2=A0
+
+ [Pipedrea=
+m] [https://pipedream.com]=20
+
+[A robot in an event history museum]
+[ht=
+tps://pipedream.com/docs/projects/git/#github-sync]
+
+GITHUB SYNC IS NOW=
+ LIVE!
+
+Pipedream [https://pipedream.com] is excited to announce the la=
+unch of
+GITHUB SYNC, our most requested feature. See the quickstart
+[ht=
+tps://pipedream.com/docs/quickstart/github-sync] to get started.
+
+When =
+GitHub Sync is enabled, Pipedream will serialize your workflows
+and sync =
+changes to a GitHub repo. GitHub Sync is for Advanced &
+Business [https:/=
+/pipedream.com/pricing] customers but all customers
+can preview it by cre=
+ating a new project [https://pipedream.com/new].
+
+Major new capabilitie=
+s include:=20
+
+- BI-DIRECTIONAL GITHUB SYNC (push and pull changes)
+
+=
+- Edit in DEVELOPMENT BRANCHES
+
+- Track COMMIT AND MERGE HISTORY
+
+-=
+ Create PRs and MERGE FROM GITHUB=C2=A0or use a local editor
+
+=09=09Rea=
+d documentation
+[https://pipedream.com/docs/projects/git/#github-sync]
+=
+
+-------------------------
+
+GETTING STARTED
+
+PROJECTS are a new c=
+oncept we are introducing to Pipedream
+[https://pipedream.com/].=C2=A0=
+=C2=A0
+
+A project may contain one or more workflows and may be organize=
+d using
+nested folders. Each project may be synced to a single GitHub rep=
+o.
+
+- Go to https://pipedream.com/projects
+
+- Create a new project=
+
+
+- Enter a project name and check the box to Configure GitHub Sync
+=
+
+[A robot in an event history museum]
+[https://pipedream.com/docs/proje=
+cts/git/#github-sync]=20
+-------------------------
+
+CREATE A BRANCH TO =
+EDIT A PROJECT=20
+
+ [A robot in an event history museum]
+[https://piped=
+ream.com/docs/projects/git/#github-sync]
+To edit a git-backed project you=
+ must create a development branch by
+clicking EDIT > CREATE BRANCH
+
+[=
+A robot in an event history museum]
+[https://pipedream.com/docs/projects/=
+git/#github-sync]=20
+-------------------------
+
+LOCAL DEVELOPMENT=20
+=
+
+Projects that use GitHub Sync may be edited outside of Pipedream. You
+=
+can edit and commit directly via GitHub=E2=80=99s UI or clone the repo
+lo=
+cally and use your preferred editor (e.g., VSCode).
+
+To test external e=
+dits in Pipedream:
+
+- Commit and push local changes to your development=
+ branch
+
+- Open the project in Pipedream and load your development bran=
+ch
+
+- Use the Git Actions menu to pull changes from GitHub=20
+
+------=
+-------------------
+
+Please let us know [https://pipedream.com/support]=
+ if you see any
+bugs, want to suggest a feature, or just want to chat.
+=
+
+=09=09Read documentation
+[https://pipedream.com/docs/projects/git/#git=
+hub-sync]=20
+
+Warm regards,=20
+The Pipedream Team
+
+------------------=
+-------
+ [https://pipedream.com]44 Montgomery Street
+San Francisco
+CA=
+LIFORNIA
+94104
+United States of America=20
+
+Unsubscribe here
+[https=
+://alatus.eocampaign.com/unsubscribe?ep=3D1&l=3D358ac956-f01d-11ed-bcd1-db2=
+977b1fcef&lc=3D860f934a-f025-11ed-b8ff-059d97be6197&p=3Df5f9ec32-4124-11ee-=
+a719-05d889ce9fcc&pt=3Dcampaign&pv=3D4&spa=3D1695320197&t=3D1695324965&s=3D=
+dc7f5493c220ea2c848741f9ec547bbe14b505e95474f097c2ef0eb8f035d6ea]
+--aXJZlNHc
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><title></title></head><body class=3D=
+"notranslate">
+
+
+
+
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">When Github Sync is enabled on your project, Pipedream will serialize yo=
+ur workflows and synchronize changes to a GitHub repo.&nbsp;</div>
+
+<p>
+
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DUTF-8">
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica =
+Neue&quot;,sans-serif;" width=3D"100%"><tbody><tr><td>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"max-width:560px;margin:40px auto;background-color:#ffffff;padding:40=
+px 30px 40px;border-radius:15px;" width=3D"100%"><tbody><tr style=3D"width:=
+100%;"><td>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/1/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/tPuYho=
+aqtBIKe7UDHKllJB7NZ_o=3D340" rel=3D"noopener noreferrer" target=3D"_blank">=
+<img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image/=
+upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=3D=
+"display:block;outline:none;border:none;text-decoration:none;width:2.2rem;h=
+eight:2.2rem;"></a>
+<br>
+<br>
+
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fprojects%2Fgit%2F%23github-sync/1/0100018ab93e0c96-1d2d21ba-=
+95cd-42a4-9827-ec8aac64cc55-000000/R1Rr5ZIuZNdBqxzec4RzmXjXnys=3D340" rel=
+=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A robot in an event =
+history museum" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0=
+ed-4f354f26462b%2F1695315011045-1695315007512.png" style=3D"display: block;=
+ outline: none; border: none; text-decoration: none; width: 100%; height: a=
+uto; margin: 0px 0px 15px;"></a>
+
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1.4rem;line-he=
+ight:1.5rem;margin:0px;color:rgb(30, 41, 59);"><br><strong>GitHub Sync is n=
+ow live!</strong></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipe=
+dream.com/2/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/oQ=
+X2okYL3m0eiiII8JUV-tSAZGc=3D340" rel=3D"noopener noreferrer" style=3D"user-=
+select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Sego=
+e UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&qu=
+ot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligature=
+s: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; white-space: norm=
+al; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; backgroun=
+d-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underlin=
+e rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Pipedream</a> is =
+excited to announce the launch of <strong>GitHub Sync</strong>, our most re=
+quested feature. See the <a href=3D"https://sc1sc285.r.us-east-1.awstrack.m=
+e/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fquickstart%2Fgithub-sync/1/0100018a=
+b93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/mTkX-CxEk3k3uW6hT_Mvkh=
+iHP3E=3D340" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-f=
+amily: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, =
+Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; fon=
+t-size: 16px; font-style: normal; font-variant-ligatures: normal; font-vari=
+ant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; te=
+xt-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit=
+-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 25=
+5, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139);=
+ font-weight: 600;" target=3D"_blank">quickstart</a> to get started.</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">When GitHub Sync is enabled, P=
+ipedream will serialize your workflows and sync changes to a GitHub repo. G=
+itHub Sync is for <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/ht=
+tps:%2F%2Fpipedream.com%2Fpricing/1/0100018ab93e0c96-1d2d21ba-95cd-42a4-982=
+7-ec8aac64cc55-000000/7dy7NVPUGAJLi9yNv1kHY-uiqvs=3D340" rel=3D"noopener no=
+referrer" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:600;=
+text-decoration-line:underline;text-decoration-color:#34D28B;" target=3D"_b=
+lank">Advanced &amp; Business</a> customers but all customers can preview i=
+t by creating a <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/http=
+s:%2F%2Fpipedream.com%2Fnew/1/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8a=
+ac64cc55-000000/6DG7J8kDFx1FLOfgzIblCLJ5RtY=3D340" rel=3D"noopener noreferr=
+er" style=3D"color:rgb(0, 0, 0);text-decoration:none;font-weight:600;text-d=
+ecoration-line:underline;text-decoration-color:#34D28B;" target=3D"_blank">=
+new project</a>.</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Major new capabilities include=
+:
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- <strong>Bi-directional GitHu=
+b sync</strong> (push and pull changes)</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Edit in <strong>development =
+branches</strong></p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Track <strong>commit and mer=
+ge history</strong></p>
+
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Create PRs and <strong>merge=
+ from GitHub&nbsp;</strong>or use a local editor</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mb-6" style=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td>=
+<a class=3D"bg-button rounded-xl font-semibold text-white text-base text-ce=
+nter block" href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2=
+Fpipedream.com%2Fdocs%2Fprojects%2Fgit%2F%23github-sync/2/0100018ab93e0c96-=
+1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/cUKg2T6efYbvrc6AEVXun8xz--8=3D3=
+40" rel=3D"noopener noreferrer" style=3D"display:inline-block;border-radius=
+:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font-size:1re=
+m;line-height:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11=
+px;text-decoration:none;max-width:100%;padding:11px 23px;" target=3D"_blank=
+"><span style=3D"display:inline-block;border-radius:0.75rem;background-colo=
+r:rgb(52, 117, 210);text-align:center;font-size:1rem;line-height:120%;font-=
+weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;text-d=
+ecoration:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:8.25p=
+x;">Read documentation</span></a></td></tr></tbody></table>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 class=3D"text-black dark:text-white text-2xl font-semibold tracking-tig=
+ht" style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Getting =
+started</h1>
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);"><strong>Projects</strong> are =
+a new concept we are introducing to
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2F/1/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827=
+-ec8aac64cc55-000000/HHzr_e9bKHSplClH2bHRexuF9FA=3D340" rel=3D"noopener nor=
+eferrer" style=3D"user-select: auto; font-family: -apple-system, &quot;syst=
+em-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, =
+&quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal=
+; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing=
+: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-s=
+pace: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); te=
+xt-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_b=
+lank">Pipedream</a>.&nbsp;&nbsp;</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">A project may contain one or m=
+ore workflows and may be  organized using nested folders. Each project may =
+be synced to a single GitHub repo.</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">- Go to
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com%2Fprojects/1/0100018ab93e0c96-1d2d21ba-95cd-4=
+2a4-9827-ec8aac64cc55-000000/EfEanG2NBHghUaPm5DBQyX0I25Y=3D340" rel=3D"noop=
+ener noreferrer" style=3D"user-select: auto; font-family: -apple-system, &q=
+uot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Can=
+tarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style=
+: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter=
+-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-tra=
+nsform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;=
+ white-space: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0=
+, 0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;" targ=
+et=3D"_blank">https://pipedream.com/projects</a></p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">- Create a new project</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">- Enter a project name and check the box to Configure GitHub Sync</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fprojects%2Fgit%2F%23github-sync/3/0100018ab93e0c96-1d2d21ba-=
+95cd-42a4-9827-ec8aac64cc55-000000/aM0C1dTSU-m7GssSBR6E0iZtaC8=3D340" rel=
+=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A robot in an event =
+history museum" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0=
+ed-4f354f26462b%2F1692734095794-1692734094486.png" style=3D"display: block;=
+ outline: none; border: none; text-decoration: none; width: 100%; height: a=
+uto; margin: 0px 0px 15px;"></a>
+
+
+
+
+
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 class=3D"text-black dark:text-white text-2xl font-semibold tracking-tig=
+ht" style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Create a=
+ branch to edit a project
+
+</h1>
+
+
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fprojects%2Fgit%2F%23github-sync/4/0100018ab93e0c96-1d2d21ba-=
+95cd-42a4-9827-ec8aac64cc55-000000/RtXsC-xFWXJhVBh0qxgdC9RSavg=3D340" rel=
+=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A robot in an event =
+history museum" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0=
+ed-4f354f26462b%2F1692734163829-1692734163003.png" style=3D"display: block;=
+ outline: none; border: none; text-decoration: none; width: 100%; height: a=
+uto; margin: 0px 0px 15px;"></a>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">To edit a git-backed project y=
+ou must create a development branch by clicking<strong> Edit &gt; Create Br=
+anch</strong>
+
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fprojects%2Fgit%2F%23github-sync/5/0100018ab93e0c96-1d2d21ba-=
+95cd-42a4-9827-ec8aac64cc55-000000/-WzRNIGQ98prLFdPMsHtpgD7dwI=3D340" rel=
+=3D"noopener noreferrer" target=3D"_blank"><img alt=3D"A robot in an event =
+history museum" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0=
+ed-4f354f26462b%2F1692734253872-1692734252944.png" style=3D"display: block;=
+ outline: none; border: none; text-decoration: none; width: 100%; height: a=
+uto; margin: 0px 0px 15px;"></a>
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 class=3D"text-black dark:text-white text-2xl font-semibold tracking-tig=
+ht" style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Local de=
+velopment
+
+</h1>
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Projects that use GitHub Sync =
+may be edited outside of Pipedream. You can edit and commit directly via Gi=
+tHub=E2=80=99s UI or clone the repo locally and use your preferred editor (=
+e.g., VSCode).</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">To test external edits in Pipe=
+dream: </p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Commit and push local change=
+s to your development branch</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Open the project in Pipedrea=
+m and load your development branch</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">- Use the Git Actions menu to =
+pull changes from GitHub
+<br>
+</p>
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+Please <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fp=
+ipedream.com%2Fsupport/1/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64c=
+c55-000000/ANt2UxDbX7-CH6jn0nO4mtBJB6k=3D340" rel=3D"noopener noreferrer" s=
+tyle=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot=
+;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helv=
+etica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-var=
+iant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; whit=
+e-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0=
+px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decorat=
+ion: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">let =
+us know</a> if you see any bugs, want to suggest a feature, or just want to=
+ chat.</p>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+<br>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mb-6" style=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td>=
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fprojects%2Fgit%2F%23github-sync/6/0100018ab93e0c96-1d2d21ba-=
+95cd-42a4-9827-ec8aac64cc55-000000/Qx7EpBuZhUDilrxeroypDfi_viY=3D340" rel=
+=3D"noopener noreferrer" style=3D"display:inline-block;border-radius:0.75re=
+m;background-color:rgb(52, 117, 210);text-align:center;font-size:1rem;line-=
+height:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;text=
+-decoration:none;max-width:100%;padding:11px 23px;" target=3D"_blank"><span=
+ style=3D"display:inline-block;border-radius:0.75rem;background-color:rgb(5=
+2, 117, 210);text-align:center;font-size:1rem;line-height:120%;font-weight:=
+600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;text-decorati=
+on:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:8.25px;">Rea=
+d documentation</span></a>
+<br>
+</td></tr></tbody></table>
+<br>
+
+<br>Warm regards,
+<br>The Pipedream Team
+
+<p>
+<br>
+</p>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/3/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/3J-1hD=
+4JDRvFyGxkwteiAVXL3ms=3D340" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank"></a><a href=3D"https://sc1sc285.r.us-east-=
+1.awstrack.me/L0/https:%2F%2Fpipedream.com/4/0100018ab93e0c96-1d2d21ba-95cd=
+-42a4-9827-ec8aac64cc55-000000/UG4pmwgOYe5MpvK6h-XlXAMbC7o=3D340" style=3D"=
+color:#b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">44 Mo=
+ntgomery Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United States of=
+ America</a>
+<br>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Falatus.e=
+ocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D358ac956-f01d-11ed-bcd1-db2977b1=
+fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6197%26p=3Df5f9ec32-4124-11ee-a=
+719-05d889ce9fcc%26pt=3Dcampaign%26pv=3D4%26spa=3D1695320197%26t=3D16953249=
+65%26s=3Ddc7f5493c220ea2c848741f9ec547bbe14b505e95474f097c2ef0eb8f035d6ea/1=
+/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/4nmxEJp4-C0--=
+mMGaTKgSTZj1_w=3D340" style=3D"font-size:14px;color:#b4becc;">Unsubscribe h=
+ere</a>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/5/0100018ab93e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/nO7Lyl=
+iJuA_OHFt3DKf-oPrU_ac=3D340" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank">
+<br>
+<br>
+
+
+
+
+</a>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<p>
+
+
+
+
+
+
+
+<br>
+</p>
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/0100018ab9=
+3e0c96-1d2d21ba-95cd-42a4-9827-ec8aac64cc55-000000/V8wnlKe9s6XjCWUTS1JcjzQ1=
+Pak=3D340" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--aXJZlNHc--

@@ -1,0 +1,2877 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4094:b0:4c5:a633:e965 with SMTP id r20csp12026033pxb;
+        Mon, 3 Jul 2023 08:37:58 -0700 (PDT)
+X-Received: by 2002:adf:edc9:0:b0:314:3369:df57 with SMTP id v9-20020adfedc9000000b003143369df57mr3815433wro.5.1688398438409;
+        Mon, 03 Jul 2023 08:33:58 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlE0/MEUZ5BcPQm57HYr0bmsrIPb+RSN1/mOS3Ev/SvwheDTeiy8w+96aSoqpBAWbkK87rjJ
+X-Received: by 2002:adf:edc9:0:b0:314:3369:df57 with SMTP id v9-20020adfedc9000000b003143369df57mr3815319wro.5.1688398435414;
+        Mon, 03 Jul 2023 08:33:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688398435; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QRDFVOFzUkxIhsJMhz18jey+kW1fWT2oszL2C/n+Irwk3IOqnORmzWJFKnbEO3jUs+
+         t/YamrEsyLuBTLyBhrJ7j9qQ/08DU6nyeGF7ejqgxYHAwnVUkf9OI4VuChGQhN9isJ9N
+         bxlFhBxsgTVf0LnER11S0mhNgfiMfp+3o4nWVFtyDqyBef9VkTt905/ZZejkCrdi0VWP
+         hbnFt2W2TsvxsJ9bYa0SSi5ezigViU4UQQukeBn1le8g6v4YmiWic+pgRTucENs8mGNz
+         M5Otuki+9uUJFnD7IVghFaTc+12InzUZfDeIpXH3T7ftdzaTxOObckThZQ6v4WuMvIFK
+         kWbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:feedback-id:list-unsubscribe-post
+         :list-unsubscribe:date:subject:to:reply-to:from:mime-version
+         :message-id:dkim-signature:dkim-signature;
+        bh=6d95JMsqkkBLU+Q1IhKAkeu0nBHWJm20maUPStcyrdU=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=ty++leGP1SfjXvIzRwxDmfDQ365OEpVAg8QhTLt6BC/yeGFAoXZft3RZtvnkkMVbwQ
+         fsKG6x2iv7fRKCwLQiE+BnHTAF2pT/624a086kI/0Q/s2fCn9Wht/JqhZPqa8mhNNyvz
+         haTiZYdDMyyWvEmdIn9dtmvCNitqS8yeT2ylqzY1fJV53Zs2ZK/V9Xb/E01kLFQ80rPb
+         r93GRhDO/uIrToK0VeHVCqjvK7DUliWBCzm2pwMUtjh+OCAxL9QYFHs+szFMHXgYx6qp
+         8w4C1+a+RHzbF5hIQLrtW5/M6Ng+5p3qg1ypv4aVA42aUM45qG7PaVyQQChC7/HAuI/G
+         9gng==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mytwip.com header.s=mailjet header.b=lP1bwX89;
+       dkim=pass header.i=@bnc3.mailjet.com header.s=mailjet1 header.b="DLwX/5sm";
+       spf=pass (google.com: domain of 083c0a48.awkaab8u3giaaaaaaaaaar60ivoaayctqtaaaaaaacmyewbkoupi@a2300027.bnc3.mailjet.com designates 87.253.233.162 as permitted sender) smtp.mailfrom=083c0a48.AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupi@a2300027.bnc3.mailjet.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=mytwip.com
+Return-Path: <083c0a48.AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupi@a2300027.bnc3.mailjet.com>
+Received: from o162.p8.mailjet.com (o162.p8.mailjet.com. [87.253.233.162])
+        by mx.google.com with UTF8SMTPS id f20-20020a05600c4e9400b003fa890f8acasi12414185wmq.118.2023.07.03.08.33.55
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Jul 2023 08:33:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 083c0a48.awkaab8u3giaaaaaaaaaar60ivoaayctqtaaaaaaacmyewbkoupi@a2300027.bnc3.mailjet.com designates 87.253.233.162 as permitted sender) client-ip=87.253.233.162;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mytwip.com header.s=mailjet header.b=lP1bwX89;
+       dkim=pass header.i=@bnc3.mailjet.com header.s=mailjet1 header.b="DLwX/5sm";
+       spf=pass (google.com: domain of 083c0a48.awkaab8u3giaaaaaaaaaar60ivoaayctqtaaaaaaacmyewbkoupi@a2300027.bnc3.mailjet.com designates 87.253.233.162 as permitted sender) smtp.mailfrom=083c0a48.AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupi@a2300027.bnc3.mailjet.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=mytwip.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+  d=mytwip.com; i=newsletter.enervivo@mytwip.com; s=mailjet; x=1688405634;
+  h=message-id:mime-version:from:from:reply-to:to:to:subject:subject:date:date:list-unsubscribe:
+  list-unsubscribe-post:feedback-id:x-csa-complaints:x-mj-mid:x-mj-smtpguid:
+  x-report-abuse-to:content-type:content-transfer-encoding;
+  bh=rkfsF2t/zfjegTjkd367zmBgcVlbs9LoJxf3yTgyu04=;
+  b=lP1bwX89sKH22nWGN/tWLB50MIUIWdSN17SgZaicCt2XcFZhkz3xwuiSW
+ 5B3aI4blOGU4nS4XfuzCXe9BeJBLmx84/zrqYFdT5ovWVuGASBHwECQShEhw
+ EZThKcloGUlj+6j8VyEURSqoV/pXBITvEjeBYMW0hNTs3izCNzxeVA=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+  d=bnc3.mailjet.com; s=mailjet1; x=1688405634;
+  h=message-id:mime-version:from:from:reply-to:to:to:subject:subject:date:date:list-unsubscribe:
+  list-unsubscribe-post:feedback-id:x-csa-complaints:x-mj-mid:x-mj-smtpguid:
+  x-report-abuse-to:content-type:content-transfer-encoding;
+  bh=rkfsF2t/zfjegTjkd367zmBgcVlbs9LoJxf3yTgyu04=;
+  b=DLwX/5smP4RtYVH02HT2YS5LkY+B2UH/Mu5hIj2JRhLk1olFNzAKy2uSr
+ Jqr8OtwdnWlv7zk9w5e7OZbl+xjD7hLaB4U4dMJ9IEgOialB19lMD5jvyIMd
+ V9QCbzzPgaC0ai8BYtcZ0DF0E+DTuUJIawIju/HMpXV94C0NMNTXHY=
+Return-Path:
+	<083c0a48.AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupi@a2300027.bnc3.mailjet.com>
+Message-Id: <083c0a48.AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupi@mailjet.com>
+MIME-Version: 1.0
+From: mytwip <newsletter.enervivo@mytwip.com>
+Reply-To: newsletter.enervivo@mytwip.com
+To: ely.ubuntu0@gmail.com
+Subject: =?utf-8?B?TmV3c2xldHRlciBhZ3Jpdm9sdGHDr3NtZSAtIEVuZXJWaXZv?=
+Date: Mon, 3 Jul 2023 17:33:53 +0200
+List-Unsubscribe:
+	<mailto:unsub-083c0a48.0rlgg.lk0uu4p734w0@bnc3.mailjet.com>,
+	<https://0rlgg.mjt.lu/unsub2?m=AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630&b=083c0a48&e=633533a1&x=CxjoysrKFuygV9nLK0US2QvE_OIJ4DS_yWk7KPqwsjw>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-Id: 42.2300027.2157437:MJ
+X-CSA-Complaints: csa-complaints@eco.de
+X-MJ-Mid:
+	AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630
+X-MJ-SMTPGUID: 8233733e-ada7-48d3-b174-ce41739aac41
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+	abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative;
+	boundary=b1_64098c5b477aa3bdcd808ba54d6c1b0a
+Content-Transfer-Encoding: 8bit
+
+This is a multi-part message in MIME format.
+
+--b1_64098c5b477aa3bdcd808ba54d6c1b0a
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+Si vous ne visualisez pas
+correctement le contenu, ouvrez cette
+page
+                                                
+                                            
+                                            
+                                                
+                                                
+                                                    
+                                                        
+                                                            
+                                                            
+                                                               
+                                                            
+                                                            
+                                                        
+                                                    
+                                                
+                                                
+                                            
+                                            
+                                                
+                                            
+                                            
+                                                
+                                                
+                                                    
+                                                        
+                                                            
+                                                            
+                                                                Newsletter Enervivo
+                                                            
+                                                            
+                                                        
+                                                    
+                                                
+                                                
+                                            
+                                            
+                                                
+                                            
+                                            
+                                                
+                                                
+                                                    
+                                                        
+                                                            
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+          Newsletter n¬∞3
+Juillet 2023
+                                                                     
+      
+                                                                     
+  
+                                                                   
+
+                                                               
+
+                                                            
+                                                            
+                                                        
+                                                    
+                                                
+                                                
+                                            
+                                            
+                                                
+                                                En ce dÈbut de
+mois de juillet, nous avons le plaisir de vous partager la
+deuxiËme newsletter agrivoltaÔsme d'EnerVivo.
+L'ÈvËnement majeur de ce mois de juin Ètait bien
+s˚r le salon Intersolar, plus grand salon photovoltaÔque
+du monde, qui s'est tenu du 13 au 16 juin ‡ Munich en
+Allemagne. Nous vous laissons dÈcouvrir !
+                                                
+                                            
+                                            
+                                                
+                                                
+            
+          
+          
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                            
+                                            March√© & R√®glementation
+                                        
+                                    
+                                
+                            
+                        
+                        
+                    
+                
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        AgrivoltaÔsme :
+prÈcisions sur les conditions d'instruction des demandes de
+permis de construire pour les projets photovoltaÔques sur
+terrains agricoles
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            03/07/2023 &ndash; blog.gossement-avocats.com
+                                                        
+                                                        
+                                                            Par une
+instruction en date du 27 juin 2023, les ministres de la transition
+Ècologique, de la transition ÈnergÈtique et de
+l'agriculture ont prÈcisÈ les conditions d'instruction
+des demandes de permis de construire des installations de production
+d'Ènergie solaire photovoltaÔque en zone agricole, dans
+l'attente de...
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        Un guide de l'ADEME pour
+reÃÅduire l'impact des centrales solaires sur les sols et la
+biodiversiteÃÅ
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            27/06/2023 &ndash; techniques-ingenieur.fr
+                                                        
+                                                        
+                                                            Bien
+qu'elle repreÃÅsente actuellement aÃÄ peine 3 % de la production
+d'eÃÅlectriciteÃÅ francaise, la filieÃÄre photovoltaiÃàque est
+ameneÃÅe aÃÄ se deÃÅvelopper fortement dans les prochaines anneÃÅes,
+puisque les centrales solaires au sol vont y jouer un roÃÇle
+important. NeÃÅanmoins, leur implantation devra eÃÇtre encadreÃÅe
+pour ne pas impacter neÃÅgativement la biodiversiteÃÅ et les sols.
+C'est l'objet du reÃÅcent guide eÃÅlaboreÃÅ par l'Office francais de
+la biodiversiteÃÅ et l'ADEME.
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        ZÈro artificialisation
+nette : les panneaux solaires devraient Ítre
+ÈpargnÈs
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            15/06/2023 &ndash; lafranceagricole.fr
+                                                        
+                                                        
+                                                            Les
+surfaces dÈdiÈes au photovoltaÔque et ‡
+l'agrivoltaÔsme ne devraient pas Ítre
+considÈrÈes comme "†artificialisÈes†",
+si elles n'impactent pas nÈgativement le sol et ses
+capacitÈs agricoles.
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        HÈrault†:
+l'agriculture pousse pour l'agrivoltaÔsme
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            29/06/2023 &ndash; actu.fr
+                                                        
+                                                        
+                                                            La
+prÈfecture et la Chambre d'agriculture de l'HÈrault
+s'engagent pour dÈvelopper l'agrivoltaÔsme. Un projet qui
+n'emballe pas la ConfÈdÈration Paysanne.
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+          
+          
+          
+            
+          
+          
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                            
+                                            Technologie, R&D et entreprises
+                                        
+                                    
+                                
+                            
+                        
+                        
+                    
+                
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        Lightsource bp signe un
+partenariat avec l'INRAE dans l'agrivoltaiÃàsme
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            22/06/2023 &ndash; pv-magazine.fr
+                                                        
+                                                        
+                                                            Lightsource bp inteÃÄgre le PNR AgriPV afin de contribuer
+aÃÄ la recherche en France, ouÃÄ il a l'objectif de deÃÅvelopper 1 GW
+d'eÃÅnergie solaire d'ici aÃÄ 2026.
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        La reÃÅvolution
+photovoltaiÃàque deÃÅmarre en Nouvelle-Aquitaine
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            19/06/2023 &ndash; aqui.fr
+                                                        
+                                                        
+                                                            Le
+projet industriel Solar Transparencies vise ‡ lancer la
+premiËre usine de cellules solaire "Gr‰tzel" au monde. Un
+investissement de 115 millions d'euros qui a choisi la
+Nouvelle-Aquitaine comme terre d'accueil.†
+†
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        [Dans les alleÃÅes
+d'Intersolar] SolarEdge deÃÅvoile sa solution pour l'agrivoltaiÃàsme
+dynamique
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            16/06/2023 &ndash; pv-magazine.fr
+                                                        
+                                                        
+                                                            Sur le
+salon Intersolar aÃÄ Munich, le fabricant a preÃÅsenteÃÅ un nouveau
+systeÃÄme de tracker solaire piloteÃÅ par un algorithme en fonction
+de l'ensoleillement et des besoins des plantations. De plus,
+SolarEdge a deÃÅvoileÃÅ une batterie de stockage pour les
+installations C&I de petite et moyenne tailles.
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        Schletter dÈvoile un
+systËme agriPV vertical au salon Intersolar
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            15/06/2023 &ndash; pv-tech.org
+                                                        
+                                                        
+                                                            Le
+fabricant de systËmes de montage Schletter a
+dÈvoilÈ son dernier produit agrivoltaÔque ‡
+l'occasion du salon Intersolar Europe 2023 ‡ Munich, en
+Allemagne.
+(article en anglais)
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+          
+          
+          
+            
+          
+          
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                            
+                                            Monde
+                                        
+                                    
+                                
+                            
+                        
+                        
+                    
+                
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        Namur: le premier projet
+agrivoltaÔque de Belgique produira avant la fin de
+l'ÈtÈ.
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            16/06/2023 &ndash; renouvelle.be
+                                                        
+                                                        
+                                                            A
+l'heure o˘ la Ville de Namur vient d'annoncer un nouveau
+projet de champ photovoltaÔque ‡ Salzinnes, le
+prÈcÈdent, premier vrai projet du genre en Belgique,
+devrait commencer ‡ injecter de l'ÈlectricitÈ
+cet ÈtÈ&hellip;‡ Wierde, une autre commune
+namuroise.
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+
+                    
+                        
+                    
+                    
+                        
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                        La sociÈtÈ
+danoise Eurowind Energy dÈveloppe un projet
+photovoltaÔque de 70 MW en Roumanie
+                                    
+                                            
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                
+                
+              
+                                        
+                                                
+                                                    
+                                                        
+                                                            13/06/2023 &ndash; balkangreenenergynews.com
+                                                        
+                                                        
+                                                            La
+sociÈtÈ danoise d'Ènergie renouvelable Eurowind
+Energy dÈveloppe un projet agrivoltaÔque en Roumanie, un
+parc photovoltaÔque de 70 MW qui combinera l'Ènergie
+solaire et l'agriculture.
+(article en anglais)
+                                                        
+                                                        
+                                                        
+                                                            
+                                                               
+
+                                                                   
+
+                                                                     
+  
+                                                                     
+      
+                                                                     
+  
+                                                                     
+  
+                                        Lire la suite
+                                     
+                                                                   
+
+                                                               
+
+                                                            
+                                                        
+                                                    
+                                                
+                                            
+					
+                                    
+				
+                            
+                        
+                        
+                    
+                    
+                        
+                    
+                
+
+          
+          
+          
+                                                
+                                            
+                                            
+                                                
+                                                
+                                                    †
+† † † † † † †Les actualitÈs d'EnerVivo
+:†
+† †
+† † † † † †
+†
+† † † † † † † †- Depuis ce
+mois d'avril, EnerVivo est incubÈ ‡ Bordeaux Technowest sur le site de La Place qui
+regroupe et accompagne plusieurs start-up innovantes dans le domaine
+de l'Ènergie.
+†
+† † † † † † ††† † † † †
+† † † † † † † †
+†
+† † † † † † † †-
+EnerVivo recrute ! Envie de rejoindre une start-up
+dynamique pour travailler sur des sujets passionnants ?
+N'hÈsitez pas ‡ consulter nos offres d'emploi juste ici
+:†RECRUTEMENT |
+EnerVivo : l'Ènergie des agriculteurs et des
+citoyens†† † † † † †
+† † † † † † † † † †
+† † † † † † † † † †
+† † † † † † ††
+†
+† † † † † † † † †
+† † † † † † † † † †
+† † † † † † † † † †
+† † † † † † † † † †
+† 
+† † † † † † † † †
+† † † † † † † † † †
+† † † † † † † † † †
+† † † † † †Nous contacter†-†LinkedIn†- GÈrer votre
+abonnement
+
+
+--b1_64098c5b477aa3bdcd808ba54d6c1b0a
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+
+            <html>
+                <head>
+                    <meta http-equiv="Content-Type"
+content="text/html; charset=utf-8">
+                    <link rel="stylesheet" id="style-css"
+href="https://www.mytwip.com/public_new/skins/custom_trame_89/style.css?1688397331"
+type="text/css">
+                </head>
+                <body>
+                    <table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td align="center">
+                                    <table class="main"
+cellpadding="0" cellspacing="0" border="0">
+                                        <tbody class="NL">
+                                            <tr class="header">
+                                                <td></td>
+                                                <td class="w640"
+style="text-align:center; font-size:9px;">Si vous ne visualisez pas
+correctement le contenu, ouvrez <a
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/1/5oWDEbn2hjRHZUHMei01Ew/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L21vZHVsZXMvbmV3c2xldHRlci9hamF4X2ZpbGVzL3Byb2Nlc3Nfdm9pcmJ1bGxldGluLnBocD9ycXZiPWNjVk00NFNTTXdhVnJmSWRLZjBpeTB4QUxXNXh3JTJGWWNpaHolMkJNQ2diSTNpeENHSFB2OHQlMkJhSEROakZZdHlJbzZERm1EcVc2cHBGNVFEclJwMGxZemp3JTNEJTNE"
+target="_blank"><span style='color:#000; font-weight: bold;'>cette
+page</span></a><td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td class="w640"
+width="851">
+                                                    <table
+cellpadding="0" cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+width="12"></td>
+                                                            <td>
+                                                               <img
+alt="" title="" id="bandeau" class="bandeau" 
+src="https://www.mytwip.com/public_new/skins/custom_trame_89/img.png">
+                                                            </td>
+                                                            <td
+width="12"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"
+height="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td class="w640"
+width="851">
+                                                    <table
+cellpadding="0" cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+width="12"></td>
+                                                            <td>
+                                                                <div
+class="titre" style="text-align: center;font-weight: 900;font-style:
+normal;text-decoration: none;font-size: 29px;color:
+#1c7861;">Newsletter Enervivo</div>
+                                                            </td>
+                                                            <td
+width="12"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"
+height="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w30"
+width="30"></td>
+                                                <td
+class="newsLetter" width="851">
+                                                    <table
+cellpadding="0" cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+width="12"></td>
+                                                            <td>
+                                                               
+<table width="100%" style="background-color: #d4e8df;">
+                                                                   
+<tr>
+                                                                     
+  <td>
+                                                                     
+      <div class="NandD" style="text-align: center;font-weight:
+100;font-style: italic;text-decoration: none;font-size: 18px;color:
+#3ab680;">
+                                                                     
+          <span class="numero" style="display:none">Newsletter n¬∞3
+</span><span class="date">Juillet 2023</span>
+                                                                     
+      </div>
+                                                                     
+  </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                            <td
+width="12"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td
+class="w30"width="30"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w30"
+width="30"></td>
+                                                <td class="w640"
+width="851"><div id="edito"><p class="edito"><p>En ce d&eacute;but de
+mois de juillet, nous avons le plaisir de vous partager la
+deuxi&egrave;me newsletter agrivolta&iuml;sme d'EnerVivo.
+L'&eacute;v&egrave;nement majeur de ce mois de juin &eacute;tait bien
+s&ucirc;r le salon Intersolar, plus grand salon photovolta&iuml;que
+du monde, qui s'est tenu du 13 au 16 juin &agrave; Munich en
+Allemagne. Nous vous laissons d&eacute;couvrir !</p></p></div></td>
+                                                <td class="w30"
+width="30"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w30"
+width="30"></td>
+                                                <td class="w640"
+width="851"><div>
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7409" id="rubrique_2"
+style=" clear:both;"><table width="100%" cellspacing="0"
+cellpadding="0">
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0" width="100%"
+style="background-color: #2e7861;">
+                                <tr>
+                                    <td>
+                                        <div class="rubrique_title"
+id="rubrique7409" style=" clear:both;; text-align:center">
+                                            <a
+name="RUB_ID_7409"></a>
+                                            <a name="RUB_2"></a>
+                                            <span
+class="rubriqueText" style="text-align: right;font-weight:
+100;font-style: normal;text-decoration: none;font-size: 16px;color:
+#ffffff;">March√© & R√®glementation</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                </table>
+<span id="item_7409_0" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">Agrivolta&iuml;sme :
+pr&eacute;cisions sur les conditions d'instruction des demandes de
+permis de construire pour les projets photovolta&iuml;ques sur
+terrains agricoles</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x7086_4" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Agrivolta&iuml;sme : pr&eacute;cisions sur
+les conditions d\'instruction des demandes de permis de construire
+pour les projets photovolta&iuml;ques sur terrains agricoles" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://blog.gossement-avocats.com/images/easyblog_articles/1617/solaire.jpeg"
+o:title="Agrivolta&iuml;sme : pr&eacute;cisions sur les conditions
+d\'instruction des demandes de permis de construire pour les projets
+photovolta&iuml;ques sur terrains agricoles" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://blog.gossement-avocats.com/images/easyblog_articles/1617/solaire.jpeg"
+align="left" hspace="12" alt="Agrivolta&iuml;sme : pr&eacute;cisions
+sur les conditions d\'instruction des demandes de permis de
+construire pour les projets photovolta&iuml;ques sur terrains
+agricoles" v:shapes="Image_x7086_4">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">03/07/2023 &ndash; blog.gossement-avocats.com</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;">Par une
+instruction en date du 27 juin 2023, les ministres de la transition
+&eacute;cologique, de la transition &eacute;nerg&eacute;tique et de
+l'agriculture ont pr&eacute;cis&eacute; les conditions d'instruction
+des demandes de permis de construire des installations de production
+d'&eacute;nergie solaire photovolta&iuml;que en zone agricole, dans
+l'attente de...</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/2/EXPb8KAnJRfEpZMT4Hpz8Q/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRm9uRVQ4bGlwMyUyRnNPeiUyRkEwTlU5RWFUZUszSWJHWUNZbXhDR0hQdjh0JTJCYUhETmpGWXR5SW82REZtRHFXNnBwRjR5amUyVXd5aVclMkY1YUc2ZkFRbndmeDFUWHM4bENtTzdzODJRdVVrdXN6UENLczBIdEVJTURJWHlqS3liWHhMRE1rNldGRUw3TWE5dG91cjdNU1VIMFNna2JWZm5ZZ2NvNFd5QlNjUmVIZUJhZ1JDJTJCSmZpdkc1OWwwOTFSSGlTQzhxQTF0a3IxcGwzaGJvMlRUeWY5aHhKd0oyV0F0dkFEVkFEVyUyQm81ZTNQckpVTkt4UGk4cFRTaVB3dTQ4UGhCbUFQbEliUkE4aUsxTVhPbGJDRDNWZ3JCeDNMb2o3WXV2ckEybzlrY21ud21ROUYwakgyN1luVA"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span>
+<span id="item_7409_1" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">Un guide de l'ADEME pour
+reÃÅduire l'impact des centrales solaires sur les sols et la
+biodiversiteÃÅ</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x3438_2" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Un guide de l\'ADEME pour reÃÅduire l\'impact
+des centrales solaires sur les sols et la biodiversiteÃÅ" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.techniques-ingenieur.fr/actualite/wp-content/uploads/2019/02/energies-renouvelables-eolien-solaire-1140.jpg"
+o:title="Un guide de l\'ADEME pour reÃÅduire l\'impact des centrales
+solaires sur les sols et la biodiversiteÃÅ" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.techniques-ingenieur.fr/actualite/wp-content/uploads/2019/02/energies-renouvelables-eolien-solaire-1140.jpg"
+align="left" hspace="12" alt="Un guide de l\'ADEME pour reÃÅduire
+l\'impact des centrales solaires sur les sols et la biodiversiteÃÅ"
+v:shapes="Image_x3438_2">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">27/06/2023 &ndash; techniques-ingenieur.fr</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;">Bien
+qu'elle repreÃÅsente actuellement aÃÄ peine 3 % de la production
+d'eÃÅlectriciteÃÅ francaise, la filieÃÄre photovoltaiÃàque est
+ameneÃÅe aÃÄ se deÃÅvelopper fortement dans les prochaines anneÃÅes,
+puisque les centrales solaires au sol vont y jouer un roÃÇle
+important. NeÃÅanmoins, leur implantation devra eÃÇtre encadreÃÅe
+pour ne pas impacter neÃÅgativement la biodiversiteÃÅ et les sols.
+C'est l'objet du reÃÅcent guide eÃÅlaboreÃÅ par l'Office francais de
+la biodiversiteÃÅ et l'ADEME.</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/3/ZREFF2vZBwNK_PtuZfWByg/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eDhXaVJOYXlxYzMycHB1Znpib0R0UVB5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBhM2ZwclpDJTJCa0NQSnRRJTJCeDdGTkNLRk1kYlNmJTJCdkJxa2t0bVRVVnRoUGhxYnZQUHFEaHJSV0k5U2cwVUlrVERyVWNQcWZ5S05lckNCVjBJcmpScUxhZGtjenpUbDVOeXNoY2tCSW1YV0ZCQTZzUjNDZ0k4SXJnQnU4MjlTRExTbHV4eTZOWTFrQWJkMEtUeFAwbjZZWnR4dElpV21rMG9oJTJGQndkJTJCNHcwQUV6aERac1pzcEIxMTNUZHN0d0wyaDR4YWttNW5BdkpyMDlBZDZkeSUyQnpNWnlo"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span>
+<span id="item_7409_2" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">Z&eacute;ro artificialisation
+nette : les panneaux solaires devraient &ecirc;tre
+&eacute;pargn&eacute;s</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x6004_4" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Z&eacute;ro artificialisation nette : les
+panneaux solaires devraient &ecirc;tre &eacute;pargn&eacute;s" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://cdn1.regie-agricole.com/ulf/CMS_Content/2/articles/841225/_IX68W8M7.jpg"
+o:title="Z&eacute;ro artificialisation nette : les panneaux solaires
+devraient &ecirc;tre &eacute;pargn&eacute;s" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://cdn1.regie-agricole.com/ulf/CMS_Content/2/articles/841225/_IX68W8M7.jpg"
+align="left" hspace="12" alt="Z&eacute;ro artificialisation nette :
+les panneaux solaires devraient &ecirc;tre &eacute;pargn&eacute;s"
+v:shapes="Image_x6004_4">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">15/06/2023 &ndash; lafranceagricole.fr</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;">Les
+surfaces d&eacute;di&eacute;es au photovolta&iuml;que et &agrave;
+l'agrivolta&iuml;sme ne devraient pas &ecirc;tre
+consid&eacute;r&eacute;es comme "&nbsp;artificialis&eacute;es&nbsp;",
+si elles n'impactent pas n&eacute;gativement le sol et ses
+capacit&eacute;s agricoles.</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/4/Zi9kA_fL_bEWxlx5ynPkoA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRmhhMjBZd2c0SXMzNjBlYkVBZDBVdHloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMGJhQVFCaDhoYWhJbmJ5QmZVdzM0RE5MYjkyUDk4UW5ZaHV1V1VJNXpNOCUyQk8lMkZMTFRuMFFIM3UzazVDQyUyQnF4blJJTkh3TTZCZDgxenhXdjlsYkhVZDlkNDRQbDZTTkRoaXpXJTJCT3FRd1JyOWtjc25EeTR5N0drQUlTNXpnSHpLMm54Zzc5b0IzJTJCbmdkc3loaTJ2enlDdFU"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span>
+<span id="item_7409_3" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">H&eacute;rault&nbsp;:
+l'agriculture pousse pour l'agrivolta&iuml;sme</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x3108_6" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="H&eacute;rault&nbsp;: l\'agriculture pousse
+pour l\'agrivolta&iuml;sme" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://static.actu.fr/uploads/2023/06/photo-sunagri-loriol.jpg"
+o:title="H&eacute;rault&nbsp;: l\'agriculture pousse pour
+l\'agrivolta&iuml;sme" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://static.actu.fr/uploads/2023/06/photo-sunagri-loriol.jpg"
+align="left" hspace="12" alt="H&eacute;rault&nbsp;: l\'agriculture
+pousse pour l\'agrivolta&iuml;sme" v:shapes="Image_x3108_6">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">29/06/2023 &ndash; actu.fr</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;">La
+pr&eacute;fecture et la Chambre d'agriculture de l'H&eacute;rault
+s'engagent pour d&eacute;velopper l'agrivolta&iuml;sme. Un projet qui
+n'emballe pas la Conf&eacute;d&eacute;ration Paysanne.</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/5/T3NAM5Ga5znptDxKgaDO_w/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eDhXaVJOYXlxYzMyaVJ0YjhrUUxxSUN5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBabmslMkJ0JTJCaG5IakxSc0pYT250ZUdPN2MlMkYlMkZ0UjlXN2hOTGw4VmppdnZHZHNraVQlMkY1ZTdjTnBsJTJGQjMxSWYyQ1JVTTZYZDdBZFNaMzJaYnRNaFpsSHlEWnNpWmgwTU9qNHpFQ05Ba2lSYnNoVW90JTJGZVR2S2IlMkJqZw"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7398" id="rubrique_3"
+style=" clear:both;"><table width="100%" cellspacing="0"
+cellpadding="0">
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0" width="100%"
+style="background-color: #2e7861;">
+                                <tr>
+                                    <td>
+                                        <div class="rubrique_title"
+id="rubrique7398" style=" clear:both;; text-align:center">
+                                            <a
+name="RUB_ID_7398"></a>
+                                            <a name="RUB_3"></a>
+                                            <span
+class="rubriqueText" style="text-align: right;font-weight:
+100;font-style: normal;text-decoration: none;font-size: 16px;color:
+#ffffff;">Technologie, R&D et entreprises</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                </table>
+<span id="item_7398_0" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">Lightsource bp signe un
+partenariat avec l'INRAE dans l'agrivoltaiÃàsme</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x4826_9" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Lightsource bp signe un partenariat avec
+l\'INRAE dans l\'agrivoltaiÃàsme" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/06/PNR-AgriPV_Lightsourcebp_INRAE-RaphaelColas.png"
+o:title="Lightsource bp signe un partenariat avec l\'INRAE dans
+l\'agrivoltaiÃàsme" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/06/PNR-AgriPV_Lightsourcebp_INRAE-RaphaelColas.png"
+align="left" hspace="12" alt="Lightsource bp signe un partenariat
+avec l\'INRAE dans l\'agrivoltaiÃàsme" v:shapes="Image_x4826_9">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">22/06/2023 &ndash; pv-magazine.fr</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color:
+#000000;">Lightsource bp inteÃÄgre le PNR AgriPV afin de contribuer
+aÃÄ la recherche en France, ouÃÄ il a l'objectif de deÃÅvelopper 1 GW
+d'eÃÅnergie solaire d'ici aÃÄ 2026.</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/6/tUN_IpdNC-gGCbvZ2uldUA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRmhhMjBZd2c0SXM4MW8lMkJHelVHbVQyeWhRem0lMkZtWFRibGI3VEdBVjlUJTJGM0NtNkQlMkY2ODV2QSUyQlNjSklrMm9jaU5sNW1SUmJkdEZtYjBxSlhkSGl1bnJOb1JEVXgzJTJCVnMwWWJMM3pQbHpESHZGSzNFNzhJb1M5QzVOaG15WHZ3WFlLUTJjaEIzYkNvaW9RSHlJd0NoNVJBOW15UzN6M3d1eGpjNG1ucGNyR3olMkI4ODgzSmRFY2JTQkJnZ01DTXJnenFxaHZZdjYxcmRsaGRxYzFqSzVORkFCTFpUZ214Y0ZLJTJCJTJCUFIzWmJaYTV1VUthNHFDWUE0V2NO"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span>
+<span id="item_7398_1" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">La reÃÅvolution
+photovoltaiÃàque deÃÅmarre en Nouvelle-Aquitaine</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x9961_1" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="La reÃÅvolution photovoltaiÃàque deÃÅmarre en
+Nouvelle-Aquitaine" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://aqui.fr/wp-content/uploads/2023/06/cellules-de-Graetzel-sur-la-facade-du-palais-des-congres-de-lEPFL-scaled.jpg"
+o:title="La reÃÅvolution photovoltaiÃàque deÃÅmarre en
+Nouvelle-Aquitaine" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://aqui.fr/wp-content/uploads/2023/06/cellules-de-Graetzel-sur-la-facade-du-palais-des-congres-de-lEPFL-scaled.jpg"
+align="left" hspace="12" alt="La reÃÅvolution photovoltaiÃàque
+deÃÅmarre en Nouvelle-Aquitaine" v:shapes="Image_x9961_1">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">19/06/2023 &ndash; aqui.fr</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;"><div>Le
+projet industriel Solar Transparencies vise &agrave; lancer la
+premi&egrave;re usine de cellules solaire "Gr&auml;tzel" au monde. Un
+investissement de 115 millions d'euros qui a choisi la
+Nouvelle-Aquitaine comme terre d'accueil.&nbsp;</div>
+<div id="attachment_70928" class="wp-caption alignnone
+media_une">&nbsp;</div></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/7/DsSDgqcI5XA8uO8O-4tj4w/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRmhhMjBZd2c0SXMwaTJtNkUlMkZaNGIxeWhRem0lMkZtWFRibGI3VEdBVjlUJTJGM0NtNkQlMkY2ODV2QSUyQlNjSklrMm9jaU5sNW1SUmJkdEZtYjBxSlhkSGl1bnJOb1JEVXgzJTJCVnMwWW83Y0ZycXZzNzF2VW9ORkNKRXc2MTNuJTJGWXlKQ1YlMkJtRiUyQkM0WklUNlN0bjBlWjBWcnZJbUFMNzhzdE9mUkFmZTRBNmJDbWt6cE1qYjdjdlNHVEdjcTdkSjdaM2FsZVU1N2gzYTclMkIxcWE2V1p0RmpDWk9Lc0Rn"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span>
+<span id="item_7398_2" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">[Dans les alleÃÅes
+d'Intersolar] SolarEdge deÃÅvoile sa solution pour l'agrivoltaiÃàsme
+dynamique</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x2104_6" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="[Dans les alleÃÅes d\'Intersolar] SolarEdge
+deÃÅvoile sa solution pour l\'agrivoltaiÃàsme dynamique" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/06/solaredge-2.jpg"
+o:title="[Dans les alleÃÅes d\'Intersolar] SolarEdge deÃÅvoile sa
+solution pour l\'agrivoltaiÃàsme dynamique" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/06/solaredge-2.jpg"
+align="left" hspace="12" alt="[Dans les alleÃÅes d\'Intersolar]
+SolarEdge deÃÅvoile sa solution pour l\'agrivoltaiÃàsme dynamique"
+v:shapes="Image_x2104_6">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">16/06/2023 &ndash; pv-magazine.fr</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;">Sur le
+salon Intersolar aÃÄ Munich, le fabricant a preÃÅsenteÃÅ un nouveau
+systeÃÄme de tracker solaire piloteÃÅ par un algorithme en fonction
+de l'ensoleillement et des besoins des plantations. De plus,
+SolarEdge a deÃÅvoileÃÅ une batterie de stockage pour les
+installations C&amp;I de petite et moyenne tailles.</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/8/U8lyPQVbbm5u3b1rup9Psg/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRmhhMjBZd2c0SXMySThJMGluNjVlMnloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMFliTDN6UGx6REh2RkszRTc4SW9TOUM1TmhteVh2d1hZS1EyY2hCM2JDb2lxQ2kyYjZSME5ZMUwwcUgwVlRpNDRFVXNSazBkQjA4QWFvOEdlOHBNcUw2UGFIUlpsZHhuSEkwUUhveUl6bjVXRk9TYWJsa3prRFVreU95a2ozZmwyRFdZOG1WSU1ZaUR1dXZEJTJCS0JxNDhQendTSU5rZG1EeTFVTTNGZ0R0ZndFQSUzRCUzRA"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span>
+<span id="item_7398_3" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">Schletter d&eacute;voile un
+syst&egrave;me agriPV vertical au salon Intersolar</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x5369_7" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Schletter d&eacute;voile un syst&egrave;me
+agriPV vertical au salon Intersolar" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.pv-tech.org/wp-content/uploads/2023/06/Schletter-latest-agriPV-system-unveiled-at-Intersolar-Image_PV_Tech.jpg"
+o:title="Schletter d&eacute;voile un syst&egrave;me agriPV vertical
+au salon Intersolar" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.pv-tech.org/wp-content/uploads/2023/06/Schletter-latest-agriPV-system-unveiled-at-Intersolar-Image_PV_Tech.jpg"
+align="left" hspace="12" alt="Schletter d&eacute;voile un
+syst&egrave;me agriPV vertical au salon Intersolar"
+v:shapes="Image_x5369_7">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">15/06/2023 &ndash; pv-tech.org</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;"><div>Le
+fabricant de syst&egrave;mes de montage Schletter a
+d&eacute;voil&eacute; son dernier produit agrivolta&iuml;que &agrave;
+l'occasion du salon Intersolar Europe 2023 &agrave; Munich, en
+Allemagne.</div>
+<div><em>(article en anglais)</em></div></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/9/mfmkIA9n16iZj_3l6fwqxA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRmhhMjBZd2c0SXM4dmlMUktsMjMwRHloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMFkybDZGNlZjRjIlMkZEYTQlMkZXZVVzRSUyRjNoNnFoSUhsaCUyRjhsU1c1R1Y5aFVZMEolMkJDNXBIN1ZhemtOY0NHZ3BtZjBUeEslMkZZbjBFQUVMSU9UOFIxWUZCUGpJOUtGSENqMHRUbjZjNE94a0dUTW5kQSUzRCUzRA"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7420" id="rubrique_4"
+style=" clear:both;"><table width="100%" cellspacing="0"
+cellpadding="0">
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0" width="100%"
+style="background-color: #2e7861;">
+                                <tr>
+                                    <td>
+                                        <div class="rubrique_title"
+id="rubrique7420" style=" clear:both;; text-align:center">
+                                            <a
+name="RUB_ID_7420"></a>
+                                            <a name="RUB_4"></a>
+                                            <span
+class="rubriqueText" style="text-align: right;font-weight:
+100;font-style: normal;text-decoration: none;font-size: 16px;color:
+#ffffff;">Monde</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                </table>
+<span id="item_7420_0" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">Namur: le premier projet
+agrivolta&iuml;que de Belgique produira avant la fin de
+l'&eacute;t&eacute;.</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x3912_7" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Namur: le premier projet agrivolta&iuml;que
+de Belgique produira avant la fin de l\'&eacute;t&eacute;." 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.renouvelle.be/wp-content/uploads/2023/06/Capture-decran-2023-06-15-231817-1024x686.png"
+o:title="Namur: le premier projet agrivolta&iuml;que de Belgique
+produira avant la fin de l\'&eacute;t&eacute;." />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.renouvelle.be/wp-content/uploads/2023/06/Capture-decran-2023-06-15-231817-1024x686.png"
+align="left" hspace="12" alt="Namur: le premier projet
+agrivolta&iuml;que de Belgique produira avant la fin de
+l\'&eacute;t&eacute;." v:shapes="Image_x3912_7">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">16/06/2023 &ndash; renouvelle.be</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;">A
+l'heure o&ugrave; la Ville de Namur vient d'annoncer un nouveau
+projet de champ photovolta&iuml;que &agrave; Salzinnes, le
+pr&eacute;c&eacute;dent, premier vrai projet du genre en Belgique,
+devrait commencer &agrave; injecter de l'&eacute;lectricit&eacute;
+cet &eacute;t&eacute;&hellip;&agrave; Wierde, une autre commune
+namuroise.</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/10/xxezJpf2yVRo1py9v1iMPA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRmhhMjBZd2c0SXMlMkZOTEJ3cFdIbHJGeWhRem0lMkZtWFRibGI3VEdBVjlUJTJGM0NtNkQlMkY2ODV2QSUyQlNjSklrMm9jaU5sNW1SUmJkdEZtYjBxSlhkSGl1bnJOb1JEVXgzJTJCVnMwYlNmWWlGVzFneW5TeFJDRU5WWSUyQkhYT3hIa3Yzdm1sODhEa0hRUlpPM3NLTkI0JTJCOFM4dFglMkIwJTJCelZsM3daWndtbW8zQ3htUHhhSVdhUGFkbGU0JTJCUHJrU2pSU0Y5SmolMkJwUnhhNWlVQ2JBV3k3NFRzdWlrMXBadlVUM0JNclZJc1diOVNJWnlwdzRIMHB6ZzdHUVpNeWQw"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span>
+<span id="item_7420_1" style="" ><table width="100%" cellpadding="0"
+cellspacing="0" border="0">
+                    <tr>
+                        <td height="8" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td width="12"></td>
+                        <td>
+                            <table cellspacing="0"
+class="articlesBody" width="100%" style="border:<NLM::border>;
+background-color:#efefef;">
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td witdh="100%"
+style="text-align:left;">
+                                        <span class="tArticle"
+style="font-weight: 900;font-style: normal;text-decoration:
+none;font-size: 13px;color: #1c7861;">La soci&eacute;t&eacute;
+danoise Eurowind Energy d&eacute;veloppe un projet
+photovolta&iuml;que de 70 MW en Roumanie</span>
+                                    </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%">
+                                        <table cellspacing="0"
+width="100%">
+                                            <tr>
+                                                <td
+style="vertical-align:middle; text-align: center;max-width: 135px
+!important;" valign="top" width="135">
+                                            <!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x7600_6" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="La soci&eacute;t&eacute; danoise Eurowind
+Energy d&eacute;veloppe un projet photovolta&iuml;que de 70 MW en
+Roumanie" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://balkangreenenergynews.com/wp-content/uploads/2023/06/agrivoltaic-projectsheep-sun-solar.jpg"
+o:title="La soci&eacute;t&eacute; danoise Eurowind Energy
+d&eacute;veloppe un projet photovolta&iuml;que de 70 MW en Roumanie"
+/>
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://balkangreenenergynews.com/wp-content/uploads/2023/06/agrivoltaic-projectsheep-sun-solar.jpg"
+align="left" hspace="12" alt="La soci&eacute;t&eacute; danoise
+Eurowind Energy d&eacute;veloppe un projet photovolta&iuml;que de 70
+MW en Roumanie" v:shapes="Image_x7600_6">
+                <![endif]>
+              
+                                        </td>
+                                                <td valign="top"
+width="100%">
+                                                    <table
+cellspacing="0" width="100%">
+                                                        <tr>
+                                                            <td
+class="articleDateSrc" style="font-weight: 100;font-style:
+italic;text-decoration: none;font-size: 10px;color:
+#00b682;">13/06/2023 &ndash; balkangreenenergynews.com</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+class="absArticle" width="100%" style="font-weight: 100;font-style:
+normal;text-decoration: none;font-size: 12px;color: #000000;"><div>La
+soci&eacute;t&eacute; danoise d'&eacute;nergie renouvelable Eurowind
+Energy d&eacute;veloppe un projet agrivolta&iuml;que en Roumanie, un
+parc photovolta&iuml;que de 70 MW qui combinera l'&eacute;nergie
+solaire et l'agriculture.</div>
+<div><em>(article en anglais)</em></div></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td
+width="100%" height="10">
+                                                               
+<table width="100%">
+                                                                   
+<tr>
+                                                                     
+  <td width="85%" height="10">
+                                                                     
+      
+                                                                     
+  </td>
+                                                                     
+  <td width="15%" style="text-align:center; background:#00b678;"
+height="10">
+                                        <a target="_blank"
+class="articleLink"
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/11/MtlVAa2Do2s08S-2pRcanw/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YyRXZ4R1Jsb0RtZ0lZSmxMaFZXaGI3UmRNNE41bHY4eCUyRmhhMjBZd2c0SXMxQTl5elZEdnZPU3loUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMGJWOHNkRE5xVGViVGxsTVZUc0hlNDF1eTdoJTJGZmlzVFhQdjh4eEFZckVjYVZmaVk2cm96bnlmeCUyRlAlMkY2Tk4zbG9ORTZyMnpSWm53Wlcybk9nMm5CJTJCWmhzYmg5NzlsQXJiUmFUWDJsWFE4S2lFWmlDUXMyZjh1JTJCQUxyQzBIWExUUlJJUlhUMVQ3SG81dyUzRCUzRA"
+style="color:#ffffff">Lire la suite</a>
+                                     </td>
+                                                                   
+</tr>
+                                                               
+</table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+					</table>
+                                    </td>
+				</tr>
+                            </table>
+                        </td>
+                        <td width="12"></td>
+                    </tr>
+                    <tr>
+                        <td height="16" colspan="3"></td>
+                    </tr>
+                </table>
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          </div></td>
+                                                <td class="w30"
+width="30"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w30"
+width="30"></td>
+                                                <td>
+                                                    <div
+class="footer"><p><img src="https://enervivo.fr/" alt="" />&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:
+14pt;"><em><span style="color: #339966; font-family: verdana, geneva,
+sans-serif;"> <strong>&nbsp;</strong></span><span style="font-family:
+verdana, geneva, sans-serif;"><strong><span style="font-family:
+verdana, geneva, sans-serif; background-color: #d4e8df;"><span
+style="font-size: 12pt; background-color: #d4e8df; color:
+#1c7861;">Les actualit&eacute;s d'EnerVivo
+:</span>&nbsp;</span></strong></span></em></span></p>
+<p><span style="font-size: 14pt; background-color: #ffffff;"><span
+style="font-family: verdana, geneva, sans-serif;"><span
+style="font-family: verdana, geneva, sans-serif;">&nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img
+src="https://technowest.com/wp-content/uploads/2021/02/btw_logo-1.png"
+alt="Bordeaux Technowest" width="184" height="65"
+/></span></span></span></p>
+<p><span style="font-family: verdana, geneva, sans-serif;">&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- Depuis ce
+mois d'avril, EnerVivo est incub&eacute; &agrave; <a
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/12/STSfC-W6murQpkfIABKzZg/aHR0cHM6Ly90ZWNobm93ZXN0LmNvbS8" target="_blank"
+rel="noopener">Bordeaux Technowest</a> sur le site de La Place qui
+regroupe et accompagne plusieurs start-up innovantes dans le domaine
+de l'&eacute;nergie.</span></p>
+<p><span style="font-family: verdana, geneva, sans-serif;">&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img
+src="https://img.freepik.com/vecteurs-premium/processus-recrutement-concept-icone-vector-illustration-design_24877-19946.jpg"
+alt="Processus De Recrutement Concept Ic&ocirc;ne Vector Illustration
+..." width="90" height="90" />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p><span style="font-family: verdana, geneva, sans-serif;">&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-
+<strong>EnerVivo recrute !</strong> Envie de rejoindre une start-up
+dynamique pour travailler sur des sujets passionnants ?
+N'h&eacute;sitez pas &agrave; consulter nos offres d'emploi juste ici
+:&nbsp;<a href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/13/jPL8qdL7V2i6mPEnvaWMTQ/aHR0cHM6Ly9lbmVydml2by5mci9yZWNydXRtZW50Lw">RECRUTEMENT |
+EnerVivo : l'&eacute;nergie des agriculteurs et des
+citoyens</a>&nbsp;&nbsp;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; <a href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/14/myfCi7WvUpdNP9b6T3pnsA/aHR0cHM6Ly9lbmVydml2by5mci8" target="_blank"
+rel="noopener"><img
+src="https://enervivo.fr/wp-content/uploads/thegem-logos/logo_690052a51fad1947c173ef17ee78ae33_2x.png"
+alt="" width="223" height="69" /></a></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/15/XvA6KyeSRa32gk9_kAjTAw/aHR0cHM6Ly9lbmVydml2by5mci9jb250YWN0Lw" target="_blank"
+rel="noopener">Nous contacter</a>&nbsp;-&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/16/JoeddYAMfAC1XtKH2wP8vA/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvZW5lcnZpdm8v" target="_blank"
+rel="noopener">LinkedIn</a>&nbsp;- <a
+href="https://0rlgg.mjt.lu/lnk/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/17/tGJfAAXP1Da1RDz_sUW20Q/aHR0cHM6Ly9lbmVydml2by5mci9nZXJlci12b3RlLWFib25uZW1lbnQv">G&eacute;rer votre
+abonnement</a></p></div>
+                                                </td>
+                                                <td class="w30"
+width="30"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+<br/><img src="https://0rlgg.mjt.lu/oo/AWkAAB8u3gIAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBkoupigjNzPq2nSNOxdM5Bc5qsQQAg630/324253df/e.gif" height="1" width="1" alt="" border="0" style="height:1px;width:1px;border:0;"/>
+</body>
+            <img alt="" src="http://www.mytwip.com/public_new/modules/newsletter/ajax_files/process_stats_loadmail.php?rqvpic=ccVM44SSMwaVrfIdKf0iy0xALW5xw%2FYcihz%2BMCgbI3ixCGHPv8t%2BaHDNjFYtyIo6DFmDqW6ppF5QDrRp0lYzjw%3D%3D" width="1" height="1" /></html>
+            
+
+
+
+--b1_64098c5b477aa3bdcd808ba54d6c1b0a--
+

@@ -1,0 +1,399 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:1505:b0:32b:2d1d:73ae with SMTP id e5csp1615991ljf;
+        Tue, 19 Aug 2025 11:01:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFakomkmmNU0XnUjH1jDqja84kV52V5WjxqfJP9yOhCPp9Tx6sc8Q9/+2ySAqzWbfqjP/m0
+X-Received: by 2002:a05:620a:2688:b0:7e6:8593:497b with SMTP id af79cd13be357-7e9fcbac6b7mr15563185a.47.1755626512152;
+        Tue, 19 Aug 2025 11:01:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1755626512; cv=none;
+        d=google.com; s=arc-20240605;
+        b=P5rit2OZEueJmvmqXvmBBxxPnH8exTrCVwhbrW7l5jxZXnJITu5G1xyus6oMvN7eZS
+         Ms5fK1PJqpfMSTCqVy4CoxINJLh1bE+EQrYMaMX6V5wAEoBNIOP6KmZcHHxElOUoEEzK
+         lTC6FU9f5aDQ1Ym12//yiSVB70abs2fOS0Wy4TV4ia2eK8VcgOxsLWjdcN+B0Srn8B2q
+         GEaJdFD6hO7z+3hhRJiDIzIiZsVixyOwa7Zl63BE0K7J0fxn+g86HvoFD68pQzTqvYSF
+         Jx6M92NNNi6zeFT3r+KhUd0jjYF0fKxH5GOYNJVfyFYnrVlHFxLmaP13xjMDF2ih0M3W
+         V0hg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:message-id:to:from:subject:mime-version
+         :date:sender:dkim-signature:dkim-signature;
+        bh=qVVUvjn6WOTZmK/VqVRnY6ys79uCgO67472oVNyObzQ=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=S9TR/QuUQZ5ysRyciusPEFTq7VVJiG7IKaHCeAXyDlusX3O6SftwgEngBXAcGUDvZA
+         AsNwIoUIX1UFnGmAn5EbYnI+sIWP48YEjrio0uBnDu8Y0rPYr4wCGVi+cp7lj5jh2AL4
+         wxNsX+t7HAz21oHxHsYwzcMY8oldaHPA7ki1FpbihDNdt2uQpaEdYV1jToR1FG/KM9lh
+         G248aBDxgEQaWRCpIKr6QawYkaZWAtzcHP4Zox7nTAE78Q19aXa33Uw7rpXRRzfLztEV
+         ISzHO5tq+EVqrtv3L+eTWeIA+MOBESj36HoqBt6BtXcfdX0PcPzD3r8Hav1zO/xK+Wue
+         QJXw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@official.iobit.com header.s=k1 header.b=bMx+BPXG;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=UPNeWtOp;
+       spf=pass (google.com: domain of bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com designates 204.220.184.40 as permitted sender) smtp.mailfrom="bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=iobit.com
+Return-Path: <bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com>
+Received: from k40.kb8c70eb.use4.send.mailgun.net (k40.kb8c70eb.use4.send.mailgun.net. [204.220.184.40])
+        by mx.google.com with UTF8SMTPS id af79cd13be357-7e87e23be23si393459285a.1267.2025.08.19.11.01.51
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Aug 2025 11:01:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com designates 204.220.184.40 as permitted sender) client-ip=204.220.184.40;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@official.iobit.com header.s=k1 header.b=bMx+BPXG;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=UPNeWtOp;
+       spf=pass (google.com: domain of bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com designates 204.220.184.40 as permitted sender) smtp.mailfrom="bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=iobit.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=official.iobit.com; q=dns/txt; s=k1; t=1755626510; x=1755633710;
+ h=Content-Transfer-Encoding: Content-Type: Message-Id: To: To: From: From: Subject: Subject: Mime-Version: Date: Sender: Sender: X-Feedback-Id;
+ bh=qVVUvjn6WOTZmK/VqVRnY6ys79uCgO67472oVNyObzQ=;
+ b=bMx+BPXGNeUJpgLuI0mMu9V8JpS0dFkqiZ7S0wIiKPjbIl1KtftMSQK+Vab+AjKl6zMQxpjtyFu3AQZgXxZBfep/5NSHzZ+CXEfQVMlAZLuKrCKJdhr7sGdXnoSKrknjCCJ4M/ALXrz83vCKNRjEoRPFPSsLmn+KqiP4up/kIuz3ivEf8Ye6MxS/KZc/K17Vql/bkrYcCm2VQipYxGYkrvluQaXt/cY2Lp/82x+AQzGIoxaNgcf3a32vTtbK2aUmQ1/LckMuIgix1Ajh/NRykjB7PylAaxtWEI+S3VtUxf9IVsTDDzPrLbnM8tOK3xEM2SMWALt1312hbo7x5IOv+A==
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1755626510; x=1755633710;
+ h=Content-Transfer-Encoding: Content-Type: Message-Id: To: To: From: From: Subject: Subject: Mime-Version: Date: Sender: Sender: X-Feedback-Id;
+ bh=qVVUvjn6WOTZmK/VqVRnY6ys79uCgO67472oVNyObzQ=;
+ b=UPNeWtOpIaxnwrzk8VXxWD4FLj0O7ig/dfEGPJpki38PdIVgn+2zia5/Mh78LlPSIBu7WARS23Ejl0hWq+Zdwf00Wbfut2YIXWAjEEimTzTbirbgZSDZS+SZsqIOPplblMBa3L3Y7UH7L71wuXDv0jCpms+J3ICxkaaAon2zbhs=
+X-Mailgun-Sid: WyI1ODhiZSIsImVseS51YnVudHUwQGdtYWlsLmNvbSIsIjEyNTU0M2UiXQ==
+X-Feedback-Id: postmaster@official.iobit.com:2025vidnoz_en_1:635b39ebfcccdad55f6f8024:mailgun
+Received: by f9c254d6b2bedb860fa1c5eb1178eca0e5f20e687230088d9388aae9f72921a9 with HTTP
+ id 68a4bc0e1891d4501618256b; Tue, 19 Aug 2025 18:01:50 GMT
+X-Mailgun-Sending-Ip: 204.220.184.40
+Sender: newsletter=iobit.com@official.iobit.com
+Date: Tue, 19 Aug 2025 18:01:50 +0000
+Mime-Version: 1.0
+Subject: =?UTF-8?q?=F0=9F=91=8D_IObit_Recommened!!_Free_to_Make_Your_Family_Memori?=
+ =?UTF-8?q?es_Alive_with_Vidnoz_AI!?=
+From: IObit <newsletter@iobit.com>
+To: ely.ubuntu0@gmail.com
+X-Mailgun-Tag: 2025vidnoz_en_1
+Message-Id: <20250819180150.f3fb2ad85883f844@official.iobit.com>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en">
+
+<head>
+    <meta charset=3D"UTF-8" />
+    <title> IObit Recommened!! Free to Make Your Family Memories Alive with=
+ Vidnoz AI!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body p a {
+            text-decoration: underline !important;
+            color: #419AFF !important;
+        }
+
+        table th a {
+            text-decoration: underline !important;
+            color: #fff !important;
+        }
+
+        body p a:hover {
+            opacity: 0.8 !important;
+            color: #419AFF !important;
+            text-decoration: underline !important;
+        }
+
+        table th a:hover {
+            opacity: 0.8 !important;
+            color: #fff !important;
+            text-decoration: underline !important;
+        }
+    </style>
+</head>
+
+<body style=3D"width: 100%; margin: 0px auto;">
+    <p style=3D"display: none; text-align: center;">IObit Recommened!! Free=
+ to Make Your Family Memories Alive with Vidnoz AI!</p>
+    <table width=3D"650" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" a=
+lign=3D"center"
+        style=3D"background: #fff;width:650px;margin: auto;">
+        <thead>
+            <tr>
+                <th valign=3D"middle" align=3D"left" height=3D"35" style=3D=
+"text-align: left;height:35px; background:#1264FC">
+                    <span style=3D"display: inline-block; vertical-align: m=
+iddle; width:530px;  margin-left: 14px;">
+                        <img src=3D"https://ld.iobit.com/newsletter/2025rec=
+ommendedm/images/logo.png" alt=3D"IObit" />
+                    </span>
+                    <a href=3D"https://email.official.iobit.com/c/eJxEzjtux=
+CAUheHVQGndB9ikoEjjbYyM7yVGwg958ETJ6qOZFFP_R_qORCTvHavViIP3PfUewS4RZwKvmbkX=
+SQMDiJPEPGCfAgKLLZGAPAT8wADoocucE00SfAicg3PGwZ5zmctUu7Kn0rp5X22NS2vH3fCnodH=
+QWOUdDY2bft-rtqanofEJnDrv66qbqDz7o8i2_06lO5bDnlHrT3ela2sXGAdf61TqS2mvc__jm2=
+43tI9IfwEAAP__6EVILQ" target=3D"_blank" style=3D"display: inline-block; fon=
+t-family: Poppins,Arial,sans-serif; font-size: 14px;=20
+                    line-height: 1.5; font-weight: 400; color: #fff; text-d=
+ecoration: underline;
+                    ">View it online</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td height=3D"22"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2025recomme=
+ndedm/images/list01.png" alt=3D""
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2025recomme=
+ndedm/images/list02.png" alt=3D""
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"left" style=3D"font-size:16px; =
+line-height:28px; font-family: Poppins, Arial,sans-serif;">
+                    <p style=3D"margin: 20px 0px;">Today, IObit would like =
+to recommend a creative tool that can also add fun and creativity to your d=
+igital life - <b style=3D"color: #6D4DFF;">Vidnoz AI</b>.</p>
+                    <p style=3D"padding-bottom: 25px; border-bottom: solid =
+#6D4DFF 1px;">Free to give voices to your family memories, watch your photo=
+s, artworks, and even memes instantly come alive with engaging motion!</p>
+                </td>
+            </tr>
+            <tr>
+                <td height=3D"30"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                   <table>=20
+                    <tr>
+                        <td valign=3D"middle" align=3D"left" width=3D"280" =
+style=3D"font-family: Poppins, Arial,sans-serif;">
+                            <h3 style=3D"font-size:24px; line-height:46px; =
+font-weight:normal; font-family: Segoe UI, Arial,sans-serif;">Let Memories =
+Move</h3>
+                            <p style=3D"margin-top:20px; margin-bottom: 20p=
+x; font-size:14px; line-height:28px;">Relive precious moments - bring old p=
+hotos back to life. Smile, wink, nod, and tell a story.</p>
+                            <a href=3D"https://email.official.iobit.com/c/e=
+Jxkzs1ugzAQBOCnsY9ovbbBHHyoVPEayD_rsirgKJig9umrpMdcv5FmJnuF1hpNkrwarO2xtwrk=
+4pUxGU2imMZBj5CHkIi0phhgCDiCZI-AFpwalQNloSu6RAzZWed0ccYIA7UUThzWjmvk1qW6ydU=
+vrd0OoT8ETgKn67q6B-e9_j7jp-mJ9-O8C_1JeZu5zuFIt6W2KrDfvtu7y7un9ac747m3E4SBry=
+3w-lprr5P__TPts5IPj38BAAD__9A0TAE" style=3D"border:none">
+                                <img src=3D"https://ld.iobit.com/newsletter=
+/2025recommendedm/images/btn_01.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                            </a>
+                        </td>
+                        <td valign=3D"top" align=3D"center" width=3D"370">
+                            <img src=3D"https://ld.iobit.com/newsletter/202=
+5recommendedm/images/feature_01.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                        </td>
+                    </tr>
+                   </table>
+                </td>
+               =20
+            </tr>
+            <tr>
+                <td height=3D"30"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                   <table>=20
+                    <tr>
+                        <td valign=3D"top" align=3D"center" width=3D"370">
+                            <img src=3D"https://ld.iobit.com/newsletter/202=
+5recommendedm/images/feature_02.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                        </td>
+                        <td valign=3D"middle" align=3D"left" width=3D"280" =
+style=3D"font-family: Poppins, Arial,sans-serif;">
+                            <h3 style=3D"font-size:24px; line-height:46px; =
+font-weight:normal; font-family: Segoe UI, Arial,sans-serif;">Turn Comicboo=
+k to <br> Vivid Video</h3>
+                            <p style=3D"margin-top:20px; margin-bottom: 20p=
+x; font-size:14px; line-height:28px;">Convert your child's favorite text st=
+ories into video. Listen to them at any time, anywhere.</p>
+                            <a href=3D"https://email.official.iobit.com/c/e=
+JxkzsFu8yAQBOCngSPaXVhCDhx-6ZdfwwIbmlVtU8U4bvv0VdJjr99IMzNHJGZniy4RL8yePCPo=
+W0QCJuerK8GmyoCVcvbepksKPuFVSyQghoBXDIAMptqaKc2BQ7A1OKcctFplkrQYaVm6mdqql3j=
+r_WNX9p-iQdFwnqd5yLy172f8NDvIth93Zf-XeR2ljWmfevnsivz63v-wvseyfJkjH1s_QDl4W5=
+Msr63-uvjbPpZtRP2I9BMAAP__mRFKeQ" style=3D"border:none">
+                                <img src=3D"https://ld.iobit.com/newsletter=
+/2025recommendedm/images/btn_02.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                            </a>
+                        </td>
+                     =20
+                    </tr>
+                   </table>
+                </td>
+               =20
+            </tr>
+            <tr>
+                <td height=3D"30"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                   <table>=20
+                    <tr>
+                        <td valign=3D"middle" align=3D"left" width=3D"280" =
+style=3D"font-family: Poppins, Arial,sans-serif;">
+                            <h3 style=3D"font-size:24px; line-height:46px; =
+font-weight:normal; font-family: Segoe UI, Arial,sans-serif;">Create Your D=
+igital Twin Speaking 40+ language</h3>
+                            <p style=3D"margin-top:20px; margin-bottom: 20p=
+x; font-size:14px; line-height:28px;">Translate your videos seamlessly in 4=
+0+ language with natural voice clone and preserve authentic speaking styles=
+=2E</p>
+                            <a href=3D"https://email.official.iobit.com/c/e=
+Jx0zs1uhCAUxfGngaW5H15kFiyaNL6GQYEOqUKjOKZ9-mam627Pf_E7wSGJ9Bx1dDiIGDKCoO_O=
+DMttJmS4JTEmeAC_ILONImHgAXV2BCRg8YYWUKBLnGbywYq1nGzfqx5qSnnJfu1ynXPrlrrp1d1=
+b-zoUvykaFY3XdXWPHEr9eebnxmMux7krfo9hm3Kd_LG03Zdj9a3uisz22f6Jendx_e7O-SztBN=
+XDx-bz-nLb6-6fNMUyoX44-g0AAP__UoZPWQ" style=3D"border:none">
+                                <img src=3D"https://ld.iobit.com/newsletter=
+/2025recommendedm/images/btn_03.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                            </a>
+                        </td>
+                        <td valign=3D"top" align=3D"center" width=3D"370">
+                            <img src=3D"https://ld.iobit.com/newsletter/202=
+5recommendedm/images/feature_03.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                        </td>
+                    </tr>
+                   </table>
+                </td>
+               =20
+            </tr>
+            <tr>
+                <td height=3D"30"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                   <table>=20
+                    <tr>
+                        <td valign=3D"top" align=3D"center" width=3D"350">
+                            <img src=3D"https://ld.iobit.com/newsletter/202=
+5recommendedm/images/feature_04.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                        </td>
+                        <td valign=3D"middle" align=3D"left" width=3D"300" =
+style=3D"font-family: Poppins, Arial,sans-serif;">
+                            <h3 style=3D"font-size:24px; line-height:46px; =
+font-weight:normal; font-family: Segoe UI, Arial,sans-serif;">See Your Futu=
+re Baby Today</h3>
+                            <p style=3D"margin-top:20px; margin-bottom: 20p=
+x; font-size:14px; line-height:28px;">Get AI-predicted baby face photos of =
+your future child. See what will your baby look like. It's fun, it's fascin=
+ating, and it's free!</p>
+                            <a href=3D"https://email.official.iobit.com/c/e=
+Jxkzs1qwzAQBOCnkY5mV9K6m4MOheLXMKu_RtS2SizHpE9fkh57_QZmJnk0RM5mnT2-EY1mJAR9=
+9S4KiLsgARIzJQqjMI8Bo5VwkaKrN2AIGC_IgARDsSUYSUzMtrBzykErpcYqy1BbqH2IbdWLv_b=
+-vSv7rsykzHSe53CvaWs_z_hpdqrbftyU_chpnWubZY9BwkOZcf3q_1jffF4ewxGOrR-gHHyuUp=
+fXVn9d_Guf8zajvnvzGwAA___RJ0qO" style=3D"border:none">
+                                <img src=3D"https://ld.iobit.com/newsletter=
+/2025recommendedm/images/btn_04.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                            </a>
+                        </td>
+                     =20
+                    </tr>
+                   </table>
+                </td>
+               =20
+            </tr>
+            <tr>
+                <td height=3D"30"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                   <table>=20
+                    <tr>
+                        <td valign=3D"middle" align=3D"left" width=3D"280" =
+style=3D"font-family: Poppins, Arial,sans-serif;">
+                            <h3 style=3D"font-size:24px; line-height:46px; =
+font-weight:normal; font-family: Segoe UI, Arial,sans-serif;">Message from =
+Santa</h3>
+                            <p style=3D"margin-top:20px; margin-bottom: 20p=
+x; font-size:14px; line-height:28px;">Send a magical, personalized video fr=
+om Santa to delight your loved ones this holiday.</p>
+                            <a href=3D"https://email.official.iobit.com/c/e=
+Jxkzs1uwyAQBOCngSPaXVhCDhwqVX4NC_PToNpQxThW-_RV0mOv30gzkzwSs9FZZo8XZkuWEeTN=
+20uxgImKLXQFl3JODgsFRtIxLiyrJyAGh1d0gAyq6LJQSI6d08UZIwz0UmqsYVW1L3Wo2De5-ts=
+YX7vQb4ImQdN5nupRU-s_z_hpeqptP-5Cv-e0zbXPYY97aCMIstvn-O_y7vP6rY7laOMAYeBjC3=
+V9rY3Xyb_-ObcZ5cPTbwAAAP__pw9Ltg" style=3D"border:none">
+                                <img src=3D"https://ld.iobit.com/newsletter=
+/2025recommendedm/images/btn_05.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                            </a>
+                        </td>
+                        <td valign=3D"top" align=3D"center" width=3D"370">
+                            <img src=3D"https://ld.iobit.com/newsletter/202=
+5recommendedm/images/feature_05.png" alt=3D"" style=3D"vertical-align: top;=
+">
+                        </td>
+                    </tr>
+                   </table>
+                </td>
+               =20
+            </tr>
+            <tr>
+                <td height=3D"30"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2025recomme=
+ndedm/images/list03.png" alt=3D""
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <a href=3D"https://email.official.iobit.com/c/eJxUzs1uw=
+yAQBOCngSNaFtaQA4dKVV7D4rdZ1TZVjGO1T18lPfX6jTQzJWgksqbKGrQjmnAiDfIWqE4Oq3WA=
+5EuEnJqzvrpigUq85CQ5ICCB1xftQROoZlrCWDx5b5q3VljorXHmuCjuiYfKfZVLuI3xtQvzJvA=
+q8Hqep3pw2frPM36aufK2H3dh3mtZZ-5z3LPAaf0c_0jeQ12-1ZGObRwgLHyskZfXxnhd-2ud6z=
+Zr-Qj4GwAA__-XCEeO" style=3D"border:none">
+                        <img src=3D"https://ld.iobit.com/newsletter/2025rec=
+ommendedm/images/list04.png" alt=3D"" style=3D"vertical-align: top;">
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <footer style=3D"text-align: center; width: 650px; margin: 0px auto; pa=
+dding: 10px 22px; font-family: Poppins,Arial,sans-serif;font-size: 12px; li=
+ne-height: 28px; font-weight: 400; box-sizing: border-box;">
+        <p>You're receiving this email because we think you're our valued u=
+ser and want to recommend useful tools to you. If you no longer wish to rec=
+eive further updates from IObit, you can click here to
+            <a href=3D"https://email.official.iobit.com/c/eJxEz8tuskAYgOGrG=
+Zbk4xtGcTEL_f2n1qQ0RYXKxjAHyuhwiIBErr6Jm67fzftoHiBjITWe4cGSsQUuWABexbWh4VIq=
+MEiBAaIyKtRsSctCRVQb8CxHQAZRsAoiCBj4JS0lFjpiUUTLKAxJCG1ZWmUL59tW2sFXbe05Xg1=
+D1xO6JigIimma_ipBYRqCYmz6UfbqbqXxu6ojVBhCt_ISXxN7Ts9zdk3q005cTRMXxzfxpUDvDk=
+73p9sEGqqkcPtn7jbdoc4_jiKNs2zv8uw_jb_fn-mcsPymN6pe_VMoYjXv0881oVtCt96dG_f0R=
+zk2wwgkhJ-6sO71Pby4D6ubdr6Y5hJ4D46_AQAA___XXWNG" style=3D" font-family: Ari=
+al,sans-serif; font-size: 12px; line-height: 28px; font-weight: 400; color:=
+ #419AFF; text-decoration: underline;">unsubscribe</a>.
+        </p>
+        <p style=3D" border-top: solid #dedede 1px; margin-top:10px;  paddi=
+ng: 10px 0px; color: #000;">
+            Copyright 2005 - 2025 IObit. All Rights Reserved
+        </p>
+    </footer>
+<img width=3D"1" height=3D"1" alt=3D"" src=3D"https://email.official.iobit.=
+com/o/eJwczF0KgzAMAODT2MeStE1_HnoWabTZAmphqLCdfuDzB99a0REF302vmIiii4Rg3hWAf=
+IpAkVsqIXIkEGRaSmLPUsRodeAIMhbMgARWvLBra6acveQQpgBDRBdtm9XBetpl7OZT-_a1F1_H=
+ecEU4LU33R45n_DW9Ri_uR8zmru6fwAAAP__RqguDA"></body>
+
+</html>

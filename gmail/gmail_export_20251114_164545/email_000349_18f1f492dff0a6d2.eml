@@ -1,0 +1,513 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:b043:0:b0:2df:f850:e74f with SMTP id d3csp8839ljl;
+        Sat, 27 Apr 2024 04:20:40 -0700 (PDT)
+X-Received: by 2002:a67:fa9a:0:b0:47b:f242:cd2a with SMTP id f26-20020a67fa9a000000b0047bf242cd2amr5119462vsq.17.1714216840460;
+        Sat, 27 Apr 2024 04:20:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714216840; cv=none;
+        d=google.com; s=arc-20160816;
+        b=e9W3fnWmA9YFJklDVDVKVLmQrmU4k2fUjnMZe7tJwQHu2NFtFmSRgFtqhsvrbFZmjN
+         PGmwfWIciPkmTUCHhXjWAPzwtVsbX4kr3b5eiBA2aHlhKKMMQRnEW2KheHEeFt3Gxm7/
+         0S3giytmWAmSLSNeWNsf2GoKZpjkXkMURMOV2cA3c8LiUygJ/Pt/AWaq4dWoSvtPOt5G
+         lUQcGeEoibfhzKgiYYlsvUfs1cfsF/djc6sKxUhEDlPmfJDJxBvIel4swAlxruxBMaXM
+         guNAWI5E5QE6+VXTYtjF8sBmHRLRb3F/8NKDHUbOVVrMW0sxm0/jYwWPvm59L3AFbVhF
+         He1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=IvAyv6UMNSG+8ItcYHa4Osq7bddeAzDlQwGxK3aJuNY=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=s49gHG7xThNyWMDmtKcTOqZ7z3IsKluWevOnimeXY1OCoVHmHa0dvtStFcuDUSMRKg
+         VJ7Cit9mTF61/FSb/vuW6tGK5nokPiq38la3lbbTetdg6hrSCDMtOMuittkL32+LNH5+
+         S9Sg8CS7TrHgoIisjrJ6WewtO6K/DfujcHskz2gD0Iy+fA5mOyhIGHOVeTEvS7JA0B7g
+         FeJZMfH/u1PGgcpQ64+rTl+nRGgLwqw+o8nis3HWplcWgb49PDIDCfHESq9yI5UaRwGX
+         axOSC0PZ6uH9eU0f7sJsAcSE5Hpes/GJYR/p+t8BgUqY6fpVu23fcYX6yX2bXxyCJCfs
+         ud7A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=tz96KuGW;
+       spf=pass (google.com: domain of 3h98szggtczibc-fsdzmoqqcibhg.uccuzs.qcaszm.ipibhiouaowz.qca@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3h98sZggTCzIbc-fSdZmOQQcibhg.UccUZS.QcaSZm.iPibhioUaOWZ.Qca@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+Return-Path: <3h98sZggTCzIbc-fSdZmOQQcibhg.UccUZS.QcaSZm.iPibhioUaOWZ.Qca@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id s16-20020a056102365000b004782320148fsor15159918vsu.5.2024.04.27.04.20.39
+        for <ely.ubuntu0@gmail.com>
+        (Google Transport Security);
+        Sat, 27 Apr 2024 04:20:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3h98szggtczibc-fsdzmoqqcibhg.uccuzs.qcaszm.ipibhiouaowz.qca@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=tz96KuGW;
+       spf=pass (google.com: domain of 3h98szggtczibc-fsdzmoqqcibhg.uccuzs.qcaszm.ipibhiouaowz.qca@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3h98sZggTCzIbc-fSdZmOQQcibhg.UccUZS.QcaSZm.iPibhioUaOWZ.Qca@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1714216839; x=1714821639; dara=google.com;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=IvAyv6UMNSG+8ItcYHa4Osq7bddeAzDlQwGxK3aJuNY=;
+        b=tz96KuGWzby6+TxN/GdtoLVzQxTNUQ0isWnUo9jYNTMUJSN3jx9uJOJwvKkRkMw5it
+         Ev7Bmfdhq500jkUiUOqIcwnE2O1Yc6GlQCbIN5KLiCo+dS0p+OoG0QVsPCQmpra6bw/S
+         fLz5vbENhWAFJlIJFW77JfTIgwMWqbDyWjAp8Rm4XotIvAjCSLCkWnjTJflMjGayIRM8
+         idbNRHCp3tNHDxRSb38NSqZWPyzd6MsLI/kBQkD0llo2xzyquigbN+3V/6J2CIyza9p+
+         UZLRNKyOCVmKaedVVTdxNfyt8rLWuzLIfIz+7t74pQby09WPnTiCRAwHdX6TvNjLDQl8
+         uyrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714216839; x=1714821639;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=IvAyv6UMNSG+8ItcYHa4Osq7bddeAzDlQwGxK3aJuNY=;
+        b=AHEvr4Bfv0nrM3bRxn47pg+HlPfXQvJSxPVK7lJZCsmoGnDf+xzEmoU1m4YMqoKsJd
+         S8wZYjQNNBfhS5TfzHva9hUkrVxeEf3LF4c+zIpoS/oz2GsBPeQ5tkBfZ/61H9MHn+em
+         3mTSqZUEsjmTLikNVD8Yz1GufDZKbl6g0wCBPCCec2Ha0le+2KLoZXDTwctrXp1cQLi7
+         6I8CWxAwbp2D2Gt5d1bA0Dvh818rfspY6y+bGnclGDz181iOQjwZm7OhXSGnjxW0ui1d
+         SOiRIcOgIUNzDUDm5Y0Ma7KrU6l8x18xApEgzq+eQtYROLObl/RF5j0gk3xrD0zdJl8X
+         0nRA==
+X-Gm-Message-State: AOJu0YwG59lCxu2e+47+1SPFjANHu8hyBQcLtLW2eFKbN8S+aMjrFSxI
+	MCX1/JzE2+tb3UrSpO3n3Pd2eELEpmuwNLYv8Ivl4n6iw7nsYscaDmAs
+X-Google-Smtp-Source: AGHT+IGfmEHgXrZRKffjtS/pI1uWpVsZHZEZt/F/UfRJ7/bLMD7mepa1geS2Jtnd9AHUmrBn3Fq4fIg=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6102:1985:b0:47b:b058:849b with SMTP id
+ jm5-20020a056102198500b0047bb058849bmr5250986vsb.10.1714216839818; Sat, 27
+ Apr 2024 04:20:39 -0700 (PDT)
+Date: Sat, 27 Apr 2024 04:20:39 -0700
+Reply-To: Google <no-reply@accounts.google.com>
+Feedback-ID: P2725-0:C20305066:M110796698-fr:gamma
+X-Notifications: f4d73031efac0000
+X-Notifications-Bounce-Info: AaJ7rEr1t3jM1Mb9m5PGuSENjMnjNgK5K2iVxElQ_KbI2GXBh_mq7bf2q6OkQb_CofxqSAtvStVFeqz603LWaFDVJf_r3OwSz-bgwZXlj5PaRGxjLUBd7AAN9k6VNvPO0-dSgJt80rIPdtDRTQt1TK9TDnbPiGPGIx0ZR9xjGwmLSKfFthx0t4NVbSfxrQzj2-H2SombUuMxKi3jV_gSab8692ynLeT-eEdkID0gIy_WiNtjXJgl7yhZgjBs2vpyiNbayE-dodFSKjqFyf_bF8gfnLJ4zcLxK_AvIZvA714LCfkIB7o0FjtzzfPZQ7oFFjoCSzWPWdUAKbIhtuInylsAQxlSs_c6aAYGSgFGDdemmU5883GixMEQrVBayVvQxsoZ69hUOBvxtDoYVYiPOfNZl9A3mVwE0cPvNZh_yIxO_VXvJNsVZZ-rh3mwiKH4mRM36LEjIJGmNnKVL6qT3KU5KOoAn9Qx2QNjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <1804e83386c5f3198f804a45cce237ccee52ed0d-20305066-111481340@google.com>
+Subject: En savoir plus sur la nouvelle version de nos conditions d'utilisation
+From: Google <no-reply@accounts.google.com>
+To: ely.ubuntu0@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000ce2f940617123588"
+
+--000000000000ce2f940617123588
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+ZWx5LnVidW50dTBAZ21haWwuY29tDQo8aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tL0FjY291
+bnRDaG9vc2VyP0VtYWlsPWVseS51YnVudHUwJTQwZ21haWwuY29tJmNvbnRpbnVlPWh0dHBzJTNB
+JTJGJTJGcG9saWNpZXMuZ29vZ2xlLmNvbSUyRnRlcm1zJTJGdXBkYXRlJTNGdXRtX3NvdXJjZSUz
+RHRvczIwMjQtZW1haWwlMjZ1dG1fbWVkaXVtJTNEZW1haWw+DQoNClVuZSBub3V2ZWxsZSB2ZXJz
+aW9uIGRlIG5vcyBjb25kaXRpb25zIGQndXRpbGlzYXRpb24gZW50cmVyYSBlbiB2aWd1ZXVyIGxl
+DQoyMiBtYWkgMjAyNC4gTm91cyB0ZW5pb25zIGRvbmMgw6Agdm91cyBlbiBpbmZvcm1lciDDoCBs
+J2F2YW5jZS4NCg0KQ2VzIG1vZGlmaWNhdGlvbnMgbidhdXJvbnQgYXVjdW5lIGluY2lkZW5jZSBz
+dXIgbGEgZmHDp29uIGRvbnQgdm91cyB1dGlsaXNleg0Kbm9zIHNlcnZpY2VzDQo8aHR0cHM6Ly9h
+Y2NvdW50cy5nb29nbGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWlsPWVseS51YnVudHUwJTQwZ21h
+aWwuY29tJmNvbnRpbnVlPWh0dHBzJTNBJTJGJTJGcG9saWNpZXMuZ29vZ2xlLmNvbSUyRnRlcm1z
+JTJGc2VydmljZS1zcGVjaWZpYyUzRnV0bV9zb3VyY2UlM0R0b3MyMDI0LWVtYWlsJTI2dXRtX21l
+ZGl1bSUzRGVtYWlsPiwNCm1haXMgZWxsZXMgdm91cyBhaWRlcm9udCDDoCBtaWV1eCBjb21wcmVu
+ZHJlIGNlIHF1ZSBHb29nbGUgZXQgdm91cyBwb3V2ZXoNCmF0dGVuZHJlIGwndW4gZGUgbCdhdXRy
+ZSBsb3JzcXVlIHZvdXMgdXRpbGlzZXogY2VzIHNlcnZpY2VzLg0KDQpWb3VzIHBvdXZleiBjb25z
+dWx0ZXIgbGVzIG5vdXZlbGxlcyBjb25kaXRpb25zIGQndXRpbGlzYXRpb24gc3VyIGNldHRlIHBh
+Z2UNCjxodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vQWNjb3VudENob29zZXI/RW1haWw9ZWx5
+LnVidW50dTAlNDBnbWFpbC5jb20mY29udGludWU9aHR0cHMlM0ElMkYlMkZwb2xpY2llcy5nb29n
+bGUuY29tJTJGdGVybXMlMkZ1cGRhdGUlM0Z1dG1fc291cmNlJTNEdG9zMjAyNC1lbWFpbCUyNnV0
+bV9tZWRpdW0lM0RlbWFpbD4uDQpOb3VzIGF2b25zIMOpZ2FsZW1lbnQgcsOpc3Vtw6kgbGVzIG1v
+ZGlmaWNhdGlvbnMgYXUgYmFzIGRlIGNldCBlLW1haWwuDQoNCipRdWUgZG9pcy1qZSBmYWlyZSA/
+Kg0KDQogICAgLSAqU2kgdm91cyBuJ2F2ZXogcGFzIGwnw6JnZSByZXF1aXMgcG91ciBnw6lyZXIg
+dm90cmUgcHJvcHJlIGNvbXB0ZSBHb29nbGUNCiAgICAgDQo8aHR0cHM6Ly9hY2NvdW50cy5nb29n
+bGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWlsPWVseS51YnVudHUwJTQwZ21haWwuY29tJmNvbnRp
+bnVlPWh0dHBzJTNBJTJGJTJGc3VwcG9ydC5nb29nbGUuY29tJTJGYWNjb3VudHMlMkZhbnN3ZXIl
+MkYxMzUwNDA5JTNGdXRtX3NvdXJjZSUzRHRvczIwMjQtZW1haWwlMjZ1dG1fbWVkaXVtJTNEZW1h
+aWw+IDoqDQogICAgICAgLSBOb3VzIGF2b25zIGVudm95w6kgY2V0IGUtbWFpbCDDoCB0b24gcGFy
+ZW50IG91IHRvbiByZXByw6lzZW50YW50IGzDqWdhbA0KICAgICAgIHBvdXIgcXUnaWwgcHVpc3Nl
+IHQnYWlkZXIgw6AgbWlldXggY29tcHJlbmRyZSBub3MgbW9kaWZpY2F0aW9ucy4NCiAgICAgICAt
+IERpc2N1dGUgZGUgY2V0IGUtbWFpbCBhdmVjIHRvbiBwYXJlbnQgb3UgdG9uIHJlcHLDqXNlbnRh
+bnQgbMOpZ2FsDQogICAgICAgYWZpbiBkZSBkw6ljaWRlciBzaSB0dSBkb2lzIG1vZGlmaWVyIHRv
+biBjb21wdGUuDQogICAgLSAqIFNpIHZvdXMgw6p0ZXMgdW4gcGFyZW50IG91IHVuIHJlcHLDqXNl
+bnRhbnQgbMOpZ2FsIGV0IHF1ZSB2b3VzDQogICAgYXV0b3Jpc2V6IHZvdHJlIGVuZmFudCDDoCB1
+dGlsaXNlciBsZXMgc2VydmljZXMgOioNCiAgICAgICAtIFZldWlsbGV6IGV4YW1pbmVyIGxlcyBt
+b2RpZmljYXRpb25zIGFwcG9ydMOpZXMgw6Agbm9zIGNvbmRpdGlvbnMgYXZlYw0KICAgICAgIHZv
+dHJlIGVuZmFudCBldCBsJ2FpZGVyIMOgIGTDqWNpZGVyIHMnaWwgZG9pdCBtb2RpZmllciBzb24g
+Y29tcHRlLg0KICAgICAgIC0gTidvdWJsaWV6IHBhcyBxdWUgY2VzIGNvbmRpdGlvbnMgcydhcHBs
+aXF1ZW50IMOgIHZvdXMgZXQgcXVlIHZvdXMNCiAgICAgICDDqnRlcyByZXNwb25zYWJsZSBkZXMg
+YWN0aXZpdMOpcyBkZSB2b3RyZSBlbmZhbnQgbG9yc3F1J2lsIHV0aWxpc2UgY2VzDQogICAgICAg
+c2VydmljZXMuDQogICAgLSAqU2kgdm91cyDDqnRlcyBsJ2FkbWluaXN0cmF0ZXVyIGQndW4gY29t
+cHRlIGQnZW50cmVwcmlzZSBvdQ0KICAgIGQnw6l0YWJsaXNzZW1lbnQgZCdlbnNlaWduZW1lbnQg
+R29vZ2xlIFdvcmtzcGFjZSBldCBxdWUgdm91cyBhdmV6IGF1dG9yaXPDqQ0KICAgIHZvcyB1dGls
+aXNhdGV1cnMgw6AgYWNjw6lkZXIgYXV4IHNlcnZpY2VzIEdvb2dsZSBzdXBwbMOpbWVudGFpcmVz
+DQogICAgIA0KPGh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9BY2NvdW50Q2hvb3Nlcj9FbWFp
+bD1lbHkudWJ1bnR1MCU0MGdtYWlsLmNvbSZjb250aW51ZT1odHRwcyUzQSUyRiUyRnN1cHBvcnQu
+Z29vZ2xlLmNvbSUyRmElMkZhbnN3ZXIlMkYxODE4NjUlM0Z1dG1fc291cmNlJTNEdG9zMjAyNC1l
+bWFpbCUyNnV0bV9tZWRpdW0lM0RlbWFpbD4gOg0KICAgICoNCiAgICAgICAtIE5vcyBub3V2ZWxs
+ZXMgY29uZGl0aW9ucyBkJ3V0aWxpc2F0aW9uIG4nYXVyb250IGF1Y3VuZSBpbmNpZGVuY2UNCiAg
+ICAgICBzdXIgbGUgY29udHJhdCBHb29nbGUgV29ya3NwYWNlIGNvbmNsdSBlbnRyZSBHb29nbGUg
+ZXQgdm90cmUgIA0Kb3JnYW5pc2F0aW9uLg0KICAgICAgIEVsbGVzIHMnYXBwbGlxdWVyb250IHVu
+aXF1ZW1lbnQgYXV4IHV0aWxpc2F0ZXVycyBhdXhxdWVscyB2b3VzIGF2ZXogIA0KYWNjb3Jkw6kN
+CiAgICAgICBsJ2FjY8OocyBhdXggc2VydmljZXMgR29vZ2xlIHN1cHBsw6ltZW50YWlyZXMNCiAg
+ICAgICAgDQo8aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWls
+PWVseS51YnVudHUwJTQwZ21haWwuY29tJmNvbnRpbnVlPWh0dHBzJTNBJTJGJTJGc3VwcG9ydC5n
+b29nbGUuY29tJTJGYSUyRmFuc3dlciUyRjE4MTg2NSUzRnV0bV9zb3VyY2UlM0R0b3MyMDI0LWVt
+YWlsJTI2dXRtX21lZGl1bSUzRGVtYWlsPi4NCiAgICAgICBWb3VzIHBvdXZleiDDoCB0b3V0IG1v
+bWVudCBkw6ljaWRlciBkJ2F1dG9yaXNlciBvdSBub24gdm9zIHV0aWxpc2F0ZXVycyAgDQrDoA0K
+ICAgICAgIGFjY8OpZGVyIMOgIHRlbCBvdSB0ZWwgc2VydmljZSBHb29nbGUgc3VwcGzDqW1lbnRh
+aXJlIGRhbnMgbGEgY29uc29sZQ0KICAgICAgIGQnYWRtaW5pc3RyYXRpb24uDQogICAgLSAqU2kg
+dm91cyDDqnRlcyB1biByZXZlbmRldXIgR29vZ2xlIFdvcmtzcGFjZSBldCBxdWUgdm9zIGNsaWVu
+dHMgb250DQogICAgYXV0b3Jpc8OpIGxldXJzIHV0aWxpc2F0ZXVycyDDoCBhY2PDqWRlciBhdXgg
+c2VydmljZXMgR29vZ2xlIHN1cHBsw6ltZW50YWlyZXMNCiAgICAgDQo8aHR0cHM6Ly9hY2NvdW50
+cy5nb29nbGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWlsPWVseS51YnVudHUwJTQwZ21haWwuY29t
+JmNvbnRpbnVlPWh0dHBzJTNBJTJGJTJGc3VwcG9ydC5nb29nbGUuY29tJTJGYSUyRmFuc3dlciUy
+RjE4MTg2NSUzRnV0bV9zb3VyY2UlM0R0b3MyMDI0LWVtYWlsJTI2dXRtX21lZGl1bSUzRGVtYWls
+PiA6Kg0KICAgICAgIC0gTm9zIG5vdXZlbGxlcyBjb25kaXRpb25zIGQndXRpbGlzYXRpb24gbidh
+dXJvbnQgYXVjdW5lIGluY2lkZW5jZQ0KICAgICAgIHN1ciBsZSBjb250cmF0IEdvb2dsZSBXb3Jr
+c3BhY2UgY29uY2x1IGF2ZWMgdm9zIGNsaWVudHMuIEVsbGVzDQogICAgICAgcydhcHBsaXF1ZXJv
+bnQgdW5pcXVlbWVudCBhdXggdXRpbGlzYXRldXJzIGRlIHZvcyBjbGllbnRzIHF1aSBvbnQgIA0K
+YWNjw6hzIGF1eCBzZXJ2aWNlcw0KICAgICAgIEdvb2dsZSBzdXBwbMOpbWVudGFpcmVzDQogICAg
+ICAgIA0KPGh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9BY2NvdW50Q2hvb3Nlcj9FbWFpbD1l
+bHkudWJ1bnR1MCU0MGdtYWlsLmNvbSZjb250aW51ZT1odHRwcyUzQSUyRiUyRnN1cHBvcnQuZ29v
+Z2xlLmNvbSUyRmElMkZhbnN3ZXIlMkYxODE4NjUlM0Z1dG1fc291cmNlJTNEdG9zMjAyNC1lbWFp
+bCUyNnV0bV9tZWRpdW0lM0RlbWFpbD4uDQogICAgICAgVm9zIGNsaWVudHMgcGV1dmVudCDDoCB0
+b3V0IG1vbWVudCBkw6ljaWRlciBkJ2F1dG9yaXNlciBvdSBub24gbGV1cnMNCiAgICAgICB1dGls
+aXNhdGV1cnMgw6AgYWNjw6lkZXIgw6AgdGVsIG91IHRlbCBzZXJ2aWNlIEdvb2dsZSBzdXBwbMOp
+bWVudGFpcmUgIA0KZGFucyBsYQ0KICAgICAgIGNvbnNvbGUgZCdhZG1pbmlzdHJhdGlvbi4NCiAg
+ICAtICpTaSB2b3VzIHV0aWxpc2V6IG5vcyBzZXJ2aWNlcw0KICAgICANCjxodHRwczovL2FjY291
+bnRzLmdvb2dsZS5jb20vQWNjb3VudENob29zZXI/RW1haWw9ZWx5LnVidW50dTAlNDBnbWFpbC5j
+b20mY29udGludWU9aHR0cHMlM0ElMkYlMkZwb2xpY2llcy5nb29nbGUuY29tJTJGdGVybXMlMkZz
+ZXJ2aWNlLXNwZWNpZmljJTNGdXRtX3NvdXJjZSUzRHRvczIwMjQtZW1haWwlMjZ1dG1fbWVkaXVt
+JTNEZW1haWw+DQogICAgZCd1bmUgYXV0cmUgbWFuacOocmUgOiAqDQogICAgICAgLSBWZXVpbGxl
+eiBsaXJlIGNldCBlLW1haWwgcG91ciBjb21wcmVuZHJlIG5vcyBub3V2ZWxsZXMgY29uZGl0aW9u
+cw0KICAgICAgIGV0IGxlcyBvcHRpb25zIGRvbnQgdm91cyBkaXNwb3Nlei4NCiAgICAgICAtIFNp
+IHZvdXMgYWNjZXB0ZXogbGVzIG5vdXZlbGxlcyBjb25kaXRpb25zLCBhdWN1bmUgYWN0aW9uIG4n
+ZXN0DQogICAgICAgcmVxdWlzZS4NCg0KKlF1J2VzdC1jZSBxdWkgdmEgY2hhbmdlciA/Kg0KDQpW
+b3VzIHBvdXZleiBjb25zdWx0ZXIgbGVzIG5vdXZlbGxlcyBjb25kaXRpb25zIGQndXRpbGlzYXRp
+b24gZGUgR29vZ2xlIHN1ciAgDQpjZXR0ZQ0KcGFnZQ0KPGh0dHBzOi8vYWNjb3VudHMuZ29vZ2xl
+LmNvbS9BY2NvdW50Q2hvb3Nlcj9FbWFpbD1lbHkudWJ1bnR1MCU0MGdtYWlsLmNvbSZjb250aW51
+ZT1odHRwcyUzQSUyRiUyRnBvbGljaWVzLmdvb2dsZS5jb20lMkZ0ZXJtcyUyRnVwZGF0ZSUzRnV0
+bV9zb3VyY2UlM0R0b3MyMDI0LWVtYWlsJTI2dXRtX21lZGl1bSUzRGVtYWlsPi4NClZvaWNpIHVu
+IHLDqXN1bcOpIGRlcyBtb2RpZmljYXRpb25zIGFwcG9ydMOpZXMgOg0KDQogICAgLSAqQ29uZGl0
+aW9ucyBkJ3V0aWxpc2F0aW9uIGRlIGwnSUEgZ8OpbsOpcmF0aXZlLiogTm91cyBhbGxvbnMgaW50
+w6lncmVyDQogICAgbm9zIENvbmRpdGlvbnMgc3VwcGzDqW1lbnRhaXJlcyBkZSBsJ0lBIGfDqW7D
+qXJhdGl2ZQ0KICAgICANCjxodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vQWNjb3VudENob29z
+ZXI/RW1haWw9ZWx5LnVidW50dTAlNDBnbWFpbC5jb20mY29udGludWU9aHR0cHMlM0ElMkYlMkZw
+b2xpY2llcy5nb29nbGUuY29tJTJGdGVybXMlMkZnZW5lcmF0aXZlLWFpJTNGdXRtX3NvdXJjZSUz
+RHRvczIwMjQtZW1haWwlMjZ1dG1fbWVkaXVtJTNEZW1haWw+DQogICAgw6Agbm9zIGNvbmRpdGlv
+bnMgZCd1dGlsaXNhdGlvbiBwcmluY2lwYWxlcyBldCB5IGFqb3V0ZXIgZGUgbm91dmVsbGVzDQog
+ICAgcHLDqWNpc2lvbnMgY29uY2VybmFudCBsJ0lBLiBQYXIgZXhlbXBsZSwgbm91cyBuZSByZXZl
+bmRpcXVlcm9ucyBwYXMgbGENCiAgICBwcm9wcmnDqXTDqSBkZXMgY29udGVudXMgb3JpZ2luYXV4
+IGfDqW7DqXLDqXMgcGFyIG5vcyBzZXJ2aWNlcyBvcHRpbWlzw6lzIHBhcg0KICAgIGwnSUEuDQog
+ICAgLSAqSW5mb3JtYXRpb25zIHBsdXMgY2xhaXJlcyBzdXIgbGVzIGFjdGl2aXTDqXMgYWJ1c2l2
+ZXMuKiBOb3VzDQogICAgZm91cm5pc3NvbnMgcGx1cyBkJ2V4ZW1wbGVzIGV0IGQnaW5mb3JtYXRp
+b25zIHN1ciBsZXMgYWN0aXZpdMOpcyBhYnVzaXZlcyAgDQpvdQ0KICAgIHBlcnR1cmJhdHJpY2Vz
+IHF1aSBuZSBzb250IHBhcyBhdXRvcmlzw6llcyBsb3JzIGRlIGwndXRpbGlzYXRpb24gZGUgbm9z
+DQogICAgc2VydmljZXMuDQogICAgLSAqRMOpdGFpbHMgc3VwcGzDqW1lbnRhaXJlcyBzdXIgbGVz
+IGxpbWl0YXRpb25zIGRlIHJlc3BvbnNhYmlsaXTDqS4qIFBvdXINCiAgICBsZXMgdXRpbGlzYXRl
+dXJzIGVuIGRlaG9ycyBkZXMgw4l0YXRzLVVuaXMsIG5vdXMgYWxsb25zIGFqb3V0ZXIgZGVzDQog
+ICAgcHLDqWNpc2lvbnMgYXV4IHNlY3Rpb25zIHN1ciBsZXMgbGltaXRhdGlvbnMgZGUgcmVzcG9u
+c2FiaWxpdMOpIGV0IGxlcw0KICAgIGluZGVtbmlzYXRpb25zIGFmaW4gZCfDqXZpdGVyIHRvdXQg
+bWFsZW50ZW5kdSBhdSByZWdhcmQgZGVzIGxvaXMgb3UgIA0KZG91YW5lcw0KICAgIGxvY2FsZXMu
+DQogICAgLSAqSW5mb3JtYXRpb25zIHBsdXMgY2xhaXJlcyBzdXIgbGVzIGxpdGlnZXMuKiBOb3Vz
+IGFsbG9ucyBwcsOpY2lzZXIgcXVlDQogICAgc2kgdm91cyBlbmZyZWlnbmV6IG5vcyBjb25kaXRp
+b25zIGQndXRpbGlzYXRpb24sIG5vcyByZWNvdXJzIG5lIHNlICANCmxpbWl0ZW50DQogICAgcGFz
+IMOgIGxhIHN1c3BlbnNpb24gb3Ugw6AgbGEgcsOpc2lsaWF0aW9uIGRlIHZvdHJlIGFjY8OocyBh
+dXggc2VydmljZXMsIG1haXMNCiAgICBwZXV2ZW50IGluY2x1cmUgZCdhdXRyZXMgcsOpcGFyYXRp
+b25zIGVuIHZlcnR1IGRlIGxhIGxvaSBhcHBsaWNhYmxlLiBFbiAgDQpjYXMNCiAgICBkZSBwcm9i
+bMOobWUgb3UgZGUgbGl0aWdlIGVudHJlIG5vdXMgbGnDqSBhdXggcHLDqXNlbnRlcyBjb25kaXRp
+b25zDQogICAgZCd1dGlsaXNhdGlvbiwgdm91cyBhdXJleiBsYSBwb3NzaWJpbGl0w6kgZGUgZMOp
+Y3JpcmUgbGVzZGl0cyBwcm9ibMOobWVzIGV0ICANCmRlDQogICAgbGVzIHLDqXNvdWRyZS4NCiAg
+ICAtICpNb2RpZmljYXRpb25zIHJlZmzDqXRhbnQgbGUgZm9uY3Rpb25uZW1lbnQgZGUgbm9zIHNl
+cnZpY2VzLiogTm91cw0KICAgIGFsbG9ucyBham91dGVyIGRlcyBwcsOpY2lzaW9ucyBzdXIgbGUg
+Zm9uY3Rpb25uZW1lbnQgZGUgbm9zIHNlcnZpY2VzIGV0DQogICAgbWV0dHJlIMOgIGpvdXIgY2Vy
+dGFpbnMgbm9tcyBkZSBtYXJxdWVzIGRlIHNlcnZpY2VzIEdvb2dsZSBxdWkgb250IGNoYW5nw6kg
+IA0KYXUNCiAgICBmaWwgZHUgdGVtcHMuDQogICAgLSAqUG91ciBsZXMgdXRpbGlzYXRldXJzIHLD
+qXNpZGFudCBkYW5zIGwnRXNwYWNlIMOpY29ub21pcXVlDQogICAgZXVyb3DDqWVuIChFRUUpIHVu
+aXF1ZW1lbnQgOioNCiAgICAgICAtIEVuIHBsdXMgZGVzIG1vZGlmaWNhdGlvbnMgZMOpY3JpdGVz
+IGNpLWRlc3N1cywgbm91cyBhbGxvbnMgYWpvdXRlcg0KICAgICAgIHVuIHRleHRlIGV4cGxpY2F0
+aWYgcG91ciB2b3VzIGFpZGVyIMOgIGNvbXByZW5kcmUgbGUgY29uY2VwdCBqdXJpZGlxdWUgIA0K
+ZGUNCiAgICAgICAiZ2FyYW50aWVzIiBkYW5zIGxlIGNhZHJlIGRlcyBsb2lzIGV1cm9ww6llbm5l
+cyBldCBsb2NhbGVzLg0KICAgICAgIC0gUG91ciBlbiBzYXZvaXIgcGx1cywgdmV1aWxsZXogY29u
+c3VsdGVyIGNlIHLDqXN1bcOpIGRlcyBwcmluY2lwYWxlcw0KICAgICAgIG1vZGlmaWNhdGlvbnMg
+YXBwb3J0w6llcyBhdXggdmVyc2lvbnMgcG91ciBsJ0VFRSBkZSBub3MgY29uZGl0aW9ucw0KICAg
+ICAgICANCjxodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vQWNjb3VudENob29zZXI/RW1haWw9
+ZWx5LnVidW50dTAlNDBnbWFpbC5jb20mY29udGludWU9aHR0cHMlM0ElMkYlMkZwb2xpY2llcy5n
+b29nbGUuY29tJTJGdGVybXMlMkZjaGFuZ2VzJTNGdXRtX3NvdXJjZSUzRHRvczIwMjQtZW1haWwl
+MjZ1dG1fbWVkaXVtJTNEZW1haWw+DQogICAgICAgLg0KDQpTaSB2b3VzIG4nYWNjZXB0ZXogcGFz
+IGNlcyBub3V2ZWxsZXMgY29uZGl0aW9ucywgc3VwcHJpbWV6IHZvcyBjb250ZW51cw0KPGh0dHBz
+Oi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9BY2NvdW50Q2hvb3Nlcj9FbWFpbD1lbHkudWJ1bnR1MCU0
+MGdtYWlsLmNvbSZjb250aW51ZT1odHRwcyUzQSUyRiUyRnBvbGljaWVzLmdvb2dsZS5jb20lMkZ0
+ZXJtcyUyRmRlZmluaXRpb25zJTIzdG9jLXRlcm1zLXlvdXItY29udGVudCUzRnV0bV9zb3VyY2Ul
+M0R0b3MyMDI0LWVtYWlsJTI2dXRtX21lZGl1bSUzRGVtYWlsPg0KZXQgY2Vzc2V6IHRvdXRlIHV0
+aWxpc2F0aW9uIGRlIG5vcyBzZXJ2aWNlcy4gVm91cyBwb3V2ZXogw6lnYWxlbWVudCBtZXR0cmUN
+CnVuIHRlcm1lIMOgIHZvdHJlIHJlbGF0aW9uIGF2ZWMgbm91cyDDoCB0b3V0IG1vbWVudCBlbiBj
+bMO0dHVyYW50IHZvdHJlIGNvbXB0ZQ0KR29vZ2xlDQo8aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUu
+Y29tL0FjY291bnRDaG9vc2VyP0VtYWlsPWVseS51YnVudHUwJTQwZ21haWwuY29tJmNvbnRpbnVl
+PWh0dHBzJTNBJTJGJTJGc3VwcG9ydC5nb29nbGUuY29tJTJGYWNjb3VudHMlMkZhbnN3ZXIlMkYz
+MjA0NiUzRnV0bV9zb3VyY2UlM0R0b3MyMDI0LWVtYWlsJTI2dXRtX21lZGl1bSUzRGVtYWlsPg0K
+Lg0KDQpNZXJjaSBkJ3V0aWxpc2VyIGxlcyBzZXJ2aWNlcyBHb29nbGUgIQ0KDQoNCsKpIDIwMjQg
+R29vZ2xlIExMQyAxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5LCBNb3VudGFpbiBWaWV3LCBDQSA5
+NDA0Mw0KTm91cyB0J2F2b25zIGFkcmVzc8OpIGNldCBlLW1haWwgcG91ciB0J2luZm9ybWVyIGRl
+IG1vZGlmaWNhdGlvbnMNCmltcG9ydGFudGVzIGFwcG9ydMOpZXMgYXV4IGNvbmRpdGlvbnMgZCd1
+dGlsaXNhdGlvbiBkZSBHb29nbGUuDQo=
+--000000000000ce2f940617123588
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3Dfr>
+<head>
+<meta name=3Dformat-detection content=3Demail=3Dno>
+<meta name=3Dformat-detection content=3Ddate=3Dno>
+<meta http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8"><sty=
+le type=3Dtext/css>
+body {font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;colo=
+r:#5f6368;line-height:1.5;font-size:16px} li, p {margin:25px 0}@media scree=
+n and (min-width: 600px) {.v2sp {padding: 6px 30px 0;} .v2rsp {padding: 0 1=
+0px;}} @media screen and (min-width: 600px) {.mdv2rw {padding: 40px 40px;}}=
+=20
+</style>
+<link type=3Dtext/css href=3D//fonts.googleapis.com/css?family=3DGoogle+San=
+s rel=3Dstylesheet>
+<title>En savoir plus sur la nouvelle version de nos conditions d'utilisati=
+on</title>
+</head>
+<body style=3D"margin: 0; padding: 0;" bgcolor=3D#FAFAFA>
+<table width=3D100% height=3D100% style=3D"min-width: 348px;" border=3D0 ce=
+llspacing=3D0 cellpadding=3D0 lang=3Dfr bgcolor=3D#FAFAFA role=3Dpresentati=
+on>
+<tr align=3Dcenter>
+<td>
+<table width=3D100% cellspacing=3D0 cellpadding=3D0 bgcolor=3D#FAFAFA style=
+=3Dmax-width:600px role=3Dpresentation>
+<tr>
+<td style=3Dpadding-top:20px;padding-bottom:20px;padding-left:40px;padding-=
+right:40px>
+<table width=3D100% cellspacing=3D0 cellpadding=3D0 role=3Dpresentation>
+<tr>
+<td><img src=3Dhttps://www.gstatic.com/identity/boq/policies/msa/google_log=
+o_full_color-bcd6ef980269fd62476c2931f8d73e8a.png height=3D36px alt=3D"" ti=
+tle=3D""></td>
+<td align=3Dright style=3D"text-align: end;"><a href=3D# style=3Dtext-decor=
+ation:none;color:#5f6368;margin-left:48px>ely.ubuntu0@gmail.com</a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=3Dpadding-left:15px;padding-right:15px>
+<table width=3D100% cellspacing=3D0 cellpadding=3D0 role=3Dpresentation>
+<tr>
+<td bgcolor=3D#ffffff style=3D"padding:35px 35px 10px 35px;border-radius:4p=
+x">
+<table border=3D0 cellspacing=3D0 cellpadding=3D0 role=3Dpresentation style=
+=3D"font-family:Google Sans, Roboto, Helvetica Neue, Helvetica, Arial, sans=
+-serif;color:#3c4043;line-height:1.5;font-size:14px;">
+<tr>
+<td align=3Dcenter><a href=3Dhttps://accounts.google.com/AccountChooser?Ema=
+il=3Dely.ubuntu0%40gmail.com&amp;continue=3Dhttps%3A%2F%2Fpolicies.google.c=
+om%2Fterms%2Fupdate%3Futm_source%3Dtos2024-email%26utm_medium%3Demail><img =
+src=3Dhttps://www.gstatic.com/identity/boq/policies/msa/utos_illustration-d=
+3cb2a71970d5e9daf2e78a2ee367789.png alt=3D"" width=3D250 title=3D"" role=3D=
+presentation></a></td>
+</tr>
+<tr>
+<td>
+<p style=3D"margin:12px 0">Une nouvelle version de nos conditions d'utilisa=
+tion entrera en vigueur le 22 mai&nbsp;2024. Nous tenions donc =C3=A0 vous =
+en informer =C3=A0 l'avance.</p>
+<p style=3D"margin:12px 0">Ces modifications n'auront aucune incidence sur =
+la fa=C3=A7on dont vous utilisez nos <a href=3Dhttps://accounts.google.com/=
+AccountChooser?Email=3Dely.ubuntu0%40gmail.com&amp;continue=3Dhttps%3A%2F%2=
+Fpolicies.google.com%2Fterms%2Fservice-specific%3Futm_source%3Dtos2024-emai=
+l%26utm_medium%3Demail style=3Dcolor:#1967d2>services</a>, mais elles vous =
+aideront =C3=A0 mieux comprendre ce que Google et vous pouvez attendre l'un=
+ de l'autre lorsque vous utilisez ces services.</p>
+<p style=3D"margin:12px 0">Vous pouvez consulter les nouvelles conditions d=
+'utilisation sur <a href=3Dhttps://accounts.google.com/AccountChooser?Email=
+=3Dely.ubuntu0%40gmail.com&amp;continue=3Dhttps%3A%2F%2Fpolicies.google.com=
+%2Fterms%2Fupdate%3Futm_source%3Dtos2024-email%26utm_medium%3Demail style=
+=3Dcolor:#1967d2>cette page</a>. Nous avons =C3=A9galement r=C3=A9sum=C3=A9=
+ les modifications au bas de cet e-mail.</p>
+<p style=3D"margin:24px 0 0 0;font-size:16px"><b>Que dois-je faire&nbsp;?</=
+b></p>
+<ul>
+<li style=3D"margin:12px 0 0 0"><b>Si vous n'avez pas l'<a href=3Dhttps://a=
+ccounts.google.com/AccountChooser?Email=3Dely.ubuntu0%40gmail.com&amp;conti=
+nue=3Dhttps%3A%2F%2Fsupport.google.com%2Faccounts%2Fanswer%2F1350409%3Futm_=
+source%3Dtos2024-email%26utm_medium%3Demail style=3Dcolor:#1967d2>=C3=A2ge =
+requis pour g=C3=A9rer votre propre compte Google</a>&nbsp;:</b>
+<ul>
+<li style=3D"margin:10px 0 0 0">Nous avons envoy=C3=A9 cet e-mail =C3=A0 to=
+n parent ou ton repr=C3=A9sentant l=C3=A9gal pour qu'il puisse t'aider =C3=
+=A0 mieux comprendre nos modifications.</li>
+<li style=3D"margin:5px 0 0 0">Discute de cet e-mail avec ton parent ou ton=
+ repr=C3=A9sentant l=C3=A9gal afin de d=C3=A9cider si tu dois modifier ton =
+compte.</li>
+</ul>
+</li>
+<li style=3D"margin:12px 0 0 0"><b>Si vous =C3=AAtes un parent ou un repr=
+=C3=A9sentant l=C3=A9gal et que vous autorisez votre enfant =C3=A0 utiliser=
+ les services&nbsp;:</b>
+<ul>
+<li style=3D"margin:10px 0 0 0">Veuillez examiner les modifications apport=
+=C3=A9es =C3=A0 nos conditions avec votre enfant et l'aider =C3=A0 d=C3=A9c=
+ider s'il doit modifier son compte.</li>
+<li style=3D"margin:5px 0 0 0">N'oubliez pas que ces conditions s'appliquen=
+t =C3=A0 vous et que vous =C3=AAtes responsable des activit=C3=A9s de votre=
+ enfant lorsqu'il utilise ces services.</li>
+</ul>
+</li>
+<li style=3D"margin:12px 0 0 0"><b>Si vous =C3=AAtes l'administrateur d'un =
+compte d'entreprise ou d'=C3=A9tablissement d'enseignement Google&nbsp;Work=
+space et que vous avez autoris=C3=A9 vos utilisateurs =C3=A0 acc=C3=A9der a=
+ux <a href=3Dhttps://accounts.google.com/AccountChooser?Email=3Dely.ubuntu0=
+%40gmail.com&amp;continue=3Dhttps%3A%2F%2Fsupport.google.com%2Fa%2Fanswer%2=
+F181865%3Futm_source%3Dtos2024-email%26utm_medium%3Demail style=3Dcolor:#19=
+67d2>services Google suppl=C3=A9mentaires</a>&nbsp;:</b>=20
+<ul>
+<li style=3D"margin:10px 0 0 0">Nos nouvelles conditions d'utilisation n'au=
+ront aucune incidence sur le contrat Google&nbsp;Workspace conclu entre Goo=
+gle et votre organisation. Elles s'appliqueront uniquement aux utilisateurs=
+ auxquels vous avez accord=C3=A9 l'acc=C3=A8s aux <a href=3Dhttps://account=
+s.google.com/AccountChooser?Email=3Dely.ubuntu0%40gmail.com&amp;continue=3D=
+https%3A%2F%2Fsupport.google.com%2Fa%2Fanswer%2F181865%3Futm_source%3Dtos20=
+24-email%26utm_medium%3Demail style=3Dcolor:#1967d2>services Google suppl=
+=C3=A9mentaires</a>. Vous pouvez =C3=A0 tout moment d=C3=A9cider d'autorise=
+r ou non vos utilisateurs =C3=A0 acc=C3=A9der =C3=A0 tel ou tel service Goo=
+gle suppl=C3=A9mentaire dans la console d'administration.</li>
+</ul>
+</li>
+<li style=3D"margin:12px 0 0 0"><b>Si vous =C3=AAtes un revendeur Google&nb=
+sp;Workspace et que vos clients ont autoris=C3=A9 leurs utilisateurs =C3=A0=
+ acc=C3=A9der aux <a href=3Dhttps://accounts.google.com/AccountChooser?Emai=
+l=3Dely.ubuntu0%40gmail.com&amp;continue=3Dhttps%3A%2F%2Fsupport.google.com=
+%2Fa%2Fanswer%2F181865%3Futm_source%3Dtos2024-email%26utm_medium%3Demail st=
+yle=3Dcolor:#1967d2>services Google suppl=C3=A9mentaires</a>&nbsp;:</b>
+<ul>
+<li style=3D"margin:10px 0 0 0">Nos nouvelles conditions d'utilisation n'au=
+ront aucune incidence sur le contrat Google&nbsp;Workspace conclu avec vos =
+clients. Elles s'appliqueront uniquement aux utilisateurs de vos clients qu=
+i ont acc=C3=A8s aux <a href=3Dhttps://accounts.google.com/AccountChooser?E=
+mail=3Dely.ubuntu0%40gmail.com&amp;continue=3Dhttps%3A%2F%2Fsupport.google.=
+com%2Fa%2Fanswer%2F181865%3Futm_source%3Dtos2024-email%26utm_medium%3Demail=
+ style=3Dcolor:#1967d2>services Google suppl=C3=A9mentaires</a>. Vos client=
+s peuvent =C3=A0 tout moment d=C3=A9cider d'autoriser ou non leurs utilisat=
+eurs =C3=A0 acc=C3=A9der =C3=A0 tel ou tel service Google suppl=C3=A9mentai=
+re dans la console d'administration.</li>
+</ul>
+</li>
+<li style=3D"margin:12px 0 0 0"><b>Si vous utilisez nos <a href=3Dhttps://a=
+ccounts.google.com/AccountChooser?Email=3Dely.ubuntu0%40gmail.com&amp;conti=
+nue=3Dhttps%3A%2F%2Fpolicies.google.com%2Fterms%2Fservice-specific%3Futm_so=
+urce%3Dtos2024-email%26utm_medium%3Demail style=3Dcolor:#1967d2>services</a=
+> d'une autre mani=C3=A8re&nbsp;:</b>=20
+<ul>
+<li style=3D"margin:10px 0 0 0">Veuillez lire cet e-mail pour comprendre no=
+s nouvelles conditions et les options dont vous disposez.</li>
+<li style=3D"margin:5px 0 0 0">Si vous acceptez les nouvelles conditions, a=
+ucune action n'est requise.</li>
+</ul>
+</li>
+</ul>
+<p style=3D"margin:24px 0 0 0;font-size:16px"><b>Qu'est-ce qui va changer&n=
+bsp;?</b></p>
+<p style=3D"margin:12px 0 0 0">Vous pouvez consulter les nouvelles conditio=
+ns d'utilisation de Google sur <a href=3Dhttps://accounts.google.com/Accoun=
+tChooser?Email=3Dely.ubuntu0%40gmail.com&amp;continue=3Dhttps%3A%2F%2Fpolic=
+ies.google.com%2Fterms%2Fupdate%3Futm_source%3Dtos2024-email%26utm_medium%3=
+Demail style=3Dcolor:#1967d2>cette page</a>. Voici un r=C3=A9sum=C3=A9 des =
+modifications apport=C3=A9es&nbsp;:</p>
+<ul>
+<li style=3D"margin:12px 0 0 0"><b>Conditions d'utilisation de l'IA g=C3=A9=
+n=C3=A9rative.</b>&nbsp;Nous allons int=C3=A9grer nos <a href=3Dhttps://acc=
+ounts.google.com/AccountChooser?Email=3Dely.ubuntu0%40gmail.com&amp;continu=
+e=3Dhttps%3A%2F%2Fpolicies.google.com%2Fterms%2Fgenerative-ai%3Futm_source%=
+3Dtos2024-email%26utm_medium%3Demail style=3Dcolor:#1967d2>Conditions suppl=
+=C3=A9mentaires de l'IA g=C3=A9n=C3=A9rative</a> =C3=A0 nos conditions d'ut=
+ilisation principales et y ajouter de nouvelles pr=C3=A9cisions concernant =
+l'IA. Par exemple, nous ne revendiquerons pas la propri=C3=A9t=C3=A9 des co=
+ntenus originaux g=C3=A9n=C3=A9r=C3=A9s par nos services optimis=C3=A9s par=
+ l'IA.</li>
+<li style=3D"margin:12px 0 0 0"><b>Informations plus claires sur les activi=
+t=C3=A9s abusives.</b>&nbsp;Nous fournissons plus d'exemples et d'informati=
+ons sur les activit=C3=A9s abusives ou perturbatrices qui ne sont pas autor=
+is=C3=A9es lors de l'utilisation de nos services.</li>
+<li style=3D"margin:12px 0 0 0"><b>D=C3=A9tails suppl=C3=A9mentaires sur le=
+s limitations de responsabilit=C3=A9.</b>&nbsp;Pour les utilisateurs en deh=
+ors des =C3=89tats-Unis, nous allons ajouter des pr=C3=A9cisions aux sectio=
+ns sur les limitations de responsabilit=C3=A9 et les indemnisations afin d'=
+=C3=A9viter tout malentendu au regard des lois ou douanes locales.</li>
+<li style=3D"margin:12px 0 0 0"><b>Informations plus claires sur les litige=
+s.</b>&nbsp;Nous allons pr=C3=A9ciser que si vous enfreignez nos conditions=
+ d'utilisation, nos recours ne se limitent pas =C3=A0 la suspension ou =C3=
+=A0 la r=C3=A9siliation de votre acc=C3=A8s aux services, mais peuvent incl=
+ure d'autres r=C3=A9parations en vertu de la loi applicable. En cas de prob=
+l=C3=A8me ou de litige entre nous li=C3=A9 aux pr=C3=A9sentes conditions d'=
+utilisation, vous aurez la possibilit=C3=A9 de d=C3=A9crire lesdits probl=
+=C3=A8mes et de les r=C3=A9soudre.</li>
+<li style=3D"margin:12px 0 0 0"><b>Modifications refl=C3=A9tant le fonction=
+nement de nos services.</b>&nbsp;Nous allons ajouter des pr=C3=A9cisions su=
+r le fonctionnement de nos services et mettre =C3=A0 jour certains noms de =
+marques de services Google qui ont chang=C3=A9 au fil du temps.</li>
+<li style=3D"margin:12px 0 0 0"><b>Pour les utilisateurs r=C3=A9sidant dans=
+ l'Espace =C3=A9conomique europ=C3=A9en&nbsp;(EEE) uniquement&nbsp;:</b>
+<ul>
+<li style=3D"margin:10px 0 0 0">En plus des modifications d=C3=A9crites ci-=
+dessus, nous allons ajouter un texte explicatif pour vous aider =C3=A0 comp=
+rendre le concept juridique de "garanties" dans le cadre des lois europ=C3=
+=A9ennes et locales.</li>
+<li style=3D"margin:5px 0 0 0">Pour en savoir plus, veuillez consulter ce <=
+a href=3Dhttps://accounts.google.com/AccountChooser?Email=3Dely.ubuntu0%40g=
+mail.com&amp;continue=3Dhttps%3A%2F%2Fpolicies.google.com%2Fterms%2Fchanges=
+%3Futm_source%3Dtos2024-email%26utm_medium%3Demail style=3Dcolor:#1967d2>r=
+=C3=A9sum=C3=A9 des principales modifications apport=C3=A9es aux versions p=
+our l'EEE de nos conditions</a>.</li>
+</ul>
+</li>
+</ul>
+<p style=3D"margin:36px 0 12px 0">Si vous n'acceptez pas ces nouvelles cond=
+itions, supprimez <a href=3Dhttps://accounts.google.com/AccountChooser?Emai=
+l=3Dely.ubuntu0%40gmail.com&amp;continue=3Dhttps%3A%2F%2Fpolicies.google.co=
+m%2Fterms%2Fdefinitions%23toc-terms-your-content%3Futm_source%3Dtos2024-ema=
+il%26utm_medium%3Demail style=3Dcolor:#1967d2>vos contenus</a> et cessez to=
+ute utilisation de nos services. Vous pouvez =C3=A9galement mettre un terme=
+ =C3=A0 votre relation avec nous =C3=A0 tout moment en <a href=3Dhttps://ac=
+counts.google.com/AccountChooser?Email=3Dely.ubuntu0%40gmail.com&amp;contin=
+ue=3Dhttps%3A%2F%2Fsupport.google.com%2Faccounts%2Fanswer%2F32046%3Futm_sou=
+rce%3Dtos2024-email%26utm_medium%3Demail style=3Dcolor:#1967d2>cl=C3=B4tura=
+nt votre compte Google</a>.</p>
+<p style=3D"margin:12px 0 64px 0">Merci d'utiliser les services Google&nbsp=
+;!</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=3Dpadding:40px>
+<table width=3D100% border=3D0 cellspacing=3D0 cellpadding=3D0 role=3Dprese=
+ntation>
+<tr>
+<td><img src=3Dhttps://www.gstatic.com/identity/boq/policies/msa/google_log=
+o_one_color-9b5a135b1710fb3f8a4c770f01be2e13.png alt=3D"" width=3D100 title=
+=3D""></td>
+</tr>
+<tr>
+<td>
+<p style=3D"margin:25px 0;font-family:Roboto, Helvetica Neue, Helvetica, Ar=
+ial, sans-serif;color:#5f6368;line-height:1.5;font-size:16px"><span style=
+=3Dfont-size:14px;>
+
+      <span style=3D"font-size:inherit; color:inherit; font-weight:inherit;=
+ line-height:inherit; font-family:inherit;">&copy; 2024 Google LLC 1600 Amp=
+hitheatre Parkway, Mountain View, CA 94043</span>
+  =20
+  =20
+</span></p>
+<p style=3D"margin:25px 0;font-family:Roboto, Helvetica Neue, Helvetica, Ar=
+ial, sans-serif;color:#5f6368;line-height:1.5;font-size:16px"><span style=
+=3Dfont-size:14px;>Nous t'avons adress=C3=A9 cet e-mail pour t'informer de =
+modifications importantes apport=C3=A9es aux conditions d'utilisation de Go=
+ogle.</span></p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+--000000000000ce2f940617123588--

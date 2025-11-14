@@ -1,0 +1,952 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:87ce:0:b0:2ec:51be:6cd5 with SMTP id v14csp792755ljj;
+        Sun, 23 Jun 2024 03:43:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFbfpEP3v5MhacN9pnj6riaKmI1rCAJWyLkDq40R6tOs2BzC7NJzdZ7jjcz8bTyqIxI1bS1
+X-Received: by 2002:a05:6214:18f0:b0:6b0:6ad9:1fd3 with SMTP id 6a1803df08f44-6b54099e93cmr18052566d6.2.1719139420502;
+        Sun, 23 Jun 2024 03:43:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719139420; cv=none;
+        d=google.com; s=arc-20160816;
+        b=JfP19LDhhmmdVwmo/P+HXAtYQ5lhfHEGMA8EFlPz0c7zH5foz1ONCr9ejJ1w9+8k9S
+         GqX1EyAGBZ0sXxrWua2C/5QaL2JFcTrCCwipDIYyEl8dqeohMbafbjy0dMYJp+gO80mX
+         S+kyh14KZi6TnnWfINFA4Jt0vktpO41cX69sEP1W/9BUvpQxIJhPOjyM/HE6tj9MaEnf
+         uHiA1NUwm7/2wCTEOnBBzjCHX9XN5/4oS9H5oVrkIqQZqrZzNlrGjsJcdfa2EEBWtHUz
+         KLsRY/J8kWUH4V47Vh6vwnqs/Fe0vBqJizpbfSIPpXmHeYitA1uswJDVFeiDKoIB+SQe
+         e52Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:list-unsubscribe-post:precedence
+         :subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=j4nyNcKU4xzlA1Dd4RToqRr11M3sBgmv0PXJloNhhVk=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=codSxZo+0UtjvtiiPryOSfS1R/fgl+cM7RhKjZdcBkl+lPZw8EHPHFhlfwgaRXSlJm
+         xHH3H7KELdJQIPvIuyVUE0jdoYdimhkl/kVdz37mt07jlEurMKbVSXrKx35cMktKfOdp
+         bI3mVSTCOt9xbvvkVrj34LcjGsxIE7YKK1EYa45vUky2rZe4uEpHXWK3vcsJ2QQEwkpB
+         OEymNPPbBjtAh82Y2LtLmL0EhIl7Qg3oZiOvhcwIfa7HmKe/xXFO2LLJS2v/JMH20QXN
+         yR5wSO6+2rcpTcehNPnuHU9CDbEq80A6/pxMTd40eu72oEAZ3aYAp1xcFdKmkTsqBeLH
+         Ul5g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=TPOArhA9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=nmfaC9Sk;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o20.ck.n.convertkit.com (o20.ck.n.convertkit.com. [168.245.5.113])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51eee8c3esi58517106d6.407.2024.06.23.03.43.39
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 23 Jun 2024 03:43:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) client-ip=168.245.5.113;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=TPOArhA9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=nmfaC9Sk;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe-post:
+	list-unsubscribe:x-feedback-id:to:cc:content-type:from:subject:to;
+	s=cka; bh=j4nyNcKU4xzlA1Dd4RToqRr11M3sBgmv0PXJloNhhVk=;
+	b=TPOArhA9LPk1EtrZrK2MVc7iFpycVk9RIZwo98rHrXB97gvPTgarax0JEO9R4dWJO05M
+	n6DImPjpq1VUMM0RdLmqPLCF+iu1hD5QF0+DwBKAiYxMlpWua6Eu9xG6b0aCm6IpYuxAMl
+	88sZ9Nw4MoxONEN60UJJ8gDH+132zTHvI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe-post:
+	list-unsubscribe:x-feedback-id:to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=j4nyNcKU4xzlA1Dd4RToqRr11M3sBgmv0PXJloNhhVk=;
+	b=nmfaC9SkljuwocFpCqqwieruIPDfZn9QOBYQQtngenLU/bVKg/px3Lw9hFgEKWxkV00u
+	FWdSuJoG1ubgmSEWSpNft3Mlq61HfkZN2vPT4ez++Iwbw3PId9XoIur0nUUZ15M7Z6k8Ak
+	eI7KuUbkyv9SEAoJ9ZFDOiyXD8jA4M+0Q=
+Received: by recvd-794b6db478-bkck2 with SMTP id recvd-794b6db478-bkck2-1-6677FC59-D
+	2024-06-23 10:43:37.684378308 +0000 UTC m=+392382.317967112
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-17 (SG) with HTTP
+	id ZnO8UHWuRluzPhmCthvqhA
+	Sun, 23 Jun 2024 10:43:37.590 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=90636d7ab1fc48d702877920b96885ea27f2c9e253c7410d0abd26b44bb4
+Date: Sun, 23 Jun 2024 10:43:38 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <o8u97dw4d3bqhkmeodnfvhp6g77rrho@convertkit-mail2.com>
+Subject: Stop Hiding Your Skills
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: 14245443:775726:broadcast:CK
+List-Unsubscribe: 
+ <mailto:unsub+o8u97dw4d3bqhkmeodnfvhp6g77rrho@convertkit-mail.com>,
+ <https://unsubscribe.convertkit.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho>
+X-Report-Spam: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2E9iKReg6MmXOnRZvsQzWQJ3lPH0tO4yiaHftVEEnLM4wy5BnLoLlAcpdQp?=
+ =?us-ascii?Q?uAcltvhbsvR1HoWuE3BRvA2KUJntgxNIhs1p5t8?=
+ =?us-ascii?Q?4Y8o9b9YyiCcLiVqqQzuLiPu2Wsr1RnnyHNLw3f?=
+ =?us-ascii?Q?pJcjhZ4vRk6yjGWx3CPSuzOK6zeKVT3q0mirfk2?=
+ =?us-ascii?Q?Xhwyn3qxNAXN59sLgSNQZP3WpK0yXqEOsi5SI4D?=
+ =?us-ascii?Q?2TwWinED9LxojJXUtVX4NbdDFWdNu2pMc3qXluP?= =?us-ascii?Q?3S4Q?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprBTLquV1ImzFIrgT?=
+ =?us-ascii?Q?SaJ3+RZh9ldFABa15DTnLX1+Eaq8Hvm9woVL2DT?=
+ =?us-ascii?Q?mryW9=2FEoG1yI1TURPZuCroc72HEGD6LXP7WPOKo?=
+ =?us-ascii?Q?e2wMwhpMVb05vk7X6FrGgYnYotCqgIUpnJumUo8?=
+ =?us-ascii?Q?aEtxdhAEMbBXrH2=2Ftoe6YY5qHyiqXptGIqlMxf6?=
+ =?us-ascii?Q?Q3xqH=2FRBD5DPPfKd5eHDSzHJmqxfjN2Z3Pn0Fth?=
+ =?us-ascii?Q?lsOqZfqJNP9IkR6kO+XupYrrwY9lE+Nz9LsqgNv?=
+ =?us-ascii?Q?fyapAsn9ymhUywiMGBmT2z70pxdJU3U6WIosmUx?=
+ =?us-ascii?Q?Ps+b5jPhwOZeXl9u9xTsX9LbLbeIg9KYU=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: u001.U5uR4hiqEeo/H3zk+7BOfQ==
+
+--90636d7ab1fc48d702877920b96885ea27f2c9e253c7410d0abd26b44bb4
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Hello whyoucare =F0=9F=91=8B
+
+=E2=80=8B
+
+Yesterday, I was passing by a bakery and was tempted by how great
+everything looked=E2=80=A6 cakes with swirls of frosting, colorful
+macarons, chocolate-chip cookies, and croissants=E2=80=A6. I=E2=80=99m hung=
+ry
+again!
+
+=E2=80=8B
+
+Although I bought some, few weren=E2=80=99t up to my expectations. Does
+that happen to you?
+
+It felt like a dream treat until reality took a bite =F0=9F=98=A2
+------------------------------------------------------
+
+=E2=80=A6and yet, we fall for these traps often.
+
+=E2=80=8B
+
+Again and again. We know appearances can be deceiving, but we=E2=80=99re
+also the ones saying the first impression is the last impression.
+
+=E2=80=8B
+
+Whether it=E2=80=99s Apple or a small bakery, everyone puts their best
+effort into presenting their products to look crazy good,
+compelling customers to feel almost guilty if they don=E2=80=99t buy
+them.
+
+=E2=80=8B
+
+The better the product looks and feels, the more it sells. Even I
+ensure everything we do looks great. Just take a look at this
+sleek illustration showing the features of our course:
+
+=E2=80=8B
+=E2=80=8B
+
+You haven't considered applying these tips to your profile, which
+means that most likely...
+
+You=E2=80=99re NOT selling your SKILLS properly.
+----------------------------------------
+
+Hundreds of thousands of devs have the same skills as you,
+dreaming about the same dream job. So, how do you stand out?
+
+=E2=80=8B
+
+In today=E2=80=99s competitive job market, technical skills may not be
+enough. You have to dare to be different. So,
+
+How can you market yourself?
+----------------------------
+
+If you think about it, your resume is one of the things that
+allows you to market yourself.
+
+Many developers struggle to effectively showcase their skills on
+their resumes, often stumbling at the first screening process.
+They might use a generic template from the internet, feel too
+lazy to include impactful descriptions, or lack concrete examples
+to back up their claims, resulting in a document that fails to
+impress.
+
+You need a CHANGE!
+------------------
+
+Based on my experience, which has proven effective for our
+Masterclass members and close contacts, here are the key things
+to keep in mind when doing self-promotion,
+
+=E2=80=8B
+
+=E2=9C=8D=EF=B8=8F Network
+
+I=E2=80=99m not suggesting you go to the company page and start begging
+for a job from their employee. That=E2=80=99s a big no-no!
+
+=E2=80=8B
+
+Instead, build a friendly connection. Ask for advice, but be
+clear about what you need. Don=E2=80=99t just drop a vague =E2=80=98Hey, ca=
+n you
+help me find a job?=E2=80=99 message, even if that=E2=80=99s what you need.
+
+=E2=80=8B
+
+Have casual chats about their experience and tech stack, share
+your work, etc., and build a relationship with them so they will
+be willing to recommend you naturally.
+
+=E2=80=8B
+
+=E2=9C=8D=EF=B8=8F Tailor
+
+While networking with the people of the company you want to work
+with, customize your resume, cover letter, or all other things
+according to that role.
+
+=E2=80=8B
+
+* Want a front-end job? Show projects with great UI/UX,
+animations, and responsiveness.
+* Want a back-end job? Highlight projects with robust APIs, DB
+architecture, and security.
+* Want a full-stack job? Show off your skills in both areas (only
+if you can do it properly!)
+* =E2=80=8B
+
+Build proof and show off.
+
+=E2=80=8B
+
+=E2=9C=8D=EF=B8=8F Quantify
+
+Many devs struggle with this. You might often showcase projects
+like "Built a full-stack Instagram clone using Next.js,
+TypeScript, and TailwindCSS with xx features"
+
+=E2=80=8B
+
+While your projects may be impressive, interviewers are more
+interested in understanding their real-world impact or how they
+solve practical problems.
+
+=E2=80=8B
+
+After all, would you purchase a new phone without knowing its
+specs?
+
+=E2=80=8B
+
+The world runs on numbers, not dreams and fairy dust.
+So, invest the effort to phrase it like this: =E2=80=9CDeveloped
+responsive designs that improved mobile usability, leading to a
+30% increase in mobile traffic.=E2=80=9D
+
+=E2=80=8B
+
+How? Here are a few websites that can help you with the numbers:
+SimilarWeb, Sentry, and PageSpeed Insights.
+
+=E2=80=8B
+
+=E2=9C=8D=EF=B8=8F Feedback
+
+Even if you feel like you=E2=80=99ve done everything right, sometimes
+it=E2=80=99s not enough to get shortlisted=E2=80=94that=E2=80=99s just how =
+things are
+sometimes.
+
+=E2=80=8B
+
+Instead of feeling down or unsure about what to do next, take a
+moment to send a message or email asking if there=E2=80=99s anything you
+could improve on, even if you don=E2=80=99t expect a reply.
+
+=E2=80=8B
+
+This approach isn=E2=80=99t just for resumes; it applies to any
+interview. If you missed something during the interview, follow
+up later after doing some research with the answer. Ask if that=E2=80=99s
+what they were looking for. Just be genuine.
+
+=E2=80=8B
+
+The more feedback you gather from these interactions, the better
+you=E2=80=99ll understand what you need to do next time so you don=E2=80=99=
+t find
+yourself in the same position again.
+
+Phew, long email, but=E2=80=A6
+
+=E2=80=8B
+
+=E2=80=A6but these are not the only things you must remember when
+marketing one=E2=80=99s skill to stand out in the market.
+
+There is always something MORE.
+-------------------------------
+
+Since I can=E2=80=99t cover everything in this email, I have created an
+actionable checklist for creating a resume alongside a template
+to follow and edit. This will put you ahead of the market when
+marketing yourself.
+
+=E2=80=8B
+=E2=80=8B
+
+This checklist will be available for FREE during my workshop on
+June 27th.
+
+=E2=80=8B
+
+To make sure you don=E2=80=99t miss it:
+
+* =E2=80=8BAdd it to your calendar (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/wnh2h6uw=
+79q7zebl/aHR0cHM6Ly9jYWxlbmRhci5hcHAuZ29vZ2xlL0Iyb0JGQ1ZMQTFZendXOTZB
+) (or click here (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/reh8h9u0=
+d9md86c6/aHR0cHM6Ly9jYWxlbmRhci5nb29nbGUuY29tL2NhbGVuZGFyL2V2ZW50P2FjdGlvbj=
+1URU1QTEFURSZ0bWVpZD1NMk01WTJReE0zQmthWEE0TURabmRIVnlkR1pvY1dwaGFURWdhbUYyW=
+VhOamNtbHdkRzFoYzNSbGNua3dNRUJ0JnRtc3JjPWphdmFzY3JpcHRtYXN0ZXJ5MDAlNDBnbWFp=
+bC5jb20=3D
+) if that didn=E2=80=99t work)
+* =E2=80=8BSelect =E2=80=9CNotify me=E2=80=9D in the bottom-left corner of =
+the video (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/08hwhgud=
+e02e8pcp/aHR0cHM6Ly93d3cueW91dHViZS5jb20vbGl2ZS91bzRPUzNMMjltdz9zaT0yc1J4Yl=
+BrZGNuR2NiNU5n
+)=E2=80=8B
+
+=E2=80=8B
+
+I=E2=80=99ll send more emails than usual during the week leading up to
+the workshop. There will be no spam, only valuable resources
+previously shared only with the Masterclass members. Still, if
+you wouldn=E2=80=99t like to receive those emails, you can opt-out here.
+(
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/8ghqh3ul=
+deod48tl/aHR0cHM6Ly9naXBoeS5jb20vY2xpcHMvdGhlb2ZmaWNlLUFGaGxnZHhxekF0Rk1JZ3=
+BCQQ=3D=3D
+)=E2=80=8B
+
+=E2=80=8B
+
+Don=E2=80=99t miss out =E2=80=94 see you there.
+
+Adrian
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/vqh3hmup=
+02o055sw/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5
+) =E2=80=8B (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/l2heh6u3=
+25l755hg/aHR0cHM6Ly90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/m2h7h6u8=
+5k3zkgtl/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bWFzdGVyeS8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/dphehmu0=
+6zenzoil/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcn=
+kv
+) =E2=80=8B (
+https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/e0hph0u0=
+v97o9ef7/aHR0cHM6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D
+)
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho
+)=E2=80=8B
+--90636d7ab1fc48d702877920b96885ea27f2c9e253c7410d0abd26b44bb4
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen { .email * { word-break: break-word; } }
+@media screen and (max-width: 384px) { .mail-message-content { width: 414px=
+ !important; } }
+@media only screen and (max-width:600px) {
+        .ck-padding-left-none {
+          padding-left: 0px !important;
+        }
+        .ck-padding-right-none {
+          padding-right: 0px !important;
+        }
+        .ck-padding-left-mobile-friendly {
+          padding-left: 18px !important;
+        }
+        .ck-padding-right-mobile-friendly {
+          padding-right: 18px !important;
+        }
+    }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><table c=
+ellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#ffffff" style=3D"border-coll=
+apse:separate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;wid=
+th:100%;margin:0 auto;background-color:#ffffff"><tbody><tr><td style=3D"mso=
+-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 5px 0px 5px"><div class=3D"ck-inner-section ck=
+-padding-left-mobile-friendly ck-padding-right-mobile-friendly" style=3D"pa=
+dding:0px 5px 0px 5px"><div style=3D"margin-left:auto;margin-right:auto;max=
+-width:640px">
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Hello whyoucare =F0=9F=91=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Yesterday, I was passing by a bakery and was tempted by how great eve=
+rything looked=E2=80=A6 cakes with swirls of frosting, colorful macarons, c=
+hocolate-chip cookies, and croissants=E2=80=A6. I=E2=80=99m hungry again!</=
+p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Although I bought some, few weren=E2=80=99t up to my expectations. <e=
+m>Does that happen to you?</em></p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:27px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D"">It felt like a dream treat unti=
+l reality took a bite =F0=9F=98=A2</h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=A6and yet, we fall for these traps often.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Again and again. We know appearances can be deceiving, but we=E2=80=
+=99re also the ones saying the first impression is the last impression.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Whether it=E2=80=99s Apple or a small bakery, everyone puts their bes=
+t effort into presenting their products to look crazy good, compelling cust=
+omers to <strong><em>feel almost guilty if they don=E2=80=99t buy them</em>=
+</strong>.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">The better the product looks and feels, the more it sells. Even I ens=
+ure everything we do looks great. Just take a look at this sleek illustrati=
+on showing the features of our course:</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:358px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/oWy2YZgksbsaVv1drWJsLK" width=3D"358" height=
+=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;line-he=
+ight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-m=
+s-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4px;w=
+idth:358px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">You haven't considered applying these tips to your profile, which mea=
+ns that most likely...</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:27px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D"">You=E2=80=99re NOT selling your=
+ SKILLS properly.</h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Hundreds of thousands of devs have the same skills as you, dreaming a=
+bout the same dream job. So, how do you stand out?</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">In today=E2=80=99s competitive job market, technical skills may not b=
+e enough. You have to dare to be different. So,</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:27px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D"">How can you market yourself?</h=
+3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">If you think about it, your resume is one of the things that allows y=
+ou to market yourself.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Many developers struggle to effectively showcase their skills on thei=
+r resumes, often stumbling at the first screening process. They might use a=
+ generic template from the internet, feel too lazy to include impactful des=
+criptions, or lack concrete examples to back up their claims, resulting in =
+a document that fails to impress.</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:27px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D"">You need a CHANGE!</h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Based on my experience, which has proven effective for our Masterclas=
+s members and close contacts, here are the key things to keep in mind when =
+doing self-promotion,</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><span style=3D"padding-top:0.1em;padding-bottom:0.1em;background-colo=
+r:#a5ffe7;border-radius:3px"><strong>=E2=9C=8D=EF=B8=8F Network</strong></s=
+pan></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">I=E2=80=99m not suggesting you go to the company page and start beggi=
+ng for a job from their employee. That=E2=80=99s a big no-no!</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Instead, build a friendly connection. Ask for advice, but be clear ab=
+out what you need. Don=E2=80=99t just drop a vague =E2=80=98Hey, can you he=
+lp me find a job?=E2=80=99 message, even if that=E2=80=99s what you need.</=
+p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Have casual chats about their experience and tech stack, share your w=
+ork, etc., and build a relationship with them so they will be willing to re=
+commend you naturally.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><span style=3D"padding-top:0.1em;padding-bottom:0.1em;background-colo=
+r:#a5ffe7;border-radius:3px">=E2=9C=8D=EF=B8=8F </span><span style=3D"paddi=
+ng-top:0.1em;padding-bottom:0.1em;background-color:#a5ffe7;border-radius:3p=
+x"><strong>Tailor</strong></span></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">While networking with the people of the company you want to work with=
+, customize your resume, cover letter, or all other things according to tha=
+t role.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;list-style-position:outside !important;font-family:Arial, -apple-system, =
+BlinkMacSystemFont, sans-serif;font-size:16px;color:#000000;font-weight:400=
+;letter-spacing:0;line-height:1.5;text-align:left;text-transform:none;margi=
+n-top:0;margin-bottom:0;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Want a front-end job? Show projects with great UI/UX, animations, a=
+nd responsiveness.</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Want a back-end job? Highlight projects with robust APIs, DB archit=
+ecture, and security.</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Want a full-stack job? Show off your skills in both areas (only if =
+you can do it properly!)</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>=E2=80=8B</span></li>
+</ul>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Build proof and show off.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><span style=3D"padding-top:0.1em;padding-bottom:0.1em;background-colo=
+r:#a5ffe7;border-radius:3px"><strong>=E2=9C=8D=EF=B8=8F Quantify</strong></=
+span></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Many devs struggle with this. You might often showcase projects like =
+<em>"Built a full-stack Instagram clone using Next.js, TypeScript, and Tail=
+windCSS with xx features"</em></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">While your projects may be impressive, interviewers are more interest=
+ed in understanding their real-world impact or how they solve practical pro=
+blems.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">After all, would you purchase a new phone without knowing its specs?<=
+/p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<div style=3D"padding:10px 20px;margin:0 0 20px;border-left-style:solid;bor=
+der-left-width:5px;border-left-color:#000000;font-family:-apple-system, Bli=
+nkMacSystemFont, sans-serif;font-size:16px;color:#353535;font-weight:400;le=
+tter-spacing:0;line-height:1.5;text-align:left;text-transform:none" class=
+=3D"blockquotes"><div class=3D"blockquotes-line"><strong>The world runs on =
+numbers, not dreams and fairy dust.</strong></div></div>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">So, invest the effort to phrase it like this: =E2=80=9CDe<em>veloped =
+responsive designs that improved mobile usability, </em><em><strong>leading=
+ to a 30% increase in mobile traffic</strong></em><em>.=E2=80=9D</em></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><em>=E2=80=8B</em></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">How? Here are a few websites that can help you with the numbers: Simi=
+larWeb, Sentry, and PageSpeed Insights.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><span style=3D"padding-top:0.1em;padding-bottom:0.1em;background-colo=
+r:#a5ffe7;border-radius:3px"><strong>=E2=9C=8D=EF=B8=8F Feedback</strong></=
+span></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Even if you feel like you=E2=80=99ve done everything right, <strong><=
+em>sometimes it=E2=80=99s not enough</em></strong> to get shortlisted=E2=80=
+=94that=E2=80=99s just how things are sometimes.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Instead of feeling down or unsure about what to do next, take a momen=
+t to send a message or email asking if there=E2=80=99s anything you could i=
+mprove on, even if you don=E2=80=99t expect a reply.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">This approach isn=E2=80=99t just for resumes; it applies to any inter=
+view. If you missed something during the interview, follow up later after d=
+oing some research with the answer. Ask if that=E2=80=99s what they were lo=
+oking for. <strong><em>Just be genuine.</em></strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong><em>=E2=80=8B</em></strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">The more feedback you gather from these interactions, the better you=
+=E2=80=99ll understand what you need to do next time so you don=E2=80=99t f=
+ind yourself in the same position again.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Phew, long email, but=E2=80=A6</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=A6but these are not the only things you must remember when mar=
+keting one=E2=80=99s skill to stand out in the market.</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:27px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D"">There is always something MORE.=
+</h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Since I can=E2=80=99t cover everything in this email, I have created =
+an actionable checklist for creating a resume alongside a template to follo=
+w and edit. This will put you ahead of the market when marketing yourself.<=
+/p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:left;table-layout:fixed;float:none" class=3D"email-=
+image"><tbody><tr><td align=3D"left" style=3D"mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-top:1=
+2px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:406px;width:1=
+00%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.com/=
+e/hbkfd9XjiChLa2dhB5ocmg/kr7WMU6cCVqgsJtRKx2XSN" width=3D"406" height=3D"au=
+to" style=3D"border:0 none;display:block;border:0;height:auto;line-height:1=
+00%;outline:none;-webkit-text-decoration:none;text-decoration:none;-ms-inte=
+rpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4px;width:4=
+06px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">This checklist will be available for <strong>FREE</strong> during my =
+workshop on <strong>June 27th</strong>.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>To make sure you don=E2=80=99t miss it:</strong></p>
+<ol class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;list-style-position:outside !important;font-family:Arial, -apple-system, =
+BlinkMacSystemFont, sans-serif;font-size:16px;color:#000000;font-weight:400=
+;letter-spacing:0;line-height:1.5;text-align:left;text-transform:none;margi=
+n-top:0;margin-bottom:0;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>=E2=80=8B<a href=3D"https://click.convertkit-mail2.com/o8u97dw4d3bq=
+hkmeodnfvhp6g77rrho/wnh2h6uw79q7zebl/aHR0cHM6Ly9jYWxlbmRhci5hcHAuZ29vZ2xlL0=
+Iyb0JGQ1ZMQTFZendXOTZB" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#0F82F0" url-id=3D"1648396795">Add it to your calendar</a> (or <a=
+ href=3D"https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho=
+/reh8h9u0d9md86c6/aHR0cHM6Ly9jYWxlbmRhci5nb29nbGUuY29tL2NhbGVuZGFyL2V2ZW50P=
+2FjdGlvbj1URU1QTEFURSZ0bWVpZD1NMk01WTJReE0zQmthWEE0TURabmRIVnlkR1pvY1dwaGFU=
+RWdhbUYyWVhOamNtbHdkRzFoYzNSbGNua3dNRUJ0JnRtc3JjPWphdmFzY3JpcHRtYXN0ZXJ5MDA=
+lNDBnbWFpbC5jb20=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D=
+"color:#0F82F0" url-id=3D"1648396796">click here</a> if that didn=E2=80=99t=
+ work)</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>=E2=80=8B<a href=3D"https://click.convertkit-mail2.com/o8u97dw4d3bq=
+hkmeodnfvhp6g77rrho/08hwhgude02e8pcp/aHR0cHM6Ly93d3cueW91dHViZS5jb20vbGl2ZS=
+91bzRPUzNMMjltdz9zaT0yc1J4YlBrZGNuR2NiNU5n" target=3D"_blank" rel=3D"noopen=
+er noreferrer" style=3D"color:#0F82F0" url-id=3D"1648396797">Select =E2=80=
+=9CNotify me=E2=80=9D in the bottom-left corner of the video</a>=E2=80=8B</=
+span></li>
+</ol>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">I=E2=80=99ll send more emails than usual during the week leading up t=
+o the workshop. There will be no spam, only valuable resources previously s=
+hared only with the Masterclass members.  Still, if you wouldn=E2=80=99t li=
+ke to receive those emails, you can <a href=3D"https://click.convertkit-mai=
+l2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/8ghqh3uldeod48tl/aHR0cHM6Ly9naXBoeS5=
+jb20vY2xpcHMvdGhlb2ZmaWNlLUFGaGxnZHhxekF0Rk1JZ3BCQQ=3D=3D" target=3D"_blank=
+" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1648396798"=
+>opt-out here.</a>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Don=E2=80=99t miss out =E2=80=94 see you there. </p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#000000;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Adrian</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 0px 0px 0px"><div class=3D"ck-inner-section ck=
+-padding-left-none ck-padding-right-none" style=3D"padding:0px 0px 0px 0px"=
+><div style=3D"margin-left:auto;margin-right:auto;max-width:640px">
+<div style=3D"text-align:left;margin-top:16px;margin-bottom:16px">
+<a href=3D"https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rr=
+ho/vqh3hmup02o055sw/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ=
+5" style=3D"display:inline-block;padding-right:8px;border:none;text-decorat=
+ion:none" url-id=3D"1648396799"><img src=3D"https://functions-js.convertkit=
+.com/icons?icon=3Dyoutube&amp;foreground=3Dffffff&amp;background=3Dcc0000&a=
+mp;shape=3Dcircle&amp;v=3D3" alt=3D"youtube" width=3D"32" height=3D"32" sty=
+le=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-web=
+kit-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubi=
+c;max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"=
+><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.conve=
+rtkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/l2heh6u325l755hg/aHR0cHM6Ly=
+90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D" style=3D"display:inline-block;padding=
+-right:8px;border:none;text-decoration:none" url-id=3D"1648396800"><img src=
+=3D"https://functions-js.convertkit.com/icons?icon=3Dx-twitter&amp;foregrou=
+nd=3Dffffff&amp;background=3D000000&amp;shape=3Dcircle&amp;v=3D3" alt=3D"x-=
+twitter" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:=
+auto;line-height:100%;outline:none;-webkit-text-decoration:none;text-decora=
+tion:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width=
+:32px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=
+=80=8B</a><a href=3D"https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodn=
+fvhp6g77rrho/m2h7h6u85k3zkgtl/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2Nya=
+XB0bWFzdGVyeS8=3D" style=3D"display:inline-block;padding-right:8px;border:n=
+one;text-decoration:none" url-id=3D"1648396801"><img src=3D"https://functio=
+ns-js.convertkit.com/icons?icon=3Dinstagram&amp;foreground=3Dffffff&amp;bac=
+kground=3De1306c&amp;shape=3Dcircle&amp;v=3D3" alt=3D"instagram" width=3D"3=
+2" height=3D"32" style=3D"display:block;border:0;height:auto;line-height:10=
+0%;outline:none;-webkit-text-decoration:none;text-decoration:none;-ms-inter=
+polation-mode:bicubic;max-width:100%;border:0 none;width:32px;height:32px;d=
+isplay:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D=
+"https://click.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/dphehmu=
+06zenzoil/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlc=
+nkv" style=3D"display:inline-block;padding-right:8px;border:none;text-decor=
+ation:none" url-id=3D"1648396802"><img src=3D"https://functions-js.convertk=
+it.com/icons?icon=3Dlinkedin&amp;foreground=3Dffffff&amp;background=3D0077b=
+5&amp;shape=3Dcircle&amp;v=3D3" alt=3D"linkedin" width=3D"32" height=3D"32"=
+ style=3D"display:block;border:0;height:auto;line-height:100%;outline:none;=
+-webkit-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bi=
+cubic;max-width:100%;border:0 none;width:32px;height:32px;display:inline-bl=
+ock"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.c=
+onvertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho/e0hph0u0v97o9ef7/aHR0cH=
+M6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D" style=3D"display:inline-blo=
+ck;padding-right:8px;border:none;text-decoration:none" url-id=3D"1648396803=
+"><img src=3D"https://functions-js.convertkit.com/icons?icon=3Ddiscord&amp;=
+foreground=3Dffffff&amp;background=3D7289da&amp;shape=3Dcircle&amp;v=3D3" a=
+lt=3D"discord" width=3D"32" height=3D"32" style=3D"display:block;border:0;h=
+eight:auto;line-height:100%;outline:none;-webkit-text-decoration:none;text-=
+decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none=
+;width:32px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-=
+->=E2=80=8B</a>
+</div>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none" class=3D"">=E2=80=8B<a href=3D"https=
+://unsubscribe.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rrho" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#656565">Unsubscribe=
+</a> =C2=B7 <a href=3D"https://preferences.convertkit-mail2.com/o8u97dw4d3b=
+qhkmeodnfvhp6g77rrho" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#656565">Preferences</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</td></tr></tbody></table></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/o8u97dw4d3bqhkmeodnfvhp6g77rr=
+ho" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line=
+-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:none=
+;-ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--90636d7ab1fc48d702877920b96885ea27f2c9e253c7410d0abd26b44bb4--

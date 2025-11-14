@@ -1,0 +1,221 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp470388pxw;
+        Thu, 4 May 2023 08:03:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7WZGQn0CvmkcqkheaMV3cYCOquVs/93s/CUsHPY+ZZmIqHFUdnvWG7v1CEvlD9oYrmlQR3
+X-Received: by 2002:a17:902:f68e:b0:1a9:2e3d:fca2 with SMTP id l14-20020a170902f68e00b001a92e3dfca2mr4739208plg.33.1683212617729;
+        Thu, 04 May 2023 08:03:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683212617; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iJlNa9MVi/WcTXJsp+SaOGZ3W6CrFMLDdDxMoLTlSq83qGmB/3K93z9BY2OYdGKtRs
+         iPNXHgJbBr6IPGQ30AkbsQn71bVdKzk6ODOS6vJwmxBeKikdwOuVBri22tzu34lbj1iL
+         xlG0GAAQ9MHNACIUMmai/md3xQBUjBSN2t60RDOrud6fD5Ks6NBwQcZPpHQJJQidMmfJ
+         2B8Osqn5MpL1DT06JO1Qvy6t8TJ9GbkrFAgp3tUPWhGufMsmMv+ST9tmk5nR2NVpIDPi
+         OGU6qAitK9Whs6idPlYZD+5K/cJhUY6L8L9qMLIcogmtmJ37bk5SZ4P5qHxYli4W6dCf
+         a99g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=IkDWYPgyhQAJpKhngldebkF6flRvSuyG49mb2jvgKy0=;
+        b=a1HMl8Y6qfSQIk/wVTi7X8Nh72/mmAmSGRDUsNe2c5+8nP4iSf/OTfcvhoR0FSWKQO
+         ty9g/yC4/zjhL0HPEoO3QDaTdDq02i/kAL6fmqdhBrLR8e3J6iOdsA/wsau+cOcsXedT
+         AkWrmlk5fdKA4EeKv6/8TH+bgglevGEAvUEQQtqU1qnqvdX33+MNFDeeaMfjOzHJRFuJ
+         u9l/8q56zidv0Vo56OTqw6l1ZDNzabbW4KvuDkBu8V7dZ+EpJZEeTHdGoqCwTlHq+6/J
+         GRyXXaL4Acc9ivenMccMTUkMyjTGpVRYvCTpj4bkbskJ/VDxZ5jWd/TV8QNEaexDToPu
+         ycoA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@n.convertkit.com header.s=s1 header.b=DP+kmLJ1;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=I+Y0skKJ;
+       spf=pass (google.com: domain of bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com"
+Return-Path: <bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com>
+Received: from o47.ck.n.convertkit.com (o47.ck.n.convertkit.com. [149.72.60.6])
+        by mx.google.com with ESMTPS id gj4-20020a17090b108400b0023699c44b66si10358668pjb.167.2023.05.04.08.03.36
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 04 May 2023 08:03:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com designates 149.72.60.6 as permitted sender) client-ip=149.72.60.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@n.convertkit.com header.s=s1 header.b=DP+kmLJ1;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=I+Y0skKJ;
+       spf=pass (google.com: domain of bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=n.convertkit.com;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=s1; bh=IkDWYPgyhQAJpKhngldebkF6flRvSuyG49mb2jvgKy0=;
+	b=DP+kmLJ1Uf9cc3UodmFbBfwPb99bhBK0W5E8PwqCGZ0Z/8jjYfzMnh6s5ul/k52ySz+O
+	JTTAaNxlc5u0ic5RLEpuhcs7VSPOtFmHgBqQzcl5b1bjIm40baOc4tgAee0qvZRY50KmQi
+	WD5TTdkHvVJ6VSorY10NLmOUZ5t+krxR1MeXQBHwwdsOwEQbOLh8dX9zPBA7OJActMPAHa
+	+qz+/UrJdl8c2aEkaLTBSTKL4sH8i5iXix824gKXandQ1pzwcHHVFKzuv7MHHsogJ/cLE3
+	zZ9yV/RobZW2pNGUeJAf0X5AOKwYPxhsnYfdM4fTW8MQWrD8/IZwkdEg2T6bjftw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=IkDWYPgyhQAJpKhngldebkF6flRvSuyG49mb2jvgKy0=;
+	b=I+Y0skKJbIcm9oCFHK3F/hcYxnTuOFjtFw3n/G+3EOKBkmHN+M+ctRFXKvLGVrYjnC1j
+	at9NNzsJCF6aNnNAI3XuS0jKjHvcruXpPdiPIUno5Ymd6udQvY1dgqXMpQWm8csXzpSxLC
+	MZPxrkO7x9XRmR7SqJkTncBMwPpVJC4KI=
+Received: by filterdrecv-57ffdccb46-wvp2z with SMTP id filterdrecv-57ffdccb46-wvp2z-1-6453C947-155
+        2023-05-04 15:03:35.569100699 +0000 UTC m=+6190148.980413394
+Received: from MTQ1NTcyOTI (unknown)
+	by geopod-ismtpd-40 (SG) with HTTP
+	id -JLpp5MORwqTJFI-2frMVw
+	Thu, 04 May 2023 15:03:35.494 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=30f75f23e21ce52842ef27b4843f4bd7fcd32f73b93538bc778563a6c1fc
+Date: Thu, 04 May 2023 15:03:35 +0000 (UTC)
+From: Jim Fahad <jim@jimfahaddigital.com>
+Mime-Version: 1.0
+Message-ID: <gku06xd7v5f5hd3km7xfr@convertkit-mail2.com>
+Subject: =?UTF-8?B?8J+UpQ==?= [Video] The Most Unique Portfolio Yet!
+ =?UTF-8?B?8J+UpQ==?=
+Feedback-ID: 10691148:230993:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 14557292:SG
+X-SG-EID: 
+ =?us-ascii?Q?j1jVCmu6DBvk0BrWVSglCsaTtCZXVr6Y10=2Ff7mxfpGTJ5bPO1E07rjPNDcpmxe?=
+ =?us-ascii?Q?Ft1yF3ozH18FtS4FsNnPIpokesSfijQHXNXJ2m7?=
+ =?us-ascii?Q?OdMoSQuCA7NafqP1Yoh9dLJI7KWUVogbutOVtoA?=
+ =?us-ascii?Q?=2FNLCb40ozoW3IUWoyUkCepuP8+oNLVOLes2kXJc?=
+ =?us-ascii?Q?gt6p8LCGuGMK7cNtFbxBJ=2FQ0UmPtnb=2FvOA3q=2Fhd?=
+ =?us-ascii?Q?rjbf11ByEJjaqe10cSr34Q5=2Fsru3LlAXHiPPsD?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADbptzfowpOA6Fti2GoubR9ropAOg1Zlm3qkiX2?=
+ =?us-ascii?Q?4u1N5ZdrotMPPczGM7iIMjVyetAm6KWQKUUDyuJ?=
+ =?us-ascii?Q?AlwtdBEoGvIoa+NbImQPmYi0=2FygL7Wu0sF6QAGk?=
+ =?us-ascii?Q?92d86eYApIAWMBhQwnewb1Qw0e1MAIt2drfIcU0?=
+ =?us-ascii?Q?aF5RkjPUu7hnn0ee+UkWP8g0yjivFEmsjaPLAMF?=
+ =?us-ascii?Q?ug+1HRh4wyVtkVU821Ys=2FFnHEwU0Nee27NcfN5I?=
+ =?us-ascii?Q?LQ9X36cSw3fC1UZJKCRH0xrFEHFm56RRYy7XWB3?=
+ =?us-ascii?Q?8mY=2FvGVlncwlsUMjnrpi5XKYaKiIxg4R9Kaj6MT?=
+ =?us-ascii?Q?zBQ6Iw3aia?=
+To: ifuheiufr <ely.ubuntu0@gmail.com>
+X-Entity-ID: chi7aJKxAjVFSY993kIs6g==
+
+--30f75f23e21ce52842ef27b4843f4bd7fcd32f73b93538bc778563a6c1fc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Yo ifuheiufr!!
+
+New week, new vid!
+=E2=80=8B
+By following this tutorial, you can create a Stunning Personal
+Portfolio Website using Elementor Free version!.
+=E2=80=8B
+=E2=80=8BI've shown everything step by step:
+=E2=80=8B
+
+(
+https://click.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr/7qh7h2uokqdrq8hz/a=
+HR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1MdjE4ZnUyRU10bw=3D=3D
+)
+=E2=80=8B
+=E2=80=8BCan we get 499 Likes on this tutorial by this week?
+=E2=80=8B
+Also, Feel free to COMMENT ON YOUTUBE if you have any question
+about this tutorial!
+=E2=80=8B
+=E2=80=8BSubscribe here for Regular Tutorials:
+https://bit.ly/JFDtutorials (
+https://click.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr/z2h6l43qf7u34n5qnr=
+ap/aHR0cHM6Ly9iaXQubHkvSkZEdHV0b3JpYWxz
+)=E2=80=8B
+
+Cheers,
+Jim Fahad=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+
+Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr )
+| Update your profile (
+https://preferences.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr )
+| 20/14/1, Mirpur, Dhaka, Dhaka 1216
+--30f75f23e21ce52842ef27b4843f4bd7fcd32f73b93538bc778563a6c1fc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
+-8"></head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div class=3D"email">
+<div class=3D"spaced-contents">
+<p style=3D"margin-top:0;margin-bottom:6px;font-family:Times New Roman;colo=
+r:#000000;font-size:16px;line-height:1.4"><span style=3D"font-size:18px"><b=
+r>Yo ifuheiufr!!<br></span></p>
+<p style=3D"margin-top:0;margin-bottom:6px;font-family:Times New Roman;colo=
+r:#000000;font-size:16px;line-height:1.4">New week, new vid!<br>=E2=80=8B<b=
+r>By following this tutorial, you can create a Stunning Personal Portfolio =
+Website using Elementor Free version!.<br>=E2=80=8B<br>=E2=80=8BI've shown =
+everything step by step:<br>=E2=80=8B</p>
+</div>
+<!--[if mso]><table><tr><td width=3D"800"><![endif]--><a href=3D"https://cl=
+ick.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr/7qh7h2uokqdrq8hz/aHR0cHM6Ly9=
+3d3cueW91dHViZS5jb20vd2F0Y2g_dj1MdjE4ZnUyRU10bw=3D=3D" style=3D"color:#0875=
+c1;display:block;width:100%;max-width:480px;margin:0 auto 0 0;border:0;text=
+-decoration:none" url-id=3D"1541622291"><img alt=3D"video preview" src=3D"h=
+ttps://functions-js.convertkit.com/playbutton?play=3D%23ffffff&amp;accent=
+=3D%23ff0000&amp;thumbnailof=3Dhttps%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D=
+Lv18fu2EMto&amp;width=3D480&amp;height=3D270&amp;fit=3Dcontain" width=3D"48=
+0" height=3D"270" style=3D"display:block;height:auto;line-height:100%;outli=
+ne:none;-webkit-text-decoration:none;text-decoration:none;border:0 none;dis=
+play:block;border-radius:4px"></a><!--[if mso]></td></tr></table><![endif]-=
+-><div class=3D"spaced-contents">
+<p style=3D"margin-top:0;margin-bottom:6px;font-family:Times New Roman;colo=
+r:#000000;font-size:16px;line-height:1.4">=E2=80=8B<br>=E2=80=8B<span style=
+=3D"font-size:18px">Can we get 499 Likes on this tutorial by this week?<br>=
+=E2=80=8B<br>Also, Feel free to </span><strong><span style=3D"font-size:18p=
+x">COMMENT ON YOUTUBE</span></strong><span style=3D"font-size:18px"> if you=
+ have any question about this tutorial!<br>=E2=80=8B<br>=E2=80=8B</span><sp=
+an style=3D"font-size:18px"><strong>Subscribe here for Regular Tutorials:</=
+strong></span><span style=3D"font-size:18px"> </span><a href=3D"https://cli=
+ck.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr/z2h6l43qf7u34n5qnrap/aHR0cHM6=
+Ly9iaXQubHkvSkZEdHV0b3JpYWxz" trigger-id=3D"1710585" target=3D"_blank" rel=
+=3D"noopener noreferrer" style=3D"color:#0875c1" url-id=3D"1541622292"><spa=
+n style=3D"font-size:18px">https://bit.ly/JFDtutorials</span></a>=E2=80=8B<=
+/p>
+<p style=3D"margin-top:0;margin-bottom:6px;font-family:Times New Roman;colo=
+r:#000000;font-size:16px;line-height:1.4"><span style=3D"font-size:18px"><s=
+trong>Cheers,<br>Jim Fahad</strong></span><strong>=E2=80=8B<br>=E2=80=8B<br=
+>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B=
+<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=
+=8B</strong></p>
+</div>
+<div class=3D"email-footer"><p style=3D"margin-top:0;margin-bottom:6px;font=
+-family:Times New Roman;color:#000000;font-size:16px;line-height:1.4;text-a=
+lign:left"><a href=3D"https://unsubscribe.convertkit-mail2.com/gku06xd7v5f5=
+hd3km7xfr" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#08=
+75c1"><span style=3D"font-size:12">Unsubscribe</span></a><span style=3D"fon=
+t-size:12"> | </span><a href=3D"https://preferences.convertkit-mail2.com/gk=
+u06xd7v5f5hd3km7xfr" target=3D"_blank" rel=3D"noopener noreferrer" style=3D=
+"color:#0875c1"><span style=3D"font-size:12">Update your profile</span></a>=
+<span style=3D"font-size:12"> | 20/14/1, Mirpur, Dhaka, Dhaka 1216</span></=
+p></div>
+</div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/gku06xd7v5f5hd3km7xfr" alt=3D=
+"" style=3D"border:0 none;display:block;height:auto;line-height:100%;outlin=
+e:none;-webkit-text-decoration:none;text-decoration:none">
+</body>
+</html>
+
+--30f75f23e21ce52842ef27b4843f4bd7fcd32f73b93538bc778563a6c1fc--

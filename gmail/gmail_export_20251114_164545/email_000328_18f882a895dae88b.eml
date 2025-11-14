@@ -1,0 +1,404 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:a16a:0:b0:2df:f850:e74f with SMTP id u10csp3436190ljl;
+        Fri, 17 May 2024 13:07:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHB4zAWsmxBFNaBKYo/ZS+YbBqlbA7eYavwRXp0ln3CRiYkOU7pOrpcmSa/vsZRqUtTIBbR
+X-Received: by 2002:ac8:5ac1:0:b0:43e:3c3b:d9d1 with SMTP id d75a77b69052e-43e3c3bdc0cmr54879381cf.3.1715976440207;
+        Fri, 17 May 2024 13:07:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715976440; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FOXHcQKPM3g77Qi9IIff9/7DDTFlehwT5eiIXsedGT4ADP/Wmoi5d7XqRoqWyWEL9H
+         wxof4fanXy6oFTO66LBA+QrL4oT0Sc+P3qAoa1DKCByfO/RsQ8Bc/H8wkyIXWnHOsy8k
+         9N3osp0q3QXfXhHKjrIXP2Ab2kjdgQj3KKCHx2rgU+tOSnieIssbGTUDPUOnLZZpMgZ4
+         9waktIwXbTycvXIw7fsM2yutk9eP+MUQ7rWew7UWECUsMJifYiGN7V1YDRYn4lXlwW7H
+         QDbGCRCQlRmF0I0kkqSgmqYJJ62fIORI0ZjsuK0C5wED1BNxDeTn7OTQy+yDUl1RWOKW
+         PMxw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=byMcI2Fa7+1Kv6pN/+MQdOzA/aUz0VHeYcG4DH6B+0c=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=UPHq92x4cYfHFW3WjOIBPu851We4Vdcm7dTwzAFkNTSW4D2TIEJ6ZftAXNrm4CS1VG
+         T+DaOuhbr5fyR9kLCL4Fq2Ey4HavV3eI9C+qLCdiIGbZS3b+Gp1NnqYOaS850qgFxVgR
+         psr6BKDNkiSGzUcmCD6+q4fjxIKZFzCRZf4MSnAb6+5/2PohK/+48JW6S4qNqjgq+Pnn
+         PbEko3xv++Y+yLCu4/EJ/bvKrHgF1cun3KGfz2AoNIw5DSW7nlXE8s41xPxL8k9nWua5
+         MDw0zEpjtsPmM8jnTIGGEaf/QdzbJlWlZYx8SIxIDOUYPvi0kIRitWDOajOAOBz9bkml
+         WSiw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=DYxsmho9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="fTY/tapp";
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 192.254.115.187 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o42.ck.n.convertkit.com (o42.ck.n.convertkit.com. [192.254.115.187])
+        by mx.google.com with ESMTPS id d75a77b69052e-43df566f556si160597961cf.263.2024.05.17.13.07.18
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 May 2024 13:07:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 192.254.115.187 as permitted sender) client-ip=192.254.115.187;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=DYxsmho9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="fTY/tapp";
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 192.254.115.187 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=byMcI2Fa7+1Kv6pN/+MQdOzA/aUz0VHeYcG4DH6B+0c=;
+	b=DYxsmho9fKC+qHCoVrWa9r+sT6IlRiPtjW2+o7o/PRq7GRfCHwVCCR3UAnNl6GEb5KXL
+	mrxa+A+rmGpVN6bjBMmr7U8iwrTxGndIy+6QkxQ52X+rS4KrenRlOHfMOPct5vIPtwuoT4
+	5V9qzI5zBPNahfgBr932N5uzbtTDm/bmE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=byMcI2Fa7+1Kv6pN/+MQdOzA/aUz0VHeYcG4DH6B+0c=;
+	b=fTY/tappLq42kA0aAZG5TUV6Fz6VS5vD5uRy2KNGj51Sw5SNbejQO28WlfpXS51gSXTy
+	kYXwHvVeA+qFgY035dS/vF3ma/NFzHtQJv6GkpOqgavfGzfseHFntghpu6HNg9qCBMG8+R
+	PihXH14tXyqhw/HNedyP/53EnIbLvvQQI=
+Received: by filterdrecv-bc6c9bf5f-g7r6t with SMTP id filterdrecv-bc6c9bf5f-g7r6t-1-6647B8F4-16C
+        2024-05-17 20:07:17.066186023 +0000 UTC m=+1545977.514826025
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-24 (SG) with HTTP
+	id DmBp5thYQ_mkziOSfuzIHg
+	Fri, 17 May 2024 20:07:16.897 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=6f43deeef929f875deb307865c2e22e759ba9acd22fbf1fbeb2c55b68e74
+Date: Fri, 17 May 2024 20:07:17 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <k0ukgqp8q6c6hdq760gflh84pd777i8@convertkit-mail2.com>
+Subject: NEW VIDEO - Amazing Developer Portfolio with Next JS and Framer
+ Motion
+Feedback-ID: 13926960:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2E9iKReg6MmXOnRZvsQzWQJ3lPH0tO4yiaHftVEEnLM4wy5BnLoLlAcpdQp?=
+ =?us-ascii?Q?uAcltvhbsvR1HoWuE3BRvA2KUJnto73=2FHvfc8q3?=
+ =?us-ascii?Q?KlJgrpZhJPmRCwFN8bVrM6BE=2FoplV=2FUD=2F8MKEIW?=
+ =?us-ascii?Q?i6B=2FIgnOHHyTHt1KAoGV0qm5aY416JnqBh2MoQJ?=
+ =?us-ascii?Q?F2f+QM+239JPsWFTpVidt9fmF7nnNreQdeJYgID?=
+ =?us-ascii?Q?DECZRWF4ztVUzk0Ly1TtWHQuHFByscEJKcWUoap?= =?us-ascii?Q?ULsY?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprBTLquV1ImzFIrgT?=
+ =?us-ascii?Q?SaJ3+RZ4KlylMM+gufBAEO=2FnVtYQemSfvtL+wHg?=
+ =?us-ascii?Q?tKk+v3BlFkk2568C0fB+vIXxxv64MNS6VA0tRDF?=
+ =?us-ascii?Q?xKTDKvEZTJIk8aDwcqC2ih6WssZpRX98Ec0hKCC?=
+ =?us-ascii?Q?yHTmmf60swhFdaoAJgWa4gMhJbn78+ZhDJ3d=2Fjk?=
+ =?us-ascii?Q?OQjFB54Waf0ZXSE+lTRlqqYoIfWlGx4xBfzL82l?=
+ =?us-ascii?Q?LGjngPiE6l6KDDlC9F1HKu7+loU1AZaCRk909lQ?=
+ =?us-ascii?Q?vhjOergNMC5a=2FoSFwgPREKCjzJeDHtbxOp+2aQE?=
+ =?us-ascii?Q?D8sJ+sDcNiPDn5xUoL2hCxmr9ab0iag42ElG6h+?=
+ =?us-ascii?Q?V9Ci6tpYdOOJu744SNi1fML2hhPFVjM78F8=2Fxca?=
+ =?us-ascii?Q?2j+KTNzwUFyweE1k9Pc=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: u001.U5uR4hiqEeo/H3zk+7BOfQ==
+
+--6f43deeef929f875deb307865c2e22e759ba9acd22fbf1fbeb2c55b68e74
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+=E2=80=8B
+
+Hi whyoucare =F0=9F=91=8B
+
+=E2=80=8B
+
+Time to update your portfolio?
+
+=E2=80=8B
+
+Imagine your portfolio impressing every visitor with seamless
+animations and sleek design. In this video, you'll learn to build
+a minimalistic, modern developer portfolio with:
+
+=E2=80=8B
+
+=E2=86=92 Sleek animations
+=E2=86=92 Modern hero section with text animations
+=E2=86=92 Bento grid section with a 3D globe
+=E2=86=92 Unique projects section
+=E2=86=92 Testimonials, work experience, and more!
+
+=E2=80=8B
+
+=E2=80=8BCheck it out! (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/m2h7h6u8=
+2lqzewfl/aHR0cHM6Ly95b3V0dS5iZS9GVEg2RG4zQXlJUQ=3D=3D
+)=E2=80=8B
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/m2h7h6u8=
+2lqzewfl/aHR0cHM6Ly95b3V0dS5iZS9GVEg2RG4zQXlJUQ=3D=3D
+)Until next time,
+Adrian from jsmastery.pro (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/dphehmu0=
+d2on5dtl/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby8=3D
+)=E2=80=8B
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/e0hph0u0=
+mdlo46c7/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/7qh7h2uo=
+dx65zls9/aHR0cHM6Ly90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/owhkhwur=
+x06doduq/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bWFzdGVyeS8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/z2hgh7u3=
+5mkxwviz/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcn=
+kv
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/p8hehquz=
+rp2oxwtr/aHR0cHM6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D
+)
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8
+)=E2=80=8B
+--6f43deeef929f875deb307865c2e22e759ba9acd22fbf1fbeb2c55b68e74
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen {* { word-break: break-word; }}
+@media screen and (max-width: 384px) { .mail-message-content { width: 414px=
+ !important; } }
+@media only screen and (max-width:600px) {
+        .ck-padding-left-none {
+          padding-left: 0px !important;
+        }
+        .ck-padding-right-none {
+          padding-right: 0px !important;
+        }
+        .ck-padding-left-mobile-friendly {
+          padding-left: 18px !important;
+        }
+        .ck-padding-right-mobile-friendly {
+          padding-right: 18px !important;
+        }
+    }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><table c=
+ellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#ffffff" style=3D"border-coll=
+apse:separate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;wid=
+th:100%;margin:0 auto;background-color:#ffffff"><tbody><tr><td style=3D"mso=
+-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 5px 0px 5px"><div class=3D"ck-inner-section ck=
+-padding-left-mobile-friendly ck-padding-right-mobile-friendly" style=3D"pa=
+dding:0px 5px 0px 5px"><div style=3D"margin-left:auto;margin-right:auto;max=
+-width:640px">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:800px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/gWJmN92FyV97FAL7ZGBCRf/email" width=3D"800" he=
+ight=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;lin=
+e-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:non=
+e;-ms-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4=
+px;width:800px;height:auto;object-fit:contain"></div></figure></td></tr></t=
+body></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D""><strong>Hi whyoucare =F0=9F=91=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D""><strong>=E2=80=8B</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">Time to update your portfolio?</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">Imagine your portfolio impressing every visitor with se=
+amless animations and sleek design. In this video, you'll learn to build a =
+minimalistic, modern developer portfolio with:</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">=E2=86=92 Sleek animations  <br>=E2=86=92 Modern hero s=
+ection with text animations  <br>=E2=86=92 Bento grid section with a 3D glo=
+be  <br>=E2=86=92 Unique projects section  <br>=E2=86=92 Testimonials, work=
+ experience, and more!</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-align:left;text-transform:none;margin-top:0;margin-b=
+ottom:0" class=3D"">=E2=80=8B<a href=3D"https://click.convertkit-mail2.com/=
+k0ukgqp8q6c6hdq760gflh84pd777i8/m2h7h6u82lqzewfl/aHR0cHM6Ly95b3V0dS5iZS9GVE=
+g2RG4zQXlJUQ=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"=
+color:#0F82F0" url-id=3D"1639342356">Check it out!</a>=E2=80=8B</p>
+<!--[if mso]><table><tr><td width=3D"800"><![endif]--><a href=3D"https://cl=
+ick.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/m2h7h6u82lqzewfl/a=
+HR0cHM6Ly95b3V0dS5iZS9GVEg2RG4zQXlJUQ=3D=3D" style=3D"display:block;width:1=
+00%;max-width:480px;margin:0 auto 0 0;border:0;text-decoration:none" url-id=
+=3D"1639342356"><img alt=3D"video preview" src=3D"https://functions-js.conv=
+ertkit.com/playbutton?play=3D%23324C85&amp;accent=3D%23ffffff&amp;thumbnail=
+of=3Dhttps%3A%2F%2Fyoutu.be%2FFTH6Dn3AyIQ&amp;width=3D480&amp;height=3D270&=
+amp;fit=3Dcontain" width=3D"480" height=3D"270" style=3D"display:block;bord=
+er:0;height:auto;line-height:100%;outline:none;-webkit-text-decoration:none=
+;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;border:=
+0 none;display:block;border-radius:4px;max-width:480px;width:100%;height:au=
+to">=E2=80=8B</a><!--[if mso]></td></tr></table><![endif]--><p style=3D"mar=
+gin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFont, sans-serif;=
+font-size:16px;color:#363D43;font-weight:400;letter-spacing:0;line-height:1=
+.5;text-transform:none;margin-top:0;margin-bottom:0" class=3D"">Until next =
+time,<br>Adrian from <a href=3D"https://click.convertkit-mail2.com/k0ukgqp8=
+q6c6hdq760gflh84pd777i8/dphehmu0d2on5dtl/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby=
+8=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F0"=
+ url-id=3D"1639342357">jsmastery.pro</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 0px 0px 0px"><div class=3D"ck-inner-section ck=
+-padding-left-none ck-padding-right-none" style=3D"padding:0px 0px 0px 0px"=
+><div style=3D"margin-left:auto;margin-right:auto;max-width:640px">
+<div style=3D"text-align:left;margin-top:16px;margin-bottom:16px">
+<a href=3D"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777=
+i8/e0hph0u0mdlo46c7/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ=
+5" style=3D"display:inline-block;padding-right:8px;border:none;text-decorat=
+ion:none" url-id=3D"1639342358"><img src=3D"https://functions-js.convertkit=
+.com/icons?icon=3Dyoutube&amp;foreground=3Dffffff&amp;background=3Dcc0000&a=
+mp;shape=3Dcircle&amp;v=3D3" alt=3D"youtube" width=3D"32" height=3D"32" sty=
+le=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-web=
+kit-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubi=
+c;max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"=
+><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.conve=
+rtkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/7qh7h2uodx65zls9/aHR0cHM6Ly=
+90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D" style=3D"display:inline-block;padding=
+-right:8px;border:none;text-decoration:none" url-id=3D"1639342359"><img src=
+=3D"https://functions-js.convertkit.com/icons?icon=3Dx-twitter&amp;foregrou=
+nd=3Dffffff&amp;background=3D000000&amp;shape=3Dcircle&amp;v=3D3" alt=3D"x-=
+twitter" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:=
+auto;line-height:100%;outline:none;-webkit-text-decoration:none;text-decora=
+tion:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width=
+:32px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=
+=80=8B</a><a href=3D"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760g=
+flh84pd777i8/owhkhwurx06doduq/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2Nya=
+XB0bWFzdGVyeS8=3D" style=3D"display:inline-block;padding-right:8px;border:n=
+one;text-decoration:none" url-id=3D"1639342360"><img src=3D"https://functio=
+ns-js.convertkit.com/icons?icon=3Dinstagram&amp;foreground=3Dffffff&amp;bac=
+kground=3De1306c&amp;shape=3Dcircle&amp;v=3D3" alt=3D"instagram" width=3D"3=
+2" height=3D"32" style=3D"display:block;border:0;height:auto;line-height:10=
+0%;outline:none;-webkit-text-decoration:none;text-decoration:none;-ms-inter=
+polation-mode:bicubic;max-width:100%;border:0 none;width:32px;height:32px;d=
+isplay:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D=
+"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/z2hgh7u=
+35mkxwviz/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlc=
+nkv" style=3D"display:inline-block;padding-right:8px;border:none;text-decor=
+ation:none" url-id=3D"1639342361"><img src=3D"https://functions-js.convertk=
+it.com/icons?icon=3Dlinkedin&amp;foreground=3Dffffff&amp;background=3D0077b=
+5&amp;shape=3Dcircle&amp;v=3D3" alt=3D"linkedin" width=3D"32" height=3D"32"=
+ style=3D"display:block;border:0;height:auto;line-height:100%;outline:none;=
+-webkit-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bi=
+cubic;max-width:100%;border:0 none;width:32px;height:32px;display:inline-bl=
+ock"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.c=
+onvertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8/p8hehquzrp2oxwtr/aHR0cH=
+M6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D" style=3D"display:inline-blo=
+ck;padding-right:8px;border:none;text-decoration:none" url-id=3D"1639342362=
+"><img src=3D"https://functions-js.convertkit.com/icons?icon=3Ddiscord&amp;=
+foreground=3Dffffff&amp;background=3D7289da&amp;shape=3Dcircle&amp;v=3D3" a=
+lt=3D"discord" width=3D"32" height=3D"32" style=3D"display:block;border:0;h=
+eight:auto;line-height:100%;outline:none;-webkit-text-decoration:none;text-=
+decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none=
+;width:32px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-=
+->=E2=80=8B</a>
+</div>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none" class=3D"">=E2=80=8B<a href=3D"https=
+://unsubscribe.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777i8" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#656565">Unsubscribe=
+</a> =C2=B7 <a href=3D"https://preferences.convertkit-mail2.com/k0ukgqp8q6c=
+6hdq760gflh84pd777i8" target=3D"_blank" rel=3D"noopener noreferrer" style=
+=3D"color:#656565">Preferences</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</td></tr></tbody></table></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/k0ukgqp8q6c6hdq760gflh84pd777=
+i8" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line=
+-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:none=
+;-ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--6f43deeef929f875deb307865c2e22e759ba9acd22fbf1fbeb2c55b68e74--

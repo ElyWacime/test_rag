@@ -1,0 +1,332 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6124:587:b0:382:28f0:b1e6 with SMTP id l7csp867388vlo;
+        Sun, 24 Sep 2023 18:02:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGmH0ZQPHWAwMyAigQ69k/bwbcd/FYQtgfG37LQylI/MJpEdmu6me9kLZNhKeww3sXfDMsu
+X-Received: by 2002:a05:620a:d8b:b0:770:f346:e9e8 with SMTP id q11-20020a05620a0d8b00b00770f346e9e8mr6357230qkl.10.1695603736409;
+        Sun, 24 Sep 2023 18:02:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695603736; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bNco7PFzQn8SUyJqhcPfktuXNHUwT6O/eH4e2rUGOcX1E4WtI8w0Q4fb84Fjl26nS8
+         8NeIo4uQ0mOXO0b1DdA/quanVpx+YcyRUZnE2kKjuI6ZcNQInj0O8vPEobvuO7F5zrN+
+         5YmlhddzNWd5voJVPNCvgYvjVBoH3/Bl9RUYlSJd54+KRRVv0nAicvCgP0ZUHWOdhSbO
+         GlW5N2pMUh34QokyjICV5HK7mdTVENTi+/in2IaQvZZNO7HV01ZFLH6Wr8Bx0slJ015Y
+         azRIWHlwlvHHX88RdZvI/qKEUBu5j+nXTFdnoSgWw+NP4cA53Q0p+Exyjcjnr0MvHXRw
+         adUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=A2u73wkVJLnuQbdISCrfMKjLrD/i/8u0uxvTOf6rbbg=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=UvSD56Ffpdvt3EXu+VaqyGSg/dY2WNHX/JMLRdmAb9oPfOUWSNIVCA/SJ7MfCHyV4V
+         CUyxU5oIOc1xy317b/9Lqiae6gnE0ryaO5ZMMurZ5QMOBo1t4bLjtAaOsfe13Tv8XeI3
+         DhDmTYA22lR/IxJ0UuQul/BOdXn3nQevTVvrjGsUT41C4HWgB9s1is7QPlYKpunUitYY
+         gGr1B74Qpy/54FUwpifH/YZCiwpkygvaw4rrOevpdLqNhp3QSvyYPxd6LjO5z+Agl+XW
+         a8vR8MoaXC2m2zpBw+jX6llUW0bXVziavBuQ+js5cyWzUDiNJkc9vviQhFJLm9IrdRqS
+         vltA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=nRT+HNAk;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=R6xKIl6S;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o20.ck.n.convertkit.com (o20.ck.n.convertkit.com. [168.245.5.113])
+        by mx.google.com with ESMTPS id q20-20020a05620a0d9400b00768064b6b5bsi5529591qkl.755.2023.09.24.18.02.16
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 24 Sep 2023 18:02:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) client-ip=168.245.5.113;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=nRT+HNAk;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=R6xKIl6S;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=A2u73wkVJLnuQbdISCrfMKjLrD/i/8u0uxvTOf6rbbg=;
+	b=nRT+HNAkevoO/yMLeq86vpQl0iCmcN7M9bfIaiFKRj4w17mJ0wZyLOx6C5wclgaHE3he
+	/FDTisnD/HKzheMeXomCnPWEYmzNNGCtmL4ejCM4Z0uTWFaangn8CxyzfZpRtbjPBfO0ep
+	GWRHAbc5oAdSy/QEcIfPsyrGhZUwT7jRw=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=A2u73wkVJLnuQbdISCrfMKjLrD/i/8u0uxvTOf6rbbg=;
+	b=R6xKIl6S3LhQwH7DQn+xcwp/KwEkZ6zxUGLAylZhyvCjjD5X+ARrlLavqBNtaIm/O31f
+	umZylwEXVbPTmnjh666L2NYFS/37Z1WUZNhrIdZzBP7/wFvUtVMB7NcrWiWiFKUENQArlu
+	fglo1aRqHg0mtpcrRb2OlbPAWdeLW4Ha0=
+Received: by filterdrecv-ffcd6b849-77lbr with SMTP id filterdrecv-ffcd6b849-77lbr-1-6510DC17-92
+        2023-09-25 01:02:15.722081777 +0000 UTC m=+11841749.069925575
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-9 (SG) with HTTP
+	id vm6i5OwoTFutS8YC8Rg-3A
+	Mon, 25 Sep 2023 01:02:15.702 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=cdabb7bb22185dd6ef932c1eb653af9b9cb32db488a3ccc6d2be7300432d
+Date: Mon, 25 Sep 2023 01:02:15 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <n4uvxk3nk8ivh8rmzqvb6h7mrlwgg@convertkit-mail2.com>
+Subject: Free <<< Paid
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 11817009:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/n4uvxk3nk8ivh8rmzqvb6h7mrlwgg>
+X-Report-Spam: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfUluOPem8Ptgm9zhl?=
+ =?us-ascii?Q?6dXqbgzWyhwdrVokKtzjwkltWL8hT0M+=2FjSFT4Q?=
+ =?us-ascii?Q?Iyh5UaNkeH3IdR7QAU6Itn65DWdCy9mHxl+QtOd?=
+ =?us-ascii?Q?xgcClqhMA+Zb4+yc1gV9jmwAw6nxfk9Hg3JN02a?=
+ =?us-ascii?Q?6G=2F1IABNfCRlzt7YdWyFA+TOfpHx9moJ5zBynF?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADvcDHu9Ct7mu8v87GoSNIuoH6+hp8RuOtjt8gJ?=
+ =?us-ascii?Q?di7bEbaIaTdbXxoztmqCKS7rD6CGOPU+gePnsLZ?=
+ =?us-ascii?Q?JPQV95OdSPqu6CQjgAK4NOJgvzlZDyxXET1+JDi?=
+ =?us-ascii?Q?vHqY8xE1CUFQMAYx2idn1HFcsRc=2Fbyg6nssp+bA?=
+ =?us-ascii?Q?1hNddlIBErq8ON1SFrJnr6qC7gltzv0601Bx3B=2F?=
+ =?us-ascii?Q?1ePqs39zwQyL2mrqxvk3Gj8mFzWgMS3nNJkBWsD?=
+ =?us-ascii?Q?8Uyb5VjPmi+yjpPleaIb9Vx+wug=2F1IoEFFqPsi4?=
+ =?us-ascii?Q?skI7+rM5GsgMd2m3Vb2xtPpGsWnutS9O42qXZx5?=
+ =?us-ascii?Q?VEj8J2CVM6?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--cdabb7bb22185dd6ef932c1eb653af9b9cb32db488a3ccc6d2be7300432d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Yup. Free is much worse than paid.
+
+=E2=80=8B
+
+Let me explain why on a familiar example.
+
+=E2=80=8B
+
+Let=E2=80=99s say you lose something.
+
+If you lose a pack of gum?
+
+You might search for it for a few minutes. Check your pockets,
+jacket and backpack. If you don=E2=80=99t find it - oh well.
+
+The truth is you don=E2=80=99t care. It=E2=80=99s cheap.
+
+=E2=80=8B
+
+If you lose your phone or wallet?
+
+You search until you find it.
+
+Pockets, jacket, backpack, your room, your home, car, and
+everywhere you went recently until you find it. See=E2=80=A6
+
+The high cost is what makes it worth it. It makes you dedicated
+so you don=E2=80=99t stop until the cost you paid is returned.
+
+=E2=80=8B
+
+And cost isn=E2=80=99t necessarily just monetary price.
+
+Here=E2=80=99s another example:
+
+If everyone could have a six-pack at the press of a button, it
+would be worthless.
+
+But getting in good shape is hard. Going through that struggle is
+what makes it worth it.
+
+Because the majority will never do that and will just stay the
+same. Day after day. Year after year.
+
+=E2=80=8B
+
+So if you want to be in the minority of web devs that excel at
+what they do?
+
+There are a couple of buttons you need to press here and a whole
+lot of effort after that. So if that makes you excited:
+
+=E2=80=8B>> jsmastery.pro/ultimate-next13-course
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/n4uvxk3nk8ivh8rmzqvb6h7mrlwgg
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/n4uvxk3nk8ivh8rmzqvb6h7mrlwgg
+)
+--cdabb7bb22185dd6ef932c1eb653af9b9cb32db488a3ccc6d2be7300432d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Yup. Free is much worse than paid.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Let me explain why on a familiar example.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Let=E2=80=99s say you lose something.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>If you lose a pack of gum?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You might search for it for a few minutes. Check your pocke=
+ts, jacket and backpack. If you don=E2=80=99t find it - oh well.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The truth is you don=E2=80=99t care. It=E2=80=99s cheap.</p=
+>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>If you lose your phone or wallet?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You search until you find it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Pockets, jacket, backpack, your room, your home, car, and e=
+verywhere you went recently until you find it. See=E2=80=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>The high cost is what makes it worth it. It makes y=
+ou dedicated so you don=E2=80=99t stop until the cost you paid is returned.=
+</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And cost isn=E2=80=99t necessarily just monetary price.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Here=E2=80=99s another example:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If everyone could have a six-pack at the press of a button,=
+ it would be worthless.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But getting in good shape is hard. Going through that strug=
+gle is what makes it worth it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Because the majority will never do that and will just stay =
+the same. Day after day. Year after year.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So if you want to be in the minority of web devs that excel=
+ at what they do?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">There are a couple of buttons you need to press here and a =
+whole lot of effort after that. So if that makes you excited:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B<a href=3D"https://click.convertkit-mail2.com/n4uv=
+xk3nk8ivh8rmzqvb6h7mrlwgg/58hvh8umz8re4mb7/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnBy=
+by91bHRpbWF0ZS1uZXh0MTMtY291cnNl" target=3D"_blank" rel=3D"noopener norefer=
+rer" style=3D"color:#0f82f0" url-id=3D"1574553536">&gt;&gt; jsmastery.pro/u=
+ltimate-next13-course &lt;&lt;</a>=E2=80=8B</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/n4uvxk3nk8ivh8rmzqvb6h7mrlwgg" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/n4uvxk3nk8ivh8rmzqvb6h7mrlwgg" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/n4uvxk3nk8ivh8rmzqvb6h7mrlwgg=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--cdabb7bb22185dd6ef932c1eb653af9b9cb32db488a3ccc6d2be7300432d--

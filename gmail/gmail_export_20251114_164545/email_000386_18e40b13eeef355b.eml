@@ -1,0 +1,384 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:3606:0:b0:2d2:748b:49b8 with SMTP id d6csp609061lja;
+        Thu, 14 Mar 2024 22:59:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFtaWvLeCasR45A0RTAkeDwS7k6Y0o5kvWuLCup2+KFWPy/SwSFOd6Ev1GUh/9s4j+u1c46
+X-Received: by 2002:ae9:e40b:0:b0:789:e2c1:40ac with SMTP id q11-20020ae9e40b000000b00789e2c140acmr1646691qkc.11.1710482341440;
+        Thu, 14 Mar 2024 22:59:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710482341; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZG5WsvDlxRUG6W2GNTy4x3l31LIGU2yy/7Qlj/Izt8TnTqBW3JTJb+QbqgZtjbWfZU
+         6d1N6HgolhgAOAvL3UxkMDZ/uPUe+zT8LoqjIAo8RG58DWFKYxu8kXYUSoVrdM2Yo4aD
+         GdDE0hmlmTb4l0mzGfVU8B3E+n/fsse013hmVeTTs/e3p/cyaOFb543w4ZYGr6EoCzei
+         MdKDPbDk/PlP+Ept0fnZfMHAsf5FTa6CtbSKDDMZyxYH1HHZ5Bofox7PwcEti/Hy/X3C
+         s3VzRCDEnpSHh/D/GABwEPTHu+s0K+xgIeMeuLkTqVp7Dn8V/cGePl2ClrfwpD1ljHpj
+         FyZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:message-id:to:from:subject:mime-version
+         :date:sender:dkim-signature:dkim-signature;
+        bh=j+YvQo6okAsxcqdibrLTvUP2ucRv/8EYKPGbmexzxZg=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=hAadV9nOuDm6XgXC3tSTpeEUzuTuEAlZrhsyN8zxj/XXMIJyBI8h8jU9lIQzkxASKY
+         n5/HpBiwXiqNnYWI8UbsV3Ix1BGn2aclBLSfgCq+AGWf4BZ+naDBfR2OoTr5bzg7j1PH
+         eT9WTPDby+tZlynbef1/U3jEsUYsTYaz+zupv3YrphW1YqTdW97C2tUV6uH7DWm5Cgqa
+         2HCMtcGMmE0Ina/8KUzqLwu7ifAgpSvoz20NvFihR/Xdz2HX2qV13ItoaH9o2jdsN3p7
+         t2MzSLVftuIzFO1CnnHIDe5IUJvgvIAon0HIx8OPBb4jPjcGK9xzqPuFes/qKxxWlakD
+         ff6Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@official.iobit.com header.s=k1 header.b=nubWE7ry;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=Ib+RJ3Cp;
+       spf=pass (google.com: domain of bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com designates 198.61.254.12 as permitted sender) smtp.mailfrom="bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=iobit.com
+Return-Path: <bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com>
+Received: from so254-12.mailgun.net (so254-12.mailgun.net. [198.61.254.12])
+        by mx.google.com with UTF8SMTPS id pj9-20020a05620a1d8900b007883ba9303csi2928660qkn.644.2024.03.14.22.59.01
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 14 Mar 2024 22:59:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com designates 198.61.254.12 as permitted sender) client-ip=198.61.254.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@official.iobit.com header.s=k1 header.b=nubWE7ry;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=Ib+RJ3Cp;
+       spf=pass (google.com: domain of bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com designates 198.61.254.12 as permitted sender) smtp.mailfrom="bounce+0f2ff5.125543e-ely.ubuntu0=gmail.com@official.iobit.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=iobit.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=official.iobit.com; q=dns/txt; s=k1; t=1710482340; x=1710489540;
+ h=Content-Transfer-Encoding: Content-Type: Message-Id: To: To: From: From: Subject: Subject: Mime-Version: Date: Sender: Sender: X-Feedback-Id;
+ bh=j+YvQo6okAsxcqdibrLTvUP2ucRv/8EYKPGbmexzxZg=;
+ b=nubWE7ryX94XnCPFn8nX0LTfi8iAOUW3h9ZHB6XZXmCLnbOO5ooci6P7T0Xk6IhETP2TWzot911N86S1tObCRRR9uT6hWYVDVjWs4hELhTVg4eqEVDX7Hk2fny1p5LK+/9oLR0RrXpRL02H20rVurGc1ysxc4lrKStBrjO1m/ld208j6oerMwwGacQ5WfFIZBE0hlZjwSQmWkpE4H5udKTfZCGXFHPm6d0rlwzIxHAmBn+HfnyYWTeTJh/ql4+0BI8ISGeCtpYJ5y/O7tpxTTYIbXj+DDyl3uXZVAi+nJ7R8TgQVvzP/MUQxwQmTQ9ZMOy351mT6LwbmbcFuoVYi1Q==
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1710482340; x=1710489540;
+ h=Content-Transfer-Encoding: Content-Type: Message-Id: To: To: From: From: Subject: Subject: Mime-Version: Date: Sender: Sender: X-Feedback-Id;
+ bh=j+YvQo6okAsxcqdibrLTvUP2ucRv/8EYKPGbmexzxZg=;
+ b=Ib+RJ3Cp1wSZ7QgtvhEFRH1NYMHbwD2B/F6eufqu0ZLLLL3crk1r12wWKTrpOkfR/aWiTL6AvkiHu9QyLzo73gckvy1w2MYMlRjQwdBC0MA4qSc2RZVBzbseOtbaBjE7kY8cttfeSI0jFuYztfsmTa8Dwj9UVWglSVT7Macaj3w=
+X-Feedback-Id: postmaster@official.iobit.com:2024stp_en_iufree_1:635b39ebfcccdad55f6f8024:mailgun
+X-Mailgun-Sending-Ip: 198.61.254.12
+X-Mailgun-Sid: WyI1ODhiZSIsImVseS51YnVudHUwQGdtYWlsLmNvbSIsIjEyNTU0M2UiXQ==
+Received: from <unknown> (<unknown> []) by 7d4b7d26d431 with HTTP id
+ 65f3e3a4b61bef4602b3b8a8; Fri, 15 Mar 2024 05:59:00 GMT
+Sender: newsletter=iobit.com@official.iobit.com
+Date: Fri, 15 Mar 2024 05:59:00 +0000
+Mime-Version: 1.0
+Subject: =?UTF-8?q?=F0=9F=8E=89Congrats!_You're_Lucky_to_be_Blessed!?=
+From: IObit <newsletter@iobit.com>
+To: ely.ubuntu0@gmail.com
+X-Mailgun-Tag: 2024stp_en_iufree_1
+Message-Id: <20240315055900.5f7bed8f59a66c4b@official.iobit.com>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en">
+
+<head>
+    <meta charset=3D"UTF-8" />
+    <title>Activate Your IObit Uninstaller 13 PRO - Up To 66 OFF% & Free Gi=
+ft This Lucky Month!</title>
+    <link rel=3D"icon" href=3D"https://ld.iobit.com/tpl/img/favicon.ico" mc=
+e_href=3D"https://ld.iobit.com/tpl/img/favicon.ico"
+        type=3D"image/x-icon">
+    <link rel=3D"shortcut icon" href=3D"https://ld.iobit.com/tpl/img/favico=
+n.ico"
+        mce_href=3D"https://ld.iobit.com/tpl/img/favicon.ico" type=3D"image=
+/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body p a {
+            text-decoration: underline !important;
+            color: #4D48EB !important;
+        }
+
+        table th a {
+            text-decoration: underline !important;
+            color: #1264FC !important;
+        }
+
+        body p a:hover {
+            opacity: 0.8 !important;
+            color: #4D48EB !important;
+            text-decoration: underline !important;
+        }
+
+        table th a:hover {
+            opacity: 0.8 !important;
+            color: #1264FC !important;
+            text-decoration: underline !important;
+        }
+    </style>
+</head>
+
+<body style=3D"width: 100%; margin: 0px auto; background: rgb(250, 250, 250=
+)">
+    <p style=3D"display: none; text-align: center;">Activate all IObit Unin=
+staller PRO-only Features with 66% OFF & 1 YEAR FREE Gift!</p>
+    <table width=3D"650" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" a=
+lign=3D"center"
+        style=3D"background: #fff;width:650px;margin: auto;">
+        <thead>
+            <tr>
+                <th valign=3D"middle" align=3D"left" height=3D"54"
+                    style=3D"text-align: left;height:54px;">
+                    <span style=3D"display: inline-block; vertical-align: m=
+iddle; width:470px; margin-left: 44px;">
+                        <img src=3D"https://ld.iobit.com/newsletter/2024mar=
+st/images/logo.png"
+                            alt=3D"IObit" />
+                    </span>
+                    <a href=3D"http://email.official.iobit.com/c/eJxEzrGOhS=
+AQheGnwdIMOCgWFNvwGgZkZiUBvdEhm337zb3N1icn35-9NtbiRAN5vWhAZyaE4fAxOpdAxxnY7=
+RmZE6ZVI88OYeUlDsUbMAiTtmDtCjBaXhJlx3aN87xjUggXc9lLrGO5UpFxv9pQ_SHyetT0pUxQ=
+JtT8PyoTTvp5KonQrUx4Ay3ejygTSqfc-CbS4yGtDren-jv21E_poBC-Wyz1I8gn7JHXRudW-vu=
+z6b8AAAD__1tPR-I" target=3D"_blank" style=3D"
+                    margin-right: 46px; font-family: Arial,sans-serif; font=
+-size: 12px; line-height: 1.5; font-weight: 400; color: #1264FC;=20
+                      text-decoration: underline;
+                    ">View it online</a>
+                </th>
+               =20
+              =20
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_01.jpg" alt=3D"Get 60% OFF & Extra One Year FREE"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr style=3D"clear: both;">
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter; display: block; float: left;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_02_01.jpg" alt=3D"Get 25% OFF on IObit Uninstaller 13 =
+PRO"
+                        style=3D"vertical-align: top;">
+                </td>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter; display: block; float: left;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_02_02.jpg" alt=3D"66% OFF & Extra Free Gift"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr style=3D"clear: both;">
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter; display: block; float: left;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_03_01.jpg" alt=3D"Get 25% OFF on IObit Uninstaller 13 =
+PRO"
+                        style=3D"vertical-align: top;">
+                </td>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter; display: block; float: left;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_03_02.jpg" alt=3D"66% OFF & Extra Free Gift"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr style=3D"clear: both;">
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter; display: block; float: left;">
+                    <a href=3D"http://email.official.iobit.com/c/eJxEj9uKhS=
+AUhp_G7iaWuuxw4cXAptcID8tJyJJSorcf2sOwb_-P_-Q1F0qhpIY07zngICRCs2jTe2-4kxCkp=
+wEtglPBcHKKzNghNlELEAiSK1BqBGhV6C35IajRdJ1DyxD2EKKLZm3jbmNp3Z6aVS-l5JPJbyYm=
+Jqbruj6UicnWu81LZnLKx-6rK0y-nqJYySd-8-w49v1ZmOgOCky-aPsin2INBxH_188H-DQ_zmS=
+OWJtD03q31datVGAIP8nE9b2ovI-cJc-0zX85M_8NAAD__zEtV1Q" >
+                        <img style=3D"border: none; vertical-align: top;"  =
+src=3D"https://ld.iobit.com/newsletter/2024marst/images/iufree/iu-free_04.j=
+pg" alt=3D"Get It Now - $14.77">
+                    </a>
+                </td>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter; display: block; float: left;">
+                    <a href=3D"http://email.official.iobit.com/c/eJxEj8uKrD=
+AQhp8m7o5U5WKbRRYHGl9DTKUyHTBt0ATx7Qd7GGb7f_y34FAaoxV37PCBoEepNHQvB9oSIRkfR=
+iSCxzCiZIsEYwyM3nfJSZAaFBowxgL0Jj48hzEauwwDaS80bDEmSsvap82n2tOWu9W9ai2HUP-F=
+nISczvP8o0JOvl19eRWhprJvoVEV6nkXpbYcxCHLSxVCa-1RhRx2jkI9-f2PQ04t7sz4qx83CHm=
+-zXnZU-t2x-vVN9_etYHQ8JWXtH5G1c-Xo5aZ3_NPzozfAQAA___xTFg4" >
+                        <img style=3D"border: none; vertical-align: top;"  =
+src=3D"https://ld.iobit.com/newsletter/2024marst/images/iufree/iu-free_05.j=
+pg" alt=3D"Get It Now - $19.99 ">
+                    </a>
+                </td>
+            </tr>
+           =20
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                        <img src=3D"https://ld.iobit.com/newsletter/2024mar=
+st/images/iufree/iu-free_06.jpg" alt=3D"Improved: Completely Uninstall Prog=
+rams"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_07.jpg" alt=3D"Improved: Completely Uninstall Programs=
+"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_08.jpg" alt=3D"Improved: In-depth Cleanup"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_09.jpg" alt=3D"Improved: In-depth Cleanup"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_10.jpg" alt=3D"Optimized Install Monitor"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+         =20
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img style=3D"display: block; border: none; vertical-al=
+ign: top;" src=3D"https://ld.iobit.com/newsletter/2024marst/images/iufree/i=
+u-free_11.jpg" alt=3D"Powerful Uninstall">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <a href=3D"http://email.official.iobit.com/c/eJxEj8uKrD=
+AQhp8m7o5U5WKbRRYHGl9DTKUyHTBt0ATx7Qd7GGb7f_y34FAaoxV37PCBoEepNHQvB9oSIRkfR=
+iSCxzCiZIsEYwyM3nfJSZAaFBowxgL0Jj48hzEauwwDaS80bDEmSsvap82n2tOWu9W9ai2HUP-F=
+nISczvP8o0JOvl19eRWhprJvoVEV6nkXpbYcxCHLSxVCa-1RhRx2jkI9-f2PQ04t7sz4qx83CHm=
+-zXnZU-t2x-vVN9_etYHQ8JWXtH5G1c-Xo5aZ3_NPzozfAQAA___xTFg4" >
+                        <img style=3D"display: block; border: none;"  src=
+=3D"https://ld.iobit.com/newsletter/2024marst/images/iufree/iu-free_12.jpg"=
+ alt=3D"Powerful Uninstall"
+                        style=3D"vertical-align: top;">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <a href=3D"http://email.official.iobit.com/c/eJxEj8uKrD=
+AQhp8m7o5U5WKbRRYHGl9DTKUyHTBt0ATx7Qd7GGb7f_y34FAaoxV37PCBoEepNHQvB9oSIRkfR=
+iSCxzCiZIsEYwyM3nfJSZAaFBowxgL0Jj48hzEauwwDaS80bDEmSsvap82n2tOWu9W9ai2HUP-F=
+nISczvP8o0JOvl19eRWhprJvoVEV6nkXpbYcxCHLSxVCa-1RhRx2jkI9-f2PQ04t7sz4qx83CHm=
+-zXnZU-t2x-vVN9_etYHQ8JWXtH5G1c-Xo5aZ3_NPzozfAQAA___xTFg4" >
+                        <img style=3D"display: block; border: none;" src=3D=
+"https://ld.iobit.com/newsletter/2024marst/images/iufree/iu-free_13.jpg" al=
+t=3D"In-depth Cleanup"
+                        style=3D"vertical-align: top;">
+                        </a>
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <a href=3D"http://email.official.iobit.com/c/eJxEj8uKrD=
+AQhp8m7o5U5WKbRRYHGl9DTKUyHTBt0ATx7Qd7GGb7f_y34FAaoxV37PCBoEepNHQvB9oSIRkfR=
+iSCxzCiZIsEYwyM3nfJSZAaFBowxgL0Jj48hzEauwwDaS80bDEmSsvap82n2tOWu9W9ai2HUP-F=
+nISczvP8o0JOvl19eRWhprJvoVEV6nkXpbYcxCHLSxVCa-1RhRx2jkI9-f2PQ04t7sz4qx83CHm=
+-zXnZU-t2x-vVN9_etYHQ8JWXtH5G1c-Xo5aZ3_NPzozfAQAA___xTFg4" >
+                        <img style=3D"display: block; border: none;" src=3D=
+"https://ld.iobit.com/newsletter/2024marst/images/iufree/iu-free_14.jpg" al=
+t=3D"Software Health"
+                        style=3D"vertical-align: top;">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img style=3D"display: block; border: none;" src=3D"htt=
+ps://ld.iobit.com/newsletter/2024marst/images/iufree/iu-free_15.jpg" alt=3D=
+"Software Health" style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_16.jpg" alt=3D"Software Health"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_17.jpg" alt=3D"Get 60% OFF & Extra One Year FREE"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_18.jpg" alt=3D"Get 60% OFF & Extra One Year FREE"
+                        style=3D"vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"text-align: ce=
+nter;">
+                    <a href=3D"http://email.official.iobit.com/c/eJxEj8uKrD=
+AQhp8m7o5U5WKbRRYHGl9DTKUyHTBt0ATx7Qd7GGb7f_y34FAaoxV37PCBoEepNHQvB9oSIRkfR=
+iSCxzCiZIsEYwyM3nfJSZAaFBowxgL0Jj48hzEauwwDaS80bDEmSsvap82n2tOWu9W9ai2HUP-F=
+nISczvP8o0JOvl19eRWhprJvoVEV6nkXpbYcxCHLSxVCa-1RhRx2jkI9-f2PQ04t7sz4qx83CHm=
+-zXnZU-t2x-vVN9_etYHQ8JWXtH5G1c-Xo5aZ3_NPzozfAQAA___xTFg4" >
+                    <img src=3D"https://ld.iobit.com/newsletter/2024marst/i=
+mages/iufree/iu-free_19.jpg" alt=3D"Get It Now - $19.99 "
+                        style=3D"vertical-align: top; display: block; borde=
+r: none;">
+                    </a>
+                </td>
+            </tr>
+           =20
+        </tbody>
+    </table>
+    <div
+        style=3D"text-align: center; width: 650px; margin: 0px auto; paddin=
+g: 22px 22px; color: #000; background:#fff; font-family: Arial,sans-serif; =
+ font-size: 12px; line-height: 1.5; font-weight: 400; color:#929292; box-si=
+zing: border-box;">
+        <p>*.Data may vary based on different systems or computers.</p>
+        <p>You're receiving this email because we think you're our valued u=
+ser and want to offer you member exclusive
+            special offer. If you no longer wish to receive further updates=
+ from IObit, you can click here to=20
+            <a href=3D"http://email.official.iobit.com/c/eJxEz81uozAUQOGnMU=
+vkX0IWLDJhnNGooQoNNM0G-eJLsUIABVsob18pm67P5nw2Y1wpKTDCjG0YlSkXkkZ9liqRJsABo=
+OWSdQmgSAXfAhprNp2gkcs45ZIKpqhSW0pj1W0AbdqprUmSVgKRdOo61zozxG4C5-N2ukdD1ns_=
+L0TsCNeE63VdfyvhGkfCdRiXAEv7cIDx3M9EaCQih-Z4tn2hK4ZD7wtu17qyk_lXXr4u18Rciv2=
+p8jXk17o-lH-wuvGikuyDFeZ4UO-1Lus63z0Nu5b2r57f-P_Q7v3NfupzeSIiJyKPHhkOzzhAGH=
+2gRNLvu3HD69u_uIufGxwbF7oHYsN-AgAA__-T22LK">unsubscribe</a>.</p>
+    </div>
+    <footer
+        style=3D"text-align: center; width: 650px; margin: 0px auto; box-si=
+zing: border-box; padding: 0 42px 22px; margin-bottom: 10px;  background:#f=
+ff; font-family: Arial,sans-serif; font-size: 12px; line-height: 1.5; font-=
+weight: 400; color: #929292; ">
+        Copyright 2005 - 2024 IObit. All Rights Reserved
+    </footer>
+<img width=3D"1px" height=3D"1px" alt=3D"" src=3D"http://email.official.iob=
+it.com/o/eJwczMuKxSAMANCvqUtJNPGx8FuKtnEm0MfQ0cX9-wtdHzh7QcdMXowUjAiUnCcwvw=
+UhYM4VGJAk15g8hxgAo_S9-SRGiwNH4JGBOQNY7rHJnjrnGsJGbSG4e9dN62H1bjrsdp_mKXJ87=
+GzzGhMWgp-z6vHKeMP_8bfKtersj8iK3wAAAP__Mjcujw"></body>
+
+</html>

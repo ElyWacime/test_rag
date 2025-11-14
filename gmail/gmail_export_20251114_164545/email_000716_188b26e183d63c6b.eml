@@ -1,0 +1,356 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4094:b0:4c5:a633:e965 with SMTP id r20csp657600pxb;
+        Mon, 12 Jun 2023 18:45:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ57uFGrsavz6KUFg3ZwG5LRjcW9yH1D9PM2lkE8hyEwed+oNUDoq6pT3xBVy1JeOKqD1z1a
+X-Received: by 2002:a05:6a00:182a:b0:64b:20cd:6d52 with SMTP id y42-20020a056a00182a00b0064b20cd6d52mr13216524pfa.14.1686620739674;
+        Mon, 12 Jun 2023 18:45:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686620739; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Z5KclHfWD4uNF0sdWGd8BMZhSj6wTsnNfvRHsf82qkrS8EciaFTzGZpyAcFEzsgAL9
+         8G/f1YiR+UtKuZ5H0/9/ZC++O8nPQCEoB1Yt2WjkrPvYFXxgLlLHljItfbuN+bfwg547
+         h0janw1GOfcoIBJjv+xCA68kEYJ+IXtq+eY7KuaW6y9iJBph0Z7YuiKSkD6zYapLV/jV
+         81ghWjIuzN2qst9EbhpHFpKemuim+43oqTgpyPUIXla0n32sz0oYPuGgZDPxgGAaTYl4
+         PUGvnwB/FZ7aT3rtlfUWpqYsj6LXrjvNZzkrfu4eLLF/EwqIISeGKAmD/FFIS4hN1OwU
+         syfA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:feedback-id:precedence:list-unsubscribe:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=hUDxCBBxnYqVbt9sMZi6WUw9S5HaBJNrwEXkp0XmUnc=;
+        b=kIpodKZ3jRv7s6w/jhjdXxn66/US5OmKjJPwg8CmyLGbNMxUIgjh2SyCF+OCNZzqkn
+         /0jxiad39qjFNCMLBGGcniqqclItr0GBqwT5rsYwgm1ozxIt64nVelcxWek8s2KFI44d
+         SeK0jN3LfgIihBrgqnBJu3rKl5LKq+I6cArsACLC0UDS6zlD95Y1h01deqQgFq+vLb4c
+         YjJLfOfgLZRlcNh0jFm2hoZ04uUASv3Gr18B81eJCjemkZ5WQDqhNKojQC3yyTeFscJt
+         lkY3qmE5YIZcj1ElFhK+fZF9scCMLpugAmmEa+QuvaSvKZG2lYU6cS4q1VrrMugzx7Bp
+         wiJA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=jLjQ5Zc1;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Sol3qDUq;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o46.ck.n.convertkit.com (o46.ck.n.convertkit.com. [149.72.61.159])
+        by mx.google.com with ESMTPS id g123-20020a636b81000000b00542940ce609si7582582pgc.135.2023.06.12.18.45.38
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 12 Jun 2023 18:45:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) client-ip=149.72.61.159;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=jLjQ5Zc1;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Sol3qDUq;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=hUDxCBBxnYqVbt9sMZi6WUw9S5HaBJNrwEXkp0XmUnc=;
+	b=jLjQ5Zc1Dgpf3W8hNSULUEAiAazwWm6lQ9hXEreMUac9RpmQmv2l3DpA6VNkZY5T+Gzm
+	FMtS6YodqT7GoHqDLhHDoqmYGba2WiijPGZxFc4xX33wrDDS/v8LnkkAK6k5ZKHBIHjnNp
+	Q0EQMIgvhe6cZrh88Yw/mHttJOQ8kZHTQ=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=hUDxCBBxnYqVbt9sMZi6WUw9S5HaBJNrwEXkp0XmUnc=;
+	b=Sol3qDUqyKof6cDCSff4bG6krxzKV1InyG2n0UVl7jH0olS39bnFqYkHcQZ1FDu5U8v6
+	SJErfiasu4cg/58XFmj2WTq6h1Ju8MCjnu9dCWhq1qh4vU9iJR80oVt35K46SX05s8wzVB
+	cbl/V9qSbh0VUyGFhJZ5jKNIJBB/kmNug=
+Received: by filterdrecv-664b9bfd99-pfxv2 with SMTP id filterdrecv-664b9bfd99-pfxv2-1-6487CA41-35
+        2023-06-13 01:45:37.568407242 +0000 UTC m=+2327727.728186666
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-30 (SG) with HTTP
+	id g0wrWYp-T_2H53kjfTNisQ
+	Tue, 13 Jun 2023 01:45:37.483 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=cb1387e987cde94dc08f6b7265660da814027fa1ea8fb2a00c5e2149d23f
+Date: Tue, 13 Jun 2023 01:45:37 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <zlundwo7wrbnh4e79v4tp@convertkit-mail2.com>
+Subject: A more serious email
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4e79v4tp>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 10990489:775726:broadcast:CK
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfXjFJkvI=2FL9sWlnuu?=
+ =?us-ascii?Q?LiTTmKGwA0A87QkaDHTU57ZgrypvtkUX7l3NDso?=
+ =?us-ascii?Q?x6g0aTdFMwzq3KkUTF=2F5RcVJ7vHrFeC=2FudLkg9e?=
+ =?us-ascii?Q?H4Ie6cQpCFYWSKDmySs1+bujx4xKxB=2F0WZVjI9U?=
+ =?us-ascii?Q?EmVWyOApyy0ln7E07nFvPsawPeUSxS3B8UqdTm?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADiXv=2FmxX9zNg+wDO3eRK41ehNgQBfs5P3ik7KT?=
+ =?us-ascii?Q?nPFM2of5SkBKuVYEEGmEltVMsaPRhpU+KH1BO1r?=
+ =?us-ascii?Q?KkklpUGmRWewUuXDtPLbZOB1fuQhaJc+vqIM4ak?=
+ =?us-ascii?Q?ZyfovBTiJQ7U=2FEf7c1ROu7bGhYCm549FYeZVvzG?=
+ =?us-ascii?Q?71YwG1tB+36NYeM=2Fl35oIppyIsKI9sk2uYh0PQ+?=
+ =?us-ascii?Q?4XcjDHPPRF39H7EE2+mKrXPyYbXNGMOAjePIG7V?=
+ =?us-ascii?Q?+uN10R2aFORNYmRbWk3ZcXlFkF5GAxy31VOpsL8?=
+ =?us-ascii?Q?+3r=2FaDzjqpsmdziV09SjE1pzvUXc=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--cb1387e987cde94dc08f6b7265660da814027fa1ea8fb2a00c5e2149d23f
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Time flies.
+We all heard the saying.
+
+We know we should use it as best as we can.
+Yet every so often=E2=80=A6
+=E2=80=8B
+
+Maybe every week, month, or year=E2=80=A6
+We get this feeling like - where did it all go?
+Where did this time go?
+=E2=80=8B
+
+What have I done in this time?
+Did I spend it well?
+
+Or did I waste it?
+=E2=80=8B
+
+In my case=E2=80=A6A lot happened in the past year.
+
+We launched our website along with two courses.
+As well as the JSM Masterclass Experience.
+=E2=80=8B
+
+Since then?
+
+We had numerous success stories.
+Rodgers, Santiago, Travis, Michael, Nick, Demar, Kristian, Ahsan,
+Adrien, Sethu=E2=80=A6
+You might recognize a few of them.
+
+This got me thinking about our Career Development materials...
+There, I asked our students some questions.
+See=E2=80=A6
+
+Everyone wants a 6-figure dev job, but do you deserve it?
+
+Ask yourself:
+
+* In the last six months, have you done anything remarkable
+enough to be quantitatively measured and written down on your
+resume?
+* Knowing that past behavior indicates future behavior, can you
+reasonably expect to get a dream job within six to twelve months?
+
+That second one is crucial.
+=E2=80=8BBecause tomorrow will be the same as today - unless you make a
+big change.
+
+It=E2=80=99s Newton=E2=80=99s first law of physics.
+Without an external force, the object will stay the same. Whether
+that=E2=80=99s resting or moving slowly.
+=E2=80=8B=E2=80=8B
+So what will that change be?
+
+I can=E2=80=99t answer that for you.
+It=E2=80=99s a choice you make.
+=E2=80=8B
+
+But I can recommend the Masterclass.
+
+* You build projects and get real-world XP.
+* You get direct feedback on every line of code you write.
+* And you constantly meet and talk to senior mentors.
+
+So if you want to use the time that will fly by anyway to land
+your dream dev job=E2=80=A6
+
+=E2=80=8BApply here.
+=E2=80=8B (
+https://click.convertkit-mail2.com/zlundwo7wrbnh4e79v4tp/e0hph0u0lo0ek6b7/a=
+HR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVudC1ib290=
+Y2FtcA=3D=3D
+)=E2=80=8B
+
+Until next time,
+Adrian
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4e79v4tp )
+| Update your profile (
+https://preferences.convertkit-mail2.com/zlundwo7wrbnh4e79v4tp )
+| 113 Cherry St, Seattle, WA 92768
+--cb1387e987cde94dc08f6b7265660da814027fa1ea8fb2a00c5e2149d23f
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#9fcdf9"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#9fcdf9;wid=
+th:100%" bgcolor=3D"#9fcdf9"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container normal" styl=
+e=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-=
+width:100%;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:100%">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#f1f7fe"><tr><td><![endif]--><div=
+ style=3D"background-color:#f1f7fe;border-radius:11px;overflow:hidden;max-w=
+idth:600;margin:0px auto"><table bgcolor=3D"#f1f7fe" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"100%" style=3D"border-collapse:separate;mso-table-ls=
+pace:0pt;mso-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"v=
+ertical-align:top;padding:20px"><div class=3D"email-body" style=3D"backgrou=
+nd-color:#f1f7fe">
+<div class=3D"email-content"><div>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Time flies. <br>We all heard the saying.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">We know we should use it as best as we can.<br>Yet every so often=E2=
+=80=A6<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Maybe every week, month, or year=E2=80=A6<br>We get this feeling like =
+- where did it all go? <br>Where did this time go?<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">What have I done in this time? <br>Did I spend it well? </p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Or did I waste it?<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">In my case=E2=80=A6A lot happened in the past year.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">We launched our website along with two courses.<br>As well as the JSM =
+Masterclass Experience.<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Since then?</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">We had numerous success stories.<br>Rodgers, Santiago, Travis, Michael=
+, Nick, Demar, Kristian, Ahsan, Adrien, Sethu=E2=80=A6<br>You might recogni=
+ze a few of them.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">This got me thinking about our Career Development materials...<br>Ther=
+e, I asked our students some questions.<br>See=E2=80=A6</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7"><strong>Everyone wants a 6-figure dev job, but do you deserve it?</str=
+ong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Ask yourself:</p>
+<ol class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.7;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>In the last six months, have you done anything remarkable enough to=
+ be quantitatively measured and written down on your resume?</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span><u>Knowing that past behavior indicates future behavior</u>, can yo=
+u reasonably expect to get a dream job within six to twelve months?</span><=
+/li>
+</ol>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">That second one is crucial.<br>=E2=80=8B<strong>Because tomorrow will =
+be the same as today - unless you make a big change.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">It=E2=80=99s Newton=E2=80=99s first law of physics.<br>Without an exte=
+rnal force, the object will stay the same. Whether that=E2=80=99s resting o=
+r moving slowly.<br>=E2=80=8B<strong>=E2=80=8B<br>So what will that change =
+be?</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">I can=E2=80=99t answer that for you.<br>It=E2=80=99s a choice you make=
+.<br>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">But I can recommend the Masterclass.</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.7;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>You build projects and get real-world XP.</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>You get direct feedback on every line of code you write.</span></li=
+>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>And you constantly meet and talk to senior mentors.</span></li>
+</ul>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7"><strong>So if you want to use the time that will fly by anyway to land=
+ your dream dev job=E2=80=A6</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7"><strong>=E2=80=8B</strong><a href=3D"https://click.convertkit-mail2.co=
+m/zlundwo7wrbnh4e79v4tp/e0hph0u0lo0ek6b7/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby=
+9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVudC1ib290Y2FtcA=3D=3D" target=3D"_blank" r=
+el=3D"noopener noreferrer" style=3D"color:#0f82f0" url-id=3D"1550169974">Ap=
+ply here.<br>=E2=80=8B</a>=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Until next time,<br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><p=
+ style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial,-=
+apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantar=
+ell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:1.=
+7;text-align:center"><span style=3D"font-size:14px">=E2=80=8B</span><a href=
+=3D"https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4e79v4tp" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=
+=3D"font-size:14px">Unsubscribe</span></a><span style=3D"font-size:14px"> |=
+ </span><a href=3D"https://preferences.convertkit-mail2.com/zlundwo7wrbnh4e=
+79v4tp" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f=
+0"><span style=3D"font-size:14px">Update your profile</span></a><span style=
+=3D"font-size:14px">  | 113 Cherry St, Seattle, WA 92768</span></p></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/zlundwo7wrbnh4e79v4tp" alt=3D=
+"" style=3D"border:0 none;display:block;height:auto;line-height:100%;outlin=
+e:none;-webkit-text-decoration:none;text-decoration:none;max-width:100%">
+</body>
+</html>
+
+--cb1387e987cde94dc08f6b7265660da814027fa1ea8fb2a00c5e2149d23f--

@@ -1,0 +1,460 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:9409:0:b0:2f3:f124:3d70 with SMTP id i9csp941967ljh;
+        Mon, 16 Sep 2024 07:01:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHUQe3oipQreLrJJTx09f3qi4Z7bKjwD9xk67/aMTxM2w8KqXfTXi4wPBm8TyPD0f5efp4+
+X-Received: by 2002:a17:907:c88f:b0:a86:8e3d:86e2 with SMTP id a640c23a62f3a-a902941dc57mr1518810466b.11.1726495311010;
+        Mon, 16 Sep 2024 07:01:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726495310; cv=none;
+        d=google.com; s=arc-20240605;
+        b=jGDeQj+QPHkJ0X4EivIgi201lZa9M/7HBWyQsNLvgiwHKlXSZYPGmb6HGvziTjG4ft
+         O6Q+MgS4I3eLMuEpyfbKrhGRA9yyeyjyZRShPOZkDs+RoQpC5cezI9D273yJlE4DhylM
+         UJ/eISSA36D+4XICkyHEyva6m4o//wMct/G4y+6MA3TzrV0iN19SqDd4qb0aXKzOKpBw
+         zn1rlVCuoZ6ERAwruX6NLLOqpwpqAt06kmLpm9PUT5OrpfDgvQlaYDJRhFV/+YRGaf6X
+         aMTOLo/OjOSqj4GseIuBTA4PmW17DvzKuYrQR26TvNFnYDWbb3mfaD7RkWcmmi9sguJY
+         DabA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe-post:list-unsubscribe:message-id:mime-version
+         :reply-to:to:date:subject:from:dkim-signature;
+        bh=4+6Nh6wftnNIcj55jwhI9YDePGDLr+/bM3rgHHVFbu0=;
+        fh=/S7jIxfmjXkj7IUEEa3JnMkvupQCA3FMe9xo6kNUiKM=;
+        b=kdY9XWzeYfHqUqxs4SopwQzp0G1GqhX3VWhUBRTt8jbkQG5Z9PR1sIV+iTgbWDnyNO
+         oMsSDTM0pX0o/vEptPmWlg84tETnnd/itGE4C1XLBgCkAywjMWmMVqzCIc48XIB7LaAu
+         2lnXO1yX3W5urm1OFFEwFjmkWrjHcyyDOc3VQuwsv22KZFcKI/I7aR/qHV60W/QfkCRy
+         POQg5duyazKuwRldiVQPhyPkVNC83JMLda2aJUAvxRvxIG6M4X7HgVHDakuSmscDQnSp
+         IyjlN5p2UwUZyVOxtgrpwAL9rz4719YcZcTny9eMGTajRxMknp66Aqoke9R4i303Wfuf
+         ASNg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b="Q+Ux/qfd";
+       spf=pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.54 as permitted sender) smtp.mailfrom=adobeemea@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <adobeemea@mail.adobe.com>
+Received: from r54.mail.adobe.com (r54.mail.adobe.com. [66.117.17.54])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a9061336c39si371568866b.812.2024.09.16.07.01.50
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Sep 2024 07:01:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.54 as permitted sender) client-ip=66.117.17.54;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b="Q+Ux/qfd";
+       spf=pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.54 as permitted sender) smtp.mailfrom=adobeemea@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <adobeemea@mail.adobe.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mail.adobe.com;
+	s=neolane; t=1726494849;
+	bh=4+6Nh6wftnNIcj55jwhI9YDePGDLr+/bM3rgHHVFbu0=;
+	h=From:Subject:Date:To:MIME-Version:Message-ID:List-Unsubscribe:
+	 List-Unsubscribe-Post:Content-Type;
+	b=Q+Ux/qfd3qjVOh4z24aJ4TWXjqV5i0D3nAYdtBeAFr6UrxFDb29Yo7qrfPragjHTw
+	 wWHHCxmnw420X+g31hXFi+F3D6S/fzG9IwT3qPoWdWj7foD0yj5S0MJ5d7ImuXs78g
+	 sVGhtuqORec6T2lLn5JKFDVVtJpJyTkHkuxp+Y6I=
+X-MSFBL: cfAbrZpHHd6FyC9tuHdjHXT856x3sT8Gnz5xcSJXJKQ=|eyJnIjoicHJvZC5iMmN
+	lbWVhYWNxXzZkNjY5NGY3LTUwM2QtNDY2ZS1iMjQ2LTBlZmE2NzZiZDRjNCIsImI
+	iOiJhZG9iZWludF82Ni4xMTcuMTcuNTRfcHJvZC5iMmNlbWVhYWNxXzZkNjY5NGY
+	3LTUwM2QtNDY2ZS1iMjQ2LTBlZmE2NzZiZDRjNCIsInIiOiJlbHkudWJ1bnR1MEB
+	nbWFpbC5jb20iLCJyY3B0X21ldGEiOnsgIm0iOiAiMTIxNzg4MTA2NSIsICJkIjo
+	gIjcyNzE5MjQ5IiwgImluIjogImFkb2JlaW5fbWlkX3Byb2Q5IiwgInIiOiAiZWx
+	5LnVidW50dTBAZ21haWwuY29tIiB9fQ==
+Received: from [52.10.132.8] ([52.10.132.8:42909] helo=r52.mail.adobe.com)
+	by irl1-prod1-mta-i-091f5650e3b9530e4 (envelope-from <adobeemea@mail.adobe.com>)
+	(ecelerity 4.4.1.20033 r(msys-ecelerity:tags/4.4.1.0^0)) with ESMTP
+	id BD/DA-12288-18838E66; Mon, 16 Sep 2024 13:54:09 +0000
+From: "Adobe Creative Cloud" <mail@mail.adobe.com>
+Subject: =?utf-8?B?U2VwdGVtYmVyIENvbW11bml0eSBOZXdzbGV0dGVyOiBHZW5lcg==?=
+ =?utf-8?B?YXRpdmUgQUk=?=
+Date: Mon, 16 Sep 2024 06:54:07 -0700
+To: <ely.ubuntu0@gmail.com>
+Reply-To: "Adobe Creative Cloud" <mail@mail.adobe.com>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 6.7.0
+Message-ID: <NM6489763E904559B91adobein_mid_prod9@mail.adobe.com>
+X-250ok-CID: adobe_ie_XW_15846278_240916
+List-Unsubscribe: <https://unsubscribe-redirector.adobe.io/unsubscribe?api_key=unsuboneclick&token=%400CtdaojQkmEpAvy%2F1XCxX4oIRawPeEbb1SCrp8eeay8%3D&sclick=true&src=aci&le=21>
+X-CSA-Complaints: csa-complaints@eco.de
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative;
+	charset="windows-1252";
+	boundary="----=_NextPart_555_44ADE45A.44ADE45A"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_555_44ADE45A.44ADE45A
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+
+------------------------------------------------------------------------
+
+View web version:
+https://t-info.mail.adobe.com/r/?id=t7df0c715,fdd78917,bfd9be5b&e=cDE9JTQwUWdwcmp5N2ZmR2RueEdrWXlvTkxxS2twMXRkeEpwVyUyRjZhQ3BYb3VsUE9nJTNE&s=5QTouNqZJ8lUNWQTu6KlgGn_UJ7Iq-_l1S2_V1QYy1E
+
+------------------------------------------------------------------------
+
+Unfortunately, your email client cannot display HTML, or your settings
+are turned off. To view this email, please click the link above, or
+copy and paste it into your browser.
+
+------------------------------------------------------------------------
+
+Adobe, the Adobe logo, Creative Cloud, the Creative Cloud logo,
+Lightroom and Photoshop are either registered trademarks or
+trademarks of Adobe in the United States
+and/or other countries. All other trademarks are the property of
+their respective owners.
+
+
+This is a marketing email from Adobe Systems Software Ireland Limited,
+4-6 Riverwalk, Citywest Business Park, Dublin 24, Ireland.
+
+Click on the following link to unsubscribe, or send us an unsubscribe 
+request to the postal address above.
+Unsubscribe:
+ https://t-info.mail.adobe.com/r/?id=t7df0c715,fdd78917,bfd9be5c&e=cDE9JTQwMEN0ZGFvalFrbUVwQXZ5JTJGMVhDeFg0b0lSYXdQZUViYjFTQ3JwOGVlYXk4JTNEJnAyPSZsb2M9aWUmcDM9MjE&s=Nv1tZcIq2DH9wb_Eb5n2ERP6CBu6nAZ7Ij-i6BUqTXI 
+
+Your privacy is important to us. Please review the Adobe Privacy Policy.
+https://t-info.mail.adobe.com/r/?id=t7df0c715,fdd78917,bfd9be5d
+
+To ensure email delivery, add mail@mail.adobe.com to your 
+address book, contacts or safe sender list.
+
+Please do not reply to this message. To contact Adobe, find options 
+online.
+https://t-info.mail.adobe.com/r/?id=t7df0c715,fdd78917,bfd9be5e
+
+Registered office: Adobe Systems Software Ireland Limited,
+4-6 Riverwalk, Citywest Business Park, Dublin 24, Ireland.
+Registered number: 344992
+
+
+
+------=_NextPart_555_44ADE45A.44ADE45A
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+</HEAD>
+<BODY>
+  
+
+
+
+
+<!DOCTYPE html>
+<html xmlns=3D"https://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"><head>
+<link rel=3D"icon" href=3D"https://www.adobe.com/favicon.ico" type=3D"image=
+/x-icon">
+<link rel=3D"shortcut icon" href=3D"https://www.adobe.com/favicon.ico" type=
+=3D"image/x-icon">
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1.0=
+">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+<meta name=3D"format-detection" content=3D"date=3Dno">
+<meta name=3D"format-detection" content=3D"address=3Dno">
+<meta name=3D"format-detection" content=3D"email=3Dno">
+<title>September Community Newsletter: Generative AI</title>
+
+<!--[if mso]>
+<style type=3D"text/css">
+body, table, td {
+font-family:adobe-clean, Helvetica, Verdana, Arial, sans-serif !important;
+}
+=2Ebutton {
+background:transparent !important;
+}
+</style>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+
+<style type=3D"text/css">
+@import url("https://use.typekit.net/onr8tbr.css");
+@media (prefers-color-scheme: dark) { }
+=2EReadMsgBody { width:100%;}
+=2EExternalClass {width:100%;}
+table {border-collapse:collapse; }
+a, a:visited {color:#1473E6; text-decoration:none;}
+=2Elegal a {text-decoration:underline;}
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {color:inherit !important; text-decoration:none !=
+important; font-size:inherit !important; font-family:inherit !important; fo=
+nt-weight:inherit !important; line-height:inherit !important;}
+
+=2Emobile {border-spacing:0;display:none!important;height:0;max-height:0;ms=
+o-hide:all;overflow:hidden;visibility:hidden;width:0;}
+  
+  @media only screen and (max-width:480px) {
+    u ~ div {
+      min-width:100vw;
+    }
+    div > u ~ div {
+          min-width: 100%;
+    }
+    .web {
+       display:none !important;
+       }
+     
+     .mobile {
+       display:block !important;
+       width:auto !important;
+       overflow:visible !important;
+       height:auto !important;
+       max-height:inherit !important;
+       font-size:18px !important;
+       line-height:26px !important;
+       visibility:visible !important;
+       }
+     
+     .email-width {
+       width:84% !important;
+       }
+     
+     .full-width {
+       width:100% !important;
+       }
+     
+     .mobile-image {
+       height:auto !important;
+       width:100% !important;
+       }
+    
+    .social {
+      float:left !important;
+      padding-top:60px !important;
+      text-align:left !important;
+    }
+  }
+</style>
+</meta></meta></meta></meta></meta></meta></meta></link></link></head>
+
+<body bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E4E4; margin:0; padd=
+ing:0;-webkit-font-smoothing:antialiased;width:100% !important;-webkit-text=
+-size-adjust:none;" topmargin=3D"0"><div style=3D"font-size:1px;color:#E4E4=
+E4;display:none;overflow:hidden;visibility:hidden">Get answers to key quest=
+ions about Adobe=E2=80=99s approach to generative AI.</div>
+
+<table width=3D"100%" bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E4E4=
+;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+  <tbody><tr>
+    <td>
+      <table class=3D"full-width" align=3D"center" width=3D"600" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width=
+:600px;">
+    <tbody><tr>
+           <td bgcolor=3D"#ffffff" style=3D"border-top:4px solid #EB1000; b=
+ackground-color:#ffffff; padding-bottom:100px;">
+           
+            <!-- pod1 -->
+            <table class=3D"email-width" align=3D"center" width=3D"500" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"width:500px;">
+       <tbody><tr>
+              <td style=3D"color:#EB1000; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:=
+18px; padding-top:50px; padding-bottom:60px;"><img alt=3D"Adobe" src=3D"htt=
+ps://landing.adobe.com/dam/global/images/adobe-logo.320x80.png" width=3D"80=
+" height=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#EB=
+1000; font-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, s=
+ans-serif; font-size:12px; line-height:18px; display:block; vertical-align:=
+top;" /></td>
+             </tr>
+             <tr>
+              <td style=3D"color:#2C2C2C; font-family:adobe-clean, Helvetic=
+a Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:=
+26px;">Dear Adobe Creative Cloud Customer,<br><br>
+        I first joined Adobe in 2002 and spending time with so many of you =
+over the years has truly been a privilege. Your work inspires me. Your crea=
+tive process expands my appreciation of your craft. And your feedback helps=
+ develop a vision that guides what we do day-in and day-out. My recent conv=
+ersations with many of you have centred around our approach to generative A=
+I and the need for Adobe to communicate our roadmap more consistently and c=
+ollaborate with you to ensure that it=E2=80=99s good for creators. <br><br>
+        Adobe has always looked for innovative ways to implement new techno=
+logies that help creators realise their vision. For the past few years, we=
+=E2=80=99ve been very focused on delivering innovation that we believe will=
+ make the communities we serve more productive. Much of this innovation inv=
+olves harnessing AI breakthroughs to reduce the tedious and repetitive work=
+ that often makes up a significant portion of the creative process. This wo=
+rk, and generative AI advances in general, have caused some in the creative=
+ industry to ask some fundamental questions about the definition of creativ=
+ity, about ways to protect
+creator rights and even about the future of creative industries.<br><br>
+        This email will be the first of many regular updates where we=E2=80=
+=99ll directly share our thoughts on these topics and our product plans, in=
+cluding feature and performance enhancements. I want to start by addressing=
+ questions we=E2=80=99ve heard from many of you about our approach to gener=
+ative&nbsp;AI.<br><br>
+        First and foremost, I want to be clear that we believe AI can be <u=
+>a tool for, not a replacement of, human creativity</u>. That=E2=80=99s why=
+ our approach toward AI is to build technology that elevates your creative =
+workflows and integrates directly into the tools you already use. We=E2=80=
+=99ve done this through features like Generative Fill in Photoshop, Generat=
+ive Recolor in Illustrator, Generative Remove in Lightroom and the upcoming=
+ Generative Extend for video clips in Premiere Pro. We plan to continue del=
+ivering generative AI-powered features like this that integrate into our to=
+ols to help create more streamlined and precise workflows.<br><br>
+        Secondly, we believe <u>generative AI can and should be developed r=
+esponsibly</u>, starting with respect for the rights of creators. That=E2=
+=80=99s why we only train Adobe Firefly, our family of generative AI models=
+, on content where we have a licence or permission, and we compensate Adobe=
+ Stock contributors for use of their content to train Firefly. Unfortunatel=
+y, not all companies prioritise creators=E2=80=99 intellectual property thi=
+s way, but we believe this is the right&nbsp;way.<br><br>
+        But talk is cheap and we know you expect our actions to match our w=
+ords. So, I want to share some updates we=E2=80=99re making that reflect wh=
+at we=E2=80=99re hearing from&nbsp;you.<br><br>
+        <strong>Our approach to Firefly.</strong> We=E2=80=99ve created <a =
+href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9bdfe=
+&e=3DcDE9S1o2U1RSOVM&s=3DOcT9BK7zUK4BXaOQPp6BdWgt39mMSoCXgOKUY-DOTe8" targe=
+t=3D"_blank" style=3D"color:#1473E6; text-decoration:none;">a&nbsp;webpage<=
+/a> where we clearly articulate our approach to generative AI with Adobe Fi=
+refly. This page serves as a single source of information so you can always=
+ reference our approach and the core principles that guide how we develop F=
+irefly. In short, we do not and never have trained Firefly on your content =
+in Creative Cloud, and we don=E2=80=99t claim any ownership of your content=
+ =E2=80=93 including content you create with Firefly. We only train Firefly=
+ on content where we have explicit rights, we don=E2=80=99t mine content fr=
+om the web and we compensate contributors through Adobe&nbsp;Stock.<br><br>
+        <strong>Improvements to Adobe Stock.</strong> We=E2=80=99ve made <a=
+ href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9bdf=
+f&e=3DcDE9TDNYVFRNS1I&s=3Dz-WS1YsXgRFHF6lN16Qb7-UCV-R8Deez7vioHSVv_4k" targ=
+et=3D"_blank" style=3D"color:#1473E6; text-decoration:none;">several Adobe =
+Stock updates</a> to better protect the intellectual property rights and in=
+terests of creators. We=E2=80=99re continuing our contributor payments, mak=
+ing it easier to report content that violates our contributor guidelines an=
+d expanding and hardening our moderation practices.<br><br>
+        <strong>Advocating for creator rights.</strong>  We=E2=80=99ve been=
+ working across the industry and with governments worldwide to protect the =
+creative community and your ability to thrive. As part of this effort, we c=
+o-founded the <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,=
+fdd78917,bfd9be00&e=3DcDE9TDdOVlRIVFE&s=3DVAvFl9WEALLAEBHQZhsMlTwkdSY2Zp7FD=
+yc3-sYKmPI" target=3D"_blank" style=3D"color:#1473E6; text-decoration:none;=
+">Content Authenticity Initiative</a>  in 2019, which is now supported by o=
+ver 3,300 members and aims to provide transparency on how content was gener=
+ated and who created it. We=E2=80=99re also actively helping to shape and a=
+dvocate for policies and legislation like the FAIR Act, which aims to help =
+protect artists from the harmful and unfair use of AI to replicate their&nb=
+sp;work.<br><br>
+        It=E2=80=99s important to me that we do a better job of listening t=
+o your concerns and responding to your questions, sharing our thinking and =
+investing in a more robust and consistent conversation with you. In the mon=
+ths ahead, you can expect to hear more from us on a range of topics includi=
+ng our incredible roadmap of innovation, our advocacy for creator rights an=
+d our work to grow your individual career opportunities.<br><br>
+        You can chat with us on <a href=3D"https://t-info.mail.adobe.com/r/=
+=3Fid=3Dh7df0c715,fdd78917,bfd9be01&e=3DcDE9TENEV1REM1A&s=3DqcBbgVhq5sxKY-g=
+Uop6Kk32XVu1e5CcYniVxO3qDVEE" target=3D"_blank" style=3D"color:#1473E6; tex=
+t-decoration:none;">Discord</a>, on our <a href=3D"https://t-info.mail.adob=
+e.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9be02&e=3DcDE9TEg0WFQ4Q04&s=3DstMxSJF=
+vNdN93JPhpZ3KsoZMEftSJcGxziLurf9HW8s" target=3D"_blank" style=3D"color:#147=
+3E6; text-decoration:none;">community forums</a> and social channels and at=
+ our <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd78917,=
+bfd9be03&e=3DcDE9TExWWVQ0TU0&s=3DrDpmwL7u-zykAuQcJ5dDWKe2QSJwtFHcpc40tj238P=
+o" target=3D"_blank" style=3D"color:#1473E6; text-decoration:none;">local c=
+ommunity events</a>. I=E2=80=99m also looking forward to seeing and hearing=
+ from many of you at Adobe MAX in October, when we=E2=80=99ll have lots of =
+exciting updates to share. And please let us know what you=E2=80=99d like t=
+o hear more about or have us address in this series in the future by contac=
+ting <a href=3D"mailto:creativechat@adobe.com" target=3D"_blank" style=3D"c=
+olor:#1473E6; text-decoration:none;">creativechat@adobe.com</a>.<br><br>
+        David<br>
+        President, Digital Media @&nbsp;Adobe</td>
+             </tr>
+            </tbody></table>
+            <!-- END pod1 -->
+            
+           <!-- END email content -->
+           </td>
+        </tr>
+    <tr>
+    <td bgcolor=3D"#F5F5F5" style=3D"background-color:#F5F5F5;"><!-- logo, =
+links & legal--><table class=3D"email-width" align=3D"center" width=3D"500"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"width:500px;">
+       <tbody><tr>
+      <td style=3D"color:#EB1000; font-family:adobe-clean, Helvetica Neue, =
+Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:18px; pa=
+dding-top:40px;"><img alt=3D"Adobe" src=3D"https://landing.adobe.com/dam/gl=
+obal/images/adobe-logo.320x80.png" width=3D"80" height=3D"auto" border=3D"0=
+" hspace=3D"0" vspace=3D"0" style=3D"color:#EB1000; font-family:adobe-clean=
+, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:12px; li=
+ne-height:18px; display:block; vertical-align:top;" /></td>
+       </tr>
+       <tr>
+        <td class=3D"legal" style=3D"color:#959595;font-family:adobe-clean,=
+Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size:11px;line-heigh=
+t:18px;padding-top: 50px;padding-bottom:100px">Adobe services, like Adobe C=
+reative Cloud, are available only to users 13 and older. Use of Adobe servi=
+ces and applications requires agreement with the applicable <a href=3D"http=
+s://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9be04" alias=3D"F=
+OOTER - Terms" target=3D"_blank" style=3D"color:#959595">Terms of Use</a> a=
+nd the <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd7891=
+7,bfd9be05" alias=3D"FOOTER - Privacy Policy" target=3D"_blank" style=3D"co=
+lor:#959595">Adobe Privacy Policy</a>. <p id=3D"reg_foot">Adobe, the Adobe =
+logo, Creative Cloud, the Creative Cloud logo, and Document Cloud are eithe=
+r registered trademarks or trademarks of Adobe in the United States and/or =
+other countries.<br /><br />
+  This is not a comprehensive list of Adobe trademarks. For a full list, re=
+fer to the <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd=
+78917,bfd9be06" alias=3D"FOOTER - Trademark Guidelines" target=3D"_blank" s=
+tyle=3D"color:#959595; text-decoration: underline;">Adobe Trademark Guideli=
+nes</a>. All other trademarks are the property of their respective owners.<=
+br /><br />
+  This is a marketing email from Adobe Systems Software Ireland Limited, 4=
+=E2=80=916&nbsp;Riverwalk, Citywest Business Park, Dublin&nbsp;24, Ireland.=
+<br /><br />
+  Click here to  <a style=3D"TEXT-DECORATION: underline; COLOR: #a1a1a1" hr=
+ef=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9be07&e=
+=3DcDE9JTQwMEN0ZGFvalFrbUVwQXZ5JTJGMVhDeFg0b0lSYXdQZUViYjFTQ3JwOGVlYXk4JTNE=
+JnAyPSZsb2M9aWUmcDM9MjE&s=3DrYu5_6NybCgasYwAL3y9CEhEbnyC1dK-ZOBHTaAosic" ta=
+rget=3D"_blank" class=3D"opt_out" alias=3D"Unsubscribe" _type=3D"optout" _l=
+abel=3D"Opt-out link">unsubscribe</A>  or send an unsubscribe request to th=
+e postal address above. Please review the <a href=3D"https://t-info.mail.ad=
+obe.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9be08" alias=3D"FOOTER - Privacy" t=
+arget=3D"_blank" style=3D"color:#959595; text-decoration: underline;">Adobe=
+&nbsp;Privacy&nbsp;Policy</a>.<br /><br />
+  To ensure future delivery of email, add <a href=3D"https://t-info.mail.ad=
+obe.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9be09" alias=3D"FOOTER - Add to add=
+ress book" target=3D"_blank" style=3D"color:#959595; text-decoration: under=
+line;">mail@mail.adobe.com</a> to your address book, contacts, or safe send=
+ers&nbsp;list.<br /><br />
+  Please do not reply to this message. To contact Adobe, find options <a hr=
+ef=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9be0a" =
+alias=3D"FOOTER - Contact" target=3D"_blank" style=3D"color:#959595; text-d=
+ecoration: underline;">online</a>.<br /><br />
+  Registered office: Adobe Systems Software Ireland Limited, 4=E2=80=916&nb=
+sp;Riverwalk, Citywest Business Park, Dublin&nbsp;24, Ireland. Registered n=
+umber: 344992</p> <span class=3D"web"> <a href=3D"https://t-info.mail.adobe=
+.com/r/=3Fid=3Dh7df0c715,fdd78917,bfd9be0b&e=3DcDE9JTQwUWdwcmp5N2ZmR2RueEdr=
+WXlvTkxxS2twMXRkeEpwVyUyRjZhQ3BYb3VsUE9nJTNE&s=3D4XSuNrj6o7kIcnYP-aVHm7whEd=
+G9rF_7fBkjYPx6sSc" _label=3D"Mirror Page" _type=3D"mirrorPage" alias=3D"Rea=
+d online" target=3D"_blank" style=3D"color:#959595;text-decoration:underlin=
+e">Read online</a> </span></td>
+      </tr>
+      </tbody></table><!-- END logo, links & legal--></td>
+    </tr>
+    </tbody></table>
+    </td>
+  </tr>
+</tbody></table>
+
+</body></html>
+<img height=3D'0' width=3D'0' alt=3D'' src=3D'https://t-info.mail.adobe.com=
+/r/=3Fid=3Dh7df0c715,fdd78917,1'/><img height=3D'0' width=3D'0' alt=3D'' sr=
+c=3D'https://adobe.demdex.net/event=3Fc_syncplacement=3Demail&d_cid=3D813%0=
+1B3C91EB5647678940A495F93'/></BODY></HTML>
+
+------=_NextPart_555_44ADE45A.44ADE45A--
+

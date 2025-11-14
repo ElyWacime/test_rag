@@ -1,0 +1,487 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:c5c8:b0:4fd:292a:fcfe with SMTP id w8csp1319301pxt;
+        Fri, 27 Oct 2023 11:26:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHXFK6ZmBllOUzccmet6vAAb34g6re83SQ2dSlNZOs2aCx8fr5VD0tDD/cvQrnnV9f4pJOo
+X-Received: by 2002:a05:6358:52c5:b0:168:e460:238f with SMTP id z5-20020a05635852c500b00168e460238fmr4003171rwz.31.1698431198608;
+        Fri, 27 Oct 2023 11:26:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698431198; cv=none;
+        d=google.com; s=arc-20160816;
+        b=l6PTr1gqVDZK2zJq1DfnI03Mx74b/hrS6+CeHgfVtnv0QD96x0ShSi4BXqLOgUTG4h
+         k4bKPLkFATYumiXHo8/EZ8w/YPjz1+snENZfp6lelmTNzoLIPFi/6ns2yDMJXMvVCayN
+         PNAFF/QkH+YkJbq4r/gusr+MeYSZKhHSpUOXsNygVzBi8R68+jKxWvGatuk2vqmPCv89
+         zcNxTMqLY3vTW16CkFjgnrtEIBNCjQOG5nSCEl4Hjllp1RM6C0HxRvl64RsefSC8rxSH
+         A5Yq0Z+DcyHNf6Y4AsG5jh4v45RXEscKB1i518ciTGRywXhTzEPyrTagZFvGEAzvJ89z
+         /z5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe:subject
+         :to:from:dkim-signature:dkim-signature;
+        bh=oy8AJQ7UNMZY1HnKKRf3JQ+iubs2J33JE0RtjvoRD+w=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=HSeQgCuKFLPqFoKIlhAZKny//XXGeIUm/4OHWfw/WBOQAJyAv6fWDC8Z5gSau5o+6u
+         n6UbhgSUkElfWNgomTT3REds613ew0gXdwvNUeKvifa1uoT9JXlPmXAhe+FrqHvq/OkF
+         WgOZEJWcADqfq5IXp6wkBYCl/1RTyOtZcFNfY5HiLgJIq+RTdC05ZRccfTUDIHV64Tym
+         m4veOusslGTOc3mhUM9lIK3WJuHUDdJ4UmoLkSOCbnnnGe/l16ZuzWal/cG5/D6H/Aj4
+         HqHpDEFRofY/7KroKVBrmr97w/+rZ80eSZVgoW7NUA35uNOimF1BAYj4NA6N4OAJhskC
+         0qMg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b="Bm/hCFOk";
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=S64djZWO;
+       spf=pass (google.com: domain of 0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) smtp.mailfrom=0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000@em1234.pipedream.com>
+Received: from a123-36.smtp-out.amazonses.com (a123-36.smtp-out.amazonses.com. [54.240.123.36])
+        by mx.google.com with ESMTPS id t11-20020a0cf98b000000b00668bb8be233si1026180qvn.605.2023.10.27.11.26.38
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Oct 2023 11:26:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) client-ip=54.240.123.36;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b="Bm/hCFOk";
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=S64djZWO;
+       spf=pass (google.com: domain of 0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000@em1234.pipedream.com designates 54.240.123.36 as permitted sender) smtp.mailfrom=0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1698431198;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type;
+	bh=oy8AJQ7UNMZY1HnKKRf3JQ+iubs2J33JE0RtjvoRD+w=;
+	b=Bm/hCFOkrqAr2i5kKtd3ArHJyYsMRVfeQsmCq5lu98Fn6U1Jg75yWxSeqV9FMlMI
+	PEQasDkteQnwY5Q/tc5wbQNskLqdzkGMeu5H54gb8+up6kJjNj9s31XACXgYA2CKi5/
+	IfKEHnUaRiJZgKsjg9A4jWSQox7sdt950/4qx1bE=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1698431198;
+	h=From:To:Subject:List-Unsubscribe:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=oy8AJQ7UNMZY1HnKKRf3JQ+iubs2J33JE0RtjvoRD+w=;
+	b=S64djZWO63P9tb9b8LNBJ+H+A0Is7JnsDc4Lfcq3UmyJ89JTD6vLFSwAM/E6Varz
+	WFp9lILJNk+E3W6EW8pCQqM5UBjpzBntBLTLe5oMC+wX/CJgm9zrIvyJFIaT2+CIxLI
+	NNSRdFWwj/8LeaoWEOze6yrUB0BpZQO/VYvitnQ4=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Enable or mandate Two-Factor Authentication (2FA)
+X-EmailOctopus-Parent-Id: 66238314-7443-11ee-954c-8decc81b234b
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-10-27T17:08:13+00:00
+X-EmailOctopus-Sent-At: 2023-10-27T18:26:37+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=66238314-7443-11ee-954c-8decc81b234b&pt=campaign&pv=4&spa=1698426493&t=1698431197&s=13b8b7a379c470efaf154afff8290dd7c70987ce46e62e275491fdb5152f19f3&skipConfirmation=1>
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Fri, 27 Oct 2023 18:26:37 +0000
+Message-ID: <0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=Crh1peS0
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.10.27-54.240.123.36
+
+--Crh1peS0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Two-factor authentication (2FA) adds an additional layer of security
+for =
+your Pipedream account and is recommended for all users.=C2=A0
+
+ [Piped=
+ream] [https://pipedream.com]=20
+
+[A robot in an event history museum] [h=
+ttps://pipedream.com/user]
+
+We are excited to announce you can now enab=
+le two-factor
+authentication (2FA) on your Pipedream [https://pipedream.c=
+om/]
+account and mandate 2FA for all workspace users.=20
+
+MANY CUSTOMER=
+S MANAGE AUTHENTICATION INTO BUSINESS-CRITICAL
+APPLICATIONS SUCH AS PRODU=
+CTION DATABASES, CRMS, ERPS, AND MESSAGING
+PLATFORMS. YOUR ACCOUNT SECURI=
+TY IS CRITICALLY IMPORTANT TO US AND WE
+STRONGLY RECOMMEND 2FA.=20
+
+Ena=
+bling 2FA takes just a few minutes and adds an additional layer of
+securi=
+ty to your account=E2=80=94even if your password is weak, reused, or
+beco=
+mes compromised.=20
+
+New capabilities include:=20
+- ENABLE 2FA for increa=
+sed account security=20
+- Support for ALL MAJOR AUTHENTICATOR APPS=20
+- MAN=
+DATE 2FA for your workspace (Business Plan
+[https://pipedream.com/pricing=
+/] required)=20
+- See=C2=A0documentation
+[https://pipedream.com/docs/user=
+-settings/#two-factor-authentication]
+for full details=20
+
+ =09=09Prote=
+ct Your Account [https://pipedream.com/user]
+
+-------------------------=
+
+
+GETTING STARTED
+
+1. Open your Account Settings [https://pipedream=
+.com/user]=20
+2. Click Configure under Two-Factor Authentication=20
+3. Scan=
+ the QR code in an authenticator app like 1Password
+[https://1password.co=
+m/] or Google Authenticator (available on iOS
+[https://apps.apple.com/us/=
+app/google-authenticator/id388497605] and
+Android
+[https://play.google.=
+com/store/apps/details?id=3Dcom.google.android.apps.authenticator2&hl=3Den_=
+US&gl=3DUS])
+
+4. Enter the one-time-password (OTP) from your authentica=
+tor app=20
+5. Save your recovery codes in a secure location
+
+----------=
+---------------
+
+Please let us know [https://pipedream.com/support] if =
+you see any
+bugs, want to suggest a feature, or have questions about our =
+pricing
+plans.
+
+Warm regards,=20
+The Pipedream Team
+
+------------=
+-------------
+ [https://pipedream.com]44 Montgomery Street
+San Francisc=
+o
+CALIFORNIA
+94104
+United States of America=20
+
+Unsubscribe here
+=
+[https://alatus.eocampaign.com/unsubscribe?ep=3D1&l=3D358ac956-f01d-11ed-bc=
+d1-db2977b1fcef&lc=3D860f934a-f025-11ed-b8ff-059d97be6197&p=3D66238314-7443=
+-11ee-954c-8decc81b234b&pt=3Dcampaign&pv=3D4&spa=3D1698426493&t=3D169843119=
+7&s=3D13b8b7a379c470efaf154afff8290dd7c70987ce46e62e275491fdb5152f19f3]
+--Crh1peS0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head>
+=09=09<title></title>
+=09</head>
+=09<body>
+
+
+
+
+
+
+
+
+
+
+=09=09<div style=3D"display:none; font-size:0px; line-height:0px; max-heigh=
+t:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hi=
+de:all;">Two-factor authentication (2FA) adds an additional layer of securi=
+ty for your Pipedream account and is recommended for all users.&nbsp;</div>
+
+=09=09<p>
+=09=09=09<br>
+=09=09</p>
+
+=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSys=
+temFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helv=
+etica Neue&quot;,sans-serif;" width=3D"100%">
+=09=09=09<tbody>
+=09=09=09=09<tr>
+=09=09=09=09=09<td>
+
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"max-width:560px;margin:40px auto;background-color:=
+#ffffff;padding:40px 30px 40px;border-radius:15px;" width=3D"100%">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr style=3D"width:100%;">
+=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/1/0100018b726362e9-06cf5d8a-25e8-49e2-9=
+ba6-7602d3bcc67a-000000/8iHXopFULR55LufXe50IRPS20Dw=3D345" rel=3D"noopener =
+noreferrer" target=3D"_blank"><img alt=3D"Pipedream" src=3D"https://res.clo=
+udinary.com/pipedreamin/image/upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_=
+400x400_1_sqhs70.jpg" style=3D"display:block;outline:none;border:none;text-=
+decoration:none;width:2.2rem;height:2.2rem;"></a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com%2Fuser/1/0100018b726362e9-06cf5d8a-25e8=
+-49e2-9ba6-7602d3bcc67a-000000/le2yypqqTOcTPCOwY_r5Pr13A1E=3D345" rel=3D"no=
+opener noreferrer" target=3D"_blank"><img alt=3D"A robot in an event histor=
+y museum" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f3=
+54f26462b%2F1698421493486-1698421490300.png" style=3D"display: block; outli=
+ne: none; border: none; text-decoration: none; width: 100%; height: auto; m=
+argin: 0px 0px 15px;"></a>
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p style=3D"font-size:1rem;line-height:1.5rem=
+;margin:0px;color:rgb(30, 41, 59);">We are excited to announce you can now =
+enable two-factor authentication (2FA) on your
+=09=09=09=09=09=09=09=09=09=09=09<meta charset=3D"utf-8"><a href=3D"https:/=
+/sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2F/1/0100018=
+b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000/7tbACCGESrDhcezWZ-hY3=
+oVmGgE=3D345" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-=
+family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto,=
+ Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; fo=
+nt-size: 16px; font-style: normal; font-variant-ligatures: normal; font-var=
+iant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; t=
+ext-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webki=
+t-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 2=
+55, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139)=
+; font-weight: 600;" target=3D"_blank">Pipedream</a> account and mandate 2F=
+A for all workspace users.
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09=09<br><strong>Many customers manage authenti=
+cation into business-critical applications such as production databases, CR=
+Ms, ERPs, and messaging platforms. Your account security is critically impo=
+rtant to us and we strongly recommend 2FA.</strong>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09=09<br>Enabling 2FA takes just a few minutes =
+and adds an additional layer of security to your account=E2=80=94even if yo=
+ur password is weak, reused, or becomes compromised.
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09=09<br>New capabilities include:
+=09=09=09=09=09=09=09=09=09=09=09<br> - <strong>Enable 2FA</strong> for inc=
+reased account security
+=09=09=09=09=09=09=09=09=09=09=09<br> - Support for <strong>all major authe=
+nticator apps</strong>
+=09=09=09=09=09=09=09=09=09=09=09<br> - <strong>Mandate 2FA</strong> for yo=
+ur workspace (<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:=
+%2F%2Fpipedream.com%2Fpricing%2F/1/0100018b726362e9-06cf5d8a-25e8-49e2-9ba6=
+-7602d3bcc67a-000000/eW-dQGzktS6DuLclkYyW23RwWQ0=3D345" rel=3D"noopener nor=
+eferrer" style=3D"user-select: auto; font-family: -apple-system, &quot;syst=
+em-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, =
+&quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal=
+; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing=
+: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-s=
+pace: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); te=
+xt-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_b=
+lank">Business Plan</a> required)
+=09=09=09=09=09=09=09=09=09=09=09<br> -
+=09=09=09=09=09=09=09=09=09=09=09<span style=3D"color: rgb(30, 41, 59); fon=
+t-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Robot=
+o, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; =
+font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-v=
+ariant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-=
+spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgrou=
+nd-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-deco=
+ration-style: initial; text-decoration-color: initial; display: inline !imp=
+ortant; float: none;">See&nbsp;</span><a href=3D"https://sc1sc285.r.us-east=
+-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fdocs%2Fuser-settings%2F%23two=
+-factor-authentication/1/0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc=
+67a-000000/epWyZvDxJqyuCtOsfeYTWtglpYc=3D345" rel=3D"noopener noreferrer" s=
+tyle=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot=
+;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helv=
+etica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-var=
+iant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; wido=
+ws: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: norm=
+al; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decorat=
+ion: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">docu=
+mentation</a> for full details
+=09=09=09=09=09=09=09=09=09=09=09<br>
+
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p style=3D"font-size:1rem;line-height:1.5rem=
+;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" style=3D"margin-bottom:1.5rem;" width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<td><a href=3D"https://sc1sc285.r.us=
+-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fuser/2/0100018b726362e9-=
+06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000/9NVZyBJVcBIyvvd_fWk7FBBP_S4=3D3=
+45" rel=3D"noopener noreferrer" style=3D"display:inline-block;border-radius=
+:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font-size:1re=
+m;line-height:100%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11=
+px;text-decoration:none;max-width:100%;padding:11px 23px;" target=3D"_blank=
+"><span style=3D"display:inline-block;border-radius:0.75rem;background-colo=
+r:rgb(52, 117, 210);text-align:center;font-size:1rem;line-height:120%;font-=
+weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;max-width:100%;text-d=
+ecoration:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:8.25p=
+x;">Protect Your Account</span></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<h1 style=3D"font-size:1.5rem;line-height:2re=
+m;font-weight:600;letter-spacing:-0.025em;color:rgb(0, 0, 0);prefers-color-=
+scheme:dark){.dark\;">Getting Started</h1>
+
+=09=09=09=09=09=09=09=09=09=09<p style=3D"font-size:1rem;line-height:1.5rem=
+;margin:0px;color:rgb(30, 41, 59);">1. Open your <a href=3D"https://sc1sc28=
+5.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fuser/3/0100018b726=
+362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000/O2SyAPck0luNX0AVkN35xbaI4=
+v8=3D345" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-fami=
+ly: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxy=
+gen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-s=
+ize: 16px; font-style: normal; font-variant-ligatures: normal; font-variant=
+-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-=
+indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-te=
+xt-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, =
+255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); fo=
+nt-weight: 600;" target=3D"_blank">Account Settings</a>
+=09=09=09=09=09=09=09=09=09=09=09<br>2. Click Configure under Two-Factor Au=
+thentication
+=09=09=09=09=09=09=09=09=09=09=09<br>3. Scan the QR code in an authenticato=
+r app like
+=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.aw=
+strack.me/L0/https:%2F%2F1password.com%2F/1/0100018b726362e9-06cf5d8a-25e8-=
+49e2-9ba6-7602d3bcc67a-000000/UqYAoUy5ZOh83K2Hn0wdubKp0gI=3D345" rel=3D"noo=
+pener noreferrer" style=3D"user-select: auto; font-family: -apple-system, &=
+quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Ca=
+ntarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-styl=
+e: normal; font-variant-ligatures: normal; font-variant-caps: normal; lette=
+r-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-tr=
+ansform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px=
+; white-space: normal; background-color: rgb(255, 255, 255); color: rgb(0, =
+0, 0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;" tar=
+get=3D"_blank">1Password</a> or Google Authenticator (available on <a href=
+=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fapps.apple.com%=
+2Fus%2Fapp%2Fgoogle-authenticator%2Fid388497605/1/0100018b726362e9-06cf5d8a=
+-25e8-49e2-9ba6-7602d3bcc67a-000000/Y5DUdu6jsZR8bR9uLVEKl508lps=3D345" rel=
+=3D"noopener noreferrer" style=3D"user-select: auto; font-family: -apple-sy=
+stem, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubu=
+ntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; fo=
+nt-style: normal; font-variant-ligatures: normal; font-variant-caps: normal=
+; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-wid=
+th: 0px; white-space: normal; background-color: rgb(255, 255, 255); color: =
+rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); font-weight: 60=
+0;" target=3D"_blank">iOS</a> and
+=09=09=09=09=09=09=09=09=09=09=09<meta charset=3D"utf-8"><a href=3D"https:/=
+/sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fplay.google.com%2Fstore%2F=
+apps%2Fdetails%3Fid=3Dcom.google.android.apps.authenticator2%26hl=3Den_US%2=
+6gl=3DUS/1/0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000/fM_=
+RctmjONk265kF_Ag3DY8sXnY=3D345" rel=3D"noopener noreferrer" style=3D"user-s=
+elect: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe=
+ UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quo=
+t;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures=
+: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; te=
+xt-align: start; text-indent: 0px; text-transform: none; widows: 2; word-sp=
+acing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background=
+-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underline=
+ rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Android</a>)
+=09=09=09=09=09=09=09=09=09=09=09<br>4. Enter the one-time-password (OTP) f=
+rom your authenticator app
+=09=09=09=09=09=09=09=09=09=09=09<br>5. Save your recovery codes in a secur=
+e location</p>
+
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+
+=09=09=09=09=09=09=09=09=09=09<p class=3D"m-0 text-base text-slate-800" sty=
+le=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, 59);">=
+Please <a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fp=
+ipedream.com%2Fsupport/1/0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc=
+67a-000000/ctr6urizVr_TSbmNt0QPToEytBQ=3D345" rel=3D"noopener noreferrer" s=
+tyle=3D"user-select: auto; font-family: -apple-system, &quot;system-ui&quot=
+;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helv=
+etica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-var=
+iant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; whit=
+e-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0=
+px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decorat=
+ion: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">let =
+us know</a> if you see any bugs, want to suggest a feature, or have questio=
+ns about our pricing plans.</p>
+
+=09=09=09=09=09=09=09=09=09=09<p style=3D"font-size:1rem;line-height:1.5rem=
+;margin:0px;color:rgb(30, 41, 59);">
+=09=09=09=09=09=09=09=09=09=09=09<br>Warm regards,
+=09=09=09=09=09=09=09=09=09=09=09<br>The Pipedream Team
+=09=09=09=09=09=09=09=09=09=09</p>
+
+=09=09=09=09=09=09=09=09=09=09<p>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09</p>
+=09=09=09=09=09=09=09=09=09=09<hr style=3D"width:100%;border:none;border-to=
+p:1px solid #eaeaea;border-color:#dfe1e4;margin:26px 0 20px;">
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/2/0100018b726362e9-06cf5d8a-25e8-49e2-9=
+ba6-7602d3bcc67a-000000/bxKOUprp45dIN3nM2xWl3nifH_c=3D345" style=3D"color:#=
+b4becc;text-decoration:none;font-size:14px;" target=3D"_blank"></a><a href=
+=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com/3=
+/0100018b726362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000/ZFekWx-lQm4t7=
+FYb-ujr8pPefnY=3D345" style=3D"color:#b4becc;text-decoration:none;font-size=
+:14px;" target=3D"_blank">44 Montgomery Street<br>San Francisco<br>CALIFORN=
+IA<br>94104<br>United States of America</a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<br><a href=3D"https://sc1sc285.r.us-east-1.a=
+wstrack.me/L0/https:%2F%2Falatus.eocampaign.com%2Funsubscribe%3Fep=3D1%26l=
+=3D358ac956-f01d-11ed-bcd1-db2977b1fcef%26lc=3D860f934a-f025-11ed-b8ff-059d=
+97be6197%26p=3D66238314-7443-11ee-954c-8decc81b234b%26pt=3Dcampaign%26pv=3D=
+4%26spa=3D1698426493%26t=3D1698431197%26s=3D13b8b7a379c470efaf154afff8290dd=
+7c70987ce46e62e275491fdb5152f19f3/1/0100018b726362e9-06cf5d8a-25e8-49e2-9ba=
+6-7602d3bcc67a-000000/Fke9v_Ts8emRsAI8seFsu-33kmU=3D345" style=3D"font-size=
+:14px;color:#b4becc;">Unsubscribe here</a>
+=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://sc1sc285.r.us-east-1.awstr=
+ack.me/L0/https:%2F%2Fpipedream.com/4/0100018b726362e9-06cf5d8a-25e8-49e2-9=
+ba6-7602d3bcc67a-000000/tGc6hEPcXWwoGG8XRwq_T4B1pO4=3D345" style=3D"color:#=
+b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">
+=09=09=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09=09=09<br>
+
+
+
+
+=09=09=09=09=09=09=09=09=09=09</a></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09</td>
+=09=09=09=09</tr>
+=09=09=09</tbody>
+=09=09</table>
+
+=09=09<p>
+
+
+
+
+
+
+
+=09=09=09<br>
+=09=09</p>
+=09
+
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/0100018b72=
+6362e9-06cf5d8a-25e8-49e2-9ba6-7602d3bcc67a-000000/ivvagNwhchAPPIIAUK58kZc6=
+kWI=3D345" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--Crh1peS0--

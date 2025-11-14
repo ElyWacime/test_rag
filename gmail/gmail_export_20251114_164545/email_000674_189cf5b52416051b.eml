@@ -1,0 +1,2455 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:ae0d:b0:4e4:7f03:179d with SMTP id gy13csp1147441pxb;
+        Mon, 7 Aug 2023 02:36:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE8LxZEPM/iCbPu5XlJJbjMVE2ApdaMEUI6ww6Om0U8Jr5QYylu3URGKwjBzbdRDrfiNAt0
+X-Received: by 2002:a5d:5391:0:b0:313:df09:acfb with SMTP id d17-20020a5d5391000000b00313df09acfbmr4650522wrv.11.1691401015966;
+        Mon, 07 Aug 2023 02:36:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691401015; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ih6Eg5KzFJix46f1CHsN40SVQrelmZaJL6yR7kUt59bThAsAkTC16PxF2teQaHZBue
+         aAs0+R4vzcmhzL+gPyrqyzDyc1hbxCPRMeu5+nZYdj7qnvK9Yvt1E4Cr4ZdXFRFcKLbt
+         3sXBJ5LihTa+ddwhhYse2ZYqjKJ7HGIYh/ABDFXzwl5XgfQuDHOU3RV1gg7ScBenM/9d
+         CvbK8OfRBVkcoQFj28QKpDt+odCVf0PxdHODRwPBmb4xmC3S9/CQMd7uMmE5ch5dCwlE
+         /dqUxgfpcwy/MmKSUz34hrKSsp4JSj1DGKh4zQDTl+rIfNQXqde1q1ACWPAXrbKVQHbM
+         xWhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:feedback-id:list-unsubscribe-post
+         :list-unsubscribe:date:subject:to:reply-to:from:mime-version
+         :message-id:dkim-signature:dkim-signature;
+        bh=y2QwERVUiqtuRZroYZuYyVLQ83amyGZ8oGTLoZVr3V0=;
+        fh=vR2M3aAc6Ugj3NoZarDcgOewrz7C1lNIubA1iZWM8ZU=;
+        b=ZQj6u0kpTJOkdok4NiMclbTSzDinp1c7dYpYyG5urfoL9SMZH3skK8brf8gYVbhieA
+         FGBDfmCBtc6ki9r5wy6u0IV7JtGsXL+tb1KC2MYN/Lo+/AZmqtoUfLmFXIjqn5SpPuMC
+         dKOwRdYnx+RrJtyDFnjbRXudUyg5OK4i4gjLntZ8LBPFzmvFk2paWEYdBOfJCq9Qez/B
+         trjrpCj8vfxo91oplxKsVsKHJjg3jlfK0fdBMhTb38NAK3lhMnudIHJh0e/73ypxxae5
+         64EKkBFPHpH5phcabHtolQWF1+qZRpuJ4vHWw1QRuFGumQ0ttO7byuqoU/hdtVPNwaYf
+         +pKQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mytwip.com header.s=mailjet header.b=kWg4QViJ;
+       dkim=pass header.i=@bnc3.mailjet.com header.s=mailjet2 header.b=sO7yN0FX;
+       spf=pass (google.com: domain of 03155af0.avoaacazkpaaaaaaaaaaar60ivoaayctqtaaaaaaacmyewbk0ls2@a2300027.bnc3.mailjet.com designates 185.189.236.35 as permitted sender) smtp.mailfrom=03155af0.AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2@a2300027.bnc3.mailjet.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=mytwip.com
+Return-Path: <03155af0.AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2@a2300027.bnc3.mailjet.com>
+Received: from o35.p25.mailjet.com (o35.p25.mailjet.com. [185.189.236.35])
+        by mx.google.com with UTF8SMTPS id f6-20020adff8c6000000b00317ba646bc0si3487341wrq.8.2023.08.07.02.36.55
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 07 Aug 2023 02:36:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 03155af0.avoaacazkpaaaaaaaaaaar60ivoaayctqtaaaaaaacmyewbk0ls2@a2300027.bnc3.mailjet.com designates 185.189.236.35 as permitted sender) client-ip=185.189.236.35;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mytwip.com header.s=mailjet header.b=kWg4QViJ;
+       dkim=pass header.i=@bnc3.mailjet.com header.s=mailjet2 header.b=sO7yN0FX;
+       spf=pass (google.com: domain of 03155af0.avoaacazkpaaaaaaaaaaar60ivoaayctqtaaaaaaacmyewbk0ls2@a2300027.bnc3.mailjet.com designates 185.189.236.35 as permitted sender) smtp.mailfrom=03155af0.AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2@a2300027.bnc3.mailjet.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=mytwip.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+  d=mytwip.com; i=newsletter.enervivo@mytwip.com; s=mailjet; x=1691408215;
+  h=message-id:mime-version:from:from:reply-to:to:to:subject:subject:date:date:list-unsubscribe:
+  list-unsubscribe-post:feedback-id:x-csa-complaints:x-mj-mid:x-mj-smtpguid:
+  x-report-abuse-to:content-type:content-transfer-encoding;
+  bh=JT9LDo/vytDOmUeSkVrCTM7104PeB8yDmduV0adx0gU=;
+  b=kWg4QViJHU/ae3JegJkd5hUDJVAkqLLACWbW/qUBpHglcyuUlTxUcyjXG
+ etNYiXJDwBfguNqBprjl5HG4yEr0fHH7b1Pog4fv0nlgK8qVv85O3XblWp7e
+ EhSHCrcW7Czy9STkEh/cgTLok2JpBGP7BvrJgkHKCHxer1jx+Vy4h8=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+  d=bnc3.mailjet.com; s=mailjet2; x=1691408215;
+  h=message-id:mime-version:from:from:reply-to:to:to:subject:subject:date:date:list-unsubscribe:
+  list-unsubscribe-post:feedback-id:x-csa-complaints:x-mj-mid:x-mj-smtpguid:
+  x-report-abuse-to:content-type:content-transfer-encoding;
+  bh=JT9LDo/vytDOmUeSkVrCTM7104PeB8yDmduV0adx0gU=;
+  b=sO7yN0FXZPseKJYMD7n0Qk/tPqoPpWxwKRPhp73DAtgp3T9B6aieeqRtS
+ HQ9VQhhiwVUEjJcvbvSgsh224/LKk2+S3SSzqNXjjmBh7atiOIiBJWTVr2ol
+ s4sXSF6xetGwG3+HOVmsbpq6pdT106S4tFN3eyYngBKOuH8QTxyELQ=
+Return-Path:
+	<03155af0.AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2@a2300027.bnc3.mailjet.com>
+Message-Id: <03155af0.AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2@mailjet.com>
+MIME-Version: 1.0
+From: Enervivo <newsletter.enervivo@mytwip.com>
+Reply-To: Enervivo <newsletter.enervivo@mytwip.com>
+To: ely.ubuntu0@gmail.com
+Subject: =?utf-8?B?TmV3c2xldHRlciBhZ3Jpdm9sdGHDr3NtZSAtIEVuZXJWaXZv?=
+Date: Mon, 7 Aug 2023 11:36:53 +0200
+List-Unsubscribe:
+	<mailto:unsub-03155af0.0rlgg.lz8y2qsyhhi1@bnc3.mailjet.com>,
+	<https://0rlgg.mjt.lu/unsub2?m=AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630&b=03155af0&e=474bc5a5&x=CxjoysrKFuygV9nLK0US2QvE_OIJ4DS_yWk7KPqwsjw>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-Id: 42.2300027.2157437:MJ
+X-CSA-Complaints: csa-complaints@eco.de
+X-MJ-Mid:
+	AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630
+X-MJ-SMTPGUID: 888c0b7a-f5bb-471b-a6d8-1ba1276a5cd8
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+	abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative;
+	boundary=b1_ed7bd55ffe40ddf8af038fae189b42af
+Content-Transfer-Encoding: 8bit
+
+This is a multi-part message in MIME format.
+
+--b1_ed7bd55ffe40ddf8af038fae189b42af
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+Si vous ne visualisez pas correctement le contenu, ouvrez cette
+page
+								
+                            
+                            
+                            
+                                
+									
+                                        
+                                            
+                                                
+                                                
+													
+														
+													
+                                                
+                                                
+                                            
+                                        
+                                    
+                                
+                            
+
+                            
+                            
+                                
+                            
+							
+							
+								
+									
+										
+
+										
+											
+											
+												
+													Newsletter agrivolta√Øsme - EnerVivo
+												
+											
+											
+										
+										
+										
+									
+								
+							
+
+
+							
+							
+								
+									
+										
+										
+											
+											
+												Alors que nous sommes en plein milieu de
+l'ÈtÈ, vous partez peut-Ítre chercher un peu de
+fraÓcheur au bord de la mer mais l'agrivoltaÔsme lui,
+n'est pas en vacances ! Que s'est-il passÈ pendant ce mois de
+juillet ? DÈcouvrez tout dans notre newsletter agri-pv
+n∞3.†
+											
+											
+										
+										
+									
+								
+							
+							
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+												
+
+			
+            
+          
+          
+                
+                  
+                  
+                  Ev√®nements agrivolta√Øques
+                
+
+	Le salon Innov-agri reste sur sa dynamique
+!
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-31 - terre-net.fr
+					
+					
+
+					AprËs deux annÈes
+saluÈes par la profession, le salon
+Innov-agri†reste sur sa dynamique. Alors que
+les inscriptions sont closes, les organisateurs de
+l&rsquo;Èdition 2023, qui se tiendra du 5 au 7 septembre
+‡ Outarville (Loiret), annoncent
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	AgrivoltaÔsme : une
+dÈlÈgation d'Èlus en voyage
+d'Ètude
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-11 - pays-de-la-loire.chambres-agriculture.fr
+					
+					
+
+					A l'invitation de la direction
+rÈgionale EDF Pays de la Loire, une dÈlÈgation
+d'Èlus FDSEA, JA, Chambre d'agriculture et Terrena s'est
+rendue dans les Landes et en Gironde pour rencontrer des porteurs de
+projet en agrivoltaÔsme et visiter des sites pilotes.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	Un ÈvÈnement de collecte de fonds
+au Jack's Solar Garden mettra en lumiËre les innovateurs du
+comtÈ de Boulder (Colorado)
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-06 - timescall.com
+					
+					
+
+					Un article qui aurait pu se
+retrouver dans la rubrique monde, mais qui met en lumiËre un
+ÈvËnement pÈdagogique et utile pour la
+filiËre agrivoltaÔque.†
+OrganisÈ au Jack's Solar
+Garden de Longmont, cet ÈvÈnement est le fruit d'une
+collaboration entre le Colorado Agrivoltaic Learning Center et
+l'organisation de recyclage zÈro dÈchet Eco-Cycle, qui
+dispose d'un site...
+(article en anglais)
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+          
+          
+          
+            
+          
+          
+                
+                  
+                  
+                  March√© & R√®glementation
+                
+
+	Loi d'accÈlÈration sur les
+…nergies Renouvelables (AER) : quelles opportunitÈs
+pour le photovoltaÔque sur terres agricoles ?
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-08-04 - tecsol.blogs.com
+					
+					
+
+					La loi
+d&rsquo;accÈlÈration des Ènergies renouvelables
+propose des mesures destinÈes ‡ accÈlÈrer
+le dÈploiement du photovoltaÔque en France, de
+faÁon encadrÈe. Alors que la loi a ÈtÈ
+promulguÈe le 10 mars dernier, de nombreux agriculteurs et
+professionnels du photovoltaÔque n&rsquo;attendent plus que des
+dÈcrets...
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	Parcs de stationnement : entre 6,75 GW et 11,25
+GW de puissance photovoltaiÃàque installeÃÅe en 2028 ?
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-21 - lemondedelenergie.com
+					
+					
+
+					Pierre-Nicolas Sanzey, avocat au
+cabinet DWF, eÃÅvoque l'obligation d'installer des panneaux
+photovoltaiÃàques sur les parcs de stationnement aÃÄ horizon
+2028.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	Le marchÈ mondial de
+l'agrivoltaÔque : La demande croissante et les facteurs
+clÈs qui faÁonnent l'industrie
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-08-01 - ucreview.com
+					
+					
+
+					MarkNtel Advisors se consacre
+‡ la rÈalisation d'Ètudes de marchÈ
+approfondies et complËtes. Leurs rapports sont connus pour
+fournir des informations impartiales. RÈcemment, ils ont
+publiÈ un rapport sur le Global Agrivoltaics Market Size,
+Share, Analysis, Trends, Analysis Forecast 2022-2027 qui offre
+une analyse approfondie de l'industrie.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+          
+          
+          
+            
+          
+          
+                
+                  
+                  
+                  Technologie, R&D et entreprises
+                
+
+	AÃÄ Xertigny (Vosges), un investissement de 5 M
+d'euros dans l'agrivoltaiÃàsme pour venir au secours des champs de
+rhubarbe
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-26 - vosgesmatin.fr
+					
+					
+
+					L'entreprise Moine va investir
+plus de 5 millions d'euros pour installer des panneaux solaires au
+milieu de ses champs de rhubarbe. L'objectif est ...
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	AgrivoltaÔsme en grandes cultures : chez
+Sylvain Raison, le blÈ pousse sous une canopÈe
+agricole
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-27 - lafranceagricole.fr
+					
+					
+
+					L'exploitation de Sylvain Raison,
+agriculteur en Haute-SaÙne, accueille, depuis plus d'un an, un
+dispositif de canopÈe agrivoltaÔque. Sur les trois
+hectares, couverts de panneaux photovoltaÔques mobiles,
+l'exploitant a choisi cette annÈe de semer un
+blÈ.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	Sun'Agri et le Domaine de Besombes (66)
+inaugurent un nouveau dispositif agrivoltaÔque sur
+vignes
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-12 - sunagri.fr
+					
+					
+
+					Sun&rsquo;Agri, pionnier de
+l&rsquo;agrivoltaÔsme dynamique, une technologie
+franÁaise nÈe il y a 15 ans, a inaugurÈ au
+Domaine de Besombes son 2e†projet agrivoltaÔque
+sur vigne dans les PyrÈnÈes Orientales. D&rsquo;une
+superficie de 2,7 hectares, ce dispositif protÈgera les vignes
+des alÈas climatiques particuliËrement marquÈs
+dans ce territoire.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	L'acteur de la semaine : les trois axes de
+deÃÅveloppement de Corsica Sole
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-31 - pv-magazine.fr
+					
+					
+
+					Ces dernieÃÄres semaines, Corsica
+Sole a multiplieÃÅ les inaugurations de nouvelles centrales solaires.
+pv magazine France en a profiteÃÅ pour faire le point avec Thomas
+Muller, directeur du deÃÅveloppement de l'entreprise, sur les axes
+strateÃÅgiques autour du photovoltaiÃàque, du stockage et de
+l'hydrogeÃÄne vert.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	AgrivoltaÔsme : " Le panneau, par son
+ombrage intermittent, peut amÈliorer le confort lumineux,
+thermique et hydrique des plantes "
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-31 - reussir.fr
+					
+					
+
+					Symbole que la filiËre
+agrivoltaÔque se structure, le PÙle National Recherche,
+Innovation, Enseignement en Agri-photovoltaÔsme regroupe des
+chercheurs mais aussi des entreprises privÈes de
+l'Ènergie solaire et des groupes d'agriculteurs. Si les
+premiËres Ètudes attestent des bÈnÈfices
+des panneaux photovoltaÔques sur les plantes...
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	L'agrivoltaÔsme a un impact minimal sur le
+cycle du carbone et de l'eau des prairies
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-12 - pv-magazine.fr
+					
+					
+
+					Selon Èquipe de chercheurs
+hispano-amÈricains, les rÈpercussions des panneaux
+solaires sur les parcelles de prairie exploitÈes sur le cycle
+du carbone et de l'eau sont minimes, ce qu'ils attribuent ‡ la
+modification de la stratÈgie de la photosynthËse par
+les plantes pour tirer pleinement profit de l'ombrage dynamique sous
+les panneaux.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+          
+          
+          
+            
+          
+          
+                
+                  
+                  
+                  Monde
+                
+
+	L'organisme nÈerlandais de
+l'Ènergie solaire rÈagit ‡ l'interdiction de
+l'agrivoltaÔque par le gouvernement
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-10 - pv-tech.org
+					
+					
+
+					L'association nÈerlandaise
+Holland Solar a demandÈ au gouvernement de revenir sur sa
+dÈcision de limiter les installations photovoltaÔques sur
+les terres agricoles...
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	Deux grands projets d'Ènergie solaire en
+Bulgarie mettent en Èvidence des conflits d'utilisation des
+sols
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-19 - balkangreenenergynews.com
+					
+					
+
+					Le maire d'un village bulgare
+refuse d'approuver un projet photovoltaÔque sur des
+p‚turages, tandis qu'Eurohold en construira un sur des terres
+de moindre qualitÈ et stimulera la biodiversitÈ.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+
+	Les panneaux solaires offrent un double
+avantage ‡ la houblonniËre allemande
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-29 - energyportal.eu
+					
+					
+
+					Une ferme de la petite ville
+houblonniËre d'Au in der Hallertau, en Allemagne, a
+trouvÈ le moyen d'exploiter la puissance du soleil pour
+cultiver du houblon et produire de
+l'ÈlectricitÈ.
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+          
+          
+          
+            
+          
+          
+                
+                  
+                  
+                  Les actualit√©s d'EnerVivo
+                
+
+	EnerVivo recrute !
+	
+		
+			
+				
+                
+                
+              
+				
+					
+					2023-07-05 - enervivo.fr
+					
+					
+
+					Rejoignez une filiËre en
+plein essor en intÈgrant une Èquipe Bordelaise. Postes
+dispnibles en bureau d'Ètudes et R&D.†
+					
+
+					
+				
+					†Lire la suite
+				
+			
+		
+	
+
+
+
+          
+          
+          
+
+                                                
+                                                
+                                            
+                                        
+                                    
+                                
+                            
+                            
+                                
+                            
+
+                            
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                            
+                                            
+                                                
+                                                
+													
+														
+														Nous contacter LinkedIn†- GÈrer votre
+abonnement
+
+
+--b1_ed7bd55ffe40ddf8af038fae189b42af
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Newsletter agrivolta√Øsme - EnerVivo</title>
+    <meta http-equiv="Content-Type" content="text/html;
+charset=utf-8">
+    <meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+	<link
+href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+rel="stylesheet">
+
+	<style type="text/css">
+    /* Fonts and Content */
+    body, td { font-family:Montserrat, Arial, sans-serif;
+font-size:14px; }
+    body { background-color:#f6f7fb; margin: 0; padding: 0;
+-webkit-text-size-adjust:none; -ms-text-size-adjust:none; }
+    h2{ padding-top:12px; /* ne fonctionnera pas sous Outlook 2007+
+*/color:#0E7693; font-size:22px; }
+    
+	.itemShare a {
+		text-decoration: none !important;
+	}
+	
+	
+	div.item_content:hover{
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 14px 24px rgba(62,57,107,.1);
+        }
+	/* Newsletter HUTCHINSON */
+	div[class*=rubrique_content] {
+		width:771px;
+	}
+	div[class*=rubrique_title] { 
+		text-align: center;
+		color:white; font-size:14.0pt; font-family:Montserrat, Arial,
+sans-serif; font-weight:bold; text-indent:18.7pt;
+		background:#2E7861; width:771px;
+		padding:1px 0; mso-margin-top-alt:6.0pt; margin:0 0 16px 0;
+text-indent:18.7pt;
+	}
+	
+	div[class*=item_content] { 
+		margin: 0 20px 15px 20px; padding:0; width:731px;
+	}
+	
+	div[class*=item_content] table, div[class*=item_content] table td  {
+
+		width:100%;
+	}
+	
+	div[class*=item_title] {
+		font-family:Montserrat, Arial, sans-serif;
+color:#1c7861;font-weight:bold;
+	}
+	div[class*=item_resume] {
+		font-family:Montserrat, Arial, sans-serif;
+		font-size:15px;color:#2F3F55;
+	}
+	div[class*=item_link], 
+	div[class*=item_link] a				{ font-family:Montserrat, Arial,
+sans-serif; color: #2F3F55; font-weight: bold; font-size: 13px; /*
+font-style: italic; */ }
+	div[class*=item_link] a				{ color: #2F3F55; }
+	
+	
+
+
+	.rubrique_4414,
+	.rubrique_4415,
+	.rubrique_4416,
+	.rubrique_4410,
+	.rubrique_4411,
+	.rubrique_4413,
+	.rubrique_4409,
+	.rubrique_4412{
+		background: #fff !important;
+	}
+
+	#menuItems img {margin: 8px 15px 8px 15px}
+
+
+	div.rubrique_title {
+		color:white; font-size:14.0pt; font-family:Montserrat, Arial,
+sans-serif; font-weight:bold; text-indent:18.7pt;
+		background:#2E7861;
+		padding:1px 0; mso-margin-top-alt:6.0pt; margin:0 0 16px 0;
+text-indent:18.7pt;
+	}
+	div.item_content {
+		margin:0 20px 15px 20px; padding:0.5em;
+		background: #f6f7fb;
+		transition: ease-in .2s;
+
+
+
+	}
+	div.item_title {
+		font-family:Montserrat, Arial, sans-serif;
+color:#1c7861;font-weight:bolder;
+	}
+	.item_title a {
+		
+	}
+	div.item_resume {
+		font-family:Montserrat, Arial, sans-serif;
+		font-size:15px;color:#2F3F55;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3; /* number of lines to show */
+		-webkit-box-orient: vertical;
+	}
+
+	div.item_link a {
+		color: #2F3F55;
+	}
+	</style>
+	<style type="text/css">
+		[class=hide] { display:none; }
+		.hide { display:none; }
+    </style>
+	<style type="text/css">
+    /* Responsive */
+    </style>
+</head>
+<body style="margin:0px; padding:0px;
+-webkit-text-size-adjust:none;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0"
+style="" >
+        <tbody>
+            <tr>
+                <td align="center" >
+                    <table cellpadding="0" cellspacing="0" border="0"
+style="background: #fff;box-shadow: 0 0 5px #eaeaea;">
+                        <tbody>                            
+                            <tr>
+                                <td align="center" class="w640"
+width="851" height="20">
+									<div style="font-size:12px; color:#2F3F55; font-weight:
+bold;">Si vous ne visualisez pas correctement le contenu, ouvrez <a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/1/dAF_FoZwe8CZimR8Dw-yAA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L21vZHVsZXMvbmV3c2xldHRlci9hamF4X2ZpbGVzL3Byb2Nlc3Nfdm9pcmJ1bGxldGluLnBocD9ycXZiPWNjVk00NFNTTXdhVnJmSWRLZjBpeTM3akcwZFpEd3dMWm1EOTdIV2hYTEN4Q0dIUHY4dCUyQmFIRE5qRll0eUlvNkRGbURxVzZwcEY1UURyUnAwbFl6anclM0QlM0Q"
+target="_blank"><span style='color:#ec1c24'>cette
+page</span></a></div>
+								</td>
+                            </tr>
+                            <!-- HEADER -->
+                            <tr>
+                                <td class="w640" width="851">
+									<table class="w640" width="851" cellpadding="0"
+cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="w40"
+width="40"></td>
+                                                <td class="w580"
+width="771">
+													<div>
+														<img class="w580" style="text-decoration:none;
+display:block;"
+src="https://www.mytwip.com/public_new/skins/enervivo/pics/newsletter/enervivo-v2.png"
+alt="ENERVIVO" width="771" height="auto"/>
+													</div>
+                                                </td>
+                                                <td class="w40"
+class="w30" width="40"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- SEP -->
+                            <tr>
+                                <td class="w640" width="851"
+height="10" ></td>
+                            </tr>
+							<!-- SEP -->
+							<tr>
+								<td class="w640" width="851" style="background: #fff">
+									<table class="w640" width="851" cellpadding="0"
+cellspacing="0" border="0">
+										<tbody>
+
+										<tr>
+											<td class="w30" width="30"></td>
+											<td class="w580" width="771">
+												<div style="text-align:center; font-size:30px;
+margin:10px 0; color:#1c7861; letter-spacing: 1px;font-weight:
+bolder;">
+													Newsletter agrivolta√Øsme - EnerVivo
+												</div>
+											</td>
+											<td class="w30" class="w30" width="30"></td>
+										</tr>
+										<!-- <tr>
+											<td class="w30" width="30"></td>
+											<td class="w580" width="771">
+												<div>
+													<p style="text-align:right; font-size:18px; margin:10px
+0; color:#fff; background: #2E7861; border-radius: 5px; padding:
+2px;">
+														Newsletter n¬∞
+														5
+													</p>
+												</div>
+											</td>
+											<td class="w30" class="w30" width="30"></td>
+										</tr> -->
+										</tbody>
+									</table>
+								</td>
+							</tr>
+
+
+							<!-- EDITO -->
+							<tr class="content">
+								<td class="w640" class="w640"  width="851" >
+									<table class="w640"  width="851" cellpadding="0"
+cellspacing="0" border="0">
+										<tbody>
+										<tr>
+											<td  class="w30"  width="30"></td>
+											<td  class="w580"  width="771">
+												<p>Alors que nous sommes en plein milieu de
+l'&eacute;t&eacute;, vous partez peut-&ecirc;tre chercher un peu de
+fra&icirc;cheur au bord de la mer mais l'agrivolta&iuml;sme lui,
+n'est pas en vacances ! Que s'est-il pass&eacute; pendant ce mois de
+juillet ? D&eacute;couvrez tout dans notre newsletter agri-pv
+n&deg;3.&nbsp;</p>
+											</td>
+											<td class="w30" class="w30"  width="30"></td>
+										</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<!-- CONTENT -->
+                            <tr class="content">
+                                <td class="w640" class="w640"
+width="851" >
+                                    <table class="w640" width="851"
+cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="w30"
+width="30"></td>
+												<td class="w580" width="771">
+
+			
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7652" id="rubrique_1"
+style=" clear:both;">
+                <div data-mode="v2" class="rubrique_title"
+id="rubrique7652" style=" clear:both;">
+                  <a name="RUB_ID_7652"></a>
+                  <a name="RUB_1"></a>
+                  <span>Ev√®nements agrivolta√Øques</span>
+                </div>
+<span id="item_7652_0" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/2/chSNezsc5Qb2n_oMqG4iOQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEg4RUd6cWtrcDI1YmJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBZlpIdUVhOGxORU15aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBaZVo2MDclMkJNRndUbCUyQmVLeWIlMkYxZjNscncwN0V5aFFSRUpvaFBoY3ZuJTJGZjRDZDAlMkZ6aWVtYXJLZFVMcEJuRlY5WUVISUV4WnRtdndtZFZEMzdZaW0lMkZzV082JTJCY1ZzSEpYcnMlM0Q"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Le salon Innov-agri reste sur sa dynamique
+!</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x6230_6" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Le salon Innov-agri reste sur sa dynamique !"
+
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://creatives.sascdn.com/diff/298/advertiser/73700/parallax_750x1000_px_e0aa679b-3421-4f7d-83f7-eafc4aaad838.png"
+o:title="Le salon Innov-agri reste sur sa dynamique !" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://creatives.sascdn.com/diff/298/advertiser/73700/parallax_750x1000_px_e0aa679b-3421-4f7d-83f7-eafc4aaad838.png"
+align="left" hspace="12" alt="Le salon Innov-agri reste sur sa
+dynamique !" v:shapes="Image_x6230_6">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-31 - terre-net.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Apr&egrave;s deux ann&eacute;es
+salu&eacute;es par la profession, le salon
+Innov-agri<strong>&nbsp;</strong>reste sur sa dynamique. Alors que
+les inscriptions sont closes, les organisateurs de
+l&rsquo;&eacute;dition 2023, qui se tiendra du 5 au 7 septembre
+&agrave; Outarville (Loiret), annoncent</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/3/rdIv4LnhoFRCPffqNSt54Q/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEg4RUd6cWtrcDI1YmJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBZlpIdUVhOGxORU15aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBaZVo2MDclMkJNRndUbCUyQmVLeWIlMkYxZjNscncwN0V5aFFSRUpvaFBoY3ZuJTJGZjRDZDAlMkZ6aWVtYXJLZFVMcEJuRlY5WUVISUV4WnRtdndtZFZEMzdZaW0lMkZzV082JTJCY1ZzSEpYcnMlM0Q"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7652_1" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/4/b4PXM9t286YRmKMJsbcWKg/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEg4RUd6cWtrcDI1YmJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMybTdScjJkRVNSZFh5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBicFFoRkZzSEklMkJnYWglMkZyM2t3Y3dGYTllNUF2ejd6MFlnQkxHR2pybXMlMkZpaG5yMWkxSkN3N3FHVHhxOCUyQkt3eUJLcGFqRGFnVElPZ3JlUmRpeHZMNFp2TFdHNDVJUHhFUSUyQnBhakRhZ1RJT2dpZ2dkSHhtOWlObk1VOHZTVmZHUGpqeW1KNGNxViUyRmlWVjB2Z2M2N2p0Y1YxZDk4U3ROaVlkR1BSM1piWmE1dVVQUzVDSUJqNXAxV3kzMXF5ckpHJTJCdW93VHpPc1lidTdYTGhlTFpOakVkc3VzQTZYUEgzU0N2MHpFOUYlMkJzR1pvelElM0QlM0Q"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Agrivolta&iuml;sme : une
+d&eacute;l&eacute;gation d'&eacute;lus en voyage
+d'&eacute;tude</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x2310_9" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Agrivolta&iuml;sme : une
+d&eacute;l&eacute;gation d\'&eacute;lus en voyage d\'&eacute;tude" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://pays-de-la-loire.chambres-agriculture.fr/fileadmin/user_upload/Pays_de_la_Loire/022_Inst-Pays-de-la-loire/Actus-agendas/2023/Images/20230711_Voyage_etude_agrivoltaisme_elus.jpg"
+o:title="Agrivolta&iuml;sme : une d&eacute;l&eacute;gation
+d\'&eacute;lus en voyage d\'&eacute;tude" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://pays-de-la-loire.chambres-agriculture.fr/fileadmin/user_upload/Pays_de_la_Loire/022_Inst-Pays-de-la-loire/Actus-agendas/2023/Images/20230711_Voyage_etude_agrivoltaisme_elus.jpg"
+align="left" hspace="12" alt="Agrivolta&iuml;sme : une
+d&eacute;l&eacute;gation d\'&eacute;lus en voyage d\'&eacute;tude"
+v:shapes="Image_x2310_9">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-11 - pays-de-la-loire.chambres-agriculture.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">A l'invitation de la direction
+r&eacute;gionale EDF Pays de la Loire, une d&eacute;l&eacute;gation
+d'&eacute;lus FDSEA, JA, Chambre d'agriculture et Terrena s'est
+rendue dans les Landes et en Gironde pour rencontrer des porteurs de
+projet en agrivolta&iuml;sme et visiter des sites pilotes.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/5/F0SclPRhAUt9fO0vLO5FcA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEg4RUd6cWtrcDI1YmJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMybTdScjJkRVNSZFh5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBicFFoRkZzSEklMkJnYWglMkZyM2t3Y3dGYTllNUF2ejd6MFlnQkxHR2pybXMlMkZpaG5yMWkxSkN3N3FHVHhxOCUyQkt3eUJLcGFqRGFnVElPZ3JlUmRpeHZMNFp2TFdHNDVJUHhFUSUyQnBhakRhZ1RJT2dpZ2dkSHhtOWlObk1VOHZTVmZHUGpqeW1KNGNxViUyRmlWVjB2Z2M2N2p0Y1YxZDk4U3ROaVlkR1BSM1piWmE1dVVQUzVDSUJqNXAxV3kzMXF5ckpHJTJCdW93VHpPc1lidTdYTGhlTFpOakVkc3VzQTZYUEgzU0N2MHpFOUYlMkJzR1pvelElM0QlM0Q"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7652_2" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/6/93R-aH59bxwbbo7_HGHP6w/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEg4RUd6cWtrcDI1YmJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMydFVRVU4lMkZPQjM4MXloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMFpKdW4xdkxNa0VET2J5N3R3N0t3ZXY0dnJaeUpkNCUyRnolMkZBeSUyQm1TYXY1QUxkRkF4UURXZWhQOWF0S3ZJUFBGMWJlSkRraThaWlUzcEZSTW8wU2ZIamVIdmljZDh6cnZEb1B3ZzJBdTZ0c3JMRVhaT1hPNHolMkJjU0Nub0hRbXZEODlSQ1BwcDY2U1BlRVBSMWVrM3NGODdF"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Un &eacute;v&eacute;nement de collecte de fonds
+au Jack's Solar Garden mettra en lumi&egrave;re les innovateurs du
+comt&eacute; de Boulder (Colorado)</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x7472_9" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Un &eacute;v&eacute;nement de collecte de
+fonds au Jack\'s Solar Garden mettra en lumi&egrave;re les
+innovateurs du comt&eacute; de Boulder (Colorado)" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.timescall.com/wp-content/uploads/2023/07/DCC-L-SolarGar160.jpg?w=1024&amp;h=707"
+o:title="Un &eacute;v&eacute;nement de collecte de fonds au Jack\'s
+Solar Garden mettra en lumi&egrave;re les innovateurs du comt&eacute;
+de Boulder (Colorado)" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.timescall.com/wp-content/uploads/2023/07/DCC-L-SolarGar160.jpg?w=1024&amp;h=707"
+align="left" hspace="12" alt="Un &eacute;v&eacute;nement de collecte
+de fonds au Jack\'s Solar Garden mettra en lumi&egrave;re les
+innovateurs du comt&eacute; de Boulder (Colorado)"
+v:shapes="Image_x7472_9">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-06 - timescall.com
+					</div>
+					<div>
+
+					<div><span style="font-size: 10pt;">Un article qui aurait pu se
+retrouver dans la rubrique monde, mais qui met en lumi&egrave;re un
+&eacute;v&egrave;nement p&eacute;dagogique et utile pour la
+fili&egrave;re agrivolta&iuml;que.&nbsp;</span></div>
+<div><span style="font-size: 10pt;">Organis&eacute; au Jack's Solar
+Garden de Longmont, cet &eacute;v&eacute;nement est le fruit d'une
+collaboration entre le Colorado Agrivoltaic Learning Center et
+l'organisation de recyclage z&eacute;ro d&eacute;chet Eco-Cycle, qui
+dispose d'un site...</span></div>
+<div><span style="font-size: 10pt;">(article en anglais)</span></div>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/7/6NLMfGuHvVAaK3mtoJtD_g/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEg4RUd6cWtrcDI1YmJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMydFVRVU4lMkZPQjM4MXloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMFpKdW4xdkxNa0VET2J5N3R3N0t3ZXY0dnJaeUpkNCUyRnolMkZBeSUyQm1TYXY1QUxkRkF4UURXZWhQOWF0S3ZJUFBGMWJlSkRraThaWlUzcEZSTW8wU2ZIamVIdmljZDh6cnZEb1B3ZzJBdTZ0c3JMRVhaT1hPNHolMkJjU0Nub0hRbXZEODlSQ1BwcDY2U1BlRVBSMWVrM3NGODdF"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7409" id="rubrique_3"
+style=" clear:both;">
+                <div data-mode="v2" class="rubrique_title"
+id="rubrique7409" style=" clear:both;">
+                  <a name="RUB_ID_7409"></a>
+                  <a name="RUB_3"></a>
+                  <span>March√© & R√®glementation</span>
+                </div>
+<span id="item_7409_0" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/8/650-Le1C91xNx5elRIR1VA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMSUyRm9uRVQ4bGlwMyUyRmhtJTJGN2VUZkZxTFpUZUszSWJHWUNZbXhDR0hQdjh0JTJCYUhETmpGWXR5SW82REZtRHFXNnBwRjR5amUyVXd5aVclMkY1YUc2ZkFRbndmeGlTU25WJTJGJTJCWTBLVXZqcDZXVXN4T2ZnT3ZqVDRDVXFjY212YlolMkJaQ29vOUhmU3BhYjBzdzU0VjglMkIyNU5mU3l6Z2FzUk1XdGNZQzM0azM3MTdXcHJkUHU4TTcxVkszcWlXWWlqZ0RTMmpXa1FoWXBkd3oyZ2Z2YlVpTGVGNlZyOTRZeklDYk1mcUFUdjZ6JTJGYTg2bEtqZVRod1V4U0NLTmdpJTJGN2RtM3F6OGloUnFqcTVkd2hBM2g5OWdhaUJUeDl2VGdzdGJPaHZLbU50NDFvZU40Qkg4cHR6TTFWWm5Zb2Jtd1ZsJTJGMEhaVlo5WVQlMkZ5dU1VZVBxMWN5QnpFdW1JVDFlVG9FcFh4YTNrbTBBNGpXVU5vQXNMc0JYTUNEMzg4bDlnZzh4SzJCRTNrVWZlWjhSVm42JTJCVWJKeWlpVm1MJTJGN21DaVFUVnk3TktmJTJCTVNWYjdUTDMwT1pLdTgzOVRxaWd2a09OSkVjWUJ4a0RWakJNcGwlMkZPRVIwWVh2TG5hVnFwV0Vwd0lRR2drZ3QyaHlHV1ZuOWVyUzhhS1NBcnNlSzlPQWJkNzRFZXFLb2Z4S3JCak1vc1I4MjBXMkZISkpTOHJNdm45eHFQMkNRVFNFNGczVGt2SDdKNmZlWiUyQmRMTEJN"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Loi d'acc&eacute;l&eacute;ration sur les
+&Eacute;nergies Renouvelables (AER) : quelles opportunit&eacute;s
+pour le photovolta&iuml;que sur terres agricoles ?</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x2854_2" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Loi d\'acc&eacute;l&eacute;ration sur les
+&Eacute;nergies Renouvelables (AER) : quelles opportunit&eacute;s
+pour le photovolta&iuml;que sur terres agricoles ?" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://tecsol.blogs.com/.a/6a00d8341bfe5d53ef02c1b25b8e2c200d-580wi"
+o:title="Loi d\'acc&eacute;l&eacute;ration sur les &Eacute;nergies
+Renouvelables (AER) : quelles opportunit&eacute;s pour le
+photovolta&iuml;que sur terres agricoles ?" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://tecsol.blogs.com/.a/6a00d8341bfe5d53ef02c1b25b8e2c200d-580wi"
+align="left" hspace="12" alt="Loi d\'acc&eacute;l&eacute;ration sur
+les &Eacute;nergies Renouvelables (AER) : quelles opportunit&eacute;s
+pour le photovolta&iuml;que sur terres agricoles ?"
+v:shapes="Image_x2854_2">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-08-04 - tecsol.blogs.com
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">La loi
+d&rsquo;acc&eacute;l&eacute;ration des &eacute;nergies renouvelables
+propose des mesures destin&eacute;es &agrave; acc&eacute;l&eacute;rer
+le d&eacute;ploiement du photovolta&iuml;que en France, de
+fa&ccedil;on encadr&eacute;e. Alors que la loi a &eacute;t&eacute;
+promulgu&eacute;e le 10 mars dernier, de nombreux agriculteurs et
+professionnels du photovolta&iuml;que n&rsquo;attendent plus que des
+d&eacute;crets...</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/9/bGueSQPoMEagyFbaLa1H-w/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMSUyRm9uRVQ4bGlwMyUyRmhtJTJGN2VUZkZxTFpUZUszSWJHWUNZbXhDR0hQdjh0JTJCYUhETmpGWXR5SW82REZtRHFXNnBwRjR5amUyVXd5aVclMkY1YUc2ZkFRbndmeGlTU25WJTJGJTJCWTBLVXZqcDZXVXN4T2ZnT3ZqVDRDVXFjY212YlolMkJaQ29vOUhmU3BhYjBzdzU0VjglMkIyNU5mU3l6Z2FzUk1XdGNZQzM0azM3MTdXcHJkUHU4TTcxVkszcWlXWWlqZ0RTMmpXa1FoWXBkd3oyZ2Z2YlVpTGVGNlZyOTRZeklDYk1mcUFUdjZ6JTJGYTg2bEtqZVRod1V4U0NLTmdpJTJGN2RtM3F6OGloUnFqcTVkd2hBM2g5OWdhaUJUeDl2VGdzdGJPaHZLbU50NDFvZU40Qkg4cHR6TTFWWm5Zb2Jtd1ZsJTJGMEhaVlo5WVQlMkZ5dU1VZVBxMWN5QnpFdW1JVDFlVG9FcFh4YTNrbTBBNGpXVU5vQXNMc0JYTUNEMzg4bDlnZzh4SzJCRTNrVWZlWjhSVm42JTJCVWJKeWlpVm1MJTJGN21DaVFUVnk3TktmJTJCTVNWYjdUTDMwT1pLdTgzOVRxaWd2a09OSkVjWUJ4a0RWakJNcGwlMkZPRVIwWVh2TG5hVnFwV0Vwd0lRR2drZ3QyaHlHV1ZuOWVyUzhhS1NBcnNlSzlPQWJkNzRFZXFLb2Z4S3JCak1vc1I4MjBXMkZISkpTOHJNdm45eHFQMkNRVFNFNGczVGt2SDdKNmZlWiUyQmRMTEJN"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7409_1" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/10/w5SoQWO8Kh_eBGE-M6KD-Q/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMycXNQNDFmS0NlTjd5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBZNVZLMnpnbGRsTFNiNG5jNVVpS1RUTGxReDFMY2ZKJTJCS3Y5JTJCd3FvRXFSb3pCTUhqMmolMkZlUCUyRkk3M0VmWTZZNFJDNkNSOWpjZ200WHFsSUlrNEJXeWlnUllVJTJCUU5CbUw0NzdLZ3pxS0x3YiUyQjhGWmY5QjJWV2ZXJTJCQTB1RkNmMUJvalpmdmFPRE81bHlxTG42ZlZ2amRiSms4MWszZjN3Vk01eW9KM3p2Rnh3MHpNVDBYNndabWpO"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Parcs de stationnement : entre 6,75 GW et 11,25
+GW de puissance photovoltaiÃàque installeÃÅe en 2028 ?</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x9084_9" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Parcs de stationnement : entre 6,75 GW et
+11,25 GW de puissance photovoltaiÃàque installeÃÅe en 2028 ?" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.lemondedelenergie.com/wp-content/uploads/2023/07/ombrieres-photovoltaiques-pour-parcs-stationnement-entre-6-75-gw-11-25-gw-puissance-installee-2028-Le-Monde-de-lEnergie.jpg"
+o:title="Parcs de stationnement : entre 6,75 GW et 11,25 GW de
+puissance photovoltaiÃàque installeÃÅe en 2028 ?" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.lemondedelenergie.com/wp-content/uploads/2023/07/ombrieres-photovoltaiques-pour-parcs-stationnement-entre-6-75-gw-11-25-gw-puissance-installee-2028-Le-Monde-de-lEnergie.jpg"
+align="left" hspace="12" alt="Parcs de stationnement : entre 6,75 GW
+et 11,25 GW de puissance photovoltaiÃàque installeÃÅe en 2028 ?"
+v:shapes="Image_x9084_9">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-21 - lemondedelenergie.com
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Pierre-Nicolas Sanzey, avocat au
+cabinet DWF, eÃÅvoque l'obligation d'installer des panneaux
+photovoltaiÃàques sur les parcs de stationnement aÃÄ horizon
+2028.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/11/ZAuhUlFstT5BD4XIBP1NPw/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMycXNQNDFmS0NlTjd5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBZNVZLMnpnbGRsTFNiNG5jNVVpS1RUTGxReDFMY2ZKJTJCS3Y5JTJCd3FvRXFSb3pCTUhqMmolMkZlUCUyRkk3M0VmWTZZNFJDNkNSOWpjZ200WHFsSUlrNEJXeWlnUllVJTJCUU5CbUw0NzdLZ3pxS0x3YiUyQjhGWmY5QjJWV2ZXJTJCQTB1RkNmMUJvalpmdmFPRE81bHlxTG42ZlZ2amRiSms4MWszZjN3Vk01eW9KM3p2Rnh3MHpNVDBYNndabWpO"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7409_2" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/12/Y7rBEJI82MFwUOSqIabqDQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBUUx5S0xsSGFoT0R5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBiUWhpUkdPN2hMc0lJMCUyQkFxbURGNWlmMmNkOFJEOGRpYnJydyUyRmlnYXVQRCUyRmpTMmlobzNTU2R2TWt0OWlmZjlBV1hvQVhhdmNNRW9mREZweU1HWndZVVdPZVZqWkJGOFc4clhGRnIlMkJKRldZOGpyTXJFbHZhMSUyRlB1Vko0NTFzUHJnJTNE"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Le march&eacute; mondial de
+l'agrivolta&iuml;que : La demande croissante et les facteurs
+cl&eacute;s qui fa&ccedil;onnent l'industrie</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x1103_6" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Le march&eacute; mondial de
+l\'agrivolta&iuml;que : La demande croissante et les facteurs
+cl&eacute;s qui fa&ccedil;onnent l\'industrie" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://ucreview.com/wp-content/uploads/2023/08/Global-Agrivoltaics-Market-780x470.jpg"
+o:title="Le march&eacute; mondial de l\'agrivolta&iuml;que : La
+demande croissante et les facteurs cl&eacute;s qui fa&ccedil;onnent
+l\'industrie" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://ucreview.com/wp-content/uploads/2023/08/Global-Agrivoltaics-Market-780x470.jpg"
+align="left" hspace="12" alt="Le march&eacute; mondial de
+l\'agrivolta&iuml;que : La demande croissante et les facteurs
+cl&eacute;s qui fa&ccedil;onnent l\'industrie"
+v:shapes="Image_x1103_6">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-08-01 - ucreview.com
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">MarkNtel Advisors se consacre
+&agrave; la r&eacute;alisation d'&eacute;tudes de march&eacute;
+approfondies et compl&egrave;tes. Leurs rapports sont connus pour
+fournir des informations impartiales. R&eacute;cemment, ils ont
+publi&eacute; un rapport sur le <em>Global Agrivoltaics Market Size,
+Share, Analysis, Trends, Analysis Forecast 2022-2027</em> qui offre
+une analyse approfondie de l'industrie.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/13/KVN4L2eiWKBf8724xMJbLQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxSGdKRDJobHFya2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBUUx5S0xsSGFoT0R5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBiUWhpUkdPN2hMc0lJMCUyQkFxbURGNWlmMmNkOFJEOGRpYnJydyUyRmlnYXVQRCUyRmpTMmlobzNTU2R2TWt0OWlmZjlBV1hvQVhhdmNNRW9mREZweU1HWndZVVdPZVZqWkJGOFc4clhGRnIlMkJKRldZOGpyTXJFbHZhMSUyRlB1Vko0NTFzUHJnJTNE"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7398" id="rubrique_4"
+style=" clear:both;">
+                <div data-mode="v2" class="rubrique_title"
+id="rubrique7398" style=" clear:both;">
+                  <a name="RUB_ID_7398"></a>
+                  <a name="RUB_4"></a>
+                  <span>Technologie, R&D et entreprises</span>
+                </div>
+<span id="item_7398_0" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/14/Gr-i9Z4h6v4h8VSjlcYBHw/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyblZsNzB3dVNDckh5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBibWJyTFlqOTRKamRpY0I0Rm8wOUdaTmRKaWElMkJ6TzlPd0dDOVZkZFJiWDBKd3RDUWw0WHhzWnBWJTJGU0tlSXVDUFBZbGdYY1Z1MFlETTQ4UDZJdkNyQU9xQTlmeFpiUEUzbUZTNUEyVXNXciUyQjhSUGREbUl1dzNLM3FUdGkyeHJDciUyRktoSXBvWW5uJTJCNTQ5SGRsdGxybTVRZHpEMld3MlRnY2lkWWRTWTBORldYQnI2aUt5eGdzQzVHYjBmczNDZ0RUNjgxekNsVUtHSElIWXBHaFRmWWhaUw"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">AÃÄ Xertigny (Vosges), un investissement de 5 M
+d'euros dans l'agrivoltaiÃàsme pour venir au secours des champs de
+rhubarbe</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x4859_7" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="AÃÄ Xertigny (Vosges), un investissement de 5
+M d\'euros dans l\'agrivoltaiÃàsme pour venir au secours des champs
+de rhubarbe" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://cdn-s-www.vosgesmatin.fr/images/62263B57-60D9-43CB-81C1-F7167D7A0923/FB1200/photo-1690308633.jpg"
+o:title="AÃÄ Xertigny (Vosges), un investissement de 5 M d\'euros
+dans l\'agrivoltaiÃàsme pour venir au secours des champs de rhubarbe"
+/>
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://cdn-s-www.vosgesmatin.fr/images/62263B57-60D9-43CB-81C1-F7167D7A0923/FB1200/photo-1690308633.jpg"
+align="left" hspace="12" alt="AÃÄ Xertigny (Vosges), un
+investissement de 5 M d\'euros dans l\'agrivoltaiÃàsme pour venir au
+secours des champs de rhubarbe" v:shapes="Image_x4859_7">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-26 - vosgesmatin.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">L'entreprise Moine va investir
+plus de 5 millions d'euros pour installer des panneaux solaires au
+milieu de ses champs de rhubarbe. L'objectif est ...</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/15/rykEvsOAcFxQUxCvQXWuAQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyblZsNzB3dVNDckh5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBibWJyTFlqOTRKamRpY0I0Rm8wOUdaTmRKaWElMkJ6TzlPd0dDOVZkZFJiWDBKd3RDUWw0WHhzWnBWJTJGU0tlSXVDUFBZbGdYY1Z1MFlETTQ4UDZJdkNyQU9xQTlmeFpiUEUzbUZTNUEyVXNXciUyQjhSUGREbUl1dzNLM3FUdGkyeHJDciUyRktoSXBvWW5uJTJCNTQ5SGRsdGxybTVRZHpEMld3MlRnY2lkWWRTWTBORldYQnI2aUt5eGdzQzVHYjBmczNDZ0RUNjgxekNsVUtHSElIWXBHaFRmWWhaUw"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7398_1" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/16/DWRnhkVzym5DlJW7K9lMpA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBUmtaSkoxYkZrNmh5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBiYUFRQmg4aGFoSW5ieUJmVXczNEROTGI5MlA5OFFuWWgyUjA1aEpHJTJGcWptOUVTYVVOSnYlMkZ6d2c5NlJzQUswTTNKZ3JEZHVEUVA4TTVxeFloamc3MFRwVzFVeDJTZVRVRUhIM1ZESExLS1Z1c3d3ZyUyRjFaVXZDNGVMZWhoS0RvQiUyRlNDWUdlT2NLcDd3YXlua013RU00dmIlMkJyclh4SHRJZHVkZWNxcUFweXJLbjgzJTJGRnpxRHJPTg"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Agrivolta&iuml;sme en grandes cultures : chez
+Sylvain Raison, le bl&eacute; pousse sous une canop&eacute;e
+agricole</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x2139_6" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Agrivolta&iuml;sme en grandes cultures : chez
+Sylvain Raison, le bl&eacute; pousse sous une canop&eacute;e
+agricole" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://cdn2.regie-agricole.com/ulf/CMS_Content/2/articles/842728/52ee159f-3-chez-sylvain-raison-le-ble-pousse-sous-une-canopee-agricole.jpg"
+o:title="Agrivolta&iuml;sme en grandes cultures : chez Sylvain
+Raison, le bl&eacute; pousse sous une canop&eacute;e agricole" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://cdn2.regie-agricole.com/ulf/CMS_Content/2/articles/842728/52ee159f-3-chez-sylvain-raison-le-ble-pousse-sous-une-canopee-agricole.jpg"
+align="left" hspace="12" alt="Agrivolta&iuml;sme en grandes cultures
+: chez Sylvain Raison, le bl&eacute; pousse sous une canop&eacute;e
+agricole" v:shapes="Image_x2139_6">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-27 - lafranceagricole.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">L'exploitation de Sylvain Raison,
+agriculteur en Haute-Sa&ocirc;ne, accueille, depuis plus d'un an, un
+dispositif de canop&eacute;e agrivolta&iuml;que. Sur les trois
+hectares, couverts de panneaux photovolta&iuml;ques mobiles,
+l'exploitant a choisi cette ann&eacute;e de semer un
+bl&eacute;.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/17/U2_ga_-_m23x7hk00gNVLA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBUmtaSkoxYkZrNmh5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBiYUFRQmg4aGFoSW5ieUJmVXczNEROTGI5MlA5OFFuWWgyUjA1aEpHJTJGcWptOUVTYVVOSnYlMkZ6d2c5NlJzQUswTTNKZ3JEZHVEUVA4TTVxeFloamc3MFRwVzFVeDJTZVRVRUhIM1ZESExLS1Z1c3d3ZyUyRjFaVXZDNGVMZWhoS0RvQiUyRlNDWUdlT2NLcDd3YXlua013RU00dmIlMkJyclh4SHRJZHVkZWNxcUFweXJLbjgzJTJGRnpxRHJPTg"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7398_2" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/18/68CTq87IIyAqM7D-rgGIqg/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyZ3ZSJTJCWGZNcUJuenloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMGFnMHQlMkJRaGRZaHlMaklQTEJoM2E3eUZ2Y2NMQXBRRVklMkJCeTVFQXolMkZkbmo2a1lFSVhsMTI3Y1hCRk5xSVQ0NjFQc0tQMkpJcnYzSDZxJTJCRGYzWDdaNm5MZDBuelJYTXIyRyUyQnE0M1JsJTJCcUNqYkNnZ3hWWHpPd1dzNVV4MUVPJTJGZkpRekU5RiUyQnNHWm96USUzRCUzRA"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Sun'Agri et le Domaine de Besombes (66)
+inaugurent un nouveau dispositif agrivolta&iuml;que sur
+vignes</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x6510_1" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Sun\'Agri et le Domaine de Besombes (66)
+inaugurent un nouveau dispositif agrivolta&iuml;que sur vignes" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://sunagri.fr/wp-content/uploads/2023/07/SunAgri-07-2023-071223.jpg"
+o:title="Sun\'Agri et le Domaine de Besombes (66) inaugurent un
+nouveau dispositif agrivolta&iuml;que sur vignes" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://sunagri.fr/wp-content/uploads/2023/07/SunAgri-07-2023-071223.jpg"
+align="left" hspace="12" alt="Sun\'Agri et le Domaine de Besombes
+(66) inaugurent un nouveau dispositif agrivolta&iuml;que sur vignes"
+v:shapes="Image_x6510_1">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-12 - sunagri.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Sun&rsquo;Agri, pionnier de
+l&rsquo;agrivolta&iuml;sme dynamique, une technologie
+fran&ccedil;aise n&eacute;e il y a 15 ans, a inaugur&eacute; au
+Domaine de Besombes son 2<sup>e</sup>&nbsp;projet agrivolta&iuml;que
+sur vigne dans les Pyr&eacute;n&eacute;es Orientales. D&rsquo;une
+superficie de 2,7 hectares, ce dispositif prot&eacute;gera les vignes
+des al&eacute;as climatiques particuli&egrave;rement marqu&eacute;s
+dans ce territoire.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/19/vo0adzNgP3qghUvPjsdxug/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyZ3ZSJTJCWGZNcUJuenloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMGFnMHQlMkJRaGRZaHlMaklQTEJoM2E3eUZ2Y2NMQXBRRVklMkJCeTVFQXolMkZkbmo2a1lFSVhsMTI3Y1hCRk5xSVQ0NjFQc0tQMkpJcnYzSDZxJTJCRGYzWDdaNm5MZDBuelJYTXIyRyUyQnE0M1JsJTJCcUNqYkNnZ3hWWHpPd1dzNVV4MUVPJTJGZkpRekU5RiUyQnNHWm96USUzRCUzRA"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7398_3" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/20/cXb6pOBNYWMGZId4TlzA-Q/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBVlNMJTJCRVNwJTJCSUZzeWhRem0lMkZtWFRibGI3VEdBVjlUJTJGM0NtNkQlMkY2ODV2QSUyQlNjSklrMm9jaU5sNW1SUmJkdEZtYjBxSlhkSGl1bnJOb1JEVXgzJTJCVnMwWWJMM3pQbHpESHZGSzNFNzhJb1M5QzVOaG15WHZ3WFlJM3kxNFlaSHYzM3FUNENuRlQwMFJnV0F6NWZDVWtRRlhFbnpKS1B3OVFPbzlFc3c4N3A5VFBoVXVRTmxMRnElMkZ0b2VJVkFyVGczUmJHSmhvSzRDTGFv"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">L'acteur de la semaine : les trois axes de
+deÃÅveloppement de Corsica Sole</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x7917_3" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="L\'acteur de la semaine : les trois axes de
+deÃÅveloppement de Corsica Sole" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/06/3504_638224127669749275.jpg"
+o:title="L\'acteur de la semaine : les trois axes de deÃÅveloppement
+de Corsica Sole" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/06/3504_638224127669749275.jpg"
+align="left" hspace="12" alt="L\'acteur de la semaine : les trois
+axes de deÃÅveloppement de Corsica Sole" v:shapes="Image_x7917_3">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-31 - pv-magazine.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Ces dernieÃÄres semaines, Corsica
+Sole a multiplieÃÅ les inaugurations de nouvelles centrales solaires.
+pv magazine France en a profiteÃÅ pour faire le point avec Thomas
+Muller, directeur du deÃÅveloppement de l'entreprise, sur les axes
+strateÃÅgiques autour du photovoltaiÃàque, du stockage et de
+l'hydrogeÃÄne vert.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/21/9TSaJ3hqpCPRb6NPae8Wjw/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBVlNMJTJCRVNwJTJCSUZzeWhRem0lMkZtWFRibGI3VEdBVjlUJTJGM0NtNkQlMkY2ODV2QSUyQlNjSklrMm9jaU5sNW1SUmJkdEZtYjBxSlhkSGl1bnJOb1JEVXgzJTJCVnMwWWJMM3pQbHpESHZGSzNFNzhJb1M5QzVOaG15WHZ3WFlJM3kxNFlaSHYzM3FUNENuRlQwMFJnV0F6NWZDVWtRRlhFbnpKS1B3OVFPbzlFc3c4N3A5VFBoVXVRTmxMRnElMkZ0b2VJVkFyVGczUmJHSmhvSzRDTGFv"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7398_4" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/22/pSex5QHCX3DqSNO119jXBw/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBWWdObGpvZ0FlcW55aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBhQkcyZ3hVdVRvaVdVYkh3WkxxUCUyRjhqenFkTERtZXc0cGglMkZVaVRHRyUyRjhzVzNnUHBUeVlqd1FuVXlsd2ZObFBaZzRrcG5oaVpMNU1hV0R5WlJPT2syQTclMkZzaTRMSU1Nc2JsNUhQQUFibDJ5YlFNNlVVYSUyRktJclc5aUZCbUtXVDVMZkJEZjhnSjlYRiUyRnRJRFR6RFNBNSUyRktkenJydU4ycEJ3JTNE"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Agrivolta&iuml;sme : &quot; Le panneau, par son
+ombrage intermittent, peut am&eacute;liorer le confort lumineux,
+thermique et hydrique des plantes &quot;</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x1629_8" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Agrivolta&iuml;sme : &quot; Le panneau, par
+son ombrage intermittent, peut am&eacute;liorer le confort lumineux,
+thermique et hydrique des plantes &quot;" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://medias.reussir.fr/portail-reussir/styles/facebook/azblob/2023-07/a_escobar_gutierrez.jpg?itok=GwQhz3S3"
+o:title="Agrivolta&iuml;sme : &quot; Le panneau, par son ombrage
+intermittent, peut am&eacute;liorer le confort lumineux, thermique et
+hydrique des plantes &quot;" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://medias.reussir.fr/portail-reussir/styles/facebook/azblob/2023-07/a_escobar_gutierrez.jpg?itok=GwQhz3S3"
+align="left" hspace="12" alt="Agrivolta&iuml;sme : &quot; Le panneau,
+par son ombrage intermittent, peut am&eacute;liorer le confort
+lumineux, thermique et hydrique des plantes &quot;"
+v:shapes="Image_x1629_8">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-31 - reussir.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Symbole que la fili&egrave;re
+agrivolta&iuml;que se structure, le P&ocirc;le National Recherche,
+Innovation, Enseignement en Agri-photovolta&iuml;sme regroupe des
+chercheurs mais aussi des entreprises priv&eacute;es de
+l'&eacute;nergie solaire et des groupes d'agriculteurs. Si les
+premi&egrave;res &eacute;tudes attestent des b&eacute;n&eacute;fices
+des panneaux photovolta&iuml;ques sur les plantes...</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/23/kZqTZ0POnarXuOjYgJBZJA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBWWdObGpvZ0FlcW55aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBhQkcyZ3hVdVRvaVdVYkh3WkxxUCUyRjhqenFkTERtZXc0cGglMkZVaVRHRyUyRjhzVzNnUHBUeVlqd1FuVXlsd2ZObFBaZzRrcG5oaVpMNU1hV0R5WlJPT2syQTclMkZzaTRMSU1Nc2JsNUhQQUFibDJ5YlFNNlVVYSUyRktJclc5aUZCbUtXVDVMZkJEZjhnSjlYRiUyRnRJRFR6RFNBNSUyRktkenJydU4ycEJ3JTNE"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7398_5" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/24/bHApXWiqLdTxkOVgEZ2KxQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyckolMkJuamFOSSUyQnQlMkJ5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBZYkwzelBsekRIdkZLM0U3OElvUzlDNU5obXlYdndYWUkzeTE0WVpIdjMzaDJ3ZGV2elkzRFB2cXVOMFpmcWdvM2w0N29KYVJpejMxOEw3Z0JXNWZwc0ZsRTRNVE1DaEZlT2NybHIyRmM1ajFkTzZoSGFReXhxcGFXUGhzNXhXZm9vWXVZNGJKZURFNXlTeDIxTExHQkVMU2drcTVHcEFEcWM0T3hrR1RNbmRBJTNEJTNE"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">L'agrivolta&iuml;sme a un impact minimal sur le
+cycle du carbone et de l'eau des prairies</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x7006_3" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="L\'agrivolta&iuml;sme a un impact minimal sur
+le cycle du carbone et de l\'eau des prairies" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/07/thumbnail_Picture1-768x576-1.jpg"
+o:title="L\'agrivolta&iuml;sme a un impact minimal sur le cycle du
+carbone et de l\'eau des prairies" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.pv-magazine.fr/wp-content/uploads/sites/12/2023/07/thumbnail_Picture1-768x576-1.jpg"
+align="left" hspace="12" alt="L\'agrivolta&iuml;sme a un impact
+minimal sur le cycle du carbone et de l\'eau des prairies"
+v:shapes="Image_x7006_3">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-12 - pv-magazine.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Selon &eacute;quipe de chercheurs
+hispano-am&eacute;ricains, les r&eacute;percussions des panneaux
+solaires sur les parcelles de prairie exploit&eacute;es sur le cycle
+du carbone et de l'eau sont minimes, ce qu'ils attribuent &agrave; la
+modification de la strat&eacute;gie de la photosynth&egrave;se par
+les plantes pour tirer pleinement profit de l'ombrage dynamique sous
+les panneaux.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/25/JbGyi5AheTYR1opbETi_BQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgwRjJQOVFiZms0Q2JoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyckolMkJuamFOSSUyQnQlMkJ5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBZYkwzelBsekRIdkZLM0U3OElvUzlDNU5obXlYdndYWUkzeTE0WVpIdjMzaDJ3ZGV2elkzRFB2cXVOMFpmcWdvM2w0N29KYVJpejMxOEw3Z0JXNWZwc0ZsRTRNVE1DaEZlT2NybHIyRmM1ajFkTzZoSGFReXhxcGFXUGhzNXhXZm9vWXVZNGJKZURFNXlTeDIxTExHQkVMU2drcTVHcEFEcWM0T3hrR1RNbmRBJTNEJTNE"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7420" id="rubrique_5"
+style=" clear:both;">
+                <div data-mode="v2" class="rubrique_title"
+id="rubrique7420" style=" clear:both;">
+                  <a name="RUB_ID_7420"></a>
+                  <a name="RUB_5"></a>
+                  <span>Monde</span>
+                </div>
+<span id="item_7420_0" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/26/h2G3656fFYw8fVlnIcaycA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyb2VpMVllV3RYNnN5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBZMmw2RjZWY0YyJTJGRGE0JTJGV2VVc0UlMkYzaTFQZ2ZJSWdDdlhyYnFBeTQ1VTRkQTdPMUJiJTJGbEVEN0NYY0xENmpFZ0QlMkZrb3BvbXUlMkYlMkZRMzg0ekl3WWtUQTlXS1hxNGJBR0t1NVdrNGtwdFYwciUyQjJwdEZqQ1pPS3NEZw"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">L'organisme n&eacute;erlandais de
+l'&eacute;nergie solaire r&eacute;agit &agrave; l'interdiction de
+l'agrivolta&iuml;que par le gouvernement</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x9521_4" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="L\'organisme n&eacute;erlandais de
+l\'&eacute;nergie solaire r&eacute;agit &agrave; l\'interdiction de
+l\'agrivolta&iuml;que par le gouvernement" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.pv-tech.org/wp-content/uploads/2023/02/Donald_the_Donkey.jpg"
+o:title="L\'organisme n&eacute;erlandais de l\'&eacute;nergie solaire
+r&eacute;agit &agrave; l\'interdiction de l\'agrivolta&iuml;que par
+le gouvernement" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.pv-tech.org/wp-content/uploads/2023/02/Donald_the_Donkey.jpg"
+align="left" hspace="12" alt="L\'organisme n&eacute;erlandais de
+l\'&eacute;nergie solaire r&eacute;agit &agrave; l\'interdiction de
+l\'agrivolta&iuml;que par le gouvernement" v:shapes="Image_x9521_4">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-10 - pv-tech.org
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">L'association n&eacute;erlandaise
+Holland Solar a demand&eacute; au gouvernement de revenir sur sa
+d&eacute;cision de limiter les installations photovolta&iuml;ques sur
+les terres agricoles...</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/27/ZBhvXuqnFSkrQY8z8nRrrA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyb2VpMVllV3RYNnN5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBZMmw2RjZWY0YyJTJGRGE0JTJGV2VVc0UlMkYzaTFQZ2ZJSWdDdlhyYnFBeTQ1VTRkQTdPMUJiJTJGbEVEN0NYY0xENmpFZ0QlMkZrb3BvbXUlMkYlMkZRMzg0ekl3WWtUQTlXS1hxNGJBR0t1NVdrNGtwdFYwciUyQjJwdEZqQ1pPS3NEZw"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7420_1" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/28/Wc8HiNstgPORVarGzxuAxQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyZ0VmayUyQmxWQjdqUHloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMGJWOHNkRE5xVGViVGxsTVZUc0hlNDF1eTdoJTJGZmlzVFhOeVl3TUdza3QlMkJiUHNiJTJGNFJXTEpraXBPcHE3bkZCeWEzeFdsbDJ2WkRzcWhuV0c3ciUyRnhzaE9RUk9CNFFNU1dLWEdJN1ZJNkc4V0FzOHVHYnFBblc5UkU4YXVmQldpRVNHYXV5akNYRzNmSnclM0QlM0Q"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Deux grands projets d'&eacute;nergie solaire en
+Bulgarie mettent en &eacute;vidence des conflits d'utilisation des
+sols</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x5094_9" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Deux grands projets d\'&eacute;nergie solaire
+en Bulgarie mettent en &eacute;vidence des conflits d\'utilisation
+des sols" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://balkangreenenergynews.com/wp-content/uploads/2023/07/Two-giant-solar-power-projects-Bulgaria-highlight-land-use-disputes.jpg"
+o:title="Deux grands projets d\'&eacute;nergie solaire en Bulgarie
+mettent en &eacute;vidence des conflits d\'utilisation des sols" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://balkangreenenergynews.com/wp-content/uploads/2023/07/Two-giant-solar-power-projects-Bulgaria-highlight-land-use-disputes.jpg"
+align="left" hspace="12" alt="Deux grands projets d\'&eacute;nergie
+solaire en Bulgarie mettent en &eacute;vidence des conflits
+d\'utilisation des sols" v:shapes="Image_x5094_9">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-19 - balkangreenenergynews.com
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Le maire d'un village bulgare
+refuse d'approuver un projet photovolta&iuml;que sur des
+p&acirc;turages, tandis qu'Eurohold en construira un sur des terres
+de moindre qualit&eacute; et stimulera la biodiversit&eacute;.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/29/0DDkeXrgkLaOiBGUeoyLsg/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMThXaVJOYXlxYzMyZ0VmayUyQmxWQjdqUHloUXptJTJGbVhUYmxiN1RHQVY5VCUyRjNDbTZEJTJGNjg1dkElMkJTY0pJazJvY2lObDVtUlJiZHRGbWIwcUpYZEhpdW5yTm9SRFV4MyUyQlZzMGJWOHNkRE5xVGViVGxsTVZUc0hlNDF1eTdoJTJGZmlzVFhOeVl3TUdza3QlMkJiUHNiJTJGNFJXTEpraXBPcHE3bkZCeWEzeFdsbDJ2WkRzcWhuV0c3ciUyRnhzaE9RUk9CNFFNU1dLWEdJN1ZJNkc4V0FzOHVHYnFBblc5UkU4YXVmQldpRVNHYXV5akNYRzNmSnclM0QlM0Q"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span>
+<span id="item_7420_2" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/30/2jSLigv68mm4oGdQ6zdcJA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBWHdZeldkTHM3VGZ5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBhTjRhdG1XWVRNN3ZISk1NR2xYVFFtdzExUGJiUG5lJTJGMlFFJTJGSlolMkZxTlAxN21BOUxtMDVoWDdQOU1UWTUyRCUyQnJVVTdhYktPNWJHWkJYYnBjZVB4MVg0clNGN2JOWTNmTnRBdVJvR0lMaUNwSHpsJTJGeUc5MngzN3ZRb1Buazc5ZWlsQlVQWUtCJTJCVmViWWRoSjN6ZXI4dk8"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">Les panneaux solaires offrent un double
+avantage &agrave; la houblonni&egrave;re allemande</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x5211_6" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="Les panneaux solaires offrent un double
+avantage &agrave; la houblonni&egrave;re allemande" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://www.energyportal.eu/wp-content/uploads/2023/07/mfrack_realistic_photo_of_solar_energy_market_c4a50f03-0393-422d-9cdf-eec228703ac8.jpeg"
+o:title="Les panneaux solaires offrent un double avantage &agrave; la
+houblonni&egrave;re allemande" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://www.energyportal.eu/wp-content/uploads/2023/07/mfrack_realistic_photo_of_solar_energy_market_c4a50f03-0393-422d-9cdf-eec228703ac8.jpeg"
+align="left" hspace="12" alt="Les panneaux solaires offrent un double
+avantage &agrave; la houblonni&egrave;re allemande"
+v:shapes="Image_x5211_6">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-29 - energyportal.eu
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Une ferme de la petite ville
+houblonni&egrave;re d'Au in der Hallertau, en Allemagne, a
+trouv&eacute; le moyen d'exploiter la puissance du soleil pour
+cultiver du houblon et produire de
+l'&eacute;lectricit&eacute;.</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/31/JE_dkQbCHQXsEFXlES4UNQ/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEgxMERTRUQ1WU1xSWJoQmpiMXZxc3YxVGNHMlNQS3RabG5YMTg2VkhqckZobWhSTDJIRmhmMTk3WFExMnI5RGlBWHdZeldkTHM3VGZ5aFF6bSUyRm1YVGJsYjdUR0FWOVQlMkYzQ202RCUyRjY4NXZBJTJCU2NKSWsyb2NpTmw1bVJSYmR0Rm1iMHFKWGRIaXVuck5vUkRVeDMlMkJWczBhTjRhdG1XWVRNN3ZISk1NR2xYVFFtdzExUGJiUG5lJTJGMlFFJTJGSlolMkZxTlAxN21BOUxtMDVoWDdQOU1UWTUyRCUyQnJVVTdhYktPNWJHWkJYYnBjZVB4MVg0clNGN2JOWTNmTnRBdVJvR0lMaUNwSHpsJTJGeUc5MngzN3ZRb1Buazc5ZWlsQlVQWUtCJTJCVmViWWRoSjN6ZXI4dk8"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          
+            
+          <!-- Content -->
+          <div class="rubrique_content rubrique_7527" id="rubrique_6"
+style=" clear:both;">
+                <div data-mode="v2" class="rubrique_title"
+id="rubrique7527" style=" clear:both;">
+                  <a name="RUB_ID_7527"></a>
+                  <a name="RUB_6"></a>
+                  <span>Les actualit√©s d'EnerVivo</span>
+                </div>
+<span id="item_7527_0" style="" ><div class="item_content">
+	<div class="item_title"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/32/C7D9h2s421yM8y8Dl0IKKA/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEglMkZESmJlMExJNE83YmhCamIxdnFzdjFUY0cyU1BLdFpsblgxODZWSGpyRmhtaFJMMkhGaGYxJTJGb25FVDhsaXAzJTJGaUxtRTFMJTJCMFEwTVRlSzNJYkdZQ1lteENHSFB2OHQlMkJhSEROakZZdHlJbzZERm1EcVc2cHBGNHlqZTJVd3lpVyUyRjVhRzZmQVFud2Z4MUhIMVY2JTJCTlltT3lFNGZDTjRrZkZWbkxOZGVZYTBOS2ZQd29aSmVxb3ZNekU5RiUyQnNHWm96USUzRCUzRA"
+target="_blank" style="text-decoration: none; color: #1c7861;
+font-weight: bolder;">EnerVivo recrute !</a></div>
+	<table>
+		<tr>
+			<td style="vertical-align:top" valign="top">
+				<!--[if gte vml 1]>
+                <v:shapetype id="_x0000_t75" coordsize="21600,21600"
+o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+filled="f" stroked="f">
+                  <v:stroke joinstyle="miter" />
+                  <v:formulas>
+                    <v:f eqn="if lineDrawn pixelLineWidth 0" />
+                    <v:f eqn="sum @0 1 0" />
+                    <v:f eqn="sum 0 0 @1" />
+                    <v:f eqn="prod @2 1 2" />
+                    <v:f eqn="prod @3 21600 pixelWidth" />
+                    <v:f eqn="prod @3 21600 pixelHeight" />
+                    <v:f eqn="sum @0 0 1" />
+                    <v:f eqn="prod @6 1 2" />
+                    <v:f eqn="prod @7 21600 pixelWidth" />
+                    <v:f eqn="sum @8 21600 0" />
+                    <v:f eqn="prod @7 21600 pixelHeight" />
+                    <v:f eqn="sum @10 21600 0" />
+                  </v:formulas>
+                  <v:path o:extrusionok="f" gradientshapeok="t"
+o:connecttype="rect" />
+                  <o:lock v:ext="edit" aspectratio="t" />
+                </v:shapetype>
+                <v:shape id="Image_x1842_1" o:spid="_x0000_s1026"
+type="#_x0000_t75" alt="EnerVivo recrute !" 
+                   
+style="position:absolute;margin-left:1.5pt;margin-top:13.8pt;width:93pt;height:56pt;z-index:1;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text">
+                <v:imagedata
+src="https://img.freepik.com/vecteurs-premium/processus-recrutement-concept-icone-vector-illustration-design_24877-19946.jpg"
+o:title="EnerVivo recrute !" />
+                <w:wrap type="square"/>
+                </v:shape>
+                <![endif]--><![if !vml]>
+                <img class="img_container" width="125" height="75"
+src="https://img.freepik.com/vecteurs-premium/processus-recrutement-concept-icone-vector-illustration-design_24877-19946.jpg"
+align="left" hspace="12" alt="EnerVivo recrute !"
+v:shapes="Image_x1842_1">
+                <![endif]>
+              
+				<div class="item_resume">
+					<div style="color: #00b682;">
+					2023-07-05 - enervivo.fr
+					</div>
+					<div>
+
+					<span style="font-size: 10pt;">Rejoignez une fili&egrave;re en
+plein essor en int&eacute;grant une &eacute;quipe Bordelaise. Postes
+dispnibles en bureau d'&eacute;tudes et R&amp;D.&nbsp;</span>
+					</div>
+
+					</div>
+				<div class="item_link">
+					&nbsp;<a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/33/X9rOvLn-f5uE7q4aBc2J_Q/aHR0cHM6Ly93d3cubXl0d2lwLmNvbS9wdWJsaWNfbmV3L3Jkci5waHA_cnFzdD1MZktVTU0wTVlZb2FuNDFqM1IxUEglMkZESmJlMExJNE83YmhCamIxdnFzdjFUY0cyU1BLdFpsblgxODZWSGpyRmhtaFJMMkhGaGYxJTJGb25FVDhsaXAzJTJGaUxtRTFMJTJCMFEwTVRlSzNJYkdZQ1lteENHSFB2OHQlMkJhSEROakZZdHlJbzZERm1EcVc2cHBGNHlqZTJVd3lpVyUyRjVhRzZmQVFud2Z4MUhIMVY2JTJCTlltT3lFNGZDTjRrZkZWbkxOZGVZYTBOS2ZQd29aSmVxb3ZNekU5RiUyQnNHWm96USUzRCUzRA"
+target="_blank">Lire la suite</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</span><div style="clear: both;"></div>
+          </div>
+          <!-- Fin Content -->
+          
+
+                                                </td>
+                                                <td class="w30"
+class="w30" width="30"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w640" width="851"
+height="15" ></td>
+                            </tr>
+
+                            <!-- FOOTER -->
+                            <tr >
+                                <td class="w640" width="851"
+style="background: #fff;">
+                                    <table class="w640" width="851"
+cellpadding="0" cellspacing="0" border="0" >
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5"
+height="10"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w30"
+width="30"></td>
+                                                <td class="w580"
+width="771" valign="top">
+													<div class="footer">
+														<p style="text-align: center; margin: auto auto;"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/34/J3xozU7N8zyEDojJLCRiuw/aHR0cHM6Ly9lbmVydml2by5mci8" target="_blank" rel="noopener"><img
+src="https://enervivo.fr/wp-content/uploads/thegem-logos/logo_690052a51fad1947c173ef17ee78ae33_2x.png"
+alt="" width="223" height="69" /></a></p>
+														<p style="text-align: center; margin: auto auto;"><a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/35/FfEFmYHeK48_sCyMWO2fmw/aHR0cHM6Ly9lbmVydml2by5mci9jb250YWN0Lw" target="_blank"
+rel="noopener">Nous contacter</a> <a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/36/-Y29qwwYpgBh6GVByGctFg/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvZW5lcnZpdm8v" target="_blank"
+rel="noopener">LinkedIn</a>&nbsp;- <a
+href="https://0rlgg.mjt.lu/lnk/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/37/-umOJIkqgxcFMEK2il3H3g/aHR0cHM6Ly9lbmVydml2by5mci9nZXJlci12b3RlLWFib25uZW1lbnQv">G&eacute;rer votre
+abonnement</a></p></div>
+                                                </td>
+                                                <td class="w30"
+width="30"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5"
+height="10"></td>
+                                            </tr>
+											<tr>
+                                                <td class="w30"
+width="30"></td>
+                                                <td class="w580"
+width="771" valign="top">
+
+                                                </td>
+                                                <td class="w30"
+width="30"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<br/><img src="https://0rlgg.mjt.lu/oo/AVoAACAzKPAAAAAAAAAAAR60IvoAAYCtQTAAAAAAACMYewBk0Ls2iIwLevW7Rxum2BuhJ2pc2AAg630/1c6deee8/e.gif" height="1" width="1" alt="" border="0" style="height:1px;width:1px;border:0;"/>
+</body>
+<img alt="" src="http://www.mytwip.com/public_new/modules/newsletter/ajax_files/process_stats_loadmail.php?rqvpic=ccVM44SSMwaVrfIdKf0iy37jG0dZDwwLZmD97HWhXLCxCGHPv8t%2BaHDNjFYtyIo6DFmDqW6ppF5QDrRp0lYzjw%3D%3D" width="1" height="1" /></html>
+
+
+
+--b1_ed7bd55ffe40ddf8af038fae189b42af--
+

@@ -1,0 +1,357 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6124:587:b0:382:28f0:b1e6 with SMTP id l7csp418801vlo;
+        Sat, 23 Sep 2023 19:11:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHkAwlPDVkwltRh8kFcOt7gVcSu8Z3DzlwphuMB6aCUuD6l/0VAl3KH1VVHvtZdp0iKFEn8
+X-Received: by 2002:a05:6512:3b27:b0:503:9a4:26f7 with SMTP id f39-20020a0565123b2700b0050309a426f7mr3132867lfv.40.1695521498988;
+        Sat, 23 Sep 2023 19:11:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695521498; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UgkgI9y+wU2FhaSd7gD6aplLt1rDeOuDlTAZJKdpUcZgsRWRxLMj3a3j+TkBOkuuvo
+         asm14GIcOXvwHZhlKL+bqtFchfmk/QQMziZvqj9ouyGBKlsU+MipcLNSH25NdRl0cyeO
+         qdTwxBwgB7Zpu2kVUhDC8QUceCdCMnTHJ5Ep3bjucabPD4OXNZbWc/MvkPzCWPYzqA89
+         Bm8bXyCywm3+mMiGgwqwF3gqmVNDO9kbIEd9fTClUlGC0tK2ZcOrvUa3F20YcX4XNyWD
+         HmPpQtPYqDq74JMfZkqekwya8/CJCANb0bbwcwDt07pK5rI10Jd7tTwSfmnfXLu3Ku6w
+         sGVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=JiGHGDzTFLAbfkIvieAsumeZfE7JnqDBw99GSjWsFHI=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=1GiiwHOUfAr9PLJfpp0KdRRPdrrQalMXCDkaqo6OhMqoD+KHiczpPo9r/KBEsHXCLV
+         uFmx/t5RTyxqP8UnJyI0fGt9cSB/j5CMrPHcSndCjLIUYZnY+QpvJsx/2w/pbTOyRBi5
+         tU4F/8XXo36BFZl1oAtm9byKAwGPyb50o0LGJebTwJThlCOV1aqaCWYzQ7i8ZlE7AJaj
+         2fB3xsrPOP/PybPPA2JDGENgGLuVG0URAXZvvSU0cuDaqi2c8k+9CoHGMY8jdd2cwYAq
+         GteFNH2UcBToHSl+IHOWq99CkM6HNIT2h2RoOZ/kNlewiaeWP/MDiG0qR93ZSMmFHU0H
+         hr8w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=XxTPk8eu;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=L7n1sGaW;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o48.ck.n.convertkit.com (o48.ck.n.convertkit.com. [149.72.193.89])
+        by mx.google.com with ESMTPS id d7-20020aa7d687000000b00530a558a5aasi5998517edr.466.2023.09.23.19.11.37
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 23 Sep 2023 19:11:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) client-ip=149.72.193.89;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=XxTPk8eu;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=L7n1sGaW;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.193.89 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=JiGHGDzTFLAbfkIvieAsumeZfE7JnqDBw99GSjWsFHI=;
+	b=XxTPk8euOkdv6oVeCoc/FApOyDt+rGYNBnGa+pFsGvM8/eby2vmyYcq3AVKvxixqVLgs
+	xbS3CYecPBdGdpP9jKkRV27yjlYGvJ+C1cScMvu72v2xCEr7QvjlPHorKynrq3GgBPvPEJ
+	uIjxVvpZAGh3M0kzHxv6DjnRHhjxkoo/Y=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=JiGHGDzTFLAbfkIvieAsumeZfE7JnqDBw99GSjWsFHI=;
+	b=L7n1sGaWxtR+htdbCB3ezfk7FkyDMMeR5W9d1LT62UQJHRJwsfCaKwi+yQhBqMrgnelD
+	EVHoSG74AaGfwN5ihPyD5nqyCj0ZwOy23l4B38AjWOA0xcsGj33i+qATI+OfOyFNydHQR7
+	6AaW1cUSzfPhMimNOOylDlpfevZWJfbB8=
+Received: by filterdrecv-54d8cb5576-phc62 with SMTP id filterdrecv-54d8cb5576-phc62-1-650F9AD6-1A
+        2023-09-24 02:11:34.865182844 +0000 UTC m=+11759703.034324451
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-14 (SG) with HTTP
+	id pdXUUhGqQTG7Kx_gdeulVQ
+	Sun, 24 Sep 2023 02:11:34.583 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=acfb70ba014b857d8d32fca8fcd44fac54b56f6399d5ed37111f3841dd68
+Date: Sun, 24 Sep 2023 02:11:35 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <r8u7do9zoqsoh2x4mlvu2hxkp3n66@convertkit-mail2.com>
+Subject: =?UTF-8?B?4oCcSXMgdGhlcmUgYSBzdHVkZW50IGRpc2NvdW50P+KAnQ==?=
+Feedback-ID: 11811316:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/r8u7do9zoqsoh2x4mlvu2hxkp3n66>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZffSaq+GQyieZJqi3T?=
+ =?us-ascii?Q?acrIRoblPKY=2FGwYWImQcwZ1MbRfKNvHnnsFneD6?=
+ =?us-ascii?Q?ev1f802zAN4d6DAMjabXXXz0CIYQi2xHHqBVDm7?=
+ =?us-ascii?Q?71FfllL=2FtMFtPsDXhf8v+JUld7L4P0Qs29Yzqw6?=
+ =?us-ascii?Q?aMCWW53tOZxhtXk=2FSAjrRImzfNQ9SeV1QYb5I=2F?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADdfiGxjj=2FA9yOmkyntPM4lvlENupWo4VtDqHD1?=
+ =?us-ascii?Q?JeE3MjVMkAUVfOUAevkhfFIlf9gkSTdfNrNmaWC?=
+ =?us-ascii?Q?HCByDjf4ZtlLE4Qgxjda4u=2FadSfb03VX=2FZL16AD?=
+ =?us-ascii?Q?IG3Mihg7DMCrigQ087YzSzUyDB83RlW2BFquGsg?=
+ =?us-ascii?Q?mSbvNzQvw0OTXifVXr5dm4UWJPQIZIRL9HXo1r9?=
+ =?us-ascii?Q?kaa1ksTRtO2IcqiNblIwDPJzfsMzKPvWvLcDh22?=
+ =?us-ascii?Q?XySH1Z5r+bovhM7DM=2FgjneTkQ8KIPxpess0oOI0?=
+ =?us-ascii?Q?R9JYnPBsq1jjYf7YWXKWe1eO+np33pDQTr5Wmgt?=
+ =?us-ascii?Q?Ai0nXCnZi6?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--acfb70ba014b857d8d32fca8fcd44fac54b56f6399d5ed37111f3841dd68
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+I got a few questions that sum up to: =E2=80=9CIs there a student
+discount?=E2=80=9D
+
+=E2=80=8B
+
+Honestly?
+
+I didn=E2=80=99t think the student discount was necessary.
+
+The course should be within reach (at least from my research) if
+you work any job part time or during school breaks at minimum
+wage.
+=E2=80=8B
+
+I worked since high school and all throughout college.
+
+I can=E2=80=99t imagine not working then.
+
+And I value taking initiative and hard work more than anything.
+
+It=E2=80=99s one of the key criteria for JSM employees.
+
+=E2=80=8B
+
+But I guess cultures are different around the world.
+
+=E2=80=8B
+
+So, since I didn=E2=80=99t say all this beforehand, there will be a
+student discount.
+
+=E2=80=8B
+
+But given how it goes against what I value so much?
+
+I=E2=80=99m not promising there will be a student discount after the
+launch. There might be, and there might not be.
+
+Look.
+
+You need to commit to succeed at anything. It's why free is
+always inferior to paid. But more on that in another email.
+
+=E2=80=8B
+
+If you=E2=80=99re a student and need a student discount there are
+instructions at the bottom of the FAQs (
+https://click.convertkit-mail2.com/r8u7do9zoqsoh2x4mlvu2hxkp3n66/kkhmh2ul3q=
+2vr3ik/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby91bHRpbWF0ZS1uZXh0MTMtY291cnNl
+).
+
+=E2=9C=8C=EF=B8=8F
+
+=E2=80=8B
+
+P.S. Unfortunately the payment options we have aren=E2=80=99t the best.
+We=E2=80=99re using Paddle and have Google Pay and PayPal, but it doesn=E2=
+=80=99t
+work in many countries (like India). From what I hear debit cards
+also don=E2=80=99t work (credit cards do), but give it a shot. We also
+don=E2=80=99t have UPI =F0=9F=98=95 I reached out to Paddle but I don=E2=80=
+=99t have high
+hopes. If you have these issues, try asking someone you know to
+use their card. Thanks for the patience
+
+P.P.S. I'm going to sleep now so any support email will have to
+wait :)
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/r8u7do9zoqsoh2x4mlvu2hxkp3n66
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/r8u7do9zoqsoh2x4mlvu2hxkp3n66
+)
+--acfb70ba014b857d8d32fca8fcd44fac54b56f6399d5ed37111f3841dd68
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:left" class=3D"">I got a few questions that sum up to: =E2=
+=80=9CIs there a student discount?=E2=80=9D</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.4;text-align:left" class=3D"">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Honestly?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I didn=E2=80=99t think the student discount was necessary.<=
+/p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The course should be within reach (at least from my researc=
+h) <strong>if you work any job part time or during school breaks at minimum=
+ wage</strong>.<br>=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I worked since high school and all throughout college. </p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I can=E2=80=99t imagine not working then.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And I value taking initiative and hard work more than anyth=
+ing.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It=E2=80=99s one of the key criteria for JSM employees.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But I guess cultures are different around the world.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So, since I didn=E2=80=99t say all this beforehand, there w=
+ill be a student discount.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But given how it goes against what I value so much?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I=E2=80=99m not promising there will be a student discount =
+after the launch. There might be, and there might not be.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Look.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You need to commit to succeed at anything. It's why free is=
+ always inferior to paid. But more on that in another email.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you=E2=80=99re a student and need a student discount the=
+re are instructions <a href=3D"https://click.convertkit-mail2.com/r8u7do9zo=
+qsoh2x4mlvu2hxkp3n66/kkhmh2ul3q2vr3ik/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby91b=
+HRpbWF0ZS1uZXh0MTMtY291cnNl" target=3D"_blank" rel=3D"noopener noreferrer" =
+style=3D"color:#0f82f0" url-id=3D"1574341973">at the bottom of the FAQs</a>=
+.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=9C=8C=EF=B8=8F</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">P.S. Unfortunately the payment options we have aren=E2=80=
+=99t the best. We=E2=80=99re using Paddle and have Google Pay and PayPal, b=
+ut it doesn=E2=80=99t work in many countries (like India). From what I hear=
+ debit cards also don=E2=80=99t work (credit cards do), but give it a shot.=
+ We also don=E2=80=99t have UPI =F0=9F=98=95 I reached out to Paddle but I =
+don=E2=80=99t have high hopes. If you have these issues, try asking someone=
+ you know to use their card. Thanks for the patience</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">P.P.S. I'm going to sleep now so any support email will hav=
+e to wait :)</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/r8u7do9zoqsoh2x4mlvu2hxkp3n66" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/r8u7do9zoqsoh2x4mlvu2hxkp3n66" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/r8u7do9zoqsoh2x4mlvu2hxkp3n66=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--acfb70ba014b857d8d32fca8fcd44fac54b56f6399d5ed37111f3841dd68--

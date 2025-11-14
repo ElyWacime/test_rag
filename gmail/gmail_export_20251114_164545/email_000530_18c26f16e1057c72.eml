@@ -1,0 +1,553 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:19c:b0:523:83ca:23d5 with SMTP id 28csp1097603pxf;
+        Fri, 1 Dec 2023 11:53:26 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFFPOfRX2kdQKXDIydyIbb80suu5lUcGxFYDL72caMhMsruS7A/Il0OywQdLL0zKCfDpp3T
+X-Received: by 2002:a05:6808:16a7:b0:3b8:b063:505d with SMTP id bb39-20020a05680816a700b003b8b063505dmr44684oib.94.1701460406276;
+        Fri, 01 Dec 2023 11:53:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701460406; cv=none;
+        d=google.com; s=arc-20160816;
+        b=culGbzYpgzWBiUjHCVq9QishKGi6feg5Sy+j0XUmeX0BxrCPx/jwD6//t02gf0i1VW
+         NC7hHQMAVh4qrYtEkD7sCmyvyPlXI4o7Fbg9+1s4D08pHafoo1aN/0dNp2C0zAqwgI9B
+         WKT2Dg7QtdbGglVTpFJ/EEq0wBWCgvidkBc4KBwhN2l21BBiGZtvTQb/WCoD0M8wQZ4R
+         dGYJ6MfVu+c7apzS5VuqtbB3p2NueWsAWZC7DMXy/x5puGovKMFnb0+vbRnjLjOHRpxc
+         qEXiWZsulHPYgWAn+mzgvzOKcSgPFjyD6HELJ1IXp1Fhjg8sva0mNTH0QlHsAHvE53y4
+         YFbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe-post
+         :list-unsubscribe:subject:to:from:dkim-signature:dkim-signature;
+        bh=O+n8WemnQSFPOUh1RBBWbJLFhzsDysWffYZ9UvsDND8=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=z+6aPwEvPTQ5UhW4KkCtyJt+BMSFIrog6nos2tn+M8qU9Rhglm5dCht2iuLyxE+cNm
+         UC6Vamgi5JJqcsRrgBcvzxyEcRlNIj8BhfXn4e2xyrs7r1EhDDGpSevUnkx9OK3x9tNg
+         AuqPgVpGCxnZuX4xn5URa/+1qJdLWOzxcfZ6x+4IS46uoDSbkLO1HofQGBKSkMX4Xq/+
+         H1SXJnTc8GQZSOkiXwYlAQDCsAOI8OV1HhkHrd7knB6kIVxY/TVF6J8I04oVPHyGoQOU
+         obvWZdPT4ehdC7R/VZDQzZsD+NYEgeWTG4jAPwNsOTj5Ei0ZmBkdluift0ouYQFgPq66
+         M9sQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=MH3FPSUm;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=Sdmtqfd3;
+       spf=pass (google.com: domain of 0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id j26-20020a056122091a00b004b2897c7b16si1068497vka.227.2023.12.01.11.53.26
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 01 Dec 2023 11:53:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of 0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=MH3FPSUm;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=Sdmtqfd3;
+       spf=pass (google.com: domain of 0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1701460405;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type;
+	bh=O+n8WemnQSFPOUh1RBBWbJLFhzsDysWffYZ9UvsDND8=;
+	b=MH3FPSUmhoYvYRRpfYhFtDS+N6jR4US8b8tRzl91MPf4K0OZM6t06uM1DxAD4tYG
+	OjUtGhQil8P5kXSQp9IiV/+Shv0TAEXWsM/lnAEWhfWgvQ89BvQOE8ns1BbsFtzT4Fh
+	mbIUc20fq2lXRPHRfXkleDNyb3/HxpDjYdabWIx4=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1701460405;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=O+n8WemnQSFPOUh1RBBWbJLFhzsDysWffYZ9UvsDND8=;
+	b=Sdmtqfd36W1v4VCGmLyMjId7k2DyAbH1bv+gYR8Du+eT0RxM/zCIDBVyfXqFYXUd
+	LeE3jlB0Y9VCNIlFcn4q8aGHX3TeFzpjWq6csdG8rBL2xcc2LpXVcC6pdgUNLCEK0th
+	ntY3bEreXRNxVx5XGmHByjs7c7V7bHCiehNP5Gi8=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: File Stores: Cloud File Storage for your Workflows
+X-Entity-Ref-Id: 8a7c74a2-f346-4945-a1d0-ae4d72a8a376
+X-EmailOctopus-Parent-Id: 28db0f82-9067-11ee-8fbd-190c770d26aa
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 358ac956-f01d-11ed-bcd1-db2977b1fcef
+X-EmailOctopus-List-Contact-Id: 860f934a-f025-11ed-b8ff-059d97be6197
+X-EmailOctopus-Started-Preparing-At: 2023-12-01T18:30:59+00:00
+X-EmailOctopus-Sent-At: 2023-12-01T19:53:25+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://alatus.eocampaign.com/unsubscribe?ep=1&l=358ac956-f01d-11ed-bcd1-db2977b1fcef&lc=860f934a-f025-11ed-b8ff-059d97be6197&p=28db0f82-9067-11ee-8fbd-190c770d26aa&pt=campaign&pv=4&spa=1701455459&t=1701460405&s=d735876c17fc53d4619beff9bd18d8220d9a748a4e3cf9c39de8b22676b8e877>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-92ac08625b86fcb74e8dc6e633188d55
+MIME-Version: 1.0
+Date: Fri, 1 Dec 2023 19:53:25 +0000
+Message-ID: <0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=coCA62b9
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2023.12.01-54.240.123.37
+
+--coCA62b9
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Use File Stores on Pipedream to store arbitrary files that are
+accessible=
+ across your entire Pipedream project.=C2=A0
+
+ [Pipedream] [1]=20
+
+[A=
+ robot in an event history museum] [2]
+
+We are excited to announce you =
+can now use FILE STORES to store files
+that are accessible between workfl=
+ow executions across your entire
+Pipedream [1] project.=20
+
+With file s=
+tores, you can create powerful workflows that utilize a
+shared set of fil=
+es. Such as automated customer email notifications
+relying on shared HTML=
+ templates, or generating customer invoices with
+a standard PDF format. =
+
+
+New capabilities include:=20
+- CLOUD STORAGE to upload, download and =
+retrieve files=20
+- Store ANY TYPE OF FILE without size limits=20
+- Accessi=
+ble to ALL WORKFLOWS=C2=A0within your project=20
+- See=C2=A0documentation [=
+3] [4]=20
+
+=09=09Read the Blog Post [2]
+
+-------------------------
+=
+
+WHAT ARE FILE STORES?
+
+Files Stores are a filesystem that are scoped=
+ to a Project, allowing
+you to upload, download and retrieve files.
+
+=
+You can interact with these files through the Pipedream Dashboard or
+prog=
+rammatically through your Project's workflows.=20
+[A robot in an event hist=
+ory museum] [3] In addition, unlike files
+stored within a workflow's /tmp=
+ directory which are subject to
+deletion between executions, files within=
+ a File Store are long term
+storage and are not deleted.=20
+
+=C2=A0Your=
+ files stored within the File Store are:=20
+- Stored within PERMANENT, LONG=
+ LIVED CLOUD STORAGE=20
+- Accessible to ALL WORKFLOWS WITHIN YOUR PIPEDREAM=
+ PROJECT=20
+- Accessible OUTSIDE PIPEDREAM WITH SHORT LIVED URLS=20
+- MANAG=
+ED PROGRAMMATICALLY or within your project Dashboard=20
+
+----------------=
+---------
+
+LIVE DEMO ON 12/5 AT 11AM PST
+
+We'll be giving a live de=
+monstration of how to leverage File Stores
+with A.I., APIs and more on Tu=
+esday, December 5.
+
+=09=09Register for Live Demo [5]
+
+-------------=
+------------
+
+Please let us know [6] if you see any bugs, want to sugge=
+st a feature,
+or have questions about our pricing plans.
+
+Warm regard=
+s,=20
+The Pipedream Team
+
+-------------------------
+ [1]44 Montgomery=
+ Street
+San Francisco
+CALIFORNIA
+94104
+United States of America=20
+=
+
+Unsubscribe here [7]=20
+
+=C2=A0=20
+
+
+
+Links:
+------
+[1] http=
+s://pipedream.com
+[2] https://pipedream.com/blog/filestores/
+[3] https:=
+//pipedream.com/docs/projects/file-stores/
+[4] https://pipedream.com/docs=
+/user-settings/#two-factor-authentication
+[5] https://calendly.com/pierce=
+-15/introduction-to-pipedream
+[6] https://pipedream.com/support
+[7] htt=
+ps://alatus.eocampaign.com/unsubscribe?ep=3D1&amp;l=3D358ac956-f01d-11ed-bc=
+d1-db2977b1fcef&amp;lc=3D860f934a-f025-11ed-b8ff-059d97be6197&amp;p=3D28db0=
+f82-9067-11ee-8fbd-190c770d26aa&amp;pt=3Dcampaign&amp;pv=3D4&amp;spa=3D1701=
+455459&amp;t=3D1701460405&amp;s=3Dd735876c17fc53d4619beff9bd18d8220d9a748a4=
+e3cf9c39de8b22676b8e877
+--coCA62b9
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><title></title></head><body class=3D=
+"">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">Use File Stores on Pipedream to store arbitrary files that are accessibl=
+e across your entire Pipedream project.&nbsp;</div>
+
+<p>
+<br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica =
+Neue&quot;,sans-serif;" width=3D"100%"><tbody><tr><td>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"max-width:560px;margin:40px auto;background-color:#ffffff;padding:40=
+px 30px 40px;border-radius:15px;" width=3D"100%"><tbody><tr style=3D"width:=
+100%;"><td>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/1/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000/VBh1JQ=
+BJDxhv_yjHN7_vDKIHM3Y=3D350" rel=3D"noopener noreferrer" target=3D"_blank">=
+<img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image/=
+upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=3D=
+"display: block; outline: none; border: none; text-decoration: none; width:=
+ 2.2rem; height: 2.2rem;"></a>
+<br>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fblog%2Ffilestores%2F/1/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c=
+0591a57a5-000000/MezSPqeZyNYPm53DGbKOuabBT64=3D350" rel=3D"noopener norefer=
+rer" target=3D"_blank"><img alt=3D"A robot in an event history museum" src=
+=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1=
+701448417748-1701448414609.png" style=3D"display: block; outline: none; bor=
+der: none; text-decoration: none; width: 100%; height: auto; margin: 0px 0p=
+x 15px;"></a>
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">We are excited to announce you can now use <strong>File Stores</stron=
+g> to store files that are accessible between workflow executions across yo=
+ur entire
+<meta charset=3D"utf-8"><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me=
+/L0/https:%2F%2Fpipedream.com/2/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78=
+c0591a57a5-000000/MIzoaHuW2-aBRhYxB_Z5-xL9j38=3D350" rel=3D"noopener norefe=
+rrer" style=3D"user-select: auto; font-family: -apple-system, &quot;system-=
+ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &qu=
+ot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; f=
+ont-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: n=
+ormal; orphans: 2; text-align: start; text-indent: 0px; text-transform: non=
+e; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-spac=
+e: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-=
+decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_blan=
+k">Pipedream</a> project.
+<br>
+<br>With file stores, you can create powerful workflows that utilize a shar=
+ed set of files. Such as automated customer email notifications relying on =
+shared HTML templates, or generating customer invoices with a standard PDF =
+format.
+<br>
+<br>New capabilities include:
+<br> - <strong>Cloud storage</strong> to upload, download and retrieve file=
+s
+<br> - Store <strong>any type of file</strong> without size limits
+<br> - Accessible to <strong>all workflows&nbsp;</strong>within your projec=
+t
+<br> -
+<span style=3D"color: rgb(30, 41, 59); font-family: -apple-system, &quot;sy=
+stem-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell=
+, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: norm=
+al; font-variant-ligatures: normal; font-variant-caps: normal; font-weight:=
+ 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0=
+px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke=
+-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); tex=
+t-decoration-thickness: initial; text-decoration-style: initial; text-decor=
+ation-color: initial; display: inline !important; float: none;">See&nbsp;</=
+span><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpip=
+edream.com%2Fdocs%2Fprojects%2Ffile-stores%2F/1/0100018c26f16dca-412d5e41-d=
+dbd-419c-8ae8-78c0591a57a5-000000/QEVMtBm3-wIBe91mw_E_6ac_JJU=3D350" rel=3D=
+"noopener noreferrer" style=3D"user-select: auto; font-family: -apple-syste=
+m, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu=
+, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-=
+style: normal; font-variant-ligatures: normal; font-variant-caps: normal; l=
+etter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; tex=
+t-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width:=
+ 0px; white-space: normal; background-color: rgb(255, 255, 255); color: rgb=
+(0, 0, 0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;"=
+ target=3D"_blank">documentation</a>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fuser-settings%2F%23two-factor-authentication/1/0100018c26f16=
+dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000/IZkAaQuR4zPLenqhgFd2vrqDFsE=
+=3D350" rel=3D"noopener noreferrer" style=3D"user-select: auto; font-family=
+: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxyge=
+n-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-siz=
+e: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-c=
+aps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-in=
+dent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text=
+-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 25=
+5); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 139); font=
+-weight: 600;" target=3D"_blank"></a>
+<br>
+
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td><a href=3D"http=
+s://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fblog%2F=
+filestores%2F/2/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-00000=
+0/ZusVlcWHxbk_W7qaE4QWk-5So6E=3D350" rel=3D"noopener noreferrer" style=3D"d=
+isplay:inline-block;border-radius:0.75rem;background-color:rgb(52, 117, 210=
+);text-align:center;font-size:1rem;line-height:100%;font-weight:600;color:r=
+gb(255, 255, 255);p-x:23px;p-y:11px;text-decoration:none;max-width:100%;pad=
+ding:11px 23px;" target=3D"_blank"><span style=3D"display:inline-block;bord=
+er-radius:0.75rem;background-color:rgb(52, 117, 210);text-align:center;font=
+-size:1rem;line-height:120%;font-weight:600;color:rgb(255, 255, 255);p-x:23=
+px;p-y:11px;max-width:100%;text-decoration:none;text-transform:none;mso-pad=
+ding-alt:0px;mso-text-raise:8.25px;">Read the Blog Post</span></a></td></tr=
+></tbody></table>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">What are=
+ File Stores?</h1>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Files Stores are a filesystem that are scoped to a Project, allowing =
+you to upload, download and retrieve files. </p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Y<span style=3D"color: rgb(30, 41, 59); font-family: -apple-system, &=
+quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Ca=
+ntarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-styl=
+e: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-=
+weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-in=
+dent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text=
+-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 25=
+5); text-decoration-thickness: initial; text-decoration-style: initial; tex=
+t-decoration-color: initial; display: inline !important; float: none;">ou c=
+an interact with these files through the Pipedream Dashboard or programmati=
+cally through your Project's workflows.</span>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com%2Fdocs%2Fprojects%2Ffile-stores%2F/2/0100018c26f16dca-412d5e41-ddbd-4=
+19c-8ae8-78c0591a57a5-000000/R6vQav3KPc7aohU8LGH18t13cpg=3D350" rel=3D"noop=
+ener noreferrer" target=3D"_blank"><img alt=3D"A robot in an event history =
+museum" src=3D"https://gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354=
+f26462b%2F1701449094623-1701449093762.png" style=3D"display: block; outline=
+: none; border: none; text-decoration: none; width: 100%; height: auto; mar=
+gin: 0px 0px 15px;"></a>
+In addition, unlike files stored within a workflow's <code>/tmp</code> dire=
+ctory which are subject to deletion between executions, files within a File=
+ Store are long term storage and are not deleted.
+<br>
+<br>&nbsp;Your files stored within the File Store are:
+<br> - Stored within <strong>permanent, long lived cloud storage</strong>
+<br> - Accessible to <strong>all workflows within your Pipedream project</s=
+trong>
+<br> - Accessible <strong>outside Pipedream with short lived URLs</strong>
+<br> - <strong>Managed programmatically</strong> or within your project Das=
+hboard
+<br>
+
+</p>
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Live Dem=
+o on 12/5 at 11am PST</h1>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">We'll be giving a live demonstration of how to leverage File Stores w=
+ith A.I., APIs and more on Tuesday, December 5.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+
+
+<br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td><a href=3D"http=
+s://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fcalendly.com%2Fpierce-1=
+5%2Fintroduction-to-pipedream/1/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78=
+c0591a57a5-000000/xxkoGJVnkrhGrTzuGc2XMmTIdiY=3D350" rel=3D"noopener norefe=
+rrer" style=3D"display:inline-block;border-radius:0.75rem;background-color:=
+rgb(52, 117, 210);text-align:center;font-size:1rem;line-height:100%;font-we=
+ight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;text-decoration:none;ma=
+x-width:100%;padding:11px 23px;" target=3D"_blank"><span style=3D"display:i=
+nline-block;border-radius:0.75rem;background-color:rgb(52, 117, 210);text-a=
+lign:center;font-size:1rem;line-height:120%;font-weight:600;color:rgb(255, =
+255, 255);p-x:23px;p-y:11px;max-width:100%;text-decoration:none;text-transf=
+orm:none;mso-padding-alt:0px;mso-text-raise:8.25px;">Register for Live Demo=
+</span></a></td></tr></tbody></table>
+
+
+
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Please <a href=3D"https://sc1s=
+c285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedream.com%2Fsupport/1/01000=
+18c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000/_4bEaBKwrMIy6DR1UCd=
+WBeCCnvg=3D350" rel=3D"noopener noreferrer" style=3D"user-select: auto; fon=
+t-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Robot=
+o, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; =
+font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-v=
+ariant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start;=
+ text-indent: 0px; text-transform: none; white-space: normal; widows: 2; wo=
+rd-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255,=
+ 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 13=
+9); font-weight: 600;" target=3D"_blank">let us know</a> if you see any bug=
+s, want to suggest a feature, or have questions about our pricing plans.</p=
+>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>Warm regards,
+<br>The Pipedream Team
+</p>
+
+<p>
+<br>
+</p>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/3/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000/qrj4Gn=
+ANdq0a9WYBW63JUEsUFfE=3D350" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank"></a><a href=3D"https://sc1sc285.r.us-east-=
+1.awstrack.me/L0/https:%2F%2Fpipedream.com/4/0100018c26f16dca-412d5e41-ddbd=
+-419c-8ae8-78c0591a57a5-000000/wnReG_4LZiYqoaHcFrLFXfoxN8k=3D350" style=3D"=
+color:#b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">44 Mo=
+ntgomery Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United States of=
+ America</a>
+<br>
+<br><a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Falat=
+us.eocampaign.com%2Funsubscribe%3Fep=3D1%26l=3D358ac956-f01d-11ed-bcd1-db29=
+77b1fcef%26lc=3D860f934a-f025-11ed-b8ff-059d97be6197%26p=3D28db0f82-9067-11=
+ee-8fbd-190c770d26aa%26pt=3Dcampaign%26pv=3D4%26spa=3D1701455459%26t=3D1701=
+460405%26s=3Dd735876c17fc53d4619beff9bd18d8220d9a748a4e3cf9c39de8b22676b8e8=
+77/1/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000/uTjF0wwjQ=
+Gdyhy-khbbnBRhjS1M=3D350" style=3D"font-size:14px;color:#b4becc;">Unsubscri=
+be here</a>
+<br>
+<a href=3D"https://sc1sc285.r.us-east-1.awstrack.me/L0/https:%2F%2Fpipedrea=
+m.com/5/0100018c26f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000/5D5gyr=
+Da7s9S283qBmlWLlcPRQU=3D350" style=3D"color:#b4becc;text-decoration:none;fo=
+nt-size:14px;" target=3D"_blank">
+<br>
+<br>
+
+
+
+
+</a></td></tr></tbody></table>&nbsp;
+</td></tr></tbody></table>
+
+<p>
+
+
+
+
+
+
+
+<br>
+</p>
+
+
+<img alt=3D"" src=3D"https://sc1sc285.r.us-east-1.awstrack.me/I0/0100018c26=
+f16dca-412d5e41-ddbd-419c-8ae8-78c0591a57a5-000000/BhwMintRD2yQDWCUywM9LL0y=
+EKQ=3D350" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--coCA62b9--

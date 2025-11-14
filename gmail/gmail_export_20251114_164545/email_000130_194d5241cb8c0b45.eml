@@ -1,0 +1,646 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:2215:b0:302:2625:c28f with SMTP id y21csp564872ljq;
+        Wed, 5 Feb 2025 00:05:01 -0800 (PST)
+X-Received: by 2002:a05:6102:41a7:b0:4af:f6e5:2b46 with SMTP id ada2fe7eead31-4ba478aafffmr1568653137.9.1738742701280;
+        Wed, 05 Feb 2025 00:05:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738742701; cv=none;
+        d=google.com; s=arc-20240605;
+        b=FGaZsSIRhXnYgvFLUluCk0tWRG5gFsmrZRHp41ICjsyze85KTeaAx40b9/gGmSE2k9
+         RqfKe9vhzMiAxTenxn4hD7jI7Yhair2Tu69SCj+LhcYKWJfhDj0tdB7R9T31v4Sxfxqq
+         dxF8tT68hnnoZaP0erkZH7ebXFHZ7gTxx+/ULdZZZ+JDtCEht/JU/BTLqSHmV47gaJSg
+         j2cDPwQU9tDPlEkpASytKD4C/lmBUkkf9y+HT7wM5Ou7onG11/pAqGqj0fS2b2qZfmNK
+         AhwlK8oO2rJnBl2przX4rV4WZ/GT6eeYX0LX1x7wxUwjyfVeThqAHcGLJnp2LiYuJ4HN
+         Ngrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=hkRjDFg9t6oWEAKYxe27KpSKQWhUQvNI6RpzOntGU7s=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=GfetRWvYIcpAsDjJZFtQ8XMZ7jpN2iPyvgRVw52qG7UOXZeRKMAKS+aXqm0tbX+Gag
+         0AixPZpbK/BlFGK65ZHvTCbWzl1NSBvrXZC1uSXMl6AIBsx075XdjX/0zC8u8PFmn/dX
+         WZ6P0eVeBnvCpcnCU2+MG4pRrSuv/+QZJinCO/+YrjnT5acfTDujB/nv5dJwY9IjETDO
+         xiaTfpoCDRIRbxwXrULF8vBiVqXWOCydDMeod15X7Tk0XIzr8T166k+ksj3lU/IVWr2p
+         j/OKLaUdi5YmhvF6TvWHDdJLEl1bDVKx+N1xNmfzW+kn1O9jHsCxWe+Bs+F/D1+Uynrc
+         imwQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=uMYPsEaR;
+       spf=pass (google.com: domain of 3rbujzxukc7m5ehnwietmyhkf-ghkxierzhhzex.vhfxer.nungmntzftbe.vhf@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3rBujZxUKC7M5ehnWIeTmYhkf-ghkXierZhhZeX.VhfXer.nUngmntZfTbe.Vhf@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3rBujZxUKC7M5ehnWIeTmYhkf-ghkXierZhhZeX.VhfXer.nUngmntZfTbe.Vhf@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id ada2fe7eead31-4b9baa042edsor2303881137.2.2025.02.05.00.05.00
+        for <ely.ubuntu0@gmail.com>
+        (Google Transport Security);
+        Wed, 05 Feb 2025 00:05:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3rbujzxukc7m5ehnwietmyhkf-ghkxierzhhzex.vhfxer.nungmntzftbe.vhf@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=uMYPsEaR;
+       spf=pass (google.com: domain of 3rbujzxukc7m5ehnwietmyhkf-ghkxierzhhzex.vhfxer.nungmntzftbe.vhf@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3rBujZxUKC7M5ehnWIeTmYhkf-ghkXierZhhZeX.VhfXer.nUngmntZfTbe.Vhf@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1738742700; x=1739347500; dara=google.com;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hkRjDFg9t6oWEAKYxe27KpSKQWhUQvNI6RpzOntGU7s=;
+        b=uMYPsEaRAx5kBkf922WmIhO0Lv9HTbfCEo9qas589Xozu37bJFKKyaLWNLG6YCh+ve
+         TkccKhIZQshwXb3Tlsl4bL7NEzMTozTYRqdkoLF8nLhCmOeTeT6zixS2hyZB2O17amOG
+         FC+PCDzqqRHSnb7LFilI9k5muJM+saqvxZM8zHe0yhjitkFKpdvqv038Ow0cbrrHa4WX
+         7FRs3xw4/FTmwtQWEqkD/w5/ZKweNMMP+0LcJe6+tDYiY4h+PMXq5PPXaLLX939uMs45
+         5gH6JL0eCPO1hS2BElKqiv5Y3atP/x7sQOdOy+mHszGjVb7+LM40z7sAx/3GPwQSwr6f
+         Mzhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738742700; x=1739347500;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hkRjDFg9t6oWEAKYxe27KpSKQWhUQvNI6RpzOntGU7s=;
+        b=Byinb0agv+rqLmED2YS5Vpzk7DZRdoZ2cjuX+Flsc0K01I3ZVrcvjFdVTNNqwcXy5I
+         OlsiLle9ENfXMEUOh43t0zywFGy0pWJMPqhvu188wgrrJLvdJi/0vbMnHIh6lx3pPOTw
+         snK5vyUDbe1PK5XZuMA4Zhg8Mh3fHRuOJNIlOXtl03sO9qsRMI7/UrK1tdLkq1y0/7d0
+         qgea5v9k749b4lM8jzGDD3AKSxfHIMhg5uO142zzilMn6ztl+cL0hZ2u5BXTr30nM0U2
+         MyVSOxYjaGlECRELGgqXKQvp/kCYM2P0k7J4HPronKmQ/ixTPxGZDAiv2gxyjyLftswt
+         zqWw==
+X-Gm-Message-State: AOJu0YzUTaDOI9tTZNvNfmC8pkEz80JTx6jAW9Lg3vfkE6voRC8+LQ1k
+	tM0fyUWCROn1Z/BlXTyNhznWfW8MRqXnYinun2RMmJNt5HpiE/coWBjZ
+X-Google-Smtp-Source: AGHT+IFQVnkzZIZMOMuE/H8u8PlrYEiTdUoXhBBCRkbejRAIHcAWQyCjmh1ZQB9/EpkipD6FM3xNGXs=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6102:2d04:b0:4af:ba51:a25f with SMTP id
+ ada2fe7eead31-4ba47a91bfbmr1361738137.20.1738742700712; Wed, 05 Feb 2025
+ 00:05:00 -0800 (PST)
+Date: Wed, 05 Feb 2025 00:05:00 -0800
+Reply-To: Google Cloud <CloudPlatform-noreply@google.com>
+X-Google-Id: 4366558
+Feedback-ID: P-43-0:C20349063:M110923878-fr:gamma
+X-Notifications: e56fe90e55b20000
+X-Notifications-Bounce-Info: Ab52iKkbArQxvkI1nAZeOeH4tF2FHsJs_rDqYGJDnqxJG0wnPVFpCnPQo7iyvUXelv2-QnjsLx8rFbEZ8Rz80oCzi0wEA3MMptdJDDSUm_bzjmR4zA9eFpAPKLaevhHNlphSf4RCrM7dn8c937lgJKn1D_Y2dLJu15wBJ82PnsU9FPcA9N9ROywt7M3x6y0fh3oh1-Vl_98NwUP0cBc4OI7xAWZhOBOB_HFExWWTtmBe6-X3N7IG8McZdX_Axwt4Q2SyTm2yb8SFmvjze6I9uChsf8Wj-tekFQTx2xJOHuM2Xmf5inofgdXXs9LKr9A1qiHx2VZ_BuqzzCwA7Km3s2dqK-1w-YNeDooo7RUVzR9QZMFAKtxAYkiEumqX0Fwm5Q4TPnCYECOU21btqkPbii4SBLi9bgGSdSpGItXb_6m61T3qPlyJ1Kv6dt1F8M8G9bMTZUY9OjDp22XtIRXJY0khkNQqqOmxId7GgeZ2E2iTNcg4XSjtB68NjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <2dec76c1c31a12a2205a977b45c14ec33c20b17d-20349063-111625499@google.com>
+Subject: [Action Required] Mandatory multi-factor authentication for Google
+ Cloud console, gcloud CLI, and Firebase console access
+From: Google Cloud <CloudPlatform-noreply@google.com>
+To: ely.ubuntu0@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000082520062d6095e1"
+
+--000000000000082520062d6095e1
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+Mi1TdGVwIFZlcmlmaWNhdGlvbiByZXF1aXJlbWVudCBzdGFydHMgTWF5IDEyLCAyMDI1Lg0KDQoN
+Cg0KDQpNWSBDT05TT0xFDQoNCg0KDQoNCkhlbGxvIFVidW50dSwNCg0KV2UncmUgd3JpdGluZyB0
+byBpbmZvcm0geW91IHRoYXQgc3RhcnRpbmcgTWF5IDEyLCAyMDI1LCB5b3Ugd2lsbCBiZSAgDQpy
+ZXF1aXJlZCB0byB1c2UgbXVsdGktZmFjdG9yIGF1dGhlbnRpY2F0aW9uIChNRkEpLCBhbHNvIGtu
+b3duIGFzIDItU3RlcCAgDQpWZXJpZmljYXRpb24gKDJTViksIHRvIGFjY2VzcyBHb29nbGUgQ2xv
+dWQgY29uc29sZSwgZ2Nsb3VkIENMSSwgYW5kICANCkZpcmViYXNlIGNvbnNvbGUuIFlvdSdyZSBy
+ZWNlaXZpbmcgdGhpcyBub3RpY2UgYmVjYXVzZSB5b3UgaGF2ZSBhY2Nlc3MgdG8gIA0KcHJvamVj
+dHMgb24gR29vZ2xlIENsb3VkLg0KDQpXZSB1bmRlcnN0YW5kIHRoaXMgY2hhbmdlIG1heSByZXF1
+aXJlIHNvbWUgY29uZmlndXJhdGlvbiBhZGp1c3RtZW50cyBhbmQgIA0KaGF2ZSBwcm92aWRlZCBh
+ZGRpdGlvbmFsIGluZm9ybWF0aW9uIGJlbG93IHRvIGFzc2lzdCB5b3UuDQoNCldoYXQgeW91IG5l
+ZWQgdG8ga25vdw0KDQpJbiBOb3ZlbWJlciAyMDI0LCB3ZSBhbm5vdW5jZWQgdGhhdCBHb29nbGUg
+Q2xvdWQgd2lsbCBiZSBtYW5kYXRpbmcgTUZBLCAgDQphbHNvIGtub3duIGFzIDItU3RlcCBWZXJp
+ZmljYXRpb24gKDJTViksIGZvciBhbGwgdXNlcnMuIFRoaXMgaGVscHMgcHJvdGVjdCAgDQp5b3Vy
+IGFjY291bnQgYnkgcmVxdWlyaW5nIGJvdGggYSBwYXNzd29yZCBhbmQgYW4gYWRkaXRpb25hbCBm
+b3JtIG9mICANCnZlcmlmaWNhdGlvbiwgc3VjaCBhcyBhIHBob25lLCBzZWN1cml0eSBrZXksIG9y
+IEdvb2dsZSBBdXRoZW50aWNhdG9yIGNvZGUsICANCndoZW4gc2lnbmluZyBpbi4NCg0KU3RhcnRp
+bmcgTWF5IDEyLCAyMDI1LCAyU1Ygd2lsbCBiZSBtYW5kYXRvcnkgdG8gYWNjZXNzIEdvb2dsZSBD
+bG91ZCAgDQpjb25zb2xlLCBnY2xvdWQgQ0xJLCBhbmQgRmlyZWJhc2UgY29uc29sZS4NCg0KV2hh
+dCB5b3UgbmVlZCB0byBkbw0KDQpUbyBlbnN1cmUgY29udGludWVkIGFjY2VzcyB0byBHb29nbGUg
+Q2xvdWQgY29uc29sZSwgZ2Nsb3VkIENMSSwgYW5kICANCkZpcmViYXNlIGNvbnNvbGUsIHlvdSBh
+cmUgcmVxdWlyZWQgdG8gdHVybiBvbiAyLVN0ZXAgVmVyaWZpY2F0aW9uIGZvciB5b3VyICANCmFj
+Y291bnQgZnJvbSBzZWN1cml0eS5nb29nbGUuY29tLg0KDQpFeGNsdXNpb25zDQoNCg0KQXBwcyBh
+bmQgd29ya2xvYWRzIHRoYXQgYXJlIGhvc3RlZCBvbiBHb29nbGUgQ2xvdWQsIGluY2x1ZGluZyB0
+aG9zZSB0aGF0ICANCnVzZSBHb29nbGUgQVBJcw0KDQoNCk90aGVyIHNlcnZpY2VzLCBsaWtlIEdv
+b2dsZSBQaG90b3MsIFlvdVR1YmUsIGFuZCBHb29nbGUgV29ya3NwYWNlICANCihpbmNsdWRpbmcg
+R21haWwsIEdvb2dsZSBTaGVldHMsIGFuZCBHb29nbGUgU2xpZGVzKSBhcmUgbm90IGltcGFjdGVk
+IGJ5ICANCnRoaXMgcmVxdWlyZW1lbnQNCg0KV2UncmUgaGVyZSB0byBoZWxwDQoNCkZvciBtb3Jl
+IGluZm9ybWF0aW9uIHBsZWFzZSByZWZlciB0byB0aGUgbXVsdGktZmFjdG9yIGF1dGhlbnRpY2F0
+aW9uICANCnJlcXVpcmVtZW50IGRvY3VtZW50YXRpb24gSWYgeW91IGhhdmUgcXVlc3Rpb25zIG9y
+IG5lZWQgYXNzaXN0YW5jZSwgcGxlYXNlICANCmNvbnRhY3QgR29vZ2xlIENsb3VkIEN1c3RvbWVy
+IENhcmUuDQoNClRoYW5rcyBmb3IgY2hvb3NpbmcgR29vZ2xlIENsb3VkLg0KDQoNCg0KDQoNCuKA
+lCBUaGUgR29vZ2xlIENsb3VkIFRlYW0NCg0KDQoNCg0KDQpET0NVTUVOVEFUSU9ODQoNCg0KDQpT
+VVBQT1JUDQoNCg0KDQoNCsKpIDIwMjUgR29vZ2xlIExMQyAxNjAwIEFtcGhpdGhlYXRyZSBQYXJr
+d2F5LCBNb3VudGFpbiBWaWV3LCBDQSA5NDA0Mw0KDQpZb3UgaGF2ZSByZWNlaXZlZCB0aGlzIG1h
+bmRhdG9yeSBzZXJ2aWNlIGFubm91bmNlbWVudCB0byB1cGRhdGUgeW91IGFib3V0ICANCmltcG9y
+dGFudCBjaGFuZ2VzIHRvIEdvb2dsZSBDbG91ZCBQbGF0Zm9ybSBvciB5b3VyIGFjY291bnQuDQoN
+Cg0KDQpWaXNpdCBHb29nbGUgQ2xvdWQgYmxvZyBWaXNpdCBHQ1Agb24gR2l0SHViIFZpc2l0IEdv
+b2dsZSBDbG91ZCBvbiBMaW5rZWRJbiAgDQpWaXNpdCBHb29nbGUgQ2xvdWQgb24gVHdpdHRlcg0K
+DQoNCg0KDQo=
+--000000000000082520062d6095e1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html public "- / / w3c / / dtd html 4.01 transitional / / en" "ht=
+tp: / / www.w3.org / tr / html4 / loose.dtd">
+<html>
+<head>
+<meta http-equiv=3DContent-Type content=3D"text/html; charset=3DUTF-8">
+<meta name=3Dviewport content=3Dwidth=3Ddevice-width,initial-scale=3D1,user=
+-scalable=3Dyes>
+<title>Mandatory Service Announcement from Google Cloud</title>
+<html lang=3Den>
+<style>
+.appleLinksWhite a {
+  color: #898989 !important;
+  text-decoration: none !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+a {
+  color:#2979ff;
+  font-family:Roboto, arial;
+  font-size:14px;
+  text-decoration:none;
+}
+
+@media only screen and (min-width : 0px) and (max-width : 480px) {
+  .flexible{ width: 100% !important; min-width: 100% !important; max-width:=
+ 100% !important;  }
+  .logo_holder, .logo_holder_td, .logo_right_holder, .logo_right_holder_td{=
+width: 100% !important;}
+  .logo_right_holder_inner_td  {text-align:right !important;}
+  .logo_holder_td{padding-left: 16px;}
+  .logo_right_holder_td{padding-left: 16px !important; padding-top: 5px !im=
+portant; padding-bottom: 15px !important;}
+  .tbl_banner{padding-left : 10px !important; padding-right: 10px !importan=
+t; }
+  .banner_text_1{padding: 0 20px 15px 20px !important;}
+  .banner_container {background-position:top !important; background-color: =
+#227cdf !important; height:auto !important;}
+  .banner_btn{padding-bottom:20px !important;}
+  .banner_text_2{128px 20px 13px 20px !important; font-size:26px !important=
+;line-height:30px !important;}
+  .bottom_link_container_td{padding:10px 40px !important;}
+  .bottom_link_container_inner{padding:10px 0 !important;}
+  .bottom_link_text_mbl{padding:10px 0 !important;}
+  .outer_wrapper_td{padding:0 5px !important;}
+}
+
+@media only screen and (min-width : 0px) and (max-width : 320px) {
+  .flexible{ width: 100% !important; min-width: 100% !important; max-width:=
+ 100% !important;  }
+  .logo_holder, .logo_holder_td, .logo_right_holder, .logo_right_holder_td{=
+width: 100% !important;}
+  .banner_text_2{128px 20px 13px 20px !important; font-size:26px !important=
+;line-height:30px !important;}
+  .logo_right_holder_td{padding-left: 16px !important; padding-top: 5px !im=
+portant; padding-bottom: 15px !important;}
+  .logo_right_holder_inner_td  {text-align:right !important;}
+  .logo_holder_td{padding-left: 0 !important;}
+  .banner_text_1{padding: 0 20px 15px 20px !important;}
+  .banner_container {background-position:top !important; background-color: =
+#227cdf !important; height:auto !important;}
+  .banner_btn{padding-bottom:20px !important;}
+  .bottom_link_container_td{padding:10px 40px !important;}
+  .bottom_link_text_mbl{padding:10px 0 !important;}
+  .outer_wrapper_td{padding:0 5px !important;}
+  .bottom_link_container_inner{padding:10px 0 !important;}
+  .social_icons_container_inner{width:210px !important;}
+  .tbl_banner{padding-left : 10px !important; padding-right: 10px !importan=
+t; }
+}
+</style>
+</head>
+<body style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; ba=
+ckground:#fafafa; font-family:Arial; font-weight:normal; margin:0; padding:=
+0; width:100%" width=3D100%>
+
+
+  <!-- START PREHEADER TEXT -->
+  <!-- Displayed in the inbox preview, but does not appear in the message b=
+ody. -->
+ =20
+    <div style=3D"height:0px; font-size:0px; max-height:0px; min-height: 0p=
+x; line-height:0px; width: 100%; color: #fff; display:none;">2-Step Verific=
+ation requirement starts May 12, 2025.</div>
+ =20
+  <!-- END PRE-HEADER TEXT -->
+
+
+<table role=3Dpresentation class=3D"outer_wrapper flexible" width=3D100% al=
+ign=3Dcenter cellspacing=3D0 cellpadding=3D0 border=3D0 style=3D"-premailer=
+-cellpadding:0; -premailer-cellspacing:0; background:#fafafa; border-collap=
+se:collapse; font-family:Arial, sans-serif; font-weight:normal; margin:0; m=
+so-table-lspace:0; mso-table-rspace:0; padding:0; width:100%">
+<tr>
+<td class=3Douter_wrapper_td style=3Dborder-collapse:collapse><table class=
+=3D"inner_wrapper flexible" align=3Dcenter width=3D600 cellspacing=3D0 cell=
+padding=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -premailer-cellsp=
+acing:0; border-collapse:collapse; font-family:Arial, sans-serif; font-weig=
+ht:normal; margin:0 auto; max-width:600px; min-width:600px; mso-table-lspac=
+e:0; mso-table-rspace:0; width:600px">
+<tr>
+<td>
+<table width=3D600 class=3D"header_wrapper flexible" align=3Dcenter cellspa=
+cing=3D0 cellpadding=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -pre=
+mailer-cellspacing:0; border-collapse:collapse; font-family:Arial, sans-ser=
+if; font-weight:normal; margin:0 auto; mso-table-lspace:0; mso-table-rspace=
+:0; width:600px">
+<tr>
+<td class=3D"header_wrapper_td " style=3D"border-collapse:collapse; padding=
+:0 5px">
+<table width=3Dauto class=3D"logo_holder flexible" align=3Dleft cellspacing=
+=3D0 cellpadding=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -premail=
+er-cellspacing:0; border-collapse:collapse; font-family:roboto, arial; font=
+-weight:500; mso-table-lspace:0; mso-table-rspace:0; width:auto">
+<tr>
+<td class=3Dlogo_holder_td style=3D"border-collapse:collapse; padding-botto=
+m:30px; padding-top:32px">
+<img src=3Dhttps://services.google.com/fh/files/emails/new_logo.png width=
+=3D261 alt=3D"" style=3D"-ms-interpolation-mode:bicubic; outline:none; text=
+-decoration:none">
+</td>
+</tr>
+</table>
+<table role=3Dpresentation width=3Dauto class=3D"logo_right_holder flexible=
+" align=3Dright cellspacing=3D0 cellpadding=3D0 border=3D0 style=3D"-premai=
+ler-cellpadding:0; -premailer-cellspacing:0; border-collapse:collapse; font=
+-family:roboto, arial; font-weight:500; mso-table-lspace:0; mso-table-rspac=
+e:0; width:auto">
+<tr>
+<td class=3D"logo_right_holder_td flexible" style=3D"border-collapse:collap=
+se; padding-right:0; padding-top:41px">
+<table class=3D"logo_right_holder_inner flexible" cellspacing=3D0 cellpaddi=
+ng=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -premailer-cellspacing=
+:0; border-collapse:collapse; font-family:roboto, arial; font-weight:500; m=
+so-table-lspace:0; mso-table-rspace:0; width:auto" width=3Dauto>
+<tr>
+<td class=3Dlogo_right_holder_inner_td style=3D"border-collapse:collapse; c=
+olor:#90a4ae; font-family:Roboto, arial; font-size:16px; font-weight:bold; =
+line-height:16px">
+
+
+  <!-- START MY CONSOLE LINK -->
+    <a href=3Dhttps://notifications.google.com/g/p/ANiao5oruKiMhxbOCXC7SfB_=
+uoVQos3O2Gt0u8PkacHXnpmeTTwwSgJ0q_Ya0aA0_l2Phd92ic3X5IE26TA4Z4kZ075x7ehqxeL=
+jnrz3Mqo9g8_0MIaGIZYnnUt3Ufv9I64 style=3D"color:#1a73e8; font-family:Roboto=
+, arial; font-size:16px; font-weight:500; line-height:16px; text-decoration=
+:none" target=3D_blank>MY CONSOLE</a>
+  <!-- END MY CONSOLE LINK -->
+
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td style=3Dborder-collapse:collapse>
+<table width=3D598 class=3D"content_wrapper flexible" align=3Dcenter cellsp=
+acing=3D0 cellpadding=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -pr=
+emailer-cellspacing:0; background:#ffffff; border-collapse:collapse; border=
+-left:1px solid #e0e0e0; border-right:1px solid #e0e0e0; border-top:1px sol=
+id #e0e0e0; font-family:Arial, sans-serif; font-weight:normal; mso-table-ls=
+pace:0; mso-table-rspace:0; width:598px; -moz-border-radius:5px 5px 0 0;  -=
+webkit-border-radius: 5px 5px 0 0; -khtml-border-radius: 5px 5px 0 0; borde=
+r-radius: 5px 5px 0 0;">
+<tr>
+<td class=3D"text_wrapper flexible" style=3D"padding:30px 40px 0 40px; padd=
+ing-top:35px; width:518px" width=3D518>
+<table align=3Dcenter style=3D"-premailer-cellpadding:0; -premailer-cellspa=
+cing:0; border-collapse:collapse; font-family:Arial, sans-serif; font-weigh=
+t:normal; margin:auto; max-width:598px; mso-table-lspace:0; mso-table-rspac=
+e:0; width:518px" class=3D"holder_wrap_inner flexible" cellspacing=3D0 cell=
+padding=3D0 border=3D0 width=3D518>
+
+
+  <!-- START TITLE TEXT -->
+  <!-- Comment this section out if not used. -->
+    <!--<tr>
+      <td class=3D"text_wrapper_inner_td flexible" style=3D"border-collapse=
+:collapse; color:#455a64; font-family:Roboto, arial; font-size:24px; line-h=
+eight:24px; padding-bottom:17px">
+      </td>
+    </tr>-->
+  <!-- END TITLE TEXT -->
+
+
+<tr>
+<td class=3D"text_wrapper_inner_td flexible" style=3D"border-collapse:colla=
+pse; color:#455a64; font-family:Roboto, arial; font-size:14px; line-height:=
+24px; padding-bottom:17px">
+
+
+  <!-- START MESSAGE BODY TEXT -->
+
+  <!-- translation notice non-incident 5 locales -->
+
+
+
+<!--SNAPPY SUMMARY START -->
+                 =20
+               =20
+
+
+  <!-- START MESSAGE BODY TEXT for EN w/ TN -->
+
+<p><a rel=3Dnofollow style=3D"text-decoration:none; color:#455A64">Hello Ub=
+untu</a>,</p>
+
+<p>We=E2=80=99re writing to inform you that starting <strong>May 12, 2025</=
+strong>, you will be required to use multi-factor authentication (MFA), als=
+o known as 2-Step Verification (2SV), to access <strong>Google Cloud</stron=
+g> <strong>console</strong>, <strong>gcloud CLI</strong>, and <strong>Fireb=
+ase console</strong>. You=E2=80=99re receiving this notice because you have=
+ access to projects on Google Cloud.</p>
+
+<p>We understand this change may require some configuration adjustments and=
+ have provided additional information below to assist you.</p>
+
+<h3>What you need to know</h3>
+
+<p>In <strong>November 2024</strong>, <a href=3Dhttps://notifications.googl=
+e.com/g/p/ANiao5pEukqR9wpUxXopxUan6Zxoe2dOKFBOAPff-0XpMMmLcOsECePgw3SdV3lvM=
+aQbATtj2R_JRFjM-Xh7B-V9Y2rL4gs7PR0PDepQ1Zc_7Gu8H8u79LqJbmzHe0zwRZfHoNwpOTUA=
+6-av0K-_cCRjg4uhNZfjN6nlR_OrK155Kcb4ssH2nP08I9iDz4ks_8-jtO4n_g9wHlQ8PGZghnY=
+0_-rvIURaTAojQ4ggmXFUKyIeyDaag9d290GGfh6PBVyBnOEaykIh style=3D"color:#1a73e=
+8; font-family:Roboto, arial; font-size:14px; text-decoration:none" target=
+=3D_blank>we announced</a> that Google Cloud will be mandating MFA, also kn=
+own as 2-Step Verification (2SV), for all users. This helps protect your ac=
+count by requiring both a password and an additional form of verification, =
+such as a phone, security key, or Google Authenticator code, when signing i=
+n.</p>
+
+<p>Starting <strong>May 12, 2025</strong>, 2SV will be mandatory to access =
+Google Cloud console, gcloud CLI, and Firebase console.</p>
+
+<h3>What you need to do</h3>
+
+<p>To ensure continued access to Google Cloud console, gcloud CLI, and Fire=
+base console, you are required to <a href=3Dhttps://notifications.google.co=
+m/g/p/ANiao5pTw-OoUbhdOHGphtm4MfGl6pn-Vvz8bRzRnp90XHaJ3xDwXvV1hPk4jfVwaP1Vy=
+8p3770tRIMNgKzRNibaaCdczXN8MthxaH5QxEDOcPDTT_sFTnOydJmb2PBjXtelhdZThZHLHFTX=
+wyo1vdhcxOx8BQEPEGNADkk1KAQWFQnvqUsv8mro3ic_fHY style=3D"color:#1a73e8; fon=
+t-family:Roboto, arial; font-size:14px; text-decoration:none" target=3D_bla=
+nk>turn on 2-Step Verification</a> for your account from <a href=3Dhttps://=
+notifications.google.com/g/p/ANiao5r87TvZkgLWNUQedj-ZWQUgZywYvqQpk7ALO3nsoP=
+jPcQEr1RhBARxshcCMV2aRDXLqlbIdoLhFZlYaXzs6D2m5F_tfFzj63alx7WEiehHzLGlL8QcTR=
+A style=3D"color:#1a73e8; font-family:Roboto, arial; font-size:14px; text-d=
+ecoration:none" target=3D_blank>security.google.com</a>.</p>
+
+<h4>Exclusions</h4>
+
+<ul>
+  <li>Apps and workloads that are hosted on Google Cloud, including those t=
+hat use Google APIs</li>
+</ul>
+
+<ul>
+  <li>Other services, like <strong>Google Photos</strong>, <strong>YouTube<=
+/strong>, and <strong>Google Workspace</strong> (including <strong>Gmail</s=
+trong>, <strong>Google Sheets</strong>, and <strong>Google Slides</strong>)=
+ are not impacted by this requirement</li>
+</ul>
+
+<h3>We=E2=80=99re here to help</h3>
+
+<p>For more information please refer to the <a href=3Dhttps://notifications=
+.google.com/g/p/ANiao5rN8ssO76V9fN_NoXCxsp1_tO8efen38ZtQWC-opLyfAHaQOKx8sB3=
+r-o8fo06Srg1tWEIEazhOLf6vWH8a9RFPEgKCxhfBvOyi1ayP40uhNomoQwkVAByloOpxQFeBXh=
+laXsD0-tBjhHATUkxHNrpZYPH8lQ4AF5tAOgB_yoxKiUo style=3D"color:#1a73e8; font-=
+family:Roboto, arial; font-size:14px; text-decoration:none" target=3D_blank=
+>multi-factor authentication requirement</a> documentation If you have ques=
+tions or need assistance, please contact <a href=3Dhttps://notifications.go=
+ogle.com/g/p/ANiao5rNiKFgHZMn2qyNEb0YpAjVvJJzvQ_sUfzBiZowCjlxpP7gtMOM7dJ3aw=
+5AnQ-Ui-7oDoPnz36AsiRGY_QPKe--13K_jIvcRHFwyfaFRt01Kd7zkyW9Qkz6Vjec9TrFpc3Gd=
+NAZ style=3D"color:#1a73e8; font-family:Roboto, arial; font-size:14px; text=
+-decoration:none" target=3D_blank>Google Cloud Customer Care</a>.</p>
+
+<p>Thanks for choosing Google Cloud.</p>
+
+  <!-- END MESSAGE BODY TEXT for EN w/ TN-->
+
+
+
+</td>
+</tr>
+<tr>
+<td class=3D"banner_btn grey_line" style=3D"border-bottom:2px #eef1f2 solid=
+; border-collapse:collapse; padding-bottom:26px; padding-top:9px">
+<div>
+
+
+=20
+
+
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class=3Dtext_wrapper style=3D"padding:30px 40px 20px 40px; width:518px"=
+ width=3D518>
+
+
+  <!-- Please make a copy of the snippet template '13677366' and follow the=
+ steps on our internal site for EN w/ TN-->   =20
+
+<table>
+  <tbody><!-- <tr>
+      <td class=3D"text_wrapper_inner_td salutation1" style=3D"border-colla=
+pse:collapse; color:#455a64; font-family:Roboto, arial; font-size:14px; fon=
+t-weight:regular; line-height:24px; padding-bottom:0">Sincerely,</td>
+    </tr> -->
+    <tr>
+      <td style=3D"border-collapse:collapse; color:#455a64; font-family:Rob=
+oto, arial; font-size:16px; line-height:24px; padding-bottom:12px; font-wei=
+ght:500;">=E2=80=94 The Google Cloud Team</td>
+    </tr>
+  </tbody>
+</table>
+  <!-- END VALEDICTION for EN w/ TN-->
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class=3D"text_wrapper_inner_td  flexible" style=3D"color:#455a64; font-=
+family:Roboto, arial; font-size:14px; line-height:24px; padding-bottom:17px=
+">
+<table class=3D"inner_wrapper bottom_link_container flexible" cellspacing=
+=3D0 cellpadding=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -premail=
+er-cellspacing:0; background:#ffffff; border-bottom:1px solid #e0e0e0; bord=
+er-collapse:collapse; border-left:1px solid #e0e0e0; border-right:1px solid=
+ #e0e0e0; border-top:2px solid #eef1f2; font-family:Arial, sans-serif; font=
+-weight:normal; margin:0 auto; max-width:600px; min-width:600px; mso-table-=
+lspace:0; mso-table-rspace:0; width:598px;  -moz-border-radius: 0 0 5px 5px=
+; -webkit-border-radius: 0 0 5px 5px; -khtml-border-radius: 0 0 5px 5px; bo=
+rder-radius: 0 0 5px 5px;" width=3D598 align=3Dcenter>
+<tr><td class=3D"bottom_link_container_td flexible" style=3D"border-collaps=
+e:collapse; padding:25px 40px 27px 40px">
+<table class=3D"bottom_text_1 flexible" cellspacing=3D0 cellpadding=3D0 bor=
+der=3D0 width=3D172 align=3Dleft style=3D"-premailer-cellpadding:0; -premai=
+ler-cellspacing:0; border-collapse:collapse; font-family:Arial, sans-serif;=
+ font-weight:normal; mso-table-lspace:0; mso-table-rspace:0">
+<tr>
+<td width=3D22 valign=3Dtop class=3Dbottom_link_container_inner style=3D"bo=
+rder-collapse:collapse; color:#1a73e8; font-family:Roboto, arial; font-size=
+:14px; line-height:21px; vertical-align:top">
+<img src=3Dhttp://services.google.com/fh/files/emails/gcp_free_trail_decs_n=
+ew.png width=3D12 alt=3D"" style=3D"-ms-interpolation-mode:bicubic; border:=
+none; outline:none; text-decoration:none;vertical-align:middle;">
+</td>
+<td width=3D128 class=3Dbottom_link_container_inner valign=3Dmiddle style=
+=3D"border-collapse:collapse; color:#1a73e8; font-family:Roboto, arial; fon=
+t-size:14px; line-height:21px; vertical-align:middle">
+
+
+  <!-- START DOCUMENTATION LINK -->
+ =20
+  <a style=3D"color:#b0bec5; font-family:Roboto, arial; font-size:14px; tex=
+t-decoration:none" href=3Dhttps://notifications.google.com/g/p/ANiao5rN8ssO=
+76V9fN_NoXCxsp1_tO8efen38ZtQWC-opLyfAHaQOKx8sB3r-o8fo06Srg1tWEIEazhOLf6vWH8=
+a9RFPEgKCxhfBvOyi1ayP40uhNomoQwkVAByloOpxQFeBXhlaXsD0-tBjhHATUkxHNrpZYPH8lQ=
+4AF5tAOgB_yoxKiUo target=3D_blank>DOCUMENTATION</a>
+ =20
+  <!-- END DOCUMENTATION LINK -->
+
+
+</tr>
+</table>
+<table class=3D"bottom_text_1 flexible" align=3Dleft width=3D226 cellspacin=
+g=3D0 cellpadding=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -premai=
+ler-cellspacing:0; border-collapse:collapse; font-family:Arial, sans-serif;=
+ font-weight:normal; mso-table-lspace:0; mso-table-rspace:0">
+<tr>
+<td width=3D26 class=3Dbottom_link_container_inner valign=3Dmiddle style=3D=
+"border-collapse:collapse; color:#1a73e8; font-family:Roboto, arial; font-s=
+ize:14px; line-height:21px; vertical-align:middle">
+<img src=3Dhttp://services.google.com/fh/files/emails/gcp_free_trail_forum_=
+new.png width=3D16 alt=3D"" style=3D"-ms-interpolation-mode:bicubic; border=
+:none; outline:none; text-decoration:none;vertical-align:middle;">
+</td>
+<td width=3D200 class=3Dbottom_link_container_inner valign=3Dmiddle style=
+=3D"border-collapse:collapse; color:#1a73e8; font-family:Roboto, arial; fon=
+t-size:14px; line-height:21px; vertical-align:middle;">
+
+
+  <!-- START CONTACT SUPPORT LINK -->
+   =20
+    <a href=3Dhttps://notifications.google.com/g/p/ANiao5rNiKFgHZMn2qyNEb0Y=
+pAjVvJJzvQ_sUfzBiZowCjlxpP7gtMOM7dJ3aw5AnQ-Ui-7oDoPnz36AsiRGY_QPKe--13K_jIv=
+cRHFwyfaFRt01Kd7zkyW9Qkz6Vjec9TrFpc3GdNAZ target=3D_blank style=3D"color:#b=
+0bec5; font-family:Roboto, arial; font-size:14px; text-decoration:none" cla=
+ss=3Dbottom_link_text_mbl>SUPPORT</a>
+   =20
+  <!-- END CONTACT SUPPORT LINK -->
+
+
+</td>
+</tr>
+</table>
+</td></tr>
+</table>
+</td>
+</tr>
+</table></td></tr>
+<tr>
+<td class=3D"outer_wrapper_td footer_text">
+<table width=3D600 class=3D"inner_wrapper flexible" align=3Dcenter cellspac=
+ing=3D0 cellpadding=3D0 border=3D0 style=3D"-premailer-cellpadding:0; -prem=
+ailer-cellspacing:0; border-collapse:collapse; font-family:Arial, sans-seri=
+f; font-weight:normal; margin:0 auto; max-width:600px; min-width:600px; mso=
+-table-lspace:0; mso-table-rspace:0; width:600px">
+<tr>
+<td class=3Dfooter_wrapper_td style=3D"border-collapse:collapse; color:#757=
+575; font-family:Roboto, arial; font-size:12px; line-height:16px; padding:2=
+7px 40px 0 40px; text-align:center" align=3Dcenter>
+<img src=3Dhttp://services.google.com/fh/files/emails/gcp_newsletter_email_=
+cloud_footer_logo.png alt=3D"" style=3D"-ms-interpolation-mode:bicubic; out=
+line:none; text-decoration:none">
+</td>
+</tr>
+<tr>
+
+
+</tr>
+<tr>
+
+<td class=3Dfooter_wrapper_td style=3D"border-collapse:collapse; color:#757=
+575; font-family:Roboto, arial; font-size:12px; line-height:16px; padding:2=
+7px 40px 20px 40px; padding-top:10px; text-align:center" align=3Dcenter>
+=C2=A9 2025 Google LLC 1600 Amphitheatre Parkway, Mountain View, CA 94043
+<br><br>
+You have received this mandatory service announcement to update you about i=
+mportant changes to Google Cloud Platform or your account.
+</td>
+</tr>
+<tr>
+<td class=3D"social_icons_container flexible" style=3D"border-collapse:coll=
+apse; padding:15px 0 22px 0">
+<table class=3Dsocial_icons_container_inner cellspacing=3D0 cellpadding=3D0=
+ border=3D0 width=3D229 align=3Dcenter style=3D"-premailer-cellpadding:0; -=
+premailer-cellspacing:0; border-collapse:collapse; font-family:Arial, sans-=
+serif; font-weight:normal; margin:0 auto; mso-table-lspace:0; mso-table-rsp=
+ace:0">
+<tr>
+
+<td width=3D33 class=3Dsocial_icons_container_inner style=3D"border-collaps=
+e:collapse; margin:0 auto"><a href=3Dhttps://notifications.google.com/g/p/A=
+Niao5qAr6WDxR4Kt9F1K06viuMtNFLtFpeziPMvUmYyIvDKbffMPv21O_aDiXxYTA_5tTce-BKQ=
+p4oCrPZz7_sNFBo2V2L5vsmc7KUyjb4HQS6Z8k9EcR00QOEF9S8ErEwV6M4 target=3D_blank=
+><img src=3Dhttp://services.google.com/fh/files/emails/gcp_newsletter_email=
+_blogger.png alt=3D"Visit Google Cloud blog" width=3D33 style=3D"-ms-interp=
+olation-mode:bicubic; border:none; outline:none; text-decoration:none"></a>=
+</td>
+<td width=3D16 style=3Dborder-collapse:collapse>=C2=A0 =C2=A0</td>
+<td width=3D33 class=3Dsocial_icons_container_inner style=3D"border-collaps=
+e:collapse; margin:0 auto"><a href=3Dhttps://notifications.google.com/g/p/A=
+Niao5pUalcIFwiRlQsybT3zke3TXqFpXBD4jlFBsMgzgc2zL7kTyVUO_6qzrB4cc6dU4vpceeRQ=
+8tKj7WpC5kGaOxgmgde4zl-p426IgUlJlW7JuTQl6jTp7ioDp7kUte9t6SiNdDuIvVgkPyrn ta=
+rget=3D_blank><img src=3Dhttps://services.google.com/fh/files/emails/gcp_ne=
+wsletter_email_github.png alt=3D"Visit GCP on GitHub" width=3D33 style=3D"-=
+ms-interpolation-mode:bicubic; border:none; outline:none; text-decoration:n=
+one"></a></td>
+<td width=3D16 style=3Dborder-collapse:collapse>=C2=A0 =C2=A0</td>
+<td width=3D33 class=3Dsocial_icons_container_inner style=3D"border-collaps=
+e:collapse; margin:0 auto"><a href=3Dhttps://notifications.google.com/g/p/A=
+Niao5p6H-t9JyzXY7tNFBV086ifaZrtwHz9k5GVDiHBoodr_TLHawK0uPiq1_jKMVgqZwfzo-Kp=
+YYXi-3tqPMIfmKHgzDLktQo4J1bKcBRwEF0dmvt5QUB1V8B06Vzh_S-AMONkVss6N6mggsqMiHo=
+zP8Y target=3D_blank><img src=3Dhttp://services.google.com/fh/files/emails/=
+gcp_newsletter_email_linkedin.png alt=3D"Visit Google Cloud on LinkedIn" wi=
+dth=3D33 style=3D"-ms-interpolation-mode:bicubic; border:none; outline:none=
+; text-decoration:none"></a></td>
+<td width=3D16 style=3Dborder-collapse:collapse>=C2=A0 =C2=A0</td>
+<td width=3D33 class=3Dsocial_icons_container_inner style=3D"border-collaps=
+e:collapse; margin:0 auto"><a href=3Dhttps://notifications.google.com/g/p/A=
+Niao5o5Ucq15qMhMIq-yA0VTkNG9jmNDvJtsUdol1WqKTPZYiANnxk9KvRJOlCIEM_0zNRNB65l=
+9CD3B_yBoG8KXKoz4XOgbEe3gQNabn3liTCMyAB4MhyxKuag6JxqBbmU6yiiEgVs target=3D_=
+blank><img src=3Dhttp://services.google.com/fh/files/emails/gcp_newsletter_=
+email_twitter.png alt=3D"Visit Google Cloud on Twitter" width=3D33 style=3D=
+"-ms-interpolation-mode:bicubic; border:none; outline:none; text-decoration=
+:none"></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div style=3D"display: none; white-space: nowrap; line-height: normal; font=
+-size: 15px; font-weight: normal; font-variant: normal; font-style: normal;=
+ font-family: courier; color: #ffffff; width: 480px !important; min-width: =
+480px !important; max-width: 480px !important;">
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0  =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0
+</div>
+<img alt=3D"" height=3D1 width=3D3 src=3Dhttps://notifications.google.com/g=
+/img/ANiao5o_vR5IAg_tXd5cAaI98mjStm_mpYAtuZQntXB74FyE0FrT9nHg-sJC5QusThWWlJ=
+HMWqrfUmrvseEOhdm85CkaF_rlKrVZ3MuZ2cIY0Ymb414WM4MOxFm3KAHbSKwjt5a70g.gif></=
+body>
+</html>
+
+--000000000000082520062d6095e1--

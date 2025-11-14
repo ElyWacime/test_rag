@@ -1,0 +1,203 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp261445pxw;
+        Fri, 5 May 2023 01:50:56 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5KxUkMbc6K6cHfLTa2Q1P/O8rrBnJK43axl4Pu0lMv3n4gf/yAYE+4ZzNUO/VL/s4wwt8g
+X-Received: by 2002:a0d:dac2:0:b0:552:96e0:ccd0 with SMTP id c185-20020a0ddac2000000b0055296e0ccd0mr992150ywe.16.1683276656109;
+        Fri, 05 May 2023 01:50:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683276656; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gmqRRXNLd6+D3nDTR70BNUbMcRXD6BSr2HXtEOuv6mo18olcfXAYc4Tg25nkMdzllD
+         1H2pNEB3QqqMrkRrsNvFcO15K+L7k+mjKMaAE7wK/6YSyflERIY25RT27dikvmFFHQSm
+         Rp2waevpdZBLasq2wGjWCKy3eacew0CBOj1/cqOBf7Fy9t920GJ/MahM0McBBLL1lDlN
+         pxH+Ph087YzF3r2ypic1YcCMAiln1g6X5nL5S623rjxP/E56MLAZhtDyGoLZq+5fmswB
+         4+pLm+8oAU/C79+TsVJyBMx8gzCGbHMbiNKHvRf30V7GsUckzcOFh3mlvB6C1kOz8E1o
+         xPGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=kkwJoUkmSMNUcAEg65yYPlN/5xin6r1S6mxBtRV913c=;
+        b=xMdAXuIm6QBMWn8H2nCgoCPTJbZ7mCFr3psjP123r20XOOir/9xiQbsiFvXD1/LCZd
+         Q56lkBsIStLyaygx96XIy61sctRHCdIeFpbji4NJiQMar4KqLAYQu8hQVTQFbesO5iq8
+         7qSslwKfh7MX2F50hC+ilgm/ydQSM5ZBzULo527uy7nQJ7ETrOCJ4Y/NVJ1ifHfRju0m
+         08i6oyQrcisC9xtlFF7H7YvloKMVPOHZ4c0YYdqXvWQ3rcaUGgGMEA5oQ8B/UiPT4Fuj
+         +zl28dWPZ3R9+QVlwS3d2XRV+BmkhL2WvMjOBW7evvxlb0cuuMXD9TK3FR/Okn4IUDbX
+         82vQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@n.convertkit.com header.s=s1 header.b=m6obbcQE;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=tXtYc+0D;
+       spf=pass (google.com: domain of bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com designates 168.245.50.52 as permitted sender) smtp.mailfrom="bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com"
+Return-Path: <bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com>
+Received: from o21.ck.n.convertkit.com (o21.ck.n.convertkit.com. [168.245.50.52])
+        by mx.google.com with ESMTPS id y189-20020a817dc6000000b005448634e12csi1148485ywc.387.2023.05.05.01.50.55
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 May 2023 01:50:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com designates 168.245.50.52 as permitted sender) client-ip=168.245.50.52;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@n.convertkit.com header.s=s1 header.b=m6obbcQE;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=tXtYc+0D;
+       spf=pass (google.com: domain of bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com designates 168.245.50.52 as permitted sender) smtp.mailfrom="bounces+14557292-d5ef-ely.ubuntu0=gmail.com@mail.n.convertkit.com"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=n.convertkit.com;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=s1; bh=kkwJoUkmSMNUcAEg65yYPlN/5xin6r1S6mxBtRV913c=;
+	b=m6obbcQE4oYuoDHs6hT3N7V7nVLtFY3xTRMjGLsO9XuNHBOOwADhOE1PHqa/C0KWgnK0
+	mbP3zyTvGwsSaObjis4Ow3IatAYsJrzi/FCoI8kToQX4PGnFDcUPlyGZxL9PNn43gucHkl
+	4I/K25lZKMnJMrvEJCXgPzvsAqghBCGAJFZzcYYY8l/nxNXooqI5axOAtzSDQLmSPwHcWV
+	Eglf+leDoAkd6FzbeXzWEj695vCpNZ5QXThSJkSGvqyDhkIC8/aXP9L0IgAWUhwD6oBEW2
+	9Qanjh9W6QX+QCNLS/ZLiKh4ioZnIYy8uJQyCJyl2eViRwHsiUriD+oWg2zjinHg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=kkwJoUkmSMNUcAEg65yYPlN/5xin6r1S6mxBtRV913c=;
+	b=tXtYc+0DzW50qRHclg5AM/N8Xa/KHtDXJ/fzb2zMIdai1U44ewaBwpYr/UGiZ0TtV4mb
+	H+1fMV1A9s7LqOu9cIcVAxCwXi6QZDobdsKmZ8YDAxLD7Dc0u6U7VZfZymw0X1Kywp0vkf
+	9pp40APXi63YJ1PLz9+FWmmYGZ8g2cQu0=
+Received: by filterdrecv-5f7b489bd9-44vxs with SMTP id filterdrecv-5f7b489bd9-44vxs-1-6454C36F-C
+        2023-05-05 08:50:55.344716536 +0000 UTC m=+6254253.597961434
+Received: from MTQ1NTcyOTI (unknown)
+	by geopod-ismtpd-22 (SG) with HTTP
+	id jWFclOvQTDywn58vobckUA
+	Fri, 05 May 2023 08:50:55.289 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=bf04d1a8e97be628326e9b7a9e6349a199daeef08abfed976972aac71832
+Date: Fri, 05 May 2023 08:50:55 +0000 (UTC)
+From: Jim Fahad <jim@jimfahaddigital.com>
+Mime-Version: 1.0
+Message-ID: <v8urnlvkm2izfe8w06sg@convertkit-mail2.com>
+Subject: Important: =?UTF-8?B?4pyFRG93bmxvYWQ=?= Tutorial Images -
+ =?UTF-8?B?SmltZW5jeeKchQ==?=
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: 
+Feedback-ID: 3495550:230993:forms::container:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/v8urnlvkm2izfe8w06sg>
+X-Feedback-ID: 14557292:SG
+X-SG-EID: 
+ =?us-ascii?Q?j1jVCmu6DBvk0BrWVSglCsaTtCZXVr6Y10=2Ff7mxfpGTJ5bPO1E07rjPNDcpmxe?=
+ =?us-ascii?Q?Ft1yF3ozH18FtS4FsNnPIpoloC1v90cK83fTQFA?=
+ =?us-ascii?Q?khEwlsHQvk1IsD=2FrHXsPjUiUo7V76JFvKqj2nke?=
+ =?us-ascii?Q?K+HlnO4C0MiX68+hjHR0CylfGYUzTM58twPKNce?=
+ =?us-ascii?Q?3FUHTDp0FGc3YHvXeobOchD7F6vBjEfYzKjjxvA?=
+ =?us-ascii?Q?aZfZzhVHGUDwVMuZQAsMC834OKJlcBmVOJPgVX?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb4+ironpd4JJkXKzyuIKcPLmLuQ10ROkbsz+s8iDnw?=
+ =?us-ascii?Q?seEf28Ke=2FyqTkl6BGLIGGdHZcjJkGMsBNVAq4AO?=
+ =?us-ascii?Q?vgr+a9K3MuXU46Sxia5Jlb8q4uu6HhFAs01KF9I?=
+ =?us-ascii?Q?NBzYYuPhhA=2FPg3xsu2FGcYhOCiYagBgOGCm806D?=
+ =?us-ascii?Q?fRJqrlt6wEY3hwCypOeSZAJTYNxg0XGbp6nCkZa?=
+ =?us-ascii?Q?JmtoWViJYJbc=2FPALZw=2FQiXnHRvT6xNaN6kPqXKX?=
+ =?us-ascii?Q?3NltuXV6ceWzuotLEkznMBpsAUEAtOtqOPJzG3F?=
+ =?us-ascii?Q?Ej5eh1viv6qFAOTYHVSzRn2MmfkNW2UuR0pXJ2h?=
+ =?us-ascii?Q?eaPmqCwu8Yv5J7Xvcj7UbT43e8Y8EsHN6Tdegpq?=
+ =?us-ascii?Q?gSEeSJsjrRNtf5or17PpMdGOgp3OB+JrRpgWGRR?=
+ =?us-ascii?Q?XQ2D78PTg84nkU=3D?=
+To: skgdcq <ely.ubuntu0@gmail.com>
+X-Entity-ID: chi7aJKxAjVFSY993kIs6g==
+
+--bf04d1a8e97be628326e9b7a9e6349a199daeef08abfed976972aac71832
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+=E2=80=8B
+=E2=80=8B
+Thanks for taking action. Click the link below to download
+all the images and you'll be on your way.
+=E2=80=8B
+
+-->Download All Images (
+https://click.convertkit-mail2.com/v8urnlvkm2izfe8w06sg/wnh2h6uw57k6e5b7/aH=
+R0cHM6Ly9hcHAuY29udmVydGtpdC5jb20vZm9ybXMvY29uZmlybT9rZXk9ODk4YzhmZDQ3ODczZ=
+jE1MGI4YjJlMzlhMTYzMDMwNGUzYzNkZDUxYyZzaWQ9NjAxNzY4NTcwNQ=3D=3D
+)
+Download All Images (
+https://app.convertkit.com/forms/confirm?key=3D898c8fd47873f150b8b2e39a1630=
+304e3c3dd51c&sid=3D6017685705
+)=E2=80=8B
+Start creating your dream website!
+=E2=80=8B
+Cheers,
+Jim Fahad
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+=E2=80=8B
+
+Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/v8urnlvkm2izfe8w06sg ) |
+Update your profile (
+https://preferences.convertkit-mail2.com/v8urnlvkm2izfe8w06sg ) |
+20/14/1, Mirpur, Dhaka, Dhaka 1216
+--bf04d1a8e97be628326e9b7a9e6349a199daeef08abfed976972aac71832
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
+-8"></head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div class=3D"email">
+<!--[if mso]><style>.button-table { padding: 12px 0 }</style><![endif]-->
+<p style=3D"margin-top:0;margin-bottom:6px;font-family:Times New Roman;colo=
+r:#000000;font-size:16px;line-height:1.4">=E2=80=8B<br>=E2=80=8B<br>     Th=
+anks for taking action. Click the link below to download all the images and=
+ you'll be on your way.<br>=E2=80=8B</p>
+<!--[if !mso]>--><table width=3D"100%" style=3D"border-collapse:separate;ms=
+o-table-lspace:0pt;mso-table-rspace:0pt"><tbody><tr><td align=3D"left" styl=
+e=3D"vertical-align:top"><a class=3D"email-button" href=3D"https://click.co=
+nvertkit-mail2.com/v8urnlvkm2izfe8w06sg/wnh2h6uw57k6e5b7/aHR0cHM6Ly9hcHAuY2=
+9udmVydGtpdC5jb20vZm9ybXMvY29uZmlybT9rZXk9ODk4YzhmZDQ3ODczZjE1MGI4YjJlMzlhM=
+TYzMDMwNGUzYzNkZDUxYyZzaWQ9NjAxNzY4NTcwNQ=3D=3D" target=3D"_blank" rel=3D"n=
+oopener noreferrer" style=3D"color:#0875c1;border:0 none;margin-bottom:6px;=
+font-size:16px;line-height:1.4;background-color:#0875c1;color:#ffffff;borde=
+r-radius:4px;border-width:1px;border-color:#17f197;background-color:#17f197=
+;box-sizing:border-box;border-radius:4px;border-style:solid;color:#000000;d=
+isplay:inline-block;text-align:left;text-decoration:none;padding:12px 20px;=
+margin:6px 0;font-size:16px" url-id=3D"1541800393">Download All Images</a><=
+/td></tr></tbody></table>
+<!--<![endif]--><!--[if mso]><table class=3D"button-table" width=3D"100%" b=
+order=3D"0" cellSpacing=3D"0" cellPadding=3D"0" style=3D"margin:6px 0"><tr>=
+<td align=3D"left"><table border=3D"0" cellSpacing=3D"0" cellPadding=3D"0">=
+<tr><td align=3D"center" bgcolor=3D"#17f197" style=3D"background-color:#17f=
+197;border-radius:4px;overflow:hidden"><a class=3D"email-button" href=3D"ht=
+tps://app.convertkit.com/forms/confirm?key=3D898c8fd47873f150b8b2e39a163030=
+4e3c3dd51c&sid=3D6017685705" target=3D"_blank" rel=3D"noopener noreferrer" =
+style=3D"background-color:inherit;display:inline-block;text-decoration:none=
+;border-width:1px;border-style:solid;margin:0;color:#000000;border-color:#1=
+7f197;padding:12px 20px;font-size:16px">Download All Images</a></td></tr></=
+table></td></tr></table><![endif]--><p style=3D"margin-top:0;margin-bottom:=
+6px;font-family:Times New Roman;color:#000000;font-size:16px;line-height:1.=
+4">=E2=80=8B<br>     Start creating your dream website!<br>=E2=80=8B<br>   =
+  Cheers,<br>     Jim Fahad<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=
+=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=E2=80=8B<br>=
+=E2=80=8B<br>=E2=80=8B</p>
+<div class=3D"email-footer"><p style=3D"margin-top:0;margin-bottom:6px;font=
+-family:Times New Roman;color:#000000;font-size:16px;line-height:1.4;text-a=
+lign:left"><a href=3D"https://unsubscribe.convertkit-mail2.com/v8urnlvkm2iz=
+fe8w06sg" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#087=
+5c1"><span style=3D"font-size:12">Unsubscribe</span></a><span style=3D"font=
+-size:12"> | </span><a href=3D"https://preferences.convertkit-mail2.com/v8u=
+rnlvkm2izfe8w06sg" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"c=
+olor:#0875c1"><span style=3D"font-size:12">Update your profile</span></a><s=
+pan style=3D"font-size:12"> | 20/14/1, Mirpur, Dhaka, Dhaka 1216</span></p>=
+</div>
+</div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/v8urnlvkm2izfe8w06sg" alt=3D"=
+" style=3D"border:0 none;display:block;height:auto;line-height:100%;outline=
+:none;-webkit-text-decoration:none;text-decoration:none">
+</body>
+</html>
+
+--bf04d1a8e97be628326e9b7a9e6349a199daeef08abfed976972aac71832--

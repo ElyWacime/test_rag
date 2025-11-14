@@ -1,0 +1,503 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4094:b0:4c5:a633:e965 with SMTP id r20csp3279834pxb;
+        Mon, 19 Jun 2023 15:47:04 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5Ul0lo1wRYihWvrOYpIBOAjJ4rv80SwDJjQ5CEgnRvmcnTUM8N6+9jIzmfF/rcU4MkI2Z6
+X-Received: by 2002:a17:90a:1382:b0:25b:f862:43a6 with SMTP id i2-20020a17090a138200b0025bf86243a6mr5888288pja.21.1687214824350;
+        Mon, 19 Jun 2023 15:47:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687214824; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sRszqMC9z/9b3PtRa2+Xmz3WJvNWyAgKUIO1HpvSLLK0bV5M3VgspYuw9onK/hjSMx
+         Y0JT0BRv7oHo1UhF20Uv/Q21tOtILx0w0Pa4AUKV8RAzvv1R7Ln2wa0JODCafxOI5XdE
+         2h+MsxAw3UWnsR+xdpn/X6oFJIyGlE7KA2JrmkRFe9qYw/Xpwzz35R2BxsRfZK6vSaXl
+         AgaZyU8puwgBdkEsReyJI+rHbQOWu6PkjPVBA9CW7fhhA9C7BkSdA9x3wqlS5TMrNJtd
+         5I4UFcwHNmEUeBlWfotqe0thiTyq2/TDaNjaGdQLkrniSOY4iZ/oNooshJ19dw8Dppaw
+         8xWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:subject:from:to
+         :date:dkim-signature;
+        bh=oiSjvNWVpFdL+ZPbhZAnJVLa3fEkcPiCzj+EgqjaTc8=;
+        b=D2iNF2Q14dyPPPpghmhX697xZD8gD2EKIAxqKltQqBbmIEUbydjh8NQ0xwcSDUrDM6
+         L4DDZfahXWvGZXc2QphYsGQcfyHoToP1QQHKzqlOox/igPxydK9MqB0kTV3MZvnSjJoa
+         F+IeCdzB0mD/DI2R2Mc/rjnhPKWFJOkDyo7B0aYggaLsImmD7tI+9LsVvcHKpv2vCyA5
+         hJQR5URPI8yePXGt4cgIogj4gttRZBwGR5KDnGsMEEwvc3tQUkeuiG9e4MhQ/OU0QZr5
+         nH6Mlnx80VCvpkQbRGYrC0NoKQPvS9JCjk+kF+HvaKvHL6w7bYO7NzLIOTkWeh73W9xN
+         mZcw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pinkgalaxy.net header.s=default header.b=bNbkPgSI;
+       spf=pass (google.com: domain of service@pinkgalaxy.net designates 198.54.122.147 as permitted sender) smtp.mailfrom=service@pinkgalaxy.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pinkgalaxy.net
+Return-Path: <service@pinkgalaxy.net>
+Received: from MTA-08-4.privateemail.com (mta-08-4.privateemail.com. [198.54.122.147])
+        by mx.google.com with ESMTPS id f1-20020a17090a654100b00256c6c76723si567577pjs.69.2023.06.19.15.47.04
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Jun 2023 15:47:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of service@pinkgalaxy.net designates 198.54.122.147 as permitted sender) client-ip=198.54.122.147;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pinkgalaxy.net header.s=default header.b=bNbkPgSI;
+       spf=pass (google.com: domain of service@pinkgalaxy.net designates 198.54.122.147 as permitted sender) smtp.mailfrom=service@pinkgalaxy.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pinkgalaxy.net
+Received: from mta-08.privateemail.com (localhost [127.0.0.1])
+	by mta-08.privateemail.com (Postfix) with ESMTP id A6BD31800188
+	for <ely.ubuntu0@gmail.com>; Mon, 19 Jun 2023 18:47:03 -0400 (EDT)
+Received: from 127.0.0.1 (unknown [213.133.102.84])
+	by mta-08.privateemail.com (Postfix) with ESMTPA id 1CA1D18000A4
+	for <ely.ubuntu0@gmail.com>; Mon, 19 Jun 2023 18:47:02 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=pinkgalaxy.net;
+	s=default; t=1687214823;
+	bh=aIkKkk9k8NaoWE84rPVoU5YKwuz1Q8H3Tesw4uD4jtc=;
+	h=Date:To:From:Subject:From;
+	b=bNbkPgSIBvn58x1gNF8tXexZ0sSx3XJNDNV5Rg9qD9YS2GooH1nwgefniykqIZJkb
+	 pG5mGY76Ezz0iAOWJCGh48VehP2Mb2WK5AGyU0p2I62ObkSAOqi3uAIoSUYJIYEPSz
+	 HgzWWQLb+6AIcQQzJKszKCGiGJXldw9dsYH1VrEs=
+Date: Tue, 20 Jun 2023 00:47:01 +0200
+To: ely.ubuntu0@gmail.com
+From: PinkGalaxy Service <service@pinkgalaxy.net>
+Subject: Registration on PinkGalaxy
+Message-ID: <arUedhdegwP97Ttr2S13Oxr3a65z8RqzHDQhyzfrw@127.0.0.1>
+X-Mailer: PinkGalaxy Mailer
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Virus-Scanned: ClamAV using ClamSMTP
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META NAME="ROBOTS" CONTENT="NOINDEX,
+NOFOLLOW">
+    <META NAME="referrer" CONTENT="no-referrer">
+    <meta charset="utf-8">
+    <!-- utf-8 works for most cases -->
+    <meta name="viewport"
+content="width=device-width">
+    <!-- Forcing initial-scale shouldn't be
+necessary -->
+    <meta http-equiv="X-UA-Compatible"
+content="IE=edge">
+    <!-- Use the latest (edge) version of IE
+rendering engine -->
+    <title></title>
+    <!-- The title tag shows in email
+notifications, like Android 4.4. -->
+
+    <!-- CSS Reset -->
+    <style type="text/css">
+        a,
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        /* What it does: Remove spaces around the
+email design added by some email clients. */
+        /* Beware: It can remove the padding /
+margin and add a background color to the compose a
+reply window. */
+        
+        html,
+        body {
+            Margin: 0 !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+        /* What it does: Stops email clients
+resizing small text. */
+        
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        /* What it does: Forces Outlook.com to
+display emails full width. */
+        
+        .ExternalClass {
+            width: 100%;
+        }
+        /* What is does: Centers email on Android
+4.4 */
+        
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+        /* What it does: Stops Outlook from adding
+extra spacing to tables. */
+        
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+        /* What it does: Fixes webkit padding
+issue. Fix for Yahoo mail table alignment bug.
+Applies table-layout to the first 2 tables then
+removes for anything nested deeper. */
+        
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            Margin: 0 auto !important;
+        }
+        
+        table table table {
+            table-layout: auto;
+        }
+        /* What it does: Uses a better rendering
+method when resizing images in IE. */
+        
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+        /* What it does: Overrides styles added
+when Yahoo's auto-senses a link. */
+        
+        .yshortcuts a {
+            border-bottom: none !important;
+        }
+        /* What it does: Another work-around for
+iOS meddling in triggered links. */
+        
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+        }
+    </style>
+
+    <!-- Progressive Enhancements -->
+    <style>
+        /* What it does: Hover styles for buttons
+*/
+        
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+			background:
+url(http://pinkgalaxy.net/do_img/global/email/buttons/darkorbit_button_290x95_p.png)
+no-repeat !important;
+        }
+        
+        .button-td:hover,
+        .button-a:hover {
+            background:
+url(http://pinkgalaxy.net/do_img/global/email/buttons/darkorbit_button_290x95_a.png)
+no-repeat !important;
+        }
+        
+        .button-small:hover,
+        .button-b:hover {
+            background:
+url(http://pinkgalaxy.net/do_img/global/email/buttons/darkorbit_button_250x50_a.png)
+no-repeat !important;
+        }
+        /* Media Queries */
+        
+        @media screen and (max-width: 480px) {
+            /* What it does: Forces elements to
+resize to the full width of their container.
+Useful for resizing images beyond their max-width.
+*/
+            .fluid,
+            .fluid-centered {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+            /* And center justify these ones. */
+            .fluid-centered {
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+            /* What it does: Forces table cells
+into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+            /* What it does: Generic utility class
+for centering. Useful for images, buttons, and
+nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body width="100%" bgcolor="#222222"
+style="Margin: 0;">
+	    <table cellpadding="0" cellspacing="0"
+border="0" height="100%" width="100%"
+bgcolor="#222222"
+style="border-collapse:collapse;">
+        <tr>
+            <td valign="top">
+                <center style="width: 100%;">
+
+					<div style="max-width: 600px;">
+						<!--[if (gte mso 9)|(IE)]>            
+<table cellspacing="0" cellpadding="0" border="0"
+width="600" align="center">             <tr>      
+      <td>             <![endif]-->
+						
+						
+						<!-- Email Body : BEGIN -->
+						<table cellspacing="0" cellpadding="0"
+border="0" align="center" bgcolor="#000000"
+width="100%" style="max-width: 600px;">
+
+							<!-- Hero Image, Flush : BEGIN -->
+							<tr>
+								<td>
+									<a href="http://pinkgalaxy.net/"
+target="_blank">
+										<img
+src="http://pinkgalaxy.net/do_img/global/email/mail_2_top.png"
+width="600" height="" alt="header" border="0"
+align="center" style="width: 100%; max-width:
+600px; height: auto;">
+									</a>
+								</td>
+							</tr>
+							<!-- Hero Image, Flush : END -->
+
+							<!-- Headline : BEGIN -->
+							<tr>
+								<td>
+									<table cellspacing="0" cellpadding="0"
+border="0" width="100%">
+										<tr>
+											<td style="color: #E0AB2D;
+padding-left: 40px; padding-right: 40px;
+text-align:center; font-family: PT Sans, Trebuchet
+MS, Helvetica, sans-serif; font-size: 30px;
+mso-height-rule: exactly; line-height: 20px;">
+												<span style="padding-top: 10px;
+font-family: sans-serif; font-size: 30px;
+line-height: 40px; color: darkgold;
+text-align:center; text-shadow: 0px 0px 0px ;">
+													<b>Start your adventure on
+PinkGalaxy!</b>
+												</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<!-- Headline : END -->
+
+							<!-- Greeting : BEGIN -->
+							<tr>
+								<td>
+									<table cellspacing="0" cellpadding="0"
+border="0" width="100%">
+										<tr>
+											<td style="color: #E=0AB2D;padding-top:
+20px; padding-left: 40px; padding-right: 40px;
+text-align:center; font-family: PT Sans, Trebuchet
+MS, Helvetica, sans-serif; font-size: 20px;
+mso-height-rule: exactly; line-height: 20px;">
+												<span style="padding-top: 10px;
+font-family: sans-serif; font-size: 20px;
+line-height: 40px; color: #00ccff; 
+text-align:center;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+
+													<b>Welcome meshuggah!</b>
+
+												</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<!-- Greeting : END -->
+
+							<!-- 1 Column Text - BEGIN-->
+							<tr>
+								<td>
+									<table cellspacing="0" cellpadding="0"
+border="0" width="100%">
+										<tr>
+											<td style="color: #ffffff;padding-top:
+20px; padding-left: 60px; padding-right: 60px;
+text-align:center; font-family: Arial, Trebuchet
+MS, Helvetica, sans-serif; font-size: 16px;
+mso-height-rule: exactly; line-height: 20px;">
+												We're happy to see that you have
+decided to register on PinkGalaxy!</br>
+</br></br><h2>What is PinkGalaxy?</h2></br>
+</br>PinkGalaxy is the most advanced server that
+has ever been created! With much love and passion,
+we decided to develop this awesome server so you
+can have an awesome time with our community!</br>
+<br>We have many features like:</br> <ul
+style='text-align:left;color:pink;'></br>	<li>Unique
+and complex matchmaking system</li></br>	<li>Low
+latency & bugfree</li></br>	<li>24/7
+Stable</li></br>	<li>A unique upgrade
+system</li></br>	<li>A unique skill
+tree</li></br>	<li>Quick updates with low
+downtime</li></br>	<li>Very high security
+standards for your data</li></br>	<li>PVE & PVP
+instance</li></br> </ul></br> ... and much
+more!</br> <br></br>To join now just click the
+button down below to verify your account and
+you're done!
+												<br>
+												<br>
+											   
+
+
+												
+												<!-- Button : Begin -->
+												<tr>
+													<td>
+														<table cellspacing="0"
+cellpadding="0" border="0" width="100%">
+
+															<br>
+															<br>
+															<!--[if mso]><center> <v:roundrect
+xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+href="http://pinkgalaxy.net/?verificationsMail=MkVnNlF0RzhLT0h5M1Z4eVFoa0NkSVoyeHhrOGNuM2duaCtCVkhtUHZuYitwcTlZN2lUSDZvL2ZBSUoyaDhDSg%3D%3D&verificationsToken=Y0FMMkppaWNtQ0JtQi9QVTZoc0h3Z2t2cXc5Q0JOVGhBT0RCcGMxVUcrNm5Qa1hQZ3k2N0Z1QXMxZWhCRXVKWExxbGZwNzZtRExhN2FXNXliWGlNdU9WWXJmYmthcEprbjlSbnl0ODV1SkNsaVh5NFF5M2x3YmZ0UmlER0FKSXNVeXlIV05zRkx2M1VmakNxM3FCd0trNFRlZ3dlYWRza3AxR0NaZUkrVTRaY1Z6QmJ1a3RyRXFVMWtPTTdKd2lLM2praS9VWXVDMFF4OWJkS2U2SWM5aUlCajlja3JINGtWK2JCZTViMkQ4dUYrSWdpWXJ0aktRd3BvcEozQ1FDSFNIaDBqaTBnb2xkVW14ckFqenhidW9neUdQZ3Z2Z05GNE0zSG9zSHUwakZhV2ZGQjhXMmNFdmZFcy9oc3Bndm5mVDJsM3l3SW5HcFZoZmkvMVpEOFBUM0VSMEFmOUtUOVIyZHR0YWJIRUVFPQ%3D%3D"
+target="_blank"
+style="height:95px;v-text-anchor:middle;width:290px;"
+arcsize="10%" stroke="f" fillcolor="#366e18">     
+                                <w:anchorlock/>   
+                               <center
+style="color:#FFFFFF;font-family:sans-serif;font-size:18px;font-weight:bold;">Verify
+your account now!</center>                        
+          </v:roundrect>                          
+        </center>                                
+<![endif]-->
+															<![if !mso]>
+															<table cellspacing="0"
+cellpadding="0" border="0" align="center"
+style="Margin: auto">
+																<tr>
+																	<td align="center" width="290"
+height="95" style="-webkit-border-radius: 5px;
+-moz-border-radius: 5px; border-radius:
+5px;text-decoration: none; display: block; border:
+solid 0px #FFFFFF;text-align: center;"
+class="button-td">
+																		<a
+href="http://pinkgalaxy.net/?verificationsMail=MkVnNlF0RzhLT0h5M1Z4eVFoa0NkSVoyeHhrOGNuM2duaCtCVkhtUHZuYitwcTlZN2lUSDZvL2ZBSUoyaDhDSg%3D%3D&verificationsToken=Y0FMMkppaWNtQ0JtQi9QVTZoc0h3Z2t2cXc5Q0JOVGhBT0RCcGMxVUcrNm5Qa1hQZ3k2N0Z1QXMxZWhCRXVKWExxbGZwNzZtRExhN2FXNXliWGlNdU9WWXJmYmthcEprbjlSbnl0ODV1SkNsaVh5NFF5M2x3YmZ0UmlER0FKSXNVeXlIV05zRkx2M1VmakNxM3FCd0trNFRlZ3dlYWRza3AxR0NaZUkrVTRaY1Z6QmJ1a3RyRXFVMWtPTTdKd2lLM2praS9VWXVDMFF4OWJkS2U2SWM5aUlCajlja3JINGtWK2JCZTViMkQ4dUYrSWdpWXJ0aktRd3BvcEozQ1FDSFNIaDBqaTBnb2xkVW14ckFqenhidW9neUdQZ3Z2Z05GNE0zSG9zSHUwakZhV2ZGQjhXMmNFdmZFcy9oc3Bndm5mVDJsM3l3SW5HcFZoZmkvMVpEOFBUM0VSMEFmOUtUOVIyZHR0YWJIRUVFPQ%3D%3D"
+target="_blank" style="text-shadow: 0px 1px 1px
+#006600;color: #ffffff;font-size:18px;
+font-weight: bold; font-family:sans-serif;
+text-decoration: none; line-height:90px;
+width:100%; display:inline-block;border-color:
+#555555 !important; " class="button-a">
+																			<b>Verify your account now!</b>
+																		</a>
+																	</td>
+																</tr>
+															</table>
+															<![endif]>
+															<!-- Button : END -->
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<!-- 1 Column Text - centered :END -->
+
+										<!-- Hero Image, Flush : BEGIN -->
+										<tr>
+											<td>
+												<a href="http://pinkgalaxy.net/"
+target="_blank">
+													<img
+src="http://pinkgalaxy.net/do_img/global/email/DO_newsletter_rareresource2019_footer.jpg"
+width="600" height="" alt="" border="0"
+align="center" style="width: 100%; max-width:
+600px; height: auto;">
+												</a>
+											</td>
+										</tr>
+										<!-- Hero Image, Flush : END -->
+										
+										
+										
+										<!-- Footer Image, Flush : BEGIN -->
+										<tr>
+											<td>
+												<a href="http://pinkgalaxy.net/"
+target="_blank">
+													<img
+src="http://pinkgalaxy.net/do_img/global/email/footer_logo.png"
+width="600" height="" alt="" border="0"
+align="center" style="width: 100%; max-width:
+600px; height: auto; background-color:#82088a;">
+												</a>
+											</td>
+										</tr>
+										<!-- Footer Image, Flush : END -->
+			
+			
+										
+							<tr>
+								<td>
+									<table cellspacing="0" cellpadding="0"
+border="0" width="100%">
+										<tr>
+											<td
+style="background-color:#000000;padding-left:
+40px; padding-right: 40px; text-align: justify;
+font-family: sans-serif; font-size: 12px;
+mso-height-rule: exactly; line-height: 20px;
+text-align:center; color:#ffffff;">
+												<br /> You received this email because
+you signed up with the following email address:
+ely.ubuntu0@gmail.com.
+												<br /> Do not miss any of our
+newsletters and add us to your address book.
+												<br />
+												<br />
+
+												<b>© 2023 PINKGALAXY</b> | <a
+href="http://pinkgalaxy.net/policy/terms-and-conditions"
+target="_blank">Terms & conditions</a><br>
+												Developed with ❤️
+
+												<br />
+												<br />
+
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</center>
+				</td>
+				</tr>
+				</table>
+				<img
+src="http://pinkgalaxy.net/eventstream.php?event=readMail&generator=mailClient&pid=112182&uid=112197&tid=1&iid=1&sid=1&ctime=1687214821"
+alt="" width="1" height="1">
+	</body>
+</html>
+

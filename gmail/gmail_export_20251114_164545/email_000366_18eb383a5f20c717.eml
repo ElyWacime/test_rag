@@ -1,0 +1,362 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:b710:0:b0:2d2:748b:49b8 with SMTP id j16csp1092512ljo;
+        Sat, 6 Apr 2024 06:05:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEqr7JTDQ8I/Kp4s1zmTf+tGDBbH3XWIixR0hdpU4hCkBavG38gWhdLmsarT9b4vlKSOTbz
+X-Received: by 2002:a81:49d5:0:b0:615:3287:fde4 with SMTP id w204-20020a8149d5000000b006153287fde4mr3483444ywa.1.1712408732696;
+        Sat, 06 Apr 2024 06:05:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712408732; cv=none;
+        d=google.com; s=arc-20160816;
+        b=a8jQ6AiHtnOa7C4O49YNagETBb8N34ywg9XpSNPOl9JkFNShDdWzbU1Gka/2UAPWfT
+         pZwTlW7yx0tdutIfBX+JTO3RyHbnTSnmsY81oRIDfJNDnpmN0s4O+eSyYzAA7gGWTNcY
+         N6Pm8tDkbGvIntZ9hHcQUbpOMFWhf+jm5CSH6D4H+Bi+hmTTfjsYevf4Ir43OUyQ6YQz
+         34j/TxbLTDRY+NmNGUPz33hybUcxJB8RW4y57DHPCmhwEWnlIXVx6Z/0YmDCi8tBHBs2
+         qW42HlS4zSH1DqzJsaZV+iDMVcW6ihAbBEjCe5mec7mbyly4m1lT1g6OuteRHOLmvInM
+         TiXA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:date:message-id:feedback-id:to:subject:from
+         :dkim-signature:dkim-signature;
+        bh=QyBm538YQH3DAIch8BiSBrosCwrnG/HvQYV2s42ZRV4=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=gJXFUDeEk7Be3oI0aUQH173ASj4Jgw1dEAa3/IOTyUnRB7BeWzLPeDYoDyZ2OoAB1H
+         iVl6vV7RTapOde5lDnMMtZsY8x0MxuIGir16kIIlpHSRPmUM48VZyp19Gx7+Y9yAxM+3
+         POH/ZNLtgQ2enunQtdJbDgcdMIjXMUQm4n7gNNHztCwufpZgJEj/T9xsV2t7VpT9V6rq
+         OAbqMSyQ6AogWCD8M1CM3xXzu3MPhPBEUlWiA1E4Yz0ZPoafKmcZzUDeKo2xfnQrxMZr
+         HMK84e5bKsq5hdObIzJ0O0oTHC6PXSFVkHPaNaAIz9kbc8bEp5sRYcxcGc2DBb268OAJ
+         svFg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mandrillapp.com header.s=mte1 header.b=DZ2TISoS;
+       dkim=pass header.i=@nft.storage header.s=mte1 header.b=D9msHpEX;
+       spf=pass (google.com: domain of bounce-md_31515745.6611489b.v1-90941c0bf2874e24aeeb4d423601ccfb@mandrillapp.com designates 198.2.133.16 as permitted sender) smtp.mailfrom=bounce-md_31515745.6611489b.v1-90941c0bf2874e24aeeb4d423601ccfb@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nft.storage
+Return-Path: <bounce-md_31515745.6611489b.v1-90941c0bf2874e24aeeb4d423601ccfb@mandrillapp.com>
+Received: from mail133-16.atl131.mandrillapp.com (mail133-16.atl131.mandrillapp.com. [198.2.133.16])
+        by mx.google.com with ESMTPS id l16-20020a0de210000000b00614289746acsi1691647ywe.2.2024.04.06.06.05.32
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 06 Apr 2024 06:05:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_31515745.6611489b.v1-90941c0bf2874e24aeeb4d423601ccfb@mandrillapp.com designates 198.2.133.16 as permitted sender) client-ip=198.2.133.16;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mandrillapp.com header.s=mte1 header.b=DZ2TISoS;
+       dkim=pass header.i=@nft.storage header.s=mte1 header.b=D9msHpEX;
+       spf=pass (google.com: domain of bounce-md_31515745.6611489b.v1-90941c0bf2874e24aeeb4d423601ccfb@mandrillapp.com designates 198.2.133.16 as permitted sender) smtp.mailfrom=bounce-md_31515745.6611489b.v1-90941c0bf2874e24aeeb4d423601ccfb@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nft.storage
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+	s=mte1; t=1712408732; x=1712669232;
+	bh=QyBm538YQH3DAIch8BiSBrosCwrnG/HvQYV2s42ZRV4=;
+	h=From:Subject:To:Feedback-ID:Message-Id:Date:MIME-Version:
+	 Content-Type:CC:Date:Subject:From;
+	b=DZ2TISoSR5ZInB4DeFiI5LVcQQYktk7q6y2ggPN94tVJUJ/5Xp/ZTifLWd9EjIpCE
+	 UexRE0Bb6wiX/cRWOK+HgUHIHrj6+2Illr44EEzHolp+GgMG9h14AtKFbMOxmRpsRa
+	 KAWmGK0NqXKiDszvmpFkSGem7TZvl9NRU7z5HFxarqN07Tn1GPQQFoJRjcgdswuzsV
+	 NZGXuszXNcN9cwcIsS1D5pAwt03KBUBzJupOyB//2ODKRVnfPbTxhE3N82NXwlNFgw
+	 k92cgqsGPtxIEyEwW+PKwlWN+cuTlFwYr510UKqy3clOavlVFyh9rqhVUt6nUstnHX
+	 e7Jy9pnDx2J4A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nft.storage; s=mte1;
+	t=1712408732; x=1712669232; i=noreply@nft.storage;
+	bh=QyBm538YQH3DAIch8BiSBrosCwrnG/HvQYV2s42ZRV4=;
+	h=From:Subject:To:Feedback-ID:Message-Id:Date:MIME-Version:
+	 Content-Type:CC:Date:Subject:From;
+	b=D9msHpEXfubFv91gtChiBCV7HyB+PXPAasJl5KCq59ikaOVlSIcQ1nCuKXpVH++GW
+	 MgeImu5YfzaipkRwZRocw5K+KdXCBSUdqXbJExYz5rHzqJ73/P85oVf1ayIKJgswCK
+	 T0nAif57kFrQ8qsuGaZHMCER2DZTXSN9HS8jOdxqBMImEzmWk3AuqGVFXoqQs/6P0x
+	 clX6PYX6jp47vvXRdNO+R4IDqC0sFcxi3yn+Yt9SUGhDrdJXB5Bo3YhF7SBWp91R70
+	 EhHteClMwv+yreTSC5wQZsflUFbwOTbuYWVElwsIwsWHaLvLOl10ogT89J5D3cLj/x
+	 QYWtdG5Sbqugw==
+Received: from pmta13.mandrill.prod.atl01.rsglab.com (localhost [127.0.0.1])
+	by mail133-16.atl131.mandrillapp.com (Mailchimp) with ESMTP id 4VBbF7754GzB5pBXw
+	for <ely.ubuntu0@gmail.com>; Sat,  6 Apr 2024 13:05:31 +0000 (GMT)
+From: noreply@nft.storage
+Subject: =?utf-8?Q?Important=20updates=20and=20exciting=20future=20for=20NFT.Storage=20users?=
+Received: from [52.119.85.2] by mandrillapp.com id 90941c0bf2874e24aeeb4d423601ccfb; Sat, 06 Apr 2024 13:05:31 +0000
+To: ely.ubuntu0@gmail.com
+X-Native-Encoded: 1
+X-Report-Abuse: =?UTF-8?Q?Please=20forward=20a=20copy=20of=20this=20message,=20including=20all=20headers,=20to=20abuse@mandrill.com.=20You=20can=20also=20report=20abuse=20here:=20https://mandrillapp.com/contact/abuse=3Fid=3D31515745.90941c0bf2874e24aeeb4d423601ccfb?=
+X-Mandrill-User: md_31515745
+Feedback-ID: 31515745:31515745.20240406:md
+Message-Id: <31515745.20240406130531.6611489be9e753.53576663@mail133-16.atl131.mandrillapp.com>
+Date: Sat, 06 Apr 2024 13:05:31 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="_av-hywOAaGnFLVoakP_K7MF3g"
+
+--_av-hywOAaGnFLVoakP_K7MF3g
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi there, 
+
+ Hello from NFT.Storage!
+
+  Since our inception in April 2021, NFT.Storage has become a trusted
+public good for NFTs, with over 660 TB of data uploaded by our vibrant
+community. We're excited to share the next phase of NFT.Storage, a natural
+progression built on our foundational work. We're introducing an evolved
+NFT.Storage platform alongside the newly formed NFT.Storage DAO, marking a
+significant step towards enhancing community engagement and paving the way
+for a sustainable future in NFT preservation. 
+
+ What=E2=80=99s Changing:
+
+  To align our services more closely with our community's needs and ensure
+the sustainability of our model, we're updating our service offerings.
+We'll continue to offer the current product under the name NFT.Storage
+Classic for existing uploads prior to 30 June 2024, and no new uploads to
+the Classic product will be accepted as of 30 June 2024 at 5pm EST. New
+account registrations will no longer be accepted for: 
+
+   -  The original NFT.Storage web app, API, and SDK 
+  - NFTUp
+  - Pinning API
+ 
+  Your benefits as an existing account holder: 
+
+   -  Continue to upload off-chain NFT data using the current products
+through 30 June 2024, at 5 PM EST 
+  -  Maintain access to your links through the NFT.Storage Gateway at
+https://nftstorage.link/ipfs/{CID}  
+  -  All NFT data you=E2=80=99ve already uploaded and will upload before 30=
+ June
+2024, will continue to be safely stored and accessible via IPFS and in the
+Filecoin Network's long-term storage, though over time latency and
+availability may degrade. 
+ 
+ Planning for the Transition:
+
+  This transition is a important step towards reinforcing NFT.Storage as a
+public good, aiming to ensure we can continue to provide a sustainable
+service. Starting now: 
+
+   -  We're here to assist you in finding the best decentralized IPFS
+upload solution for your needs. Check our resources below for guidance 
+  -  Consider adding additional IPFS hosts to mirror your content from
+NFT.Storage for improved performance 
+  -  Bookmark classic.nft.storage for continued access to upload NFT data
+to the original platform 
+ 
+ What=E2=80=99s Next:
+
+   -  Evolution of NFT.Storage: Dive into the expanded capabilities and
+services of the new NFT.Storage platform. Note: A new account creation will
+be required 
+  -  Support NFT.Storage: By joining the NFT.Storage DAO, you can play a
+key role in helping shape the future of NFT.Storage. Your support directly
+contributes to the platform's growth and sustainability. 
+ 
+ Helpful Resources:
+
+   -  Read our blog our exploring IPFS upload options 
+  -  Learn more about the Future of NFT.Storage 
+  -  Bookmark the link to access the original NFT.Storage web app 
+ 
+ Need More Information?
+
+   -  For any questions, please don't hesitate to reach out directly at
+support@nft.storage 
+  -  Register for our webinar to learn more about the upcoming changes and
+how they affect you. 
+ 
+  We appreciate your continued support and are here to assist with this
+transition. Together, we look forward to a promising future for NFT.Storage
+and the broader NFT community. 
+
+  Best regards, 
+
+  The NFT.Storage Team
+
+--_av-hywOAaGnFLVoakP_K7MF3g
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<p><span style=3D"color: #0d0d0d">Hi there,&nbsp;</span></p>
+<p><span style=3D"color: #0d0d0d">Hello from NFT.Storage!</span></p>
+<p>
+    <span style=3D"color: #0d0d0d">Since our inception in April 2021, NFT.S=
+torage has become a trusted
+        public good for NFTs, with over 660 TB of data uploaded by our vibr=
+ant
+        community. </span
+    ><span style=3D"color: #0d0d0d">We're excited to share the next phase o=
+f NFT.Storage, a natural
+        progression built on our foundational work. We're introducing an ev=
+olved
+        NFT.Storage platform alongside the newly formed NFT.Storage DAO, ma=
+rking
+        a significant step towards enhancing community engagement and pavin=
+g the
+        way for a sustainable future in NFT preservation.</span
+    >
+</p>
+<p><span style=3D"color: #0d0d0d">What=E2=80=99s Changing:</span></p>
+<p>
+    <span style=3D"color: #0d0d0d">To align our services more closely with =
+our community's needs and
+        ensure the sustainability of our model, we're updating our service
+        offerings. </span
+    ><span style=3D"color: #444746">We'll continue to offer the current pro=
+duct under the name NFT.Storage
+        Classic for existing uploads prior to 30 June 2024, and no new uplo=
+ads
+        to the Classic product will be accepted as of 30 June 2024 at 5pm E=
+ST. </span
+    ><span style=3D"color: #0d0d0d">New account registrations will no longe=
+r be accepted for:</span
+    >
+</p>
+<ul>
+    <li>
+        <span style=3D"color: #0d0d0d">The original NFT.Storage web app, AP=
+I, and SDK</span
+        >
+    </li>
+    <li><span style=3D"color: #0d0d0d">NFTUp</span></li>
+    <li><span style=3D"color: #0d0d0d">Pinning API</span></li>
+</ul>
+<p>
+    <span style=3D"color: #0d0d0d">Your benefits as an existing account hol=
+der:</span
+    >
+</p>
+<ul>
+    <li>
+        <span style=3D"color: #0d0d0d">Continue to upload off-chain NFT dat=
+a using the current products
+            through 30 June 2024, at 5 PM EST</span
+        >
+    </li>
+    <li>
+        <span style=3D"color: #0d0d0d">Maintain access to your links throug=
+h the NFT.Storage Gateway at
+            https://nftstorage.link/ipfs/{CID}&nbsp;</span
+        >
+    </li>
+    <li>
+        <span style=3D"color: #0d0d0d">All NFT data you=E2=80=99ve already =
+uploaded and will upload before 30 June
+            2024, will continue to be safely stored and accessible via IPFS=
+ and
+            in the Filecoin Network's long-term storage,</span
+        ><span style=3D"color: #202020">
+            though over time latency and availability may degrade.</span
+        >
+    </li>
+</ul>
+<p><span style=3D"color: #0d0d0d">Planning for the Transition:</span></p>
+<p>
+    <span style=3D"color: #0d0d0d">This transition is a important step towa=
+rds reinforcing NFT.Storage as
+        a public good, aiming to ensure we can continue to provide a sustai=
+nable
+        service. Starting now:</span
+    >
+</p>
+<ul>
+    <li>
+        <span style=3D"color: #0d0d0d">We're here to assist you in finding =
+the best decentralized IPFS
+            upload solution for your needs. Check our resources below for
+            guidance</span
+        >
+    </li>
+    <li>
+        <span style=3D"color: #0d0d0d">Consider adding additional IPFS host=
+s to mirror your content from
+            NFT.Storage for improved performance</span
+        >
+    </li>
+    <li>
+        <span style=3D"color: #0d0d0d">Bookmark classic.nft.storage for con=
+tinued access to upload NFT
+            data to the original platform</span
+        >
+    </li>
+</ul>
+<p><span style=3D"color: #0d0d0d">What=E2=80=99s Next:</span></p>
+<ul>
+    <li>
+        <span style=3D"color: #0d0d0d">Evolution of NFT.Storage: Dive into =
+the expanded capabilities and
+            services of the new NFT.Storage platform. Note: A new account
+            creation will be required</span
+        >
+    </li>
+    <li>
+        <span style=3D"color: #0d0d0d">Support NFT.Storage: By joining the =
+NFT.Storage DAO, you can play a
+            key role in helping shape the future of NFT.Storage. Your suppo=
+rt
+            directly contributes to the platform's growth and
+            sustainability.</span
+        >
+    </li>
+</ul>
+<p><span style=3D"color: #0d0d0d">Helpful Resources:</span></p>
+<ul>
+    <li>
+        <a target=3D"_blank" href=3D"https://mandrillapp.com/track/click/31=
+515745/nft.storage?p=3DeyJzIjoiQzdqVzFkMFhoWEQ2VjJNRTIwamtsUGh6UkE0IiwidiI6=
+MSwicCI6IntcInVcIjozMTUxNTc0NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL25=
+mdC5zdG9yYWdlXFxcL2Jsb2dcXFwvb25ib2FyZC1uZnQtZGF0YS10by1pcGZzXCIsXCJpZFwiOl=
+wiOTA5NDFjMGJmMjg3NGUyNGFlZWI0ZDQyMzYwMWNjZmJcIixcInVybF9pZHNcIjpbXCI1NjQzN=
+GU5YTFkMzI5M2FjNDQwMTEwOWQ2NzI1ZTk2MTk3M2I3ZTI2XCJdfSJ9">Read our blog our =
+exploring IPFS upload options</a
+        >
+    </li>
+    <li>
+        <a target=3D"_blank" href=3D"https://mandrillapp.com/track/click/31=
+515745/nft.storage?p=3DeyJzIjoiNjFPSXNPN3NPTU1Pa0duTXhsZDJYdzVSNkFnIiwidiI6=
+MSwicCI6IntcInVcIjozMTUxNTc0NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL25=
+mdC5zdG9yYWdlXFxcL2Jsb2dcXFwvdGhlLW5leHQtY2hhcHRlci1vZi1uZnRzdG9yYWdlXCIsXC=
+JpZFwiOlwiOTA5NDFjMGJmMjg3NGUyNGFlZWI0ZDQyMzYwMWNjZmJcIixcInVybF9pZHNcIjpbX=
+CI5NGRjMzM1NDIxZjY2NDNkZmUwMGRmOTY5MGRiNjc2ODQ3YTgwMjY1XCJdfSJ9">Learn more=
+ about the Future of NFT.Storage</a
+        >
+    </li>
+    <li>
+        <a target=3D"_blank" href=3D"https://mandrillapp.com/track/click/31=
+515745/classic.nft.storage?p=3DeyJzIjoiM3dhSW1IMUhDcVZ5LXUwZmJpZ1k2Qmk4SFVZ=
+IiwidiI6MSwicCI6IntcInVcIjozMTUxNTc0NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFw=
+vXFxcL2NsYXNzaWMubmZ0LnN0b3JhZ2VcXFwvbG9naW5cXFwvXCIsXCJpZFwiOlwiOTA5NDFjMG=
+JmMjg3NGUyNGFlZWI0ZDQyMzYwMWNjZmJcIixcInVybF9pZHNcIjpbXCI3MmE4NjQwZTc2YTVhY=
+TIzYjBiODkzZjQ5YWEwN2Q3NDJjOTE0Zjg4XCJdfSJ9">Bookmark the link to access th=
+e original NFT.Storage web app</a
+        >
+    </li>
+</ul>
+<p><span style=3D"color: #0d0d0d">Need More Information?</span></p>
+<ul>
+    <li>
+        <span style=3D"color: #0d0d0d">For any questions, please don't hesi=
+tate to reach out directly at
+            support@nft.storage</span
+        >
+    </li>
+    <li>
+        <a target=3D"_blank" href=3D"https://mandrillapp.com/track/click/31=
+515745/forms.gle?p=3DeyJzIjoiYW5KV3NZeFVOaFhBVzRFUGhFdlFFV0YxQ1JJIiwidiI6MS=
+wicCI6IntcInVcIjozMTUxNTc0NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL2Zvc=
+m1zLmdsZVxcXC9CQmgzbVFUNHhBZUsxR1VWN1wiLFwiaWRcIjpcIjkwOTQxYzBiZjI4NzRlMjRh=
+ZWViNGQ0MjM2MDFjY2ZiXCIsXCJ1cmxfaWRzXCI6W1wiNjJmZDI2MmFkZWQ3YjU2YWU0MWZhZjh=
+mMzQ5ODcyMzYyOGJkNzJmM1wiXX0ifQ">Register for our webinar </a
+        ><span style=3D"color: #0d0d0d">to learn more about the upcoming ch=
+anges and how they affect
+            you.</span
+        >
+    </li>
+</ul>
+<p>
+    <span style=3D"color: #0d0d0d">We appreciate your continued support and=
+ are here to assist with this
+        transition. Together, we look forward to a promising future for
+        NFT.Storage and the broader NFT community.</span
+    >
+</p>
+<p>
+    <span style=3D"color: #0d0d0d">Best regards,</span>
+</p>
+<p>
+    <span style=3D"color: #0d0d0d">The NFT.Storage Team</span>
+</p><img src=3D"https://mandrillapp.com/track/open.php?u=3D31515745&id=3D90=
+941c0bf2874e24aeeb4d423601ccfb" height=3D"1" width=3D"1" alt=3D"">
+
+--_av-hywOAaGnFLVoakP_K7MF3g--
+

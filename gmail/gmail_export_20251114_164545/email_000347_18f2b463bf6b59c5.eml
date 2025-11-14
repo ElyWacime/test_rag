@@ -1,0 +1,475 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:b043:0:b0:2df:f850:e74f with SMTP id d3csp900352ljl;
+        Mon, 29 Apr 2024 12:12:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IECDUORONEZim5GN7tkX0RT9N9r5/mPtvAXnLkWF97WiwlPJtmoh3ndMP2uq7V+Pr6NNfMc
+X-Received: by 2002:a05:620a:3715:b0:790:ead6:ac85 with SMTP id de21-20020a05620a371500b00790ead6ac85mr6242686qkb.61.1714417973891;
+        Mon, 29 Apr 2024 12:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714417973; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HC7LZsCQJs+Un057MDzKItJIQh5d4M/AqAadULk64c8l0gxlxR423gHSNfQ8nnIvVH
+         RJHtpsSF6fuPdYx9qRo/sQfTIp3yEjsTLYykpwiN4tDWPLX8oxXrtZiOigY44FRMxOf9
+         VO4WgswsXRnteGYcTT/X8+pKjo5n1R08ixtRn+dJBA9XXi1G9Vb/zi4G90sU9md4LBQG
+         p0rr0PkvgDXyOlRlct07P/QU72f8YjFmZ6LNwBjsA9KSD3LQVUmzA/gfn03/pBDMV32J
+         z92DXg8p4ZSwqymjBi3cpUBIgJ/YiMAKwrR3M1+6a7UiJy17YSo9kUgxD5NF2OVzYi2L
+         oWvQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:mime-version:list-unsubscribe-post
+         :list-unsubscribe:subject:to:from:dkim-signature:dkim-signature;
+        bh=F71W21AqvJjDIASzBYZ614KXj4oRzoDYletgAwIojLo=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=j+iwO80eUqIE7g9Is1W1iX0RNGUpI006ZQub36pOzHM1wM3TMKRMG8Eawj+BClc077
+         JbEBdsPEik6yhaeLLdrmKa7MFOuIo+pTIjf0cekwdVoNZzjWUAyLn5jRkCjXJHu0hjZu
+         jsJH6pjSlPcXcWyolvLpFwxGN8FxVMOPnNgOhDJYAbI8qpG8+WyAqoPlnQ4H8WLvt5ZA
+         Uv76CesyUWBygWHE2lMK/g8JGIE/fLy31HM9frcUydFqHa6raH2lNAwdwspiTMmhf7kp
+         rEBhlpDf583jARZLNwQYxBwkg7AYvHkdDgcAxU2DIi4TFhR3QFZMI7zB6vg899QEXVGr
+         +DGQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=dftjV80s;
+       dkim=pass header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug header.b=Kno4qEtH;
+       spf=pass (google.com: domain of 0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+Return-Path: <0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000@em1234.pipedream.com>
+Received: from a123-37.smtp-out.amazonses.com (a123-37.smtp-out.amazonses.com. [54.240.123.37])
+        by mx.google.com with ESMTPS id wx50-20020a05620a5a7200b0078d777d7ba9si26994060qkn.203.2024.04.29.12.12.53
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 29 Apr 2024 12:12:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) client-ip=54.240.123.37;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pipedream.com header.s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r header.b=dftjV80s;
+       dkim=pass header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug header.b=Kno4qEtH;
+       spf=pass (google.com: domain of 0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000@em1234.pipedream.com designates 54.240.123.37 as permitted sender) smtp.mailfrom=0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000@em1234.pipedream.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pipedream.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=iftqatrgc4r5s3jrdwhkjm7y3pjmwp4r; d=pipedream.com; t=1714417973;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type;
+	bh=F71W21AqvJjDIASzBYZ614KXj4oRzoDYletgAwIojLo=;
+	b=dftjV80sEHzvQfO/rp84rPjppWItVROGYayu9BD5QYO2YOmsmz0KfWWOGcJ9czmx
+	oVcxRxE7PMs1+rEb8/uQafLnYPBhxJAfiMRxE1LWcMsrSvi4nG/atUxH5ZJbqckP0z3
+	uLWuJynOVhaRT0yRfUqZS+tIy++tur/ZrK+Tqenk=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1714417973;
+	h=From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:Date:Message-ID:Content-Type:Feedback-ID;
+	bh=F71W21AqvJjDIASzBYZ614KXj4oRzoDYletgAwIojLo=;
+	b=Kno4qEtHPlNSmX1hWf+wBZxJmvjqgiUUEuxv2MgyrqsLnr/T3815AMkmkzgk4v5y
+	BIJ3kJWkfEreWnYq4XhCfpcPKZ9dHOKkk5GEuy5Lv5L5Km6omjCWs5OvumreTdan2GP
+	wPMBQ6/4RrFMerHo0orNwPPYjpJfwvKKGVqsVDKM=
+From: Tod at Pipedream <sacerdoti@pipedream.com>
+To: ely.ubuntu0@gmail.com
+Subject: Pipedream now has 2000+ API integrations
+X-Entity-Ref-Id: f4600d96-7436-4800-b2ca-d2020df14f00
+X-EmailOctopus-Parent-Id: b15a23e6-064d-11ef-8bfa-230439283022
+X-EmailOctopus-Parent-Type-Id: campaign
+X-EmailOctopus-List-Id: 722d1388-f78c-11ee-9155-61c3796c8eef
+X-EmailOctopus-List-Contact-Id: dc9fa572-f828-11ee-8757-49979cf9c3cf
+X-EmailOctopus-Started-Preparing-At: 2024-04-29T17:28:15+00:00
+X-EmailOctopus-Sent-At: 2024-04-29T19:12:52+00:00
+X-EmailOctopus-Team-Id: ce951396-a346-11ed-a0ed-4f354f26462b
+X-EmailOctopus-Version: 4
+List-Unsubscribe: <https://email-actions.pipedream.com/unsubscribe?ep=1&l=722d1388-f78c-11ee-9155-61c3796c8eef&lc=dc9fa572-f828-11ee-8757-49979cf9c3cf&p=b15a23e6-064d-11ef-8bfa-230439283022&pt=campaign&pv=4&spa=1714411695&t=1714417972&s=73ce3d7e934dfee2f8ccebe671504b92cfa8d78b96254a7ddda6e432f4b9c47c>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-EmailOctopus-Ses-Configuration-Set-Name: emailoctopus-2461f7dbd03eac52c8b90e19bc9c921d
+MIME-Version: 1.0
+Date: Mon, 29 Apr 2024 19:12:52 +0000
+Message-ID: <0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000@email.amazonses.com>
+Content-Type: multipart/alternative; boundary=tZgXmBn3
+Feedback-ID: 1.us-east-1.jG/qz8uQQrOfYNdb6cyJSjzC7DxBiX4H+11H8G19Mhg=:AmazonSES
+X-SES-Outgoing: 2024.04.29-54.240.123.37
+
+--tZgXmBn3
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Pipedream now has 2,000+ APIs integrated into our platform=C2=A0
+
+ [Pip=
+edream] [1]=20
+
+[A robot in an event history museum] [2]=20
+
+Pipedream =
+[3] has integrated over 2,000 applications [2] into our
+platform!
+
+A =
+key part of building the best workflow automation platform for
+developers=
+ is integrating popular APIs on the internet, and keeping up
+with integra=
+tions requested by our customers.
+
+Once an app is integrated, authentic=
+ation details are abstracted and
+re-usable across workflows, you can use=
+=C2=A0Node.js and Python to make
+authenticated API calls, and triggers an=
+d actions can be developed to
+make building integrations with that applic=
+ation even more efficient.
+
+APP INTEGRATIONS ARE CRITICAL TO OUR PRODUC=
+T, AS EACH INTEGRATION
+COMPOUNDS THE NUMBER OF USES CASES YOU CAN SOLVE O=
+N PIPEDREAM.=C2=A0
+
+=09=09Explore 2,000+ Integrated Apps [2]
+
+-----=
+--------------------
+
+REQUEST AN INTEGRATION
+
+Customer requests are=
+ critical to our integration prioritization
+efforts. Let us know if there=
+ are apps that would unblock or
+accelerate your use of Pipedream.
+
+He=
+re is how you can request a new integration:
+
+1. Visit https://pipedrea=
+m.com/support [4]=20
+2. Click on REQUEST AN INTEGRATION
+
+3. Fill out th=
+e relevant details about your request
+
+In addition, if you want to requ=
+est triggers or actions to be
+developed for any specific application or A=
+PI, you can make those
+requests here [4].
+
+-------------------------=
+
+
+Please contact us [4] if you see any bugs, want to suggest a feature,=
+
+or have questions.
+
+Warm regards,=20
+The Pipedream Team
+
+-------=
+------------------
+ [1]44 Montgomery Street
+San Francisco
+CALIFORNIA=
+
+94104
+United States of America=20
+
+Unsubscribe here [5]=20
+
+
+
+=
+Links:
+------
+[1] https://pipedream.com
+[2] https://pipedream.com/exp=
+lore
+[3] https://pipedream.com/
+[4] https://pipedream.com/support
+[5]=
+ https://email-actions.pipedream.com/unsubscribe?ep=3D1&l=3D722d1388-f78c-1=
+1ee-9155-61c3796c8eef&lc=3Ddc9fa572-f828-11ee-8757-49979cf9c3cf&p=3Db15a23e=
+6-064d-11ef-8bfa-230439283022&pt=3Dcampaign&pv=3D4&spa=3D1714411695&t=3D171=
+4417972&s=3D73ce3d7e934dfee2f8ccebe671504b92cfa8d78b96254a7ddda6e432f4b9c47=
+c
+--tZgXmBn3
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><title></title></head><body autocomp=
+lete=3D"on" class=3D"">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style=3D"display:none; font-size:0px; line-height:0px; max-height:0px;=
+ max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all=
+;">Pipedream now has 2,000+ APIs integrated into our platform&nbsp;</div>
+
+<p>
+<br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"background-color:#f9f9f9;font-family:-apple-system,BlinkMacSystemFon=
+t,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica =
+Neue&quot;,sans-serif;" width=3D"100%"><tbody><tr><td>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"max-width:600px;margin:40px auto;background-color:#ffffff;padding:40=
+px 30px 40px;border-radius:15px;" width=3D"100%"><tbody><tr style=3D"width:=
+100%;"><td>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com/1/0100018=
+f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/nPJI6EnBi-LckSJtdRVlH=
+Mnf3kkye3Iv_oRNJWTMFVQ=3D350" rel=3D"noopener noreferrer" target=3D"_blank"=
+><img alt=3D"Pipedream" src=3D"https://res.cloudinary.com/pipedreamin/image=
+/upload/t_logo48x48/v1597038956/docs/HzP2Yhq8_400x400_1_sqhs70.jpg" style=
+=3D"display:block;outline:none;border:none;text-decoration:none;width:2.2re=
+m;height:2.2rem;"></a>
+<br>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fexplore=
+/1/0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/J6xjF54tQPC=
+F6RWzPqs3YRiv4tlkImjsGJQtZXo6yQw=3D350" rel=3D"noopener noreferrer" target=
+=3D"_blank"><img alt=3D"A robot in an event history museum" src=3D"https://=
+gallery.eocampaign.com/ce951396-a346-11ed-a0ed-4f354f26462b%2F1714005894148=
+-1714005891043.png" style=3D"display: block; outline: none; border: none; t=
+ext-decoration: none; width: 100%; height: auto; margin: 0px 0px 15px;"></a=
+>
+
+<br>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);"><a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2F/=
+1/0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/6EvZ5PerLkrr=
+a-5HsDAnCclPXVIpjlDLK5uWLyqdAUM=3D350" rel=3D"noopener noreferrer" style=3D=
+"user-select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quo=
+t;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica N=
+eue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-li=
+gatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans=
+: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; bac=
+kground-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: un=
+derline rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">Pipedream</=
+a> has integrated over <a href=3D"https://et.pipedream.com/CL0/https:%2F%2F=
+pipedream.com%2Fexplore/2/0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8=
+fda0-000000/Re18c2ZGCVzyPT7ZlaQTBlhBeJ12YgKdIFLz9uOLvHA=3D350" rel=3D"noope=
+ner noreferrer" style=3D"user-select: auto; font-family: -apple-system, &qu=
+ot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cant=
+arell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style:=
+ normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-=
+spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-tran=
+sform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+white-space: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0,=
+ 0); text-decoration: underline rgb(52, 210, 139); font-weight: 600;" targe=
+t=3D"_blank">2,000 applications</a> into our platform!</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">A key part of building the best workflow automation platform for deve=
+lopers is integrating popular APIs on the internet, and keeping up with int=
+egrations requested by our customers.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);"><span style=3D"color: rgb(30, 41, 59); font-family: -apple-system, &q=
+uot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Can=
+tarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style=
+: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-w=
+eight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-ind=
+ent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-=
+stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255=
+); text-decoration-thickness: initial; text-decoration-style: initial; text=
+-decoration-color: initial; display: inline !important; float: none;">Once =
+an app is integrated, authentication details are abstracted and re-usable a=
+cross workflows, you can use&nbsp;</span>Node.js and Python to make authent=
+icated API calls, and triggers and actions can be developed to make buildin=
+g integrations with that application even more efficient.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);"><strong>App integrations are critical to our product, as each integra=
+tion compounds the number of uses cases you can solve on Pipedream.&nbsp;</=
+strong></p><p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:r=
+gb(30, 41, 59);"><br>
+</p>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"margin-bottom:1.5rem;" width=3D"100%"><tbody><tr><td><a href=3D"http=
+s://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fexplore/3/0100018f2b46=
+3689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/3fkmlZNGiGSnrpnsNLLWaKEAVk=
+_pzKhNoFAhQWmtAD4=3D350" rel=3D"noopener noreferrer" style=3D"display:inlin=
+e-block;border-radius:0.75rem;background-color:rgb(52, 117, 210);text-align=
+:center;font-size:1rem;line-height:100%;font-weight:600;color:rgb(255, 255,=
+ 255);p-x:23px;p-y:11px;text-decoration:none;max-width:100%;padding:11px 23=
+px;" target=3D"_blank"><span style=3D"display:inline-block;border-radius:0.=
+75rem;background-color:rgb(52, 117, 210);text-align:center;font-size:1rem;l=
+ine-height:120%;font-weight:600;color:rgb(255, 255, 255);p-x:23px;p-y:11px;=
+max-width:100%;text-decoration:none;text-transform:none;mso-padding-alt:0px=
+;mso-text-raise:8.25px;">Explore 2,000+ Integrated Apps</span></a></td></tr=
+></tbody></table>
+
+
+
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<h1 style=3D"font-size:1.5rem;line-height:2rem;font-weight:600;letter-spaci=
+ng:-0.025em;color:rgb(0, 0, 0);prefers-color-scheme:dark){.dark\;">Request =
+an Integration</h1>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Customer requests are critical to our integration prioritization effo=
+rts. Let us know if there are apps that would unblock or accelerate your us=
+e of Pipedream.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">Here is how you can request a new integration:</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">1. Visit <a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedrea=
+m.com%2Fsupport/1/0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000=
+000/Ip_LFNNb4xYR39MnAmITsMJ3XDp6fJwi1QzmT5b2NTs=3D350" rel=3D"noopener nore=
+ferrer" style=3D"user-select: auto; font-family: -apple-system, &quot;syste=
+m-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &=
+quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal;=
+ font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing:=
+ normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: n=
+one; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-sp=
+ace: normal; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); tex=
+t-decoration: underline rgb(52, 210, 139); font-weight: 600;" target=3D"_bl=
+ank">https://pipedream.com/support</a>
+<br>2. Click on <strong>Request an integration</strong>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">3. Fill out the relevant details about your request</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>
+</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">In addition, if you want to request triggers or actions to be develop=
+ed for any specific application or API, you can make those requests <a href=
+=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com%2Fsupport/2/0100=
+018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/kQi2PIaCpndZu_U2Qx=
+4LFPisOI5fYjCAWSbxEfvKAUQ=3D350" rel=3D"noopener noreferrer" style=3D"user-=
+select: auto; font-family: -apple-system, &quot;system-ui&quot;, &quot;Sego=
+e UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&qu=
+ot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligature=
+s: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; widows: 2; word-s=
+pacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; backgroun=
+d-color: rgb(255, 255, 255); color: rgb(0, 0, 0); text-decoration: underlin=
+e rgb(52, 210, 139); font-weight: 600;" target=3D"_blank">here</a>.</p>
+
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+
+<p class=3D"m-0 text-base text-slate-800" style=3D"font-size:1rem;line-heig=
+ht:1.5rem;margin:0px;color:rgb(30, 41, 59);">Please <a href=3D"https://et.p=
+ipedream.com/CL0/https:%2F%2Fpipedream.com%2Fsupport/3/0100018f2b463689-9c2=
+509b1-e5bd-439d-9ab1-56a983e8fda0-000000/tmqvKhVoqT4dGswR_6vjfzyBC3oQMHMrhR=
+RT5xKcH3Y=3D350" rel=3D"noopener noreferrer" style=3D"user-select: auto; fo=
+nt-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Robo=
+to, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;=
+ font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-=
+variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start=
+; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; w=
+ord-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255=
+, 255, 255); color: rgb(0, 0, 0); text-decoration: underline rgb(52, 210, 1=
+39); font-weight: 600;" target=3D"_blank">contact us</a> if you see any bug=
+s, want to suggest a feature, or have questions.</p>
+
+<p style=3D"font-size:1rem;line-height:1.5rem;margin:0px;color:rgb(30, 41, =
+59);">
+<br>Warm regards,
+<br>The Pipedream Team
+</p>
+
+<p>
+<br>
+</p>
+<hr style=3D"width:100%;border:none;border-top:1px solid #eaeaea;border-col=
+or:#dfe1e4;margin:26px 0 20px;">
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com/2/0100018=
+f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/-1D8jL6qm7w2CGZLUnWU0=
+n44tklbrB6QOrfS_49r9uE=3D350" style=3D"color:#b4becc;text-decoration:none;f=
+ont-size:14px;" target=3D"_blank"></a><a href=3D"https://et.pipedream.com/C=
+L0/https:%2F%2Fpipedream.com/3/0100018f2b463689-9c2509b1-e5bd-439d-9ab1-56a=
+983e8fda0-000000/k9_TDLS1pKT9RlIXCEUP6JSnYmXkARD8d-_b_PG2O38=3D350" style=
+=3D"color:#b4becc;text-decoration:none;font-size:14px;" target=3D"_blank">4=
+4 Montgomery Street<br>San Francisco<br>CALIFORNIA<br>94104<br>United State=
+s of America</a>
+<br>
+<br><a href=3D"https://et.pipedream.com/CL0/https:%2F%2Femail-actions.piped=
+ream.com%2Funsubscribe%3Fep=3D1%26l=3D722d1388-f78c-11ee-9155-61c3796c8eef%=
+26lc=3Ddc9fa572-f828-11ee-8757-49979cf9c3cf%26p=3Db15a23e6-064d-11ef-8bfa-2=
+30439283022%26pt=3Dcampaign%26pv=3D4%26spa=3D1714411695%26t=3D1714417972%26=
+s=3D73ce3d7e934dfee2f8ccebe671504b92cfa8d78b96254a7ddda6e432f4b9c47c/1/0100=
+018f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/xRlSe_4Sbfj11oMkz5=
+yh6x9GCbnAOdpi0xgwPsK1wjc=3D350" style=3D"font-size:14px;color:#b4becc;">Un=
+subscribe here</a>
+<br>
+<a href=3D"https://et.pipedream.com/CL0/https:%2F%2Fpipedream.com/4/0100018=
+f2b463689-9c2509b1-e5bd-439d-9ab1-56a983e8fda0-000000/PskwVW5ceIIiVgxHkhEhQ=
+FnUA4nOaK1-8_WuCz2wWvg=3D350" style=3D"color:#b4becc;text-decoration:none;f=
+ont-size:14px;" target=3D"_blank">
+<br>
+<br>
+
+
+
+
+</a>
+<br>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<p>
+
+
+
+
+
+
+
+<br>
+</p>
+<img alt=3D"" src=3D"http://et.pipedream.com/CI0/0100018f2b463689-9c2509b1-=
+e5bd-439d-9ab1-56a983e8fda0-000000/nxrl7berT1sp8g4g2kNlyb3dsoLIVgokHGORB22z=
+V3M=3D350" style=3D"display: none; width: 1px; height: 1px;">
+</body></html>
+--tZgXmBn3--

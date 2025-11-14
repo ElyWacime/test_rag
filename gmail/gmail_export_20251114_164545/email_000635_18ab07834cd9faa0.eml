@@ -1,0 +1,402 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6124:40cf:b0:382:28f0:b1e6 with SMTP id bz15csp23188vlb;
+        Tue, 19 Sep 2023 19:43:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHYUmP6VOgUMKQpSHTrupFJhZqXA0okdYx7vy2uVaYYi9VyOnJf7Jt2ejwdS//BE4whJ9dz
+X-Received: by 2002:a17:906:214:b0:9a1:c399:14c9 with SMTP id 20-20020a170906021400b009a1c39914c9mr878528ejd.15.1695177782320;
+        Tue, 19 Sep 2023 19:43:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695177782; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eTLr8Rxx5q6eenWP6p/nNPe5xQoZQXUwh+2zOGR+cUyvhPXYPNfjFW+lMxZc41dFom
+         1dCeeF9Dk0ce1iwn7Exz59v+WgZUp6rY0/m7AKDyM2vUiAtCrkvKVouQVslq7TS7gpjR
+         fVgcj/I9Lb40Mu9GvdwR5dwIiYMJRRr6MVKWgwmqBHdx5EyF3e8HYojZFwW4XMee3NTw
+         nvx+M4dUIhMUfB4MIDLzt3ox8ZGh1QeZKp52lIDEiD2lkViQX77bEPeZag7Md7Eyamx/
+         jymRhN2MJMmfAPSybk4al1f+ujzDHEmQAY6d1GM+EtWJQCTdIC5m+0Km+nVK+ynv+HS4
+         ayqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=wnZcJbluDfM+h+Mf0s2Sl0F38MEO/vFLWod61F1nyuY=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=UkiP3ujDGCS8s5eYyllrW1/RZSYqUJ6SdyE6HbOjD4lbsAdrpKsTf4bBlU8Z8Ozn79
+         c4VIEceP6eqh9G0XrPb9r5SGKHaZWzquzYQgAeekxTl5DzXJ9ls1f41snDPLkc5yVz0l
+         wFmm/Gcxd+BiYqUPRhwdSmIMt9SPw2rZsXYCbHXQEmZAOfTJK7dcs5emQgSx4urfve7H
+         5WtBHkLmLkKqoikBiNHXj7zwnn229cQQc5S5H00m9FQy35vmx1/ZNGUciEpL6Od8UVm9
+         C6wruFmPWJ02v/kUKqkGQlwE/Nbt1fW6wrPhkvNCKkosSefzCPSAJuPVyIoaXyROb1Tr
+         yISg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=mWdH+Gn2;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=sDdpXzv8;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o51.ck.n.convertkit.com (o51.ck.n.convertkit.com. [159.183.200.47])
+        by mx.google.com with ESMTPS id r20-20020a170906c29400b0099caf73097esi9695780ejz.226.2023.09.19.19.43.01
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 Sep 2023 19:43:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) client-ip=159.183.200.47;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=mWdH+Gn2;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=sDdpXzv8;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 159.183.200.47 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=wnZcJbluDfM+h+Mf0s2Sl0F38MEO/vFLWod61F1nyuY=;
+	b=mWdH+Gn2Qa0//ILK70yz6XqDKBn4xc1tdQK3Ay3q1JUwa5XhgxninLlMwqouMmxEtUBQ
+	Ma5JJijqF7vN0D/A9oswVEWGfbKgETRuiZURodms9SG+iryUzLeIUihTDId4o3Z4oIsuqv
+	VKFnKRbfTxbVGCnTr462RE1z7Bop9tA6A=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=wnZcJbluDfM+h+Mf0s2Sl0F38MEO/vFLWod61F1nyuY=;
+	b=sDdpXzv8FK1rEN/+zKya0PSdTmnelNzq1EfPqqeWGOKTU8s7BplrLhU26wv0ZxVRDWKc
+	VRoB4E1vLxqFzf7QXxJA0hPaWDPxc4vZhPVEw68xE4ZwjeKKdAMAluNJGy4tSp+A2Gl4aE
+	Z3wDF3G+VKQ6MEFlOdqjWyftgcyVqbHM0=
+Received: by filterdrecv-9c566959b-7hbkc with SMTP id filterdrecv-9c566959b-7hbkc-1-650A5C33-10
+        2023-09-20 02:42:59.434560284 +0000 UTC m=+7881729.065559180
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-36 (SG) with HTTP
+	id u3J9y0D7QRaOJz1ocibWpw
+	Wed, 20 Sep 2023 02:42:59.159 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=fbd3a9fe8cca9bed813daed5cc348e6e203150d86d706b99647bbe7fbeef
+Date: Wed, 20 Sep 2023 02:42:59 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <zlundwo7wrbnh4wwz9raph27m6g00@convertkit-mail2.com>
+Subject: New Next.js v13.5 is out. Frick.
+Feedback-ID: 11776900:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4wwz9raph27m6g00>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfTEoOV30prvLipITW?=
+ =?us-ascii?Q?D1QoSn2JvKugaojRYnxRzqcwNj=2FNxTEG5aK0HSb?=
+ =?us-ascii?Q?=2Fev0=2FqXxXuXQTPUdc4Z01T+fcdfHCv6HrLBeRyG?=
+ =?us-ascii?Q?Jc8VOSbmVbtLfyRMJRoNpWlTS9l8ZtjS3UijL+c?=
+ =?us-ascii?Q?aElymtcIOt2Z1r05tItgzuy9WpYOhsxgS2N4yN?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADcC=2FgKounJNWws7GGUzWQnXC22Ax8ur4exaoZj?=
+ =?us-ascii?Q?rYCy6rHL7bmRg3Ib+6kvDNSUp+J0h0NSVhAAfnF?=
+ =?us-ascii?Q?kwOIuj2Ykg3vPGhPOjXtRbzU9vi6JqfasiR+3QM?=
+ =?us-ascii?Q?c8F3y3h2tMMzuTfQDLh3eUmloNJjWI2I02FDT4S?=
+ =?us-ascii?Q?VeFqbBYD=2F2Hl0MoE3qyceRO3GjFv=2FvK2hufneTF?=
+ =?us-ascii?Q?2WR4y7RGU+GzJmuDb5APq5PgwCH3m+vvSBGFqPM?=
+ =?us-ascii?Q?iMw1M3jwru=2FEYAWnKFIs=2F3kc5YoNDG4fTq3GFn2?=
+ =?us-ascii?Q?8oaPtfxvE40fi8kNAke1Q2YCZslq6Vlm=2FKvimOA?=
+ =?us-ascii?Q?0KeAawRR8F?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--fbd3a9fe8cca9bed813daed5cc348e6e203150d86d706b99647bbe7fbeef
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Vercel just upgraded Next.js from version 13.4 to 13.5.
+
+=E2=80=8B
+
+First thought:
+
+We=E2=80=99re three days out from the launch.
+
+A massive change - now??
+
+=E2=80=8B
+
+There goes months of recording and development.
+
+All down the drain.
+
+An outdated course which wasn=E2=80=99t even released.
+
+=E2=80=8B
+
+Alright, deep breath.
+
+=E2=80=8B
+
+Opening the blog post announcing the changes.
+
+=E2=80=8B
+
+Guess what?
+
+=E2=80=8B
+
+They=E2=80=99re just performance improvements and bug fixes. No big
+changes.
+
+=E2=80=8B
+
+=E2=80=8B
+
+Here are the exact changes:
+
+Anyway, I took some time to read through everything and I updated
+the app we=E2=80=99ll build in the course.
+
+The speed is even more insane than before.
+
+Those are the scores of the actual production-ready app. I can't
+wait to share it with you!
+
+=E2=80=8B
+
+So I guess now it=E2=80=99s not the Ultimate Next 13.4 course anymore.
+
+It=E2=80=99s the Ultimate Next 13.5 course!
+
+=E2=80=8B
+
+And it=E2=80=99s coming out in a little less than 3 days. 65 hours at the
+time I=E2=80=99m writing this =F0=9F=98=8A
+
+=E2=80=8B
+
+Hope to see you inside!
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4wwz9raph27m6g00
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/zlundwo7wrbnh4wwz9raph27m6g00
+)
+--fbd3a9fe8cca9bed813daed5cc348e6e203150d86d706b99647bbe7fbeef
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#efeff3"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#efeff3;wid=
+th:100%" bgcolor=3D"#efeff3"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Vercel just upgraded Next.js from version 13.4 to 13.5.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">First thought:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">We=E2=80=99re three days out from the launch.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">A massive change - now??</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">There goes months of recording and development.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">All down the drain.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">An outdated course which wasn=E2=80=99t even released.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Alright, deep breath.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Opening the blog post announcing the changes.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Guess what?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">They=E2=80=99re just performance improvements and bug fixes=
+. No big changes.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:500px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/7aJjtx83=
+fQiqjdjkyqbCQ3/email" width=3D"500" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:500px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Here are the exact changes:</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/36M8Ggd3=
+Hr4vs35Z9nkJV1/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Anyway, I took some time to read through everything and I u=
+pdated the app we=E2=80=99ll build in the course.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The speed is even more insane than before.</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:794px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/6Lj9hABm=
+w5XUyw4gSVX4HP/email" width=3D"794" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:794px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Those are the scores of the actual production-ready app. I =
+can't wait to share it with you!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So I guess now it=E2=80=99s not the Ultimate Next 13.4 cour=
+se anymore.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">It=E2=80=99s the Ultimate Next 13.5 course!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And it=E2=80=99s coming out in a little less than 3 days. 6=
+5 hours at the time I=E2=80=99m writing this =F0=9F=98=8A</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Hope to see you inside! <br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/zlundwo7wrbnh4wwz9raph27m6g00" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/zlundwo7wrbnh4wwz9raph27m6g00" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/zlundwo7wrbnh4wwz9raph27m6g00=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--fbd3a9fe8cca9bed813daed5cc348e6e203150d86d706b99647bbe7fbeef--

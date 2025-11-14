@@ -1,0 +1,500 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp1424541pxw;
+        Fri, 28 Apr 2023 15:28:50 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4enzugZ6eRY2xlTCXJClINtBEacPgpVTjh/SpOzA3gg7rcuca3aRJRHC2K7UC+dB70LZMb
+X-Received: by 2002:a05:622a:46:b0:3ef:61f6:fe37 with SMTP id y6-20020a05622a004600b003ef61f6fe37mr12510583qtw.35.1682720929998;
+        Fri, 28 Apr 2023 15:28:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682720929; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Pq72QaOrB7pU/QAtt83tUOcCJYnuolT590devFnBunalHPL8OY8PZyx2rjWf1YObQA
+         6zJtpH/EHCVB2FR7GblP1OvRgceOoX1tIDHFelJOahDGQQQ7crlKoIWvLkWT5JtpxDqe
+         BPLxfN1I18x5VlEPsrZv8TtO+cHSplWn9/GGh3SIKyr9nLouCppST8XEJ6qT2BvFMB8y
+         ZenabZs9gXM1aD+DLou8yX9ZyX/qSqWopleoQHIE2fGoO3XU2cuD73GKnHu8xgWxjaon
+         dslNpM1NvjzXJSXpeB1KSocx3CJCTK/zhPlHE/QjDCIqO3dJ7hK2T0LV7+ycPfLvBIzN
+         lt9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:precedence:mime-version:subject:message-id:to:reply-to
+         :from:date:list-unsubscribe:dkim-signature:dkim-signature;
+        bh=JATiIHR0aiCl2orUztVDuL/lcXC5BLyBNbhDPVBRG84=;
+        b=T/XgRJzk8HjPSUONhtx968Yfq8wHfH+UZ+c1UXXWOkc5WHxbn94v1agcH0RQ0m1Abd
+         NS+jZmwb46FYukCTWnVMAiI/QyQb50zyJThg1rd2XX5KnRaOs8asKRei5K8G4tPN2N/b
+         A8DSFS9LherQtWdhxI2w+bijcFIntLd+6kQ7rb1ZrGzNf9EJ85Ov4BjdnkSjYJ1eKrxG
+         vOf01GISUTDCPXef1KtqOCw4FE/4TNTnV0yRvOhq0Ykd/zPrD6TBZPg0DhCqK1xPBc+K
+         nzwo93oa6xFd6/h28rwJ3Nt6bufMJkNE1wFYsbl4C2PIHM+FMoOoYlG2kko1QqHM4oqt
+         BD3A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bf01x.hubspotemail.net header.s=hs1 header.b=RwH1D+Ph;
+       dkim=pass header.i=@consensys.net header.s=hs1-4795067 header.b=XfL+leo8;
+       spf=pass (google.com: domain of 1axcbov0l24nl3q9xxvigt240zgukpq0qavvvt-ely+2eubuntu0=gmail.com@bf01x.hubspotemail.net designates 54.174.52.116 as permitted sender) smtp.mailfrom="1axcbov0l24nl3q9xxvigt240zgukpq0qavvvt-ely+2Eubuntu0=gmail.com@bf01x.hubspotemail.net";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=consensys.net
+Return-Path: <1axcbov0l24nl3q9xxvigt240zgukpq0qavvvt-ely+2Eubuntu0=gmail.com@bf01x.hubspotemail.net>
+Received: from pgg14m.bf01x.hubspotemail.net (pgg14m.bf01x.hubspotemail.net. [54.174.52.116])
+        by mx.google.com with ESMTPS id f6-20020ac859c6000000b003e88460879dsi14908951qtf.361.2023.04.28.15.28.49
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 28 Apr 2023 15:28:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 1axcbov0l24nl3q9xxvigt240zgukpq0qavvvt-ely+2eubuntu0=gmail.com@bf01x.hubspotemail.net designates 54.174.52.116 as permitted sender) client-ip=54.174.52.116;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bf01x.hubspotemail.net header.s=hs1 header.b=RwH1D+Ph;
+       dkim=pass header.i=@consensys.net header.s=hs1-4795067 header.b=XfL+leo8;
+       spf=pass (google.com: domain of 1axcbov0l24nl3q9xxvigt240zgukpq0qavvvt-ely+2eubuntu0=gmail.com@bf01x.hubspotemail.net designates 54.174.52.116 as permitted sender) smtp.mailfrom="1axcbov0l24nl3q9xxvigt240zgukpq0qavvvt-ely+2Eubuntu0=gmail.com@bf01x.hubspotemail.net";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=consensys.net
+Received: by 172.16.224.35 with SMTP id awjztz62a7zuo1mobmppzjr5zbiktdk8uuu6;
+        Fri, 28 Apr 2023 22:27:51 GMT
+DKIM-Signature: v=1; s=hs1; d=bf01x.hubspotemail.net; 
+        i=@bf01x.hubspotemail.net; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=JATiIHR0aiCl2orUztVDuL/lcXC5BLyBNbhDPVBRG84=; 
+        b=RwH1D+Ph+rHi924bbRYHHeokDfjobfuObcGaMBuYffHfOcRJQc6l6XO4F0nNDl
+         o9YGayH+NWp/4AE8kJXx0nN+s1iBllWHro1dNTdZI+2stE/KJ1s9p+wmk8IG6yx
+         J7XCGn3ADIUIf92itVmkLnOH/Z7ujdOale/atNoz/DaDk8TA6poGk0DLkjk2zB/
+         tpSQmCxAP6f1740JOnPz9uKGET9aAA6O0EE/gsutKiYSARqcYVUqIbqvcVM4E3E
+         sS3bI8HTo+ZmAQJjVH+stBKqDmFsTsxXWfgWZp5qPu2hrTDQoxPDc2fx7oKoGVV
+         UG+d6fdCIkA81VJbu3MwVjNUXJTg==; q=dns/txt; t=1682720684; 
+        x=1682893484;
+DKIM-Signature: v=1; s=hs1-4795067; d=consensys.net; 
+        i=@consensys.net; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=JATiIHR0aiCl2orUztVDuL/lcXC5BLyBNbhDPVBRG84=; 
+        b=XfL+leo8N6eLgYo+QVWKYrKeNbDMQG/yjW8ucgBAqYuqyQjsFZhvjXkJS1Ovrm
+         w1wzEaHgJ3ZCrQmS4pVstQgzZS9wE3ijNtH7B08eLj0kNaqFsWwA3LJE5Ym8Ik6
+         gC89DXnPmie6v4Hoc4z0iHauX9RxFpkmunRHTDvoxZ4ijED/QsythIXLPmnQdCh
+         7L02PXXL098mtAYohhvgbpuri+YPjenTUlcY3sHNwEj2l3pmBeXMfpu7vVzKel6
+         bNhbbmFa6dTNQnW6sn2JspxYVMh+CvPGYFWfPq0eMG5xONIIh5mmDUloixTMyep
+         Tb18/QyylPsbxcgi4+Rawu1Ums6A==; q=dns/txt; t=1682720684; 
+        x=1682893484;
+Return-Path: <1axcbov0l24nl3q9xxvigt240zgukpq0qavvvt-ely+2Eubuntu0=gmail.com@bf01x.hubspotemail.net>
+X-HS-Cid: 1axf3crd2yhy2glvc3z9cuza4q0g7r5qw4cf79
+List-Unsubscribe: <mailto:1axc7v8dsiuql63wvnkcygvbjzfyj3k5rzf6qx-ely+2Eubuntu0=gmail.com@bf01x.hubspotemail.net?subject=unsubscribe>
+Date: Fri, 28 Apr 2023 18:27:51 -0400
+From: ConsenSys Software Inc <info@consensys.net>
+Reply-To: info@consensys.net
+To: ely.ubuntu0@gmail.com
+Message-ID: <1682720027650.d6712626-7362-4a11-b6d0-795b316c78b9@bf01x.hubspotemail.net>
+Subject: We have updated our Terms of Use
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5848020_1311275684.1682720683969"
+Precedence: bulk
+X-Report-Abuse-To: abuse@hubspot.com (see
+ https://policy.hubspot.com/abuse-complaints)
+Feedback-ID: aec416l:aieiuwu1:aidf:HubSpot
+
+------=_Part_5848020_1311275684.1682720683969
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+You are receiving this email so you are aware that we have updated our Term=
+s of Use effective as of today, April 28, 2023. We=E2=80=99d like to make y=
+ou aware of the details because these new terms will apply to your access t=
+o and use of our offerings starting today. The updated Terms of Use can be =
+found here (https://newsletter.consensys.net/e3t/Ctc/T8+113/czspy04/VX0mBC1=
+pTPlqVFZnf33kYhBYW6N147h4ZXQfFM3ZwQ79fy73V7Wycr7CgYT2N6_jnp2gJlnjW2txL281NN=
+gt5W2d48GX3R9d5HN7KSflRgTgYRW8X6kYj3YggjYVklSG745922SW6kdB1h5Qg1tLW3Q71qr63=
+CGnHW8mVJ4y3CKdz0W6G3xH326dSDCW7mwsk_18tPD-W6fCkgd4gYXbDW1_ZNFt9b4Vr5W8hg8k=
+X6rs97YW7P44tN7SnsxLW5Z7sy-3bG3k8W6hT-Nm86G2NcW2VD_x52Z1B8CW7b92Z02X8NCmW89=
+Hwn23b2dx8W9l-cMr35_WyGW2gRQjt6sD5MlW94sYKQ4LfygBW4cxL359jhmQMW7-yR0X653Zh8=
+W4gjywL16VyT6W42bJBK7pkSdfW8M43Qf6Nd0sMW7VLnKb59yMFHVD8d6p6-QD0FW6wLmZ640dy=
+gdW2VnK5C7PKMGFW1lJjH_7LN7GxW8nw9Kc7nmS_SW2_GZFK5Gyf8kW8Tr3HN3t6_D4W8MKXLJ2=
+PsxdFW8v7yGC2rrGfNW2XMyCh6x3qdXVzPP2c2Cj9__Vt9B8x1bncsSVhS2zv7mNz62W6tyMz65=
+vYRZ1N6d3m0t3KNVxVmFxxv3hsJVmW2jFknf2KX92zW7RSHNf7mRmDyW7CLMLY2CjL8HVP_wg91=
+BKYCBW8brrqq1J6PKPN1lgj7-cDzsWW3zD8qL6Y5B2yW84Tk8W3Gx9wCW3xtfjD5ZVH1dW1pVF4=
+W1kThrpW5SFyx-4ty-59W3LkxHC3KQrP0W49fB-Q7wMKtkW2ChQpS45yqgkW5wPKRM4w192YW82=
+--6Y5f7whLV1GVR95wyl_3W71Gb8J269QFKW1NrKWj6d1ycrN2_-plLspYWtN1cPmY0NhzHs3bt=
+F1 ) . We summarize many of the changes we are making here (https://newslet=
+ter.consensys.net/e3t/Ctc/T8+113/czspy04/VX0mBC1pTPlqVFZnf33kYhBYW6N147h4ZX=
+QfFM3ZwRk3kWFJV1-WJV7CgV2pW4cL58n88Zbl9N5_TwgNVVphNW7PzWJx1HDn9yN5mn3GqlKLR=
+hW6S1Ct47scSw6W6xNl_h6GkG6QN8yjLSg2W0z3Vzs_fC3KlLFyW3cPjj3144s7yW4gF9nG5mB4=
+hnW6ddCJ15vvXDMW37FccV5vTC5sW2R750s623YvNW4s-b_d3LML3KVvCl9C2vkZKpN1W3r2Zgd=
+fNwW4N3dNn3hRWyyW6S2YGL8RHlS1W8p9rBj7jW6FbW4t08ZP1RfTs_W6ysVQB85L4LVW3m29jm=
+5_nkRHN1Q5W72YglJJW2xbc-b4MDcbYN2nyBdgcrlcGW6rTcCw7cC6B33cyv1 ) , but in th=
+e interest of full transparency, we respectfully remind you that it=E2=80=
+=99s your responsibility to thoroughly review the new Terms of Use before y=
+ou use our offerings going forward.
+
+If you do not agree to these terms, you can choose to discontinue using our=
+ offerings, and if you are using an offering that requires opening an accou=
+nt with us, you may contact us to close that account. If you continue to us=
+e our offerings on or after today, you are agreeing to these updated terms.=
+ If you are a parent or guardian of a child or teenager who uses one of our=
+ offerings, you are responsible for his or her use.
+
+Thank you for using our offerings and being part of our mission to build ne=
+xt-generation applications, launch modern financial infrastructure, and ena=
+ble access to the decentralized web. We look forward to a future where we a=
+ll can build and rely on a new trusted, open source foundation.
+
+ConsenSys Software Inc
+
+Consensys Software Inc, 5049 Edwards Ranch Rd, Fort Worth, TX 76109, United=
+ States
+
+Unsubscribe (https://newsletter.consensys.net/hs/manage-preferences/unsubsc=
+ribe-all?languagePreference=3Den&d=3DVndZ6Q7QxFfxVPcJ1L1JG_kZW41YzK-2m40KfW=
+3T0pbm43T2QmW8Q127s17f7hvW6PVH5J6zwdd8W6G5VyV5r47cNN7bh2j628MnWN6KHywPGKd_P=
+V20N7l1d2CfGW3-SkH253PjWGN5x5V2c1TFdh1&v=3D3&_hsenc=3Dp2ANqtz-_36lz7avbkpPY=
+3JeMkMTyWEuvSJCd_AazESR-nps7iswGkNltE1EaaYKqSZu8bBrHotau10ulJ5WZNUyY_I-LdX6=
+A2EQ&_hsmi=3D256264011 )
+
+Manage preferences (https://newsletter.consensys.net/hs/manage-preferences/=
+unsubscribe?languagePreference=3Den&d=3DVndZ6Q7QxFfxVPcJ1L1JG_kZW41YzK-2m40=
+KfW3T0pbm43T2QmW8Q127s17f7hvW6PVH5J6zwdd8W6G5VyV5r47cNN7bh2j628MnWN6KHywPGK=
+d_PV20N7l1d2CfGW3-SkH253PjWGN5x5V2c1TFdh1&v=3D3&_hsenc=3Dp2ANqtz-_36lz7avbk=
+pPY3JeMkMTyWEuvSJCd_AazESR-nps7iswGkNltE1EaaYKqSZu8bBrHotau10ulJ5WZNUyY_I-L=
+dX6A2EQ&_hsmi=3D256264011 )
+------=_Part_5848020_1311275684.1682720683969
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3=
+.org/1999/xhtml" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:=
+v=3D"urn:schemas-microsoft-com:vml" lang=3D"en"><head>
+    <title>We have updated our Terms of Use</title>
+    <meta property=3D"og:title" content=3D"We have updated our Terms of Use=
+">
+    <meta name=3D"twitter:title" content=3D"We have updated our Terms of Us=
+e">
+   =20
+   =20
+   =20
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+    <!--[if gte mso 9]>
+  <xml>
+      <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+  </xml>
+ =20
+  <style>
+    ul > li {
+      text-indent: -1em;
+    }
+  </style>
+<![endif]-->
+<!--[if mso]>
+<style type=3D"text/css">
+ body, td {font-family: Arial, Helvetica, sans-serif;}=20
+ .hse-body-wrapper-table {background-color: #EAF0F6}
+</style>
+<![endif]-->
+   =20
+     =20
+   =20
+  <meta name=3D"generator" content=3D"HubSpot"><meta property=3D"og:url" co=
+ntent=3D"https://newsletter.consensys.net/-temporary-slug-8e2ae004-f943-457=
+b-a659-ce4ee4301fd6"><meta name=3D"robots" content=3D"noindex,follow"><!--[=
+if !((mso)|(IE))]><!-- --><style type=3D"text/css">.moz-text-html .hse-colu=
+mn-container{max-width:600px !important;width:600px !important}
+.moz-text-html .hse-column{display:table-cell;vertical-align:top}.moz-text-=
+html .hse-section .hse-size-12{max-width:600px !important;width:600px !impo=
+rtant}
+[owa] .hse-column-container{max-width:600px !important;width:600px !importa=
+nt}[owa] .hse-column{display:table-cell;vertical-align:top}
+[owa] .hse-section .hse-size-12{max-width:600px !important;width:600px !imp=
+ortant}
+@media only screen and (min-width:640px){.hse-column-container{max-width:60=
+0px !important;width:600px !important}
+.hse-column{display:table-cell;vertical-align:top}.hse-section .hse-size-12=
+{max-width:600px !important;width:600px !important}
+}@media only screen and (max-width:639px){img.stretch-on-mobile,.hs_rss_ema=
+il_entries_table img,.hs-stretch-cta .hs-cta-img{height:auto !important;wid=
+th:100% !important}
+.display_block_on_small_screens{display:block}.hs_padded{padding-left:20px =
+!important;padding-right:20px !important}
+ul,blockquote{margin:0;padding:1em 40px}}</style><!--<![endif]--><style typ=
+e=3D"text/css">body[data-outlook-cycle] img.stretch-on-mobile,body[data-out=
+look-cycle] .hs_rss_email_entries_table img{height:auto !important;width:10=
+0% !important}
+body[data-outlook-cycle] .hs_padded{padding-left:20px !important;padding-ri=
+ght:20px !important}
+a[x-apple-data-detectors]{color:inherit !important;text-decoration:none !im=
+portant;font-size:inherit !important;font-family:inherit !important;font-we=
+ight:inherit !important;line-height:inherit !important}
+#outlook a{padding:0}.yshortcuts a{border-bottom:none !important}a{text-dec=
+oration:underline}
+.ExternalClass{width:100%}.ExternalClass,.ExternalClass p,.ExternalClass td=
+,.ExternalClass div,.ExternalClass span,.ExternalClass font{line-height:100=
+%}
+p{margin:0}body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-we=
+bkit-font-smoothing:antialiased;moz-osx-font-smoothing:grayscale}</style></=
+head>
+  <body bgcolor=3D"#EAF0F6" style=3D"margin:0 !important; padding:0 !import=
+ant; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-bre=
+ak:break-word">
+   =20
+   =20
+<!--[if gte mso 9]>
+<v:background xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"t">
+ =20
+    <v:fill type=3D"tile" size=3D"100%,100%"  color=3D"#ffffff"/>
+ =20
+</v:background>
+<![endif]-->
+    <div class=3D"hse-body-background" style=3D"background-color:#eaf0f6" b=
+gcolor=3D"#eaf0f6">
+      <table role=3D"presentation" class=3D"hse-body-wrapper-table" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !important; border-c=
+ollapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; margin:0; pad=
+ding:0; width:100% !important; min-width:320px !important; height:100% !imp=
+ortant" width=3D"100%" height=3D"100%">
+        <tbody><tr>
+          <td class=3D"hse-body-wrapper-td" valign=3D"top" style=3D"border-=
+collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-se=
+rif; font-size:15px; color:#23496d; word-break:break-word">
+            <div id=3D"hs_cos_wrapper_main" class=3D"hs_cos_wrapper hs_cos_=
+wrapper_widget hs_cos_wrapper_type_dnd_area" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"dnd_area">  <div id=3D"section-1" class=3D"hse-section h=
+se-section-first" style=3D"padding-left:10px; padding-right:10px; padding-t=
+op:20px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:=
+collapse; border-spacing:0; background-color:#ffffff; padding-bottom:30px; =
+padding-top:30px" bgcolor=3D"#ffffff">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"600" bgcolor=3D"#ffffff">
+      <tr style=3D"background-color:#ffffff;">
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;padding-bottom:30px; padding-top:=
+30px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column-1-1" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_module_16076777725261" class=3D"hs_cos_wrapper =
+hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; =
+font-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widg=
+et" data-hs-cos-type=3D"module">
+=09
+<table class=3D"hse-image-wrapper" role=3D"presentation" width=3D"100%" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !important; bord=
+er-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+    <tbody>
+        <tr>
+            <td align=3D"center" valign=3D"top" style=3D"border-collapse:co=
+llapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:=
+#23496d; word-break:break-word; text-align:center; padding:20px; font-size:=
+0px">
+               =20
+                <img alt=3D"consensys-horizontal-logo" src=3D"https://newsl=
+etter.consensys.net/hs-fs/hubfs/ConsenSys%20Branded/consensys-horizontal-lo=
+go.png?width=3D500&amp;upscale=3Dtrue&amp;name=3Dconsensys-horizontal-logo.=
+png" style=3D"outline:none; text-decoration:none; -ms-interpolation-mode:bi=
+cubic; max-width:100%; font-size:16px" width=3D"250" align=3D"middle" srcse=
+t=3D"https://newsletter.consensys.net/hs-fs/hubfs/ConsenSys%20Branded/conse=
+nsys-horizontal-logo.png?upscale=3Dtrue&amp;width=3D500&amp;upscale=3Dtrue&=
+amp;name=3Dconsensys-horizontal-logo.png 250w, https://newsletter.consensys=
+.net/hs-fs/hubfs/ConsenSys%20Branded/consensys-horizontal-logo.png?upscale=
+=3Dtrue&amp;width=3D1000&amp;upscale=3Dtrue&amp;name=3Dconsensys-horizontal=
+-logo.png 500w" sizes=3D"(max-width: 250px) 100vw, 250px">
+               =20
+            </td>
+        </tr>
+    </tbody>
+</table></div>
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" style=3D"border-spacing:0 !important; border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt"><tbody><tr><td class=3D"hs_padded" st=
+yle=3D"border-collapse:collapse; mso-line-height-rule:exactly; font-family:=
+Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; pa=
+dding:10px 30px"><div id=3D"hs_cos_wrapper_module-1-1-1" class=3D"hs_cos_wr=
+apper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inh=
+erit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type=
+=3D"widget" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_module-1-=
+1-1_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_ric=
+h_text" style=3D"color: inherit; font-size: inherit; line-height: inherit;"=
+ data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><blockq=
+uote style=3D"mso-line-height-rule:exactly; line-height:175%"></blockquote>
+<div style=3D"mso-line-height-rule:exactly; line-height:175%">
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">You are receivi=
+ng this email so you are aware that we have updated our Terms of Use effect=
+ive as of today, April 28, 2023. We=E2=80=99d like to make you aware of the=
+ details because these new terms will apply to your access to and use of ou=
+r offerings starting today. The updated Terms of Use can be found <a href=
+=3D"https://newsletter.consensys.net/e3t/Ctc/T8+113/czspy04/VX0mBC1pTPlqVFZ=
+nf33kYhBYW6N147h4ZXQfFM3ZwQ79gn4kV7Wycr7CgFfxW2PQGYF91s7FZW96VP9v17P7GRW7Zt=
+Jfx3_jfS4W5YyRJ-5XrbXlW1HpFGq4bFknnW50GbKK3ch2YyW1pCQNc30jb6VT7ydf1Bd463W1x=
+0MKT5RKcZlVZMXLG9dWQf7VJgpSz6N5MzwW1YZRrY4fZ4m-V5nmtl7yjLxqW2_rQsh7M_VKJW6Q=
+Z0vr6-0tgrW9b0RmJ4P0HTJW5XRvhv1X_T4xW3m8kLj8mKNjDW34v4CB5M7KD5Vp-Fk66dTQ0-W=
+2bsGWD4_hGYnW8PH-Lv4v9G1ZVTQGzd7WjWDjW1JQDsP17kq1lW49QptZ2WJSmrN47GYlYT453M=
+W1s0DtM787zcRW6vwDkQ15BQYcW6BXQ3G6MjzMkW2-dSQ47w9Sf1W4HMF4w1wD3S9W1p1lVw1y-=
+q7-W4HHMNn4KzSBFW7tH0zH60R0H7W1JPNL06h8lVfW5FBsPG7y_ktVVwwBdv7RSjvFW8gxrPP9=
+f6-2CN6nCxmTcFKQCW3msQB86znSdzVPn41p5GXQSlW4L9wNh7dRH8QW64Q-mG6vFpzLW8SpyR1=
+1KyjzrVLgDpq3HQwd0W3JDCvT6h194lW99NjWD2fmv0BW496fSK4qg__KN3Nj_hHq0x1MN2TGKc=
+3S_cTpN45Ng6MFVGnjVxrnFm4XBVmJVQv89D7h6JTTW1P8G7Y4VZnCZVwN9LY8K3L7lW31YgfR1=
+zZnRNW3-Cm5h75Gg1fW8LK9tR14DwxHW29bwdh153KwjW2Kk9gP6xJYw_W6hmCWM47VcSJW9csx=
+9B30sC1-W4vrt8m19Zq1LW8kb6gK9lQvNFW2bFfqv8Vmn_dW4-thnK8G0Pdb3kg91" style=3D=
+"mso-line-height-rule:exactly; color:#00a4bd" data-hs-link-id=3D"0" target=
+=3D"_blank">here</a>. We summarize many of the changes we are making <a hre=
+f=3D"https://newsletter.consensys.net/e3t/Ctc/T8+113/czspy04/VX0mBC1pTPlqVF=
+Znf33kYhBYW6N147h4ZXQfFM3ZwRk3lLBZV1-WJV7CgF52W3LBTZz5LM_ScVG5mGr1dKtwXN6LY=
+mJ4DVcvZVTv05s47cv1VW3p9K8q1S1W59W69pvZH7jSmPrW6b77Kd99Z5K3N9cP-pQ59JJCW7_D=
+4DT1J9yGfW3gQ2C99h5rHJW50_wqp3K64z1N1wNMWhwyDdkW4RJ6Vr52PZqsW8Tn2Tt4138W0W3=
+JMpm31_YTlwW1N4MKB1xLfVHW1zCFjw8XScqHW1Gt_6h1NRRp6W5mB9X06DHynHW8YtC_77n-_9=
+kW8MbRkp1-nVBGW4ScCk18N7LD1N1DFfgv1bDlYW5ns_KS8vCY0NW5cKvQz8bRwf4W87WpY99bK=
+YMk343q1" rel=3D"noopener" style=3D"mso-line-height-rule:exactly; color:#00=
+a4bd" data-hs-link-id=3D"0" target=3D"_blank">here</a>, but in the interest=
+ of full transparency, we respectfully remind you that it=E2=80=99s your re=
+sponsibility to thoroughly review the new Terms of Use before you use our o=
+fferings going forward.</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">If you do not a=
+gree to these terms, you can choose to discontinue using our offerings, and=
+ if you are using an offering that requires opening an account with us, you=
+ may contact us to close that account. If you continue to use our offerings=
+ on or after today, you are agreeing to these updated terms. If you are a p=
+arent or guardian of a child or teenager who uses one of our offerings, you=
+ are responsible for his or her use.</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">Thank you for u=
+sing our offerings and being part of our mission to build next-generation a=
+pplications, launch modern financial infrastructure, and enable access to t=
+he decentralized web. We look forward to a future where we all can build an=
+d rely on a new trusted, open source foundation.</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; font-weight:bol=
+d">ConsenSys Software Inc</p>
+<p style=3D"mso-line-height-rule:exactly; line-height:175%; font-weight:bol=
+d">&nbsp;</p>
+</div></div></div></td></tr></tbody></table>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  <div id=3D"section-2" class=3D"hse-section hse-section-last" style=3D"pad=
+ding-left:10px; padding-right:10px; padding-bottom:20px">
+   =20
+   =20
+    <!--[if !((mso)|(IE))]><!-- -->
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:=
+collapse; border-spacing:0; padding-bottom:20px; padding-top:20px">
+    <!--<![endif]-->
+   =20
+    <!--[if (mso)|(IE)]>
+      <div class=3D"hse-column-container" style=3D"min-width:280px;max-widt=
+h:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:colla=
+pse;border-spacing:0;">
+      <table align=3D"center" style=3D"border-collapse:collapse;mso-table-l=
+space:0pt;mso-table-rspace:0pt;width:600px;" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation">
+      <tr>
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;padding-bottom:20px; padding-top:=
+20px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;width:600px">
+<![endif]-->
+<div id=3D"column-2-1" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_module-2-1-1" class=3D"hs_cos_wrapper hs_cos_wr=
+apper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-size=
+: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" data-=
+hs-cos-type=3D"module">
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+<table role=3D"presentation" class=3D"hse-footer hse-secondary" width=3D"10=
+0%" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0 !importan=
+t; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; fo=
+nt-family:Arial, sans-serif; font-size:12px; line-height:135%; color:#23496=
+d; margin-bottom:0; padding:0">
+    <tbody>
+        <tr>
+            <td align=3D"center" valign=3D"top" style=3D"border-collapse:co=
+llapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-s=
+ize:15px; color:#23496d; word-break:break-word; text-align:center; margin-b=
+ottom:0; line-height:135%; padding:10px 20px">
+               =20
+                <p style=3D"mso-line-height-rule:exactly; font-family:Arial=
+, sans-serif; font-size:12px; font-weight:normal; text-decoration:none; fon=
+t-style:normal; color:#23496d; direction:lrt" dir=3D"lrt">
+                  Consensys Software Inc, 5049 Edwards Ranch Rd, Fort Worth=
+, TX 76109, United States
+                </p>
+                <p style=3D"mso-line-height-rule:exactly">
+                 =20
+                  <a data-unsubscribe=3D"true" href=3D"https://newsletter.c=
+onsensys.net/hs/manage-preferences/unsubscribe-all?languagePreference=3Den&=
+amp;d=3DVndZ6Q7QxFfxVPcJ1L1JG_kZW41YzK-2m40KfW3T0pbm43T2QmW8Q127s17f7hvW6PV=
+H5J6zwdd8W6G5VyV5r47cNN7bh2j628MnWN6KHywPGKd_PV20N7l1d2CfGW3-SkH253PjWGN5x5=
+V2c1TFdh1&amp;v=3D3&amp;utm_source=3Dhs_email&amp;utm_medium=3Demail&amp;ut=
+m_content=3D256264011&amp;_hsenc=3Dp2ANqtz-_GK6vA-xnNS_NFRNlbE9jjZoTXvaIDMN=
+_WvJgirZ6yc81mzBsHZOJctYD5Pd7rLzwvG8FpV0gx1-vPwB3xBhgQUQ6YsQ&amp;_hsmi=3D25=
+6264011" style=3D"mso-line-height-rule:exactly; font-family:Helvetica,Arial=
+,sans-serif; font-size:12px; color:#00a4bd; font-weight:normal; text-decora=
+tion:underline; font-style:normal" data-hs-link-id=3D"0" target=3D"_blank">=
+Unsubscribe</a>
+                 =20
+                  <a data-unsubscribe=3D"true" href=3D"https://newsletter.c=
+onsensys.net/hs/manage-preferences/unsubscribe?languagePreference=3Den&amp;=
+d=3DVndZ6Q7QxFfxVPcJ1L1JG_kZW41YzK-2m40KfW3T0pbm43T2QmW8Q127s17f7hvW6PVH5J6=
+zwdd8W6G5VyV5r47cNN7bh2j628MnWN6KHywPGKd_PV20N7l1d2CfGW3-SkH253PjWGN5x5V2c1=
+TFdh1&amp;v=3D3&amp;utm_source=3Dhs_email&amp;utm_medium=3Demail&amp;utm_co=
+ntent=3D256264011&amp;_hsenc=3Dp2ANqtz-_GK6vA-xnNS_NFRNlbE9jjZoTXvaIDMN_WvJ=
+girZ6yc81mzBsHZOJctYD5Pd7rLzwvG8FpV0gx1-vPwB3xBhgQUQ6YsQ&amp;_hsmi=3D256264=
+011" style=3D"mso-line-height-rule:exactly; font-family:Helvetica,Arial,san=
+s-serif; font-size:12px; color:#00a4bd; font-weight:normal; text-decoration=
+:underline; font-style:normal" data-hs-link-id=3D"0" target=3D"_blank">Mana=
+ge preferences</a>
+                 =20
+                </p>
+               =20
+            </td>
+        </tr>
+    </tbody>
+</table></div>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+</div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+ =20
+<img src=3D"https://newsletter.consensys.net/e3t/Cto/T8+113/czspy04/VX0mBC1=
+pTPlqVFZnf33kYhBYW6N147h4ZXQfFV3ZwzS3CQKSK122" alt=3D"" width=3D"1" height=
+=3D"1" border=3D"0" style=3D"display:none!important;min-height:1px!importan=
+t;width:1px!important;border-width:0!important;margin-top:0!important;margi=
+n-bottom:0!important;margin-right:0!important;margin-left:0!important;paddi=
+ng-top:0!important;padding-bottom:0!important;padding-right:0!important;pad=
+ding-left:0!important"></body></html>
+------=_Part_5848020_1311275684.1682720683969--
+

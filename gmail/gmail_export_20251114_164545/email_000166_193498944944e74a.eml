@@ -1,0 +1,771 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:107:b0:2f3:f124:3d70 with SMTP id a7csp3150056ljb;
+        Wed, 20 Nov 2024 04:25:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEvJoq0hHEIxFp2eciqXJcXpXRnF1LmIs4hnr+UdFlCrIKDwTsonbFRBU3lesGO3yvw/e74
+X-Received: by 2002:a05:600c:3b1f:b0:431:54d9:da57 with SMTP id 5b1f17b1804b1-4334f02aa65mr23631345e9.30.1732105553274;
+        Wed, 20 Nov 2024 04:25:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732105553; cv=none;
+        d=google.com; s=arc-20240605;
+        b=MCky0ZjIa3ZobITPFolFMMlwuc3Nr53g2lzb7vnY7fia6xcXO8LDLV2LI5+1hc0t8Z
+         mGgPFJ1j5gklyexOpjCWIIZJ98GiuM+9PqhSTiLX8cefl5PxxhRIv1NlGzIB/K7Kh6SO
+         Znhl1Z0bU0myKHHWPHdE/gyZp6E6UrdWoW6B1ZmNV0gyoP+iFngkYAXZOrX7hsnc/3VJ
+         cULy/mMYDKyuJDVpy00RH/pkr8EzIuSHCJZvAB4SQZypxFKIszXFKQR5eS7w0mGxNHkd
+         zAnD+VE+3cPOmSL3P4SYQYx9C0RzxuI7LiisyMBFHYER3jrBgmpmxo8TUbYzpKJuTjxu
+         DzAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe-post:list-unsubscribe:message-id:mime-version
+         :reply-to:to:date:subject:from:dkim-signature;
+        bh=ymzhBRc/bxJ4m+ib7mWysnIw8oCSyBIy8ll+UyumOMQ=;
+        fh=/S7jIxfmjXkj7IUEEa3JnMkvupQCA3FMe9xo6kNUiKM=;
+        b=dG/hC5Ah9mWSGPqOm1oMH/MEXVMblaXa3YgBg1upG9swM+baQLqiGorhPrQeNZdeZu
+         NJTBoDeVTTLrxAF4RbM2lVOVO/HpF22gga/IWUPEaaO567Lkzv9tn8xuAlCsRdnPTUof
+         h7GeQ1AFeT/VPgcqlOiOcuEwkYkzdhbXZ4Nog4EkgQ+jdX4F8KxiPbyvjY55nDLXqcRq
+         NEYn0tZrqjrrWCQl5/Id95L7AAricytCnS7BhSVUv21FbQhNJVJ5f3PppjLpubmX1x7G
+         NdDWfXYXPLz0iQ8kSeH7wiN4F8B9p+64zNPRVKmwoJm9YRaMXPjufboc2PFybsi2iMxy
+         w1iA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b=wMcpeyPf;
+       spf=pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.52 as permitted sender) smtp.mailfrom=adobeemea@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <adobeemea@mail.adobe.com>
+Received: from r52.mail.adobe.com (r52.mail.adobe.com. [66.117.17.52])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-433b01c358asi7597485e9.39.2024.11.20.04.25.53
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 20 Nov 2024 04:25:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.52 as permitted sender) client-ip=66.117.17.52;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b=wMcpeyPf;
+       spf=pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.52 as permitted sender) smtp.mailfrom=adobeemea@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <adobeemea@mail.adobe.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mail.adobe.com;
+	s=neolane; t=1732105551;
+	bh=ymzhBRc/bxJ4m+ib7mWysnIw8oCSyBIy8ll+UyumOMQ=;
+	h=From:Subject:Date:To:MIME-Version:Message-ID:List-Unsubscribe:
+	 List-Unsubscribe-Post:Content-Type;
+	b=wMcpeyPfZw6sFbhQfViq+8qvgnt9WJ20nhs1S3AWqV/BS1SecxJon0OOAg9K/XYYU
+	 bDJLUvWDh+b79085wIZd9w6XfncRQIQktd4c/xCWClp2ODumery/QxNq2Zlvz0+zUV
+	 /phmoIvE3p2mBUvhTnR2VI65dD+/1uU7xNy4CkOw=
+X-MSFBL: gsZpTvMi5W6Up9aj3bH2tawC0BeBnzXwavZJsU0nUdQ=|eyJnIjoicHJvZC5iMmN
+	lbWVhYWNxXzZkNjY5NGY3LTUwM2QtNDY2ZS1iMjQ2LTBlZmE2NzZiZDRjNCIsImI
+	iOiJhZG9iZWludF82Ni4xMTcuMTcuNTJfcHJvZC5iMmNlbWVhYWNxXzZkNjY5NGY
+	3LTUwM2QtNDY2ZS1iMjQ2LTBlZmE2NzZiZDRjNCIsInIiOiJlbHkudWJ1bnR1MEB
+	nbWFpbC5jb20iLCJyY3B0X21ldGEiOnsgIm0iOiAiLTIwOTc0NTU3MTEiLCAiZCI
+	6ICI3Njg4NDU0OSIsICJpbiI6ICJhZG9iZWluX21pZF9wcm9kOSIsICJyIjogImV
+	seS51YnVudHUwQGdtYWlsLmNvbSIgfX0=
+Received: from [52.13.240.13] ([52.13.240.13:58967] helo=r56.mail.adobe.com)
+	by irl1-prod1-mta-i-0753e8cb8ec4b26c9 (envelope-from <adobeemea@mail.adobe.com>)
+	(ecelerity 4.4.1.20033 r(msys-ecelerity:tags/4.4.1.0^0)) with ESMTP
+	id 42/09-39254-F45DD376; Wed, 20 Nov 2024 12:25:51 +0000
+From: "Adobe Acrobat" <mail@mail.adobe.com>
+Subject: =?utf-8?B?VGltZSBzYXZpbmcgdG9vbHMgYXQgeW91ciBmaW5nZXJ0aXBz?=
+Date: Wed, 20 Nov 2024 04:25:49 -0800
+To: <ely.ubuntu0@gmail.com>
+Reply-To: "Adobe Acrobat" <mail@mail.adobe.com>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 6.7.0
+Message-ID: <NM682FB5DA104952A45adobein_mid_prod9@mail.adobe.com>
+X-250ok-CID: adobe_ie_XW_P41853_241120
+List-Unsubscribe: <https://unsubscribe-redirector.adobe.io/unsubscribe?api_key=unsuboneclick&token=%400CtdaojQkmEpAvy%2F1XCxX4pr%2FWdivIV9BUWPrZ2j9h4%3D&sclick=true&src=aci&le=21>
+X-CSA-Complaints: csa-complaints@eco.de
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative;
+	charset="windows-1252";
+	boundary="----=_NextPart_917_931B5613.931B5613"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_917_931B5613.931B5613
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+
+------------------------------------------------------------------------
+
+View web version:
+https://t-info.mail.adobe.com/r/?id=td1f962bc,fe393e98,c0029ddf&e=cDE9JTQwUWFvVHRBbGpGZXJkRyUyRllrczdVMG5GUGtRNzFKTWhjNjV0aUpiUzNLanBRJTNE&s=YXy4g-2j5YqCaggVhKXDbPJLroNdhWnQukf1HsQAHQI
+
+------------------------------------------------------------------------
+
+Unfortunately, your email client cannot display HTML, or your settings
+are turned off. To view this email, please click the link above, or
+copy and paste it into your browser.
+
+------------------------------------------------------------------------
+
+Adobe, the Adobe logo, Creative Cloud, the Creative Cloud logo,
+Lightroom and Photoshop are either registered trademarks or
+trademarks of Adobe in the United States
+and/or other countries. All other trademarks are the property of
+their respective owners.
+
+
+This is a marketing email from Adobe Systems Software Ireland Limited,
+4-6 Riverwalk, Citywest Business Park, Dublin 24, Ireland.
+
+Click on the following link to unsubscribe, or send us an unsubscribe 
+request to the postal address above.
+Unsubscribe:
+ https://t-info.mail.adobe.com/r/?id=td1f962bc,fe393e98,c0029de0&e=cDE9JTQwMEN0ZGFvalFrbUVwQXZ5JTJGMVhDeFg0cHIlMkZXZGl2SVY5QlVXUHJaMmo5aDQlM0QmcDI9JmxvYz1pZSZwMz0yMQ&s=qjT8mvKxfOyNb1H19ryG9NEEiMdjhIdTRhnOIoL7aLs 
+
+Your privacy is important to us. Please review the Adobe Privacy Policy.
+https://t-info.mail.adobe.com/r/?id=td1f962bc,fe393e98,c0029de1
+
+To ensure email delivery, add mail@mail.adobe.com to your 
+address book, contacts or safe sender list.
+
+Please do not reply to this message. To contact Adobe, find options 
+online.
+https://t-info.mail.adobe.com/r/?id=td1f962bc,fe393e98,c0029de2
+
+Registered office: Adobe Systems Software Ireland Limited,
+4-6 Riverwalk, Citywest Business Park, Dublin 24, Ireland.
+Registered number: 344992
+
+
+
+------=_NextPart_917_931B5613.931B5613
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+<!DOCTYPE html>
+<html xmlns=3D"https://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"><head>
+=09<link rel=3D"icon" href=3D"https://www.adobe.com/favicon.ico" type=3D"im=
+age/x-icon">
+=09<link rel=3D"shortcut icon" href=3D"https://www.adobe.com/favicon.ico" t=
+ype=3D"image/x-icon">
+=09<meta name=3D"x-apple-disable-message-reformatting">
+=09<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"=
+>
+=09<meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D=
+1">
+=09<meta name=3D"format-detection" content=3D"telephone=3Dno">
+=09<meta name=3D"format-detection" content=3D"date=3Dno">
+=09<meta name=3D"format-detection" content=3D"address=3Dno">
+=09<meta name=3D"format-detection" content=3D"email=3Dno">
+=09<title>Time saving tools at your fingertips</title>
+=09
+=09<!--[if mso]><style type=3D"text/css">
+=09body, table, td, a {
+=09font-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans=
+-serif !important;
+=09}
+=09td.hide{display:none !important;}
+=09=09.web50{width: 20px !important;}
+=09=09.web20{width: 50px !important;}
+=09</style>
+=09<xml>
+=09  <o:OfficeDocumentSettings>
+=09=09<o:AllowPNG/>
+=09=09<o:PixelsPerInch>96</o:PixelsPerInch>
+=09  </o:OfficeDocumentSettings>
+=09</xml><![endif]-->
+=09<!--[if gt mso 15]><style type=3D"text/css" media=3D"all">
+     /* Outlook 2016 Height Fix */
+     table, tr, td {border-collapse: collapse;}
+     tr { font-size:0px; line-height:0px; border-collapse: collapse; }
+     </style><![endif]-->
+=09 
+=09<style type=3D"text/css">
+=09@import url(https://use.typekit.net/onr8tbr.css);
+=09.ReadMsgBody {
+=09=09width: 100%
+=09}
+=09
+=09.ExternalClass {
+=09=09width: 100%
+=09}
+=09
+=09table {
+=09=09border-collapse: collapse;
+=09=09
+=09}
+=09
+=09a,
+=09a:visited {
+=09=09color: #1473E6;
+=09=09text-decoration: none
+=09}
+=09
+=09.legal a {
+=09=09text-decoration: underline
+=09}
+=09
+=09a[x-apple-data-detectors] {
+=09=09color: inherit !important;
+=09=09text-decoration: none !important;
+=09=09font-size: inherit !important;
+=09=09font-family: inherit !important;
+=09=09font-weight: inherit !important;
+=09=09line-height: inherit!important
+=09}
+=09
+=09.mobile {
+=09=09border-spacing: 0;
+=09=09display: none !important;
+=09=09height: 0;
+=09=09max-height: 0;
+=09=09mso-hide: all;
+=09=09overflow: hidden;
+=09=09visibility: hidden;
+=09=09width: 0
+=09}
+=09
+=09
+=09
+=09@media only screen and (max-width:480px) {
+=09=09u~div {
+=09=09=09min-width: 100vw
+=09=09}
+=09=09
+=09=09div>u~div {
+=09=09=09min-width: 100%
+=09=09}
+=09=09.mobile-spacer {
+=09=09=09width: 30px!important
+=09=09}
+=09=09.web {
+=09=09=09display: none!important
+=09=09}
+=09=09
+=09=09.mobile {
+=09=09=09display: block !important;
+=09=09=09width: auto !important;
+=09=09=09overflow: visible !important;
+=09=09=09height: auto !important;
+=09=09=09max-height: inherit !important;
+=09=09=09visibility: visible!important
+=09=09}
+=09=09.block {
+=09=09=09display: block !important;
+=09=09=09width: 100% !important;
+=09=09=09overflow: visible !important;
+=09=09=09height: auto !important;
+=09=09=09max-height: inherit !important;
+=09=09=09visibility: visible !important;
+=09=09=09padding-left: 0!important
+=09=09}
+=09=09.padb-50 {
+=09=09=09padding-bottom: 40px!important
+=09=09}
+=09=09.email-width {
+=09=09=09width: 84%!important
+=09=09}
+=09=09.email-width1 {
+=09=09=09padding-left: 30px !important;
+=09=09=09padding-right: 30px!important
+=09=09}
+=09=09.full-width {
+=09=09=09width: 100%!important
+=09=09}
+=09=09.mobile-image {
+=09=09=09height: auto !important;
+=09=09=09width: 100%!important
+=09=09}
+=09=09.social {
+=09=09=09float: left !important;
+=09=09=09padding-top: 50px !important;
+=09=09=09text-align: left!important
+=09=09}
+=09=09.floatNone {
+=09=09=09float: none!important
+=09=09}
+=09=09.rainbow {
+=09=09=09background-size: 100% 100%!important
+=09=09}
+=09=09.header {
+=09=09=09font-size: 44px !important;
+=09=09=09line-height: 50px!important
+=09=09}
+=09=09
+=09=09
+=09=09
+=09}
+=09
+=09@media only screen and (max-width:400px) {
+=09=09
+=09=09.header {
+=09=09=09font-size: 40px !important;
+=09=09=09line-height: 46px!important;
+=09=09}
+=09=09td.sm-table1 { display: table-row!important } .mobile-image1 { width:=
+ 100%!important; max-width: 250px!important } td.pt_40 { padding-top: 30px!=
+important } .banner_lft, .banner_rgt { width: 100%!important } .pad_r0 { pa=
+dding-right: 0!important } }
+=09}
+=2Ebtn2 {
+=09=09=09width: 150px !important;
+=09=09}
+=09}
+=09</style>
+</meta></meta></meta></meta></meta></meta></meta></link></link></head>
+
+<body bgcolor=3D"#ffffff" style=3D"background-color:#fff;margin:0;padding:0=
+;-webkit-font-smoothing:antialiased;width:100% !important;-webkit-text-size=
+-adjust:none" topmargin=3D"0">
+=09<div style=3D"font-size:1px;color:#E4E4E4;display:none;overflow:hidden;v=
+isibility:hidden">Get access to powerful tools to make easy edits, on any d=
+evice, anywhere, at any time.</div>
+=09<table width=3D"100%" bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E=
+4E4" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+>
+=09=09<tbody>
+=09=09=09<tr>
+=09=09=09=09<td>
+=09=09=09=09=09<table class=3D"full-width" bgcolor=3D"#ffffff" align=3D"cen=
+ter" width=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"width:600px;background-color:#fff">
+=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09<td bgcolor=3D"#ffffff" style=3D"background: #fffff=
+f;">
+=09=09=09=09=09=09=09=09=09<table class=3D"full-width" align=3D"center" wid=
+th=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
+ation" style=3D"width:600px">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09<td style=3D"">
+=09=09=09=09=09=09=09=09=09<table class=3D"email-width" align=3D"center" wi=
+dth=3D"500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:500px">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"color:#2C2C2C;font-family:=
+adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size:18p=
+x;line-height:26px;padding-top:41px;padding-bottom:41px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"left" width=3D"auto"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"middle" style=
+=3D"color:#fff;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Ari=
+al,sans-serif;font-size:14px;line-height:42px"><img alt=3D"Adobe Acrobat" s=
+rc=3D"https://landing.adobe.com/dam/global/images/lockups/acrobat.logo.7477=
+7a.352x40.png" width=3D"200" height=3D"auto" border=3D"0" hspace=3D"0" vspa=
+ce=3D"0" style=3D"vertical-align:middle;" /></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09</tr>
+       <tr>
+=09=09=09=09=09=09=09=09<td style=3D"">
+=09=09=09=09=09=09=09=09=09<table class=3D"email-width" align=3D"center" wi=
+dth=3D"500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:500px">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table class=3D"full-width" align=3D=
+"left" width=3D"500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"width:500px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr style=3D"font-size:0!impor=
+tant;line-height:0!important;border-collapse:collapse!important">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"color:#000;fon=
+t-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font=
+-size: 52px;line-height: 56px;padding-top: 20px;padding-right:0;font-weight=
+: 900;" class=3D"header">All the right tools to be more efficient.</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"color:#000;font-family:ado=
+be-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size:18px;l=
+ine-height: 26px;padding-top:20px;font-weight:400" class=3D"padding-r0">You=
+ already have the tools you need to be ultra-productive every single day. J=
+ust open Acrobat on your device and easily edit text and images, and save t=
+ime to get more done.</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"btn_padding" style=3D"colo=
+r:#1473E6;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sa=
+ns-serif;font-size:15px;line-height:40px;padding-top:40px;padding-bottom: 0=
+px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if gte mso 9]><v:roundrect
+=09=09=09=09=09=09=09=09=09=09=09=09=09xmlns:v=3D"urn:schemas-microsoft-com=
+:vml"
+=09=09=09=09=09=09=09=09=09=09=09=09=09xmlns:w=3D"urn:schemas-microsoft-com=
+:office:word" style=3D"height:40px; v-text-anchor:middle; 
+=09=09=09=09=09=09=09=09=09=09=09=09=09width:200px;" arcsize=3D"50%" stroke=
+=3D"f" fillcolor=3D"#1473E6" style=3D"color:#ffffff;font-size:16px;font-wei=
+ght:600">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<v:textbox style=3D"mso-fit-shape-to=
+-text:t">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<center style=3D"color:#ffffff; f=
+ont-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-ser=
+if; font-size:16px;"><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://t-info.mail.adobe=
+.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029867&e=3DcDE9UlRRQ01WV0o&s=3D2ki-AB8q=
+xCpIrvoEmV0UBILtRc-8KjIHZUYMr0N2DUE" target=3D"_blank" style=3D"color:#fff;=
+line-height:40px;text-align:left"><div class=3D"mktoText" align=3D"left" id=
+=3D"ADO10871-e" style=3D"font-family:adobe-clean,Helvetica,Arial,sans-serif=
+;font-size:16px;font-weight:700;background-color:#1473e6;border-radius:50px=
+;width:200px;text-align:center;color:#fff;line-height:40px;display:inline-b=
+lock"><strong>Learn more</strong></div>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if gte mso 9]></center>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"margin:0; font-size:0=
+; line-height:0;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<o:p xmlns:o=3D"urn:schemas-micro=
+soft-com:office:office">&nbsp;
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</o:p>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</p>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</v:textbox>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</v:roundrect><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09<td bgcolor=3D"#ffffff" style=3D"background-color: =
+#ffffff;">
+=09=09=09=09=09=09=09=09=09<table class=3D"full-width" align=3D"center" wid=
+th=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
+ation" style=3D"width:600px">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"color:#000;font-family:ado=
+be-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size:22px;l=
+ine-height:28px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://t-info.mail.adobe=
+.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029868&e=3DcDE9UlRRQ01WV0o&s=3DxTfT9Bgr=
+Etx1tsms2r_xYpOjvbgN3RmshcAYuAwLpzM" target=3D"_blank"><img class=3D"mobile=
+-image" alt=3D"All the right tools to be more efficient." src=3D"https://la=
+nding.adobe.com/content/dam/landing/uploads/2024/emea/assets/images/marquee=
+/66fbd33109affa670035a9b92fae4009_emea_en_acrobat_conversion_nov_wk52_2x.pn=
+g" srcset=3D"https://landing.adobe.com/content/dam/landing/uploads/2024/eme=
+a/assets/images/marquee/66fbd33109affa670035a9b92fae4009_emea_en_acrobat_co=
+nversion_nov_wk52_2x.png 480w, https://landing.adobe.com/content/dam/landin=
+g/uploads/2024/emea/assets/images/marquee/66fbd33109affa670035a9b92fae4009_=
+emea_en_acrobat_conversion_nov_wk52_2x.png 1200w" sizes=3D"(max-width: 480p=
+x) 50vw" width=3D"600" height=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"=
+0" style=3D"color:#000;font-family:adobe-clean,Helvetica Neue,Helvetica,Ver=
+dana,Arial,sans-serif;font-size:22px;line-height:28px;display:block;vertica=
+l-align:top" /></a>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09<td style=3D"padding-top:40px">
+=09=09=09=09=09=09=09=09=09<table class=3D"full-width" bgcolor=3D"#ffffff" =
+align=3D"center" width=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:600px;background-color:#fff">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"paddin=
+g:30px 0;background-color:#000">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table class=3D"email-width" align=
+=3D"center" width=3D"500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"width:500px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"sm-table1" sty=
+le=3D"vertical-align:middle">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table class=3D"banner_l=
+ft" align=3D"center" width=3D"320" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"width:320px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"pa=
+d_r0" style=3D"color:#fff;font-family:adobe-clean,Helvetica Neue,Helvetica,=
+Verdana,Arial,sans-serif;font-size:24px;line-height:28px;font-weight:800;pa=
+dding-right:20px">It=E2=80=99s Black Friday. Get 50% off until 29 November.=
+</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"pa=
+d_r0" style=3D"color:#fff;font-family:adobe-clean,Helvetica Neue,Helvetica,=
+Verdana,Arial,sans-serif;font-size:14px;line-height:18px;padding-top:10px;p=
+adding-right:20px">Save big on the Adobe Creative Cloud All Apps plan - inc=
+luding Acrobat Pro. T&C=E2=80=99s apply.</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"ct=
+a_sp" style=3D"font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Ari=
+al,sans-serif;padding-top:30px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if gte =
+mso 9]><v:roundrect
+=09=09=09=09=09=09=09=09=09=09=09=09=09xmlns:v=3D"urn:schemas-microsoft-com=
+:vml"
+=09=09=09=09=09=09=09=09=09=09=09=09=09xmlns:w=3D"urn:schemas-microsoft-com=
+:office:word" style=3D"height:40px; v-text-anchor:middle; 
+=09=09=09=09=09=09=09=09=09=09=09=09=09width:150px;" arcsize=3D"50%" stroke=
+=3D"f" fillcolor=3D"#1473E6" style=3D"color:#ffffff;font-size:16px;font-wei=
+ght:600">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<v:textbox style=3D"mso-fit-shape-to=
+-text:t">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<center style=3D"color:#ffffff; font=
+-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif;=
+ font-size:16px;"><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"h=
+ttps://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029869&e=3DcDE9=
+UllHRE1SNUg&s=3Dkq2XRp3vHjygjX33W2Um2c-uQ7GQqVvM3LXpaj9SInA" target=3D"_bla=
+nk" style=3D"color:#fff;line-height:40px;text-align:left"><div align=3D"lef=
+t" id=3D"ADO10871-e" style=3D"font-family:adobe-clean,Helvetica,Arial,sans-=
+serif;font-size:16px;font-weight:700;background-color:#1473e6;border-radius=
+:50px;width:150px;text-align:center;color:#fff;line-height:40px;display:inl=
+ine-block"><strong>Learn more</strong></div>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if gte =
+mso 9]></center>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"margin:0; font-size:0; l=
+ine-height:0;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<o:p xmlns:o=3D"urn:schemas-microsof=
+t-com:office:office">&nbsp;
+=09=09=09=09=09=09=09=09=09=09=09=09=09</o:p>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</p>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</v:textbox>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</v:roundrect><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"sm-table1" sty=
+le=3D"vertical-align:middle">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" =
+class=3D"banner_rgt" width=3D"180" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"width:180px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"pt=
+_40" style=3D"vertical-align:middle;text-align:center">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"h=
+ttps://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c002986a&e=3DcDE9=
+UllHRE1SNUg&s=3DDJXOWnjN1BaDL-vf1pnSYpZjSchkr-wOGwY5XCmcPBM" target=3D"_bla=
+nk" style=3D"color:#1473E6;display:inline-block;text-align:center"><img cla=
+ss=3D"mobile-image1" alt=3D"It=E2=80=99s Black Friday. Get 50% off until 29=
+ November." src=3D"https://landing.adobe.com/content/dam/landing/uploads/20=
+24/emea/assets/images/marquee/2024_Banners_CCDC_BFCM.png" width=3D"180" hei=
+ght=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#000;fon=
+t-family:adobe-clean,Arial,Helvetica,sans-serif;font-size:20px;line-height:=
+24px;vertical-align:middle;width:180px" /></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09</tr>   
+=09=09=09=09=09=09=09
+                            
+                <tr>
+=09=09=09=09=09=09=09=09<td bgcolor=3D"#F5F5F5" style=3D"background-color:#=
+F5F5F5">
+=09=09=09=09=09=09=09=09=09<table class=3D"email-width" align=3D"center" wi=
+dth=3D"500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:500px">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" style=3D"padding-top=
+:40px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table class=3D"full-width" align=3D=
+"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" width=3D"500" style=3D"width: 500px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" style=3D=
+"color:#EB1000;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Ari=
+al,sans-serif;font-size:12px;line-height:18px;padding-bottom:0" class=3D"bl=
+ock padb-50"><img alt=3D"Adobe" src=3D"https://landing.adobe.com/content/da=
+m/landing/uploads/2023/emea/assets/images/marquee/6528e069000c40e2c44346d2d=
+7265862_adobe_logo_2x.png" width=3D"80" height=3D"auto" border=3D"0" hspace=
+=3D"0" vspace=3D"0" style=3D"color:#EB1000; font-family:adobe-clean, Helvet=
+ica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-heigh=
+t:18px; display:block; vertical-align:top;" /></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"middle" align=
+=3D"right" style=3D"color:#EB1000;font-family:adobe-clean,Helvetica Neue,He=
+lvetica,Verdana,Arial,sans-serif;font-size:12px;line-height:18px;padding-bo=
+ttom:0;text-align:right;padding-left: 180px;" class=3D"block">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table class=3D"social" =
+align=3D"right" width=3D"auto" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"float: right;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"co=
+lor:#959595;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,=
+sans-serif;font-size:12px;line-height:21px;padding-bottom:40px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"h=
+ttps://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c002986b" alias=
+=3D"Facebook" target=3D"_blank"><img alt=3D"Facebook" src=3D"https://landin=
+g.adobe.com/dam/global/images/social/facebook.959595.png" width=3D"9" heigh=
+t=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block;ve=
+rtical-align:top" /></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"36=
+" style=3D"width:36px"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"co=
+lor:#959595;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,=
+sans-serif;font-size:12px;line-height:21px;padding-bottom:40px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"h=
+ttps://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c002986c" alias=
+=3D"Instagram" target=3D"_blank"><img alt=3D"Instagram" src=3D"https://land=
+ing.adobe.com/dam/global/images/social/instagram.959595.png" width=3D"17" h=
+eight=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:bloc=
+k;vertical-align:top" /></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"36=
+" style=3D"width:36px"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"co=
+lor:#959595;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,=
+sans-serif;font-size:12px;line-height:21px;padding-bottom:40px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"h=
+ttps://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c002986d" alias=
+=3D"Twitter" target=3D"_blank"><img alt=3D"Twitter" src=3D"https://landing.=
+adobe.com/dam/global/images/social/twitter.959595.png" width=3D"16" height=
+=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block;ver=
+tical-align:top" /></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"36=
+" style=3D"width:36px"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"co=
+lor:#959595;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,=
+sans-serif;font-size:12px;line-height:21px;padding-bottom:40px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"h=
+ttps://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c002986e" alias=
+=3D"Youtube" target=3D"_blank"><img alt=3D"Youtube" src=3D"https://landing.=
+adobe.com/dam/global/images/social/youtube.959595.png" width=3D"21" height=
+=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block;ver=
+tical-align:top" /></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"36=
+" style=3D"width:36px"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"co=
+lor:#959595;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,=
+sans-serif;font-size:12px;line-height:21px;padding-bottom:40px; padding-rig=
+ht: 10px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"h=
+ttps://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c002986f" alias=
+=3D"Tiktok" target=3D"_blank"><img alt=3D"TikTok" src=3D"https://landing.ad=
+obe.com/dam/global/images/social/tiktok.959595.png" width=3D"18" height=3D"=
+auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block;vertica=
+l-align:top" /></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<table class=3D"email-width" align=3D"center" wi=
+dth=3D"500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:500px">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td class=3D"legal" style=3D"color:#959=
+595;font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-ser=
+if;font-size:11px;line-height:18px;padding-top:0;padding-bottom:100px">Adob=
+e services, like Adobe Creative Cloud, are available only to users 13 and o=
+lder. Use of Adobe services and applications requires agreement with the ap=
+plicable <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393=
+e98,c0029870" alias=3D"FOOTER - Terms" target=3D"_blank" style=3D"color:#95=
+9595">Terms of Use</a> and the <a href=3D"https://t-info.mail.adobe.com/r/=
+=3Fid=3Dhd1f962bc,fe393e98,c0029871" alias=3D"FOOTER - Privacy Policy" targ=
+et=3D"_blank" style=3D"color:#959595">Adobe Privacy Policy</a>.
+=09=09=09=09=09=09=09=09=09=09=09=09=09<p id=3D"reg_foot">Adobe, Adobe (Sty=
+lized), Creative Cloud, the Creative Cloud logo, and Document Cloud are eit=
+her registered trademarks or trademarks of Adobe in the United States and/o=
+r other countries.<br /><br />
+=09This is not a comprehensive list of Adobe trademarks. For a full list, r=
+efer to the <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe=
+393e98,c0029872" alias=3D"FOOTER - Trademark Guidelines" target=3D"_blank" =
+style=3D"color:#959595; text-decoration: underline;">Adobe Trademark Guidel=
+ines</a>. All other trademarks are the property of their respective owners.=
+<br /><br />
+=09This is a marketing email from Adobe Systems Software Ireland Limited, 4=
+=E2=80=916&nbsp;Riverwalk, Citywest Business Park, Dublin&nbsp;24, Ireland.=
+<br /><br />
+=09Click here to  <a style=3D"TEXT-DECORATION: underline; COLOR: #a1a1a1" h=
+ref=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029873&=
+e=3DcDE9JTQwMEN0ZGFvalFrbUVwQXZ5JTJGMVhDeFg0cHIlMkZXZGl2SVY5QlVXUHJaMmo5aDQ=
+lM0QmcDI9JmxvYz1pZSZwMz0yMQ&s=3DFH_lJBAjKYYzQqRtU1mIW2SIe-oU9FT0Ke0qbYVnE8c=
+" target=3D"_blank" class=3D"opt_out" alias=3D"Unsubscribe" _type=3D"optout=
+" _label=3D"Opt-out link">unsubscribe</A>  or send an unsubscribe request t=
+o the postal address above. Please review the <a href=3D"https://t-info.mai=
+l.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029874" alias=3D"FOOTER - Privac=
+y" target=3D"_blank" style=3D"color:#959595; text-decoration: underline;">A=
+dobe&nbsp;Privacy&nbsp;Policy</a>.<br /><br />
+=09To ensure future delivery of email, add <a href=3D"https://t-info.mail.a=
+dobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029875" alias=3D"FOOTER - Add to ad=
+dress book" target=3D"_blank" style=3D"color:#959595; text-decoration: unde=
+rline;">mail@mail.adobe.com</a> to your address book, contacts, or safe sen=
+ders&nbsp;list.<br /><br />
+=09Please do not reply to this message. To contact Adobe, find options <a h=
+ref=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029876"=
+ alias=3D"FOOTER - Contact" target=3D"_blank" style=3D"color:#959595; text-=
+decoration: underline;">online</a>.<br /><br />
+=09Registered office: Adobe Systems Software Ireland Limited, 4=E2=80=916&n=
+bsp;Riverwalk, Citywest Business Park, Dublin&nbsp;24, Ireland. Registered =
+number: 344992</p> <span class=3D"web"> <a href=3D"https://t-info.mail.adob=
+e.com/r/=3Fid=3Dhd1f962bc,fe393e98,c0029877&e=3DcDE9JTQwUWFvVHRBbGpGZXJkRyU=
+yRllrczdVMG5GUGtRNzFKTWhjNjV0aUpiUzNLanBRJTNE&s=3DgZokm40MjPMzE1uo4CMhgNT2W=
+tcINRorwcteovI4RrI" _label=3D"Mirror Page" _type=3D"mirrorPage" alias=3D"Re=
+ad online" target=3D"_blank" style=3D"color:#959595;text-decoration:underli=
+ne">Read online</a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09</tr>            
+=09=09=09=09=09</tbody></table>
+=09=09=09=09</td>
+=09=09=09</tr>
+=09=09</tbody>
+=09</table>
+
+
+</body></html>
+<img height=3D'0' width=3D'0' alt=3D'' src=3D'https://t-info.mail.adobe.com=
+/r/=3Fid=3Dhd1f962bc,fe393e98,1'/><img height=3D'0' width=3D'0' alt=3D'' sr=
+c=3D'https://adobe.demdex.net/event=3Fc_syncplacement=3Demail&d_cid=3D813%0=
+1B3C91EB5647678940A495F93'/>
+
+------=_NextPart_917_931B5613.931B5613--
+

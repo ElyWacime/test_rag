@@ -1,0 +1,479 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:6991:b0:4ed:3ce7:19fb with SMTP id n17csp685774pxx;
+        Sat, 16 Sep 2023 14:02:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGcAAaB6CBECZZekILYDN1GPECNbBJ4bDZTId5wiIiIB52uOXOAt4aleqa8bnj5zQgqMoXN
+X-Received: by 2002:a05:620a:17a9:b0:76a:e55c:252c with SMTP id ay41-20020a05620a17a900b0076ae55c252cmr6972938qkb.32.1694898122089;
+        Sat, 16 Sep 2023 14:02:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694898122; cv=none;
+        d=google.com; s=arc-20160816;
+        b=w1o1HrHkJ6HU0c61aL6ESPhpy+jCiZp5tIFT8pPkQBm3dX/lE57hOKlO5XIovr7Jje
+         Kb6oBkhKHTqMJhf9bTP78TMoEUT1qjMH4NFBWqVkaxjDopDUliJGn+flxNkgUylYehWs
+         +rLoAtiBiYEdzR6MQMSWGDFxfNSPDF9q9EOmvz0NLDafCY5WQEH737eAgso5nDQ9y++i
+         G74CzUKSMAQQDLQr4Tt0P5MWS7NyZLHp6fQ9CYXfVFfgWX/kK5iTXYV9wiMtBw1Wj8S8
+         vStFT1D7uCDo2/lNjL9k7jilDWgrZygcMBL6cb0SjM2NRjBo4/cIN9TqTA2kT2cXklgd
+         Q0ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=W/s04wJ4cfbNo77bXFwgb7l30Ca1ha0Qa525swWSX5w=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=uqyJXgAQ0IbM+X07iQJL6Zxgtf6niCHma4Ti6rL1VMiJr7bvjg7NI6hxXv2/gQzRDn
+         Wv0aZkda2eXhzZFMo68W9c4Qxf7P5/IOHAjI6HMSRfrbaNpIOtu2PCuoVJp3t1uxWID2
+         BbS5ghAF6uJxiXXstQBBE0iL1/eoc0G3f2p0IFcYL2fI4j9kqedrMQ+jjm9ml3u66W9x
+         vRZLMdlLZZzUR2sKguBqwGAc2v/FnrKmUVdmDePYZg2HFql/b3svjeMEZlr6J+/Itr7T
+         OigiUW3Rmz2A4zV31nBM2FaGzagETBYc8qv9Qcczpw12SzPjRrP5Tw9jLktC9dT/bIdU
+         BrCA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b="WaFcv/CX";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=NO7NRZEO;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o46.ck.n.convertkit.com (o46.ck.n.convertkit.com. [149.72.61.159])
+        by mx.google.com with ESMTPS id py9-20020a05620a878900b007683ee37758si3970678qkn.86.2023.09.16.14.02.01
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 16 Sep 2023 14:02:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) client-ip=149.72.61.159;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b="WaFcv/CX";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=NO7NRZEO;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.61.159 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=W/s04wJ4cfbNo77bXFwgb7l30Ca1ha0Qa525swWSX5w=;
+	b=WaFcv/CXM6a4r7tOfCA5zqhf7Wk54254KHYGjgq6fEopN8znMAJvAKNV2f6koB+BnSd5
+	NgQ6yHx2UvgB1daWTokUiglmxd/JQyvuUhE95F0G4QULhf33A4z8s86PqB7KM+xEFSbXs9
+	f5/Dq6HBhHpZPzv4j/WE5aN+c5W4CcGfw=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=W/s04wJ4cfbNo77bXFwgb7l30Ca1ha0Qa525swWSX5w=;
+	b=NO7NRZEOS9mOmkU4bEed1oj/1RwvFmqN0TpiD7Tn0i+EbQUKq3s9YCO3y0AasGkWQ9au
+	uh+04nZJb+mmjfUIg0alWWvreu0A/v+ApUVwQH8vyo3h7MrcS2b3gNDiXo9MHRZfEtsDhi
+	r7zFpYwhQFwmdKAxRU0SNlOvaSfvPKdH8=
+Received: by filterdrecv-canary-68f8b4d4c4-9rb7q with SMTP id filterdrecv-canary-68f8b4d4c4-9rb7q-1-650617C9-1D
+        2023-09-16 21:02:01.127953659 +0000 UTC m=+11136143.985808150
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-40 (SG) with HTTP
+	id 2yDH3HKpSL64iPPkh0rCAQ
+	Sat, 16 Sep 2023 21:02:01.072 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=5bae324591456c2649eeb2f8c14f8c42c5fe1c43431651a4de7c227471d2
+Date: Sat, 16 Sep 2023 21:02:01 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <4zum6xerxlteh5g6z2zbxh35eom77@convertkit-mail2.com>
+Subject: The answers =?UTF-8?B?eW914oCZdmU=?= been waiting for.
+Precedence: bulk
+Feedback-ID: 11750544:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfdE0QSNtUzTIZYQ7R?=
+ =?us-ascii?Q?5KLLOpcLOGq9scGeHwdZbbMTL1r2yhH37ncPbJu?=
+ =?us-ascii?Q?8Kph=2FFxfPN4GuKoVUNiPKoh5Y1qEN+3YXCV54zZ?=
+ =?us-ascii?Q?iR89nx6fxNemy1s=2FY3ac9mk9VAEKleIVTBo8RxK?=
+ =?us-ascii?Q?gaKX5uBCHPCsZ3HrMrp4rfZ3dZPKt4459kK0lTQ?=
+ =?us-ascii?Q?D4Clh4Ot84lmCvoGT9PSw=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADtvUniiYtXrnZ8kNeHXhN63ByD1vVnZC04VBFX?=
+ =?us-ascii?Q?Fc5zzo4IAw1CfGcAYxGqsDcuKn1ndR8Vb56IRSC?=
+ =?us-ascii?Q?e2S9PWOQuOmAUopZr=2FMs4Tr4F+0wNrwGQ2PsBr1?=
+ =?us-ascii?Q?JjJ1e9RurvZ6Pl+NF36QrZlITTMdZL9nw5IWYYt?=
+ =?us-ascii?Q?REG=2FTaaLowP0LSw7h6v++YoOGulNH90QXbHIL6L?=
+ =?us-ascii?Q?haKt=2FmeGSUVzoKuQso+zRp49Nv2gP9lB6S+XmPK?=
+ =?us-ascii?Q?PKRh=2FDTuz366Yk+lZwaTH796=2FNu8wsHWTrGNRl7?=
+ =?us-ascii?Q?TTWNGdYsfXIym8wqrlLJNvlfkC95tY+piaNbJMx?=
+ =?us-ascii?Q?r6Uczojwac?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--5bae324591456c2649eeb2f8c14f8c42c5fe1c43431651a4de7c227471d2
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+As promised in yesterday=E2=80=99s email, here are the most Frequently
+Asked Questions - answered!
+
+=E2=80=8B
+
+What tech stack will we use?
+
+Next.js 13.4 (newest version), Next.js API Routes & Server
+functions, MongoDB, TailwindCSS, and TypeScript.
+
+=E2=80=8B
+
+What are the course requirements, AKA what do I need to know to
+take the course?
+
+To take this course, you=E2=80=99ll need intermediate JavaScript
+knowledge and beginner React knowledge. You don=E2=80=99t need any
+Next.js knowledge.
+
+So you need to know:
+
+Intermediate JavaScript
+
+* Basics like variables, operators, functions, objects
+* Array methods such as map, forEach, filter
+* Async await, try catch
+* ES6 arrow functions, let and const, destructuring, template
+literal, spread, and Rest operators
+
+Beginner React
+
+* Understanding components, props, state, JSX syntax
+* Managing state (with/without state management library)
+* Creating functional components & styling
+* Conditional rendering, lists rendering
+* React hooks (useState, useEffect mostly)
+
+=E2=80=8B
+
+If you don=E2=80=99t meet the requirements above, don=E2=80=99t worry! We=
+=E2=80=99ll
+provide you with resources to learn the fundamentals of JS and
+React. It will definitely be much harder than if you came in with
+previous knowledge and experience, but I=E2=80=99m sure you can do it if
+you=E2=80=99re motivated enough.
+
+=E2=80=8B
+
+How can I buy your NFT Marketplace/Filmpire/JavaScript course? I
+don=E2=80=99t see it on the website.
+
+I received this question a lot. All of these courses are
+deprecated*, meaning they use older versions of dependencies.
+
+But, since many of you asked, I=E2=80=99ll include them as bonuses in one
+of the pricing tiers =F0=9F=92=99. Some devs also told me they need the
+older versions because the repositories they work on use those
+older versions.
+
+*Them being deprecated doesn=E2=80=99t mean you can=E2=80=99t learn most th=
+ings
+with them (unless there=E2=80=99s a massive change like Next13). It just
+means there are small changes compared to today, and managing
+dependencies is a bit harder. For example, Filmpire uses React
+17.0.2. React 18 introduced Suspense, and a few rarely used
+hooks.
+
+=E2=80=8B
+
+Where will I be able to buy the course?
+
+You can buy the course at jsmastery.pro/next13 (
+https://click.convertkit-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77/08hwhgudkz=
+rwqrbp/aHR0cHM6Ly9qc21hc3RlcnkucHJvL25leHQxMw=3D=3D
+) this Friday, September 22nd, at 6PM CET. You can convert it to
+your local time zone and add it to your calendar here (
+https://click.convertkit-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77/8ghqh3ulx9=
+npkvbl/aHR0cHM6Ly9kYXRlZnVsLmNvbS9ldmVudGxpbmsvMjg0Nzk3MjgxMw=3D=3D
+).
+
+=E2=80=8B
+
+What=E2=80=99s the amazing app we=E2=80=99ll build to learn Next13?
+
+That=E2=80=99s a secret =F0=9F=98=89
+
+=E2=80=8B
+
+How much will the course cost?
+
+I thought about pricing this course for a long time. I spoke to
+many developers, from a business owner in the USA, a system admin
+in Nigeria to a Junior developer in India. I=E2=80=99ve worked on it for
+9 months, and it=E2=80=99s on a whole new level from my previous courses
+and YouTube videos. The price will reflect that.
+
+The course will have PPP (Purchasing Power Parity), AKA regional
+pricing, to make it equally affordable for all countries.
+
+Since we=E2=80=99re only 6 days out, I=E2=80=99ll let the surprise hold unt=
+il the
+end. But here=E2=80=99s a hint. It's much more than a Udemy course you
+won=E2=80=99t watch anyway and way less than an iPhone 15 you don=E2=80=99t=
+ need.
+And much more worth it.
+
+=E2=80=8B
+
+=E2=80=8B
+
+Just 6 days left, and somehow even more hyped than before,
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77
+)
+--5bae324591456c2649eeb2f8c14f8c42c5fe1c43431651a4de7c227471d2
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#efeff3"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#efeff3;wid=
+th:100%" bgcolor=3D"#efeff3"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">As promised in yesterday=E2=80=99s email, here are the most=
+ Frequently Asked Questions - answered!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>What tech stack will we use?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Next.js 13.4 (newest version), Next.js API Routes &amp; Ser=
+ver functions, MongoDB, TailwindCSS, and TypeScript.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>What are the course requirements, AKA what do I nee=
+d to know to take the course?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">To take this course, you=E2=80=99ll need intermediate JavaS=
+cript knowledge and beginner React knowledge. You don=E2=80=99t need any Ne=
+xt.js knowledge.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So you need to know:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Intermediate JavaScript</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Basics like variables, operators, functions, objects</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Array methods such as map, forEach, filter</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Async await, try catch</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>ES6 arrow functions, let and const, destructuring, template literal=
+, spread, and Rest operators</span></li>
+</ul>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Beginner React</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Understanding components, props, state, JSX syntax</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Managing state (with/without state management library)</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Creating functional components &amp; styling</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Conditional rendering, lists rendering</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>React hooks (useState, useEffect mostly)</span></li>
+</ul>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">If you don=E2=80=99t meet the requirements above, don=E2=80=
+=99t worry! We=E2=80=99ll provide you with resources to learn the fundament=
+als of JS and React. It will definitely be much harder than if you came in =
+with previous knowledge and experience, but I=E2=80=99m sure you can do it =
+if you=E2=80=99re motivated enough.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>How can I buy your NFT Marketplace/Filmpire/JavaScr=
+ipt course? I don=E2=80=99t see it on the website.</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I received this question a lot. All of these courses are de=
+precated*, meaning they use older versions of dependencies.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">But, since many of you asked, I=E2=80=99ll include them as =
+bonuses in one of the pricing tiers =F0=9F=92=99. Some devs also told me th=
+ey need the older versions because the repositories they work on use those =
+older versions.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">*Them being deprecated doesn=E2=80=99t mean you can=E2=80=
+=99t learn most things with them (unless there=E2=80=99s a massive change l=
+ike Next13). It just means there are small changes compared to today, and m=
+anaging dependencies is a bit harder. For example, Filmpire uses React 17.0=
+.2. React 18 introduced Suspense, and a few rarely used hooks.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>Where will I be able to buy the course?</strong></p=
+>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You can buy the course at <a href=3D"https://click.convertk=
+it-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77/08hwhgudkzrwqrbp/aHR0cHM6Ly9qc21=
+hc3RlcnkucHJvL25leHQxMw=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer=
+" style=3D"color:#0f82f0" url-id=3D"1572510256">jsmastery.pro/next13</a> th=
+is Friday, September 22nd, at 6PM CET. You can convert it to your local tim=
+e zone and add it to your calendar <a href=3D"https://click.convertkit-mail=
+2.com/4zum6xerxlteh5g6z2zbxh35eom77/8ghqh3ulx9npkvbl/aHR0cHM6Ly9kYXRlZnVsLm=
+NvbS9ldmVudGxpbmsvMjg0Nzk3MjgxMw=3D=3D" target=3D"_blank" rel=3D"noopener n=
+oreferrer" style=3D"color:#0f82f0" url-id=3D"1572510257">here</a>.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>What=E2=80=99s the amazing app we=E2=80=99ll build =
+to learn Next13?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">That=E2=80=99s a secret =F0=9F=98=89</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>How much will the course cost?</strong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I thought about pricing this course for a long time. I spok=
+e to many developers, from a business owner in the USA, a system admin in N=
+igeria to a Junior developer in India. I=E2=80=99ve worked on it for 9 mont=
+hs, and it=E2=80=99s on a whole new level from my previous courses and YouT=
+ube videos. The price will reflect that.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The course will have PPP (Purchasing Power Parity), AKA reg=
+ional pricing, to make it equally affordable for all countries.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Since we=E2=80=99re only 6 days out, I=E2=80=99ll let the s=
+urprise hold until the end. But here=E2=80=99s a hint. It's much more than =
+a Udemy course you won=E2=80=99t watch anyway and way less than an iPhone 1=
+5 you don=E2=80=99t need. And much more worth it.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Just 6 days left, and somehow even more hyped than before,<=
+br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/4zum6xerxlteh5g6z2zbxh35eom77" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/4zum6xerxlteh5g6z2zbxh35eom77=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--5bae324591456c2649eeb2f8c14f8c42c5fe1c43431651a4de7c227471d2--

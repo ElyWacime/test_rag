@@ -1,0 +1,308 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:a6ce:b0:4c2:1c2:d4f7 with SMTP id q14csp95612pxv;
+        Fri, 9 Jun 2023 21:05:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6ogkNYdedzdzaQADflpac8RB526SxAqzgVXedJFKy8BWDCTMmAp/+mZgUKzavuwK+ocNQW
+X-Received: by 2002:a0d:f943:0:b0:565:9fc7:9330 with SMTP id j64-20020a0df943000000b005659fc79330mr2899134ywf.17.1686369940525;
+        Fri, 09 Jun 2023 21:05:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686369940; cv=none;
+        d=google.com; s=arc-20160816;
+        b=b3J7rVWD67CqNVQALnInomgAWagU/FWa94NWXmhJalGZAoUE2H4unaS9qqpwnolvCs
+         1IdniJKM8lUbmCjctEwK7un/C2sXkMau73DpJuhB2AQNTNlDwJUoxQNFgo033tPAa+xe
+         WUyPtc4ocK1gRSU5/x0I+zFD/c+Ee65mvX//b4p5MAjv4XuxQb5IJgV2vKBxd2nBpDv8
+         LnwKcr50iSrfWsLhwws26Whhpmb5mR0w07xwFI2GU7Dgeq4hise622rcjF4ByR4yNMe6
+         cP6QGPZGbkQLaBMEB+A5IU8QtI3TUUnsCBeYzUt5lvjY87FKd75gTWSh4zCcamQbYoAG
+         AClQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:precedence:list-unsubscribe:feedback-id:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=+8H/PyDVMJJP/Mtsbhvojm5M3x1LS/mKy9rBoTHtyok=;
+        b=AMdrvkzSqhbCyAWziHt5b7xFwe0acJzqVSwBlMYkn/XTmrA7FMJ9oO0lsbtYfMU/2b
+         pDZLtmkLpRIqx96zWzGiAm3QvJcRLYkJbqQ0fuxfFz3VMG7oDFOTE1WbNC/88yXNu+Za
+         34O2CfpilQHiRwAx+dH48QbfjtvlVihqYmUKeKJ0A/wJBwnJt4BBZbFFbaavwEKoFoai
+         RG6iKmneLMnI5oGg2ZJkoBMBaD1Ssp0U8O2uGrEIqEjYGZ2XiW29fEsS9qDogH6qXn0m
+         3LMkThiZftfigqcoE2PdI67m+dZj+WZI1Gp7VCIkuetwKdsPIZxSv6facPS6F/RMtl3l
+         LSig==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=CQUDTyjs;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Cj+UHc8f;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o47.ck.n.convertkit.com (o47.ck.n.convertkit.com. [149.72.60.6])
+        by mx.google.com with ESMTPS id l190-20020a0de2c7000000b0056ced69c664si239398ywe.317.2023.06.09.21.05.39
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Jun 2023 21:05:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) client-ip=149.72.60.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=CQUDTyjs;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Cj+UHc8f;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=+8H/PyDVMJJP/Mtsbhvojm5M3x1LS/mKy9rBoTHtyok=;
+	b=CQUDTyjsdIrNtKZIdkFbd3W+qgsvaff2XVp1KPGdpN7tQbAEuJHMKt8BYpHeYMlWqNkb
+	svKWuTudiXLfwWFPACvg/zVDgidQcc0triS28F1Nv2wDpvwpbQCO0rHh1gV7tFXBhxDZF1
+	Lc2sVroKtRmL5BytA0CqjNn1hBl6hU1Rk=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=+8H/PyDVMJJP/Mtsbhvojm5M3x1LS/mKy9rBoTHtyok=;
+	b=Cj+UHc8fykKBv2uuSMsa+16zPFAFwbqg2D5lGNLvgrT3jvyU8+yKxnyJr2cvbuDl8KJ+
+	MJarYx9+fNjvzuukt66Keovyzqpn4KqoKHMzR1kkJIfJaGQuXoTWn9NneiGBnPWjSBKfoF
+	GYgLlNsYgD9Hr3twuGAPV6wBEssscXLDU=
+Received: by filterdrecv-6fff98d995-mmwc7 with SMTP id filterdrecv-6fff98d995-mmwc7-1-6483F693-1A
+        2023-06-10 04:05:39.24788625 +0000 UTC m=+2608171.499439139
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-30 (SG) with HTTP
+	id dZR9buvMSKuo6uIgezhNYA
+	Sat, 10 Jun 2023 04:05:39.155 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=8800801e55b99b8e3ba2b3474f560fa6577a6f4e42923be9bb4826a30949
+Date: Sat, 10 Jun 2023 04:05:39 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <zlundwo7wrbnh4e42krtp@convertkit-mail2.com>
+Subject: [Interview] Masterclass Student Achieves Two Salary Increases In
+ Under a Year
+Feedback-ID: 10972852:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4e42krtp>
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfRlBLc=2Flyo1cQx73z?=
+ =?us-ascii?Q?4nwnnUay9dTX0VCxAbv8MHHzRhntCcb62GY4vaT?=
+ =?us-ascii?Q?Ut6YQB0w3IgnqGAnSTRrLiPI+Pn0zGIKxv5TQj=2F?=
+ =?us-ascii?Q?GYtDp2lQxiF0v9Tu+lpgQPi8UqirZhqrtHjgrLa?=
+ =?us-ascii?Q?l9Nucjqe8J144tBjJK4Bzd+Y47Zy8EnQXwsWbz?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADfhs6q5tfM0GgccNzxr4ccrc0qyK83Vi09n7L2?=
+ =?us-ascii?Q?jxdGD5wHaTtuch91rJuHO73Dhh1XeiJbSHuR2YH?=
+ =?us-ascii?Q?Q4f10vNwoo=2F7Ap9CUNp5a0NSHh0xVh5AmUTACoN?=
+ =?us-ascii?Q?x2v6qltPvD=2Fr0wU2wQvDgnMFYdLEQRddJ8lSiL9?=
+ =?us-ascii?Q?5zJ2lCiOvzIrubv1tRCK6oovndTJmTSFUR2hnHj?=
+ =?us-ascii?Q?FHtG7fBNjbLFOOYGVX0UxH5EIVtbFCA4L077XqX?=
+ =?us-ascii?Q?xIjpvlE4AWVbSdvkxGgfSIBX6pU0=2FfExsa8sLD5?=
+ =?us-ascii?Q?VgcBhp9=2FAwxnR+GHogmnxQu3D44dRy0f9IqcH+9?=
+ =?us-ascii?Q?cSROJjSuoRJRUO0FZug6=2FfaJBqDXDK9U2vPqOcb?=
+ =?us-ascii?Q?lQj+9EddkXYCRo=3D?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--8800801e55b99b8e3ba2b3474f560fa6577a6f4e42923be9bb4826a30949
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Hi there (for the second time today),
+
+I want to share an interview I had yesterday with Kristian.
+
+=E2=80=8B
+
+In the year since he joined the Masterclass, Kristian:
+
+* Got two salary increases
+* Freed himself of impostor syndrome
+* Became a team lead
+* Got so good his CTO entrusted him with strategic and mentoring
+responsibilities
+* Started getting contacted by recruiters on LinkedIn
+
+=E2=80=8B
+
+You=E2=80=99ll truly find this interview useful - even if you=E2=80=99re no=
+t
+thinking of joining the Masterclass.
+
+Watch it here:
+
+=E2=80=8B
+
+(
+https://click.convertkit-mail2.com/zlundwo7wrbnh4e42krtp/z2hgh7u3knn7pmhz/a=
+HR0cHM6Ly95b3V0dS5iZS9qbzE1ODdramhIRQ=3D=3D
+)
+=E2=80=8B
+
+Hope it=E2=80=99s useful,
+
+Adrian
+
+=E2=80=8B
+
+P.S. Admissions for the Masterclass end soon.
+
+If you=E2=80=99re thinking of joining, apply here (
+https://click.convertkit-mail2.com/zlundwo7wrbnh4e42krtp/p8hehquz2mmdgebr/a=
+HR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVudC1ib290=
+Y2FtcA=3D=3D
+).
+
+To quote Kristian - =E2=80=98I think you'll be surprised at how much you
+could get out of it.=E2=80=99
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4e42krtp )
+| Update your profile (
+https://preferences.convertkit-mail2.com/zlundwo7wrbnh4e42krtp )
+| 113 Cherry St, Seattle, WA 92768
+--8800801e55b99b8e3ba2b3474f560fa6577a6f4e42923be9bb4826a30949
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#9fcdf9"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#9fcdf9;wid=
+th:100%" bgcolor=3D"#9fcdf9"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container normal" styl=
+e=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-=
+width:100%;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:100%">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#f1f7fe"><tr><td><![endif]--><div=
+ style=3D"background-color:#f1f7fe;border-radius:11px;overflow:hidden;max-w=
+idth:600;margin:0px auto"><table bgcolor=3D"#f1f7fe" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"100%" style=3D"border-collapse:separate;mso-table-ls=
+pace:0pt;mso-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"v=
+ertical-align:top;padding:20px"><div class=3D"email-body" style=3D"backgrou=
+nd-color:#f1f7fe">
+<div class=3D"email-content"><div>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Hi there (for the second time today),</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">I want to share an interview I had yesterday with Kristian.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7"><strong>In the year since he joined the Masterclass, Kristian:</strong=
+></p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.7;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Got two salary increases</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Freed himself of impostor syndrome</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Became a team lead</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Got so good his CTO entrusted him with strategic and mentoring resp=
+onsibilities</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>Started getting contacted by recruiters on LinkedIn</span></li>
+</ul>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7"><strong>You=E2=80=99ll truly find this interview useful - even if you=
+=E2=80=99re not thinking of joining the Masterclass.</strong></p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Watch it here:</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">=E2=80=8B</p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"border-col=
+lapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;text-align:left;ta=
+ble-layout:fixed;float:none" class=3D"email-image"><tbody><tr><td align=3D"=
+left" style=3D"vertical-align:top"><figure style=3D"margin:1em 0;margin-top=
+:12px;margin-bottom:12px;margin-left:0;margin-right:0;display:inline-block;=
+max-width:600px;width:100%"><a style=3D"color:#0f82f0;display:block" href=
+=3D"https://click.convertkit-mail2.com/zlundwo7wrbnh4e42krtp/z2hgh7u3knn7pm=
+hz/aHR0cHM6Ly95b3V0dS5iZS9qbzE1ODdramhIRQ=3D=3D" target=3D"_blank" rel=3D"n=
+oopener noreferrer" url-id=3D"1549589445"><img src=3D"https://embed.filekit=
+cdn.com/e/hbkfd9XjiChLa2dhB5ocmg/2sfq15p2yeZfXrPqpfKhK1" width=3D"600" heig=
+ht=3D"auto" style=3D"display:block;height:auto;line-height:100%;outline:non=
+e;-webkit-text-decoration:none;text-decoration:none;max-width:100%;border:0=
+ none;border-bottom-left-radius:4px;border-bottom-right-radius:4px;width:60=
+0px;height:auto;object-fit:contain"></a></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Hope it=E2=80=99s useful,</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">Adrian</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">P.S. Admissions for the Masterclass end soon.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7">If you=E2=80=99re thinking of joining, <a href=3D"https://click.conver=
+tkit-mail2.com/zlundwo7wrbnh4e42krtp/p8hehquz2mmdgebr/aHR0cHM6Ly93d3cuanNtY=
+XN0ZXJ5LnByby9mdWxsLXN0YWNrLXdlYi1kZXZlbG9wbWVudC1ib290Y2FtcA=3D=3D" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0" url-id=3D"1=
+549589446">apply here</a>.</p>
+<p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cant=
+arell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:=
+1.7"><strong>To quote Kristian - =E2=80=98I think you'll be surprised at ho=
+w much you could get out of it.=E2=80=99</strong></p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><p=
+ style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Arial,-=
+apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantar=
+ell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-height:1.=
+7;text-align:center"><span style=3D"font-size:14px">=E2=80=8B</span><a href=
+=3D"https://unsubscribe.convertkit-mail2.com/zlundwo7wrbnh4e42krtp" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=
+=3D"font-size:14px">Unsubscribe</span></a><span style=3D"font-size:14px"> |=
+ </span><a href=3D"https://preferences.convertkit-mail2.com/zlundwo7wrbnh4e=
+42krtp" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f=
+0"><span style=3D"font-size:14px">Update your profile</span></a><span style=
+=3D"font-size:14px">  | 113 Cherry St, Seattle, WA 92768</span></p></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/zlundwo7wrbnh4e42krtp" alt=3D=
+"" style=3D"border:0 none;display:block;height:auto;line-height:100%;outlin=
+e:none;-webkit-text-decoration:none;text-decoration:none;max-width:100%">
+</body>
+</html>
+
+--8800801e55b99b8e3ba2b3474f560fa6577a6f4e42923be9bb4826a30949--

@@ -1,0 +1,915 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:82:b0:2ef:3119:280a with SMTP id 2csp687563ljq;
+        Wed, 14 Aug 2024 08:15:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFbjHfbcp3fa8yVowkSJq2Y6Ut52eoNsJ4Ky6L+/TqAh+3Wnm0QzWK9SKy6eV2RGRmK5TFZ
+X-Received: by 2002:a5d:67cf:0:b0:367:4dbb:ed51 with SMTP id ffacd0b85a97d-37177650156mr2458504f8f.0.1723648522982;
+        Wed, 14 Aug 2024 08:15:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723648522; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PUi6wU8Rg+FtUNyfFjDnRtxj9W/KMA0/+5eXlaYPSc+j/Gzqk9/36ledSfvJSILtSs
+         mryph17UlN9m39x15BwaJ9gyjSJQg/lkZwV18XuI4xqqqTolToTKByTOqPjY67WaaU2p
+         it27p1ol0lmXGgShtm0X4JZad/0T+f+0Fl0pL8aW+5Z2AY4DrNBYNPlyZZzw0HQ4JiVV
+         PT+C5txSF4luLs7yr+PIUEqmkoIHxMScke+LvyQW89iSYYzhBRIo/MDLEDMdkHsSC0gA
+         rdBTbPXXC31IJPz0gsk8OJC4XQOGdp5ONeCYjiYFQcBPOT8/WgXmZngNeW9drNi6MfAm
+         trmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe-post:list-unsubscribe:message-id:mime-version
+         :reply-to:to:date:subject:from:dkim-signature;
+        bh=nEfsRjz3K8id0Sjj8P9DRLbOIY64GQtqj0RGyiIMkWQ=;
+        fh=/S7jIxfmjXkj7IUEEa3JnMkvupQCA3FMe9xo6kNUiKM=;
+        b=AB1eq06M6CTk/d8EMpKW7InXOCxtGzDt0QZQybgsQcTNdJlkXbK9s5GQYEvq2kAB3f
+         OJzHX/H7U8tX++naHo/ziytLmpbTaBmf4Q/TWPYZu7/xrwHA8xyBsWhGHEXdPG6Usua0
+         o3j1k1KkCMi3rLQpzsL52p/cdtvdVQOWPGSgzQvkdiXLEsuGwsM7f6pTAOuAy+QI32wU
+         OafDGlQ42BejtETkmO18gG9MBS4cCZZA0waDGG/r9kOq0z+Tg39l3LJjDgpHIDFJNlvT
+         iJJKSZkbrnR45alSDdXOdjoiGu9M3v/nCF6ZZDeUlGgiWj6+ynRMTy2FlE7WKPnraKxw
+         jUpw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b=IhnwVj14;
+       spf=pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.51 as permitted sender) smtp.mailfrom=adobeemea@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <adobeemea@mail.adobe.com>
+Received: from r51.mail.adobe.com (r51.mail.adobe.com. [66.117.17.51])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-36e4ebd32d9si5068589f8f.750.2024.08.14.08.15.22
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Aug 2024 08:15:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.51 as permitted sender) client-ip=66.117.17.51;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.adobe.com header.s=neolane header.b=IhnwVj14;
+       spf=pass (google.com: domain of adobeemea@mail.adobe.com designates 66.117.17.51 as permitted sender) smtp.mailfrom=adobeemea@mail.adobe.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.adobe.com
+Return-Path: <adobeemea@mail.adobe.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mail.adobe.com;
+	s=neolane; t=1723643118;
+	bh=nEfsRjz3K8id0Sjj8P9DRLbOIY64GQtqj0RGyiIMkWQ=;
+	h=From:Subject:Date:To:MIME-Version:Message-ID:List-Unsubscribe:
+	 List-Unsubscribe-Post:Content-Type;
+	b=IhnwVj14eFUBWXeLMEQ9ASvRCj+3oWmZJcC31b5KHKi23hGnuCg9EEWb2ISdnje0m
+	 Nz8N43OQqL3hmIw0VG6tDdXQYtPiUi/jRVLXZdNcwTzXyqOSiNFQomqmsdteu1fJeb
+	 ba+kE+HJcKVOIW/J8g7YT3qZ/Md7ArL1x9e111Us=
+X-MSFBL: nOglBjt5TyU9j3bplBfOjRB43ZB25gOsDO8TKMWkXPk=|eyJnIjoicHJvZC5iMmN
+	lbWVhYWNxXzZkNjY5NGY3LTUwM2QtNDY2ZS1iMjQ2LTBlZmE2NzZiZDRjNCIsImI
+	iOiJhZG9iZWludF82Ni4xMTcuMTcuNTFfcHJvZC5iMmNlbWVhYWNxXzZkNjY5NGY
+	3LTUwM2QtNDY2ZS1iMjQ2LTBlZmE2NzZiZDRjNCIsInJjcHRfbWV0YSI6eyAibSI
+	6ICI2NTczNTI3MDAiLCAiZCI6ICI3MDMzNzE3NyIsICJpbiI6ICJhZG9iZWluX21
+	pZF9wcm9kOSIsICJyIjogImVseS51YnVudHUwQGdtYWlsLmNvbSIgfSwiciI6ImV
+	seS51YnVudHUwQGdtYWlsLmNvbSJ9
+Received: from [52.10.132.8] ([52.10.132.8:42769] helo=r53.mail.adobe.com)
+	by irl1-prod1-mta-i-091f5650e3b9530e4 (envelope-from <adobeemea@mail.adobe.com>)
+	(ecelerity 4.4.0.19839 r(msys-ecelerity:tags/4.4.0.0^0)) with ESMTP
+	id C2/14-58544-EE4BCB66; Wed, 14 Aug 2024 13:45:18 +0000
+From: "Adobe Acrobat" <mail@mail.adobe.com>
+Subject: =?utf-8?B?VGFrZSB5b3VyIHdvcmsgdG8gZ28=?=
+Date: Wed, 14 Aug 2024 06:45:16 -0700
+To: <ely.ubuntu0@gmail.com>
+Reply-To: "Adobe Acrobat" <mail@mail.adobe.com>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 6.7.0
+Message-ID: <NM6272E67FC04314299adobein_mid_prod9@mail.adobe.com>
+X-250ok-CID: adobe_ie_XW_P40984_240814
+List-Unsubscribe: <https://unsubscribe-redirector.adobe.io/unsubscribe?api_key=unsuboneclick&token=%400CtdaojQkmEpAvy%2F1XCxXzzUM9dkc0Q%2FST0wZZuCPlg%3D&sclick=true&src=aci&le=21>
+X-CSA-Complaints: csa-complaints@eco.de
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative;
+	charset="windows-1252";
+	boundary="----=_NextPart_027_970869E7.970869E7"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_027_970869E7.970869E7
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+
+------------------------------------------------------------------------
+
+View web version:
+https://t-info.mail.adobe.com/r/?id=t78144afd,fda5dc4c,bfc1b7d5&e=cDE9JTQwUldBYkM1ZXlZdHklMkZBMG5ZMEVPdWpzJTJCcmZOd1VyRzJFNzRld1B0aVBuJTJCSSUzRA&s=G2gXAUzH_DdgMfQdQdsCecTT_8CSZ598SiE-k7-PJCU
+
+------------------------------------------------------------------------
+
+Unfortunately, your email client cannot display HTML, or your settings
+are turned off. To view this email, please click the link above, or
+copy and paste it into your browser.
+
+------------------------------------------------------------------------
+
+Adobe, the Adobe logo, Creative Cloud, the Creative Cloud logo,
+Lightroom and Photoshop are either registered trademarks or
+trademarks of Adobe in the United States
+and/or other countries. All other trademarks are the property of
+their respective owners.
+
+
+This is a marketing email from Adobe Systems Software Ireland Limited,
+4-6 Riverwalk, Citywest Business Park, Dublin 24, Ireland.
+
+Click on the following link to unsubscribe, or send us an unsubscribe 
+request to the postal address above.
+Unsubscribe:
+ https://t-info.mail.adobe.com/r/?id=t78144afd,fda5dc4c,bfc1b7d6&e=cDE9JTQwMEN0ZGFvalFrbUVwQXZ5JTJGMVhDeFh6elVNOWRrYzBRJTJGU1Qwd1padUNQbGclM0QmcDI9JmxvYz1pZSZwMz0yMQ&s=PWOVhapQASVBkN8yRdjVbN19zCsI_u2fBNz3d9uynII 
+
+Your privacy is important to us. Please review the Adobe Privacy Policy.
+https://t-info.mail.adobe.com/r/?id=t78144afd,fda5dc4c,bfc1b7d7
+
+To ensure email delivery, add mail@mail.adobe.com to your 
+address book, contacts or safe sender list.
+
+Please do not reply to this message. To contact Adobe, find options 
+online.
+https://t-info.mail.adobe.com/r/?id=t78144afd,fda5dc4c,bfc1b7d8
+
+Registered office: Adobe Systems Software Ireland Limited,
+4-6 Riverwalk, Citywest Business Park, Dublin 24, Ireland.
+Registered number: 344992
+
+
+
+------=_NextPart_027_970869E7.970869E7
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+<!DOCTYPE html>
+<html xmlns=3D"https://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"><head>
+  <link rel=3D"icon" href=3D"https://www.adobe.com/favicon.ico" type=3D"ima=
+ge/x-icon">
+  <link rel=3D"shortcut icon" href=3D"https://www.adobe.com/favicon.ico" ty=
+pe=3D"image/x-icon">
+  <meta name=3D"x-apple-disable-message-reformatting">
+  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1=
+">
+  <meta name=3D"format-detection" content=3D"telephone=3Dno">
+  <meta name=3D"format-detection" content=3D"date=3Dno">
+  <meta name=3D"format-detection" content=3D"address=3Dno">
+  <meta name=3D"format-detection" content=3D"email=3Dno">
+  <title>Take your work to go</title>
+  <!--[if mso]><style type=3D"text/css">
+body, table, td {
+font-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-se=
+rif !important;
+}
+=2Ehead-text {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+
+</style>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml><![endif]-->
+  <style type=3D"text/css">
+  @import url(https://use.typekit.net/onr8tbr.css);
+  .ReadMsgBody {
+    width: 100%
+  }
+  
+  .ExternalClass {
+    width: 100%
+  }
+  
+  table {
+    border-collapse: collapse;
+    
+  }
+  
+  a,
+  a:visited {
+    color: #1473E6;
+    text-decoration: none
+  }
+  
+  .legal a {
+    text-decoration: underline
+  }
+  
+  a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit!important
+  }
+  
+  .mobile {
+    border-spacing: 0;
+    display: none !important;
+    height: 0;
+    max-height: 0;
+    mso-hide: all;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0
+  }
+  
+  .padleft {
+    padding-left: 140px!important
+  }
+        .logo-mob1 {
+    padding-left: 50px!important
+  }
+  
+  @media only screen and (max-width:480px) {
+    u~div {
+      min-width: 100vw
+    }
+    .mb-tbl
+    {
+    width: 214px !important;
+    }
+    
+    td.body1 {
+      padding-right: 0px!important
+    }
+    table.half-img {
+      width: 76%!important
+    }
+    .left_space1 {
+      padding-left: 16% !important;
+      padding-right: 8%!important
+    }
+    .rgt_space1 {
+      padding-left: 8% !important;
+      padding-right: 16%!important
+    }
+    table.half-con {
+      width: 100%!important
+    }
+    td.art-header.sm-bx-pad {
+      padding-top: 40px!important
+    }
+    td.bg_pad {
+      padding-bottom: 480px !important
+    }
+    .banner-bg1 {
+      background: url(https://landing.adobe.com/content/dam/landing/uploads=
+/2023/emea/assets/images/marquee/64acc558004bc94d827bb5702fa8e36d_apac_acro=
+bat_pod1_mobile_1x.jpg) !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      height: auto !important;
+      background-position: center!important
+        }
+    td.sm-table {
+      display: block !important;
+      width: 100%
+    }
+    td.pb-80 {
+      padding-bottom: 80px!important
+    }
+    td.marq-l {
+      width: 54%!important
+    }
+    td.marq-l table {
+      width: 100%!important
+    }
+    td.marq-r {
+      width: 46%!important
+    }
+    td.marq-r table {
+      width: 94%!important
+    }
+    td.pad1-mob {
+      padding-left: 0 !important;
+      padding-right: 40%!important
+    }
+    td.pad2-mob {
+      padding-left: 0!important
+    }
+    td.bgsp {
+      width: 12%!important
+    }
+    div>u~div {
+      min-width: 100%
+    }
+    .mobile-spacer {
+      width: 30px!important
+    }
+    .web {
+      display: none!important
+    }
+    .padleft {
+      padding-left: 0!important
+    }
+        .logo-mob1 {
+    max-width: 221px !important;
+    width: 100% !important;
+}
+    .mobile {
+      display: block !important;
+      width: auto !important;
+      overflow: visible !important;
+      height: auto !important;
+      max-height: inherit !important;
+      visibility: visible!important
+    }
+    .block {
+      display: block !important;
+      width: 100% !important;
+      overflow: visible !important;
+      height: auto !important;
+      max-height: inherit !important;
+      visibility: visible !important;
+      padding-left: 0!important
+    }
+    .padb-50 {
+      padding-bottom: 50px!important
+    }
+    .email-width {
+      width: 84%!important
+    }
+    .email-width1 {
+      padding-left: 30px !important;
+      padding-right: 30px!important
+    }
+    .full-width {
+      width: 100%!important
+    }
+    .mobile-image {
+      height: auto !important;
+      width: 100%!important
+    }
+    .social {
+      float: left !important;
+      padding-top: 50px !important;
+      text-align: left!important
+    }
+    .floatNone {
+      float: none!important
+    }
+    .rainbow {
+      background-size: 100% 100%!important
+    }
+    .header {
+      font-size: 40px !important;
+      line-height: 46px!important
+    }
+    .padr-0 {
+      padding-right: 0!important
+    }
+    .padl-0 {
+      padding-left: 0!important
+    }
+    .padb-0 {
+      padding-bottom: 0!important
+    }
+    .pad-ex {
+      padding-left: 8%!important
+    }
+    td.bottom-bg-pt {
+      padding-top: 30px!important
+    }
+    td.bottom-bg-pb {
+      padding-bottom: 35px!important
+    }
+    .border_CT {
+      width: 140px !important;
+    }
+  }
+  
+  @media only screen and (max-width:420px) {
+    td.bg_pad {
+      padding-bottom: 430px!important
+    }
+    td.header1 {
+      font-size: 34px !important;
+      line-height: 40px !important;
+    }
+  }
+  </style>
+</meta></meta></meta></meta></meta></meta></meta></link></link></head>
+
+<body bgcolor=3D"#ffffff" style=3D"background-color:#fff;margin:0;padding:0=
+;-webkit-font-smoothing:antialiased;width:100% !important;-webkit-text-size=
+-adjust:none" topmargin=3D"0">
+  <div style=3D"font-size:1px;color:#E4E4E4;display:none;overflow:hidden;vi=
+sibility:hidden">Stay productive away from the office with Acrobat Pro.</di=
+v>
+  <table width=3D"100%" bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E4=
+E4" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+    <tbody>
+      <tr>
+        <td>
+          <table class=3D"full-width" bgcolor=3D"#ffffff" align=3D"center" =
+width=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"width:600px;background-color:#fff">
+            <tbody>
+              <tr>
+                <td>
+                  <table bgcolor=3D"" class=3D"full-width" align=3D"center"=
+ width=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"width:600px">
+                    <tbody>
+                      <tr>
+                        <!--[if gte mso 9]><v:image xmlns:v=3D"urn:schemas-=
+microsoft-com:vml" style=3D"width:450pt; height:710pt" src=3D"https://landi=
+ng.adobe.com/content/dam/landing/uploads/2023/emea/assets/images/marquee/64=
+acc558004bc94d827bb5702fa8e36d_apac_acrobat_pod1_desktop_1x.jpg" />
+                <v:rect xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"f=
+alse" stroke=3D"false" style=3D"position: relative; width:450pt; height:710=
+pt">
+                <v:textbox inset=3D"0,0,0,0"><![endif]-->
+                        <td style=3D"background:url(https://landing.adobe.c=
+om/content/dam/landing/uploads/2023/emea/assets/images/marquee/64acc558004b=
+c94d827bb5702fa8e36d_apac_acrobat_pod1_desktop_1x.jpg) no-repeat center;bac=
+kground-size:cover;background-repeat:no-repeat;background-position:center;h=
+eight:auto" valign=3D"top" height=3D"auto" width=3D"600" bgcolor=3D"#000000=
+" background=3D"https://landing.adobe.com/content/dam/landing/uploads/2023/=
+emea/assets/images/marquee/64acc558004bc94d827bb5702fa8e36d_apac_acrobat_po=
+d1_desktop_1x.jpg" class=3D"banner-bg1">
+                          <div>
+                            <table role=3D"presentation" style=3D"width:500=
+px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"500" class=3D=
+"email-width" align=3D"center">
+                              <tbody>
+                                <tr>
+                                  <td style=3D"color:#2C2C2C;font-family:ad=
+obe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size:18px;=
+line-height:26px;padding-top:47px;padding-bottom:47px;vertical-align:top" c=
+lass=3D"mobile-push">
+                                    <table align=3D"left" width=3D"auto" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+                                      <tbody>
+                                        <tr>
+            <td valign=3D"middle" style=3D"color:#000000; font-family:adobe=
+-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:14=
+px; line-height:20px;"><img alt=3D"Adobe Acrobat Pro" src=3D"https://landin=
+g.adobe.com/dam/global/images/acrobat-pro-dc.mnemonic.480x468.png" width=3D=
+"30" height=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"displa=
+y:block; vertical-align:top;" /></td>
+            <td width=3D"10" style=3D"width:10px;"> </td>
+            <td valign=3D"top" style=3D"color:#000000; font-family:adobe-cl=
+ean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:14px;=
+ line-height:20px;"><img alt=3D"Adobe Acrobat Pro" src=3D"https://s7d9.scen=
+e7.com/is/image/AdobeDemandCreative/=3Ffmt=3Dpng-alpha&size=3D360,60&wid=3D=
+360&textAttr=3D144,strong&resolution=3D200&textPs=3D%7B%5C*%5Ciscolortbl%3B=
+000000%3B%5Cfonttbl%7B%5Cf0%20Adobe%20Clean%20ExtraBold%3B%7D%7D%5Cf0%5Cfs4=
+0%5Csl-400%5Cvertalc%5Ckerningoptical%5Ccf1Adobe%20Acrobat%20Pro" width=3D"=
+180" height=3D"30" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#0=
+00000; font-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, =
+sans-serif; font-size:14px; line-height:20px; display:block; vertical-align=
+:top;" /></td>
+            </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                                <tr style=3D"font-size:0 !important;line-he=
+ight:0 !important;border-collapse:collapse!important">
+                                  <td style=3D"color:#000000;font-family:ad=
+obe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size:44px;=
+line-height:50px;padding-top:20px;padding-right:0;font-weight:600" class=3D=
+"header">Work where you want.</td>
+                                </tr>
+                                <tr>
+                                  <td style=3D"color:#000000;font-family:ad=
+obe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size:18px;=
+line-height:26px;padding-top:16px;font-weight:400;padding-right:0px" class=
+=3D"body1">Make changes to a PDF, sign documents, or send them out for sign=
+ature =E2=80=94 all from any device. When you use Acrobat Pro, you can work=
+ anywhere, anytime.</td>
+                                </tr>
+                                <tr>
+                                                  <td class=3D"bg_pad" styl=
+e=3D"padding-top:40px;padding-bottom: 550px;">
+                                                    <a href=3D"https://t-in=
+fo.mail.adobe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b747&e=3DcDE9VjJYWUtOUUM=
+&s=3DFUyb6qjK2kj6YUR1sT31h1bBhSX7OGnWQi3bow6tTx0" class=3D"btn1" target=3D"=
+_blank" style=3D"font-family:adobe-clean,Helvetica Neue,Helvetica,Verdana,A=
+rial,sans-serif;color:#fff;font-weight:600;display:inline-block;text-decora=
+tion:none;text-align:center;width:200px"><table border=3D"0" align=3D"left"=
+ cellspacing=3D"0" cellpadding=3D"0" style=3D"width:200px;border-radius:50P=
+X;display:block !important;background:#1473E6" width=3D"200">
+                                                        <tbody>
+                                                          <tr>
+                                                            <td align=3D"ce=
+nter" valign=3D"middle" style=3D"font-family:adobe-clean,Helvetica Neue,Hel=
+vetica,Verdana,Arial,sans-serif;text-align:center;font-weight:600;width:200=
+px;font-size:16px;color:#fff;padding:10px 0;line-height:20px"><a href=3D"ht=
+tps://acrobat.adobe.com/uk/en/acrobat.html=3Ftrackingid=3DV2XYKNQC&mv=3Dema=
+il" class=3D"btn1" target=3D"_blank" style=3D"font-family:adobe-clean,Helve=
+tica Neue,Helvetica,Verdana,Arial,sans-serif;color:#fff;font-weight:600;dis=
+play:inline-block;text-decoration:none;text-align:center">Get started</a></=
+td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </a>
+                                                  </td>
+                                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </td>
+                        <!--[if gte mso 9]></v:rect>
+                </v:textbox><![endif]-->
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td><table class=3D"email-width" align=3D"center" width=3D"=
+500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"width:500px;">
+          <tbody><tr>
+                <td style=3D"color:#000000; font-family:adobe-clean, Helvet=
+ica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:22px; line-heigh=
+t:28px; padding-top: 100px;"><a href=3D"https://t-info.mail.adobe.com/r/=3F=
+id=3Dh78144afd,fda5dc4c,bfc1b748&e=3DcDE9VjJYWUtOUUM&s=3DWtEOqWXEUeLyXAz9yG=
+NliGoZ7USTPfFweLsijDWUGY0" target=3D"_blank" style=3D"color:#1D657D;"><img =
+class=3D"mobile-image" alt=3D"Edit outside the office." src=3D"https://land=
+ing.adobe.com/content/dam/landing/uploads/2023/emea/assets/images/marquee/6=
+4acc558004bc94d827bb5702fa8e36d_apac_acrobat_pod2_desktop_2x.png" srcset=3D=
+"https://landing.adobe.com/content/dam/landing/uploads/2023/emea/assets/ima=
+ges/marquee/64acc558004bc94d827bb5702fa8e36d_apac_acrobat_pod2_mobile_2x.pn=
+g 480w, https://landing.adobe.com/content/dam/landing/uploads/2023/emea/ass=
+ets/images/marquee/64acc558004bc94d827bb5702fa8e36d_apac_acrobat_pod2_deskt=
+op_2x.png 1200w" sizes=3D"(max-width: 480px) 50vw" width=3D"500" height=3D"=
+auto" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#000000; font-f=
+amily:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; f=
+ont-size:22px; line-height:28px; display:block; vertical-align:top;"> </img=
+></a></td>
+              </tr>
+          
+          
+                    <tr>
+                      <td style=3D"color: #000;font-family:adobe-clean, Hel=
+vetica Neue, Helvetica, Verdana, Arial, sans-serif;font-size:22px;line-heig=
+ht:28px;padding-top: 40px;font-weight: 800;">Edit outside the office.</td>
+                    </tr>
+                        <tr>
+                      <td style=3D"color: #2c2c2c;font-family:adobe-clean, =
+Helvetica Neue, Helvetica, Verdana, Arial, sans-serif;font-size:18px;line-h=
+eight:26px;padding-top: 16px; padding-right: 0px; padding-bottom: 60px; fon=
+t-weight: 400;">Correct typos. Swap pictures. Edit PDFs on your favorite sc=
+reen to get them just right.</td>
+                    </tr>
+          
+                    
+                  </tbody></table></td>
+              </tr>
+              <tr>
+                <td><table class=3D"email-width" align=3D"center" width=3D"=
+500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"width:500px;">
+          <tbody><tr>
+                <td style=3D"color:#000000; font-family:adobe-clean, Helvet=
+ica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:22px; line-heigh=
+t:28px"><a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh78144afd,fda5dc=
+4c,bfc1b749&e=3DcDE9VjJYWUtOUUM&s=3DY5jlRLv3DJ4KylOOh-HNS18codmfXru4AD4O41W=
+0yZc" target=3D"_blank" style=3D"color:#1D657D;"><img class=3D"mobile-image=
+" alt=3D"Leave your laptop at home." src=3D"https://landing.adobe.com/conte=
+nt/dam/landing/uploads/2023/emea/assets/images/marquee/64acc558004bc94d827b=
+b5702fa8e36d_apac_acrobat_pod3_desktop_2x_v1.png" srcset=3D"https://landing=
+.adobe.com/content/dam/landing/uploads/2023/emea/assets/images/marquee/64ac=
+c558004bc94d827bb5702fa8e36d_apac_acrobat_pod3_mobile_2x.png 480w, https://=
+landing.adobe.com/content/dam/landing/uploads/2023/emea/assets/images/marqu=
+ee/64acc558004bc94d827bb5702fa8e36d_apac_acrobat_pod3_desktop_2x_v1.png 120=
+0w" sizes=3D"(max-width: 480px) 50vw" width=3D"500" height=3D"auto" border=
+=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#000000; font-family:adobe-=
+clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:22p=
+x; line-height:28px; display:block; vertical-align:top;"> </img></a></td>
+              </tr>
+          
+          
+                    <tr>
+                      <td style=3D"color: #000;font-family:adobe-clean, Hel=
+vetica Neue, Helvetica, Verdana, Arial, sans-serif;font-size:22px;line-heig=
+ht:28px;padding-top: 40px;font-weight: 800;">Leave your laptop at home.</td=
+>
+                    </tr>
+                        <tr>
+                      <td style=3D"color: #2c2c2c;font-family:adobe-clean, =
+Helvetica Neue, Helvetica, Verdana, Arial, sans-serif;font-size:18px;line-h=
+eight:26px;padding-top: 16px; padding-right: 0px; padding-bottom: 60px; fon=
+t-weight: 400;">Easily create and export PDFs on your mobile device.</td>
+                    </tr>
+          
+                    
+                  </tbody></table></td>
+              </tr>
+
+
+              <tr>
+                <td><table class=3D"email-width" align=3D"center" width=3D"=
+500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"width:500px;">
+          <tbody><tr>
+                <td style=3D"color:#000000; font-family:adobe-clean, Helvet=
+ica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:22px; line-heigh=
+t:28px"><a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh78144afd,fda5dc=
+4c,bfc1b74a&e=3DcDE9VjJYWUtOUUM&s=3DzGOW0C-iaPfCPt3J0ZXJen5am0EXDvCMzluYy2A=
+pwc8" target=3D"_blank" style=3D"color:#1D657D;"><img class=3D"mobile-image=
+" alt=3D"E-sign wherever." src=3D"https://landing.adobe.com/content/dam/lan=
+ding/uploads/2023/emea/assets/images/marquee/64acc558004bc94d827bb5702fa8e3=
+6d_apac_acrobat_pod4_desktop_2x_v1.png" srcset=3D"https://landing.adobe.com=
+/content/dam/landing/uploads/2023/emea/assets/images/marquee/64acc558004bc9=
+4d827bb5702fa8e36d_apac_acrobat_pod4_mobile_2x.png 480w, https://landing.ad=
+obe.com/content/dam/landing/uploads/2023/emea/assets/images/marquee/64acc55=
+8004bc94d827bb5702fa8e36d_apac_acrobat_pod4_desktop_2x_v1.png 1200w" sizes=
+=3D"(max-width: 480px) 50vw" width=3D"500" height=3D"auto" border=3D"0" hsp=
+ace=3D"0" vspace=3D"0" style=3D"color:#000000; font-family:adobe-clean, Hel=
+vetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:22px; line-he=
+ight:28px; display:block; vertical-align:top;"> </img></a></td>
+              </tr>
+          
+          
+                    <tr>
+                      <td style=3D"color: #000;font-family:adobe-clean, Hel=
+vetica Neue, Helvetica, Verdana, Arial, sans-serif;font-size:22px;line-heig=
+ht:28px;padding-top: 40px;font-weight: 800;">E-sign wherever.</td>
+                    </tr>
+                        <tr>
+                      <td style=3D"color: #2c2c2c;font-family:adobe-clean, =
+Helvetica Neue, Helvetica, Verdana, Arial, sans-serif;font-size:18px;line-h=
+eight:26px;padding-top: 16px; padding-right: 0px; padding-bottom: 0px; font=
+-weight: 400;">Cap that pen and sign on a phone, tablet, or desktop to add =
+your approval.</td>
+                    </tr>
+          
+                    
+                  </tbody></table></td>
+              </tr>
+                            
+                            
+                            <tr>
+                <td><table class=3D"email-width" align=3D"center" width=3D"=
+500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"width:500px;">
+          <tbody>
+                     
+                   
+                        
+          <tr>
+                <td class=3D"" style=3D"
+                 color:#1473E6;
+                 font-family:
+                 adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sa=
+ns-serif;
+                 font-size:15px;
+                 line-height:40px;
+                 padding-top: 40px;
+                 padding-bottom: 100px;
+                 ">
+                            <!--[if gte mso 9]><v:roundrect
+                                                    xmlns:v=3D"urn:schemas-=
+microsoft-com:vml"
+                                                    xmlns:w=3D"urn:schemas-=
+microsoft-com:office:word" style=3D"height:40px; v-text-anchor:middle; 
+                                   width:200px;" arcsize=3D"50%" stroke=3D"=
+f" fillcolor=3D"#1473E6" style=3D"color:#ffffff;font-size:16px;font-weight:=
+600">
+                                                    <v:textbox style=3D"mso=
+-fit-shape-to-text:t">
+                                                      <center style=3D"colo=
+r:#ffffff; font-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Ari=
+al, sans-serif; font-size:16px;"><![endif]-->
+                          <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=
+=3Dh78144afd,fda5dc4c,bfc1b74b&e=3DcDE9VjJYWUtOUUM&s=3DA7ALBp1hipfZMSd0oF37=
+aNatL351gvuejN357KtHaEs" target=3D"_blank" style=3D"color:#fff;line-height:=
+40px;text-align:left"><div class=3D"mktoText" align=3D"left" id=3D"ADO10871=
+-e" style=3D"font-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, A=
+rial, sans-serif; font-size:16px;font-weight:700;background-color:#1473e6;b=
+order-radius:50px;width:200px;text-align:center;color:#fff;line-height:40px=
+"><strong>Get started</strong></div>
+                          </a>
+                          <!--[if gte mso 9]></center>
+                                                      <p style=3D"margin:0;=
+ font-size:0; line-height:0;">
+                                                        <o:p
+                                                          xmlns:o=3D"urn:sc=
+hemas-microsoft-com:office:office"> 
+                                                        </o:p>
+                                                      </p>
+                                                    </v:textbox>
+                                                  </v:roundrect><![endif]--=
+>    </td>
+              </tr>
+                    
+                  </tbody></table></td>
+              </tr>
+              
+                
+
+
+                       
+
+              <tr>
+                <td>
+                  <table class=3D"full-width" width=3D"600px" bgcolor=3D"#E=
+4E4E4" style=3D"background-color:#E4E4E4;width:600px" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" role=3D"presentation">
+                    <tbody>
+                      <tr>
+    <td bgcolor=3D"#eb1000" style=3D"background-color: #eb1000;">
+      
+        
+            <table class=3D"full-width" align=3D"center" width=3D"600" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"width:600px;">
+       <tbody><tr>
+        
+        
+              <td>
+          <table class=3D"email-width" align=3D"center" width=3D"500" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"=
+width: 500px;">
+                 <tbody><tr>
+                  <td style=3D"color:#ffffff; font-family:adobe-clean, Helv=
+etica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:16px; line-hei=
+ght:20px; padding-top:5px; padding-bottom:5px;"><strong>Acrobat's got it.</=
+strong></td>
+                 </tr>
+                </tbody></table>
+            
+          </td>
+        
+        
+             </tr>
+            </tbody></table>
+    </td>
+    </tr>
+                      
+                      <tr>
+                  <td bgcolor=3D"#F5F5F5" style=3D"background-color:#F5F5F5=
+;">
+                    <!-- logo & social -->
+                    <table class=3D"email-width" align=3D"center" width=3D"=
+500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"width:500px;">
+                      <tbody>
+                        <tr>
+                          <td valign=3D"top" style=3D"padding-top:50px;">
+                            <table class=3D"full-width" align=3D"left" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D=
+"500" style=3D"width: 500px;">
+                              <tbody>
+                                <tr>
+                                  <!--Left-->
+                                  <td valign=3D"top" style=3D"color:#EB1000=
+; font-family:adobe-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-=
+serif; font-size:12px; line-height:18px; padding-bottom: 0px;" class=3D"blo=
+ck">
+                                    <img class=3D"padb-50" alt=3D"Adobe" sr=
+c=3D"https://landing.adobe.com/dam/global/images/adobe-logo.classic.160x222=
+.png" width=3D"30" height=3D"auto" border=3D"0" hspace=3D"0" vspace=3D"0" s=
+tyle=3D"color:#EB1000; font-family:adobe-clean, Helvetica Neue, Helvetica, =
+Verdana, Arial, sans-serif; font-size:12px; line-height:18px; display:block=
+; vertical-align:top;">
+                                  </img></td>
+                                  <!-- END left -->
+                                  <!-- right -->
+                                  <td valign=3D"middle" align=3D"right" sty=
+le=3D"color:#EB1000;font-family:adobe-clean, Helvetica Neue, Helvetica, Ver=
+dana, Arial, sans-serif;font-size:12px;line-height:18px;padding-bottom: 0px=
+;text-align: right;padding-left: 350px;" class=3D"block">
+                                    <table class=3D"social" align=3D"right"=
+ width=3D"auto" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"
+                  float: right">
+                                    <tbody>
+                                      <tr>
+                                        <td style=3D"color:#959595;font-fam=
+ily:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size=
+:12px;line-height:21px;padding-bottom:50px;padding-top:10px">
+                                          <a href=3D"https://t-info.mail.ad=
+obe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b74c" alias=3D"Facebook" target=3D=
+"_blank"><img alt=3D"Facebook" src=3D"https://landing.adobe.com/dam/global/=
+images/social/facebook.959595.png" width=3D"9" height=3D"17" border=3D"0" h=
+space=3D"0" vspace=3D"0" style=3D"display:block;vertical-align:top" /></a>
+                                        </td>
+                                        <td width=3D"36" style=3D"width:36p=
+x"> </td>
+                                        <td style=3D"color:#959595;font-fam=
+ily:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size=
+:12px;line-height:21px;padding-bottom:50px;padding-top:10px">
+                                          <a href=3D"https://t-info.mail.ad=
+obe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b73d" alias=3D"Instagram" target=
+=3D"_blank"><img alt=3D"Instagram" src=3D"https://landing.adobe.com/dam/glo=
+bal/images/social/instagram.959595.png" width=3D"17" height=3D"17" border=
+=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block;vertical-align:top"=
+ /></a>
+                                        </td>
+                                        <td width=3D"36" style=3D"width:36p=
+x"> </td>
+                                        <td style=3D"color:#959595;font-fam=
+ily:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-size=
+:12px;line-height:21px;padding-bottom:50px;padding-top:10px">
+                                          <a href=3D"https://t-info.mail.ad=
+obe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b74e" alias=3D"Twitter" target=3D"=
+_blank"><img alt=3D"Twitter" src=3D"https://landing.adobe.com/dam/global/im=
+ages/social/twitter.959595.png" width=3D"16" height=3D"auto" border=3D"0" h=
+space=3D"0" vspace=3D"0" style=3D"display:block;vertical-align:top" /></a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  </td>
+                                  <!-- END right -->
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- END logo & social -->
+                    <!-- legal-->
+                    <table class=3D"email-width" align=3D"center" width=3D"=
+500" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"width:500px;">
+                      <tbody>
+                        <tr>
+                          <td class=3D"legal" style=3D"color:#959595;font-f=
+amily:adobe-clean,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;font-si=
+ze:11px;line-height:18px;padding-top:0;padding-bottom:100px">Adobe services=
+, like Adobe Creative Cloud, are available only to users 13 and older. Use =
+of Adobe services and applications requires agreement with the applicable <=
+a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b7=
+4f" alias=3D"FOOTER - Terms" target=3D"_blank" style=3D"color:#959595">Term=
+s of Use</a> and the <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh78=
+144afd,fda5dc4c,bfc1b750" alias=3D"FOOTER - Privacy Policy" target=3D"_blan=
+k" style=3D"color:#959595">Adobe Privacy Policy</a>. 
+              <p id=3D"reg_foot">Adobe, the Adobe logo, Creative Cloud, the=
+ Creative Cloud logo, and Document Cloud are either registered trademarks o=
+r trademarks of Adobe in the United States and/or other countries.<br /><br=
+ />
+  This is not a comprehensive list of Adobe trademarks. For a full list, re=
+fer to the <a href=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh78144afd,fda=
+5dc4c,bfc1b751" alias=3D"FOOTER - Trademark Guidelines" target=3D"_blank" s=
+tyle=3D"color:#959595; text-decoration: underline;">Adobe Trademark Guideli=
+nes</a>. All other trademarks are the property of their respective owners.<=
+br /><br />
+  This is a marketing email from Adobe Systems Software Ireland Limited, 4=
+=E2=80=916&nbsp;Riverwalk, Citywest Business Park, Dublin&nbsp;24, Ireland.=
+<br /><br />
+  Click here to  <a style=3D"TEXT-DECORATION: underline; COLOR: #a1a1a1" hr=
+ef=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b752&e=
+=3DcDE9JTQwMEN0ZGFvalFrbUVwQXZ5JTJGMVhDeFh6elVNOWRrYzBRJTJGU1Qwd1padUNQbGcl=
+M0QmcDI9JmxvYz1pZSZwMz0yMQ&s=3Dbr7iDNu4SPrS6m-vZHH-Tap9S_OXliw63aAuYGeFNN4"=
+ target=3D"_blank" class=3D"opt_out" alias=3D"Unsubscribe" _type=3D"optout"=
+ _label=3D"Opt-out link">unsubscribe</A>  or send an unsubscribe request to=
+ the postal address above. Please review the <a href=3D"https://t-info.mail=
+.adobe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b753" alias=3D"FOOTER - Privacy=
+" target=3D"_blank" style=3D"color:#959595; text-decoration: underline;">Ad=
+obe&nbsp;Privacy&nbsp;Policy</a>.<br /><br />
+  To ensure future delivery of email, add <a href=3D"https://t-info.mail.ad=
+obe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b754" alias=3D"FOOTER - Add to add=
+ress book" target=3D"_blank" style=3D"color:#959595; text-decoration: under=
+line;">mail@mail.adobe.com</a> to your address book, contacts, or safe send=
+ers&nbsp;list.<br /><br />
+  Please do not reply to this message. To contact Adobe, find options <a hr=
+ef=3D"https://t-info.mail.adobe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b755" =
+alias=3D"FOOTER - Contact" target=3D"_blank" style=3D"color:#959595; text-d=
+ecoration: underline;">online</a>.<br /><br />
+  Registered office: Adobe Systems Software Ireland Limited, 4=E2=80=916&nb=
+sp;Riverwalk, Citywest Business Park, Dublin&nbsp;24, Ireland. Registered n=
+umber: 344992</p>
+                            <span class=3D"web"> <a href=3D"https://t-info.=
+mail.adobe.com/r/=3Fid=3Dh78144afd,fda5dc4c,bfc1b756&e=3DcDE9JTQwUldBYkM1ZX=
+lZdHklMkZBMG5ZMEVPdWpzJTJCcmZOd1VyRzJFNzRld1B0aVBuJTJCSSUzRA&s=3DL5vZsSp_qi=
+YtpBLFQCDOsDMhdChFrsR15GqZ4SqdvXc" _label=3D"Mirror Page" _type=3D"mirrorPa=
+ge" alias=3D"Read online" target=3D"_blank" style=3D"color:#959595;text-dec=
+oration:underline">Read online</a>  </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- END legal-->
+                  </td>
+                </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</body></html>
+<img height=3D'0' width=3D'0' alt=3D'' src=3D'https://t-info.mail.adobe.com=
+/r/=3Fid=3Dh78144afd,fda5dc4c,1'/><img height=3D'0' width=3D'0' alt=3D'' sr=
+c=3D'https://adobe.demdex.net/event=3Fc_syncplacement=3Demail&d_cid=3D813%0=
+1B3C91EB5647678940A495F93'/>
+
+------=_NextPart_027_970869E7.970869E7--
+

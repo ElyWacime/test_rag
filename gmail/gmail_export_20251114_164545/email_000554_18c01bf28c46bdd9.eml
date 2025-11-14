@@ -1,0 +1,374 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:9113:b0:4fd:292a:fcfe with SMTP id m19csp1110098pxb;
+        Fri, 24 Nov 2023 06:32:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE8SmBhBQKO1uejjW9MIFN3FScyDEfXuz9hBCbV4VSPC/9oYncnLv368+pew7XyngxyMyd+
+X-Received: by 2002:a05:6870:9d8d:b0:1ea:385:518b with SMTP id pv13-20020a0568709d8d00b001ea0385518bmr3937265oab.3.1700836354414;
+        Fri, 24 Nov 2023 06:32:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700836354; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tqGgzoeXVT6AuOdU8odXKMmGgdJ61svDdXphSiNgVUAfuNajoeuYY9U53gii0ly2t5
+         o7QQ3Cvi1JYojGQz36wP6QshXA7XZKz+RW4y0a/3HTo3qlxwESi8qRHxMxGmYyjEsVd9
+         UwYILeOa0a42DOQSR8LtKp16llyufca4reHsqXyMKNHxCfCjFGaYQHq3BGE30kwInnaW
+         Ysh2NKTel0f6Xu8kNtmsKlIivrREraHQv524QlGW2ijF7+UPQOYQDGKyIZ5xACvfbuhg
+         E8wCkaPAXw0/s1vbDd4UIwZsSFrxlOEaK+tLsyy5670nNexXcB/psCcJJ6QOWfI6oOeo
+         EhNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=nDW0PEaRehFOp5tkBZzmLuaLjAsfK7GV0xzH1kXQSQg=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=yNU75nsMhk41hWxtJA1VwV/Te2zvohjgnrfumYMW9acUbSsMOgyrvxmQ3TSecQks7/
+         6/1NYgQbV4AcpPbGK6JAoBnWsMlXdGXx/S5Ye+ByrRpzmKoK39VWIrOvSQMz29IgSSSV
+         qj4FidpmvnUXFrpGcPUoIshuHAadCS1Uod1hZDhcYVSDmpySTeRU38VL9TVrmbXJp0yi
+         uZcc+m/pJc+7cI8H+v5afHHEjUnjZjsp1U7cDr2Oz92P7cFvs1hH86SBDpHFQ1Rfjm4T
+         a4+CVMv56thKYew6j6KbYgnGyHmFQWOEiMYX0vFa5i59WDcpEPxysi9qEKhvRV4/epvY
+         kfLQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=KWK3JeNK;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=DJVKlMEm;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o47.ck.n.convertkit.com (o47.ck.n.convertkit.com. [149.72.60.6])
+        by mx.google.com with ESMTPS id e14-20020a056870450e00b001ea03cd7fddsi1473600oao.197.2023.11.24.06.32.33
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 24 Nov 2023 06:32:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) client-ip=149.72.60.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=KWK3JeNK;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=DJVKlMEm;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.60.6 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=nDW0PEaRehFOp5tkBZzmLuaLjAsfK7GV0xzH1kXQSQg=;
+	b=KWK3JeNKe3O9BM/L3yXyY13GPYnKEyZ2YW/4/z4jrJKClZrIUJDYSMhC/4Uudxf63lAn
+	4kKgWwt0e6CRqWdjcQXmDmib+6U8jxFQh12q3xEshzrWKLoexFRTpygKj8B81ZdDhsc6EB
+	+LVrp+Qob/GDRmAhBbxnPzmZA9wLzu2sM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=nDW0PEaRehFOp5tkBZzmLuaLjAsfK7GV0xzH1kXQSQg=;
+	b=DJVKlMEm9NLFUh9Fe1id7lOUSbW3GEFAytfnCbq1TGryQ7bkGv/2V9Hx0Y/m7x0HMxE8
+	dcQCfXSktFk8h+C7w2UA/bn+WuyuhRxsEQJp7DuwnwVNYaQGe7VvTiQiiaEhNMo1QVZuiZ
+	tqP4dmbzLfOexJX3UqDcgU9cXM1QHCvPk=
+Received: by filterdrecv-5bccb9764b-ljjhw with SMTP id filterdrecv-5bccb9764b-ljjhw-1-6560B400-108
+        2023-11-24 14:32:32.942667699 +0000 UTC m=+3268260.425485565
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-7 (SG) with HTTP
+	id wC7IcNJ4SYiQjQY0adKeHQ
+	Fri, 24 Nov 2023 14:32:32.764 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=88540ec95825ffca932bfd2430d5af6d60058a10e6bf1386459704b8aa9d
+Date: Fri, 24 Nov 2023 14:32:33 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <mvu534eo4qc5hg2n84kumheoex0qq@convertkit-mail2.com>
+Subject: Black Friday =?UTF-8?B?U3RhcnRz4oCm?= Now!
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 12363744:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/mvu534eo4qc5hg2n84kumheoex0qq>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfXaT+PxSXtrSyGMOT?=
+ =?us-ascii?Q?IlAbjj5cKJdj5rN9yWRBSvev9oux6DXwAAKTZeI?=
+ =?us-ascii?Q?1FnEYXXftiPYD3N8oW9VjgqMVOPmr3O3SrkWOOP?=
+ =?us-ascii?Q?gbCBGs0LYdaHZFanIDr1ZDumVGrav=2FSazqYMd4D?=
+ =?us-ascii?Q?lfPp8kHRGCed+r+6ZYLzXtX3eOb5JcvzUUoESs?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADOfVo4EFKFA43ShMTfiR6J8kURT37lEsZoCjRJ?=
+ =?us-ascii?Q?gF4CsjauWufMCMix3TxKrzDof85q18ZJjqAk+93?=
+ =?us-ascii?Q?mwflzYzpiYTy6SqIap0lR1Ghjva8tpS1s8eKnfx?=
+ =?us-ascii?Q?51H+R9UGNZ0fCUM5zHWTHT0gT847LzpzitaM=2Fe=2F?=
+ =?us-ascii?Q?gv+poXvlgbKknyl0O1=2FKCo2bUfZ7XG9YG4BbEtm?=
+ =?us-ascii?Q?98gdCKunXjSzfi5oMn635eyfY9E=2FbdwlPnl0han?=
+ =?us-ascii?Q?NhQf9opZ6BeDtyvNdewM96ao2kCdxZ2GEbeP983?=
+ =?us-ascii?Q?1jZkcc5yKgnsNBMPPytdEF98TEMk7dADoFN+nSa?=
+ =?us-ascii?Q?Yl3f97Gnms?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--88540ec95825ffca932bfd2430d5af6d60058a10e6bf1386459704b8aa9d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Hello, hello, hello!
+
+=E2=80=8B
+
+Before I reveal the Black Friday deal, I just want to share one
+hope:
+
+I hope you use your hard-earned $$$ for something educational
+this Black Friday (even if it=E2=80=99s not my Next.js course)!
+
+=E2=80=8B
+
+I=E2=80=99m sure there is awesome stuff you=E2=80=99re thinking of buying, =
+but it
+will probably collect dust in 6 months, right?
+
+=E2=80=8B
+
+By the way, I don=E2=80=99t mean this as a lecture =F0=9F=98=85.
+
+=E2=80=8B
+
+I actually asked the JSM team if I could help invest in
+themselves this Black Friday, and I hope you do the same.
+
+=E2=80=8B
+
+Anyway, the reveal:
+
+=E2=80=8B
+
+This Black Friday, you=E2=80=99ll get =F0=9F=91=80 30% OFF =F0=9F=91=80 The=
+ Ultimate Next.js 14
+Course (and it stacks on top of regional discounts)!
+
+=E2=80=8B
+
+Also, we added two special bonuses you=E2=80=99ll probably want to get =F0=
+=9F=98=84
+
+=E2=80=8B
+
+=F0=9F=9A=80 New bonus: =E2=80=9CNext Level Next.js: Master Advanced Featur=
+es,
+Powerful Libraries, and Fortify with Robust Security Practices=E2=80=9D
+
+=E2=80=8B
+
+=F0=9F=92=A1 New bonus: =E2=80=9CNext.js Demystified: 30 Most Common FAQs -
+Answered!=E2=80=9D
+
+=E2=80=8B
+
+The Black Friday Sale lasts until Cyber Monday.
+
+Get the course here for 30% off!
+
+=E2=80=8B=C2=BB https://www.jsmastery.pro/ultimate-next-course =C2=AB (
+https://click.convertkit-mail2.com/mvu534eo4qc5hg2n84kumheoex0qq/25h2h9u27z=
+00wkb8/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby91bHRpbWF0ZS1uZXh0LWNvdXJzZQ=3D=3D
+)=E2=80=8B
+
+=E2=80=8B
+
+Yours,
+Adrian
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/mvu534eo4qc5hg2n84kumheoex0qq
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/mvu534eo4qc5hg2n84kumheoex0qq
+)
+--88540ec95825ffca932bfd2430d5af6d60058a10e6bf1386459704b8aa9d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Hello, hello, hello!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Before I reveal the Black Friday deal, I just want to share=
+ one hope:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I hope you use your hard-earned $$$ for something education=
+al this Black Friday (even if it=E2=80=99s not my Next.js course)!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I=E2=80=99m sure there is awesome stuff you=E2=80=99re thin=
+king of buying, but it will probably collect dust in 6 months, right?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">By the way, I don=E2=80=99t mean this as a lecture =F0=9F=
+=98=85.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I actually asked the JSM team if I could help invest in the=
+mselves this Black Friday, and I hope you do the same.</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;tex=
+t-align:center;table-layout:fixed;float:none" class=3D"email-image"><tbody>=
+<tr><td align=3D"center" style=3D"vertical-align:top"><figure style=3D"marg=
+in:1em 0;margin-top:12px;margin-bottom:12px;margin-left:0;margin-right:0;di=
+splay:inline-block;max-width:800px;width:100%"><div style=3D"display:block"=
+><img src=3D"https://embed.filekitcdn.com/e/hbkfd9XjiChLa2dhB5ocmg/ipUJtAJX=
+W3TAFV6UdynA69/email" width=3D"800" height=3D"auto" style=3D"border:0 none;=
+display:block;height:auto;line-height:100%;outline:none;-webkit-text-decora=
+tion:none;text-decoration:none;max-width:100%;border-top-left-radius:4px;bo=
+rder-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right=
+-radius:4px;width:800px;height:auto;object-fit:contain"></div></figure></td=
+></tr></tbody></table>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Anyway, the reveal:</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>This Black Friday, you=E2=80=99ll get =F0=9F=91=80 =
+30% OFF =F0=9F=91=80 The Ultimate Next.js 14 Course</strong> (and it stacks=
+ on top of regional discounts)!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Also, we added two special bonuses you=E2=80=99ll probably =
+want to get =F0=9F=98=84</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=F0=9F=9A=80 New bonus: =E2=80=9CNext Level Next.js: Master=
+ Advanced Features, Powerful Libraries, and Fortify with Robust Security Pr=
+actices=E2=80=9D</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=F0=9F=92=A1 New bonus: =E2=80=9CNext.js Demystified: 30 Mo=
+st Common FAQs - Answered!=E2=80=9D</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>The Black Friday Sale lasts until Cyber Monday.</st=
+rong></p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Get the course here for 30% off!</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4"><strong>=E2=80=8B</strong><a href=3D"https://click.convertk=
+it-mail2.com/mvu534eo4qc5hg2n84kumheoex0qq/25h2h9u27z00wkb8/aHR0cHM6Ly93d3c=
+uanNtYXN0ZXJ5LnByby91bHRpbWF0ZS1uZXh0LWNvdXJzZQ=3D=3D" target=3D"_blank" re=
+l=3D"noopener noreferrer" style=3D"color:#0f82f0" url-id=3D"1590260371"><st=
+rong>=C2=BB https://www.jsmastery.pro/ultimate-next-course =C2=AB</strong><=
+/a>=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Yours,<br>Adrian</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/mvu534eo4qc5hg2n84kumheoex0qq" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/mvu534eo4qc5hg2n84kumheoex0qq" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/mvu534eo4qc5hg2n84kumheoex0qq=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--88540ec95825ffca932bfd2430d5af6d60058a10e6bf1386459704b8aa9d--

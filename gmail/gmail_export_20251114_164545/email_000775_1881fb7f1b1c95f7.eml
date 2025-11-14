@@ -1,0 +1,246 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:4546:b0:49b:35b8:8b02 with SMTP id y6csp6504263pxw;
+        Mon, 15 May 2023 07:02:08 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6qMn1gx+gSajVdCxGq5CSBzD2ax6PPM7QWvZm2/DrRqD/q3Hsk43K0ntEu0OE1mn/RVyqT
+X-Received: by 2002:a05:6902:1889:b0:ba7:ad47:dc7f with SMTP id cj9-20020a056902188900b00ba7ad47dc7fmr4329225ybb.61.1684159328397;
+        Mon, 15 May 2023 07:02:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684159328; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VIc+78vx3GZsd9JAMMp3hPU7TiD8Ywbhb/Fvl3rDoOBa3xJvssK//HFnlazadT1hFx
+         wKn3MH8F3Q2zsKJcp2aAu96McouBP5DAkweQUQ7iIuCpK191VgCExNl+pYqxw2/7ZBUu
+         DEaQj6r0gdYOaj1/V7VhmNSWHdL8rxSW3j2TKwbTl6NVbIeGbUbWIelmjw1FdZpxSnoe
+         pjOuniVEAteYMFsbQ1vr9pa6kUeoLApTRcCbA0xsqPR+bpqCuj4LFbI5o9d+zQfhSbgi
+         HTy3aHi7aRdeFPT8HjKEQC61dg0/h+hWuBEd55kf26N4cukT6Feuwgbfxwumj3JMIJYa
+         PJ7A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:references:mime-version:to
+         :from:subject:date:message-id:sender:dkim-signature:dkim-signature;
+        bh=RSTaeSr20S/FP5fRPPLbogtxY9v9kgoOcdm06Azoebg=;
+        b=sI7qYcFf0YDnSNwHS15v3Xk/khgxbnRofK3rALYGE9dP2NxWcbg3Tx9jKXIdfHwbl7
+         dBajzBjRu/rKqM4eYNHlOZcBfMCS5cqJ34hXVddm0H+eR6aDpHDBBAPrFxqAErkhwZ3D
+         5lPKOA7iRhF4Wg6crAGhz6CzIc2s8Oxhglbbkxfg8DpRhIhttS1vUCrMM7OqdfoK57BB
+         nbwspWDuWpershvyB3UdyvbZkpipIHzp/pnKxJBgCHBaQFaGrO6U+aIwD4OkXtuS/wPZ
+         GVFnlbITU1jk4VL3QT2/mHdJ/2FoCa7HewbAW6DkfHLDkPBqjtrZk2jqJK8D8fLWgajT
+         oqOw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@m.hackthebox.eu header.s=mx header.b=ESk6gfhm;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=GzIoEBE7;
+       spf=pass (google.com: domain of bounce+bc404c.86d5ce-ely.ubuntu0=gmail.com@m.hackthebox.eu designates 69.72.42.135 as permitted sender) smtp.mailfrom="bounce+bc404c.86d5ce-ely.ubuntu0=gmail.com@m.hackthebox.eu";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=hackthebox.eu
+Return-Path: <bounce+bc404c.86d5ce-ely.ubuntu0=gmail.com@m.hackthebox.eu>
+Received: from m42-135.mailgun.net (m42-135.mailgun.net. [69.72.42.135])
+        by mx.google.com with UTF8SMTPS id b67-20020a253446000000b00ba73af199d6si3755237yba.292.2023.05.15.07.02.08
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 15 May 2023 07:02:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+bc404c.86d5ce-ely.ubuntu0=gmail.com@m.hackthebox.eu designates 69.72.42.135 as permitted sender) client-ip=69.72.42.135;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@m.hackthebox.eu header.s=mx header.b=ESk6gfhm;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=GzIoEBE7;
+       spf=pass (google.com: domain of bounce+bc404c.86d5ce-ely.ubuntu0=gmail.com@m.hackthebox.eu designates 69.72.42.135 as permitted sender) smtp.mailfrom="bounce+bc404c.86d5ce-ely.ubuntu0=gmail.com@m.hackthebox.eu";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=hackthebox.eu
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=m.hackthebox.eu;
+ q=dns/txt; s=mx; t=1684159327; x=1684166527; h=Content-Transfer-Encoding:
+ Content-Type: In-Reply-To: References: MIME-Version: To: To: From: From:
+ Subject: Subject: Date: Message-ID: Sender: Sender: X-Feedback-Id;
+ bh=RSTaeSr20S/FP5fRPPLbogtxY9v9kgoOcdm06Azoebg=;
+ b=ESk6gfhmDWUn147ABv+79SMKKmBXoNucuObqXnCSMY4Tk/2VJOsKYKIj2z5Oel+mLaJ3BZY2ckyMEwVIIB145FzBax80IqQl3LbP6Hvz62T6fYdeBU8pnYig2Z7evZFbOKQXXiQCiu6nwrLuyYnWEa922M7nPRHlW9iL3H9U4bg=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org;
+ q=dns/txt; s=mg; t=1684159327; x=1684166527; h=Content-Transfer-Encoding:
+ Content-Type: In-Reply-To: References: MIME-Version: To: To: From: From:
+ Subject: Subject: Date: Message-ID: Sender: Sender: X-Feedback-Id;
+ bh=RSTaeSr20S/FP5fRPPLbogtxY9v9kgoOcdm06Azoebg=;
+ b=GzIoEBE7GShGiEJqXnEu2c8v7ztuqqZE2itGcfGQ+cy3OEnBD+f+gCvLhEsiXp5FM16eY3DdQiYPMx8A1kEiIgGTm6qzZc+AaPSxGC9qxqJRIFx3yf2GQ6XEfSn4vI1Kd978TMGFx0ZlDxBvlKWTv6igrfsfoZ/WgFqfuputMEg=
+X-Feedback-Id: noreply@m.hackthebox.eu::594a27ab1f4b8b26af05c3bc:mailgun
+X-Mailgun-Sending-Ip: 69.72.42.135
+X-Mailgun-Sid: WyIzMzczNiIsImVseS51YnVudHUwQGdtYWlsLmNvbSIsIjg2ZDVjZSJd
+Received: from <unknown> (<unknown> []) by fbe17f11f8de with HTTP id
+ 64623b5f3cb0b25455bf9cd5; Mon, 15 May 2023 14:02:07 GMT
+Sender: noreply@m.hackthebox.eu
+Message-ID: <d55b6792cedbc4d572d82c4fed3f9983@swift.generated>
+Date: Mon, 15 May 2023 17:02:07 +0300
+Subject: Verify your email & start hacking!
+ =?utf-8?Q?=F0=9F=91=A8=E2=80=8D=F0=9F=92=BB?=
+From: Hack The Box <noreply@m.hackthebox.eu>
+To: ely.ubuntu0@gmail.com
+MIME-Version: 1.0
+X-Entity-Ref-ID: xcgP92UTMd41FpUQcD5VaBNLzB2ZxBPsMa6PW85BIOQh9WQgdNvV9L9odNKrVpMJ
+References: <2Oc4R9q3xCN7PDd5QlQB0HrHkUi9rEs2rry9OZ50TyThzRxzMBRrl5thnaEYuGQA@hackthebox.eu>
+In-Reply-To: <wMdfIrb4vjOQJFSWpA5O6YQwarZISYkepc9Bqp7giK21IjPuJvbcwZ7fPpWl081h@hackthebox.eu>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html> <html lang=3D"it"><head> <meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3DUTF-8"> <title>Hack The Box</title><meta ch=
+arset=3D"utf-8"><meta name=3D"viewport" content=3D"width=3Ddevice-width"><s=
+tyle type=3D"text/css">#ko_onecolumnBlock_7 .textintenseStyle a, #ko_onecol=
+umnBlock_7 .textintenseStyle a:link, #ko_onecolumnBlock_7 .textintenseStyle=
+ a:visited, #ko_onecolumnBlock_7 .textintenseStyle a:hover {color: #fff;col=
+or: #9acc14;text-decoration: none;text-decoration: none;font-weight: bold;}=
+ #ko_onecolumnBlock_7 .textlightStyle a:visited, #ko_onecolumnBlock_7 .text=
+lightStyle a:hover {color: #3f3d33;color: #9acc14;text-decoration: none;tex=
+t-decoration: #9acc14;font-weight: bold;}</style><style type=3D"text/css"> =
+/* CLIENT-SPECIFIC STYLES */ #outlook a{padding:0;} /* Force Outlook to pro=
+vide a "view in browser" message */ .ReadMsgBody{width:100%;} .ExternalClas=
+s{width:100%;} /* Force Hotmail to display emails at full width */ .Externa=
+lClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .Extern=
+alClass td, .ExternalClass div{line-height: 100%;} /* Force Hotmail to disp=
+lay normal line spacing */ body, table, td, a{-webkit-text-size-adjust:100%=
+; -ms-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing=
+ default text sizes */ table, td{mso-table-lspace:0pt; mso-table-rspace:0pt=
+;} /* Remove spacing between tables in Outlook 2007 and up */ img{-ms-inter=
+polation-mode:bicubic;} /* Allow smoother rendering of resized image in Int=
+ernet Explorer */ /* RESET STYLES */ body{margin:0; padding:0;} img{border:=
+0; height:auto; line-height:100%; outline:none; text-decoration:none;} tabl=
+e{border-collapse:collapse !important;} body{height:100% !important; margin=
+:0; padding:0; width:100% !important;} /* iOS BLUE LINKS */ .appleBody a{co=
+lor:#68440a; text-decoration: none;} .appleFooter a{color:#999999; text-dec=
+oration: none;} .noHover:hover{ text-decoration: underline!important; font-=
+weight: unset!important; } .ulBullets{ text-align: left; padding-left: 12px=
+; } .social-icon{ width: 24px; height: 24px; filter: invert(78%) sepia(17%)=
+ saturate(371%) hue-rotate(183deg) brightness(89%) contrast(89%)!important;=
+ } .socialParent{ text-decoration: unset; padding-right: 5px; } .socialPare=
+nt .social-icon:hover{ filter: invert(58%) sepia(92%) saturate(462%) hue-ro=
+tate(36deg) brightness(116%) contrast(101%)!important; } /* MOBILE STYLES *=
+/ @media screen and (max-width: 525px) { /* ALLOWS FOR FLUID TABLES */ tabl=
+e[class=3D"wrapper"]{ width:100% !important; min-width:0px !important; } /*=
+ USE THESE CLASSES TO HIDE CONTENT ON MOBILE */ td[class=3D"mobile-hide"]{ =
+display:none;} img[class=3D"mobile-hide"]{ display: none !important; } img[=
+class=3D"img-max"]{ width:100% !important; max-width: 100% !important; heig=
+ht:auto !important; } /* FULL-WIDTH TABLES */ table[class=3D"responsive-tab=
+le"]{ width:100%!important; } /* UTILITY CLASSES FOR ADJUSTING PADDING ON M=
+OBILE */ td[class=3D"padding"]{ padding: 10px 5% 15px 5% !important; } td[c=
+lass=3D"padding-copy"]{ padding: 10px 5% 10px 5% !important; text-align: ce=
+nter; } td[class=3D"padding-meta"]{ padding: 30px 5% 0px 5% !important; tex=
+t-align: center; } td[class=3D"no-pad"]{ padding: 0 0 0px 0 !important; } t=
+d[class=3D"no-padding"]{ padding: 0 !important; } td[class=3D"section-paddi=
+ng"]{ padding: 10px 15px 10px 15px !important; } td[class=3D"section-paddin=
+g-bottom-image"]{ padding: 10px 15px 0 15px !important; } /* ADJUST BUTTONS=
+ ON MOBILE */ td[class=3D"mobile-wrapper"]{ padding: 10px 5% 15px 5% !impor=
+tant; } table[class=3D"mobile-button-container"]{ margin:0 auto; width:100%=
+ !important; } a[class=3D"mobile-button"]{ width:80% !important; padding: 1=
+5px !important; border: 0 !important; font-size: 16px !important; } } </sty=
+le></head><body style=3D"margin: 0; padding: 0;" bgcolor=3D"#ffffff" align=
+=3D"center"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%" id=3D"ko_imageBlock_6"><tbody><tr class=3D"row-a"><td bgcolor=3D"=
+#111927" align=3D"center" class=3D"no-pad" style=3D"padding-top: 0px; paddi=
+ng-left: 15px; padding-bottom: 0px; padding-right: 15px;"> <table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"500" class=3D"responsive-t=
+able"><tbody><tr><td> <table width=3D"100%" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0"><tbody><tr><td> <table width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"padding-top: 20px" cl=
+ass=3D"no-padding"> <table width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0"><tbody><tr><td> <img width=3D"160" border=3D"0" alt=3D"" cl=
+ass=3D"img-max" style=3D"display: block; padding: 0; color: #3F3D33; text-d=
+ecoration: none; font-family: Helvetica, Arial, sans-serif; font-size: 16px=
+; width: 200px; margin: auto" src=3D"https://www.hackthebox.com/images/logo=
+600.png"></td> </tr></tbody></table></td> </tr></tbody></table></td> </tr><=
+/tbody></table></td> </tr></tbody></table></td> </tr></tbody></table><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" id=3D"ko_o=
+necolumnBlock_7"><tbody><tr class=3D"row-a"><td bgcolor=3D"#111927" align=
+=3D"center" class=3D"section-padding" style=3D"padding-top: 30px; padding-l=
+eft: 15px; padding-bottom: 30px; padding-right: 15px;"> <table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"500" class=3D"responsive-tabl=
+e"><tbody><tr><td> <table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0"><tbody><tr><td> <table width=3D"100%" border=3D"0" cellspaci=
+ng=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"center" class=3D"padding=
+-copy" style=3D"font-size: 25px; font-family: Helvetica, Arial, sans-serif;=
+ color: #ffffff; padding-top: 0px; font-weight: bold">Hey, Korn &#x1F44B; <=
+br>Welcome to the HTB community! </td> </tr><tr><td align=3D"center" class=
+=3D"padding-copy textlightStyle" style=3D"padding: 20px 0 0 0; font-size: 1=
+6px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #=
+A4B1CD;"> <p style=3D"margin:0px;" data-mce-style=3D"margin: 0px; text-alig=
+n: left;">You successfully completed your registration process.</p> <p styl=
+e=3D"margin:0px;" data-mce-style=3D"margin: 0px; text-align: left;">Remembe=
+r to verify your email address.<br></p> </td> </tr></tbody></table></td> </=
+tr><tr><td> <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpaddin=
+g=3D"0" class=3D"mobile-button-container"><tbody><tr><td align=3D"center" s=
+tyle=3D"padding: 25px 0 25px 0;" class=3D"padding-copy"> <table border=3D"0=
+" cellspacing=3D"0" cellpadding=3D"0" class=3D"responsive-table"><tbody><tr=
+><td align=3D"center"><a target=3D"_new" class=3D"mobile-button" style=3D"d=
+isplay: inline-block; font-size: 16px; font-family: Helvetica, Arial, sans-=
+serif; font-weight: normal; color: #111927; text-decoration: none; backgrou=
+nd-color: #9FEF00; padding-top: 15px; padding-bottom: 15px; padding-left: 3=
+0px; padding-right: 30px; border-radius: 3px; -webkit-border-radius: 3px; -=
+moz-border-radius: 3px; font-weight: bold" href=3D"https://www.hackthebox.c=
+om/v4/verify/email/1514554/lwl7Nx39md25WwueLhPt7QJtwqrd1X">Verify Your Emai=
+l</a></td> </tr></tbody></table></td> </tr></tbody></table> </td> </tr> <ta=
+ble width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody>=
+<tr><td align=3D"center" class=3D"padding-copy" style=3D"font-size: 25px; f=
+ont-family: Helvetica, Arial, sans-serif; color: #ffffff; padding-top: 0px;=
+"> </td> </tr><tr style=3D"border-top: 1px solid #a4b1cdba;"><td align=3D"c=
+enter" class=3D"padding-copy textlightStyle" style=3D"padding: 20px 0 0 0; =
+font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-ser=
+if; color: #A4B1CD;"> <p style=3D"margin:0px;" data-mce-style=3D"margin: 0p=
+x; text-align: left;">You are just 2 simple steps away from fully enjoying<=
+/p> <p style=3D"margin:0px; " data-mce-style=3D"margin: 0px; text-align: le=
+ft;">the biggest hacking playground around:<br></p> </td> </tr></tbody></ta=
+ble> <tr><td> <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadd=
+ing=3D"0" class=3D"mobile-button-container" ><tbody><tr><td align=3D"center=
+" class=3D"padding-copy"> <table border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" class=3D"responsive-table"><tbody><tr><td align=3D"center" class=3D"=
+padding-copy textlightStyle" style=3D"padding: 20px 0 0 0; font-size: 16px;=
+ line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #949b=
+a2;"> <ul> <li class=3D"ulBullets" style=3D"color:#A4B1CD">Be part of the &=
+#x1F49A; of our community on <a href=3D"https://discord.com/invite/hacktheb=
+ox" class=3D"noHover">Discord.</a> </li> </ul> <p style=3D"color:#A4B1CD" >=
+This is the place where the coolest things happen, better be there! </p> <u=
+l style=3D"margin-bottom:20px;"> <li class=3D"ulBullets" style=3D"color:#A4=
+B1CD;" >Follow us on Social Media, we are posting updates daily!</li> </ul>=
+ </td> </tr></tbody></table> </td> </tr></tbody></table> <table width=3D"10=
+0%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"mobile-button=
+-container" ><tbody><tr><td class=3D"padding-copy" > <table border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0" class=3D"responsive-table" style=3D"margi=
+n:auto;"><tbody><tr><td class=3D"padding-copy textlightStyle" style=3D"padd=
+ing: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica=
+, Arial, sans-serif; color: #949ba2;"> <div class=3D"social-icons"> <a clas=
+s=3D"socialParent" href=3D"https://www.linkedin.com/company/hackthebox/" ta=
+rget=3D"_blank"> <img title=3D"LinkedIn" class=3D"social-icon" src=3D"https=
+://www.hackthebox.com/images/icons/ic-social-media/htb-linkedin-new.png?ver=
+sion=3D1"> </a> <a class=3D"socialParent" href=3D"https://twitter.com/hackt=
+hebox_eu" target=3D"_blank"> <img title=3D"Twitter" class=3D"social-icon" s=
+rc=3D"https://www.hackthebox.com/images/icons/ic-social-media/htb-twitter-n=
+ew.png?version=3D1"> </a> <a class=3D"socialParent" href=3D"https://www.ins=
+tagram.com/hackthebox/" target=3D"_blank"> <img title=3D"Instagram" class=
+=3D"social-icon" src=3D"https://www.hackthebox.com/images/icons/ic-social-m=
+edia/htb-instagram-new.png?version=3D1"> </a> <a class=3D"socialParent" hre=
+f=3D"https://www.facebook.com/hackthebox.eu" target=3D"_blank"> <img title=
+=3D"Facebook" class=3D"social-icon" src=3D"https://www.hackthebox.com/image=
+s/icons/ic-social-media/htb-facebook-new.png?version=3D1"> </a> <a class=3D=
+"socialParent" href=3D"https://www.youtube.com/c/HackTheBox/featured" targe=
+t=3D"_blank"> <img title=3D"Youtube" class=3D"social-icon" src=3D"https://w=
+ww.hackthebox.com/images/icons/ic-social-media/htb-youtube-new.png?version=
+=3D1"> </a> <a class=3D"socialParent" href=3D"https://discord.com/invite/ha=
+ckthebox" target=3D"_blank"> <img title=3D"Discord" class=3D"social-icon" s=
+rc=3D"https://www.hackthebox.com/images/icons/ic-social-media/htb-discord-n=
+ew.png?version=3D1"> </a> </div> </td> </tr></tbody></table> </td> </tr></t=
+body></table> </td> </tr> </tbody></table></td> </tr></tbody></table></td> =
+</tr></tbody></table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" id=3D"ko_titleBlock_1"><tbody><tr class=3D"row-a"><td bgco=
+lor=3D"#0D1524" align=3D"center" class=3D"section-padding" style=3D"padding=
+: 30px 15px 0px 15px;"> <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"500" style=3D"padding: 0 0 20px 0;" class=3D"responsive-tab=
+le"><tbody><tr><td align=3D"center" class=3D"padding-copy" colspan=3D"2" st=
+yle=3D"padding: 0 0 10px 0px; font-size: 12px; font-family: Helvetica, Aria=
+l, sans-serif; font-weight: normal; color:#A4B1CD;">You are receiving this =
+email because it contains information from Hack The Box. If you no longer w=
+ish to receive such emails, disable the Email Notifications in your account=
+ settings. If you no longer have access to your account, email us at info@h=
+ackthebox.eu requesting removal.</td> </tr></tbody></table></td> </tr></tbo=
+dy></table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" style=3D"min-width: 500px;" id=3D"ko_footerBlock_2"><tbody><tr><td b=
+gcolor=3D"#0D1524" align=3D"center"> <table width=3D"100%" border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0" align=3D"center"><tbody><tr><td style=3D"p=
+adding: 20px 0px 20px 0px;"> <table width=3D"500" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0" align=3D"center" class=3D"responsive-table"><tbody=
+><tr><td align=3D"center" valign=3D"middle" style=3D"font-size: 12px; line-=
+height: 18px; font-family: Helvetica, Arial, sans-serif; color: #A4B1CD;"> =
+<span class=3D"appleFooter" style=3D"color: #A4B1CD;">Hack The Box Ltd<br>3=
+8 Walton Road<br>Folkestone, Kent, UK, CT19 5QS<br>Company No. 10826193</sp=
+an><br><a href=3D"https://www.hackthebox.com" style=3D"color: #A4B1CD; text=
+-decoration: none;" target=3D"_new">www.hackthebox.eu</a> </td> </tr></tbod=
+y></table></td> </tr></tbody></table></td> </tr></tbody></table><img width=
+=3D"1px" height=3D"1px" alt=3D"" src=3D"http://email.m.hackthebox.eu/o/eJwE=
+wF0OgyAMAODTyKOBUgp94DDSH2eiLnGaZbffp72RFrFgPVHDVDhDDa_OUJ1TkUowhMjdwTJEYm2=
+UkDFsXUsZVBnEdAhqqaANBN00O3PLE8bPd_N7Xu20a7lNw9Vt_83PeM77iRPG9Vi2fZb38Q8AAP=
+__2WQoFQ"></body></html>

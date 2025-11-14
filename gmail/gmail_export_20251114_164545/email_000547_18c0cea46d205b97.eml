@@ -1,0 +1,352 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:9113:b0:4fd:292a:fcfe with SMTP id m19csp2551473pxb;
+        Sun, 26 Nov 2023 10:35:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFtIyRTP1GtB0bOPC+kbGCAIUPENAsHtLZGVNOyWjJ1w7aejiX0Zij3z7vNF3ogg9sc2nog
+X-Received: by 2002:ad4:580b:0:b0:67a:396a:8906 with SMTP id dd11-20020ad4580b000000b0067a396a8906mr2717013qvb.0.1701023729262;
+        Sun, 26 Nov 2023 10:35:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701023729; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iP8Bd7HU3CbvGcNSg6qr1N8crxEsaAQTst4qQMLNVD/xNiWRqQoxvgpuLj5QuTupE+
+         3bjrj98Ozeds6sYuJszDFTLD0nDjZdVBsdt9AeJFtk9MW1kUXbY324ftC4ycaNsrCpG0
+         UWOUCcFtDR+B8wvXoR3m6FIKzTjIMFMWa0FA4j7Me6yz6bbqy+9FRA5+wozKWY4UokNm
+         7SrQVjwMpkySxSn8UWsslexMRwClJnNfg6oB1zv/s2rCHV7g9ZqbFwwkcTSByeSz9xZw
+         e6VcRM5BIlvV89JduF6egMAKgzgz7HQe3wZuYQJgXNnYK8y0okrl2nVCAeg+fBH9rBEL
+         /yxw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=Hd4yeEe3+DE/ka0joNPSuL5ISDLahgli4Rojd9dhYD4=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=0xa9F7ftYnJYNc3mw9yGIYnooyb2mkQ4dugbFhPuZ0wJR9eF4Mhws5ZIAvFmAvlyqn
+         HlLiviaxezYMciRdiPrcqQG99EHPtaFkrYlGgctmPoq39uEAHcg9xs5hwPPuWAZ1/NGI
+         P0em5IkrPTS03brJ42cUEa19xH+2bV7i9ZuaemtIVX40Fv2awqN4lNvOZInqBqJY677K
+         KDCzV7QKpxLt9uwH5tn932aWT65qZBNLlLTEH3GZXMCDpjwTCdSCJHdSfbcybEMN7u+B
+         CsD2M9dLICd4yViwy5FZ++ByljcuVG1MVQ+GbfgLK3sJ0mICJ0HJfHCQ6xx61SUg5FXF
+         BX5Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=YEv0NEw9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=NeNEzK+N;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o38.ck.n.convertkit.com (o38.ck.n.convertkit.com. [149.72.39.237])
+        by mx.google.com with ESMTPS id jq12-20020ad45fcc000000b0067a3a4e3b89si1730267qvb.140.2023.11.26.10.35.28
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 26 Nov 2023 10:35:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) client-ip=149.72.39.237;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=YEv0NEw9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=NeNEzK+N;
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 149.72.39.237 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=Hd4yeEe3+DE/ka0joNPSuL5ISDLahgli4Rojd9dhYD4=;
+	b=YEv0NEw9tu1w3aLnGCWTDZXuNzEg26lB3TRSN9ng/wCzNTsHJ0IKBL5SrKfLOFLfXfWr
+	3tzmtLk/YvZv3rYRMdBKBLAosJNA2nmHaddNET0aCU8pBzPMvpmvpHQx2ipJ7jdfGX0rC3
+	S4Mr7wN0TLotAmQB7IhiYn4sEMF/VRS3s=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=Hd4yeEe3+DE/ka0joNPSuL5ISDLahgli4Rojd9dhYD4=;
+	b=NeNEzK+NecfXec3LJZT76ehLLMKZY6+nuV84MTEToYRrRBTIen4wjY4OUROhBmr1DDS+
+	iXJCgCZbySrEuravyasENwmrALZoW89e/jNf2uzuIfrTRAMYe8GFY6weke4BbM1g+EP3zn
+	HNGjKGeg+Syk7LBt0maKJ6A1NKsaSiM/Y=
+Received: by filterdrecv-d6576cdfc-rmnh9 with SMTP id filterdrecv-d6576cdfc-rmnh9-1-65638FF0-B
+        2023-11-26 18:35:28.257763304 +0000 UTC m=+3455640.979755848
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-54 (SG) with HTTP
+	id xNQQv5u7TRia1otei38HkQ
+	Sun, 26 Nov 2023 18:35:28.202 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=cc2f54a8b22d57b628147c39d85380ee34a510c55cc6040e2355fd17a5f9
+Date: Sun, 26 Nov 2023 18:35:28 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <d0uolzk3zpb0h4dqgd8tmhmom9q44@convertkit-mail2.com>
+Subject: Udemy...doesn't have...what?
+X-Report-Spam: <abuse@convertkit.com>
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 12382594:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/d0uolzk3zpb0h4dqgd8tmhmom9q44>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?qofUy4ALaefeBf2lQWY3H1YbnE4cfCSzu7QCcz1ObJdgsWFwTB3MVQA1VfaFqd?=
+ =?us-ascii?Q?8mGDibc5lJGk4VJYN4++3ZfanEFyiI8iiRLoVw8?=
+ =?us-ascii?Q?LJnbiFkzNMktXDdByAKbKkBLHUFRBhWS61s4C9M?=
+ =?us-ascii?Q?LrXa9l8QrtP+FXda3v1IKHT2=2Fi0me62HRLDpJy7?=
+ =?us-ascii?Q?XnQtifBCCST+q70GTay9tiICMW572HoPAE0UbPD?=
+ =?us-ascii?Q?dMz4bRR27hxhOcZ9PhsY61tkm7rPFkcSvta6UR?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJHjDFAea1uZocvZojyqe?=
+ =?us-ascii?Q?ADZ4=2FjtTiIokyIXk3SSV0nS2DjW06gXe+O5jNUR?=
+ =?us-ascii?Q?IqL9dqpaIubLTxPWwVsEvP3sI7m9g9Jcy8Dq+xL?=
+ =?us-ascii?Q?Ixt+NPY222vPR6OB+6P9Ik9+3rNO=2F5qW5VQq2ET?=
+ =?us-ascii?Q?EruTwMEiW4wdqChQShz8CQq8AWi5FUm9y1PwT8n?=
+ =?us-ascii?Q?v2EPJdUjpYQFy1AQbz0Jh08=2Fw=2FElY=2Fg=2FQS1Aonw?=
+ =?us-ascii?Q?fM9r8yYkbzm80P4eASoV76ghy1jf7u5HfrDKtKt?=
+ =?us-ascii?Q?9Q4SZy3cc+Sa3bGAWkvYeRMblUageiXR=2Ft+JDPL?=
+ =?us-ascii?Q?Qx+5jCgm3bck+iope=2Fql8Ql5RqjJLvlVjQr1VRp?=
+ =?us-ascii?Q?ywVAd3B7Po?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: RodT+kQROzpGiqgqREUVug==
+
+--cc2f54a8b22d57b628147c39d85380ee34a510c55cc6040e2355fd17a5f9
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+No matter how much many courses you buy for 90% off=E2=80=A6 Or other
+basic courses for cheap=E2=80=A6 They do NOT have this=E2=80=A6
+
+=E2=80=8B
+
+A brain.
+
+=E2=80=8B
+
+You can not buy a brain on Udemy.
+
+=E2=80=8B
+
+I won=E2=80=99t be offering you a brain either. But I can teach you how
+to use yours. How to THINK.
+
+=E2=80=8B
+
+More specifically? I=E2=80=99ll teach you how to think in web dev.
+
+=E2=80=8B
+
+In The Ultimate Next.js Course, you actually start to understand
+how that code you write works instead of just copy pasting like a
+beginner.
+
+=E2=80=8B
+
+We do this in Deep Dives, Active Lessons, and the project-based
+videos you=E2=80=99re used too (but I explain every single thing there,
+which is why it=E2=80=99s quite a bit longer than the YT videos).
+
+The result?
+
+* You begin to see patterns instead of features.
+=E2=80=8B
+* The deeply present fundamentals instead of shiny new ways of
+coding.
+=E2=80=8B
+* The whole system instead of a slice of the big picture.
+
+=E2=80=8B
+
+So.
+
+Think.
+
+=E2=80=8B
+
+And if you=E2=80=99re looking to get 30% off a neat brain, this is pretty
+much your last chance to get what they don=E2=80=99t sell on Udemy.
+
+Because the BF sale ends tomorrow :)
+
+Oh hey, it=E2=80=99s that link again. How did it end up here?
+
+=E2=80=8Bhttps://www.jsmastery.pro/ultimate-next-course (
+https://click.convertkit-mail2.com/d0uolzk3zpb0h4dqgd8tmhmom9q44/n2hohqu3n9=
+0e2lh0/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby91bHRpbWF0ZS1uZXh0LWNvdXJzZQ=3D=3D
+)=E2=80=8B
+
+Don't want any more emails? Unsubscribe (
+https://unsubscribe.convertkit-mail2.com/d0uolzk3zpb0h4dqgd8tmhmom9q44
+) :'( or Change your preferences (
+https://preferences.convertkit-mail2.com/d0uolzk3zpb0h4dqgd8tmhmom9q44
+)
+--cc2f54a8b22d57b628147c39d85380ee34a510c55cc6040e2355fd17a5f9
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style>email-button:hover{background-color:#0f81f0}</style>
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%">
+<div style=3D"background-color:#FFFFFF"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#FFFFFF;wid=
+th:100%" bgcolor=3D"#FFFFFF"><tbody><tr>
+<td style=3D"vertical-align:top"><div class=3D"email-container thin" style=
+=3D"margin:0 auto;padding:30px 0;padding-left:20px;padding-right:20px;max-w=
+idth:600px;padding-top:30px;padding-left:20px;padding-bottom:30px;padding-r=
+ight:20px;margin:0 auto;max-width:600px">
+<!--[if mso]><center><table cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" style=3D"" width=3D"600" bgcolor=3D"#FFF"><tr><td><![endif]--><div st=
+yle=3D"background-color:#FFF;border-radius:0;overflow:hidden;max-width:600;=
+margin:0px auto"><table bgcolor=3D"#FFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" style=3D"border-collapse:separate;mso-table-lspace:0pt;mso=
+-table-rspace:0pt;table-layout:fixed"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:20px"><div class=3D"email-body" style=3D"background-color:#FF=
+F">
+<div class=3D"email-content"><div>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">No matter how much many courses you buy for 90% off=E2=80=
+=A6 Or other basic courses for cheap=E2=80=A6 They do NOT have this=E2=80=
+=A6</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">A brain.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">You can not buy a brain on Udemy.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">I won=E2=80=99t be offering you a brain either. But I can t=
+each you how to use yours. How to THINK.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">More specifically? I=E2=80=99ll teach you how to think in w=
+eb dev.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">In The Ultimate Next.js Course, you actually start to under=
+stand how that code you write works instead of just copy pasting like a beg=
+inner.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">We do this in <strong>Deep Dives</strong>, <strong>Active L=
+essons</strong>, and the <strong>project-based</strong> videos you=E2=80=99=
+re used too (but I explain every single thing there, which is why it=E2=80=
+=99s quite a bit longer than the YT videos).</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">The result?</p>
+<ul class=3D"unordered_list" style=3D"margin:1em 0;margin-left:1em;padding:=
+0;font-size:18px;line-height:1.5em;font-family:Arial,-apple-system,BlinkMac=
+SystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',=
+sans-serif;color:#363d43;font-size:16px;line-height:1.4;list-style-position=
+:outside !important;list-style-position:inside">
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>You begin to see patterns instead of features.<br>=E2=80=8B</span><=
+/li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>The deeply present fundamentals instead of shiny new ways of coding=
+.<br>=E2=80=8B</span></li>
+<li class=3D"list_item" style=3D"padding:0 0 0 1em;margin:0;margin-left:1em=
+"><span>The whole system instead of a slice of the big picture.</span></li>
+</ul>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">So.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Think.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">And if you=E2=80=99re looking to get 30% off a neat brain, =
+this is pretty much your last chance to get what they don=E2=80=99t sell on=
+ Udemy.</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Because the BF sale ends tomorrow :)</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">Oh hey, it=E2=80=99s that link again. How did it end up her=
+e?</p>
+<p class=3D"" style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-f=
+amily:Arial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,=
+Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;l=
+ine-height:1.4">=E2=80=8B<a href=3D"https://click.convertkit-mail2.com/d0uo=
+lzk3zpb0h4dqgd8tmhmom9q44/n2hohqu3n90e2lh0/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnBy=
+by91bHRpbWF0ZS1uZXh0LWNvdXJzZQ=3D=3D" target=3D"_blank" rel=3D"noopener nor=
+eferrer" style=3D"color:#0f82f0" url-id=3D"1590762573">https://www.jsmaster=
+y.pro/ultimate-next-course</a>=E2=80=8B</p>
+</div></div>
+<div class=3D"email-body-footer" style=3D"border-top:1px dotted #888;paddin=
+g:20px;font-family:Helvetica,Arial,sans-serif;color:#aaa;font-size:12px"><d=
+iv><p style=3D"margin:1em 0;font-size:18px;line-height:1.5em;font-family:Ar=
+ial,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,C=
+antarell,'Helvetica Neue',sans-serif;color:#363d43;font-size:16px;line-heig=
+ht:1.4;text-align:center" class=3D""><span style=3D"font-size:14px"> Don't =
+want any more emails? </span><a href=3D"https://unsubscribe.convertkit-mail=
+2.com/d0uolzk3zpb0h4dqgd8tmhmom9q44" target=3D"_blank" rel=3D"noopener nore=
+ferrer" style=3D"color:#0f82f0"><span style=3D"font-size:14px">Unsubscribe<=
+/span></a><span style=3D"font-size:14px"> :'( or </span><a href=3D"https://=
+preferences.convertkit-mail2.com/d0uolzk3zpb0h4dqgd8tmhmom9q44" target=3D"_=
+blank" rel=3D"noopener noreferrer" style=3D"color:#0f82f0"><span style=3D"f=
+ont-size:14px">Change your preferences</span></a><span style=3D"font-size:1=
+4px"> </span></p></div></div>
+</div></td></tr></tbody></table></div>
+<!--[if mso]></td></tr></table></center><![endif]-->
+</div></td>
+<td style=3D"vertical-align:top"></td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/d0uolzk3zpb0h4dqgd8tmhmom9q44=
+" alt=3D"" style=3D"border:0 none;display:block;height:auto;line-height:100=
+%;outline:none;-webkit-text-decoration:none;text-decoration:none;max-width:=
+100%">
+</body>
+</html>
+
+--cc2f54a8b22d57b628147c39d85380ee34a510c55cc6040e2355fd17a5f9--

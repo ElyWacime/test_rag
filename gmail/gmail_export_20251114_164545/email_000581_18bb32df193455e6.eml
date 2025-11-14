@@ -1,0 +1,2316 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:2111:b0:4fd:292a:fcfe with SMTP id p17csp133796pxh;
+        Thu, 9 Nov 2023 00:23:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHewyrfviSLXGkN+VwpQZFvKRRLM/UflaBVSZG9qr8KsL2SZ8rLjUm4aDTQmonGcbMMnzWi
+X-Received: by 2002:a17:907:7d94:b0:9c4:4226:e4e6 with SMTP id oz20-20020a1709077d9400b009c44226e4e6mr3815497ejc.66.1699518214492;
+        Thu, 09 Nov 2023 00:23:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699518214; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CTDyWIALKk779UMBhGl1R5OSdmOJR8BBcSou+PHZJWUvI1QDsuxpBmKvnXLFgCz2OC
+         4PABhOGvgDBPc/nMTRPwoWzJ47AJdWVAwIwxzbMx3gjB2C9bZHWTdU7spTq8zBVEqBcW
+         Ss+zLWoxMyTme9gthAGv1dovsZvUqzmu7jlZpyobNYxcRMg3KPebhQ3csyYwJ4/WFgsb
+         osT3Xcm311gAitGm/9ZSs2PVonn5MNxOd8tst8yLx/j+/djf786m5lhC7xrztWiiwEf6
+         z8Ur1YkWmUdK1sU36m3uO4OY6LtDycF33HbSgVzLkdY/ylFsDeBNScd+PUmOOYQTS3UI
+         B+NA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=require-recipient-valid-since:feedback-id:list-unsubscribe:date:to
+         :mime-version:subject:message-id:from:dkim-signature:dkim-signature;
+        bh=JJx8BrSMeOT67ebBmkQYkGGNghsFugInIVayleOmKTE=;
+        fh=RHNm77+VlTQcibxJsrZ3cdTaJfE+SJ7YQyym+MVnFIg=;
+        b=Wj3jWjD0HPQaKCn36LwjlLvdfHUGTTwi1gMZmJ9tYmhvkrS1PI0iFqFqEytq27or+o
+         OvQ5sSlB52S3iKHAzotXw8lpg/el6q8mjt+/yOCvITqKSZ4Ccsi3aPestJ2nInvw2462
+         5S0HYyXs7U5z1R5KRy+Loe0tFeCzFw6834RMFAJPmT0LMG0Ss+YEuYY6mYwMgczN9Ah3
+         iXdtbY7h7rJfdO1JgXZQ2WxRsH/1I9PXpE9dVVTmQxGlxs9Jg180/VzEu3IEWAIQhv+i
+         +q5fmXiUDqKjENZpSak+0fT/EoVTDX9oMnpNPZ4ACL7yRyS05/BH5MXt11YSOWjH6D02
+         glnw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@maile.linkedin.com header.s=d2048-202308-0e header.b=aEX23tBC;
+       dkim=pass header.i=@linkedin.com header.s=d2048-202308-00 header.b=ZT7rO7sg;
+       spf=pass (google.com: domain of m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy670ruepp7wc7alh5@bounce.linkedin.com designates 108.174.3.198 as permitted sender) smtp.mailfrom=m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy670ruepp7wc7alh5@bounce.linkedin.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=linkedin.com
+Return-Path: <m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy670ruepp7wc7alh5@bounce.linkedin.com>
+Received: from maile-af.linkedin.com (maile-af.linkedin.com. [108.174.3.198])
+        by mx.google.com with ESMTPS id jy11-20020a170907762b00b009b2dde5027asi3146864ejc.313.2023.11.09.00.23.33
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Nov 2023 00:23:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy670ruepp7wc7alh5@bounce.linkedin.com designates 108.174.3.198 as permitted sender) client-ip=108.174.3.198;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@maile.linkedin.com header.s=d2048-202308-0e header.b=aEX23tBC;
+       dkim=pass header.i=@linkedin.com header.s=d2048-202308-00 header.b=ZT7rO7sg;
+       spf=pass (google.com: domain of m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy670ruepp7wc7alh5@bounce.linkedin.com designates 108.174.3.198 as permitted sender) smtp.mailfrom=m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy670ruepp7wc7alh5@bounce.linkedin.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=linkedin.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=maile.linkedin.com;
+	s=d2048-202308-0e; t=1699518210;
+	bh=JJx8BrSMeOT67ebBmkQYkGGNghsFugInIVayleOmKTE=;
+	h=From:Subject:MIME-Version:Content-Type:To:Date:X-LinkedIn-Class:
+	 X-LinkedIn-Template:X-LinkedIn-fbl;
+	b=aEX23tBCUD5nQQ44K1EGcKovhWquYI0k1a/BceDcC9+a8IoPBwb9rJ7aUzNGuKkn5
+	 MD00gwAXq6r60m+/13k/LA1kLDu3y7ZIDpSWq9CkhhCd3U2SXFZoemxShtxOZwq02k
+	 XewMevSK1wiRmiI1W0C8O1LBkSDjeF4/gQg74F+zZvwmUC+RMgDJy5T1yfjOI5uzh6
+	 P3YNcDNuk+7Ue7lTdIBN3zukzRnqJJ3QIJyNn/+Grj5jXBp5UhoXIKpIzO+DEYnbUz
+	 daTOkyEaLzze4G3ij6xD2rnbWpoHszJYNm6cBIe0dQ542CmZKF+DaihW5i4eAOatlN
+	 0F3kqRFQdllzw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linkedin.com;
+	s=d2048-202308-00; t=1699518210;
+	bh=JJx8BrSMeOT67ebBmkQYkGGNghsFugInIVayleOmKTE=;
+	h=From:Subject:MIME-Version:Content-Type:To:Date:X-LinkedIn-Class:
+	 X-LinkedIn-Template:X-LinkedIn-fbl;
+	b=ZT7rO7sgsc/TsOrFi/x578uiLYG4eyTj2AVh+RqTYqoSq9GpOBhFk+hHZUXq0//lY
+	 ow7sCSyo6Q2uMm6qTzklwn0cgQin2pM6mCk6lQv/i4+rq//kzPjpDFgI9poTXq3nK5
+	 TZhEFjB6nGwjzR3GDpQlNencam+AhneGp95ZMJb125xSjZd+P2Spu+Yx9gNFSQUla8
+	 xOhqnYeAVFvqCL/YAcYOWKTcAZ8z9l+tvsZv50QTKJwe7pkMBcJuEytPBB8jeOfr5Q
+	 7B45tkKMf00dILYRAnO2KI2QpBgY3WCXYhIjQtkx3AJ534WyqOSKdVSCEuHyXH8rTN
+	 UJylOyyN3vjiQ==
+From: LinkedIn <messages-noreply@linkedin.com>
+Message-ID: <365232382.6048145.1699518210135@lva1-app111942.prod.linkedin.com>
+Subject: Your recruiter view is ready
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_6048143_2080442661.1699518210133"
+To: Djenty Boy <ely.ubuntu0@gmail.com>
+Date: Thu, 9 Nov 2023 08:23:30 +0000 (UTC)
+X-LinkedIn-Class: EMAIL-DEFAULT
+X-LinkedIn-Template: email_profile_analyzer_01
+X-LinkedIn-fbl: m2-aszp932kqensqliclulg9jd1xoyrb6o9e7ngqte39hpb1drftfxkn801xnnxfj4yq8jsmg15pdmevv6yohdfbwszvco1e3z362wlyw
+X-LinkedIn-Id: k1vosf-loqx9ewg-b9
+List-Unsubscribe: <https://www.linkedin.com/comm/psettings/email-unsubscribe?lipi=urn%3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&midToken=AQFgtsfuWz-K9A&midSig=26qVJ1HnmTdr01&trk=eml-email_profile_analyzer_01-unsub-0-unsub&trkEmail=eml-email_profile_analyzer_01-unsub-0-unsub-null-k1vosf~loqx9ewg~b9-null-null&eid=k1vosf-loqx9ewg-b9&loid=AQFIyEUV_E6VXgAAAYuzLd064jSb5rAQ2Q88qCqlwLWcXjzjTvN_4zvyMuurHQ_RbxvM4LXnriZm1S31V24WRu8ycRsaJdOUsSpJrAxVtud0hup2MXQ>
+Feedback-ID: email_profile_analyzer_01:linkedin
+Require-Recipient-Valid-Since: ely.ubuntu0@gmail.com; Tue, 7 Nov 2023 17:26:28 +0000
+
+------=_Part_6048143_2080442661.1699518210133
+Content-Type: text/plain;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-ID: text-body
+
+Improve how you appear in recruiter search results
+
+       =20
+
+Your profile in recruiter search results
+
+    Djenty Boy
+
+     =20
+
+      Student at 1337 Coding School
+
+   =20
+
+
+
+Education
+1337 Coding School, {:degreeName}
+
+2023 - 2026
+
+
+
+ =20
+       =20
+
+
+           =20
+
+
+   =20
+
+ =20
+           =20
+
+         =20
+
+
+Share you=E2=80=99re open to work and double your chances of being contacte=
+d by recruiters.
+
+      https://www.linkedin.com/profile-opportunities/job-opportunities?trk=
+=3DEMAIL_CAMPAIGN
+     =20
+
+     =20
+
+18% of recruiters search based on title or company.
+
+      https://www.linkedin.com/in/me/add-edit/POSITION/?profileFormEntryPoi=
+nt=3DEMAIL_CAMPAIGN
+     =20
+
+     =20
+
+45% of hirers on LinkedIn use skills to fill their roles.
+
+      https://www.linkedin.com/in/me/add-edit/SKILL_AND_ASSOCIATION/?profil=
+eFormEntryPoint=3DEMAIL_CAMPAIGN
+     =20
+
+     =20
+
+   =20
+
+ =20
+         =20
+
+     =20
+         =20
+     =20
+
+----------------
+
+This email was intended for Djenty Boy
+Learn why we included this:
+      https://www.linkedin.com/help/linkedin/answer/4788?lang=3Den&lipi=3Du=
+rn%3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew=
+%3D%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D26qVJ1HnmTdr01&trk=3Deml-email_pr=
+ofile_analyzer_01-SecurityHelp-0-textfooterglimmer&trkEmail=3Deml-email_pro=
+file_analyzer_01-SecurityHelp-0-textfooterglimmer-null-k1vosf~loqx9ewg~b9-n=
+ull-null&eid=3Dk1vosf-loqx9ewg-b9&otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZm=
+ViNDAxN2VlYjE4ZWM2ZDI0MTkwYWQ4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0Z=
+mY2M2E1YWRjNjdiZWVkMDIyMDRkZDU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D
+You are receiving LinkedIn notification emails.
+
+         =20
+           =20
+         =20
+       =20
+Unsubscribe:
+      https://www.linkedin.com/comm/psettings/email-unsubscribe?lipi=3Durn%=
+3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D=
+%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D26qVJ1HnmTdr01&trk=3Deml-email_profi=
+le_analyzer_01-unsubscribe-0-textfooterglimmer&trkEmail=3Deml-email_profile=
+_analyzer_01-unsubscribe-0-textfooterglimmer-null-k1vosf~loqx9ewg~b9-null-n=
+ull&eid=3Dk1vosf-loqx9ewg-b9&loid=3DAQFIyEUV_E6VXgAAAYuzLd064jSb5rAQ2Q88qCq=
+lwLWcXjzjTvN_4zvyMuurHQ_RbxvM4LXnriZm1S31V24WRu8ycRsaJdOUsSpJrAxVtud0hup2MX=
+Q
+Help:
+      https://www.linkedin.com/help/linkedin/answer/67?lang=3Den&lipi=3Durn=
+%3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3=
+D%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D26qVJ1HnmTdr01&trk=3Deml-email_prof=
+ile_analyzer_01-help-0-textfooterglimmer&trkEmail=3Deml-email_profile_analy=
+zer_01-help-0-textfooterglimmer-null-k1vosf~loqx9ewg~b9-null-null&eid=3Dk1v=
+osf-loqx9ewg-b9&otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4ZWM2=
+ZDI0MTkwYWQ4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjdiZWV=
+kMDIyMDRkZDU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D
+
+=C2=A9 2023 LinkedIn Corporation, 1zwnj000 West Maude Avenue, Sunnyvale, CA=
+ 94085.LinkedIn and the LinkedIn logo are registered trademarks of LinkedIn=
+.
+------=_Part_6048143_2080442661.1699518210133
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-ID: html-body
+
+<html xmlns=3D"http://www.w3.org/1999/xhtml" lang=3D"en" xml:lang=3D"en"> <=
+head> <meta http-equiv=3D"Content-Type" content=3D"text/html;charset=3Dutf-=
+8"> <meta name=3D"HandheldFriendly" content=3D"true"> <meta name=3D"viewpor=
+t" content=3D"width=3Ddevice-width; initial-scale=3D0.666667; user-scalable=
+=3D0"> <meta name=3D"viewport" content=3D"width=3Ddevice-width"> <title></t=
+itle> <style>
+          @media (max-width: 512px) { .mercado-container { width: 100% !imp=
+ortant; } }
+        </style> <style>
+          .full-width-button, .full-width-button table { display: none; } @=
+media (max-width: 320px) { .inline-button,
+          .inline-button table { display: none !important; } .full-width-bu=
+tton, .full-width-button table { display:
+          table !important; } }
+        </style> <style>body {font-family: -apple-system, system-ui, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+          'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid San=
+s', 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, =
+Arial, sans-serif;}</style> <!--[if mso]><style type=3D"text/css"> </style>=
+<![endif]--> <!--[if IE]><style type=3D"text/css"> </style><![endif]--> <st=
+yle>
+@media (min-width: 576px) {
+  .container {
+    max-width: 576px;
+  }
+
+  .\!container {
+    max-width: 576px !important;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+
+  .\!container {
+    max-width: 768px !important;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 992px;
+  }
+
+  .\!container {
+    max-width: 992px !important;
+  }
+}
+@media (min-width: 1128px) {
+  .container {
+    max-width: 1128px;
+  }
+
+  .\!container {
+    max-width: 1128px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .\!container {
+    max-width: 1200px !important;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+
+  .\!container {
+    max-width: 1440px !important;
+  }
+}
+@media (min-width: 1680px) {
+  .container {
+    max-width: 1680px;
+  }
+
+  .\!container {
+    max-width: 1680px !important;
+  }
+}
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1920px;
+  }
+
+  .\!container {
+    max-width: 1920px !important;
+  }
+}
+@media (min-width: 992px) {
+  .base-detail-page__header .nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1128px;
+  }
+}
+@media (max-width: 767px) {
+  .embedded-social-share .modal__outlet {
+    flex-direction: row;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+@media (max-width: 767px) {
+  .nav .search-bar {
+    order: 4;
+  }
+}
+@media (max-width: 767px) {
+  .nav .sign-in-card {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .nav--minified-mobile .nav__cta-container > *:not(.nav__link-person) {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .nav .search-bar--minified-mobile {
+    margin-bottom: 0px;
+    height: 100%;
+    flex-grow: 1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    order: initial;
+    width: initial;
+  }
+
+  .nav .search-bar--minified-mobile .search-bar__placeholder {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 767px) {
+  .tw-link-column-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 992px) {
+  .tw-link-column-item {
+    margin-bottom: 8px;
+  }
+
+  .tw-linkster .tw-link-column-item {
+    margin-bottom: 0px;
+  }
+}
+@media (max-width: 767px) {
+  .member-nav-menu .collapsible-dropdown__button {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .member-nav-menu .collapsible-dropdown__list {
+    right: 0px;
+    max-height: calc(100vh - 52px);
+    overflow-y: auto;
+  }
+}
+@media (max-width: 767px) {
+  .recent-searches.recent-searches--show {
+    position: fixed;
+    top: 168px;
+    left: 0px;
+    width: 100vw;
+    min-width: 100vw;
+    border-width: 0;
+  }
+}
+@media (max-width: 767px) {
+  .search-bar .dismissable-input {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0.75);
+    color: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', =
+Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Canta=
+rell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji'=
+, 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  .search-bar .dismissable-input:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .search-bar .dismissable-input:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .search-bar .dismissable-input:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:disabled:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:disabled:focus {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:disabled:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #cf0007;
+    color: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', =
+Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Canta=
+rell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji'=
+, 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  .input-error .search-bar .dismissable-input:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: #8a0005;
+    box-shadow: 0 0 0 1px #8a0005;
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .input-error .search-bar .dismissable-input:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: #8a0005;
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled:focus {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .base-search-bar .input-error .search-bar .dismissable-input.typeahead-in=
+put {
+    border-style: solid;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .base-search-bar .input-error .search-bar .dismissable-input.typeahead-in=
+put:active {
+    border-style: solid;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .base-search-bar .input-error .search-bar .dismissable-input.typeahead-in=
+put:focus-within {
+    border-style: solid;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .search-bar .dismissable-input {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:hover {
+    border-right-color: rgba(0, 0, 0, 0.08);
+  }
+}
+@media (min-width: 992px) {
+  .search-bar .dismissable-input {
+    width: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:hover {
+    border-right-color: rgba(0, 0, 0, 0.08);
+  }
+}
+@media (max-width: 767px) {
+  .search-bar:not(.isExpanded) .base-search-bar__form {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  @media (max-width: 767px) {
+    .search-bar.isExpanded .search-bar__placeholder {
+      display: none;
+    }
+
+    .search-bar.isExpanded .base-search-bar__form {
+      display: flex;
+    }
+
+    position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 1000;
+        margin-bottom: 0px;
+        height: 100%;
+        background-color: #ffffff;
+    .search-bar.isExpanded .switcher-tabs__cancel-btn,
+.search-bar.isExpanded .switcher-tabs {
+      display: inherit;
+    }
+
+  }
+}
+@media screen and (max-width: 767px) {
+  .stuck .search-bar {
+    transition: height 0.4s, margin-bottom 0.4s ease-in-out;
+    margin-bottom: 0px;
+    height: 0px;
+  }
+
+  .stuck .search-bar--minified-mobile .search-bar__placeholder {
+    max-height: initial;
+    pointer-events: initial;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+}
+@media screen and (min-width: 767px) {
+  .switcher-tabs .switcher-tabs__button:after {
+    border-bottom: none;
+  }
+}
+@media (max-width: 767px) {
+  .tabs__list {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .typeahead-input__dropdown.typeahead-input__dropdown--show {
+    position: fixed;
+    top: 158px;
+    left: 0px;
+    width: 100vw;
+    min-width: 100vw;
+  }
+}
+@media (max-width: 767px) {
+  .base-search-bar .dismissable-input {
+    max-height: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .base-main-card__media ~ .base-main-card__info {
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .mx-main-feed-card-no-gutter {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .mx-main-feed-card-no-gutter {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}
+@media (max-width: 767px) {
+  .px-main-feed-card-no-gutter {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .px-main-feed-card-no-gutter {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .filter .collapsible-dropdown__list {
+    max-height: 400px;
+  }
+}
+@media (forced-colors: active) {
+  .filter-button--selected {
+    border-width: 4px;
+  }
+}
+@media (max-width: 767px) {
+  .base-card .duration {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .social-action-bar__button {
+    flex-direction: row;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+@media (max-width: 767px) {
+  .social-action-bar__icon--svg {
+    margin: 0px;
+    height: 24px;
+    width: 24px;
+  }
+
+  .social-action-bar__button-text {
+    padding-left: 4px;
+  }
+}
+@media only screen and (min-width: 30.06em) {
+  .card-cta-container-mobile {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+  }
+
+  .card-cta-container-desktop {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+}
+@media (min-width: 992px) {
+  .md\:overflow-x-hidden {
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 767px) {
+  .babybear\:invisible {
+    visibility: hidden;
+  }
+
+  .babybear\:static {
+    position: static;
+  }
+
+  .babybear\:right-4 {
+    right: 32px;
+  }
+
+  .babybear\:bottom-0 {
+    bottom: 0px;
+  }
+
+  .babybear\:\!-top-0\.5 {
+    top: -4px !important;
+  }
+
+  .babybear\:\!-top-0 {
+    top: -0px !important;
+  }
+
+  .babybear\:top-0\.5 {
+    top: 4px;
+  }
+
+  .babybear\:top-0 {
+    top: 0px;
+  }
+
+  .babybear\:bottom-\[120\%\] {
+    bottom: 120%;
+  }
+
+  .babybear\:left-3 {
+    left: 24px;
+  }
+
+  .babybear\:-top-1 {
+    top: -8px;
+  }
+
+  .babybear\:z-0 {
+    z-index: 0;
+  }
+
+  .babybear\:btn-sm {
+    height: min-content;
+    min-height: 32px;
+    border-radius: 24px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .babybear\:btn-sm,
+.babybear\:btn-sm:visited,
+.babybear\:btn-sm:focus {
+    cursor: pointer;
+    text-decoration-line: none;
+  }
+
+  .babybear\:btn-sm:hover,
+.babybear\:btn-sm:visited:hover {
+    text-decoration-line: none;
+  }
+
+  .babybear\:btn-sm:disabled {
+    cursor: not-allowed;
+  }
+
+  .babybear\:m-0 {
+    margin: 0px;
+  }
+
+  .babybear\:my-2 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .babybear\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .babybear\:mx-mobile-container-padding {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .babybear\:ml-0 {
+    margin-left: 0px;
+  }
+
+  .babybear\:mr-0 {
+    margin-right: 0px;
+  }
+
+  .babybear\:mb-2 {
+    margin-bottom: 16px;
+  }
+
+  .babybear\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .babybear\:mb-0\.5 {
+    margin-bottom: 4px;
+  }
+
+  .babybear\:mb-0 {
+    margin-bottom: 0px;
+  }
+
+  .babybear\:mt-0\.5 {
+    margin-top: 4px;
+  }
+
+  .babybear\:mb-1 {
+    margin-bottom: 8px;
+  }
+
+  .babybear\:mt-\[6px\] {
+    margin-top: 6px;
+  }
+
+  .babybear\:ml-\[-9999px\] {
+    margin-left: -9999px;
+  }
+
+  .babybear\:mb-1\.5 {
+    margin-bottom: 12px;
+  }
+
+  .babybear\:ml-1 {
+    margin-left: 8px;
+  }
+
+  .babybear\:btn-secondary-emphasis {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(0, 0, 0, 0);
+    color: #0a66c2;
+  }
+
+  .babybear\:btn-secondary-emphasis:visited {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(0, 0, 0, 0);
+    color: #0a66c2;
+  }
+
+  .babybear\:btn-secondary-emphasis:focus {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(0, 0, 0, 0);
+    color: #0a66c2;
+  }
+
+  .babybear\:flex {
+    display: flex;
+  }
+
+  .babybear\:btn-secondary-emphasis {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(0, 0, 0, 0);
+    color: #0a66c2;
+  }
+
+  .babybear\:btn-secondary-emphasis:visited {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(0, 0, 0, 0);
+    color: #0a66c2;
+  }
+
+  .babybear\:btn-secondary-emphasis:focus {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(0, 0, 0, 0);
+    color: #0a66c2;
+  }
+
+  .babybear\:btn-secondary-emphasis:hover {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(112, 181, 249, 0.1);
+    color: #004182;
+  }
+
+  .babybear\:btn-secondary-emphasis:visited:hover {
+    box-shadow: 0 0 0 1px #0a66c2;
+    background-color: rgba(112, 181, 249, 0.1);
+    color: #004182;
+  }
+
+  .babybear\:btn-secondary-emphasis:active {
+    box-shadow: 0 0 0 1px #004182;
+    background-color: rgba(112, 181, 249, 0.2);
+    color: #004182;
+  }
+
+  .babybear\:btn-secondary-emphasis:disabled {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  .babybear\:hidden {
+    display: none;
+  }
+
+  .babybear\:h-\[360px\] {
+    height: 360px;
+  }
+
+  .babybear\:h-6 {
+    height: 48px;
+  }
+
+  .babybear\:h-\[72px\] {
+    height: 72px;
+  }
+
+  .babybear\:h-4 {
+    height: 32px;
+  }
+
+  .babybear\:h-\[27px\] {
+    height: 27px;
+  }
+
+  .babybear\:h-\[1px\] {
+    height: 1px;
+  }
+
+  .babybear\:h-\[48px\] {
+    height: 48px;
+  }
+
+  .babybear\:h-auto {
+    height: auto;
+  }
+
+  .babybear\:h-\[180px\] {
+    height: 180px;
+  }
+
+  .babybear\:max-h-\[225px\] {
+    max-height: 225px;
+  }
+
+  .babybear\:max-h-\[400px\] {
+    max-height: 400px;
+  }
+
+  .babybear\:max-h-4 {
+    max-height: 32px;
+  }
+
+  .babybear\:max-h-\[250px\] {
+    max-height: 250px;
+  }
+
+  .babybear\:min-h-\[134px\] {
+    min-height: 134px;
+  }
+
+  .babybear\:w-\[360px\] {
+    width: 360px;
+  }
+
+  .babybear\:w-full {
+    width: 100%;
+  }
+
+  .babybear\:w-11\/12 {
+    width: 91.666667%;
+  }
+
+  .babybear\:w-\[199px\] {
+    width: 199px;
+  }
+
+  .babybear\:w-6 {
+    width: 48px;
+  }
+
+  .babybear\:w-\[27px\] {
+    width: 27px;
+  }
+
+  .babybear\:w-\[1px\] {
+    width: 1px;
+  }
+
+  .babybear\:w-\[100vw\] {
+    width: 100vw;
+  }
+
+  .babybear\:w-\[calc\(100\%-68px\)\] {
+    width: calc(100% - 68px);
+  }
+
+  .babybear\:min-w-full {
+    min-width: 100%;
+  }
+
+  .babybear\:max-w-\[790px\] {
+    max-width: 790px;
+  }
+
+  .babybear\:max-w-\[32px\] {
+    max-width: 32px;
+  }
+
+  .babybear\:flex-none {
+    flex: none;
+  }
+
+  .babybear\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .babybear\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .babybear\:basis-0 {
+    flex-basis: 0px;
+  }
+
+  .babybear\:basis-1\/2 {
+    flex-basis: 50%;
+  }
+
+  .babybear\:-translate-x-50\% {
+    transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY=
+(1);
+  }
+
+  @media (max-width: 767px) {
+    .babybear\:-translate-x-50\% {
+      transform: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(=
+1) scaleY(1);
+    }
+
+    @media (max-width: 767px) {
+      .babybear\:-translate-x-50\% {
+        transform: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scale=
+X(1) scaleY(1);
+      }
+
+      @media (max-width: 767px) {
+        .babybear\:-translate-x-50\% {
+          transform: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) sca=
+leX(1) scaleY(1);
+        }
+
+        @media (max-width: 767px) {
+          .babybear\:-translate-x-50\% {
+            transform: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) s=
+caleX(1) scaleY(1);
+          }
+
+          @media (max-width: 767px) {
+            .babybear\:-translate-x-50\% {
+              transform: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0)=
+ scaleX(1) scaleY(1);
+            }
+
+            @media (max-width: 767px) {
+              .babybear\:-translate-x-50\% {
+                transform: translate(-50%, 0) rotate(90deg) skewX(0) skewY(=
+0) scaleX(1) scaleY(1);
+              }
+
+              @media (max-width: 767px) {
+                .babybear\:-translate-x-50\% {
+                  transform: translate(-50%, 0) rotate(90deg) skewX(0) skew=
+Y(0) scaleX(1) scaleY(1);
+                }
+
+                @media (max-width: 767px) {
+                  .babybear\:-translate-x-50\% {
+                    transform: translate(-50%, 0) rotate(90deg) skewX(0) sk=
+ewY(0) scaleX(1) scaleY(1);
+                  }
+
+                  @media (max-width: 767px) {
+                    .babybear\:-translate-x-50\% {
+                      transform: translate(-50%, 0) rotate(90deg) skewX(0) =
+skewY(0) scaleX(1) scaleY(1);
+                    }
+
+                    @media (max-width: 767px) {
+                      .babybear\:-translate-x-50\% {
+                        transform: translate(-50%, 0) rotate(90deg) skewX(0=
+) skewY(0) scaleX(1) scaleY(1);
+                      }
+
+                      @media (max-width: 767px) {
+                        .babybear\:-translate-x-50\% {
+                          transform: translate(-50%, 0) rotate(90deg) skewX=
+(0) skewY(0) scaleX(1) scaleY(1);
+                        }
+
+                        @media (max-width: 767px) {
+                          .babybear\:-translate-x-50\% {
+                            transform: translate(-50%, 0) rotate(90deg) ske=
+wX(0) skewY(0) scaleX(1) scaleY(1);
+                          }
+
+                          @media (max-width: 767px) {
+                            .babybear\:-translate-x-50\% {
+                              transform: translate(-50%, 0) rotate(90deg) s=
+kewX(0) skewY(0) scaleX(1) scaleY(1);
+                            }
+
+                            @media (max-width: 767px) {
+                              .babybear\:-translate-x-50\% {
+                                transform: translate(-50%, 0) rotate(90deg)=
+ skewX(0) skewY(0) scaleX(1) scaleY(1);
+                              }
+
+                              @media transform: translate(0, 0) rotate(0) s=
+kewX(0) skewY(0) scaleX(1) scaleY(1);
+     (max-width: 767px) {
+                                .babybear\:rotate-90 {
+                                  transform: translate(-50%, 0) rotate(90de=
+g) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                }
+
+                                @media (max-width: 767px) {
+                                  .babybear\:rotate-90 {
+                                    transform: translate(-50%, 0) rotate(90=
+deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                  }
+
+                                  @media (max-width: 767px) {
+                                    .babybear\:rotate-90 {
+                                      transform: translate(-50%, 0) rotate(=
+90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                    }
+
+                                    @media (max-width: 767px) {
+                                      .babybear\:rotate-90 {
+                                        transform: translate(-50%, 0) rotat=
+e(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                      }
+
+                                      @media (max-width: 767px) {
+                                        .babybear\:rotate-90 {
+                                          transform: translate(-50%, 0) rot=
+ate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                        }
+
+                                        @media (max-width: 767px) {
+                                          .babybear\:rotate-90 {
+                                            transform: translate(-50%, 0) r=
+otate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                          }
+
+                                          @media (max-width: 767px) {
+                                            .babybear\:rotate-90 {
+                                              transform: translate(-50%, 0)=
+ rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                            }
+
+                                            @media (max-width: 767px) {
+                                              .babybear\:rotate-90 {
+                                                transform: translate(-50%, =
+0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                              }
+
+                                              @media (max-width: 767px) {
+                                                .babybear\:rotate-90 {
+                                                  transform: translate(-50%=
+, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                }
+
+                                                @media (max-width: 767px) {
+                                                  .babybear\:rotate-90 {
+                                                    transform: translate(-5=
+0%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                  }
+
+                                                  @media (max-width: 767px)=
+ {
+                                                    .babybear\:rotate-90 {
+                                                      transform: translate(=
+-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                    }
+
+                                                    @media (max-width: 767p=
+x) {
+                                                      .babybear\:rotate-90 =
+{
+                                                        transform: translat=
+e(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                      }
+
+                                                      @media (max-width: 76=
+7px) {
+                                                        .babybear\:rotate-9=
+0 {
+                                                          transform: transl=
+ate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                        }
+
+                                                        @media (max-width: =
+767px) {
+                                                          .babybear\:rotate=
+-90 {
+                                                            transform: tran=
+slate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                          }
+
+                                                          border-radius: 8p=
+x;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(0,
+0,
+0,
+0.08);
+        background-color: #ffffff;
+    .babybear\:flex-row {
+                                                            flex-direction:=
+ row;
+                                                          }
+
+                                                          .babybear\:flex-c=
+ol {
+                                                            flex-direction:=
+ column;
+                                                          }
+
+                                                          .babybear\:flex-w=
+rap {
+                                                            flex-wrap: wrap=
+;
+                                                          }
+
+                                                          .babybear\:items-=
+start {
+                                                            align-items: fl=
+ex-start;
+                                                          }
+
+                                                          .babybear\:items-=
+center {
+                                                            align-items: ce=
+nter;
+                                                          }
+
+                                                          .babybear\:justif=
+y-start {
+                                                            justify-content=
+: flex-start;
+                                                          }
+
+                                                          .babybear\:justif=
+y-end {
+                                                            justify-content=
+: flex-end;
+                                                          }
+
+                                                          .babybear\:justif=
+y-center {
+                                                            justify-content=
+: center;
+                                                          }
+
+                                                          .babybear\:justif=
+y-around {
+                                                            justify-content=
+: space-around;
+                                                          }
+
+                                                          .babybear\:self-s=
+tart {
+                                                            align-self: fle=
+x-start;
+                                                          }
+
+                                                          .babybear\:self-c=
+enter {
+                                                            align-self: cen=
+ter;
+                                                          }
+
+                                                          .babybear\:overfl=
+ow-y-auto {
+                                                            overflow-y: aut=
+o;
+                                                          }
+
+                                                          .babybear\:rounde=
+d-\[0px\] {
+                                                            border-radius: =
+0px;
+                                                          }
+
+                                                          .babybear\:border=
+-b-1 {
+                                                            border-bottom-w=
+idth: 1px;
+                                                          }
+
+                                                          .babybear\:border=
+-solid {
+                                                            border-style: s=
+olid;
+                                                          }
+
+                                                          .babybear\:border=
+-color-border-low-emphasis {
+                                                            border-color: r=
+gba(0, 0, 0, 0.3);
+                                                          }
+
+                                                          .babybear\:bg-col=
+or-transparent {
+                                                            background-colo=
+r: rgba(0, 0, 0, 0);
+                                                          }
+
+                                                          .babybear\:bg-col=
+or-brand {
+                                                            background-colo=
+r: #0a66c2;
+                                                          }
+
+                                                          .babybear\:p-2 {
+                                                            padding: 16px;
+                                                          }
+
+                                                          .babybear\:p-0 {
+                                                            padding: 0px;
+                                                          }
+
+                                                          .babybear\:py-1 {
+                                                            padding-top: 8p=
+x;
+                                                            padding-bottom:=
+ 8px;
+                                                          }
+
+                                                          .babybear\:px-0 {
+                                                            padding-left: 0=
+px;
+                                                            padding-right: =
+0px;
+                                                          }
+
+                                                          .babybear\:px-2 {
+                                                            padding-left: 1=
+6px;
+                                                            padding-right: =
+16px;
+                                                          }
+
+                                                          .babybear\:px-mob=
+ile-container-padding {
+                                                            padding-left: 1=
+6px;
+                                                            padding-right: =
+16px;
+                                                          }
+
+                                                          .babybear\:py-3 {
+                                                            padding-top: 24=
+px;
+                                                            padding-bottom:=
+ 24px;
+                                                          }
+
+                                                          .babybear\:py-1\.=
+5 {
+                                                            padding-top: 12=
+px;
+                                                            padding-bottom:=
+ 12px;
+                                                          }
+
+                                                          .babybear\:pr-0\.=
+5 {
+                                                            padding-right: =
+4px;
+                                                          }
+
+                                                          .babybear\:pr-0 {
+                                                            padding-right: =
+0px;
+                                                          }
+
+                                                          .babybear\:pl-0\.=
+5 {
+                                                            padding-left: 4=
+px;
+                                                          }
+
+                                                          .babybear\:pl-0 {
+                                                            padding-left: 0=
+px;
+                                                          }
+
+                                                          .babybear\:pt-0\.=
+5 {
+                                                            padding-top: 4p=
+x;
+                                                          }
+
+                                                          .babybear\:pb-0 {
+                                                            padding-bottom:=
+ 0px;
+                                                          }
+
+                                                          .babybear\:pt-0 {
+                                                            padding-top: 0p=
+x;
+                                                          }
+
+                                                          .babybear\:pb-2 {
+                                                            padding-bottom:=
+ 16px;
+                                                          }
+
+                                                          .babybear\:text-x=
+s {
+                                                            font-size: 12px=
+;
+                                                          }
+
+                                                          .babybear\:text-s=
+m {
+                                                            font-size: 14px=
+;
+                                                          }
+
+                                                          .babybear\:font-b=
+old {
+                                                            font-weight: 60=
+0;
+                                                          }
+
+                                                          .babybear\:leadin=
+g-\[150px\] {
+                                                            line-height: 15=
+0px;
+                                                          }
+
+                                                          .babybear\:last\:=
+border-b-0:last-child {
+                                                            border-bottom-w=
+idth: 0;
+                                                          }
+
+                                                        }
+
+                                                      }
+
+                                                    }
+
+                                                  }
+
+                                                }
+
+                                              }
+
+                                            }
+
+                                          }
+
+                                        }
+
+                                      }
+
+                                    }
+
+                                  }
+
+                                }
+
+                              }
+
+                            }
+
+                          }
+
+                        }
+
+                      }
+
+                    }
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .mamabear\:absolute {
+    position: absolute;
+  }
+
+  .mamabear\:right-4 {
+    right: 32px;
+  }
+
+  .mamabear\:-top-0\.5 {
+    top: -4px;
+  }
+
+  .mamabear\:-top-0 {
+    top: -0px;
+  }
+
+  .mamabear\:top-\[58px\] {
+    top: 58px;
+  }
+
+  .mamabear\:-top-1 {
+    top: -8px;
+  }
+
+  .mamabear\:flex {
+    display: flex;
+  }
+
+  .mamabear\:hidden {
+    display: none;
+  }
+
+  .mamabear\:\!h-4 {
+    height: 32px !important;
+  }
+
+  .mamabear\:h-\[100\%\] {
+    height: 100%;
+  }
+
+  .mamabear\:\!min-h-\[32px\] {
+    min-height: 32px !important;
+  }
+
+  .mamabear\:w-\[744px\] {
+    width: 744px;
+  }
+
+  .mamabear\:w-full {
+    width: 100%;
+  }
+
+  .mamabear\:w-\[calc\(100\%-97px\)\] {
+    width: calc(100% - 97px);
+  }
+
+  .mamabear\:min-w-0 {
+    min-width: 0px;
+  }
+
+  .mamabear\:max-w-\[790px\] {
+    max-width: 790px;
+  }
+
+  .mamabear\:container-lined {
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+  }
+
+  .mamabear\:container-raised {
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .mamabear\:flex-row {
+    flex-direction: row;
+  }
+
+  .mamabear\:flex-col {
+    flex-direction: column;
+  }
+
+  .mamabear\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .mamabear\:items-start {
+    align-items: flex-start;
+  }
+
+  .mamabear\:items-center {
+    align-items: center;
+  }
+
+  .mamabear\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .mamabear\:gap-y-1 {
+    row-gap: 8px;
+  }
+
+  .mamabear\:self-center {
+    align-self: center;
+  }
+
+  .mamabear\:tab-vertical.tab-sm,
+.mamabear\:tab-vertical .tab-md,
+.mamabear\:tab-vertical .tab-lg {
+    justify-content: flex-start;
+  }
+
+  .mamabear\:tab-vertical.tab-selected {
+    box-shadow: inset 4px 0 rgba(0, 0, 0, 0.9);
+  }
+
+  .mamabear\:rounded-tr-none {
+    border-top-right-radius: 0px;
+  }
+
+  .mamabear\:px-3 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .mamabear\:px-mobile-container-padding {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .mamabear\:py-3 {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .mamabear\:px-2 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .mamabear\:pt-desktop-content-top-margin {
+    padding-top: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .papabear\:absolute {
+    position: absolute;
+  }
+
+  .papabear\:top-\[58px\] {
+    top: 58px;
+  }
+
+  .papabear\:-top-1 {
+    top: -8px;
+  }
+
+  .papabear\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .papabear\:\!mx-2 {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+
+  .papabear\:mt-\[-100px\] {
+    margin-top: -100px;
+  }
+
+  .papabear\:mb-\[18px\] {
+    margin-bottom: 18px;
+  }
+
+  .papabear\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .papabear\:mt-0\.5 {
+    margin-top: 4px;
+  }
+
+  .papabear\:mr-2 {
+    margin-right: 16px;
+  }
+
+  .papabear\:ml-column-gutter {
+    margin-left: 24px;
+  }
+
+  .papabear\:inline-block {
+    display: inline-block;
+  }
+
+  .papabear\:flex {
+    display: flex;
+  }
+
+  .papabear\:hidden {
+    display: none;
+  }
+
+  .papabear\:\!h-4 {
+    height: 32px !important;
+  }
+
+  .papabear\:h-6 {
+    height: 48px;
+  }
+
+  .papabear\:h-\[34px\] {
+    height: 34px;
+  }
+
+  .papabear\:h-\[100\%\] {
+    height: 100%;
+  }
+
+  .papabear\:min-h-\[96px\] {
+    min-height: 96px;
+  }
+
+  .papabear\:\!min-h-\[32px\] {
+    min-height: 32px !important;
+  }
+
+  .papabear\:w-\[400px\] {
+    width: 400px;
+  }
+
+  .papabear\:w-content-max-w {
+    width: 1128px;
+  }
+
+  .papabear\:w-core-rail-width {
+    width: 784px;
+  }
+
+  .papabear\:w-right-rail-width {
+    width: calc(1128px - 24px - 784px);
+  }
+
+  .papabear\:w-auto {
+    width: auto;
+  }
+
+  .papabear\:w-\[1128px\] {
+    width: 1128px;
+  }
+
+  .papabear\:w-\[135px\] {
+    width: 135px;
+  }
+
+  .papabear\:w-\[calc\(100\%-97px\)\] {
+    width: calc(100% - 97px);
+  }
+
+  .papabear\:min-w-0 {
+    min-width: 0px;
+  }
+
+  .papabear\:max-w-\[550px\] {
+    max-width: 550px;
+  }
+
+  .papabear\:container-lined {
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+  }
+
+  .papabear\:container-raised {
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .papabear\:flex-col {
+    flex-direction: column;
+  }
+
+  .papabear\:flex-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  .papabear\:items-start {
+    align-items: flex-start;
+  }
+
+  .papabear\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .papabear\:justify-center {
+    justify-content: center;
+  }
+
+  .papabear\:self-start {
+    align-self: flex-start;
+  }
+
+  .papabear\:tab-vertical.tab-sm,
+.papabear\:tab-vertical .tab-md,
+.papabear\:tab-vertical .tab-lg {
+    justify-content: flex-start;
+  }
+
+  .papabear\:tab-vertical.tab-selected {
+    box-shadow: inset 4px 0 rgba(0, 0, 0, 0.9);
+  }
+
+  .papabear\:rounded-tr-none {
+    border-top-right-radius: 0px;
+  }
+
+  .papabear\:border-4 {
+    border-width: 4px;
+  }
+
+  .papabear\:p-details-container-padding {
+    padding: 24px;
+  }
+
+  .papabear\:p-0 {
+    padding: 0px;
+  }
+
+  .papabear\:py-2 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .papabear\:pt-desktop-content-top-margin {
+    padding-top: 16px;
+  }
+
+  .papabear\:text-xl {
+    font-size: 24px;
+  }
+}
+</style></head> <body dir=3D"ltr" class=3D"font-sans bg-color-background-ca=
+nvas w-full m-0 p-0 pt-1" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; margin: 0px; width: 100%; background-color: #f3f2f0; pa=
+dding: 0px; padding-top: 8px; font-family: -apple-system, system-ui, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Ox=
+ygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe U=
+I Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, =
+Arial, sans-serif;"> <div class=3D"h-0 opacity-0 text-transparent invisible=
+ overflow-hidden w-0 max-h-[0]" style=3D"visibility: hidden; height: 0px; m=
+ax-height: 0; width: 0px; overflow: hidden; opacity: 0; mso-hide: all;" dat=
+a-email-preheader=3D"true">Improve how you appear to recruiters</div> <div =
+class=3D"h-0 opacity-0 text-transparent invisible overflow-hidden w-0 max-h=
+-[0]" style=3D"visibility: hidden; height: 0px; max-height: 0; width: 0px; =
+overflow: hidden; opacity: 0; mso-hide: all;"> =CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+ =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 </div> <tab=
+le role=3D"presentation" valign=3D"top" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" width=3D"512" align=3D"center" class=3D"mercado-container w-[=
+512px] max-w-[512px] mx-auto my-0 p-0 bg-color-background-container" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; margin-top: 0px; margin-bottom: 0px; mar=
+gin-left: auto; margin-right: auto; width: 512px; max-width: 512px; backgro=
+und-color: #ffffff; padding: 0px;"> <tbody> <tr> <td class=3D"text-center p=
+-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 24px; text-align: cent=
+er;"> <table role=3D"presentation" valign=3D"top" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0" width=3D"100%" class=3D"min-w-full" style=3D"-webk=
+it-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt; min-width: 100%;"> <tbody> <tr> <td align=3D"left=
+" valign=3D"middle" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-=
+adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <a href=3D"ht=
+tps://www.linkedin.com/comm/feed/?lipi=3Durn%3Ali%3Apage%3Aemail_email_prof=
+ile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-=
+K9A&amp;midSig=3D26qVJ1HnmTdr01&amp;trk=3Deml-email_profile_analyzer_01-hea=
+der-0-home_glimmer&amp;trkEmail=3Deml-email_profile_analyzer_01-header-0-ho=
+me_glimmer-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1vosf-loqx9ewg-b9&a=
+mp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4ZWM2ZDI0MTkwYWQ4O=
+TZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjdiZWVkMDIyMDRkZDU3=
+ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" class=3D"w-[84px]" =
+style=3D"color: #0a66c2; cursor: pointer; display: inline-block; text-decor=
+ation: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; wi=
+dth: 84px;"> <img alt=3D"LinkedIn" src=3D"https://static.licdn.com/sc/h/9eh=
+e6n39fa07dc5edzv0rla4e" class=3D"h-[21px] w-[84px]" style=3D"outline: none;=
+ text-decoration: none; -ms-interpolation-mode: bicubic; height: 21px; widt=
+h: 84px;" width=3D"84" height=3D"21"> </a> </td> <td valign=3D"middle" alig=
+n=3D"right" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <table role=3D"presen=
+tation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" wid=
+th=3D"100%" data-test-header-profile style=3D"-webkit-text-size-adjust: 100=
+%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+;"> <tbody> <tr> <td align=3D"right" valign=3D"middle" style=3D"-webkit-tex=
+t-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso=
+-table-rspace: 0pt;"> <span class=3D"no-underline text-system-gray-90" styl=
+e=3D"color: #282828; text-decoration-line: none;">Djenty Boy</span> </td> <=
+/tr> </tbody> </table> </td> </tr> </tbody> </table> </td> </tr> <tr> <td c=
+lass=3D"px-3 pb-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-a=
+djust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding-left: 24=
+px; padding-right: 24px; padding-bottom: 24px;"> <div> <table role=3D"prese=
+ntation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" wi=
+dth=3D"100%" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust:=
+ 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <tbody> <tr> <td sty=
+le=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt;"> <h1 class=3D"w-full text-xl font-bol=
+d text-system-gray-90 pb-2" style=3D"margin: 0; width: 100%; padding-bottom=
+: 16px; font-size: 24px; font-weight: 600; color: #282828;"> Improve how yo=
+u appear in recruiter search results </h1> </td> </tr> <tr> <td style=3D"-w=
+ebkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt;"> <div class=3D"container-lined bg-color-surfa=
+ce-tint mb-3" style=3D"border-radius: 8px; border-width: 1px; border-style:=
+ solid; border-color: rgba(0, 0, 0, 0.08); margin-bottom: 24px; background-=
+color: #f5f7f9;"> <div class=3D"bg-color-surface-accent-4 rounded-t-md pb-1=
+ pt-1 pr-2 pl-2 mb-2" style=3D"margin-bottom: 16px; border-top-left-radius:=
+ 8px; border-top-right-radius: 8px; background-color: #dde7f1; padding-top:=
+ 8px; padding-bottom: 8px; padding-left: 16px; padding-right: 16px;"> <tabl=
+e style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt;"> <tr> <td style=3D"-webkit-text-=
+size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt;"> <img class=3D"w-2 h-[10px] inline mr-1" alt=3D"Visibili=
+ty icon" src=3D"https://static.licdn.com/sc/h/baups30rwb5n9pc9uid2b1dza" ro=
+le=3D"presentation" style=3D"outline: none; text-decoration: none; -ms-inte=
+rpolation-mode: bicubic; margin-right: 8px; display: inline; height: 10px; =
+width: 16px;" width=3D"16" height=3D"10"> </td> <td style=3D"-webkit-text-s=
+ize-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-ta=
+ble-rspace: 0pt;"> <p class=3D"text-sm inline text-color-text" style=3D"mar=
+gin: 0; font-weight: 400; display: inline; font-size: 14px; color: rgba(0, =
+0, 0, 0.9);">Your profile in recruiter search results</p> </td> </tr> </tab=
+le> </div> <div class=3D"pl-2 pr-2" style=3D"padding-left: 16px; padding-ri=
+ght: 16px;"> <table class=3D"pb-2" style=3D"-webkit-text-size-adjust: 100%;=
+ -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; =
+padding-bottom: 16px;"> <tr> <td style=3D"-webkit-text-size-adjust: 100%; -=
+ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> =
+<img class=3D"inline-block w-6 h-6 mr-1" alt=3D"Profile picture" src=3D"htt=
+ps://static.licdn.com/sc/h/4eby4moebno1i6r34if7lud8o" role=3D"presentation"=
+ style=3D"outline: none; text-decoration: none; -ms-interpolation-mode: bic=
+ubic; margin-right: 8px; display: inline-block; height: 48px; width: 48px;"=
+ width=3D"48" height=3D"48"> </td> <td style=3D"-webkit-text-size-adjust: 1=
+00%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0=
+pt;"> <h2 class=3D"text-md font-semibold" style=3D"margin: 0; font-size: 16=
+px; font-weight: 600;">Djenty Boy</h2> <p class=3D"text-sm" style=3D"margin=
+: 0; font-weight: 400; font-size: 14px;">Student at 1337 Coding School</p> =
+<p class=3D"text-xs text-color-text-secondary" style=3D"margin: 0; font-wei=
+ght: 400; font-size: 12px; color: rgba(0, 0, 0, 0.6);">Martil, Tanger-Tetou=
+an-Al Hoceima, Morocco</p> </td> </tr> </table> <div class=3D"pb-2" style=
+=3D"padding-bottom: 16px;"> <h3 class=3D"text-sm font-semibold pb-1 truncat=
+e" style=3D"margin: 0; overflow: hidden; text-overflow: ellipsis; white-spa=
+ce: nowrap; padding-bottom: 8px; font-size: 14px; font-weight: 600;">Educat=
+ion</h3> <p class=3D"text-sm" style=3D"margin: 0; font-weight: 400; font-si=
+ze: 14px;">1337 Coding School, {:degreeName}</p> <p class=3D"text-xs text-c=
+olor-text-secondary" style=3D"margin: 0; font-weight: 400; font-size: 12px;=
+ color: rgba(0, 0, 0, 0.6);"> 2023 - 2026 </p> </div> </div> </div> </td> <=
+/tr> <tr> <td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust=
+: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <h2 class=3D"text-l=
+g font-bold text-system-gray-90 mb-2" style=3D"margin: 0; margin-bottom: 16=
+px; font-size: 20px; font-weight: 600; color: #282828;">Add more details th=
+at recruiters are looking for:</h2> </td> </tr> <tr> <td class=3D"pb-1.5" s=
+tyle=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-tab=
+le-lspace: 0pt; mso-table-rspace: 0pt; padding-bottom: 12px;"> <table class=
+=3D"border-collapse" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size=
+-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collaps=
+e: collapse;"> <tr> <td style=3D"-webkit-text-size-adjust: 100%; -ms-text-s=
+ize-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <img clas=
+s=3D"w-[20px] h-[20px] align-text-bottom text-color-icon-positive mr-1" alt=
+=3D"Completed task" src=3D"https://static.licdn.com/sc/h/d70i24bwgm9os59xec=
+ctnfllt" role=3D"presentation" style=3D"outline: none; text-decoration: non=
+e; -ms-interpolation-mode: bicubic; margin-right: 8px; height: 20px; width:=
+ 20px; vertical-align: text-bottom; color: #057642;" width=3D"20" height=3D=
+"20"> </td> <td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adju=
+st: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <p class=3D"text-=
+md inline" style=3D"margin: 0; font-weight: 400; display: inline; font-size=
+: 16px;">Location added</p> </td> </tr> </table> </td> </tr> <tr> <td class=
+=3D"pb-1.5" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding-bottom: 12px;">=
+ <table class=3D"border-spacing-0" style=3D"-webkit-text-size-adjust: 100%;=
+ -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; =
+border-spacing: 0px 0px;"> <tr> <td class=3D"align-baseline px-0 pl-0 pr-1.=
+5" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso=
+-table-lspace: 0pt; mso-table-rspace: 0pt; padding-left: 0px; padding-right=
+: 12px; vertical-align: baseline;"> <img class=3D"w-[20px] h-[20px]" alt=3D=
+"Incomplete task" src=3D"https://static.licdn.com/sc/h/4mk358g51gmuezrr7pqn=
+4ol23" role=3D"presentation" style=3D"outline: none; text-decoration: none;=
+ -ms-interpolation-mode: bicubic; height: 20px; width: 20px;" width=3D"20" =
+height=3D"20"> </td> <td class=3D"p-0" style=3D"-webkit-text-size-adjust: 1=
+00%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0=
+pt; padding: 0px;"> <h3 class=3D"text-md font-semibold" style=3D"margin: 0;=
+ font-size: 16px; font-weight: 600;">Job preferences</h3> <p class=3D"text-=
+sm text-color-text-secondary mt-1 mb-1" style=3D"margin: 0; font-weight: 40=
+0; margin-top: 8px; margin-bottom: 8px; font-size: 14px; color: rgba(0, 0, =
+0, 0.6);">Share you=E2=80=99re open to work and double your chances of bein=
+g contacted by recruiters.</p> <table role=3D"presentation" valign=3D"top" =
+border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" data-test-i=
+d=3D"email-button" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-a=
+djust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <tbody> <tr> <=
+td valign=3D"middle" align=3D"left" style=3D"-webkit-text-size-adjust: 100%=
+; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+"> <a href=3D"https://www.linkedin.com/comm/profile-opportunities/job-oppor=
+tunities?trk=3Deml-email_profile_analyzer_01-EmailProfileAnalyzer-0-cta_job=
+_pref&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyAYW=
+XpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D26qVJ1H=
+nmTdr01&amp;trkEmail=3Deml-email_profile_analyzer_01-EmailProfileAnalyzer-0=
+-cta_job_pref-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1vosf-loqx9ewg-b=
+9&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4ZWM2ZDI0MTkwYW=
+Q4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjdiZWVkMDIyMDRkZ=
+DU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" aria-label=3D"Ad=
+d preferences" class=3D"align-top" style=3D"color: #0a66c2; cursor: pointer=
+; display: inline-block; text-decoration: none; -webkit-text-size-adjust: 1=
+00%; -ms-text-size-adjust: 100%; vertical-align: top;"> <table role=3D"pres=
+entation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" w=
+idth=3D"auto" class=3D"border-separate" style=3D"-webkit-text-size-adjust: =
+100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: =
+0pt; border-collapse: separate;"> <tbody> <tr> <td class=3D"btn-sm btn-seco=
+ndary-emphasis border-color-brand button-link leading-regular !min-h-[auto]=
+ !shadow-none border-1 border-solid" style=3D"-webkit-text-size-adjust: 100=
+%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+; height: min-content; border-radius: 24px; padding-top: 7px; padding-botto=
+m: 7px; padding-left: 16px; padding-right: 16px; text-align: center; font-s=
+ize: 14px; font-weight: 600; cursor: pointer; text-decoration-line: none; b=
+ackground-color: rgba(0, 0, 0, 0); color: #0a66c2; border-width: 1px; borde=
+r-style: solid; border-color: #0a66c2; line-height: 1.25; min-height: auto =
+!important; box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000 !important;"> <a hr=
+ef=3D"https://www.linkedin.com/comm/profile-opportunities/job-opportunities=
+?trk=3Deml-email_profile_analyzer_01-EmailProfileAnalyzer-0-cta_job_pref&am=
+p;lipi=3Durn%3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BD=
+XHtuTaV7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D26qVJ1HnmTdr01&=
+amp;trkEmail=3Deml-email_profile_analyzer_01-EmailProfileAnalyzer-0-cta_job=
+_pref-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1vosf-loqx9ewg-b9&amp;ot=
+pToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4ZWM2ZDI0MTkwYWQ4OTZiN2=
+JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjdiZWVkMDIyMDRkZDU3ZjM2N=
+zUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" tabindex=3D"-1" aria-hid=
+den=3D"true" style=3D"color: #0a66c2; cursor: pointer; display: inline-bloc=
+k; text-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adj=
+ust: 100%;"> <span class=3D"no-underline text-color-brand" style=3D"color: =
+#0a66c2; text-decoration-line: none;"> Add preferences </span> </a> </td> <=
+/tr> </tbody> </table> </a> </td> </tr> </tbody> </table> </td> </tr> </tab=
+le> </td> </tr> <tr> <td class=3D"pb-1.5" style=3D"-webkit-text-size-adjust=
+: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt; padding-bottom: 12px;"> <table class=3D"border-spacing-0" style=3D"-=
+webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace=
+: 0pt; mso-table-rspace: 0pt; border-spacing: 0px 0px;"> <tr> <td class=3D"=
+align-baseline px-0 pl-0 pr-1.5" style=3D"-webkit-text-size-adjust: 100%; -=
+ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; pa=
+dding-left: 0px; padding-right: 12px; vertical-align: baseline;"> <img clas=
+s=3D"w-[20px] h-[20px]" alt=3D"Incomplete task" src=3D"https://static.licdn=
+.com/sc/h/4mk358g51gmuezrr7pqn4ol23" role=3D"presentation" style=3D"outline=
+: none; text-decoration: none; -ms-interpolation-mode: bicubic; height: 20p=
+x; width: 20px;" width=3D"20" height=3D"20"> </td> <td class=3D"p-0" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; padding: 0px;"> <h3 class=3D"text-md fon=
+t-semibold" style=3D"margin: 0; font-size: 16px; font-weight: 600;">Most re=
+cent position</h3> <p class=3D"text-sm text-color-text-secondary mt-1 mb-1"=
+ style=3D"margin: 0; font-weight: 400; margin-top: 8px; margin-bottom: 8px;=
+ font-size: 14px; color: rgba(0, 0, 0, 0.6);">18% of recruiters search base=
+d on title or company.</p> <table role=3D"presentation" valign=3D"top" bord=
+er=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" data-test-id=3D=
+"email-button" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjus=
+t: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <tbody> <tr> <td v=
+align=3D"middle" align=3D"left" style=3D"-webkit-text-size-adjust: 100%; -m=
+s-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <=
+a href=3D"https://www.linkedin.com/comm/in/me/add-edit/POSITION/?profileFor=
+mEntryPoint=3DEMAIL_CAMPAIGN&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_profi=
+le_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-K=
+9A&amp;midSig=3D26qVJ1HnmTdr01&amp;trk=3Deml-email_profile_analyzer_01-Emai=
+lProfileAnalyzer-0-cta_exp&amp;trkEmail=3Deml-email_profile_analyzer_01-Ema=
+ilProfileAnalyzer-0-cta_exp-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1v=
+osf-loqx9ewg-b9&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4=
+ZWM2ZDI0MTkwYWQ4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjd=
+iZWVkMDIyMDRkZDU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" ar=
+ia-label=3D"Add experience" class=3D"align-top" style=3D"color: #0a66c2; cu=
+rsor: pointer; display: inline-block; text-decoration: none; -webkit-text-s=
+ize-adjust: 100%; -ms-text-size-adjust: 100%; vertical-align: top;"> <table=
+ role=3D"presentation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0" width=3D"auto" class=3D"border-separate" style=3D"-webkit-text-=
+size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; border-collapse: separate;"> <tbody> <tr> <td class=3D"bt=
+n-sm btn-secondary-emphasis border-color-brand button-link leading-regular =
+!min-h-[auto] !shadow-none border-1 border-solid" style=3D"-webkit-text-siz=
+e-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-tabl=
+e-rspace: 0pt; height: min-content; border-radius: 24px; padding-top: 7px; =
+padding-bottom: 7px; padding-left: 16px; padding-right: 16px; text-align: c=
+enter; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration-=
+line: none; background-color: rgba(0, 0, 0, 0); color: #0a66c2; border-widt=
+h: 1px; border-style: solid; border-color: #0a66c2; line-height: 1.25; min-=
+height: auto !important; box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000 !impor=
+tant;"> <a href=3D"https://www.linkedin.com/comm/in/me/add-edit/POSITION/?p=
+rofileFormEntryPoint=3DEMAIL_CAMPAIGN&amp;lipi=3Durn%3Ali%3Apage%3Aemail_em=
+ail_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=3DAQF=
+gtsfuWz-K9A&amp;midSig=3D26qVJ1HnmTdr01&amp;trk=3Deml-email_profile_analyze=
+r_01-EmailProfileAnalyzer-0-cta_exp&amp;trkEmail=3Deml-email_profile_analyz=
+er_01-EmailProfileAnalyzer-0-cta_exp-null-k1vosf~loqx9ewg~b9-null-null&amp;=
+eid=3Dk1vosf-loqx9ewg-b9&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDA=
+xN2VlYjE4ZWM2ZDI0MTkwYWQ4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2=
+E1YWRjNjdiZWVkMDIyMDRkZDU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_=
+blank" tabindex=3D"-1" aria-hidden=3D"true" style=3D"color: #0a66c2; cursor=
+: pointer; display: inline-block; text-decoration: none; -webkit-text-size-=
+adjust: 100%; -ms-text-size-adjust: 100%;"> <span class=3D"no-underline tex=
+t-color-brand" style=3D"color: #0a66c2; text-decoration-line: none;"> Add e=
+xperience </span> </a> </td> </tr> </tbody> </table> </a> </td> </tr> </tbo=
+dy> </table> </td> </tr> </table> </td> </tr> <tr> <td class=3D"pb-1.5" sty=
+le=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; padding-bottom: 12px;"> <table class=
+=3D"border-spacing-0" style=3D"-webkit-text-size-adjust: 100%; -ms-text-siz=
+e-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacin=
+g: 0px 0px;"> <tr> <td class=3D"align-baseline px-0 pl-0 pr-1.5" style=3D"-=
+webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace=
+: 0pt; mso-table-rspace: 0pt; padding-left: 0px; padding-right: 12px; verti=
+cal-align: baseline;"> <img class=3D"w-[20px] h-[20px]" alt=3D"Incomplete t=
+ask" src=3D"https://static.licdn.com/sc/h/4mk358g51gmuezrr7pqn4ol23" role=
+=3D"presentation" style=3D"outline: none; text-decoration: none; -ms-interp=
+olation-mode: bicubic; height: 20px; width: 20px;" width=3D"20" height=3D"2=
+0"> </td> <td class=3D"p-0" style=3D"-webkit-text-size-adjust: 100%; -ms-te=
+xt-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding=
+: 0px;"> <h3 class=3D"text-md font-semibold" style=3D"margin: 0; font-size:=
+ 16px; font-weight: 600;">Skills</h3> <p class=3D"text-sm text-color-text-s=
+econdary mt-1 mb-1" style=3D"margin: 0; font-weight: 400; margin-top: 8px; =
+margin-bottom: 8px; font-size: 14px; color: rgba(0, 0, 0, 0.6);">45% of hir=
+ers on LinkedIn use skills to fill their roles.</p> <table role=3D"presenta=
+tion" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" data-test-id=3D"email-button" style=3D"-webkit-text-size-adjust: =
+100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: =
+0pt;"> <tbody> <tr> <td valign=3D"middle" align=3D"left" style=3D"-webkit-t=
+ext-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt;"> <a href=3D"https://www.linkedin.com/comm/in/me/add-=
+edit/SKILL_AND_ASSOCIATION/?profileFormEntryPoint=3DEMAIL_CAMPAIGN&amp;lipi=
+=3Durn%3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTa=
+V7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D26qVJ1HnmTdr01&amp;tr=
+k=3Deml-email_profile_analyzer_01-EmailProfileAnalyzer-0-cta_skill&amp;trkE=
+mail=3Deml-email_profile_analyzer_01-EmailProfileAnalyzer-0-cta_skill-null-=
+k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1vosf-loqx9ewg-b9&amp;otpToken=3DMT=
+MwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4ZWM2ZDI0MTkwYWQ4OTZiN2JjZjA3Njg0Y=
+TViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjdiZWVkMDIyMDRkZDU3ZjM2NzUyZTQ3YzNh=
+NmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" aria-label=3D"Add skills" class=3D"=
+align-top" style=3D"color: #0a66c2; cursor: pointer; display: inline-block;=
+ text-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjus=
+t: 100%; vertical-align: top;"> <table role=3D"presentation" valign=3D"top"=
+ border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"auto" class=3D"b=
+order-separate" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adju=
+st: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: se=
+parate;"> <tbody> <tr> <td class=3D"btn-sm btn-secondary-emphasis border-co=
+lor-brand button-link leading-regular !min-h-[auto] !shadow-none border-1 b=
+order-solid" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust:=
+ 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; height: min-content; b=
+order-radius: 24px; padding-top: 7px; padding-bottom: 7px; padding-left: 16=
+px; padding-right: 16px; text-align: center; font-size: 14px; font-weight: =
+600; cursor: pointer; text-decoration-line: none; background-color: rgba(0,=
+ 0, 0, 0); color: #0a66c2; border-width: 1px; border-style: solid; border-c=
+olor: #0a66c2; line-height: 1.25; min-height: auto !important; box-shadow: =
+0 0 #0000, 0 0 #0000, 0 0 #0000 !important;"> <a href=3D"https://www.linked=
+in.com/comm/in/me/add-edit/SKILL_AND_ASSOCIATION/?profileFormEntryPoint=3DE=
+MAIL_CAMPAIGN&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_profile_analyzer_01%=
+3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=
+=3D26qVJ1HnmTdr01&amp;trk=3Deml-email_profile_analyzer_01-EmailProfileAnaly=
+zer-0-cta_skill&amp;trkEmail=3Deml-email_profile_analyzer_01-EmailProfileAn=
+alyzer-0-cta_skill-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1vosf-loqx9=
+ewg-b9&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4ZWM2ZDI0M=
+TkwYWQ4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjdiZWVkMDIy=
+MDRkZDU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" tabindex=3D=
+"-1" aria-hidden=3D"true" style=3D"color: #0a66c2; cursor: pointer; display=
+: inline-block; text-decoration: none; -webkit-text-size-adjust: 100%; -ms-=
+text-size-adjust: 100%;"> <span class=3D"no-underline text-color-brand" sty=
+le=3D"color: #0a66c2; text-decoration-line: none;"> Add skills </span> </a>=
+ </td> </tr> </tbody> </table> </a> </td> </tr> </tbody> </table> </td> </t=
+r> </table> </td> </tr> </tbody> </table> </div> </td> </tr> <tr> <td class=
+=3D"bg-color-background-canvas p-3" style=3D"-webkit-text-size-adjust: 100%=
+; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+ background-color: #f3f2f0; padding: 24px;"> <table role=3D"presentation" v=
+align=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%" class=3D"text-xs" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size=
+-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-size: 12p=
+x;"> <tbody> <tr> <td class=3D"pb-1 m-0" style=3D"-webkit-text-size-adjust:=
+ 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace:=
+ 0pt; margin: 0px; padding-bottom: 8px;"> This email was intended for Djent=
+y Boy </td> </tr> <tr> <td class=3D"pb-1 m-0" style=3D"-webkit-text-size-ad=
+just: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; margin: 0px; padding-bottom: 8px;"> <a href=3D"https://www.linke=
+din.com/help/linkedin/answer/4788?lang=3Den&amp;lipi=3Durn%3Ali%3Apage%3Aem=
+ail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=
+=3DAQFgtsfuWz-K9A&amp;midSig=3D26qVJ1HnmTdr01&amp;trk=3Deml-email_profile_a=
+nalyzer_01-SecurityHelp-0-footerglimmer&amp;trkEmail=3Deml-email_profile_an=
+alyzer_01-SecurityHelp-0-footerglimmer-null-k1vosf~loqx9ewg~b9-null-null&am=
+p;eid=3Dk1vosf-loqx9ewg-b9&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViN=
+DAxN2VlYjE4ZWM2ZDI0MTkwYWQ4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2=
+M2E1YWRjNjdiZWVkMDIyMDRkZDU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D=
+"_blank" style=3D"color: #0a66c2; cursor: pointer; display: inline-block; t=
+ext-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust:=
+ 100%;">Learn why we included this.</a> </td> </tr> <tr> <td class=3D"pb-1 =
+m-0" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; m=
+so-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0px; padding-bottom: 8=
+px;">You are receiving LinkedIn notification emails.</td> </tr> <tr> <td cl=
+ass=3D"pb-1 m-0" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adj=
+ust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0px; paddi=
+ng-bottom: 8px;"> <a href=3D"https://www.linkedin.com/comm/psettings/email-=
+unsubscribe?lipi=3Durn%3Ali%3Apage%3Aemail_email_profile_analyzer_01%3BPHyA=
+YWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D26qVJ=
+1HnmTdr01&amp;trk=3Deml-email_profile_analyzer_01-unsubscribe-0-footerGlimm=
+er&amp;trkEmail=3Deml-email_profile_analyzer_01-unsubscribe-0-footerGlimmer=
+-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1vosf-loqx9ewg-b9&amp;loid=3D=
+AQFIyEUV_E6VXgAAAYuzLd064jSb5rAQ2Q88qCqlwLWcXjzjTvN_4zvyMuurHQ_RbxvM4LXnriZ=
+m1S31V24WRu8ycRsaJdOUsSpJrAxVtud0hup2MXQ" target=3D"_blank" style=3D"color:=
+ #0a66c2; cursor: pointer; display: inline-block; text-decoration: none; -w=
+ebkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">Unsubscribe</a> =
+=C2=A0=C2=A0=C2=B7=C2=A0=C2=A0 <a href=3D"https://www.linkedin.com/help/lin=
+kedin/answer/67?lang=3Den&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_profile_=
+analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&=
+amp;midSig=3D26qVJ1HnmTdr01&amp;trk=3Deml-email_profile_analyzer_01-help-0-=
+footerglimmer&amp;trkEmail=3Deml-email_profile_analyzer_01-help-0-footergli=
+mmer-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1vosf-loqx9ewg-b9&amp;otp=
+Token=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE4ZWM2ZDI0MTkwYWQ4OTZiN2J=
+jZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNjdiZWVkMDIyMDRkZDU3ZjM2Nz=
+UyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" style=3D"color: #0a66c2; =
+cursor: pointer; display: inline-block; text-decoration: none; -webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%;">Help</a> </td> </tr> <tr> =
+<td class=3D"pb-1" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-a=
+djust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding-bottom: =
+8px;"> <a href=3D"https://www.linkedin.com/comm/feed/?lipi=3Durn%3Ali%3Apag=
+e%3Aemail_email_profile_analyzer_01%3BPHyAYWXpQQ%2BDXHtuTaV7Ew%3D%3D&amp;mi=
+dToken=3DAQFgtsfuWz-K9A&amp;midSig=3D26qVJ1HnmTdr01&amp;trk=3Deml-email_pro=
+file_analyzer_01-footer-0-logoGlimmer&amp;trkEmail=3Deml-email_profile_anal=
+yzer_01-footer-0-logoGlimmer-null-k1vosf~loqx9ewg~b9-null-null&amp;eid=3Dk1=
+vosf-loqx9ewg-b9&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDAxN2VlYjE=
+4ZWM2ZDI0MTkwYWQ4OTZiN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NGRmMWM0ZmY2M2E1YWRjNj=
+diZWVkMDIyMDRkZDU3ZjM2NzUyZTQ3YzNhNmZlMTYwLDEsMQ%3D%3D" target=3D"_blank" s=
+tyle=3D"color: #0a66c2; cursor: pointer; display: inline-block; text-decora=
+tion: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;"> <=
+img src=3D"https://static.licdn.com/sc/h/9ehe6n39fa07dc5edzv0rla4e" alt=3D"=
+LinkedIn" class=3D"block h-[14px] w-[56px] image-rendering-crisp" style=3D"=
+outline: none; text-decoration: none; image-rendering: -moz-crisp-edges; im=
+age-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; =
+image-rendering: crisp-edges; -ms-interpolation-mode: nearest-neighbor; dis=
+play: block; height: 14px; width: 56px;" width=3D"56" height=3D"14"> </a> <=
+/td> </tr> <tr> <td data-test-copyright-text style=3D"-webkit-text-size-adj=
+ust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rsp=
+ace: 0pt;"> =C2=A9 2023 LinkedIn Corporation, 1&zwnj;000 West Maude Avenue,=
+ Sunnyvale, CA 94085. <span data-test-trademarks-text> LinkedIn and the Lin=
+kedIn logo are registered trademarks of LinkedIn. </span> </td> </tr> </tbo=
+dy> </table> </td> </tr> </tbody> </table> <img alt role=3D"presentation" s=
+rc=3D"https://www.linkedin.com/emimp/ip_YXpGMmIzTm1MV3h2Y1hnNVpYZG5MV0k1Olp=
+XMWhhV3hmY0hKdlptbHNaVjloYm1Gc2VYcGxjbDh3TVE9PTo=3D.gif" style=3D"outline: =
+none; text-decoration: none; -ms-interpolation-mode: bicubic; width: 1px; h=
+eight: 1px;" width=3D"1" height=3D"1"> </body> </html>
+------=_Part_6048143_2080442661.1699518210133--
+

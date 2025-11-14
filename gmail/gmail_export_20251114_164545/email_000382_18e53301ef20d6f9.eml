@@ -1,0 +1,2690 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:651c:1a2c:b0:2d2:748b:49b8 with SMTP id by44csp1106175ljb;
+        Mon, 18 Mar 2024 13:10:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGBprKSmT0MwTmjrOxnIyHrQb/2ri22HdSRf5tDweS1sC/OESRLD2hJyUwLmYxvQxFX3cuH
+X-Received: by 2002:a05:6a00:3c8a:b0:6e7:933:9ecf with SMTP id lm10-20020a056a003c8a00b006e709339ecfmr916225pfb.16.1710792646232;
+        Mon, 18 Mar 2024 13:10:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710792646; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qkvPfjmDjguaGkVuk/JwxH1QKx4fEMd5LQfeX0Hcm8RwCuwwEBbKg+7Fg+15pFQHo4
+         8W1yrd63Rds3KODbeJlgg6DFIWlUjFAl9pfM6LV2nsSpf7l9/+cr8YNDphiK6cauWm/y
+         s4WaVKH5NUjLzYfYujNZX9XM5oz6jzXBfK2EBQfpuKFgi3VbDF7XX94Amco6M03Oc9yU
+         hSar+Qj+c7bSJQO5rwkM9BicLT+/YMip0Z1Ke6UfFqMz8dIkaswET3VHCTRUB4jROsiv
+         cAEESQyufFFknntI1RjaYzAzOi4ptioHXgKA2TRWZfzdFTHo3DHYginLjkmF+ideVIc8
+         y+aQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=require-recipient-valid-since:feedback-id:list-unsubscribe-post
+         :list-unsubscribe:date:to:mime-version:subject:message-id:from
+         :dkim-signature:dkim-signature;
+        bh=U5Jk/aw2TOhD+3qlt7GE2htpB+CpG1rmktpi5fSPwGo=;
+        fh=RHNm77+VlTQcibxJsrZ3cdTaJfE+SJ7YQyym+MVnFIg=;
+        b=CXe4m+U+zwtWwvca7JLTrG1d95SWP3etB6xB+R19gm5okCNdRRNakyGiEQh4SvZ9Uz
+         EetC0/5tpZQCgr28sjJFBEmm2QPRBoUfLP3rAM+HY1sAljfsab7AaCQ/rc4IG8Hg++BL
+         7c5/v0yM3UOW64G/hUZHfsvGcyCPeWt3ZQwVN3pt93jS8JAFIwImWzybnIdW+/L9p3US
+         EMDi+blCbKcWolw97F7kaK30iHZ+x55ZOGniyzywscHMxjPRkYj92UEttN98yUSLeR/M
+         AvEGTBCxzkhCRaWmCVrQidXKsYwsF5BwklEFUGgzcXQzabWQifgy7sZDTDTrkDIG72bq
+         gMIA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@maile.linkedin.com header.s=d2048-202308-0e header.b=mUJIk1FE;
+       dkim=pass header.i=@linkedin.com header.s=d2048-202308-00 header.b=V8m33TDH;
+       spf=pass (google.com: domain of m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy6avxvkwcjutm8yui@bounce.linkedin.com designates 108.174.6.202 as permitted sender) smtp.mailfrom=m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy6avxvkwcjutm8yui@bounce.linkedin.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=linkedin.com
+Return-Path: <m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy6avxvkwcjutm8yui@bounce.linkedin.com>
+Received: from maile-db.linkedin.com (maile-db.linkedin.com. [108.174.6.202])
+        by mx.google.com with ESMTPS id b14-20020a63714e000000b005dc9c8e5051si8430653pgn.426.2024.03.18.13.10.45
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Mar 2024 13:10:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy6avxvkwcjutm8yui@bounce.linkedin.com designates 108.174.6.202 as permitted sender) client-ip=108.174.6.202;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@maile.linkedin.com header.s=d2048-202308-0e header.b=mUJIk1FE;
+       dkim=pass header.i=@linkedin.com header.s=d2048-202308-00 header.b=V8m33TDH;
+       spf=pass (google.com: domain of m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy6avxvkwcjutm8yui@bounce.linkedin.com designates 108.174.6.202 as permitted sender) smtp.mailfrom=m-9ua4hghtnof9dndi1jmyjlwevc0mqgezfbqtbu1708fsdy6avxvkwcjutm8yui@bounce.linkedin.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=linkedin.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=maile.linkedin.com;
+	s=d2048-202308-0e; t=1710792642;
+	bh=U5Jk/aw2TOhD+3qlt7GE2htpB+CpG1rmktpi5fSPwGo=;
+	h=From:Subject:MIME-Version:Content-Type:To:Date:X-LinkedIn-Class:
+	 X-LinkedIn-Template:X-LinkedIn-fbl;
+	b=mUJIk1FEMhaJSwqIznb1zZos6gY1oSQsotarMbuuZn8m9sWvhnEHz7X4kXs/APoc8
+	 x9xi2rrXn/vTZv874J67Rb1PIP6S5j6xHtltEzKQaAsrXUfi3eq34SJq6YLNzAqozp
+	 aL3DvAcge26r0Wv34S5iPCfSrFxRAKkt/dla7kBDtXnh0ld/DVKWjalIHBsJ+McyVi
+	 YDb6UFoRt5+rDfrTOJBcZzybYHXan26DvVwfuELxeHikQbw84YMjBcxglJMHxiZ1xk
+	 zIqLGP/z0yaG3Z2+oU+63khmLZDeIIIvcdtWtTMPxsw4O3II4f5L8yb6QY17EAB+dm
+	 6YISZBomzKRWg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linkedin.com;
+	s=d2048-202308-00; t=1710792642;
+	bh=U5Jk/aw2TOhD+3qlt7GE2htpB+CpG1rmktpi5fSPwGo=;
+	h=From:Subject:MIME-Version:Content-Type:To:Date:X-LinkedIn-Class:
+	 X-LinkedIn-Template:X-LinkedIn-fbl;
+	b=V8m33TDHXlV05t/6Q+mth5e6TmsmPmc7k9fHXEcIq5b4S0C9rIbTzMLS6zB0YSDCs
+	 qTGcUflpQ78Imsw5h608KRdZ0eTL6JMgqWftuPSX9FGDzEATO0h8MbCcS55K9Y/NzB
+	 GJgQ24EjKhpVeak2ozOFF9dGM6zLkc4qNZ48eu/IQwY3QWLjaanEoJpk2xCN3BbViz
+	 EKDK5KFJqwODegBRl3Tr4DrmXktW/ep4MzIqR0Qk/+/xi/5JJufcIOQavZY3RO9N8z
+	 HGox100zw6JFHb8Vn6C3w+NAbCnxLGGEBD1zG6aPRDjUyJtH6KAw8ctH05OpWsMKMQ
+	 H8IJDAzErY6Fg==
+From: LinkedIn <updates-noreply@linkedin.com>
+Message-ID: <2112754012.14650922.1710792639341@lva1-app131282.prod.linkedin.com>
+Subject: 1337 Coding School and others share their thoughts on LinkedIn
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_14650920_1029926049.1710792639339"
+To: Djenty Boy <ely.ubuntu0@gmail.com>
+Date: Mon, 18 Mar 2024 20:10:39 +0000 (UTC)
+X-LinkedIn-Class: EMAIL-DEFAULT
+X-LinkedIn-Template: email_network_conversations_01
+X-LinkedIn-fbl: m2-aszymmxh1wrh60pgocctsj3uta3kumcge1xhlr7z1pn9sjyvq8dxism1fvoj1o66vk2pw0ph86wkvaukoibnwpp33fz05q9mv36uyg
+X-LinkedIn-Id: k1vosf-ltxc3rv9-lj
+List-Unsubscribe: <https://www.linkedin.com/comm/psettings/email-unsubscribe?lipi=urn%3Ali%3Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&midToken=AQFgtsfuWz-K9A&midSig=3Fef3fASeW4Xc1&trk=eml-email_network_conversations_01-unsub-0-unsub&trkEmail=eml-email_network_conversations_01-unsub-0-unsub-null-k1vosf~ltxc3rv9~lj-null-null&eid=k1vosf-ltxc3rv9-lj&loid=AQEAyvS6lZGNNAAAAY5TMAICksKlnCcl_fCT4Ar0TlOMDnJkKM2SEXjCYk_6SKTPr5xsR0xn7HcNkdump47ojqpTySDrtNT9nu_nn5unyKeFSVpeIkdP0IdAEbY3>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: email_network_conversations_01:linkedin
+Require-Recipient-Valid-Since: ely.ubuntu0@gmail.com; Tue, 7 Nov 2023 17:26:28 +0000
+
+------=_Part_14650920_1029926049.1710792639339
+Content-Type: text/plain;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-ID: text-body
+
+----------------------------------------
+Your highlights
+----------------------------------------
+
+
+1337 Coding School shared a post: Visite des =C3=A9tudiants de l'ENCG Mekn=
+=C3=A8s a 1337 Khouribga
+LIKE PRAISE EMPATHY 149, 7 Comments
+
+
+Read more: https://www.linkedin.com/comm/feed/update/urn:li:activity:717432=
+5233221267457?lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_01=
+%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D3Fef=
+3fASeW4Xc1&trk=3Deml-email_network_conversations_01-network~post~cta~text-0=
+-read~more&trkEmail=3Deml-email_network_conversations_01-network~post~cta~t=
+ext-0-read~more-null-k1vosf~ltxc3rv9~lj-null-null&eid=3Dk1vosf-ltxc3rv9-lj&=
+otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZm=
+N2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjR=
+lYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D
+
+See more on LinkedIn: https://www.linkedin.com/comm/feed/?lipi=3Durn%3Ali%3=
+Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3=
+D%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D3Fef3fASeW4Xc1&trk=3Deml-email_netw=
+ork_conversations_01-footer_promo-0-footer_see_all&trkEmail=3Deml-email_net=
+work_conversations_01-footer_promo-0-footer_see_all-null-k1vosf~ltxc3rv9~lj=
+-null-null&eid=3Dk1vosf-ltxc3rv9-lj&otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcw=
+ZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmN=
+lZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D
+     =20
+
+----------------------------------------
+
+This email was intended for Djenty Boy (Student at 1337 Coding School)
+Learn why we included this: https://www.linkedin.com/help/linkedin/answer/4=
+788?lang=3Den&lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_01=
+%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D3Fef=
+3fASeW4Xc1&trk=3Deml-email_network_conversations_01-SecurityHelp-0-textfoot=
+erglimmer&trkEmail=3Deml-email_network_conversations_01-SecurityHelp-0-text=
+footerglimmer-null-k1vosf~ltxc3rv9~lj-null-null&eid=3Dk1vosf-ltxc3rv9-lj&ot=
+pToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2=
+JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlY=
+zBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D
+You are receiving Network Conversations emails. Some content may be automat=
+ically translated based on
+      <a href=3D"https://www.linkedin.com/mypreferences/d/language-for-tran=
+slation" target=3D"_blank" class=3D"link-no-visited-state" data-tracking-wi=
+ll-navigate data-tracking-control-name=3D"email_network_conversations_conte=
+nt_settings_link" style=3D"cursor: pointer; display: inline-block; text-dec=
+oration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; =
+font-weight: 600; color: #0a66c2;">your settings</a>.
+
+Unsubscribe: https://www.linkedin.com/comm/psettings/email-unsubscribe?lipi=
+=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I=
+4X%2BbQu2bQ%3D%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D3Fef3fASeW4Xc1&trk=3De=
+ml-email_network_conversations_01-unsubscribe-0-textfooterglimmer&trkEmail=
+=3Deml-email_network_conversations_01-unsubscribe-0-textfooterglimmer-null-=
+k1vosf~ltxc3rv9~lj-null-null&eid=3Dk1vosf-ltxc3rv9-lj&loid=3DAQEAyvS6lZGNNA=
+AAAY5TMAICksKlnCcl_fCT4Ar0TlOMDnJkKM2SEXjCYk_6SKTPr5xsR0xn7HcNkdump47ojqpTy=
+SDrtNT9nu_nn5unyKeFSVpeIkdP0IdAEbY3
+Help: https://www.linkedin.com/help/linkedin/answer/67?lang=3Den&lipi=3Durn=
+%3Ali%3Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2Bb=
+Qu2bQ%3D%3D&midToken=3DAQFgtsfuWz-K9A&midSig=3D3Fef3fASeW4Xc1&trk=3Deml-ema=
+il_network_conversations_01-help-0-textfooterglimmer&trkEmail=3Deml-email_n=
+etwork_conversations_01-help-0-textfooterglimmer-null-k1vosf~ltxc3rv9~lj-nu=
+ll-null&eid=3Dk1vosf-ltxc3rv9-lj&otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmV=
+iNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZT=
+E0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D
+
+=C2=A9 2024 LinkedIn Corporation, 1zwnj000 West Maude Avenue, Sunnyvale, CA=
+ 94085.
+LinkedIn and the LinkedIn logo are registered trademarks of LinkedIn.
+------=_Part_14650920_1029926049.1710792639339
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-ID: html-body
+
+<html xmlns=3D"http://www.w3.org/1999/xhtml" lang=3D"en" xml:lang=3D"en"> <=
+head> <meta http-equiv=3D"Content-Type" content=3D"text/html;charset=3Dutf-=
+8"> <meta name=3D"HandheldFriendly" content=3D"true"> <meta name=3D"viewpor=
+t" content=3D"width=3Ddevice-width; initial-scale=3D0.666667; user-scalable=
+=3D0"> <meta name=3D"viewport" content=3D"width=3Ddevice-width"> <title></t=
+itle> <style>
+            @media (max-width: 512px) { .mercado-container { width: 100% !i=
+mportant; } }
+          </style> <style>
+            @media (max-width: 480px) { .inline-button, .inline-button tabl=
+e { display: none !important; }
+            .full-width-button, .full-width-button table { display: table !=
+important; } }
+          </style> <style>body {font-family: -apple-system, system-ui, Blin=
+kMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+            'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid S=
+ans', 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica=
+, Arial, sans-serif;}</style> <!--[if mso]><style type=3D"text/css"> </styl=
+e><![endif]--> <!--[if IE]><style type=3D"text/css"> </style><![endif]--> <=
+style>
+@media (max-width: 480px) {
+  .inline-button,
+.inline-button table {
+    display: none !important;
+  }
+
+  .full-width-button,
+.full-width-button table {
+    display: table !important;
+  }
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 576px;
+  }
+
+  .\!container {
+    max-width: 576px !important;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+
+  .\!container {
+    max-width: 768px !important;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 992px;
+  }
+
+  .\!container {
+    max-width: 992px !important;
+  }
+}
+@media (min-width: 1128px) {
+  .container {
+    max-width: 1128px;
+  }
+
+  .\!container {
+    max-width: 1128px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .\!container {
+    max-width: 1200px !important;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+
+  .\!container {
+    max-width: 1440px !important;
+  }
+}
+@media (min-width: 1680px) {
+  .container {
+    max-width: 1680px;
+  }
+
+  .\!container {
+    max-width: 1680px !important;
+  }
+}
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1920px;
+  }
+
+  .\!container {
+    max-width: 1920px !important;
+  }
+}
+@media (min-width: 992px) {
+  .base-detail-page__header .nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1128px;
+  }
+}
+@media (max-width: 767px) {
+  .embedded-social-share .modal__outlet {
+    flex-direction: row;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+@media (max-width: 767px) {
+  .nav .search-bar {
+    order: 4;
+  }
+}
+@media (max-width: 767px) {
+  .nav .sign-in-card {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .nav--minified-mobile .nav__cta-container > *:not(.nav__link-person) {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .nav .search-bar--minified-mobile {
+    margin-bottom: 0px;
+    height: 100%;
+    flex-grow: 1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    order: initial;
+    width: initial;
+  }
+
+  .nav .search-bar--minified-mobile .search-bar__placeholder {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 767px) {
+  .tw-link-column-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 992px) {
+  .tw-link-column-item {
+    margin-bottom: 8px;
+  }
+
+  .tw-linkster .tw-link-column-item {
+    margin-bottom: 0px;
+  }
+}
+@media (max-width: 767px) {
+  .member-nav-menu .collapsible-dropdown__button {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .member-nav-menu .collapsible-dropdown__list {
+    right: 0px;
+    max-height: calc(100vh - 52px);
+    overflow-y: auto;
+  }
+}
+@media (max-width: 767px) {
+  .recent-searches.recent-searches--show {
+    position: fixed;
+    top: 168px;
+    left: 0px;
+    width: 100vw;
+    min-width: 100vw;
+    border-width: 0;
+  }
+}
+@media (max-width: 767px) {
+  .search-bar .dismissable-input {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0.75);
+    color: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', =
+Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Canta=
+rell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji'=
+, 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  .search-bar .dismissable-input:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .search-bar .dismissable-input:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .search-bar .dismissable-input:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:disabled:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:disabled:focus {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:disabled:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #cf0007;
+    color: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', =
+Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Canta=
+rell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji'=
+, 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  .input-error .search-bar .dismissable-input:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: #8a0005;
+    box-shadow: 0 0 0 1px #8a0005;
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .input-error .search-bar .dismissable-input:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: #8a0005;
+    cursor: pointer;
+    border-width: 1px;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled:focus {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .input-error .search-bar .dismissable-input:disabled:active {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+    border-width: 1px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .base-search-bar .input-error .search-bar .dismissable-input.typeahead-in=
+put {
+    border-style: solid;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .base-search-bar .input-error .search-bar .dismissable-input.typeahead-in=
+put:active {
+    border-style: solid;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .base-search-bar .input-error .search-bar .dismissable-input.typeahead-in=
+put:focus-within {
+    border-style: solid;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .search-bar .dismissable-input {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:hover {
+    border-right-color: rgba(0, 0, 0, 0.08);
+  }
+}
+@media (min-width: 992px) {
+  .search-bar .dismissable-input {
+    width: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  }
+
+  .search-bar .dismissable-input:hover {
+    border-right-color: rgba(0, 0, 0, 0.08);
+  }
+}
+@media (max-width: 767px) {
+  .search-bar:not(.isExpanded) .base-search-bar {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  @media (max-width: 767px) {
+    .search-bar.isExpanded .search-bar__placeholder {
+      display: none;
+    }
+
+    .search-bar.isExpanded .base-search-bar__form {
+      display: flex;
+    }
+
+    position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 1000;
+        margin-bottom: 0px;
+        height: 100%;
+        background-color: #ffffff;
+    .search-bar.isExpanded .switcher-tabs__cancel-btn,
+.search-bar.isExpanded .switcher-tabs {
+      display: inherit;
+    }
+
+  }
+}
+@media screen and (max-width: 767px) {
+  .stuck .search-bar {
+    transition: height 0.4s, margin-bottom 0.4s ease-in-out;
+    margin-bottom: 0px;
+    height: 0px;
+  }
+
+  .stuck .search-bar--minified-mobile .search-bar__placeholder {
+    max-height: initial;
+    pointer-events: initial;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+}
+@media screen and (min-width: 767px) {
+  .switcher-tabs .switcher-tabs__button:after {
+    border-bottom: none;
+  }
+}
+@media (max-width: 767px) {
+  .tabs__list {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .typeahead-input__dropdown.typeahead-input__dropdown--show {
+    position: fixed;
+    top: 158px;
+    left: 0px;
+    width: 100vw;
+    min-width: 100vw;
+  }
+}
+@media (max-width: 767px) {
+  .base-search-bar .dismissable-input {
+    max-height: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .base-main-card__media ~ .base-main-card__info {
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .mx-main-feed-card-no-gutter {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .mx-main-feed-card-no-gutter {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}
+@media (max-width: 767px) {
+  .px-main-feed-card-no-gutter {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .px-main-feed-card-no-gutter {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .main-feed-activity-card__header {
+    padding-right: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .filter .collapsible-dropdown__list {
+    max-height: 400px;
+  }
+}
+@media (forced-colors: active) {
+  .filter-button--selected {
+    border-width: 4px;
+  }
+}
+@media (max-width: 767px) {
+  .base-card .duration {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .social-action-bar__button {
+    flex-direction: row;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+@media (max-width: 767px) {
+  .social-action-bar__icon--svg {
+    margin: 0px;
+    height: 24px;
+    width: 24px;
+  }
+
+  .social-action-bar__button-text {
+    padding-left: 4px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .social-action-bar .social-action-bar__button--transcript {
+    flex-direction: column;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 12px;
+  }
+
+  .social-action-bar .social-action-bar__icon--transcript {
+    margin-right: 0px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .social-action-bar__button-text--transcript {
+    padding-left: 0px !important;
+  }
+}
+@media only screen and (min-width: 30.06em) {
+  .card-cta-container-mobile {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+  }
+
+  .card-cta-container-desktop {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-color-surface-accent-4 {
+    background-color: #dde7f1;
+  }
+}
+@media (min-width: 576px) {
+  .xs\:order-3 {
+    order: 3;
+  }
+
+  .xs\:mx-0\.25 {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .xs\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .xs\:w-\[48px\] {
+    width: 48px;
+  }
+
+  .xs\:w-max {
+    width: max-content;
+  }
+
+  .xs\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .xs\:border-r-1 {
+    border-right-width: 1px;
+  }
+
+  .xs\:pt-0 {
+    padding-top: 0px;
+  }
+
+  .xs\:after\:\!h-\[37px\]::after {
+    content: undefined;
+    height: 37px !important;
+  }
+
+  @media (min-width: 576px) {
+    .xs\:after\:\!h-\[37px\]::after {
+      content: "";
+    }
+
+    @media display: flex;
+    height: 100%;
+    width: 1px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    content: undefined;
+   (min-width: 576px) {
+      .xs\:after\:up-down-divider::after {
+        content: "";
+      }
+
+      @media (min-width: 768px) {
+        .sm\:mx-1 {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+
+        .sm\:w-\[64px\] {
+          width: 64px;
+        }
+
+        @media (min-width: 992px) {
+          .md\:overflow-x-hidden {
+            overflow-x: hidden;
+          }
+
+          @media (max-width: 767px) {
+            .babybear\:invisible {
+              visibility: hidden;
+            }
+
+            .babybear\:static {
+              position: static;
+            }
+
+            .babybear\:right-4 {
+              right: 32px;
+            }
+
+            .babybear\:bottom-0 {
+              bottom: 0px;
+            }
+
+            .babybear\:\!-top-0\.5 {
+              top: -4px !important;
+            }
+
+            .babybear\:\!-top-0 {
+              top: -0px !important;
+            }
+
+            .babybear\:top-0\.5 {
+              top: 4px;
+            }
+
+            .babybear\:top-0 {
+              top: 0px;
+            }
+
+            .babybear\:bottom-\[120\%\] {
+              bottom: 120%;
+            }
+
+            .babybear\:left-3 {
+              left: 24px;
+            }
+
+            .babybear\:-top-1 {
+              top: -8px;
+            }
+
+            .babybear\:z-0 {
+              z-index: 0;
+            }
+
+            .babybear\:btn-sm {
+              height: min-content;
+              min-height: 32px;
+              border-radius: 24px;
+              padding-top: 7px;
+              padding-bottom: 7px;
+              padding-left: 16px;
+              padding-right: 16px;
+              text-align: center;
+              font-size: 14px;
+              font-weight: 600;
+            }
+
+            .babybear\:btn-sm,
+.babybear\:btn-sm:visited,
+.babybear\:btn-sm:focus {
+              cursor: pointer;
+              text-decoration-line: none;
+            }
+
+            .babybear\:btn-sm:hover,
+.babybear\:btn-sm:visited:hover {
+              text-decoration-line: none;
+            }
+
+            .babybear\:btn-sm:disabled {
+              cursor: not-allowed;
+            }
+
+            .babybear\:m-0 {
+              margin: 0px;
+            }
+
+            .babybear\:my-2 {
+              margin-top: 16px;
+              margin-bottom: 16px;
+            }
+
+            .babybear\:mx-0 {
+              margin-left: 0px;
+              margin-right: 0px;
+            }
+
+            .babybear\:mx-mobile-container-padding {
+              margin-left: 16px;
+              margin-right: 16px;
+            }
+
+            .babybear\:ml-0 {
+              margin-left: 0px;
+            }
+
+            .babybear\:mr-0 {
+              margin-right: 0px;
+            }
+
+            .babybear\:mb-2 {
+              margin-bottom: 16px;
+            }
+
+            .babybear\:mt-0 {
+              margin-top: 0px;
+            }
+
+            .babybear\:mb-0\.5 {
+              margin-bottom: 4px;
+            }
+
+            .babybear\:mb-0 {
+              margin-bottom: 0px;
+            }
+
+            .babybear\:mt-0\.5 {
+              margin-top: 4px;
+            }
+
+            .babybear\:mb-1 {
+              margin-bottom: 8px;
+            }
+
+            .babybear\:mt-\[6px\] {
+              margin-top: 6px;
+            }
+
+            .babybear\:ml-\[-9999px\] {
+              margin-left: -9999px;
+            }
+
+            .babybear\:mb-1\.5 {
+              margin-bottom: 12px;
+            }
+
+            .babybear\:ml-1 {
+              margin-left: 8px;
+            }
+
+            .babybear\:btn-secondary-emphasis {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(0, 0, 0, 0);
+              color: #0a66c2;
+            }
+
+            .babybear\:btn-secondary-emphasis:visited {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(0, 0, 0, 0);
+              color: #0a66c2;
+            }
+
+            .babybear\:btn-secondary-emphasis:focus {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(0, 0, 0, 0);
+              color: #0a66c2;
+            }
+
+            .babybear\:flex {
+              display: flex;
+            }
+
+            .babybear\:btn-secondary-emphasis {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(0, 0, 0, 0);
+              color: #0a66c2;
+            }
+
+            .babybear\:btn-secondary-emphasis:visited {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(0, 0, 0, 0);
+              color: #0a66c2;
+            }
+
+            .babybear\:btn-secondary-emphasis:focus {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(0, 0, 0, 0);
+              color: #0a66c2;
+            }
+
+            .babybear\:btn-secondary-emphasis:hover {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(112, 181, 249, 0.1);
+              color: #004182;
+            }
+
+            .babybear\:btn-secondary-emphasis:visited:hover {
+              box-shadow: 0 0 0 1px #0a66c2;
+              background-color: rgba(112, 181, 249, 0.1);
+              color: #004182;
+            }
+
+            .babybear\:btn-secondary-emphasis:active {
+              box-shadow: 0 0 0 1px #004182;
+              background-color: rgba(112, 181, 249, 0.2);
+              color: #004182;
+            }
+
+            .babybear\:btn-secondary-emphasis:disabled {
+              box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
+              background-color: rgba(0, 0, 0, 0.08);
+              color: rgba(0, 0, 0, 0.3);
+            }
+
+            .babybear\:hidden {
+              display: none;
+            }
+
+            .babybear\:h-\[360px\] {
+              height: 360px;
+            }
+
+            .babybear\:h-6 {
+              height: 48px;
+            }
+
+            .babybear\:h-\[72px\] {
+              height: 72px;
+            }
+
+            .babybear\:h-4 {
+              height: 32px;
+            }
+
+            .babybear\:h-\[27px\] {
+              height: 27px;
+            }
+
+            .babybear\:h-\[1px\] {
+              height: 1px;
+            }
+
+            .babybear\:h-\[48px\] {
+              height: 48px;
+            }
+
+            .babybear\:h-auto {
+              height: auto;
+            }
+
+            .babybear\:h-\[180px\] {
+              height: 180px;
+            }
+
+            .babybear\:max-h-\[225px\] {
+              max-height: 225px;
+            }
+
+            .babybear\:max-h-\[400px\] {
+              max-height: 400px;
+            }
+
+            .babybear\:max-h-4 {
+              max-height: 32px;
+            }
+
+            .babybear\:max-h-\[250px\] {
+              max-height: 250px;
+            }
+
+            .babybear\:min-h-\[134px\] {
+              min-height: 134px;
+            }
+
+            .babybear\:w-\[360px\] {
+              width: 360px;
+            }
+
+            .babybear\:w-full {
+              width: 100%;
+            }
+
+            .babybear\:w-11\/12 {
+              width: 91.666667%;
+            }
+
+            .babybear\:w-\[199px\] {
+              width: 199px;
+            }
+
+            .babybear\:w-6 {
+              width: 48px;
+            }
+
+            .babybear\:w-\[27px\] {
+              width: 27px;
+            }
+
+            .babybear\:w-\[1px\] {
+              width: 1px;
+            }
+
+            .babybear\:w-\[100vw\] {
+              width: 100vw;
+            }
+
+            .babybear\:w-\[calc\(100\%-68px\)\] {
+              width: calc(100% - 68px);
+            }
+
+            .babybear\:min-w-full {
+              min-width: 100%;
+            }
+
+            .babybear\:max-w-\[790px\] {
+              max-width: 790px;
+            }
+
+            .babybear\:max-w-\[32px\] {
+              max-width: 32px;
+            }
+
+            .babybear\:flex-none {
+              flex: none;
+            }
+
+            .babybear\:flex-auto {
+              flex: 1 1 auto;
+            }
+
+            .babybear\:flex-1 {
+              flex: 1 1 0%;
+            }
+
+            .babybear\:basis-0 {
+              flex-basis: 0px;
+            }
+
+            .babybear\:basis-1\/2 {
+              flex-basis: 50%;
+            }
+
+            .babybear\:-translate-x-50\% {
+              transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX=
+(1) scaleY(1);
+            }
+
+            @media (max-width: 767px) {
+              .babybear\:-translate-x-50\% {
+                transform: translate(-50%, 0) rotate(90deg) skewX(0) skewY(=
+0) scaleX(1) scaleY(1);
+              }
+
+              @media (max-width: 767px) {
+                .babybear\:-translate-x-50\% {
+                  transform: translate(-50%, 0) rotate(90deg) skewX(0) skew=
+Y(0) scaleX(1) scaleY(1);
+                }
+
+                @media (max-width: 767px) {
+                  .babybear\:-translate-x-50\% {
+                    transform: translate(-50%, 0) rotate(90deg) skewX(0) sk=
+ewY(0) scaleX(1) scaleY(1);
+                  }
+
+                  @media (max-width: 767px) {
+                    .babybear\:-translate-x-50\% {
+                      transform: translate(-50%, 0) rotate(90deg) skewX(0) =
+skewY(0) scaleX(1) scaleY(1);
+                    }
+
+                    @media (max-width: 767px) {
+                      .babybear\:-translate-x-50\% {
+                        transform: translate(-50%, 0) rotate(90deg) skewX(0=
+) skewY(0) scaleX(1) scaleY(1);
+                      }
+
+                      @media (max-width: 767px) {
+                        .babybear\:-translate-x-50\% {
+                          transform: translate(-50%, 0) rotate(90deg) skewX=
+(0) skewY(0) scaleX(1) scaleY(1);
+                        }
+
+                        @media (max-width: 767px) {
+                          .babybear\:-translate-x-50\% {
+                            transform: translate(-50%, 0) rotate(90deg) ske=
+wX(0) skewY(0) scaleX(1) scaleY(1);
+                          }
+
+                          @media (max-width: 767px) {
+                            .babybear\:-translate-x-50\% {
+                              transform: translate(-50%, 0) rotate(90deg) s=
+kewX(0) skewY(0) scaleX(1) scaleY(1);
+                            }
+
+                            @media (max-width: 767px) {
+                              .babybear\:-translate-x-50\% {
+                                transform: translate(-50%, 0) rotate(90deg)=
+ skewX(0) skewY(0) scaleX(1) scaleY(1);
+                              }
+
+                              @media (max-width: 767px) {
+                                .babybear\:-translate-x-50\% {
+                                  transform: translate(-50%, 0) rotate(90de=
+g) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                }
+
+                                @media (max-width: 767px) {
+                                  .babybear\:-translate-x-50\% {
+                                    transform: translate(-50%, 0) rotate(90=
+deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                  }
+
+                                  @media (max-width: 767px) {
+                                    .babybear\:-translate-x-50\% {
+                                      transform: translate(-50%, 0) rotate(=
+90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                    }
+
+                                    @media (max-width: 767px) {
+                                      .babybear\:-translate-x-50\% {
+                                        transform: translate(-50%, 0) rotat=
+e(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                      }
+
+                                      @media (max-width: 767px) {
+                                        .babybear\:-translate-x-50\% {
+                                          transform: translate(-50%, 0) rot=
+ate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                        }
+
+                                        @media transform: translate(0, 0) r=
+otate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+     (max-width: 767px) {
+                                          .babybear\:rotate-90 {
+                                            transform: translate(-50%, 0) r=
+otate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                          }
+
+                                          @media (max-width: 767px) {
+                                            .babybear\:rotate-90 {
+                                              transform: translate(-50%, 0)=
+ rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                            }
+
+                                            @media (max-width: 767px) {
+                                              .babybear\:rotate-90 {
+                                                transform: translate(-50%, =
+0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                              }
+
+                                              @media (max-width: 767px) {
+                                                .babybear\:rotate-90 {
+                                                  transform: translate(-50%=
+, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                }
+
+                                                @media (max-width: 767px) {
+                                                  .babybear\:rotate-90 {
+                                                    transform: translate(-5=
+0%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                  }
+
+                                                  @media (max-width: 767px)=
+ {
+                                                    .babybear\:rotate-90 {
+                                                      transform: translate(=
+-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                    }
+
+                                                    @media (max-width: 767p=
+x) {
+                                                      .babybear\:rotate-90 =
+{
+                                                        transform: translat=
+e(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                      }
+
+                                                      @media (max-width: 76=
+7px) {
+                                                        .babybear\:rotate-9=
+0 {
+                                                          transform: transl=
+ate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                        }
+
+                                                        @media (max-width: =
+767px) {
+                                                          .babybear\:rotate=
+-90 {
+                                                            transform: tran=
+slate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                          }
+
+                                                          @media (max-width=
+: 767px) {
+                                                            .babybear\:rota=
+te-90 {
+                                                              transform: tr=
+anslate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                            }
+
+                                                            @media (max-wid=
+th: 767px) {
+                                                              .babybear\:ro=
+tate-90 {
+                                                                transform: =
+translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                              }
+
+                                                              @media (max-w=
+idth: 767px) {
+                                                                .babybear\:=
+rotate-90 {
+                                                                  transform=
+: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                                }
+
+                                                                @media (max=
+-width: 767px) {
+                                                                  .babybear=
+\:rotate-90 {
+                                                                    transfo=
+rm: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+                                                                  }
+
+                                                                  @media (m=
+ax-width: 767px) {
+                                                                    .babybe=
+ar\:rotate-90 {
+                                                                      trans=
+form: translate(-50%, 0) rotate(90deg) skewX(0) skewY(0) scaleX(1) scaleY(1=
+);
+                                                                    }
+
+                                                                    border-=
+radius: 8px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(0,
+0,
+0,
+0.08);
+        background-color: #ffffff;
+    .babybear\:flex-row {
+                                                                      flex-=
+direction: row;
+                                                                    }
+
+                                                                    .babybe=
+ar\:flex-col {
+                                                                      flex-=
+direction: column;
+                                                                    }
+
+                                                                    .babybe=
+ar\:flex-wrap {
+                                                                      flex-=
+wrap: wrap;
+                                                                    }
+
+                                                                    .babybe=
+ar\:items-start {
+                                                                      align=
+-items: flex-start;
+                                                                    }
+
+                                                                    .babybe=
+ar\:items-center {
+                                                                      align=
+-items: center;
+                                                                    }
+
+                                                                    .babybe=
+ar\:justify-start {
+                                                                      justi=
+fy-content: flex-start;
+                                                                    }
+
+                                                                    .babybe=
+ar\:justify-end {
+                                                                      justi=
+fy-content: flex-end;
+                                                                    }
+
+                                                                    .babybe=
+ar\:justify-center {
+                                                                      justi=
+fy-content: center;
+                                                                    }
+
+                                                                    .babybe=
+ar\:justify-around {
+                                                                      justi=
+fy-content: space-around;
+                                                                    }
+
+                                                                    .babybe=
+ar\:self-start {
+                                                                      align=
+-self: flex-start;
+                                                                    }
+
+                                                                    .babybe=
+ar\:self-center {
+                                                                      align=
+-self: center;
+                                                                    }
+
+                                                                    .babybe=
+ar\:overflow-y-auto {
+                                                                      overf=
+low-y: auto;
+                                                                    }
+
+                                                                    .babybe=
+ar\:rounded-\[0px\] {
+                                                                      borde=
+r-radius: 0px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:border-b-1 {
+                                                                      borde=
+r-bottom-width: 1px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:border-solid {
+                                                                      borde=
+r-style: solid;
+                                                                    }
+
+                                                                    .babybe=
+ar\:border-color-border-low-emphasis {
+                                                                      borde=
+r-color: rgba(0, 0, 0, 0.3);
+                                                                    }
+
+                                                                    .babybe=
+ar\:bg-color-transparent {
+                                                                      backg=
+round-color: rgba(0, 0, 0, 0);
+                                                                    }
+
+                                                                    .babybe=
+ar\:bg-color-brand {
+                                                                      backg=
+round-color: #0a66c2;
+                                                                    }
+
+                                                                    .babybe=
+ar\:p-2 {
+                                                                      paddi=
+ng: 16px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:p-0 {
+                                                                      paddi=
+ng: 0px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:py-1 {
+                                                                      paddi=
+ng-top: 8px;
+                                                                      paddi=
+ng-bottom: 8px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:px-2 {
+                                                                      paddi=
+ng-left: 16px;
+                                                                      paddi=
+ng-right: 16px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:px-0 {
+                                                                      paddi=
+ng-left: 0px;
+                                                                      paddi=
+ng-right: 0px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:px-mobile-container-padding {
+                                                                      paddi=
+ng-left: 16px;
+                                                                      paddi=
+ng-right: 16px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:py-3 {
+                                                                      paddi=
+ng-top: 24px;
+                                                                      paddi=
+ng-bottom: 24px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:py-1\.5 {
+                                                                      paddi=
+ng-top: 12px;
+                                                                      paddi=
+ng-bottom: 12px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pr-0\.5 {
+                                                                      paddi=
+ng-right: 4px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pr-0 {
+                                                                      paddi=
+ng-right: 0px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pl-0\.5 {
+                                                                      paddi=
+ng-left: 4px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pl-0 {
+                                                                      paddi=
+ng-left: 0px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pt-0\.5 {
+                                                                      paddi=
+ng-top: 4px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pb-0 {
+                                                                      paddi=
+ng-bottom: 0px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pt-0 {
+                                                                      paddi=
+ng-top: 0px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:pb-2 {
+                                                                      paddi=
+ng-bottom: 16px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:text-xs {
+                                                                      font-=
+size: 12px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:text-sm {
+                                                                      font-=
+size: 14px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:font-bold {
+                                                                      font-=
+weight: 600;
+                                                                    }
+
+                                                                    .babybe=
+ar\:leading-\[150px\] {
+                                                                      line-=
+height: 150px;
+                                                                    }
+
+                                                                    .babybe=
+ar\:last\:border-b-0:last-child {
+                                                                      borde=
+r-bottom-width: 0;
+                                                                    }
+
+                                                                    @media =
+(min-width: 768px) and (max-width: 991px) {
+                                                                      .mama=
+bear\:absolute {
+                                                                        pos=
+ition: absolute;
+                                                                      }
+
+                                                                      .mama=
+bear\:right-4 {
+                                                                        rig=
+ht: 32px;
+                                                                      }
+
+                                                                      .mama=
+bear\:-top-0\.5 {
+                                                                        top=
+: -4px;
+                                                                      }
+
+                                                                      .mama=
+bear\:-top-0 {
+                                                                        top=
+: -0px;
+                                                                      }
+
+                                                                      .mama=
+bear\:top-\[58px\] {
+                                                                        top=
+: 58px;
+                                                                      }
+
+                                                                      .mama=
+bear\:-top-1 {
+                                                                        top=
+: -8px;
+                                                                      }
+
+                                                                      .mama=
+bear\:mr-3 {
+                                                                        mar=
+gin-right: 24px;
+                                                                      }
+
+                                                                      .mama=
+bear\:flex {
+                                                                        dis=
+play: flex;
+                                                                      }
+
+                                                                      .mama=
+bear\:hidden {
+                                                                        dis=
+play: none;
+                                                                      }
+
+                                                                      .mama=
+bear\:\!h-4 {
+                                                                        hei=
+ght: 32px !important;
+                                                                      }
+
+                                                                      .mama=
+bear\:h-\[100\%\] {
+                                                                        hei=
+ght: 100%;
+                                                                      }
+
+                                                                      .mama=
+bear\:\!min-h-\[32px\] {
+                                                                        min=
+-height: 32px !important;
+                                                                      }
+
+                                                                      .mama=
+bear\:w-\[744px\] {
+                                                                        wid=
+th: 744px;
+                                                                      }
+
+                                                                      .mama=
+bear\:w-full {
+                                                                        wid=
+th: 100%;
+                                                                      }
+
+                                                                      .mama=
+bear\:w-\[calc\(100\%-97px\)\] {
+                                                                        wid=
+th: calc(100% - 97px);
+                                                                      }
+
+                                                                      .mama=
+bear\:min-w-0 {
+                                                                        min=
+-width: 0px;
+                                                                      }
+
+                                                                      .mama=
+bear\:max-w-\[790px\] {
+                                                                        max=
+-width: 790px;
+                                                                      }
+
+                                                                      .mama=
+bear\:flex-shrink-0 {
+                                                                        fle=
+x-shrink: 0;
+                                                                      }
+
+                                                                      .mama=
+bear\:container-lined {
+                                                                        bor=
+der-radius: 8px;
+                                                                        bor=
+der-width: 1px;
+                                                                        bor=
+der-style: solid;
+                                                                        bor=
+der-color: rgba(0, 0, 0, 0.08);
+                                                                        bac=
+kground-color: #ffffff;
+                                                                      }
+
+                                                                      .mama=
+bear\:container-raised {
+                                                                        bor=
+der-radius: 8px;
+                                                                        bac=
+kground-color: #ffffff;
+                                                                        box=
+-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+                                                                      }
+
+                                                                      .mama=
+bear\:flex-row {
+                                                                        fle=
+x-direction: row;
+                                                                      }
+
+                                                                      .mama=
+bear\:flex-col {
+                                                                        fle=
+x-direction: column;
+                                                                      }
+
+                                                                      .mama=
+bear\:flex-wrap {
+                                                                        fle=
+x-wrap: wrap;
+                                                                      }
+
+                                                                      .mama=
+bear\:items-start {
+                                                                        ali=
+gn-items: flex-start;
+                                                                      }
+
+                                                                      .mama=
+bear\:items-center {
+                                                                        ali=
+gn-items: center;
+                                                                      }
+
+                                                                      .mama=
+bear\:justify-start {
+                                                                        jus=
+tify-content: flex-start;
+                                                                      }
+
+                                                                      .mama=
+bear\:gap-y-1 {
+                                                                        row=
+-gap: 8px;
+                                                                      }
+
+                                                                      .mama=
+bear\:self-center {
+                                                                        ali=
+gn-self: center;
+                                                                      }
+
+                                                                      .mama=
+bear\:tab-vertical.tab-sm,
+.mamabear\:tab-vertical .tab-md,
+.mamabear\:tab-vertical .tab-lg {
+                                                                        jus=
+tify-content: flex-start;
+                                                                      }
+
+                                                                      .mama=
+bear\:tab-vertical.tab-selected {
+                                                                        box=
+-shadow: inset 4px 0 rgba(0, 0, 0, 0.9);
+                                                                      }
+
+                                                                      .mama=
+bear\:rounded-tr-none {
+                                                                        bor=
+der-top-right-radius: 0px;
+                                                                      }
+
+                                                                      .mama=
+bear\:px-3 {
+                                                                        pad=
+ding-left: 24px;
+                                                                        pad=
+ding-right: 24px;
+                                                                      }
+
+                                                                      .mama=
+bear\:px-mobile-container-padding {
+                                                                        pad=
+ding-left: 16px;
+                                                                        pad=
+ding-right: 16px;
+                                                                      }
+
+                                                                      .mama=
+bear\:py-3 {
+                                                                        pad=
+ding-top: 24px;
+                                                                        pad=
+ding-bottom: 24px;
+                                                                      }
+
+                                                                      .mama=
+bear\:px-2 {
+                                                                        pad=
+ding-left: 16px;
+                                                                        pad=
+ding-right: 16px;
+                                                                      }
+
+                                                                      .mama=
+bear\:pt-desktop-content-top-margin {
+                                                                        pad=
+ding-top: 16px;
+                                                                      }
+
+                                                                      @medi=
+a (min-width: 992px) {
+                                                                        .pa=
+pabear\:absolute {
+                                                                          p=
+osition: absolute;
+                                                                        }
+
+                                                                        .pa=
+pabear\:top-\[58px\] {
+                                                                          t=
+op: 58px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:-top-1 {
+                                                                          t=
+op: -8px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:mx-auto {
+                                                                          m=
+argin-left: auto;
+                                                                          m=
+argin-right: auto;
+                                                                        }
+
+                                                                        .pa=
+pabear\:\!mx-2 {
+                                                                          m=
+argin-left: 16px !important;
+                                                                          m=
+argin-right: 16px !important;
+                                                                        }
+
+                                                                        .pa=
+pabear\:mt-\[-100px\] {
+                                                                          m=
+argin-top: -100px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:mb-\[18px\] {
+                                                                          m=
+argin-bottom: 18px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:mt-0 {
+                                                                          m=
+argin-top: 0px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:mt-0\.5 {
+                                                                          m=
+argin-top: 4px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:mr-2 {
+                                                                          m=
+argin-right: 16px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:mr-3 {
+                                                                          m=
+argin-right: 24px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:ml-column-gutter {
+                                                                          m=
+argin-left: 24px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:inline-block {
+                                                                          d=
+isplay: inline-block;
+                                                                        }
+
+                                                                        .pa=
+pabear\:flex {
+                                                                          d=
+isplay: flex;
+                                                                        }
+
+                                                                        .pa=
+pabear\:hidden {
+                                                                          d=
+isplay: none;
+                                                                        }
+
+                                                                        .pa=
+pabear\:\!h-4 {
+                                                                          h=
+eight: 32px !important;
+                                                                        }
+
+                                                                        .pa=
+pabear\:h-6 {
+                                                                          h=
+eight: 48px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:h-\[34px\] {
+                                                                          h=
+eight: 34px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:h-\[100\%\] {
+                                                                          h=
+eight: 100%;
+                                                                        }
+
+                                                                        .pa=
+pabear\:min-h-\[96px\] {
+                                                                          m=
+in-height: 96px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:\!min-h-\[32px\] {
+                                                                          m=
+in-height: 32px !important;
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-\[400px\] {
+                                                                          w=
+idth: 400px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-content-max-w {
+                                                                          w=
+idth: 1128px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-core-rail-width {
+                                                                          w=
+idth: 784px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-right-rail-width {
+                                                                          w=
+idth: calc(1128px - 24px - 784px);
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-auto {
+                                                                          w=
+idth: auto;
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-\[1128px\] {
+                                                                          w=
+idth: 1128px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-\[135px\] {
+                                                                          w=
+idth: 135px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:w-\[calc\(100\%-97px\)\] {
+                                                                          w=
+idth: calc(100% - 97px);
+                                                                        }
+
+                                                                        .pa=
+pabear\:min-w-0 {
+                                                                          m=
+in-width: 0px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:max-w-\[550px\] {
+                                                                          m=
+ax-width: 550px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:flex-shrink-0 {
+                                                                          f=
+lex-shrink: 0;
+                                                                        }
+
+                                                                        .pa=
+pabear\:container-lined {
+                                                                          b=
+order-radius: 8px;
+                                                                          b=
+order-width: 1px;
+                                                                          b=
+order-style: solid;
+                                                                          b=
+order-color: rgba(0, 0, 0, 0.08);
+                                                                          b=
+ackground-color: #ffffff;
+                                                                        }
+
+                                                                        .pa=
+pabear\:container-raised {
+                                                                          b=
+order-radius: 8px;
+                                                                          b=
+ackground-color: #ffffff;
+                                                                          b=
+ox-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+                                                                        }
+
+                                                                        .pa=
+pabear\:flex-col {
+                                                                          f=
+lex-direction: column;
+                                                                        }
+
+                                                                        .pa=
+pabear\:flex-nowrap {
+                                                                          f=
+lex-wrap: nowrap;
+                                                                        }
+
+                                                                        .pa=
+pabear\:items-start {
+                                                                          a=
+lign-items: flex-start;
+                                                                        }
+
+                                                                        .pa=
+pabear\:justify-start {
+                                                                          j=
+ustify-content: flex-start;
+                                                                        }
+
+                                                                        .pa=
+pabear\:justify-center {
+                                                                          j=
+ustify-content: center;
+                                                                        }
+
+                                                                        .pa=
+pabear\:self-start {
+                                                                          a=
+lign-self: flex-start;
+                                                                        }
+
+                                                                        .pa=
+pabear\:tab-vertical.tab-sm,
+.papabear\:tab-vertical .tab-md,
+.papabear\:tab-vertical .tab-lg {
+                                                                          j=
+ustify-content: flex-start;
+                                                                        }
+
+                                                                        .pa=
+pabear\:tab-vertical.tab-selected {
+                                                                          b=
+ox-shadow: inset 4px 0 rgba(0, 0, 0, 0.9);
+                                                                        }
+
+                                                                        .pa=
+pabear\:rounded-tr-none {
+                                                                          b=
+order-top-right-radius: 0px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:border-4 {
+                                                                          b=
+order-width: 4px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:p-details-container-padding {
+                                                                          p=
+adding: 24px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:p-0 {
+                                                                          p=
+adding: 0px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:py-2 {
+                                                                          p=
+adding-top: 16px;
+                                                                          p=
+adding-bottom: 16px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:pt-desktop-content-top-margin {
+                                                                          p=
+adding-top: 16px;
+                                                                        }
+
+                                                                        .pa=
+pabear\:text-xl {
+                                                                          f=
+ont-size: 24px;
+                                                                        }
+
+                                                                      }
+
+                                                                    }
+
+                                                                  }
+
+                                                                }
+
+                                                              }
+
+                                                            }
+
+                                                          }
+
+                                                        }
+
+                                                      }
+
+                                                    }
+
+                                                  }
+
+                                                }
+
+                                              }
+
+                                            }
+
+                                          }
+
+                                        }
+
+                                      }
+
+                                    }
+
+                                  }
+
+                                }
+
+                              }
+
+                            }
+
+                          }
+
+                        }
+
+                      }
+
+                    }
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+}
+</style></head> <body dir=3D"ltr" class=3D"font-sans bg-color-background-ca=
+nvas w-full m-0 p-0 pt-1" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; margin: 0px; width: 100%; background-color: #f3f2f0; pa=
+dding: 0px; padding-top: 8px; font-family: -apple-system, system-ui, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Ox=
+ygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe U=
+I Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, =
+Arial, sans-serif;"> <div class=3D"h-0 opacity-0 text-transparent invisible=
+ overflow-hidden w-0 max-h-[0]" style=3D"visibility: hidden; height: 0px; m=
+ax-height: 0; width: 0px; overflow: hidden; opacity: 0; mso-hide: all;" dat=
+a-email-preheader=3D"true">Visite des =C3=A9tudiants de l&#39;ENCG Mekn=C3=
+=A8s a 1337=E2=80=A6</div> <div class=3D"h-0 opacity-0 text-transparent inv=
+isible overflow-hidden w-0 max-h-[0]" style=3D"visibility: hidden; height: =
+0px; max-height: 0; width: 0px; overflow: hidden; opacity: 0; mso-hide: all=
+;"> =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=
+=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=
+=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+ =CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0 =CD=8F=C2=A0=CD=8F=C2=A0=
+=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=8F=C2=A0=CD=
+=8F=C2=A0=CD=8F=C2=A0 </div> <table role=3D"presentation" valign=3D"top" bo=
+rder=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"512" align=3D"cente=
+r" class=3D"mercado-container w-[512px] max-w-[512px] mx-auto my-0 p-0 bg-c=
+olor-background-container" style=3D"-webkit-text-size-adjust: 100%; -ms-tex=
+t-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin-t=
+op: 0px; margin-bottom: 0px; margin-left: auto; margin-right: auto; width: =
+512px; max-width: 512px; background-color: #ffffff; padding: 0px;"> <tbody>=
+ <tr> <td class=3D"text-center p-3" style=3D"-webkit-text-size-adjust: 100%=
+; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+ padding: 24px; text-align: center;"> <table role=3D"presentation" valign=
+=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" cl=
+ass=3D"min-w-full" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-a=
+djust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%;=
+"> <tbody> <tr> <td align=3D"left" valign=3D"middle" style=3D"-webkit-text-=
+size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt;"> <a href=3D"https://www.linkedin.com/comm/feed/?lipi=3Du=
+rn%3Ali%3Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2=
+BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D3Fef3fASeW4Xc1&amp=
+;trk=3Deml-email_network_conversations_01-header-0-home_glimmer&amp;trkEmai=
+l=3Deml-email_network_conversations_01-header-0-home_glimmer-null-k1vosf~lt=
+xc3rv9~lj-null-null&amp;eid=3Dk1vosf-ltxc3rv9-lj&amp;otpToken=3DMTMwNzFmZTI=
+xNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYW=
+YxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0L=
+DEsMQ%3D%3D" target=3D"_blank" class=3D"w-[84px]" style=3D"color: #0a66c2; =
+cursor: pointer; display: inline-block; text-decoration: none; -webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%; width: 84px;"> <img class=
+=3D"block" alt=3D"LinkedIn" src=3D"https://www.linkedin.com/comm/dms/logo?b=
+adgeTheme=3Dmercado&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conver=
+sations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midSig=3D3Fef3fASeW4Xc1&a=
+mp;midToken=3DAQFgtsfuWz-K9A&amp;trkEmail=3Deml-email_network_conversations=
+_01-null-0-comms%7Ebadging%7Edynamic%7Eglimmer-null-k1vosf%7Eltxc3rv9%7Elj-=
+null-null&amp;trk=3Deml-email_network_conversations_01-null-0-comms%7Ebadgi=
+ng%7Edynamic%7Eglimmer&amp;_sig=3D2GdxL-Z6GW4Xc1" data-test-header-dynamic-=
+badging-img style=3D"outline: none; text-decoration: none; -ms-interpolatio=
+n-mode: bicubic; display: block;"> </a> </td> <td valign=3D"middle" align=
+=3D"right" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <table role=3D"present=
+ation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" widt=
+h=3D"100%" data-test-header-profile style=3D"-webkit-text-size-adjust: 100%=
+; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+"> <tbody> <tr> <td align=3D"right" valign=3D"middle" style=3D"-webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;"> <a href=3D"https://ma.linkedin.com/comm/in/djenty-boy-=
+71308329a?lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_01%3BJ=
+QmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D=
+3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-header-0-profil=
+e_glimmer&amp;trkEmail=3Deml-email_network_conversations_01-header-0-profil=
+e_glimmer-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf-ltxc3rv9-lj&am=
+p;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4Zj=
+ZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlM=
+jRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_blank" style=3D"color: #0a6=
+6c2; cursor: pointer; display: inline-block; text-decoration: none; -webkit=
+-text-size-adjust: 100%; -ms-text-size-adjust: 100%;"> <span class=3D"no-un=
+derline text-system-gray-90" style=3D"color: #282828; text-decoration-line:=
+ none;">Djenty Boy</span> </a> </td> </tr> </tbody> </table> </td> </tr> </=
+tbody> </table> </td> </tr> <tr> <td class=3D"p-0 !pb-0 pb-3" style=3D"-web=
+kit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0=
+pt; mso-table-rspace: 0pt; padding: 0px; padding-bottom: 0px !important;"> =
+<div> <table role=3D"presentation" valign=3D"top" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"-webkit-text-size-adjust: =
+100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: =
+0pt;"> <tbody> <tr> <td class=3D"pt-1 px-3 pb-3 border-0 border-b-1 border-=
+solid border-system-gray-30" style=3D"-webkit-text-size-adjust: 100%; -ms-t=
+ext-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-width: 0; border-bottom-width: 1px; border-style: solid; border-color: #e6=
+e6e6; padding-left: 24px; padding-right: 24px; padding-top: 8px; padding-bo=
+ttom: 24px;"> <a href=3D"https://www.linkedin.com/comm/feed/?lipi=3Durn%3Al=
+i%3Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2b=
+Q%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D3Fef3fASeW4Xc1&amp;trk=
+=3Deml-email_network_conversations_01-hero-0-headline&amp;trkEmail=3Deml-em=
+ail_network_conversations_01-hero-0-headline-null-k1vosf~ltxc3rv9~lj-null-n=
+ull&amp;eid=3Dk1vosf-ltxc3rv9-lj&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjc=
+wZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMm=
+NlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" tar=
+get=3D"_blank" class=3D"w-full" style=3D"color: #0a66c2; cursor: pointer; d=
+isplay: inline-block; text-decoration: none; -webkit-text-size-adjust: 100%=
+; -ms-text-size-adjust: 100%; width: 100%;"> <h1 class=3D"text-center text-=
+system-gray-90 font-bold text-xl leading-regular tracking-wide" data-test-i=
+d=3D"hero-headline" style=3D"margin: 0; text-align: center; font-size: 24px=
+; font-weight: 600; line-height: 1.25; letter-spacing: 0.025em; color: #282=
+828;"> Your highlights </h1> </a> </td> </tr> <tr> <td class=3D"p-3 border-=
+0 border-b-1 border-solid border-system-gray-30" style=3D"-webkit-text-size=
+-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; border-width: 0; border-bottom-width: 1px; border-style: soli=
+d; border-color: #e6e6e6; padding: 24px;"> <a href=3D"https://www.linkedin.=
+com/comm/feed/update/urn:li:activity:7174325233221267457?origin=3DNETWORK_C=
+ONVERSATIONS&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations=
+_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;mi=
+dSig=3D3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-network~=
+post-0-wrapper~link&amp;trkEmail=3Deml-email_network_conversations_01-netwo=
+rk~post-0-wrapper~link-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf-l=
+txc3rv9-lj&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZ=
+DY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5=
+OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_blank" class=
+=3D"w-full" data-test-id=3D"network-post-link" style=3D"color: #0a66c2; cur=
+sor: pointer; display: inline-block; text-decoration: none; -webkit-text-si=
+ze-adjust: 100%; -ms-text-size-adjust: 100%; width: 100%;"> <table role=3D"=
+presentation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"=
+0" width=3D"100%" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-ad=
+just: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <tbody> <tr> <t=
+d style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt;"> <table role=3D"presentation" va=
+lign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%=
+" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt;"> <tbody> <tr> <td style=3D"-webk=
+it-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;"> <a href=3D"https://www.linkedin.com/comm/feed/u=
+pdate/urn:li:activity:7174325233221267457?origin=3DNETWORK_CONVERSATIONS&am=
+p;lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT=
+1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D3Fef3fAS=
+eW4Xc1&amp;trk=3Deml-email_network_conversations_01-network_post-0-actor_ca=
+rd&amp;trkEmail=3Deml-email_network_conversations_01-network_post-0-actor_c=
+ard-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf-ltxc3rv9-lj&amp;otpT=
+oken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2Jj=
+ZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzB=
+hNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_blank" class=3D"block" data-test-=
+id=3D"network-post-link" style=3D"color: #0a66c2; cursor: pointer; text-dec=
+oration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; =
+display: block;"> <table role=3D"presentation" valign=3D"top" border=3D"0" =
+cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"-webkit-text-si=
+ze-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-tab=
+le-rspace: 0pt;"> <tbody> <tr data-test-id=3D"v2style-disable"> <td class=
+=3D"w-[72px]" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust=
+: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 72px;" width=
+=3D"72"> <img class=3D"inline-block relative bg-color-entity-ghost-backgrou=
+nd w-6 h-6 !w-[72px] !h-[72px] !block" src=3D"https://media.licdn.com/dms/i=
+mage/C560BAQHVmTWhO6lIAw/company-logo_100_100/0/1640181497831/1337_future_i=
+s_loading_logo?e=3D2147483647&amp;v=3Dbeta&amp;t=3DSPQ7G_t4K8li2fydQdxtHn_y=
+sODjcEsvpjwuC9jyS0Q" alt=3D"1337 Coding School" style=3D"outline: none; tex=
+t-decoration: none; -ms-interpolation-mode: bicubic; position: relative; ba=
+ckground-color: #eae6df; display: block !important; height: 72px !important=
+; width: 72px !important;" width=3D"72" height=3D"72"> </td> <td class=3D"p=
+l-1" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; m=
+so-table-lspace: 0pt; mso-table-rspace: 0pt; padding-left: 8px;"> <table ro=
+le=3D"presentation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"-webkit-text-size-adjust: 100%; -ms-text-s=
+ize-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <tbody> <=
+tr> <td class=3D"font-bold text-md leading-regular text-system-gray-90" sty=
+le=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; font-size: 16px; font-weight: 600; lin=
+e-height: 1.25; color: #282828;"> 1337 Coding School </td> </tr> <tr data-t=
+est-id=3D"actor-card-headline"> <td class=3D"text-sm leading-[16px] text-co=
+lor-text-solid-secondary" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-size=
+: 14px; line-height: 16px; color: #666666;"> 34,621 followers </td> </tr> <=
+/tbody> </table> </td> </tr> </tbody> </table> </a> </td> </tr> <tr> <td cl=
+ass=3D"pt-2 text-md leading-regular text-system-gray-90" style=3D"-webkit-t=
+ext-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt; padding-top: 16px; font-size: 16px; line-height: 1.25=
+; color: #282828;"> <span data-test-id=3D"truncated-message-text"> Visite d=
+es =C3=A9tudiants de l'ENCG Mekn=C3=A8s a 1337 Khouribga </span> </td> </tr=
+> <tr data-test-id=3D"network-post-social-metadata"> <td class=3D"pt-2" sty=
+le=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; padding-top: 16px;"> <table role=3D"pr=
+esentation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+ width=3D"auto" class=3D"w-auto" style=3D"-webkit-text-size-adjust: 100%; -=
+ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; wi=
+dth: auto;"> <tbody> <tr> <td class=3D"pr-0.5" data-test-reaction=3D"LIKE" =
+style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-ta=
+ble-lspace: 0pt; mso-table-rspace: 0pt; padding-right: 4px;"> <img class=3D=
+"block w-2 h-2" src=3D"https://static.licdn.com/sc/h/91tdscn0h1aaoefui9crf1=
+1j6" alt=3D"LIKE" style=3D"outline: none; text-decoration: none; -ms-interp=
+olation-mode: bicubic; display: block; height: 16px; width: 16px;" width=3D=
+"16" height=3D"16"> </td> <td class=3D"pr-0.5" data-test-reaction=3D"PRAISE=
+" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; padding-right: 4px;"> <img class=
+=3D"block w-2 h-2" src=3D"https://static.licdn.com/sc/h/adig5urqxi03qzuy6iy=
+jfm1b5" alt=3D"PRAISE" style=3D"outline: none; text-decoration: none; -ms-i=
+nterpolation-mode: bicubic; display: block; height: 16px; width: 16px;" wid=
+th=3D"16" height=3D"16"> </td> <td class=3D"pr-0.5" data-test-reaction=3D"E=
+MPATHY" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%=
+; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding-right: 4px;"> <img =
+class=3D"block w-2 h-2" src=3D"https://static.licdn.com/sc/h/evs2x5zfnz5g0x=
+rc6u22treq2" alt=3D"EMPATHY" style=3D"outline: none; text-decoration: none;=
+ -ms-interpolation-mode: bicubic; display: block; height: 16px; width: 16px=
+;" width=3D"16" height=3D"16"> </td> <td class=3D"text-sm leading-regular f=
+ont-normal text-system-gray-70" data-test-id=3D"reactions-count" style=3D"-=
+webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace=
+: 0pt; mso-table-rspace: 0pt; font-size: 14px; font-weight: 400; line-heigh=
+t: 1.25; color: #666666;"> 149 </td> <td class=3D"px-0.5" data-test-id=3D"s=
+eparator" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10=
+0%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding-left: 4px; paddin=
+g-right: 4px;">=C2=B7</td> <td class=3D"text-sm leading-regular font-normal=
+ text-system-gray-70" data-test-id=3D"comments-count" style=3D"-webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt; font-size: 14px; font-weight: 400; line-height: 1.25; co=
+lor: #666666;"> 7 Comments </td> </tr> </tbody> </table> </td> </tr> <tr da=
+ta-test-id=3D"read-more-cta-block"> <td class=3D"pt-3" style=3D"-webkit-tex=
+t-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso=
+-table-rspace: 0pt; padding-top: 24px;"> <table role=3D"presentation" valig=
+n=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" c=
+lass=3D"email-button " data-test-id=3D"email-button" style=3D"-webkit-text-=
+size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt;"> <tbody> <tr> <td valign=3D"middle" align=3D"left" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt;"> <a href=3D"https://www.linkedin.com/co=
+mm/feed/update/urn:li:activity:7174325233221267457?origin=3DNETWORK_CONVERS=
+ATIONS&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_01%3B=
+JQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=
+=3D3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-network~post=
+~cta-0-read~more&amp;trkEmail=3Deml-email_network_conversations_01-network~=
+post~cta-0-read~more-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf-ltx=
+c3rv9-lj&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY=
+0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OW=
+ZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_blank" aria-labe=
+l=3D"Read more" class=3D"align-top no-underline" style=3D"color: #0a66c2; c=
+ursor: pointer; display: inline-block; text-decoration: none; -webkit-text-=
+size-adjust: 100%; -ms-text-size-adjust: 100%; vertical-align: top; text-de=
+coration-line: none;"> <table role=3D"presentation" valign=3D"top" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"auto" class=3D"border-s=
+eparate" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100=
+%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate;=
+"> <tbody> <tr> <td class=3D"btn-md btn-secondary-emphasis border-color-bra=
+nd button-link leading-regular !min-h-[auto] !shadow-none border-1 border-s=
+olid" data-test-id=3D"read-more-cta-above" style=3D"-webkit-text-size-adjus=
+t: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; height: min-content; border-radius: 24px; padding-top: 12px; paddin=
+g-bottom: 12px; padding-left: 24px; padding-right: 24px; text-align: center=
+; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration-line:=
+ none; background-color: rgba(0, 0, 0, 0); color: #0a66c2; border-width: 1p=
+x; border-style: solid; border-color: #0a66c2; line-height: 1.25; min-heigh=
+t: auto !important; box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000 !important;=
+"> <a href=3D"https://www.linkedin.com/comm/feed/update/urn:li:activity:717=
+4325233221267457?origin=3DNETWORK_CONVERSATIONS&amp;lipi=3Durn%3Ali%3Apage%=
+3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&a=
+mp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D3Fef3fASeW4Xc1&amp;trk=3Deml-emai=
+l_network_conversations_01-network~post~cta-0-read~more&amp;trkEmail=3Deml-=
+email_network_conversations_01-network~post~cta-0-read~more-null-k1vosf~ltx=
+c3rv9~lj-null-null&amp;eid=3Dk1vosf-ltxc3rv9-lj&amp;otpToken=3DMTMwNzFmZTIx=
+NjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWY=
+xZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LD=
+EsMQ%3D%3D" target=3D"_blank" tabindex=3D"-1" aria-hidden=3D"true" class=3D=
+"no-underline" style=3D"color: #0a66c2; cursor: pointer; display: inline-bl=
+ock; text-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-a=
+djust: 100%; text-decoration-line: none;"> <span class=3D"no-underline text=
+-color-brand" style=3D"color: #0a66c2; text-decoration-line: none;"> Read m=
+ore </span> </a> </td> </tr> </tbody> </table> </a> </td> </tr> </tbody> </=
+table> </td> </tr> <tr><td class=3D"h-2" style=3D"-webkit-text-size-adjust:=
+ 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace:=
+ 0pt; height: 16px;" height=3D"16"></td></tr> <tr> <td class=3D"rounded-md =
+overflow-hidden" data-test-id=3D"network-post-update-card" style=3D"-webkit=
+-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt;=
+ mso-table-rspace: 0pt; overflow: hidden; border-radius: 8px;"> <table role=
+=3D"presentation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"-webkit-text-size-adjust: 100%; -ms-text-siz=
+e-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> <tbody> <tr=
+> <td class=3D"bg-cool-gray-20" style=3D"-webkit-text-size-adjust: 100%; -m=
+s-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bac=
+kground-color: #edf3f8;"> <table role=3D"presentation" valign=3D"top" borde=
+r=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"-webkit=
+-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt;=
+ mso-table-rspace: 0pt;"> <tbody> <tr> <td class=3D"h-[252px] bg-center bg-=
+no-repeat bg-cover bg-system-gray-40 " align=3D"center" style=3D"-webkit-te=
+xt-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt; height: 252px; background-color: #cfcfcf; background-s=
+ize: cover; background-position: center; background-repeat: no-repeat; back=
+ground-image: url(&quot;https://media.licdn.com/dms/image/D5605AQHZwU7C17TK=
+cQ/videocover-high/0/1710492374381?e=3D2147483647&amp;v=3Dbeta&amp;t=3DvPy2=
+8vvTWzGL49EBsJ3DCyXcb64aoEdZOQMYOLrdOoc&quot;);" height=3D"252"> <a href=3D=
+"https://www.linkedin.com/comm/feed/update/urn:li:activity:7174325233221267=
+457?origin=3DNETWORK_CONVERSATIONS&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email=
+_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=
+=3DAQFgtsfuWz-K9A&amp;midSig=3D3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_c=
+onversations_01-update~card-0-thumbnail~overlay~image&amp;trkEmail=3Deml-em=
+ail_network_conversations_01-update~card-0-thumbnail~overlay~image-null-k1v=
+osf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf-ltxc3rv9-lj&amp;otpToken=3DMTMwN=
+zFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTVi=
+NWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ=
+1ZjY0LDEsMQ%3D%3D" target=3D"_blank" aria-label=3D"Read more" class=3D"w-fu=
+ll" style=3D"color: #0a66c2; cursor: pointer; display: inline-block; text-d=
+ecoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%=
+; width: 100%;"> <img class=3D"w-[72px] h-[72px] block" src=3D"https://stat=
+ic.licdn.com/sc/h/3l34msl8zlfabuxswu8otl4fl" alt=3D"Play video" style=3D"ou=
+tline: none; text-decoration: none; -ms-interpolation-mode: bicubic; displa=
+y: block; height: 72px; width: 72px;" width=3D"72" height=3D"72"> </a> </td=
+> </tr> </tbody> </table> </td> </tr> </tbody> </table> </td> </tr> </tbody=
+> </table> </td> </tr> </tbody> </table> </a> </td> </tr> <tr> <td class=3D=
+"pt-4 pb-2 px-3 bg-color-background-canvas" style=3D"-webkit-text-size-adju=
+st: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspa=
+ce: 0pt; background-color: #f3f2f0; padding-left: 24px; padding-right: 24px=
+; padding-bottom: 16px; padding-top: 32px;"> <table role=3D"presentation" v=
+align=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%" class=3D"email-button " data-test-id=3D"email-button" style=3D"-webkit-t=
+ext-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt;"> <tbody> <tr> <td valign=3D"middle" align=3D"middle"=
+ style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-t=
+able-lspace: 0pt; mso-table-rspace: 0pt;"> <a href=3D"https://www.linkedin.=
+com/comm/feed/?lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_0=
+1%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midS=
+ig=3D3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-footer_pro=
+mo-0-footer_see_all&amp;trkEmail=3Deml-email_network_conversations_01-foote=
+r_promo-0-footer_see_all-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf=
+-ltxc3rv9-lj&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmN=
+jZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZT=
+g5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_blank" aria-=
+label=3D"See more on LinkedIn" class=3D"align-top no-underline" style=3D"co=
+lor: #0a66c2; cursor: pointer; display: inline-block; text-decoration: none=
+; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; vertical-alig=
+n: top; text-decoration-line: none;"> <table role=3D"presentation" valign=
+=3D"top" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"auto" cl=
+ass=3D"border-separate" style=3D"-webkit-text-size-adjust: 100%; -ms-text-s=
+ize-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-coll=
+apse: separate;"> <tbody> <tr> <td class=3D"btn-md btn-primary border-color=
+-brand button-link leading-regular !min-h-[auto] !shadow-none border-1 bord=
+er-solid" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10=
+0%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; height: min-content; bord=
+er-radius: 24px; padding-top: 12px; padding-bottom: 12px; padding-left: 24p=
+x; padding-right: 24px; text-align: center; font-size: 16px; font-weight: 6=
+00; cursor: pointer; text-decoration-line: none; background-color: #0a66c2;=
+ color: #ffffff; border-width: 1px; border-style: solid; border-color: #0a6=
+6c2; line-height: 1.25; min-height: auto !important; box-shadow: 0 0 #0000,=
+ 0 0 #0000, 0 0 #0000 !important;"> <a href=3D"https://www.linkedin.com/com=
+m/feed/?lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations_01%3BJQm=
+xYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D3F=
+ef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-footer_promo-0-fo=
+oter_see_all&amp;trkEmail=3Deml-email_network_conversations_01-footer_promo=
+-0-footer_see_all-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf-ltxc3r=
+v9-lj&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0Mj=
+kwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiN=
+zc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_blank" tabindex=3D"=
+-1" aria-hidden=3D"true" class=3D"no-underline" style=3D"color: #0a66c2; cu=
+rsor: pointer; display: inline-block; text-decoration: none; -webkit-text-s=
+ize-adjust: 100%; -ms-text-size-adjust: 100%; text-decoration-line: none;">=
+ <span class=3D"no-underline text-white" style=3D"color: #ffffff; text-deco=
+ration-line: none;"> See more on LinkedIn </span> </a> </td> </tr> </tbody>=
+ </table> </a> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table> =
+</div> </td> </tr> <tr> <td class=3D"bg-color-background-canvas p-3" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; background-color: #f3f2f0; padding: 24px=
+;"> <table role=3D"presentation" valign=3D"top" border=3D"0" cellspacing=3D=
+"0" cellpadding=3D"0" width=3D"100%" style=3D"-webkit-text-size-adjust: 100=
+%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+;"> <tbody> <tr> <td class=3D"text-center pb-2" style=3D"-webkit-text-size-=
+adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-=
+rspace: 0pt; padding-bottom: 16px; text-align: center;"> <h2 class=3D"text-=
+lg" style=3D"margin: 0; font-weight: 500; font-size: 20px;"> Never miss an =
+update with the LinkedIn app </h2> </td> </tr> <tr> <td class=3D"text-cente=
+r" data-test-id=3D"footer-app-store-icon" style=3D"-webkit-text-size-adjust=
+: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt; text-align: center;"> <a href=3D"https://itunes.apple.com/us/app/lin=
+kedin/id288429040?pt=3D10746&amp;ct=3Dst_appsite_flagship&amp;mt=3D8" targe=
+t=3D"_blank" rel=3D"noopener noreferrer" style=3D"color: #0a66c2; cursor: p=
+ointer; display: inline-block; text-decoration: none; -webkit-text-size-adj=
+ust: 100%; -ms-text-size-adjust: 100%;"> <img alt=3D"Download on the App St=
+ore" src=3D"https://static.licdn.com/sc/h/76yzkd0h5kiv27lrd4yaenylk" class=
+=3D"h-[40px] w-[120px] pr-1" style=3D"outline: none; text-decoration: none;=
+ -ms-interpolation-mode: bicubic; height: 40px; width: 120px; padding-right=
+: 8px;" width=3D"120" height=3D"40"> </a> <a href=3D"https://play.google.co=
+m/store/apps/details?id=3Dcom.linkedin.android&amp;referrer=3Dst_appsite_fl=
+agship" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color: #0a66=
+c2; cursor: pointer; display: inline-block; text-decoration: none; -webkit-=
+text-size-adjust: 100%; -ms-text-size-adjust: 100%;"> <img alt=3D"Get it on=
+ Google Play" src=3D"https://static.licdn.com/sc/h/142qudwblp58zwmc9vkqfplu=
+g" class=3D"h-[40px] w-[134px]" style=3D"outline: none; text-decoration: no=
+ne; -ms-interpolation-mode: bicubic; height: 40px; width: 134px;" width=3D"=
+134" height=3D"40"> </a> </td> </tr> <tr> <td class=3D"py-2" style=3D"-webk=
+it-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt; padding-top: 16px; padding-bottom: 16px;"><hr cla=
+ss=3D"border-none bg-[#e0dfdd] h-[1px]" style=3D"height: 1px; border-style:=
+ none; background-color: #e0dfdd;"></td> </tr> </tbody> </table> <table rol=
+e=3D"presentation" valign=3D"top" border=3D"0" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"100%" class=3D"text-xs" style=3D"-webkit-text-size-adjust:=
+ 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace:=
+ 0pt; font-size: 12px;"> <tbody> <tr> <td class=3D"pb-1 m-0" style=3D"-webk=
+it-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt; margin: 0px; padding-bottom: 8px;"> This email wa=
+s intended for Djenty Boy (Student at 1337 Coding School) </td> </tr> <tr> =
+<td class=3D"pb-1 m-0" style=3D"-webkit-text-size-adjust: 100%; -ms-text-si=
+ze-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0px;=
+ padding-bottom: 8px;"> <a href=3D"https://www.linkedin.com/help/linkedin/a=
+nswer/4788?lang=3Den&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conve=
+rsations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9=
+A&amp;midSig=3D3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-=
+SecurityHelp-0-footerglimmer&amp;trkEmail=3Deml-email_network_conversations=
+_01-SecurityHelp-0-footerglimmer-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=
+=3Dk1vosf-ltxc3rv9-lj&amp;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZm=
+U3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljY=
+zliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_bla=
+nk" class=3D"text-inherit underline" style=3D"cursor: pointer; display: inl=
+ine-block; text-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-=
+size-adjust: 100%; color: inherit; text-decoration-line: underline;">Learn =
+why we included this.</a> </td> </tr> <tr> <td class=3D"pb-1 m-0" style=3D"=
+-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspac=
+e: 0pt; mso-table-rspace: 0pt; margin: 0px; padding-bottom: 8px;">You are r=
+eceiving Network Conversations emails. Some content may be automatically tr=
+anslated based on <a href=3D"https://www.linkedin.com/mypreferences/d/langu=
+age-for-translation" target=3D"_blank" class=3D"link-no-visited-state" data=
+-tracking-will-navigate data-tracking-control-name=3D"email_network_convers=
+ations_content_settings_link" style=3D"cursor: pointer; display: inline-blo=
+ck; text-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-ad=
+just: 100%; font-weight: 600; color: #0a66c2;">your settings</a>.</td> </tr=
+> <tr> <td class=3D"pb-1 m-0" style=3D"-webkit-text-size-adjust: 100%; -ms-=
+text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margi=
+n: 0px; padding-bottom: 8px;"> <a href=3D"https://www.linkedin.com/comm/pse=
+ttings/email-unsubscribe?lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conve=
+rsations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9=
+A&amp;midSig=3D3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-=
+unsubscribe-0-footerGlimmer&amp;trkEmail=3Deml-email_network_conversations_=
+01-unsubscribe-0-footerGlimmer-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3D=
+k1vosf-ltxc3rv9-lj&amp;loid=3DAQEAyvS6lZGNNAAAAY5TMAICksKlnCcl_fCT4Ar0TlOMD=
+nJkKM2SEXjCYk_6SKTPr5xsR0xn7HcNkdump47ojqpTySDrtNT9nu_nn5unyKeFSVpeIkdP0IdA=
+EbY3" target=3D"_blank" class=3D"text-inherit underline" style=3D"cursor: p=
+ointer; display: inline-block; text-decoration: none; -webkit-text-size-adj=
+ust: 100%; -ms-text-size-adjust: 100%; color: inherit; text-decoration-line=
+: underline;">Unsubscribe</a> =C2=A0=C2=A0=C2=B7=C2=A0=C2=A0 <a href=3D"htt=
+ps://www.linkedin.com/help/linkedin/answer/67?lang=3Den&amp;lipi=3Durn%3Ali=
+%3Apage%3Aemail_email_network_conversations_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ=
+%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;midSig=3D3Fef3fASeW4Xc1&amp;trk=3D=
+eml-email_network_conversations_01-help-0-footerglimmer&amp;trkEmail=3Deml-=
+email_network_conversations_01-help-0-footerglimmer-null-k1vosf~ltxc3rv9~lj=
+-null-null&amp;eid=3Dk1vosf-ltxc3rv9-lj&amp;otpToken=3DMTMwNzFmZTIxNjI2Yzhj=
+MWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZmN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U=
+5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMjRlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%=
+3D" target=3D"_blank" class=3D"text-inherit underline" style=3D"cursor: poi=
+nter; display: inline-block; text-decoration: none; -webkit-text-size-adjus=
+t: 100%; -ms-text-size-adjust: 100%; color: inherit; text-decoration-line: =
+underline;">Help</a> </td> </tr> <tr> <td class=3D"pb-1" style=3D"-webkit-t=
+ext-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt; padding-bottom: 8px;"> <a href=3D"https://www.linkedi=
+n.com/comm/feed/?lipi=3Durn%3Ali%3Apage%3Aemail_email_network_conversations=
+_01%3BJQmxYpyWT1%2B7I4X%2BbQu2bQ%3D%3D&amp;midToken=3DAQFgtsfuWz-K9A&amp;mi=
+dSig=3D3Fef3fASeW4Xc1&amp;trk=3Deml-email_network_conversations_01-footer-0=
+-logoGlimmer&amp;trkEmail=3Deml-email_network_conversations_01-footer-0-log=
+oGlimmer-null-k1vosf~ltxc3rv9~lj-null-null&amp;eid=3Dk1vosf-ltxc3rv9-lj&amp=
+;otpToken=3DMTMwNzFmZTIxNjI2YzhjMWJkMjcwZmViNDExZmU3YjM4NmNjZDY0MjkwYWU4ZjZ=
+mN2JjZjA3Njg0YTViNWNmYWYxZDZkM2U5NzFjMmNlZTE0MjljYzliMDk2ZTg5OWZiNzc5NmZlMj=
+RlYzBhNTA3NTRkNmQ1ZjY0LDEsMQ%3D%3D" target=3D"_blank" style=3D"color: #0a66=
+c2; cursor: pointer; display: inline-block; text-decoration: none; -webkit-=
+text-size-adjust: 100%; -ms-text-size-adjust: 100%;"> <img src=3D"https://s=
+tatic.licdn.com/sc/h/9ehe6n39fa07dc5edzv0rla4e" alt=3D"LinkedIn" class=3D"b=
+lock h-[14px] w-[56px] image-rendering-crisp" style=3D"outline: none; text-=
+decoration: none; image-rendering: -moz-crisp-edges; image-rendering: -o-cr=
+isp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: cri=
+sp-edges; -ms-interpolation-mode: nearest-neighbor; display: block; height:=
+ 14px; width: 56px;" width=3D"56" height=3D"14"> </a> </td> </tr> <tr> <td =
+data-test-copyright-text style=3D"-webkit-text-size-adjust: 100%; -ms-text-=
+size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> =C2=A9 2=
+024 LinkedIn Corporation, 1&zwnj;000 West Maude Avenue, Sunnyvale, CA 94085=
+. <span data-test-trademarks-text> LinkedIn and the LinkedIn logo are regis=
+tered trademarks of LinkedIn. </span> </td> </tr> </tbody> </table> </td> <=
+/tr> </tbody> </table> <img alt role=3D"presentation" src=3D"https://www.li=
+nkedin.com/emimp/ip_YXpGMmIzTm1MV3gwZUdNemNuWTVMV3hxOlpXMWhhV3hmYm1WMGQyOXl=
+hMTlqYjI1MlpYSnpZWFJwYjI1elh6QXg6.gif" style=3D"outline: none; text-decorat=
+ion: none; -ms-interpolation-mode: bicubic; width: 1px; height: 1px;" width=
+=3D"1" height=3D"1"> </body> </html>
+------=_Part_14650920_1029926049.1710792639339--
+

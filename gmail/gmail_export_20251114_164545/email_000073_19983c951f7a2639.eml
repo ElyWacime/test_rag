@@ -1,0 +1,221 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:be9c:0:b0:338:10c1:b0d4 with SMTP id a28csp219593ljr;
+        Thu, 25 Sep 2025 19:10:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFi99hpeZwmB9YKjdJH6JazWlXuGW58L59KFumBDuCIeMthsDkxVtS3gchm+L+GDlC2UqyJ
+X-Received: by 2002:a05:622a:1905:b0:4b6:2bdf:7cfa with SMTP id d75a77b69052e-4da4dcc622fmr70961411cf.72.1758852632931;
+        Thu, 25 Sep 2025 19:10:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1758852632; cv=none;
+        d=google.com; s=arc-20240605;
+        b=c3lCcF/NcIgjB8K78iSeeXgq+RZihqnUuQe5OzDSlzA/ZXrQbJfpd8LxcVCZv6raAB
+         EHpskT/iNPZ8GkqI9/LDTFbIVYdm8b0U6BBhcaL04aZUTOl7HRuD58bqT9HEyCdm1zh9
+         q2ZFb9fExyGeSDT6h//OO0m3JaxElBQsyQRF4qtDqSbo6r3PErjUgBclp3URkfqQXreO
+         jE1PFeLerB/h1HvKS9KHWPfgLamiifnH6NxhVmt9fKfmy2/teET/fuDDhpbNgR49MJDA
+         bbHDzE+Hxw3Um3VCkGRyhdzc1TwuSIGFrEBKXAt3nuNKEdf0W/02K2TRafl4EGqdvu5X
+         3rPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=0umGGNBxfcJZDLHVRhAqO7clmzZiU76AoPCPh3Oyy8c=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=Xz7zhBfQalxRMeK0gYFlZc1BeEoKqiGU9sX829QpZP3FeUTm6UH1WitaefvdMmP7Hy
+         /G6emhm90aZyGI9nj70U8iWY1maVC0gDGlrDnupqd8SEvsq3jk5Ng5gEGYyEopGhEQwt
+         Lf/as0xKa43njckt+txnixdNVHwRAMf2rnGe64mTW512imz5q4CVnWuRzyYZbu9Tp0UO
+         M8unLKgZtJL0QwP3hhhn7K8STzoKMatT9hm7k2kdVyb+4x/a1B7UunNlqjNRnUWjWcdy
+         AtX9lgwMUTMljDWU7EeBL7YAA7dDksZHMY5Zwlbj2TgWWMUfExsNLsxZgSe6lks4tSXj
+         sNqA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kamstrup.com header.s=s1 header.b=TT9kWsmU;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=OpV4R9zE;
+       spf=pass (google.com: domain of bounces+28851133-55f4-ely.ubuntu0=gmail.com@em5153.kamstrup.com designates 159.183.215.166 as permitted sender) smtp.mailfrom="bounces+28851133-55f4-ely.ubuntu0=gmail.com@em5153.kamstrup.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kamstrup.com
+Return-Path: <bounces+28851133-55f4-ely.ubuntu0=gmail.com@em5153.kamstrup.com>
+Received: from wfbtdtxs.outbound-mail.sendgrid.net (wfbtdtxs.outbound-mail.sendgrid.net. [159.183.215.166])
+        by mx.google.com with ESMTPS id d75a77b69052e-4db123a59c2si15345551cf.1054.2025.09.25.19.10.32
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 25 Sep 2025 19:10:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+28851133-55f4-ely.ubuntu0=gmail.com@em5153.kamstrup.com designates 159.183.215.166 as permitted sender) client-ip=159.183.215.166;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kamstrup.com header.s=s1 header.b=TT9kWsmU;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=OpV4R9zE;
+       spf=pass (google.com: domain of bounces+28851133-55f4-ely.ubuntu0=gmail.com@em5153.kamstrup.com designates 159.183.215.166 as permitted sender) smtp.mailfrom="bounces+28851133-55f4-ely.ubuntu0=gmail.com@em5153.kamstrup.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kamstrup.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kamstrup.com;
+	h=content-type:date:from:mime-version:subject:to:cc:content-type:date:
+	feedback-id:from:subject:to;
+	s=s1; bh=0umGGNBxfcJZDLHVRhAqO7clmzZiU76AoPCPh3Oyy8c=;
+	b=TT9kWsmUO1n7DrPlUdSwFYTol1mFPtp3SzSd97chLC5zPZ6vkiH1AKwN8g8e5QMXZCKM
+	p0ZetpR7elUWRDJvfR+B5vABd9H9yWyEHf22vCD/fwj0JuC8cb8MdtgBsK1l7YcXCr9uxC
+	x5/GGT9snTrlQRCS0ksy9xeJXWo+VyWmN4cLJI16GbgzgdrxWUdKcgk5ob0DeM241vPgzg
+	p8pNVbyDrk/v2QPeUGKXyDUFA9Jj9+TeAnquqCN2xk3Lf6kiU1+HEp5IZ3uPUc1x1xm+oQ
+	hy/NX5azsknswCrwYLpQOjiXik0CJat3Z7D42/IMyFo6ubnhUuvgoC/iwF/S6aOw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:date:from:mime-version:subject:to:cc:content-type:date:
+	feedback-id:from:subject:to;
+	s=smtpapi; bh=0umGGNBxfcJZDLHVRhAqO7clmzZiU76AoPCPh3Oyy8c=;
+	b=OpV4R9zENrGiYJUN15WWtOOEcEIPFvv18h1TRM2/gd9vz0HOPH2BizekMTpcEryZFGkx
+	jXJcX+WV0BMNZpOGjLYwAiNMa/yN9/eV6M6GWUfPnmR8dMLKm2J+KaYEpJsrF12lgXXyPY
+	OCX3cNfDvuva1zR75K6Ih1rXQtGkFW524=
+Received: by recvd-769f975875-jlzxk with SMTP id recvd-769f975875-jlzxk-1-68D5F617-2
+	2025-09-26 02:10:31.059221979 +0000 UTC m=+1998395.284929265
+Received: from Mjg4NTExMzM (unknown)
+	by geopod-ismtpd-12 (SG) with HTTP
+	id oXBUE0PbTxWiaPZ_-qOjJg
+	Fri, 26 Sep 2025 02:10:30.981 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=0cbac9f56f8e4de784da64f7e57e3cba93d083e8b34d0933ed5646aeadc1
+Date: Fri, 26 Sep 2025 02:10:31 +0000 (UTC)
+From: Kamstrup <noreply@kamstrup.com>
+Mime-Version: 1.0
+Message-ID: <oXBUE0PbTxWiaPZ_-qOjJg@geopod-ismtpd-12>
+Subject: Verification code
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EJ3NkiN4SbFJL2zBIoxSRuALbjMd1xtwguWlQ6oi+lS7dUM9HcgqjbYGe9?=
+ =?us-ascii?Q?WwZBYLUJZwsnfVAklbwOjqhm0+7OEpR+IDpYNPO?=
+ =?us-ascii?Q?o+tB6lSqI+U07ONgVIERlyXY3i8v=2Ffo0V=2FJpAd0?=
+ =?us-ascii?Q?Y42gjPfH9lNTXLIvflGKTgqNMBLV8kYygT7rD9J?=
+ =?us-ascii?Q?0fsCLDIIPUys1MQCladoohiSxL5l=2FsqxTeqR3Ny?=
+ =?us-ascii?Q?yv4O5SzWDJ2722UjZBwJ2E=3D?=
+To: ely.ubuntu0@gmail.com
+X-Entity-ID: u001.Oz4sXg3lVxv062XZfh6jaw==
+
+--0cbac9f56f8e4de784da64f7e57e3cba93d083e8b34d0933ed5646aeadc1
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Mime-Version: 1.0
+
+VERIFICATION CODE
+
+Here is your verification code to verify your email address:
+207102
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+This code expires in 10 minutes, but you can generate another one by regist=
+ering again.
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+NEED HELP?
+
+If you think this is a mistake, or if you need help, please contact Kamstru=
+p support:
+https://www.kamstrup.com/support
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+SENT BY
+
+Kamstrup
+Industrivej 28, Stilling
+DK-8660 Skanderborg
+Denmark
+
+Kamstrup is world leading manufacturer of system solutions for smart energy=
+ and water metering.
+Through our leadership, expertise and passion for partnership, we always th=
+ink forward in pursuit of a brighter energy future; one that advances the p=
+erformance of every customer, whilst creating lasting value for the communi=
+ties they serve.
+--0cbac9f56f8e4de784da64f7e57e3cba93d083e8b34d0933ed5646aeadc1
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=3D"utf-8" />
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1.0" />
+    <title>Verification code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px 40px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #333;
+            margin: 0 0 10px 0;
+            font-weight: normal;
+        }
+        .divider {
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        .verification-code {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #009688;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+        }
+        .link-text {
+            word-break: break-all;
+            font-size: 14px;
+        }
+        .footer {
+            background-color: #f5f5f5;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 10px 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class=3D"container">
+        <a href=3D"https://www.kamstrup.com" title=3D"Kamstrup website"><im=
+g src=3D"https://login.kamstrup.com/adfs/portal/logo/kamstrup_logo_png.png"=
+ height=3D"30" alt=3D"Kamstrup logo"></a>
+       =20
+        <h1>Verification code</h1>
+
+        <p>Here is your verification code to verify your email address:<br>=
+<br></p>
+
+        <span class=3D"verification-code">207102</span><br><br>
+
+        <p>This code expires in 10 minutes, but you can generate another on=
+e by registering again.</p>
+
+        <p>If you think this is a mistake, or if you need help, please cont=
+act <a href=3D"https://www.kamstrup.com/support" title=3D"Visit contact pag=
+e for Kamstrup support">Kamstrup support</a>.</p>
+    </div>
+
+    <div class=3D"footer">
+	<div class=3D"company-info">
+		<strong>Kamstrup</strong><br>
+		Industrivej 28 =B7 Stilling =B7 DK-8660 Skanderborg =B7 Denmark
+	</div>
+
+	<div class=3D"mission">
+		Kamstrup is world leading manufacturer of system solutions for smart ener=
+gy and water metering.<br><br>
+		Through our leadership, expertise and passion for partnership, we always =
+think forward in pursuit of a brighter energy future; one that advances the=
+ performance of every customer whilst creating lasting value for the commun=
+ities they serve.
+	</div>
+</div>
+</body>
+</html>
+
+--0cbac9f56f8e4de784da64f7e57e3cba93d083e8b34d0933ed5646aeadc1--

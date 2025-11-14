@@ -1,0 +1,633 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a05:6a10:756:b0:523:83ca:23d5 with SMTP id i22csp6511966pxv;
+        Sat, 16 Dec 2023 20:51:09 -0800 (PST)
+X-Received: by 2002:a25:8091:0:b0:db7:dad0:60d2 with SMTP id n17-20020a258091000000b00db7dad060d2mr9620382ybk.95.1702788668936;
+        Sat, 16 Dec 2023 20:51:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702788668; cv=none;
+        d=google.com; s=arc-20160816;
+        b=h3ki9G98Mw9wvWVTjO3AYwnEadrrf8cdWVVKmHOXFmUwCXhe3QEjvfy8agnNPF0mIu
+         cP8vpFoDbASVVPb1dzYiGDgptG+WySNrEvmCTFWwiAk0LPMIBGi+03EbGu96fXmV2tku
+         J5yNkYF7gKBFCU2ukrr5hFXvQra5+nB8W6THR9hzmdOjfO7vnYSqaGSPhphRpqCSgRsg
+         eq7Jh9qgzAVg8HBTursmqE8cKHCimzsDLqehNzCAGc4bT7Erm778JIWuINtzCNEz7xFu
+         BJ0kvLLtJpZYf9LhxJUQHDkAEgOyTC0cloAZpK2z9GpzyXR6fbVcOE/8Fh/7qw+zcYeH
+         8i/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:list-id:feedback-id:list-unsubscribe
+         :precedence:reply-to:date:mime-version:dkim-signature;
+        bh=/omf7BVWSgTvRkPzBx+QqJf7IsRh2t4qzlnqdo9tcRw=;
+        fh=FiPoUO5djH8e+bCDn/V1HcCSB7ZikHkM9BAfeSQVY1Y=;
+        b=uZTDaRH4sYKi9Mpeo4w6W7Sz8m409js/ixfGRpatVSmPJ1b5FnDYfH5gP+AvK4bFJs
+         IcnDsMYYhbrP9f0VW6Z/EKYvJAPFAHACRfYg9v/sFGaN2s/8oZyWN/JLZbPwgMRpM6U5
+         GB0PSdWnEeMmAlG5ZwD2s5KKYbYeAoGqGuI63IvREblE4kCXcU6ZaBNE9wwE7pJxkEaT
+         HqaHM9h2aZfm64l4zd33eyFRyxC4nLL9AVJV4J5eZFOuHkA5DnzZ4LeONnruREIgvPJG
+         vglT/A4/zRPvWAOY8cEbb/xnfnB7rIG2kdQnlBJA+U9RT2YeSf+XkR1a4UCi+o0VPFzB
+         oRkw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=vYgZgRpN;
+       spf=pass (google.com: domain of 3ph5-zqgtc2uqr-uhsobdffrxqwv.jrrjoh.frphob.xexqwxdjpdlo.frp@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3PH5-ZQgTC2UQR-UHSObDFFRXQWV.JRRJOH.FRPHOb.XEXQWXdJPDLO.FRP@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+Return-Path: <3PH5-ZQgTC2UQR-UHSObDFFRXQWV.JRRJOH.FRPHOb.XEXQWXdJPDLO.FRP@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id y127-20020a253285000000b00dbce6c12ea6sor2026132yby.2.2023.12.16.20.51.08
+        for <ely.ubuntu0@gmail.com>
+        (Google Transport Security);
+        Sat, 16 Dec 2023 20:51:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3ph5-zqgtc2uqr-uhsobdffrxqwv.jrrjoh.frphob.xexqwxdjpdlo.frp@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=vYgZgRpN;
+       spf=pass (google.com: domain of 3ph5-zqgtc2uqr-uhsobdffrxqwv.jrrjoh.frphob.xexqwxdjpdlo.frp@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3PH5-ZQgTC2UQR-UHSObDFFRXQWV.JRRJOH.FRPHOb.XEXQWXdJPDLO.FRP@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1702788668; x=1703393468; dara=google.com;
+        h=to:from:subject:message-id:list-id:feedback-id:list-unsubscribe
+         :precedence:reply-to:date:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/omf7BVWSgTvRkPzBx+QqJf7IsRh2t4qzlnqdo9tcRw=;
+        b=vYgZgRpNhmPoeT2wB/wuKrNyf8rCwNIvUhzGZtgGwceI8EX9oo/rh/WJhXaTbpn82E
+         aE2swbGYEwkgZedH+PlQENfvBt7xi4q8oOG+adhSIa5l8dvhkdsyT0Ph55hBS+grGmtj
+         HNS4lkQkw7XrhtsPohIfKAWs/oRkzwzsSndyBuwBPXD9W347ZDpGowt30l1cjmxUQ+86
+         nX328WqbhXGTxBhT+m7cXQ33aoCdHepYgOwruKu3B1zCRfQpN9QMScEbbXX0BOQqS1aZ
+         B1YAVbch0248Dg22hfA2aO4hOoT+olc8HWL5u3RG1gooEh5dBjWMn3wJE62GJnLVjamJ
+         spcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702788668; x=1703393468;
+        h=to:from:subject:message-id:list-id:feedback-id:list-unsubscribe
+         :precedence:reply-to:date:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/omf7BVWSgTvRkPzBx+QqJf7IsRh2t4qzlnqdo9tcRw=;
+        b=o+RymWKZNv63KsXNCwdymoGKaJ40Dw12K5WonooVWqxZPDW94kUstuT9NLoDOez9tp
+         ZNAb0UJAtBxzaQw/Dc0pWU3eOB+ToVuwWOrtLp4GzPNpT7d031rsS4DFzyNTMB/mJ7Yz
+         SKqMTNObffX3y/0kh1gXHqoWuWLB/vmYxnyRGEwM106aDQffoEpn9D7SYxdb69x8+leK
+         rJeAPk5SXQ0OFeNAuztI1e/Anww0oqkPPyzUpTtBwdWsfXPCwl6QJaVI1E/mSENLXJpd
+         QCZP60NWvstj1dqKtUnpu6pTqobKWBGl57lcaX4hDeN+yAEKJ+/J1sd9r3i2gQLVQnON
+         oNSQ==
+X-Gm-Message-State: AOJu0Yy19255Vni6f/gzRDBROlvGlIB9hcAt0DFD2d2/m3GyUYLMDqJ5
+	9PHLwr0dfqof+ER+Nl7GlEHF
+X-Google-Smtp-Source: AGHT+IFFh36XFtfTOZd4T1bIUNG2T/SIwazQWHLMBAOQ/nCQ3fzg8Xjx5sfciMCErnvTVgyxsjnhbVI=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6902:e13:b0:dbc:e89e:3fd5 with SMTP id
+ df19-20020a0569020e1300b00dbce89e3fd5mr2725401ybb.62.1702788668639; Sat, 16
+ Dec 2023 20:51:08 -0800 (PST)
+Date: Sat, 16 Dec 2023 20:51:08 -0800
+Reply-To: The Google Account Team <no-reply@accounts.google.com>
+Precedence: bulk
+List-Unsubscribe: <https://notifications.google.com/g/optout/ANiao5oI8K9KM2jEFUqnEFfFJGeO12DBRHIdMOAbdD3ylY_QaFuLsUVdsAmmRhmS6QxNnaFb8S-rmiRgX-tyTg9QhmbZet1tIietZ9roSl7Nf8uh1SAGBxxjqWFfW6C-7xXuXd-ugtpj_j_fUSRN3dLZ7bm_mlh0hBY1lgHnvE0mPLy99Gf9JtcYw-tlX0FJMG0sbibBSJzA0iwmV2kjOoxgpjVy_20CE4x5sr83Bj4kCeQnYRhacsD0rUX59C7l_tut8xgWUaMGJjLTonzgb6Ml?hl=fr>
+Feedback-ID: P-232--1013180605:C20079005:M110512097-fr:gamma
+List-Id: <b0a8bb4990e841b919666c65f4128d727c412573.google.com>
+X-Notifications: b71a2d13bcf40000
+X-Notifications-Bounce-Info: AaJ7rEo1D1Z17fvgVr1ERcBvFmOh2Js8uYslbcG2e8l16mlfQ6cXY3UGdwcbEZtA9QLjRt9NQmIIHVlreDK2cdzaY1NLFMgiLAjz0_jsWqKzpslM5vl8o9FXx7H9DgtuqsAA35Icg6OymB3X3iHmtfIB7zlFcstZqlfrh7R79A1dv18jlyNjBsFbivnU36GLP-00xmelx_bIYwPQTng1ZaF3CizELNMkXsbJn6hN3UhG9FZS16ZPc5N4mS3EeXmU-pJuH6BWTMBoSoXqNzaKxTXwPuubHKokbyzGHxvsWL9UifaT8NBsjF4cUb3XWfedMCPkRsAcWCFQEjF60COp5_nk51chuA0Dm8AW4u2rbfTGK2kfcBMyLxr6A4SPHh6hmvTjbQM_qOlOibLUTy_zh50p7kXgSaYuFdm4SLaCkY1TU1II5ANjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <0356defdc8c954bbc179948e8bebc5e0d79b18ec-20079005-110873471@google.com>
+Subject: =?UTF-8?Q?=E2=9C=85_Ubuntu=2C_finissez_de_configurer_votre_Android_ave?=
+	=?UTF-8?Q?c_Google?=
+From: The Google Account Team <no-reply@accounts.google.com>
+To: ely.ubuntu0@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000b8cb4e060cad614e"
+
+--000000000000b8cb4e060cad614e
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+Qm9uam91ciBVYnVudHUsDQoNClVuZSBtZWlsbGV1cmUgZXhww6lyaWVuY2UgQW5kcm9pZCB2b3Vz
+IGF0dGVuZA0KDQpQcmVuZXogdW5lIG1pbnV0ZSBwb3VyIGNvbmZpZ3VyZXIgR29vZ2xlIHN1ciB2
+b3RyZSB0w6lsw6lwaG9uZQ0KDQpDb21tZW5jZXIgIA0KPGh0dHBzOi8vbm90aWZpY2F0aW9ucy5n
+b29nbGUuY29tL2cvcC9BTmlhbzVweVIzQWJxSUp2Um1pMmROT29sLUp0WTNrRElIVXA3dGtJRS15
+RHZfU2FLclRCMkJFRHIzVWpvS0IyRWRWOGxPeklrSFRRTzFkV3NBbTBQbndQQXFXSkFqV0ktVEpv
+ck1mVWV0ZWZuSkRoSll0aUxiLV85NUVvQXRRMlZrbklxQ1lQZ1dMM18zdndZMVdidEVoai1YSE5B
+WGZuUk9NdmhQbGZKc3pVU095aGI0dDVuZjhxTEQ1V3dVQ1F6dEZBZWZGTS1lQXUyWEFDdm9yU2p3
+RlFWSFdkYk1pNlN3M0hVWnFyMFRPenZXa3otaUJxLVpQcHVabnNXSk9EM2UxUHNERi1YQ2VpMllm
+UU50cWI1QVNHZ05MUkw1SWpjVGZCOWNJMGUxNnl6ejdja0U3ZlAzdVhrZGpmOUJpNGZWdlNBaHJH
+QllkVjVvVWRHbWlWbnBYRDJ1S2xuYm9sQlFXVTFldXZvMTZndnZJeTltZ2NDZzk5T05jSklYNGlN
+czVOeUJrdTBjU21sU3pobHF0cGVUNjhiZ0NmWlktQ3E2eHJ1cHFHeVdzMms0SzQ2Mm91ZGJyUjNa
+WnBRXy1jajV6QlhseE9OVEk2WU8yV1QwaUFKem13S3psd0pSSlF0NFBLWXdQU0ljQmRoNVd5NTlK
+QzlkLUpRQ21nTTQteWlNWnpjeWgzVGZYMzFLRzdkdmxtbUFxNm9GaHhzU1g5ZlNyeU1jSUhTcEFQ
+MlpLZTZJVGVCWk5aN05WNkRrbWtuMUd4RXhWRlRCT1A3cDRZLW52Si1qb1c2cDZBVk52ODhHU0M0
+ZDdNMTBmdHpEVWVLMll4dndiam1BZ19BemJmdkxScXR6WVhJclJOeC1KS0hvblZrSVlxQmpzaXB1
+dDN5SXZQZmdfVFY2YmpsRzJCci1LQWw3QkRxaV9GNXRNOGx4NTJGM1pQV3BLZkwyN2h4QT4NCg0K
+Q2V0IGUtbWFpbCBhIMOpdMOpIGVudm95w6kgw6AgbCdhZHJlc3NlIGVseS51YnVudHUwQGdtYWls
+LmNvbSAgDQo8ZWx5LnVidW50dTBAZ21haWwuY29tPiwgY2FyIHZvdXMgdm91cyDDqnRlcyByw6lj
+ZW1tZW50IGNvbm5lY3TDqSDDoCB2b3RyZSAgDQpjb21wdGUgR29vZ2xlIHN1ciB2b3RyZSBBbmRy
+b2lkLiBTaSB2b3VzIG5lIHNvdWhhaXRleiBwYXMgcmVjZXZvaXIgIA0KZCdlLW1haWxzIHBvdXIg
+dm91cyBhaWRlciDDoCBjb25maWd1cmVyIHZvdHJlIGFwcGFyZWlsIGxvcnNxdWUgdm91cyB2b3Vz
+ICANCmNvbm5lY3RleiBwb3VyIGxhIHByZW1pw6hyZSBmb2lzIGF2ZWMgdm90cmUgY29tcHRlIEdv
+b2dsZSwgdmV1aWxsZXogdm91cyAgDQpkw6lzYWJvbm5lciAgDQo8aHR0cHM6Ly9ub3RpZmljYXRp
+b25zLmdvb2dsZS5jb20vZy9wL0FOaWFvNW9QbnNlZWhWNThjdmJFa1JvMDdGdjdMSm83NGtBNjc1
+U09aVUMxa2NkX184NmcydzhKRVBCS2g5TVozQ1pUTTVvUjUybjBKUlA5RFdWQVotX1dVYWpuOWdo
+YUUxbmtnVHloX3hLZHFtSDJIQkpLN3Q4TVF2M0o5ZFg0NlBCMHBwZWlzRHZfd1hPenJGbXZPNS1j
+clIwbXNHQkNPcHBLQ2xhSXJfT01rbHJZbjg4WGhUSzdKYXZ1V2VBd2tRdk14SzVFX0VOX29BWVpp
+V3VUT0RBVDdkaEZ1R1FrV2JRLXdKX01vZi1kZm5SZlgyT3dCR01ITC1ZQXRhNDdDZHNNRVhCaE5s
+TnV6bzItLWFrVEtSenN5dEFTdnFmMFpadzRyb0JzZ1dyeTRHR1BmR2VCRUtGSFNYcXRfVXBxRnl3
+ajRMdW5fLVlqTGZmYkNKb240Nnl3RFJPN1NMMlBpWVBUZHIzZGg4UnFjSkt6UUJjbm5zdkNONm1i
+V1hrTl85ZGV5NUVKdmZhbDhJM1NwaHFJc1JST216cFR5VlFndnZPNmN2NkxOUnlPWnRubjlIckJs
+aWt5cDlYUHloQ1hVaUEtU3pmUmE3R21tMWJJa2pMU2pUOEVnMnNjb3I4R1ZYSDZGNEVId0hMVnRj
+RmV1REpvNnBrVUFLcUtkMkRVZjdQa0dBU3ZMUXNoVV9Yakp4b1RWYUR6bTJ4MDNZOC1yWTRnWGoy
+VkVNS0gyeEhMQ3NrX1U3QVBablRYR2lNMWxad3R3NHpYanFlb3pGQm1QbFhiQ0duemVrcERQenZk
+MC1YN0g1ekwtd053b2lVPi4NCg0KwqkgMjAyMyBHb29nbGUgTExDIDE2MDAgQW1waGl0aGVhdHJl
+IFBhcmt3YXksIE1vdW50YWluIFZpZXcsIENBIDk0MDQzDQo=
+--000000000000b8cb4e060cad614e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html public "- / /w3c / /dtd xhtml 1.0 transitional / /en" "http:=
+ / /www.w3.org /tr /xhtml1 /dtd /xhtml1-transitional.dtd">
+<html xmlns=3Dhttp://www.w3.org/1999/xhtml xmlns:v=3Durn:schemas-microsoft-=
+com:vml xmlns:o=3Durn:schemas-microsoft-com:office:office lang=3Dfr>
+<head>
+<title>Premiers pas avec votre nouvel appareil</title>
+<meta name=3Dx-apple-disable-message-reformatting>
+<meta http-equiv=3DX-UA-Compatible>
+<meta http-equiv=3DContent-Type content=3D"text/html; charset=3DUTF-8">
+<meta name=3Dviewport content=3D"initial-scale =3D 1.0,maximum-scale =3D 1.=
+0">
+<meta name=3Dviewport content=3Dtarget-densitydpi=3Ddevice-dpi>
+<link href=3Dhttps://fonts.googleapis.com/css?family=3DRoboto:100,100i,300,=
+300i,400,400i,500,500i,700,700i rel=3Dstylesheet>
+<style>
+.mobile_only{display:none; font-size:0px; line-height:0px; height:0px; max-=
+height:0px; overflow:hidden;}
+</style>
+<style>
+@media screen and (max-width:900px){
+.desktop_only_new {
+display:none !important;
+font-size:0px !important;
+line-height:0 !important;
+height:0px !important;
+max-height:0px !important;
+overflow:hidden !important;
+}
+.mobile_only_new {
+height: auto !important;
+overflow: visible !important;
+display: block !important;
+max-height: inherit !important;
+width: 100% !important;
+font-size:inherit !important;
+line-height:inherit !important;
+}
+.headline{
+}
+.subheadline{
+}
+.footer_main{padding-bottom:0px !important;}
+.main_table{width:95% !important;}
+.desktop_cell{display:none !important;}
+.mobile_cell{display:table-cell !important; width:100% !important;}
+}
+</style>
+<style>
+@media screen and (max-width: 767px) {
+.body{margin:0px !important; padding:0px !important; background:#fff !impor=
+tant;}
+.desktop{display:none !important;}
+.mobile{display:inline-block !important; width:100% !important;}
+img.mobile{display:inline-block !important; width:100% !important;}
+}
+</style>
+<style>
+@media screen and (max-width: 767px) {
+table, tr, td{width:100% !important; min-width:100% !important; max-width:1=
+00% !important; border-spacing: 0px; padding: 0px; margin: 0px; background-=
+size:100% !important;}
+.width_100{width:100% !important; min-width:100% !important; max-width:100%=
+ !important; border: 0px; padding: 0px; margin: 0px; line-height:0px; font-=
+size:0px;}
+.footer_main{padding: 0 10px !important;}
+.subhead_cls{padding:0px 20px 10px 20px !important;}
+.pad_lr_10{padding:0 10px !important;}
+.micon{padding-left: 10px !important;}
+.headline{
+padding-top: 15px !important;
+padding-left: 10px !important;
+padding-bottom: 3px !important;
+padding-left: 15px !important;
+}
+.subheadline{
+padding-top: 0px !important;
+padding-left: 10px !important;
+padding-bottom: 7px !important;
+padding-left: 15px !important;
+}
+.rating{padding-left: 15px !important;}
+.rate{padding-left: 15px !important; padding-bottom: 15px !important;}
+.cta_button{padding-left: 15px !important; padding-right: 15px !important; =
+padding-bottom: 15px !important;}
+}
+</style>
+<style>
+@media screen and (max-width: 767px) and (orientation: landscape){
+.table_container{width:360px !important; min-width:360px !important; max-wi=
+dth:360px !important;}
+.table_container, .main_table{min-width: 360px !important; width: 360px !im=
+portant; max-width: 360px !important;}
+}
+</style>
+<style>
+@media screen and (min-width: 812px) and (max-width: 812px),
+screen and (min-width: 736px) and (max-width: 736px),
+screen and (min-width: 667px) and (max-width: 667px),
+screen and (min-width: 568px) and (max-width: 568px),
+screen and (min-width: 414px) and (max-width: 414px),
+screen and (min-width: 375px) and (max-width: 375px),
+screen and (min-width: 320px) and (max-width: 320px) {
+.body {
+min-width: 100vw !important;
+}
+}
+</style>
+<style>
+.subhead_cls {padding: 0px 44px 10px 44px !important;}
+</style>
+<style>
+:root {
+color-scheme: light dark;
+supported-color-schemes: light dark;
+}
+@media (prefers-color-scheme: dark ) {
+/* Custom Dark Mode Font Colors */
+td, span, h1, h2, h3, h4, h5, h6, h7, p, div {
+color: #ffffff !important;}
+div, table, td { background-color: transparent !important; }
+body { background-color: #3C4043 !important; }
+a {color: #1A73E8 !important;}
+}
+</style>
+<!--[if mso]>
+<style>
+html, body, table, tr, td, div{
+font-family: Arial, sans-serif !important;
+}
+</style>
+<![endif]-->
+<!--[if gte mso 9]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+</head>
+<body style=3D"color:#444444; font-family:Google Sans, Roboto, San-Francisc=
+o, Helvetica, Arial; font-size:14px; font-weight:normal; margin:0; padding:=
+0; " class=3D"body ">
+<div style=3D"display:none; font-size:1px; color:#333333; line-height:1px; =
+max-height:0px; max-width:0px; opacity:0; overflow:hidden;">Terminer la con=
+figuration =F0=9F=93=B2</div>
+<div style=3D"font-size: 0px; line-height:0px; display: none; max-height: 0=
+px; overflow: hidden;">
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0 =E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0 =E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0 =E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0
+</div><div style=3D"font-size: 0px; line-height:0px; color: #ffffff; displa=
+y: none;">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0=C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0</div>
+<section>
+<center class=3Dwrapper_app style=3D"width:100%; margin:4px auto 0 auto;">
+<!--[if gte mso 9]> <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"600" style=3D"width:600px; margin:0; padd=
+ing:0; table-layout:fixed; ">
+<![endif]-->
+<!--[if !mso]><!-- --> <table role=3Dpresentation border=3D0 cellpadding=3D=
+0 cellspacing=3D0 style=3D"margin:0 auto; padding:0; table-layout:fixed; ">
+<![endif]--> <tr style=3D"border-collapse: collapse; border-spacing: 0; pad=
+ding: 0; margin: 0;">
+<td style=3D"background:#ffffff;max-width:600px; padding: 0; margin: 0;widt=
+h:600px;" width=3D600 align=3Dcenter bgcolor=3D#ffffff class=3Dmain_table>
+<table role=3Dpresentation class=3Dtable_container border=3D0 cellpadding=
+=3D0 cellspacing=3D0 width=3D504 style=3D"border-collapse: collapse; border=
+-spacing: 0; padding: 0; margin: 0; max-width:504px; width:504px; backgroun=
+d-color:#ffffff;">
+<tr border=3D0 style=3D"border-collapse: collapse; border-spacing: 0; paddi=
+ng: 0; margin: 0;">
+<td align=3D"" valign=3D"" bgcolor=3D"" width=3D"" height=3D"" class=3D"" s=
+tyle=3D"border-collapse: collapse; border-spacing: 0; padding: 0; margin: 0=
+; ">
+<table role=3Dpresentation width=3D504 bgcolor=3D#ffffff border=3D0 cellpad=
+ding=3D0 cellspacing=3D0 style=3D"border-collapse: collapse; border-spacing=
+: 0; padding:0; margin:0 auto; background:#ffffff; width:504px; min-width:5=
+04px;" align=3Dcenter>
+<tr>
+<td>
+<table role=3Dpresentation cellspacing=3D0 cellpadding=3D0 width=3D502 styl=
+e=3D"width:502px; margin:0 auto; border: 1px solid #E8EAED; border-radius: =
+8px;">
+<tr>
+<td width=3D100% style=3D"width:100%; text-align:center; padding-top: 21px;=
+ padding-bottom: 10px; padding-left:44px; padding-right:44px;" align=3Dcent=
+er valign=3Dtop>
+<img role=3Dpresentation src=3Dhttps://www.gstatic.com/images/branding/goog=
+lelogo/1x/googlelogo_color_160x56dp.png width=3D88 style=3D"width:88px; out=
+line:0; border:0;">
+</td>
+</tr>
+<tr>
+<td class=3Dhead_cls style=3D"padding-top:0px; padding-bottom:6px; width:10=
+0%; padding-left:15px; padding-right:15px; font-family:Google Sans, Roboto,=
+ San-Francisco, Helvetica, Arial; font-size: 22px; line-height: 28px; color=
+: #202124; text-align:center; font-weight:500; background-color: #FFFFFF;di=
+rection:ltr; padding:10px 44px 0px 44px;font-size:28px; line-height:36px; f=
+ont-weight:normal;" width=3D100% dir=3Dltr>Bonjour Ubuntu,</td>
+</tr>
+<tr>
+<td class=3Dhead_cls style=3D"padding-top:0px; padding-bottom:6px; width:10=
+0%; padding-left:15px; padding-right:15px; font-family:Google Sans, Roboto,=
+ San-Francisco, Helvetica, Arial; font-size: 22px; line-height: 28px; color=
+: #202124; text-align:center; font-weight:500; background-color: #FFFFFF;di=
+rection:ltr; padding:10px 44px 0px 44px;font-size:28px; line-height:36px; f=
+ont-weight:normal; padding:0px 44px 15px 44px;" width=3D100% dir=3Dltr>Une =
+meilleure exp=C3=A9rience Android vous attend</td>
+</tr>
+<tr>
+<td class=3Dsubhead_cls style=3D"padding-top:0px; padding-bottom:20px; widt=
+h:100%; font-weight:500; padding-left:35px; padding-right:35px; font-family=
+:Google Sans, Roboto, San-Francisco, Helvetica, Arial; font-size: 18px; mso=
+-line-height-rule: exactly; color:#202124; text-align:center; background-co=
+lor: #FFFFFF; line-height:27px; direction:ltr; padding: 0px 44px 10px 44px;=
+ font-weight:normal;" width=3D100% dir=3Dltr>Prenez une minute pour configu=
+rer Google sur votre t=C3=A9l=C3=A9phone</td>
+</tr>
+<tr>
+<td style=3D"-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: =
+none;-ms-text-size-adjust: 100%;border-radius: 8px;direction:ltr;padding: 1=
+0px 0 30px 0; padding: 10px 44px 30px 44px;" dir=3Dltr>
+<table role=3Dpresentation border=3D0 cellspacing=3D0 cellpadding=3D0 width=
+=3D100%>
+<tr>
+<td>
+<table role=3Dpresentation border=3D0 cellspacing=3D0 cellpadding=3D0 align=
+=3Dcenter width=3D100%>
+<tr>
+<td style=3D"text-align: center;padding: 0;">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schem=
+as-microsoft-com:office:word" href=3D"https://notifications.google.com/g/p/=
+ANiao5r9UnGwHvMfI50onED5DuEs46eyUHxSp20u3ETiz96acIt8TgDkkUbULPwccDnmGmjLoP0=
+KVjwCBy7PBouaA0afS4w7UnOh2lhlBU7BCB-Y-Pr-7bstIynWnDvJsKIQK50mNR-c8v7fhBXIHl=
+q39O9qtJ9-4voHL8SDSRgaKr4SxNT47BmL81xbuxBVRKEB1wdHJsGo1VtEtq6PPEoZHJAPEI3bL=
+MJ0TnP9XZuSiyOGEdVRDXYsOMfwFQn5iUzRaNthPf_x5ruErT_R7GInB5_QdqQ0xs9GPKBNf1l8=
+EWlp7bxoVDI6zFtUz2mpMJYlgEG-LzAM1oJItAjhfzv2psrFK1bZvSfFFxGdb1LzRANEk7q33ec=
+7_q-J_TyUmBPBsBIMRcGrzroc9BFGNlVbsU1FIiOIzSR81R6MHjrotcr_Yx7QfoNkBv3Dj9SRfe=
+W0Nrc-yayYavA8UBo-f088vq8iEdAr4cCrkxwo_G-eRA_i6bB2WY-rVodbnPfhDC9TUe7o5P-nb=
+7IJ-xNpToSOcg_DpohbeWoglj00xo0Y8a9S0U0V2Nmutt5uWNlvtRGXhMQftL1N0cHFrjnTkhDo=
+hU3sYKiYwMPTMRM2JQpb8zhvJ6TXMyiDFCOkGTSnrj8W4FI_q_KqUlr_MvpAGNPCSZZ5WsY9aVH=
+dIuPFehT0cC9I9VFyemkylbHJR-EnwamQr_Sx04TVdF914N76" style=3D"height:37px; v-=
+text-anchor:middle; width:120px;" arcsize=3D"20%" strokecolor=3D"#1A73E8" f=
+illcolor=3D"#1A73E8">
+<w:anchorlock/>
+<center style=3D"color:#ffffff;font-family:Google Sans, Roboto, San-Francis=
+co, Helvetica, Arial; font-size:16px; font-weight:normal; word-break:normal=
+;direction:ltr;" dir=3D"ltr">Commencer</center>
+</v:roundrect>
+<a href=3D"https://notifications.google.com/g/p/ANiao5r9UnGwHvMfI50onED5DuE=
+s46eyUHxSp20u3ETiz96acIt8TgDkkUbULPwccDnmGmjLoP0KVjwCBy7PBouaA0afS4w7UnOh2l=
+hlBU7BCB-Y-Pr-7bstIynWnDvJsKIQK50mNR-c8v7fhBXIHlq39O9qtJ9-4voHL8SDSRgaKr4Sx=
+NT47BmL81xbuxBVRKEB1wdHJsGo1VtEtq6PPEoZHJAPEI3bLMJ0TnP9XZuSiyOGEdVRDXYsOMfw=
+FQn5iUzRaNthPf_x5ruErT_R7GInB5_QdqQ0xs9GPKBNf1l8EWlp7bxoVDI6zFtUz2mpMJYlgEG=
+-LzAM1oJItAjhfzv2psrFK1bZvSfFFxGdb1LzRANEk7q33ec7_q-J_TyUmBPBsBIMRcGrzroc9B=
+FGNlVbsU1FIiOIzSR81R6MHjrotcr_Yx7QfoNkBv3Dj9SRfeW0Nrc-yayYavA8UBo-f088vq8iE=
+dAr4cCrkxwo_G-eRA_i6bB2WY-rVodbnPfhDC9TUe7o5P-nb7IJ-xNpToSOcg_DpohbeWoglj00=
+xo0Y8a9S0U0V2Nmutt5uWNlvtRGXhMQftL1N0cHFrjnTkhDohU3sYKiYwMPTMRM2JQpb8zhvJ6T=
+XMyiDFCOkGTSnrj8W4FI_q_KqUlr_MvpAGNPCSZZ5WsY9aVHdIuPFehT0cC9I9VFyemkylbHJR-=
+EnwamQr_Sx04TVdF914N76" class=3D"header_part btn_mod2_mobile2" target=3D"_b=
+lank" style=3D"background-color:#1A73E8; border:1px solid #1A73E8;border-ra=
+dius:4px;color:#ffffff;display:inline-block;font-family:Google Sans, Roboto=
+, San-Francisco, Helvetica, Arial;font-size:14px;line-height:21px;text-deco=
+ration:none;padding: 7px 0px 7px 0px;-webkit-text-size-adjust:none;mso-hide=
+:all;font-weight:500;text-align: center;word-break:normal;direction:ltr;wid=
+th: 120px;" dir=3D"ltr">Commencer</a>
+<![endif]-->
+<!--[if !mso]><!-->
+<a href=3Dhttps://notifications.google.com/g/p/ANiao5r9UnGwHvMfI50onED5DuEs=
+46eyUHxSp20u3ETiz96acIt8TgDkkUbULPwccDnmGmjLoP0KVjwCBy7PBouaA0afS4w7UnOh2lh=
+lBU7BCB-Y-Pr-7bstIynWnDvJsKIQK50mNR-c8v7fhBXIHlq39O9qtJ9-4voHL8SDSRgaKr4SxN=
+T47BmL81xbuxBVRKEB1wdHJsGo1VtEtq6PPEoZHJAPEI3bLMJ0TnP9XZuSiyOGEdVRDXYsOMfwF=
+Qn5iUzRaNthPf_x5ruErT_R7GInB5_QdqQ0xs9GPKBNf1l8EWlp7bxoVDI6zFtUz2mpMJYlgEG-=
+LzAM1oJItAjhfzv2psrFK1bZvSfFFxGdb1LzRANEk7q33ec7_q-J_TyUmBPBsBIMRcGrzroc9BF=
+GNlVbsU1FIiOIzSR81R6MHjrotcr_Yx7QfoNkBv3Dj9SRfeW0Nrc-yayYavA8UBo-f088vq8iEd=
+Ar4cCrkxwo_G-eRA_i6bB2WY-rVodbnPfhDC9TUe7o5P-nb7IJ-xNpToSOcg_DpohbeWoglj00x=
+o0Y8a9S0U0V2Nmutt5uWNlvtRGXhMQftL1N0cHFrjnTkhDohU3sYKiYwMPTMRM2JQpb8zhvJ6TX=
+MyiDFCOkGTSnrj8W4FI_q_KqUlr_MvpAGNPCSZZ5WsY9aVHdIuPFehT0cC9I9VFyemkylbHJR-E=
+nwamQr_Sx04TVdF914N76 target=3D_blank dir=3Dltr style=3D"text-align: center=
+; display: inline-block; text-decoration:none;">
+<table role=3Dpresentation cellspacing=3D0 cellpadding=3D0 align=3Dcenter>
+<tr style=3D"padding: 0; margin: 0; font-size: 0; line-height: 0;"><td styl=
+e=3D"border-top: 6px solid transparent; border-top-left-radius: 4px;border-=
+top-right-radius: 4px;display:inline-block;-webkit-text-size-adjust:none;ms=
+o-hide:all;text-align: center;"></td></tr>
+<tr><td style=3D"background-color:#1A73E8;border:1px solid #1A73E8;border-r=
+adius:4px;color:#ffffff;font-family:Google Sans, Roboto, San-Francisco, Hel=
+vetica, Arial; font-size:14px;line-height:21px;text-decoration:none;padding=
+: 7px 22px 7px 22px;-webkit-text-size-adjust:none;mso-hide:all;font-weight:=
+500;text-align: center;direction:ltr;" class=3D"header_part btn_mod2_mobile=
+2">Commencer
+</td></tr>
+<tr style=3D"padding: 0; margin: 0; font-size: 0; line-height: 0;"><td styl=
+e=3D"border-top: 5px solid transparent; display:inline-block;border-bottom-=
+left-radius: 4px;border-bottom-right-radius: 4px;-webkit-text-size-adjust:n=
+one;mso-hide:all;text-align: center;"></td></tr>
+</table></a>
+<!--<![endif]-->
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr border=3D0 style=3D"border-collapse: collapse; border-spacing: 0; paddi=
+ng: 0; margin: 0;">
+<td align=3D"" valign=3D"" bgcolor=3D"" width=3D"" height=3D"" class=3D"" s=
+tyle=3D"border-collapse: collapse; border-spacing: 0; padding: 0; margin: 0=
+; ">
+<table role=3Dpresentation border=3D0 cellspacing=3D0 cellpadding=3D0 width=
+=3D100% height=3D20 style=3D"width:100%; font-size:0; line-height:0; mso-li=
+ne-height-rule:exactly; height:20px">
+<tr>
+<td width=3D100% height=3D20 style=3D"width:100%; font-size:0; line-height:=
+0; mso-line-height-rule:exactly; height:20px">=C2=A0</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr border=3D0 style=3D"border-collapse: collapse; border-spacing: 0; paddi=
+ng: 0; margin: 0;">
+<td align=3D"" valign=3D"" bgcolor=3D"" width=3D"" height=3D"" class=3D"" s=
+tyle=3D"border-collapse: collapse; border-spacing: 0; padding: 0; margin: 0=
+; ">
+<table role=3Dpresentation border=3D0 cellpadding=3D0 cellspacing=3D0 style=
+=3D"width:504px; background-color:#FFFFFF" width=3D504 align=3Dcenter>
+<tbody>
+<tr>
+<td align=3Dcenter valign=3D"" bgcolor=3DFFFFFF width=3D"" height=3D"" clas=
+s=3Dfooter_main style=3D"border-collapse: collapse;border-spacing: 0;paddin=
+g: 0;margin: 0;width: 504px; background-color: #FFFFFF;">
+<table role=3Dpresentation border=3D0 cellpadding=3D0 cellspacing=3D0 style=
+=3D"width:504px; background-color:#FFFFFF" width=3D504>
+<tbody>
+<tr>
+<td class=3D"footer_texts footer_address" style=3D"font-family:Roboto, San-=
+Francisco, Helvetica, Arial; font-weight:normal; font-size:10px; line-heigh=
+t:16px; color:#9B9B9B; text-align:center; background-color:#FFFFFF; color:#=
+5F6368; font-family: Roboto, San-Francisco, Helvetica, Arial; font-size:12p=
+x; line-height:18px;direction:ltr; padding:0px 5px 10px 5px;" dir=3Dltr>
+Cet e-mail a =C3=A9t=C3=A9 envoy=C3=A9 =C3=A0 l&#39;adresse <a href=3Dmailt=
+o:ely.ubuntu0@gmail.com target=3D_blank style=3D"color:#5F6368; text-decora=
+tion:none; font-weight:normal; border:0; ; white-space: nowrap;"> ely.ubunt=
+u0@gmail.com</a>, car vous vous =C3=AAtes r=C3=A9cemment connect=C3=A9 =C3=
+=A0 votre compte Google sur votre <span style=3D"white-space:nowrap; " clas=
+s=3D"">Android</span>. Si vous ne souhaitez pas recevoir d&#39;e-mails pour=
+ vous aider =C3=A0 configurer votre appareil lorsque vous vous connectez po=
+ur la premi=C3=A8re fois avec votre compte Google, veuillez <a href=3Dhttps=
+://notifications.google.com/g/p/ANiao5rGiKehE1opjbJgnmav9nU8u1nP-U2V__fs5_7=
+zZpORw5_9Kldqi64iE_6IA-XccDv0uISkFmlA2dG4bXt6po0Lm6hlwO9P44UGksYavX2Mr9TvBq=
+9yf7N8ROg3WiYGJFwaVUzZ35J1HSo69_rc2xLYJm9TfAD1ESrRoMwWzPrjn9UA1xloloTHDjlFd=
+iWsaolEwQTHMKSsIb3AOJe8_9XnZjHK_GAJeT6C0hDJpHCslq22hrkVKYztOTuKdiFzFKHZamdF=
+P4zm6Lpxe19Z17oeawRl8qqou0mI5LkFHPRiacelq0ehr2Hcx67UW-f5-ccnx9rmIUqto2lZb3L=
+0l6CwFfZMBFmI0TajzgSgYxu98I7tKXKnMLYeJfEmdc-zqGPeO4NUK8MIbWCeyOovvpR1Gel2Kq=
+a58FkPciaqw2Ru7JLNXf5BL_8Sq1ZG8mu8An9lhJQjLka4HzhljwldqF3MeJ3lkkHN9s9Pf07N_=
+pKLPQHT0hKhHMytC9XFlO085KCjyQwZYQ5S2txG-_6friNTrMfOchE_q7hIE2rKniFLBeLVDAHq=
+nG8Dt249_dAL0StXA9u2nlNMz_htCjzemXHJBvDF6uRwB57flKhddCk6gZ2YUg target=3D_bl=
+ank style=3D"color:#5F6368; text-decoration:underline; font-weight:normal; =
+border:0; ; white-space: nowrap;"> vous d=C3=A9sabonner</a>.
+</td>
+</tr>
+<tr>
+<td class=3D"footer_texts footer_address" style=3D"font-family:Roboto, San-=
+Francisco, Helvetica, Arial; font-weight:normal; font-size:10px; line-heigh=
+t:16px; color:#9B9B9B; text-align:center; padding: 0px 10px 32px 10px;backg=
+round-color:#FFFFFF; font-size:12px; line-height:18px;color:#5F6368;">
+<span style=3D"font-size:inherit; color:inherit; font-weight:inherit; line-=
+height:inherit; font-family:inherit;">=C2=A9 2023 Google LLC 1600 Amphithea=
+tre Parkway, Mountain View, CA 94043</span>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr border=3D0 style=3D"border-collapse: collapse; border-spacing: 0; paddi=
+ng: 0; margin: 0;">
+<td align=3D"" valign=3D"" bgcolor=3D"" width=3D"" height=3D20 class=3Dmobi=
+leRow style=3D"border-collapse: collapse; border-spacing: 0; padding: 0; ma=
+rgin: 0; height:20px;">
+=C2=A0 </td>
+</tr>
+</table>
+</center>
+</section>
+<img alt=3D"" height=3D1 width=3D3 src=3Dhttps://notifications.google.com/g=
+/img/ANiao5pCq4aWLtjlkqqDZhof5bXPjFAIK6plMllmhqwijJ72qtjCPysZc53_9APknSAEQ4=
+5yXq6FnPUwutSUHF9BVJ0pMYjtLSdrxLwbB2Tl4iVO1UE2Zjp6npdvEnIvY4PUSM6100iIr5fyh=
+5TrHq4Gj9SgHwugZ4Ul8DA.gif></body>
+</html>
+--000000000000b8cb4e060cad614e--

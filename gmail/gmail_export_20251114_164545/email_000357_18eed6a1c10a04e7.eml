@@ -1,0 +1,546 @@
+Delivered-To: ely.ubuntu0@gmail.com
+Received: by 2002:a2e:948b:0:b0:2da:8f9e:8689 with SMTP id c11csp1251583ljh;
+        Wed, 17 Apr 2024 11:55:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFO2oN58tlltbfHIbozB1etJPfUQBFYi8oQF7D6ArkeVV80B/w2FWRMqcp096+ZKUBSslJ/
+X-Received: by 2002:a05:6358:5bcf:b0:183:612d:44a1 with SMTP id i15-20020a0563585bcf00b00183612d44a1mr247370rwf.28.1713380138385;
+        Wed, 17 Apr 2024 11:55:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713380138; cv=none;
+        d=google.com; s=arc-20160816;
+        b=SdcQevQVvyLWe6aNC4bvnZ9Ob8+id/tQB/9LWNholZI+pzdxF6A3yfuhrtoGXP+olF
+         tIPmTkVrbXAIOUAi8EAEspW23XvkWxLIULq/Chv8oEJ9faHWRF4mqDpSpsbNqKJ3O5Rv
+         LK8cPUU+t2R8kROEkmyLSE9Fl89PhC5xlTyVRuvWZf9BUJ91PEMuRIaHceO6Yels7hkt
+         4qjg9agi76DJTBLy6m/tLTqTw8Nj6m2l9Ej4E+sXrfxWgAJrMQYA6GJZS8Vg7su79pG3
+         BciCUaeSUfsZbuT3S5c9aPi2udprdY0KQoq4aARzOjbs5lDEn351pH4oyB/kTzjTY8hS
+         Y/pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe:feedback-id:precedence:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=o1mcIEKuWUa8iwWWCk7I1kBd3LEsGV3fBiTYunlxO04=;
+        fh=OpBm/PXVB/fP0Oe4rjA6coOGau4ajDl07SjDidhHhvs=;
+        b=zQTa7fvGDGQ3MNnbtboBGP6t+Ya0vI5+UK0nUZVeqjguk9oIvkJv3glOm8FTvyBbba
+         AUg43snXbAo//4/vg4hUTWLYYgqeG5Zw3oZIbFJREAqS0cZIDOH1OtGUQjFC74M4ejkn
+         SPyS5SoOlcnrWg4UF6ozIKxArhiR58yjKYFzT0than7ngB1cwZHGhtgdGIxwLaZjwHHK
+         ZqIJFej+W44SPat7WEzw4xCOBDLxIoDWQrY1itsoCSnR+AGDfBa+b9grs3xk839ZOdf4
+         iXt+K85vThOr45QZebmbyTlHJH9lJfU7HOeiR2MfEgp5qVNutmYn+7fco/Kb/Y6M4cfx
+         a39Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=kVThgHvH;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="CTMcAN1/";
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+Return-Path: <bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro>
+Received: from o20.ck.n.convertkit.com (o20.ck.n.convertkit.com. [168.245.5.113])
+        by mx.google.com with ESMTPS id d10-20020a05622a15ca00b004365858c699si15770920qty.138.2024.04.17.11.55.37
+        for <ely.ubuntu0@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 17 Apr 2024 11:55:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) client-ip=168.245.5.113;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jsmastery.pro header.s=cka header.b=kVThgHvH;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="CTMcAN1/";
+       spf=pass (google.com: domain of bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro designates 168.245.5.113 as permitted sender) smtp.mailfrom="bounces+23344773-3e3d-ely.ubuntu0=gmail.com@ckespa.jsmastery.pro";
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=jsmastery.pro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jsmastery.pro;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=cka; bh=o1mcIEKuWUa8iwWWCk7I1kBd3LEsGV3fBiTYunlxO04=;
+	b=kVThgHvHHKC7LhlrD08oTkWWq0YA6bF4K5bAcqHtrHdwwNIKUFQcuQuwE69BFn8v4QY6
+	22XFdRmp7IqHS6aor0PFrXP9kXkvvkYB9yx4ng5RvZvbVLb90t8HbrL/+AE0Sw31dR5863
+	Al3kyOwFnv/2Ut53vTvpwJBwFN3EQH5FM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:list-unsubscribe:x-feedback-id:
+	to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=o1mcIEKuWUa8iwWWCk7I1kBd3LEsGV3fBiTYunlxO04=;
+	b=CTMcAN1/VtQLvTlrJFt6+xwJtecpVNVIcVZ2FTSjQx2uBcA/o4tJoBt6azEHcvTv2BZm
+	mh5HYXt8k8EuCunyZNeq2en/5hkmbZxncWLR/UqxxPOXfdEVYXRUbJdkOUTP2I/Nd35UbM
+	KfQbXVxKTaAwlgEIxDVkwB6nnIQKEEw70=
+Received: by filterdrecv-6f69f98fd7-k2779 with SMTP id filterdrecv-6f69f98fd7-k2779-1-66201B29-1
+        2024-04-17 18:55:37.03352582 +0000 UTC m=+421651.569683254
+Received: from MjMzNDQ3NzM (unknown)
+	by geopod-ismtpd-20 (SG) with HTTP
+	id tZFpFSn8Te2q8DH6T4gf5g
+	Wed, 17 Apr 2024 18:55:36.958 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=70fa35db054d2ffdbd908f1e06a6259fc040ce1361a0297a7ae509431790
+Date: Wed, 17 Apr 2024 18:55:37 +0000 (UTC)
+From: Adrian from JSM <contact@jsmastery.pro>
+Mime-Version: 1.0
+Message-ID: <k0ukgqp8q6c6hdqewephlh8x4w577@convertkit-mail2.com>
+Subject: =?UTF-8?B?8J+SocKgVGhl?= Untold Story of React 19
+X-Report-Abuse: <abuse@convertkit.com>
+Precedence: bulk
+Feedback-ID: 13653022:775726:broadcast:CK
+List-Unsubscribe: 
+ <https://unsubscribe.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577>
+X-Report-Spam: <abuse@convertkit.com>
+X-Feedback-ID: 23344773:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2E9iKReg6MmXOnRZvsQzWQJ3lPH0tO4yiaHftVEEnLM4wy5BnLoLlAcpdQp?=
+ =?us-ascii?Q?uAcltvhbsvR1HoWuE3BRvA2KUJntt0b7+ccTLCE?=
+ =?us-ascii?Q?Dj7HTR7H6Sk8ZeSPp57iZwplJ1YJyvXvbMcqUhE?=
+ =?us-ascii?Q?pRJWUw9VnwbXCGI+d4bGThGjvC2aEkbr3qHsJU2?=
+ =?us-ascii?Q?E77V3pejn9LeCj4f0b=2Fmq8sohVoOjivDvbXMJhd?=
+ =?us-ascii?Q?QQJirw9xCwlfq5GWVIJiaRCe++S1eobn5zZklqG?= =?us-ascii?Q?NaBY?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprBTLquV1ImzFIrgT?=
+ =?us-ascii?Q?SaJ3+RZYO9XQiVQ1ETdCBRxyILYdEob4jgwZCN6?=
+ =?us-ascii?Q?FGZSYjrpd0aAKBGkqhLBvu18=2FH6GeEg0x40psS4?=
+ =?us-ascii?Q?boBmN=2F+I=2Fyj4c6DTiMPWjiJCX1csYpWrrLiX0Vf?=
+ =?us-ascii?Q?eLrfHMcFLHKNmou6tgRGAz0m4bAD53bPzng+suX?=
+ =?us-ascii?Q?EErQcwQI0RmhggLbmKvhodjG5092AZ5JWtDJW8U?=
+ =?us-ascii?Q?J+5=2Fsi+H0T1D6=2FLgzDDrFhpklXY=2FcER1LMSavKh?=
+ =?us-ascii?Q?iUTFa+eirxQDU8zdmVg6bWii8ZyUrXoObInQ9Z7?=
+ =?us-ascii?Q?g=2FoAhjEL+AyzsLyceTGHaUE2qwVaVSKv5Nnu=2FFC?=
+ =?us-ascii?Q?4L583u7Hhl9K3fZ?=
+To: whyoucare <ely.ubuntu0@gmail.com>
+X-Entity-ID: u001.U5uR4hiqEeo/H3zk+7BOfQ==
+
+--70fa35db054d2ffdbd908f1e06a6259fc040ce1361a0297a7ae509431790
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Hi whyoucare =F0=9F=91=8B
+
+=E2=80=8B
+
+Greetings from Croatia =F0=9F=87=AD=F0=9F=87=B7 where I=E2=80=99m sipping h=
+ot coffee as I write
+this email. Where are you from? Let me know by replying to this
+email!
+
+What=E2=80=99s new
+----------
+
+=E2=8F=B3 Next-level transitions in Next.js 14
+
+Are you interested in creating advanced page transitions for your
+app with the latest Next.js 14? If so, look at this guide (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/dphehmu0rp=
+4doqul/aHR0cHM6Ly9uZXh0LXZpZXctdHJhbnNpdGlvbnMudmVyY2VsLmFwcC8=3D
+) from the Next.js team that shows you how to do just that.
+
+=E2=80=8B
+
+=F0=9F=A4=91 The React 19 & its backstory
+
+If you=E2=80=99re someone like me, who=E2=80=99s always curious about how a
+framework or its new features work behind the scenes, then you=E2=80=99ll
+definitely want to take a look at this (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/e0hph0u05r=
+pml0i7/aHR0cHM6Ly93d3cuY21yZy5tZS9ibG9nL3JzYy1wYXJ0LTEtdGhlLWJhY2tzdG9yeQ=
+=3D=3D
+). A two-part series explaining the good and the bad and the why
+and the how.
+
+=E2=80=8B
+
+=F0=9F=98=83 Bootstrap it now
+
+Supabase has just rolled out a handy tool in their latest
+release, which lets you jump into using any kind of your favorite
+frameworks alongside Supabase in no time. A perfect =E2=80=9Cbootstrap=E2=
+=80=9D
+tool. Check it out here (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/7qh7h2uo3n=
+kd69h9/aHR0cHM6Ly9zdXBhYmFzZS5jb20vYmxvZy9zdXBhYmFzZS1ib290c3RyYXA=3D
+).
+
+=E2=80=8B
+
+=F0=9F=94=92 What the heck is =E2=80=9Cuse client=E2=80=9D
+
+If you ever wondered why we write =E2=80=98use client=E2=80=99 in Next.js, =
+this (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/owhkhwur5q=
+kx6gtq/aHR0cHM6Ly90d2l0dGVyLmNvbS9kZWxiYV9vbGl2ZWlyYS9zdGF0dXMvMTc3OTkzOTYy=
+MzU1MDAwOTgxMg=3D=3D
+) tweet has the answer. It explains why it=E2=80=99s important and how it
+separates different environments (client & server)
+
+A sneak peek into JSM
+---------------------
+
+=F0=9F=93=BD=EF=B8=8F Your favorite
+
+The newest edition of the video you=E2=80=99ve watched, liked, and
+requested the most in last year is finally here! Don=E2=80=99t miss out
+on full React Native 2024 course (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/z2hgh7u30l=
+45kwcz/aHR0cHM6Ly95b3V0dS5iZS9aQkNVZWdUWkY3TT9mZWF0dXJlPXNoYXJlZA=3D=3D
+) =E2=80=94 it=E2=80=99s definitely worth your time.
+
+=E2=80=8B
+
+=F0=9F=8D=8E Want personalized daily 1-on-1 mentoring?
+
+The new cohort of the Masterclass is starting soon. Solve this
+quiz (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/x0hph3uwxq=
+rkpkug/aHR0cHM6Ly9mb3JtLnR5cGVmb3JtLmNvbS90by9hQlNOWjlFZg=3D=3D
+) and find out if you're a good fit.
+
+=E2=80=8B
+
+Before we say goodbye, here=E2=80=99s our weekly joke to wrap things up!
+
+=E2=80=8B
+Until next time,
+Adrian from jsmastery.pro (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/6qhehou709=
+kx5zi9/aHR0cHM6Ly93d3cuanNtYXN0ZXJ5LnByby8=3D
+)=E2=80=8B
+
+=E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/kkhmh2ul4x=
+dz5wsk/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/7qh7h2uo3n=
+kd65a9/aHR0cHM6Ly90d2l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/owhkhwur5q=
+kx6viq/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bWFzdGVyeS8=3D
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/z2hgh7u30l=
+45k2fz/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcnkv
+) =E2=80=8B (
+https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/p8hehquz8q=
+3r2nar/aHR0cHM6Ly9kaXNjb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D
+)
+
+=E2=80=8BUnsubscribe (
+https://unsubscribe.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577
+) =C2=B7 Preferences (
+https://preferences.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577
+)=E2=80=8B
+--70fa35db054d2ffdbd908f1e06a6259fc040ce1361a0297a7ae509431790
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html style=3D"line-height:1.5">
+<head>
+<style>@media only screen{body,table,td,a{-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;}}
+@media only screen{*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoot=
+hing:grayscale;}}
+@media only screen and (max-width:600px){.email-container{padding:0 !import=
+ant;}}
+@media only screen {* { word-break: break-word; }}
+@media screen and (max-width: 384px) { .mail-message-content { width: 414px=
+ !important; } }
+@media only screen and (max-width:600px) {
+        .ck-padding-left-none {
+          padding-left: 0px !important;
+        }
+        .ck-padding-right-none {
+          padding-right: 0px !important;
+        }
+        .ck-padding-left-mobile-friendly {
+          padding-left: 18px !important;
+        }
+        .ck-padding-right-mobile-friendly {
+          padding-right: 18px !important;
+        }
+    }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }
+@media only screen and (max-width:600px) {
+        .ck-mobile-font-size {
+          font-size: 50px !important;
+        }
+     }</style>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+</head>
+<body style=3D"margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.5">
+<div style=3D"background-color:#ffffff"><table role=3D"presentation" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"email" style=3D"border-collapse:sepa=
+rate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;background:#=
+ffffff !important;width:100%" bgcolor=3D"#ffffff"><tbody><tr>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+<div class=3D"email-container normal" style=3D"padding-top:0;padding-left:0=
+;padding-bottom:30px;padding-right:0;margin:0 auto;max-width:100%"><table c=
+ellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#ffffff" style=3D"border-coll=
+apse:separate;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;wid=
+th:100%;margin:0 auto;background-color:#ffffff"><tbody><tr><td style=3D"mso=
+-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">
+<div class=3D"ck-section" style=3D"margin:5px auto 5px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 5px 0px 5px"><div class=3D"ck-inner-section ck=
+-padding-left-mobile-friendly ck-padding-right-mobile-friendly" style=3D"pa=
+dding:0px 5px 0px 5px"><div style=3D"margin-left:auto;margin-right:auto;max=
+-width:640px">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:800px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/gWJmN92FyV97FAL7ZGBCRf/email" width=3D"800" he=
+ight=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;lin=
+e-height:100%;outline:none;-webkit-text-decoration:none;text-decoration:non=
+e;-ms-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4=
+px;width:800px;height:auto;object-fit:contain"></div></figure></td></tr></t=
+body></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Hi whyoucare =F0=9F=91=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Greetings from Croatia =F0=9F=87=AD=F0=9F=87=B7 where I=E2=80=99m sip=
+ping hot coffee as I write this email. Where are you from? Let me know by r=
+eplying to this email!</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:28px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D""><strong>What=E2=80=99s new</str=
+ong></h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=8F=B3 <strong>Next-level transitions in Next.js 14</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Are you interested in creating advanced page transitions for your app=
+ with the latest Next.js 14? If so, look at <a href=3D"https://click.conver=
+tkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/dphehmu0rp4doqul/aHR0cHM6Ly9uZ=
+Xh0LXZpZXctdHJhbnNpdGlvbnMudmVyY2VsLmFwcC8=3D" target=3D"_blank" rel=3D"noo=
+pener noreferrer" style=3D"color:#0F82F0" url-id=3D"1631032183">this guide<=
+/a> from the Next.js team that shows you how to do just that.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=A4=91 <strong>The React 19 &amp; its backstory</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">If you=E2=80=99re someone like me, who=E2=80=99s always curious about=
+ how a framework or its new features work behind the scenes, then you=E2=80=
+=99ll definitely want to take a look at <a href=3D"https://click.convertkit=
+-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/e0hph0u05rpml0i7/aHR0cHM6Ly93d3cuY=
+21yZy5tZS9ibG9nL3JzYy1wYXJ0LTEtdGhlLWJhY2tzdG9yeQ=3D=3D" target=3D"_blank" =
+rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1631032184">t=
+his</a>. A two-part series explaining the good and the bad and the why and =
+the how.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=F0=9F=98=83 <strong>Bootstrap it now</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Supabase has just rolled out a handy tool in their latest release, wh=
+ich lets you jump into using any kind of your favorite frameworks alongside=
+ Supabase in no time. A perfect =E2=80=9Cbootstrap=E2=80=9D tool. Check it =
+out <a href=3D"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4=
+w577/7qh7h2uo3nkd69h9/aHR0cHM6Ly9zdXBhYmFzZS5jb20vYmxvZy9zdXBhYmFzZS1ib290c=
+3RyYXA=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F=
+82F0" url-id=3D"1631032185">here</a>.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=94=92 What the heck is =E2=80=9Cuse client=E2=80=9D</s=
+trong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">If you ever wondered why we write =E2=80=98use client=E2=80=99 in Nex=
+t.js, <a href=3D"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8=
+x4w577/owhkhwur5qkx6gtq/aHR0cHM6Ly90d2l0dGVyLmNvbS9kZWxiYV9vbGl2ZWlyYS9zdGF=
+0dXMvMTc3OTkzOTYyMzU1MDAwOTgxMg=3D=3D" target=3D"_blank" rel=3D"noopener no=
+referrer" style=3D"color:#0F82F0" url-id=3D"1631032186">this</a> tweet has =
+the answer. It explains why it=E2=80=99s important and how it separates dif=
+ferent environments (client &amp; server)</p>
+<h3 style=3D"font-weight:bold;font-style:normal;font-size:1em;margin:0;font=
+-size:1.17em;margin:1em 0;font-family:-apple-system, BlinkMacSystemFont, sa=
+ns-serif;font-size:28px;color:#1a1a1a;font-weight:800;letter-spacing:0;line=
+-height:1.5;text-transform:none" class=3D""><strong>A sneak peek into JSM</=
+strong></h3>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=93=BD=EF=B8=8F Your favorite</strong></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">The newest edition of the video you=E2=80=99ve watched, liked, and re=
+quested the most in last year is finally here! Don=E2=80=99t miss out on <a=
+ href=3D"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/z=
+2hgh7u30l45kwcz/aHR0cHM6Ly95b3V0dS5iZS9aQkNVZWdUWkY3TT9mZWF0dXJlPXNoYXJlZA=
+=3D=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#0F82F=
+0" url-id=3D"1631032187">full React Native 2024 course</a> =E2=80=94 it=E2=
+=80=99s definitely worth your time.</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D""><strong>=F0=9F=8D=8E Want personalized daily 1-on-1 mentoring?</stron=
+g></p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">The new cohort of the Masterclass is starting soon. <a href=3D"https:=
+//click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/x0hph3uwxqrkpkug=
+/aHR0cHM6Ly9mb3JtLnR5cGVmb3JtLmNvbS90by9hQlNOWjlFZg=3D=3D" target=3D"_blank=
+" rel=3D"noopener noreferrer" style=3D"color:#0F82F0" url-id=3D"1631032189"=
+>Solve this quiz</a> and find out if you're a good fit. </p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">=E2=80=8B</p>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Before we say goodbye, here=E2=80=99s our weekly joke to wrap things =
+up!</p>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:separate;line-height:1.5;mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;text-align:center;table-layout:fixed;float:none" class=3D"emai=
+l-image"><tbody><tr><td align=3D"center" style=3D"mso-table-lspace:0pt;mso-=
+table-rspace:0pt;vertical-align:top"><figure style=3D"margin:1em 0;margin-t=
+op:12px;margin-bottom:12px;margin-left:0;margin-right:0;max-width:800px;wid=
+th:100%"><div style=3D"display:block"><img src=3D"https://embed.filekitcdn.=
+com/e/hbkfd9XjiChLa2dhB5ocmg/bzHYCkaKdtLAVxySQqp4mb" width=3D"800" height=
+=3D"auto" style=3D"border:0 none;display:block;border:0;height:auto;line-he=
+ight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-m=
+s-interpolation-mode:bicubic;max-width:100%;border-radius:4px 4px 4px 4px;w=
+idth:800px;height:auto;object-fit:contain"></div>
+<figcaption style=3D"margin-top:0.4em;font-size:0.8em;text-align:center;dis=
+play:none">=E2=80=8B</figcaption></figure></td></tr></tbody></table>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none;margin-top:0;margin-bottom:0" class=
+=3D"">Until next time,<br>Adrian from <a href=3D"https://click.convertkit-m=
+ail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/6qhehou709kx5zi9/aHR0cHM6Ly93d3cuanN=
+tYXN0ZXJ5LnByby8=3D" target=3D"_blank" rel=3D"noopener noreferrer" style=3D=
+"color:#0F82F0" url-id=3D"1631032190">jsmastery.pro</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+<div class=3D"ck-section ck-hide-in-public-posts" style=3D"margin:0px auto =
+24px auto"><center>
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:separat=
+e;line-height:1.5;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;marg=
+in:0 auto;max-width:640px"><tbody><tr>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+<td width=3D"640" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertic=
+al-align:top;background-size:cover;background-position:center;box-sizing:bo=
+rder-box;mso-padding-alt:0px 0px 0px 0px"><div class=3D"ck-inner-section ck=
+-padding-left-none ck-padding-right-none" style=3D"padding:0px 0px 0px 0px"=
+><div style=3D"margin-left:auto;margin-right:auto;max-width:640px">
+<div style=3D"text-align:left;margin-top:16px;margin-bottom:16px">
+<a href=3D"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577=
+/kkhmh2ul4xdz5wsk/aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGphdmFzY3JpcHRtYXN0ZXJ5"=
+ style=3D"display:inline-block;padding-right:8px;border:none;text-decoratio=
+n:none" url-id=3D"1631032191"><img src=3D"https://functions-js.convertkit.c=
+om/icons?icon=3Dyoutube&amp;foreground=3Dffffff&amp;background=3Dcc0000&amp=
+;shape=3Dcircle&amp;v=3D3" alt=3D"youtube" width=3D"32" height=3D"32" style=
+=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-webki=
+t-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubic;=
+max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"><=
+!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.convert=
+kit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/7qh7h2uo3nkd65a9/aHR0cHM6Ly90d2=
+l0dGVyLmNvbS9qc21hc3Rlcnlwcm8=3D" style=3D"display:inline-block;padding-rig=
+ht:8px;border:none;text-decoration:none" url-id=3D"1631032192"><img src=3D"=
+https://functions-js.convertkit.com/icons?icon=3Dx-twitter&amp;foreground=
+=3Dffffff&amp;background=3D000000&amp;shape=3Dcircle&amp;v=3D3" alt=3D"x-tw=
+itter" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:au=
+to;line-height:100%;outline:none;-webkit-text-decoration:none;text-decorati=
+on:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width:3=
+2px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=
+=8B</a><a href=3D"https://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh=
+8x4w577/owhkhwur5qkx6viq/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9qYXZhc2NyaXB0bW=
+FzdGVyeS8=3D" style=3D"display:inline-block;padding-right:8px;border:none;t=
+ext-decoration:none" url-id=3D"1631032193"><img src=3D"https://functions-js=
+.convertkit.com/icons?icon=3Dinstagram&amp;foreground=3Dffffff&amp;backgrou=
+nd=3De1306c&amp;shape=3Dcircle&amp;v=3D3" alt=3D"instagram" width=3D"32" he=
+ight=3D"32" style=3D"display:block;border:0;height:auto;line-height:100%;ou=
+tline:none;-webkit-text-decoration:none;text-decoration:none;-ms-interpolat=
+ion-mode:bicubic;max-width:100%;border:0 none;width:32px;height:32px;displa=
+y:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"http=
+s://click.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/z2hgh7u30l45k2=
+fz/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvamF2YXNjcmlwdG1hc3Rlcnkv" st=
+yle=3D"display:inline-block;padding-right:8px;border:none;text-decoration:n=
+one" url-id=3D"1631032194"><img src=3D"https://functions-js.convertkit.com/=
+icons?icon=3Dlinkedin&amp;foreground=3Dffffff&amp;background=3D0077b5&amp;s=
+hape=3Dcircle&amp;v=3D3" alt=3D"linkedin" width=3D"32" height=3D"32" style=
+=3D"display:block;border:0;height:auto;line-height:100%;outline:none;-webki=
+t-text-decoration:none;text-decoration:none;-ms-interpolation-mode:bicubic;=
+max-width:100%;border:0 none;width:32px;height:32px;display:inline-block"><=
+!--[if mso]>=C2=A0<![endif]-->=E2=80=8B</a><a href=3D"https://click.convert=
+kit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577/p8hehquz8q3r2nar/aHR0cHM6Ly9kaX=
+Njb3JkLmNvbS9pbnZpdGUvbjZFZGJGSg=3D=3D" style=3D"display:inline-block;paddi=
+ng-right:8px;border:none;text-decoration:none" url-id=3D"1631032195"><img s=
+rc=3D"https://functions-js.convertkit.com/icons?icon=3Ddiscord&amp;foregrou=
+nd=3Dffffff&amp;background=3D7289da&amp;shape=3Dcircle&amp;v=3D3" alt=3D"di=
+scord" width=3D"32" height=3D"32" style=3D"display:block;border:0;height:au=
+to;line-height:100%;outline:none;-webkit-text-decoration:none;text-decorati=
+on:none;-ms-interpolation-mode:bicubic;max-width:100%;border:0 none;width:3=
+2px;height:32px;display:inline-block"><!--[if mso]>=C2=A0<![endif]-->=E2=80=
+=8B</a>
+</div>
+<p style=3D"margin:1em 0;font-family:Arial, -apple-system, BlinkMacSystemFo=
+nt, sans-serif;font-size:16px;color:#363D43;font-weight:400;letter-spacing:=
+0;line-height:1.5;text-transform:none" class=3D"">=E2=80=8B<a href=3D"https=
+://unsubscribe.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577" target=
+=3D"_blank" rel=3D"noopener noreferrer" style=3D"color:#656565">Unsubscribe=
+</a> =C2=B7 <a href=3D"https://preferences.convertkit-mail2.com/k0ukgqp8q6c=
+6hdqewephlh8x4w577" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"=
+color:#656565">Preferences</a>=E2=80=8B</p>
+</div></div></td>
+<td contenteditable=3D"false" style=3D"mso-table-lspace:0pt;mso-table-rspac=
+e:0pt;vertical-align:top"></td>
+</tr></tbody></table>
+<div><!--[if mso]><br /><br /><![endif]--></div>
+</center></div>
+</td></tr></tbody></table></div></td>
+<td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top">=
+</td>
+</tr></tbody></table></div>
+<!-- -->
+<img src=3D"https://open.convertkit-mail2.com/k0ukgqp8q6c6hdqewephlh8x4w577=
+" alt=3D"" style=3D"border:0 none;display:block;border:0;height:auto;line-h=
+eight:100%;outline:none;-webkit-text-decoration:none;text-decoration:none;-=
+ms-interpolation-mode:bicubic;max-width:100%">
+</body>
+</html>
+
+--70fa35db054d2ffdbd908f1e06a6259fc040ce1361a0297a7ae509431790--
